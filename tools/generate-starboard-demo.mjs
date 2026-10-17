@@ -212,14 +212,14 @@ try {
           ctx.fillStyle = '#253c51'; ctx.beginPath(); ctx.roundRect(284, 312, 235, 39, 8); ctx.fill();
           label('Introduce yourself', 300, 338, 20, '#a3b6d1');
           if (assigned) label(pt ? 'Cargo automático de exemplo: Membro' : 'Sample automatic role: Member', 64, 387, 21, '#8ee5d2');
-          if (guided) label(pt ? 'Só para ti: Lê as regras em #regras.' : 'Only you: Please read the rules in #rules.', 64, 420, 19, '#a3b6d1');
+          if (guided) label(pt ? 'Read the rules abre diretamente #regras' : 'Read the rules opens #rules directly', 64, 420, 19, '#a3b6d1');
           ctx.globalAlpha = 1;
         }
         const step = time < 2 ? (pt ? '1. Um novo membro entra na comunidade' : '1. A new member joins the community')
           : time < 5 ? (pt ? '2. O Helper publica a mensagem de boas-vindas' : '2. Helper posts the welcome message')
           : (pt ? '3. Com extras ativos, recebe um cargo e orientação' : '3. Enabled extras add a role and orientation');
         label(step, 42, 484, 22);
-        label(pt ? 'Exemplo: guia e cargo ativos · mensagens privadas são opcionais' : 'Example: guide and role enabled · welcome DMs are optional', 42, 518, 14, '#a3b6d1');
+        label(pt ? 'Sem canal escolhido, o botão não aparece · exemplo ilustrativo' : 'Without a chosen channel, the button stays hidden · illustrative example', 42, 518, 14, '#a3b6d1');
       }
       draw(0);
       const poster = canvas.toDataURL('image/png').split(',')[1];

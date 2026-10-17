@@ -37,6 +37,8 @@ describe('feature-specific demonstrations', () => {
     expect(demo?.steps.join(' ')).toMatch(/joins/);
     expect(demo?.steps.join(' ')).toMatch(/configured channel/);
     expect(demo?.steps.join(' ')).toMatch(/permissions/);
+    expect(demo?.example).toMatch(/direct links/i);
+    expect(demo?.steps.join(' ')).toMatch(/without a destination are hidden/);
     expect(featureDemo('support.welcome', 'fr')?.asset).toBe('welcome-en');
   });
 });
