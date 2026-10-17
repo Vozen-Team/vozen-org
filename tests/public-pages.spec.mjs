@@ -1,5 +1,19 @@
 import { test, expect } from '@playwright/test';
 
+test('entry pages do not load standalone navigation CSS already included in their bundles', async ({ page }) => {
+  for (const route of ['/', '/tts/', '/helper/']) {
+    await page.goto(route);
+    await expect(page.locator('link[rel="stylesheet"][href*="global-nav-v1.css"]')).toHaveCount(0);
+    await expect(page.locator('.vozen-global-nav')).toHaveCount(1);
+  }
+});
+
+test('the shared wordmark has a small dedicated font subset', async ({ page }) => {
+  const response = await page.request.get('/assets/fonts/unbounded-brand-latin.woff2');
+  expect(response.ok()).toBe(true);
+  expect((await response.body()).length).toBeLessThan(5000);
+});
+
 const entryPages = ['/', '/tts/', '/helper/'];
 const widths = [320, 375, 768, 1024, 1440];
 

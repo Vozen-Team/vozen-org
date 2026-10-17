@@ -142,9 +142,14 @@ try {
         setAttr(node, 'data-prerender-fragment', selector.slice(1));
       }
       const head = find(document, (node) => node.tagName === 'head');
+      const bundledNavigation = find(head, node => node.tagName === 'link' && attrs(node).rel === 'stylesheet' && /(?:home-(?:critical|full)|(?:tts|helper)-page)-v1\.css(?:\?|$)/.test(attrs(node).href || ''));
+      if (bundledNavigation) {
+        head.childNodes = head.childNodes.filter(node => !(node.tagName === 'link' && attrs(node).rel === 'stylesheet' && /global-nav-v1\.css(?:\?|$)/.test(attrs(node).href || '')));
+      }
       for (const href of snapshot.styles) {
         const url = new URL(href);
         if (url.origin !== origin) continue;
+        if (bundledNavigation && /\/css\/global-nav-v1\.css$/.test(url.pathname)) continue;
         const asset = url.pathname + url.search;
         let exists = false;
         visit(head, (node) => {

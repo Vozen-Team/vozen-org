@@ -2034,7 +2034,7 @@ body.page-dashboard .dash-picker h2 {
 /* The logo must not remain in the system fallback after an optional font load. */
 @font-face {
   font-family: "Vozen Header Display";
-  src: url('../assets/fonts/unbounded-critical-latin.woff2') format('woff2');
+  src: url('../assets/fonts/unbounded-brand-latin.woff2') format('woff2');
   font-style: normal;
   font-weight: 400 900;
   font-display: swap;

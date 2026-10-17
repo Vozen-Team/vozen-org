@@ -62,7 +62,6 @@ jobs:
           npm run auth-session:check
           npm run test:unit
           npm run test:ui
-          npm run test:lighthouse
       - name: Build Helper panel
         run: |
           npm ci --prefix apps/helper-panel
@@ -92,6 +91,7 @@ jobs:
           npm run test:artifact
           npm run build:artifact
           SITE_ROOT=.pages-artifact npm run test:ui
+          SITE_ROOT=.pages-artifact npm run test:lighthouse
       - name: Configure GitHub Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
       - name: Upload Pages artifact

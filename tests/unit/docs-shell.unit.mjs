@@ -31,3 +31,18 @@ test('Helper runtime data includes its search corpus and real module routes', ()
   assert.equal(routes.length, 47);
   for (const route of routes) assert.ok(existsSync(new URL('../../site/docs/helper/' + route, import.meta.url)), route);
 });
+
+test('navigation stylesheet fallback recognizes bundled entry-page styles', () => {
+  const source = readFileSync('site/js/global-nav-v1.js', 'utf8');
+  const setup = source.slice(0, source.indexOf('  const AUTH_CHANNEL_NAME')) + '})();';
+  for (const stylesheet of ['home-critical-v1.css', 'tts-page-v1.css', 'helper-page-v1.css', 'global-nav-v1.css', 'docs-shell.css']) {
+    const added = [];
+    const document = {
+      querySelectorAll: selector => selector === '[data-vozen-nav]' ? [{}] : [{ href: 'https://vozen.org/css/' + stylesheet + '?v=fixture' }],
+      currentScript: { src: 'https://vozen.org/js/global-nav-v1.js' },
+      createElement: () => ({}), head: { appendChild: node => added.push(node) },
+    };
+    vm.runInNewContext(setup, { document, URL });
+    assert.equal(added.length, stylesheet === 'docs-shell.css' ? 1 : 0, stylesheet);
+  }
+});

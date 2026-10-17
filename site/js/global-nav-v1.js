@@ -3,7 +3,8 @@
   "use strict";
 
   const hosts = document.querySelectorAll("[data-vozen-nav]");
-  if (hosts.length && ![...document.querySelectorAll('link[rel="stylesheet"]')].some(link => /\/css\/global-nav-v1\.css(?:\?|$)/.test(link.href))) {
+  // Entry-page bundles already contain this component's complete styles.
+  if (hosts.length && ![...document.querySelectorAll('link[rel="stylesheet"]')].some(link => /\/css\/(?:global-nav-v1|home-(?:critical|full)-v1|(?:tts|helper)-page-v1)\.css(?:\?|$)/.test(link.href))) {
     const stylesheet = document.createElement('link');
     stylesheet.rel = 'stylesheet';
     stylesheet.href = new URL('../css/global-nav-v1.css', document.currentScript.src).href;

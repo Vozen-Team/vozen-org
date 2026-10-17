@@ -26,12 +26,13 @@ const subsets = [
   ['unbounded-500-latin.woff2', 'unbounded-critical-latin.woff2'],
   ['unbounded-500-latin-ext.woff2', 'unbounded-critical-latin-ext.woff2'],
   ['unbounded-500-cyrillic.woff2', 'unbounded-critical-cyrillic.woff2'],
+  ['unbounded-500-latin.woff2', 'unbounded-brand-latin.woff2', 'Vozen'],
 ];
 const mismatches = [];
 
-for (const [sourceName, outputName] of subsets) {
+for (const [sourceName, outputName, text = titleText] of subsets) {
   const source = fs.readFileSync(path.join(fontRoot, sourceName));
-  const expected = await subsetFont(source, titleText, { targetFormat: 'woff2' });
+  const expected = await subsetFont(source, text, { targetFormat: 'woff2' });
   const output = path.join(fontRoot, outputName);
   let current;
   try { current = fs.readFileSync(output); } catch { current = Buffer.alloc(0); }

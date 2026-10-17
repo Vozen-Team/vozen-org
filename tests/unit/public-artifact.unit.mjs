@@ -1,9 +1,17 @@
 import { test } from 'node:test';
+
 import assert from 'node:assert/strict';
 import { mkdtemp, mkdir, writeFile, readFile, readdir, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { minifyAsset, buildPublicArtifact, isDevelopmentFile, htmlSignature } from '../../tools/build-public-artifact.mjs';
+
+test('release performance budgets audit the exact minified publication artifact', async () => {
+  const workflow = await readFile('.github/workflows/pages.yml', 'utf8');
+  const audit = workflow.indexOf('SITE_ROOT=.pages-artifact npm run test:lighthouse');
+  assert.ok(audit > workflow.indexOf('npm run build:artifact'));
+  assert.ok(audit < workflow.indexOf('Deploy to GitHub Pages'));
+});
 
 test('non-code assets remain unchanged and equivalent viewport whitespace is accepted', async () => {
   assert.equal(await minifyAsset('robots.txt', 'User-agent: *\n'), 'User-agent: *\n');

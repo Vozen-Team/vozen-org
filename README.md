@@ -126,6 +126,8 @@ local builds, pass a fresh output directory:
 Preview and test that exact output with `SITE_ROOT=.pages-artifact-preview`
 (`$env:SITE_ROOT='.pages-artifact-preview'` in PowerShell). CI runs all browser
 tests against the final minified artifact before upload.
+Lighthouse release budgets also run against this exact artifact, rather than
+the readable, unminified source tree. The metric limits are unchanged.
 
 ## License
 
