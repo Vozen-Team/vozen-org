@@ -10,6 +10,7 @@
     return value > 0 && value < 0.0001 ? '<' + format.format(0.01) : format.format(value * 100);
   };
   const dateLabel = date => new Intl.DateTimeFormat(language(), { dateStyle: 'medium', timeZone: 'UTC' }).format(new Date(date));
+  const shortDate = date => new Intl.DateTimeFormat(language(), { month:'short', day:'numeric', timeZone:'UTC' }).format(new Date(date));
   const stateLabel = state => t(state === 'unknown' ? 'status.historyNoData' : 'status.' + state, { operational:'Operational', degraded:'Degraded', unavailable:'Unavailable', unknown:'No history', partial:'Partial data' }[state]);
   let history = model.empty();
   let busy = false;
@@ -17,37 +18,48 @@
     const key = container.closest('[data-status-service]').dataset.statusService;
     const heading = document.createElement('div'); heading.className = 'status-uptime__head';
     const caption = document.createElement('span'); caption.dataset.historyCaption = '';
-    const score = document.createElement('strong'); score.textContent = '—'; heading.append(caption, score);
+    const metric = document.createElement('span'); metric.className = 'status-uptime__metric';
+    const score = document.createElement('strong'); score.textContent = '—';
+    const basis = document.createElement('small'); basis.textContent = t('status.historyBasis','of checks'); metric.append(score,basis); heading.append(caption,metric);
     const timeline = document.createElement('div'); timeline.className = 'status-timeline';
     const bars = Array.from({ length:90 }, () => { const bar = document.createElement('span'); bar.className = 'status-day'; bar.dataset.state = 'unknown'; bar.setAttribute('aria-hidden','true'); timeline.append(bar); return bar; });
     const control = document.createElement('input'); control.type = 'range'; control.min = '0'; control.max = '89'; control.step = '1'; control.value = '89'; control.className = 'status-day-picker';
     const detail = document.createElement('p'); detail.className = 'status-day-detail'; detail.id = 'status-day-' + key; control.setAttribute('aria-describedby',detail.id);
+    const selection = document.createElement('p'); selection.className = 'status-day-selection'; selection.hidden = true;
     timeline.append(control);
     const axis = document.createElement('div'); axis.className = 'status-timeline-axis';
     const start = document.createElement('span'), end = document.createElement('span'); axis.append(start,end);
     const coverage = document.createElement('p'); coverage.className = 'status-uptime__coverage';
-    container.append(heading,timeline,axis,detail,coverage);
-    const chart = { key,caption,score,timeline,bars,control,detail,start,end,coverage,days:[] };
-    control.addEventListener('input', () => select(chart));
+    container.append(heading,timeline,axis,selection);
+    container.closest('[data-status-service]').querySelector('[data-history-measurements]').append(detail,coverage);
+    const chart = { key,caption,score,basis,timeline,bars,control,detail,selection,start,end,coverage,days:[],active:false };
+    const explore = () => { chart.active = true; select(chart); };
+    control.addEventListener('input', explore);
+    control.addEventListener('focus', explore);
+    control.addEventListener('pointerdown', explore);
     return chart;
   });
   function select(chart) {
     const index = Number(chart.control.value), day = chart.days[index];
     if (!day) return;
-    chart.bars.forEach((bar, i) => { bar.dataset.selected = String(i === index); });
+    chart.bars.forEach((bar, i) => { bar.dataset.selected = String(chart.active && i === index); });
     const description = t('status.historyDaily', '{date}: {state} · {count} recorded checks · {coverage}% coverage', { date:dateLabel(day.date), state:stateLabel(day.state), count:new Intl.NumberFormat(language()).format(day.known), coverage:percent(day.coverage) });
     chart.detail.textContent = description;
+    chart.selection.hidden = !chart.active;
+    chart.selection.dataset.state = day.state;
+    chart.selection.textContent = shortDate(day.date) + ' · ' + stateLabel(day.state);
     chart.control.setAttribute('aria-valuetext',description);
   }
   function render() {
     for (const chart of charts) {
       chart.days = model.days(history,chart.key);
-      chart.caption.textContent = t('status.historyDays','Last 90 days · recorded checks');
+      chart.caption.textContent = t('status.historyDays','90 days');
+      chart.basis.textContent = t('status.historyBasis','of checks');
       chart.control.setAttribute('aria-label',t('status.historySelect','Select a day; use the arrow keys to explore history'));
       let known = 0, operational = 0, expected = 0;
       chart.days.forEach((day,index) => { chart.bars[index].dataset.state = day.state; chart.bars[index].title = dateLabel(day.date) + ' · ' + stateLabel(day.state); known += day.known; operational += day.operational; expected += day.expected; });
       chart.score.textContent = known ? percent(operational / known) + '%' : '—';
-      chart.start.textContent = dateLabel(chart.days[0].date);
+      chart.start.textContent = shortDate(chart.days[0].date);
       chart.end.textContent = t('status.historyToday','Today');
       chart.coverage.textContent = known ? t('status.historyCoverage','{n}% of this period has recorded checks. Missing checks are not counted as uptime or downtime.',{n:percent(known / expected)}) : t('status.historyEmpty','No historical measurements yet. Pale green hatching marks days without history, not confirmed uptime.');
       select(chart);
