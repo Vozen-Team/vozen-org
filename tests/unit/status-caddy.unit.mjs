@@ -18,3 +18,14 @@ test('the history route is added only inside the existing API proxy, preserving 
 test('ambiguous or missing API proxy contracts are rejected',()=>{
   assert.throws(()=>insertHistoryRoute({},{}));
 });
+test('stats insertion preserves an existing history route and refuses duplicate installation',()=>{
+  const history={'@id':'vozen_status_history',handle:[{handler:'file_server'}]};
+  const proxy={handle:[{handler:'reverse_proxy',upstreams:[{dial:'localhost:3001'}]}]};
+  const input={apps:{http:{servers:{main:{routes:[{match:[{host:['api.vozen.org']}],handle:[{handler:'subroute',routes:[history,proxy]}]}]}}}}};
+  const addition={match:[{path:['/api/public/stats']}],handle:[{handler:'file_server'}]};
+  const result=insertHistoryRoute(input,addition,'vozen_public_stats');
+  const routes=result.apps.http.servers.main.routes[0].handle[0].routes;
+  assert.deepEqual(routes[0],history);assert.equal(routes[1]['@id'],'vozen_public_stats');assert.deepEqual(routes[2],proxy);
+  assert.throws(()=>insertHistoryRoute(result,addition,'vozen_public_stats'));
+  assert.throws(()=>insertHistoryRoute(input,addition,'unrelated'));
+});

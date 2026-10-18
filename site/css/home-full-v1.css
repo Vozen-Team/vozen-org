@@ -2705,7 +2705,7 @@ main {
 .eco-proof__item { display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; min-height: 44px; margin: 0; padding-inline-start: 28px; border-inline-start: 1px solid var(--line); color: var(--muted); font-size: 15px; line-height: 1.6; text-decoration: none; }
 .eco-proof__item strong { display: inline-flex; align-items: center; gap: 5px; color: var(--text); font-size: 18px; font-weight: 650; font-variant-numeric: tabular-nums; }
 .eco-proof__item strong svg { color: var(--aqua); }
-.eco-proof__item .eco-proof__count { display: inline-grid; }
+.eco-proof__item .eco-proof__count { display: inline-grid; min-inline-size: 3ch; }
 .eco-proof__count > span { grid-area: 1 / 1; text-align: end; }
 .eco-proof__count-readable { opacity: 0; pointer-events: none; user-select: none; }
 .eco-proof__external { flex: none; margin-inline-start: 3px; }

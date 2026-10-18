@@ -1,0 +1,24 @@
+[Unit]
+Description=Read-only Vozen TTS public server count
+After=network.target
+
+[Service]
+Type=simple
+User=vozen
+Group=vozen
+EnvironmentFile=/etc/vozen/public-stats.env
+ExecStart=/usr/bin/node /opt/vozen-public-stats/current/tools/export-public-stats.mjs
+Restart=on-failure
+RestartSec=15
+StateDirectory=vozen-public-stats
+StateDirectoryMode=0755
+UMask=0022
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/lib/vozen-public-stats
+RestrictAddressFamilies=AF_UNIX
+
+[Install]
+WantedBy=multi-user.target

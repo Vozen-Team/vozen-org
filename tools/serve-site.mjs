@@ -28,6 +28,7 @@ const publicStatusEndpoints = {
   tts: 'https://api.vozen.org/api/public/status',
   helper: 'https://api.vozen.org/rust/health',
   history: 'https://api.vozen.org/api/public/status/history',
+  stats: 'https://api.vozen.org/api/public/stats',
 };
 
 async function handleRequest(request, response, fetchPublic, publicStatusPreview) {

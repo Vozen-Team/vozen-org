@@ -1,0 +1,10 @@
+api.vozen.org {
+    handle /api/public/stats {
+        root * /var/lib/vozen-public-stats/public
+        rewrite * /stats.json
+        header Access-Control-Allow-Origin https://vozen.org
+        header Cache-Control "no-store"
+        header X-Content-Type-Options nosniff
+        file_server
+    }
+}

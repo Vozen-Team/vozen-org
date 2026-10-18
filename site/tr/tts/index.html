@@ -40,7 +40,7 @@
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <link rel="stylesheet" href="css/tts-page-v1.css?v=a55e05ea22f0">
+    <link rel="stylesheet" href="css/tts-page-v1.css?v=43633a1b8f9f">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/tr/tts/","description":"Vozen, Discord sohbetini doğal nöral seslerle yüksek sesle okur — 35 dilde, oyunlar, kahkahalar ve sonsuza dek ücretsiz bir temel sürümle","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"},"inLanguage":"tr"}</script>
 
     <!-- FAQ structured data (Google rich results). Mantém em sincronia com
@@ -73,7 +73,7 @@
           <a class="" href="docs/" data-i18n="ecosystem.docs">Belgeler</a>
           <a class="" href="commands/" data-i18n="ecosystem.commands">Komutlar</a>
           <a class="" href="status.html" data-i18n="ecosystem.status">Durum</a>
-          <span class="nav__premium-disabled" aria-disabled="true" title="Premium geçici olarak kullanılamıyor" data-i18n-title="ecosystem.premiumUnavailable" data-i18n="nav.premium">Premium</span>
+          <a class="" href="premium#plans" data-i18n="nav.premium">Premium</a>
         </nav>
         <div class="nav__actions">
           <a class="nav__gh" href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener" aria-label="GitHub’da Vozen (açık kaynak)" data-i18n-aria-label="common.githubLabel" title="GitHub’da açık kaynak" data-i18n-title="common.githubTitle"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></a>
@@ -417,7 +417,6 @@
               </button>
             </div>
           </div>
-          <p class="payments-paused" role="status"><span aria-hidden="true">•</span> <span data-i18n="price.paused">Ödemeler geçici olarak devre dışı. Fiyatlar yalnızca referans içindir.</span></p>
           <div class="bundle-ribbon" role="note" aria-label="Vozen paketi" data-i18n-aria-label="price.bundleAria">
             <span class="bundle-ribbon__eyebrow" data-i18n="price.bundleEyebrow">VOZEN PAKETİ</span>
             <div class="bundle-ribbon__copy">
@@ -480,9 +479,9 @@
                 <li data-i18n="price.m.14">/rizz</li>
               </ul>
               <p class="price-card__note" data-i18n="price.digital">Dijital abonelik · kargo yok</p>
-              <button class="price-card__buy price-card__buy--disabled" type="button" disabled="" aria-disabled="true" data-i18n="price.checkout">Ödemeler şu anda devre dışı</button>
+              <a class="price-card__buy" href="/premium#plans" data-i18n="price.checkout">Ödemeye devam et</a>
               <p class="price-card__idnote">
-                <span data-i18n="price.checkoutLater">Ödemeler yeniden etkinleştirildiğinde ödeme sayfası geri dönecek.</span>              </p>
+                <span data-i18n="premium.signInNote">Önce Discord ile giriş yapın. Ödeme bilgilerini Stripe işler.</span>              </p>
             </article>
             <article class="price-card price-card--pro reveal">
               <div class="price-card__topline">
@@ -517,9 +516,9 @@
               </ul>
               <p class="price-card__note note--s2" data-i18n="price.digital">Dijital abonelik · kargo yok</p>
               <p class="price-card__note note--s5" data-i18n="price.digital">Dijital abonelik · kargo yok</p>
-              <button class="price-card__buy price-card__buy--pro price-card__buy--disabled" type="button" disabled="" aria-disabled="true" data-i18n="price.checkout">Ödemeler şu anda devre dışı</button>
+              <a class="price-card__buy price-card__buy--pro" href="/premium#plans" data-i18n="price.checkout">Ödemeye devam et</a>
               <p class="price-card__idnote">
-                <span data-i18n="price.checkoutLater">Ödemeler yeniden etkinleştirildiğinde ödeme sayfası geri dönecek.</span>              </p>
+                <span data-i18n="premium.signInNote">Önce Discord ile giriş yapın. Ödeme bilgilerini Stripe işler.</span>              </p>
             </article>
             </div>
 
@@ -530,7 +529,7 @@
                   <h3 id="planComparisonTitle" data-i18n="price.compare.title">Tüm farkları karşılaştır</h3>
                   <p data-i18n="price.compare.sub">Sürprizsiz, eksiksiz plan karşılaştırması</p>
                 </div>
-                <span class="plan-comparison__checkout" data-i18n="price.checkout">Ödemeler şu anda devre dışı</span>
+                <span class="plan-comparison__checkout" data-i18n="price.checkout">Ödemeye devam et</span>
               </div>
               <div class="plan-table-wrap" tabindex="0" aria-label="Plan karşılaştırma tablosu" data-i18n-aria-label="price.compareTable">
                 <!-- role=* explícitos: em mobile o CSS usa display:grid nas linhas (blocos
@@ -710,9 +709,9 @@
     <script defer="" src="js/install-config-v1.js?v=97c30a4aaef1"></script>
     <script defer="" src="js/tts-install-v1.js?v=06da33493db0"></script>
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer="" src="js/global-nav-v1.js?v=577bf4843bac"></script>
+    <script defer="" src="js/global-nav-v1.js?v=b13acaf2e0f2"></script>
     <script defer="" src="js/i18n-public-loader-v1.js?v=d29fcfb97378"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=19cb4b294962"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=1cbb41c19099"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
 
 

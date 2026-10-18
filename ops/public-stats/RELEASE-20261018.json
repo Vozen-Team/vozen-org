@@ -1,0 +1,19 @@
+{
+  "verifiedAt": "2026-10-18T13:34:17Z",
+  "status": "backend-installed-and-publicly-verified",
+  "service": "vozen-public-stats.service",
+  "publicEndpoint": "https://api.vozen.org/api/public/stats",
+  "exporterSha256": "0d0c8cd5d4f362fae7d8fb4b9ab34db905c599bccbafded9472cdce8a7b197b8",
+  "collectorRelease": "/opt/vozen-public-stats/releases/0d0c8cd5d4f362fa",
+  "runtimeRevision": "e393286acf9afa5ead2d92dca124e9c9421868aa",
+  "nodeVersion": "22.22.1",
+  "collectionIntervalSeconds": 15,
+  "browserIntervalSeconds": 15,
+  "readingExpirySeconds": 90,
+  "sample": {"product":"tts","guilds":461,"observedAt":"2026-10-18T13:34:02.082Z"},
+  "checks": ["active database mount and read-only access verified", "consecutive observation timestamps", "runtime image and start timestamp unchanged", "previous Caddy configuration preserved plus exactly one stats route", "persisted Caddy autosave matches active JSON", "GET and HEAD 200 with no-store and canonical CORS", "POST and OPTIONS 405", "direct-origin access 403", "TTS and Helper health 200", "status history collector still active"],
+  "caddyBackup": "/var/backups/vozen-public-stats/20261018T133313Z/caddy-live-before.json",
+  "caddyBeforeSha256": "1e39b4cb1a0b828355c52f953e9e3b70d9902d2b005b7513fc1242fcd8d47421",
+  "caddyCandidateSha256": "44bbaa4f93852109493db97a1f1226a88dd6fb1872cce82b32d331671bc166dc",
+  "rollback": "Disable and stop only vozen-public-stats.service. Validate and reload the saved Caddy JSON only after checking for subsequent configuration changes. Preserve data and the status collector; do not restart the bot."
+}
