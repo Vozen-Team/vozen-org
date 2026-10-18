@@ -2,25 +2,6 @@
   "version": 1,
   "pages": [
     {
-      "route": "/docs/",
-      "id": "docs-home",
-      "source": "docs-data/docs-visual-content.mjs#",
-      "provenance": "Owned UI illustration with fictional names and values; not a live Discord screenshot.",
-      "hash": "beb108841b6a7d2951359fd9f506e29c187740b515fe8180e8617feaf5b23cb0",
-      "image": "docs-home.webp",
-      "mobile": "docs-home-mobile.webp",
-      "sizes": {
-        "desktop": {
-          "width": 960,
-          "height": 570
-        },
-        "mobile": {
-          "width": 420,
-          "height": 636
-        }
-      }
-    },
-    {
       "route": "/docs/helper/",
       "id": "helper",
       "source": "docs-data/docs-visual-content.mjs#helper/",

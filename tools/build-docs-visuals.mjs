@@ -15,12 +15,13 @@ const manifestPath = path.join(media, 'visual-manifest.json');
 const features = JSON.parse(fs.readFileSync('docs-src/en/helper/_data/features.json', 'utf8')).features;
 const boards = makeStoryboards(features);
 const byRoute = new Map(boards.map(board => [board.route, board]));
+// The docs directory already links to both products; only actual guides need examples.
 const pages = fs.readdirSync(root, { recursive: true }).filter(file => file.endsWith('index.html')).map(file => {
   const filename = path.join(root, file);
   const source = fs.readFileSync(filename, 'utf8');
   const route = file.replaceAll('\\', '/').replace(/index\.html$/, '');
   return { filename, source, route, ...readPage(source) };
-}).filter(page => !page.redirect);
+}).filter(page => !page.redirect && page.route !== '');
 for (const page of pages) if (!byRoute.has(page.route)) throw new Error(`No authored visual storyboard: /docs/${page.route}`);
 for (const board of boards) if (!pages.some(page => page.route === board.route)) throw new Error(`Visual storyboard points to missing page: ${board.route}`);
 

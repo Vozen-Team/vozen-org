@@ -223,13 +223,12 @@ export function makeStoryboards(features) {
     };
   });
   const boards = [
-    article('', 'Two tools, two focused guides', 'catalogue', 'Vozen documentation', [['Vozen Helper', 'Server operations'], ['Vozen TTS', 'Voice and personal tools'], ['Navigation', 'Product-specific search']], [['Helper', 'Moderation, community and server configuration.'], ['TTS', 'Messages, voices, sessions and private tools.']], steps('Choose your product', 'Find the matching task', 'Review the visual example')),
     ...helperArticles, ...ttsArticles, ...modules,
   ];
   const seen = new Set();
   return boards.map(board => {
     if (seen.has(board.route)) throw new Error(`Duplicate visual route: ${board.route}`);
     seen.add(board.route);
-    return { blocked: false, availability: 'Illustrated example', related: [], ...board, id: (board.route || 'docs-home').replace(/\/$/, '').replaceAll('/', '--') };
+    return { blocked: false, availability: 'Illustrated example', related: [], ...board, id: board.route.replace(/\/$/, '').replaceAll('/', '--') };
   });
 }

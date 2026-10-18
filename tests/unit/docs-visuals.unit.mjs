@@ -7,6 +7,18 @@ import { enhanceDocument, mediaMarkup, readPage, renderScene } from '../../tools
 const features = JSON.parse(fs.readFileSync('docs-src/en/helper/_data/features.json', 'utf8')).features;
 const boards = makeStoryboards(features);
 
+test('the docs directory has no redundant visual example and retains its product links', () => {
+  assert.equal(boards.some(board => board.route === ''), false);
+  const home = fs.readFileSync('site/docs/index.html', 'utf8');
+  assert.equal(/data-docs-visual-guide=/.test(home), false);
+  assert.equal(/\/docs\/media\/docs-home/.test(home), false);
+  assert.match(home, /class="docs-overview__card" href="\/docs\/helper\/"/);
+  assert.match(home, /class="docs-overview__card docs-overview__card--accent" href="\/docs\/tts\/"/);
+  assert.match(home, /How to use these docs/);
+  assert.match(home, /docs-helper-eyes/);
+  assert.match(home, /docs-voice-bar/);
+});
+
 test('every feature has its own grounded visual with the real schema and availability', () => {
   assert.equal(boards.filter(board => board.featureKey).length, 47);
   for (const feature of features) {
