@@ -389,7 +389,11 @@ try {
       const dialog = page.getByRole('dialog',{name:'Levels & XP',exact:true});
       await dialog.getByText('The API validated these settings. The simulation did not send messages or change the server.',{exact:true}).waitFor();
       assert.equal(await dialog.locator('video').count(),0,'do not show a Starboard video for another feature');
-      assert.equal(await dialog.locator('.feature-simulation__animation').count(),0,'do not show an unrelated GIF for a feature without its own demonstration');
+      const animation = dialog.locator('img.feature-simulation__animation');
+      assert.equal(await animation.count(),1,'Levels must show its own demonstration');
+      assert.equal(await animation.getAttribute('src'),'/panel/helper-tracker/feature-demos/levels-en.gif','never substitute another feature animation');
+      await animation.evaluate(image => image.decode());
+      assert.ok(await animation.evaluate(image => image.naturalWidth > 0),'the Levels illustration must load');
       assert.equal(await dialog.getByText('Technical QA effect',{exact:true}).isVisible(),false,'technical effects should be collapsed');
       await page.keyboard.press('Escape');
       await dialog.waitFor({state:'hidden'});
