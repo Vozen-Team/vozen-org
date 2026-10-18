@@ -63,7 +63,7 @@ header.vozen-global-nav .nav__gh { display: grid; place-items: center; color: va
 header.vozen-global-nav .nav__login {
   position: relative; display: inline-flex; align-items: center; gap: 8px;
   min-width: 0; width: auto; border: 1px solid rgba(204,216,255,.24); border-radius: 999px;
-  background: linear-gradient(105deg,#657ff0,#3bcdbd); color: #fff;
+  background: linear-gradient(105deg,#657ff0,#3bcdbd); color: #07070d;
   font: 750 16px/1.6 Outfit, system-ui, sans-serif; text-decoration: none;
   box-shadow: 0 12px 32px -15px rgba(83,141,255,.88);
 }
@@ -242,7 +242,7 @@ header.vozen-global-nav .nav__burger { display: none; }
   justify-content: center;
   min-height: 44px;
   padding: 0 18px;
-  color: #f7fbff;
+  color: #07070d;
   font-weight: 750;
   opacity: 1;
   filter: none;
@@ -250,10 +250,11 @@ header.vozen-global-nav .nav__burger { display: none; }
   pointer-events: auto;
 }
 
-.vozen-global-nav .nav__login:hover {
-  color: #fff;
+header.vozen-global-nav .nav__login:hover {
+  color: #07070d;
   filter: brightness(1.06);
 }
+header.vozen-global-nav .nav__login--account:hover { color: var(--text-0); }
 
 /* One desktop profile for the whole ecosystem.  Public marketing pages use a
    1.1 page zoom above 1100px while Account does not, so the local inverse
@@ -359,7 +360,15 @@ header.vozen-global-nav .nav__links a.is-current {
 }
 
 @media (max-width: 820px) {
-  header.vozen-global-nav .lang { display: none; }
+  header.vozen-global-nav .nav__gh { display: none; }
+  header.vozen-global-nav .lang { display: block; }
+  header.vozen-global-nav .lang__btn {
+    width: 44px; height: 44px; min-height: 44px; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  header.vozen-global-nav .lang__name,
+  header.vozen-global-nav .lang__chev { display: none; }
+  header.vozen-global-nav .lang__panel { max-height: min(60vh, 420px); overflow-y: auto; }
 }
 
 @media (max-width: 720px) {
@@ -382,8 +391,7 @@ header.vozen-global-nav .nav__links a.is-current {
 }
 
 @media (max-width: 350px) {
-  header.vozen-global-nav .nav__gh,
-  header.vozen-global-nav .lang {
+  header.vozen-global-nav .nav__gh {
     display: none;
   }
 
@@ -392,8 +400,11 @@ header.vozen-global-nav .nav__links a.is-current {
   }
 
   .vozen-global-nav .nav__actions {
-    gap: 10px;
+    gap: 6px;
   }
+  header.vozen-global-nav .brand { gap: 8px; }
+  header.vozen-global-nav .brand__word { font-size: 21px; }
+  header.vozen-global-nav .brand__mark { width: 34px; height: 34px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

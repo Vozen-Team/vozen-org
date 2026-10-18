@@ -317,16 +317,36 @@
     }
 
     let lastFocus = null;
+    const mobileDrawer = window.matchMedia('(max-width: 980px)');
+    const syncDrawer = () => {
+      const closed = mobileDrawer.matches && !document.body.classList.contains('docs-sidebar-open');
+      sidebar.inert = closed;
+      scrim.inert = closed || !mobileDrawer.matches;
+      scrim.tabIndex = -1;
+      if (closed) sidebar.setAttribute('aria-hidden', 'true');
+      else sidebar.removeAttribute('aria-hidden');
+    };
     const setOpen = (open) => {
       document.body.classList.toggle('docs-sidebar-open', open);
       toggle.setAttribute('aria-expanded', String(open));
+      syncDrawer();
       if (open) {
         lastFocus = document.activeElement;
-        window.setTimeout(() => sidebar.querySelector('input, a, button')?.focus(), 0);
+        window.setTimeout(() => {
+          if (!sidebar.inert && document.body.classList.contains('docs-sidebar-open')) sidebar.querySelector('input, a, button')?.focus();
+        }, 0);
       } else if (lastFocus && typeof lastFocus.focus === 'function') {
         lastFocus.focus();
       }
     };
+    syncDrawer();
+    mobileDrawer.addEventListener('change', () => {
+      const hadFocus = sidebar.contains(document.activeElement);
+      document.body.classList.toggle('docs-sidebar-open', false);
+      toggle.setAttribute('aria-expanded', 'false');
+      syncDrawer();
+      if (mobileDrawer.matches && hadFocus) toggle.focus();
+    });
     toggle.addEventListener('click', () => setOpen(!document.body.classList.contains('docs-sidebar-open')));
     scrim.addEventListener('click', () => setOpen(false));
     sidebar.addEventListener('click', (event) => { if (event.target.closest('a')) setOpen(false); });
@@ -337,7 +357,7 @@
         return;
       }
       if (event.key !== 'Tab' || !document.body.classList.contains('docs-sidebar-open')) return;
-      const focusable = [...sidebar.querySelectorAll('input, a, button, summary')].filter((node) => !node.hidden && !node.hasAttribute('disabled'));
+      const focusable = [...sidebar.querySelectorAll('input, a, button, summary')].filter((node) => !node.hidden && !node.hasAttribute('disabled') && node.getClientRects().length);
       if (!focusable.length) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];

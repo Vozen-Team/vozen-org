@@ -288,6 +288,15 @@
     document.addEventListener("click", (e) => {
       if (isOpen() && !menu.contains(e.target)) close(false);
     });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && isOpen()) {
+        event.preventDefault();
+        close(true);
+      }
+    });
+    menu.addEventListener("focusout", (event) => {
+      if (isOpen() && event.relatedTarget && !menu.contains(event.relatedTarget)) close(false);
+    });
   }
   buildLangMenu();
 
