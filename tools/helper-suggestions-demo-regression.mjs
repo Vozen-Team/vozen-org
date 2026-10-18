@@ -5,25 +5,27 @@ import assert from 'node:assert/strict';
 import { mkdir } from 'node:fs/promises';
 const base = process.env.HELPER_TEST_URL || 'http://127.0.0.1:5179/panel/helper-tracker/';
 const demoFeature = process.env.FEATURE_DEMO_FEATURE || 'suggestions';
-if (!['suggestions', 'giveaways', 'tickets', 'welcome'].includes(demoFeature)) throw new Error('Unknown regression feature');
+if (!['suggestions', 'giveaways', 'tickets', 'welcome', 'polls'].includes(demoFeature)) throw new Error('Unknown regression feature');
 const giveaway = demoFeature === 'giveaways';
 const tickets = demoFeature === 'tickets';
 const welcome = demoFeature === 'welcome';
-const featureKey = `${tickets || welcome ? 'support' : 'community'}.${demoFeature}`;
+const polls = demoFeature === 'polls';
+const featureKey = `${polls ? 'management' : tickets || welcome ? 'support' : 'community'}.${demoFeature}`;
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome ? ['disabled-feature'] : [])]) {
+  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls ? ['disabled-feature'] : [])]) {
     if (process.env.SUGGESTIONS_DEMO_SCENARIO && process.env.SUGGESTIONS_DEMO_SCENARIO !== scenario) continue;
     const page = await browser.newPage(scenario === 'dismiss-touch' ? { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true } : {});
     const dismissScenario = scenario.startsWith('dismiss-');
     const pt = scenario === 'pt';
     let simulations = 0, writes = 0;
-    const config = welcome ? { channel: 'sample-welcome', message: 'Welcome {member} to {server}!', guideEnabled: true, autoRole: '', sendDm: false }
+    const config = polls ? { channel: 'sample-polls', defaultDurationHours: 24 }
+      : welcome ? { channel: 'sample-welcome', message: 'Welcome {member} to {server}!', guideEnabled: true, autoRole: '', sendDm: false }
       : tickets ? { panelChannel: 'sample-support', categoryId: '', staffRole: '', transcriptChannel: '', maxOpen: 1, panelTitle: 'Need support?', panelDescription: 'Open a private ticket.', closeAfterHours: 1 }
       : giveaway ? { defaultDurationHours: 24, defaultWinners: 1, requiredRole: '' }
       : { channel: 'sample-suggestions', voteMode: 'up_down', anonymous: false, cooldownHours: 24, requiredRole: '', staffChannel: '' };
-    const feature = { key: featureKey, label: welcome ? 'Welcome' : tickets ? 'Tickets' : giveaway ? 'Giveaways' : 'Suggestions', category: tickets || welcome ? 'support' : 'community', enabled: scenario !== 'disabled-feature', available: true };
-    const localizedLabel = welcome ? (pt ? 'Boas-vindas' : 'Welcome') : tickets ? 'Tickets' : pt ? (giveaway ? 'Sorteios' : 'Sugestões') : feature.label;
+    const feature = { key: featureKey, label: polls ? 'Polls' : welcome ? 'Welcome' : tickets ? 'Tickets' : giveaway ? 'Giveaways' : 'Suggestions', category: polls ? 'management' : tickets || welcome ? 'support' : 'community', enabled: scenario !== 'disabled-feature', available: true };
+    const localizedLabel = polls ? (pt ? 'Sondagens' : 'Polls') : welcome ? (pt ? 'Boas-vindas' : 'Welcome') : tickets ? 'Tickets' : pt ? (giveaway ? 'Sorteios' : 'Sugestões') : feature.label;
     if (pt) await page.addInitScript(() => localStorage.setItem('vozen.lang', 'pt'));
     if (scenario === 'mobile' || scenario === 'dismiss-mobile') await page.setViewportSize({ width: 390, height: 844 });
     await page.emulateMedia({ reducedMotion: scenario === 'reduced-motion' ? 'reduce' : 'no-preference' });
@@ -44,7 +46,7 @@ try {
           await route.fulfill({ status: scenario === 'unauthenticated' ? 401 : 503, json: { code: scenario === 'unauthenticated' ? 'unauthenticated' : 'unavailable' } }); return;
         }
         if (['close', 'route-change', 'timeout'].includes(scenario) || dismissScenario) await new Promise(resolve => setTimeout(resolve, dismissScenario ? 1500 : 700));
-        value = { ok: scenario !== 'invalid', key: feature.key, mode: 'simulation', result: { key: feature.key, would_apply: scenario !== 'invalid', effects: ['Synthetic suggestion preview'], issues: scenario === 'invalid' ? [{ severity: 'error', message: 'Select a valid channel' }] : [] } };
+        value = { ok: scenario !== 'invalid', key: feature.key, mode: 'simulation', result: { key: feature.key, would_apply: scenario !== 'invalid', effects: ['Synthetic feature preview'], issues: scenario === 'invalid' ? [{ severity: 'error', message: 'Select a valid channel' }] : [] } };
       } else {
         if (!['GET', 'HEAD'].includes(route.request().method())) writes++;
         if (path === '/api/me') value = { id: 'qa-user', guildId: 'sample', dbOk: true };
@@ -52,12 +54,13 @@ try {
         else if (path === '/api/config/features') value = { guildId: 'sample', features: [feature] };
         else if (path === `/api/config/features/${featureKey}`) value = {
           ...feature, guildId: 'sample', config, defaults: {}, revision: 1,
-          schema: { sections: welcome ? [{ title: 'Welcome message', fields: [{ key: 'channel', label: 'Welcome channel', kind: 'channel' }, { key: 'message', label: 'Welcome message', kind: 'textarea' }, { key: 'guideEnabled', label: 'Orientation buttons', kind: 'toggle' }, { key: 'autoRole', label: 'Automatic role', kind: 'role' }, { key: 'sendDm', label: 'Send welcome DM', kind: 'toggle' }] }]
+          schema: { sections: polls ? [{ title: 'Polls', fields: [{ key: 'channel', label: 'Default channel', kind: 'channel' }, { key: 'defaultDurationHours', label: 'Default duration (hours)', kind: 'number', min: 1, max: 168 }] }]
+            : welcome ? [{ title: 'Welcome message', fields: [{ key: 'channel', label: 'Welcome channel', kind: 'channel' }, { key: 'message', label: 'Welcome message', kind: 'textarea' }, { key: 'guideEnabled', label: 'Orientation buttons', kind: 'toggle' }, { key: 'autoRole', label: 'Automatic role', kind: 'role' }, { key: 'sendDm', label: 'Send welcome DM', kind: 'toggle' }] }]
             : tickets ? [{ title: 'Support workflow', fields: [{ key: 'panelChannel', label: 'Ticket panel channel', kind: 'channel' }, { key: 'categoryId', label: 'Ticket category', kind: 'category' }, { key: 'staffRole', label: 'Staff role to notify', kind: 'role' }, { key: 'transcriptChannel', label: 'Transcript channel', kind: 'channel' }, { key: 'maxOpen', label: 'Open tickets per member', kind: 'number' }, { key: 'panelTitle', label: 'Panel title', kind: 'text' }, { key: 'panelDescription', label: 'Panel description', kind: 'textarea' }, { key: 'closeAfterHours', label: 'SLA reminder (hours)', kind: 'number' }] }]
             : giveaway ? [{ title: 'Giveaway defaults', fields: [{ key: 'defaultDurationHours', label: 'Default duration (hours)', kind: 'number' }, { key: 'defaultWinners', label: 'Default winners', kind: 'number' }, { key: 'requiredRole', label: 'Required role (optional)', kind: 'role' }] }]
             : [{ title: 'Suggestion intake', fields: [{ key: 'channel', label: 'Suggestion channel', kind: 'channel' }, { key: 'voteMode', label: 'Voting mode', kind: 'select', options: [['up_down', 'Support / against'], ['up_only', 'Support only']] }, { key: 'anonymous', label: 'Hide author in the public message', kind: 'toggle' }] }, { title: 'Moderation', fields: [{ key: 'cooldownHours', label: 'Cooldown per member (hours)', kind: 'number' }, { key: 'requiredRole', label: 'Required role (optional)', kind: 'role' }, { key: 'staffChannel', label: 'Staff notification channel (optional)', kind: 'channel' }] }] },
         };
-        else if (path === '/api/guild-context') value = { guildId: 'sample', name: 'Sample server', permissions: '8', channels: [{ id: 'sample-suggestions', name: 'suggestions', type: 'text' }, { id: 'sample-support', name: 'support', type: 'text' }, { id: 'sample-welcome', name: 'welcome', type: 'text' }], roles: [], hierarchy: { known: true }, capabilities: { channelSelectors: true, roleSelectors: true, permissionPreflight: true } };
+        else if (path === '/api/guild-context') value = { guildId: 'sample', name: 'Sample server', permissions: '8', channels: [{ id: 'sample-polls', name: 'polls', type: 'text' }, { id: 'sample-suggestions', name: 'suggestions', type: 'text' }, { id: 'sample-support', name: 'support', type: 'text' }, { id: 'sample-welcome', name: 'welcome', type: 'text' }], roles: [], hierarchy: { known: true }, capabilities: { channelSelectors: true, roleSelectors: true, permissionPreflight: true } };
         else if (path === '/api/stats') value = { guildId: 'sample', totalCases: 0 };
         else if (path === '/api/cases') value = { cases: [] };
         else if (path === '/api/audit') value = { events: [] };

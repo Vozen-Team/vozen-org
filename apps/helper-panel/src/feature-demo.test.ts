@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { featureDemo } from './feature-demo';
 
 describe('feature-specific demonstrations', () => {
-  for (const [key, asset] of [['community.starboard', 'starboard'], ['community.suggestions', 'suggestions'], ['community.giveaways', 'giveaways'], ['support.tickets', 'tickets'], ['support.welcome', 'welcome']]) {
+  for (const [key, asset] of [['community.starboard', 'starboard'], ['community.suggestions', 'suggestions'], ['community.giveaways', 'giveaways'], ['support.tickets', 'tickets'], ['support.welcome', 'welcome'], ['management.polls', 'polls']]) {
     for (const locale of ['en', 'pt']) {
       it(`selects the owned ${locale} animation and written steps for ${key}`, () => {
         const demo = featureDemo(key, locale);
@@ -28,6 +28,16 @@ describe('feature-specific demonstrations', () => {
   });
   it('uses English media when a localized video is unavailable', () => {
     expect(featureDemo('community.suggestions', 'fr')?.asset).toBe('suggestions-en');
+  });
+  it('explains poll creation, voting and automatic closing using sample data', () => {
+    const demo = featureDemo('management.polls', 'en');
+    expect(demo?.example).toMatch(/sample data/i);
+    expect(demo?.example).toMatch(/accelerated time/i);
+    expect(demo?.example).toMatch(/no polls are created/i);
+    expect(demo?.steps.join(' ')).toMatch(/\/poll/);
+    expect(demo?.steps.join(' ')).toMatch(/buttons/);
+    expect(demo?.steps.join(' ')).toMatch(/duration ends/);
+    expect(featureDemo('management.polls', 'fr')?.asset).toBe('polls-en');
   });
   it('explains optional Welcome actions without claiming they are enabled or sent', () => {
     const demo = featureDemo('support.welcome', 'en');

@@ -1,5 +1,10 @@
 type DemoCopy = { title: string; example: string; steps: [string, string, string] };
 const demos = new Map<string, { asset: string; en: DemoCopy; pt: DemoCopy }>([
+  ['management.polls', {
+    asset: 'polls',
+    en: { title: 'How Polls work · looping animation', example: 'Illustrative example: a member creates a poll, the community votes using buttons, and Helper publishes the totals when it closes. Sample data and accelerated time, not your server settings; no polls are created by this animation.', steps: ['1. Use /poll with a question, at least two options and an optional duration. Helper uses the configured channel or the channel where you run the command.', '2. Members vote using the option buttons. Voting again changes their choice.', '3. When the duration ends, Helper closes the poll, removes the voting buttons and shows the vote totals.'] },
+    pt: { title: 'Como funcionam as Sondagens · animação em loop', example: 'Exemplo ilustrativo: um membro cria uma sondagem, a comunidade vota nos botões e o Helper publica os totais no fim. Dados de exemplo e tempo acelerado, não as definições do teu servidor; esta animação não cria sondagens.', steps: ['1. Usa /poll com uma pergunta, pelo menos duas opções e uma duração opcional. O Helper usa o canal configurado ou o canal onde executas o comando.', '2. Os membros votam nos botões das opções. Votar novamente altera a escolha.', '3. Quando o prazo termina, o Helper fecha a sondagem, retira os botões de voto e apresenta os totais.'] },
+  }],
   ['community.starboard', {
     asset: 'starboard',
     en: { title: 'How Starboard works · looping animation', example: 'Illustrative example: a message receives 3 stars and is copied to #starboard. The animation uses sample data, not your server settings.', steps: ['1. A member posts a message in a channel the bot can read.', '2. Other members add the configured highlight reaction.', '3. At the required count, Helper creates or updates its mirror in the selected Starboard channel.'] },

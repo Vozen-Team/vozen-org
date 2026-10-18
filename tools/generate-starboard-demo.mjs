@@ -10,7 +10,7 @@ const destination = path.join(root, 'apps/helper-panel/public/feature-demos');
 // Retain the original command; pass a feature name to generate only that storyboard
 // without replacing any existing Starboard assets.
 const feature = process.argv[2] ?? 'starboard';
-if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome'].includes(feature)) throw new Error('Unknown feature demo');
+if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls'].includes(feature)) throw new Error('Unknown feature demo');
 await fs.mkdir(destination, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -51,6 +51,7 @@ try {
         ctx.fillText(content, x, y);
       }
       function draw(time) {
+        if (feature === 'polls') { drawPolls(time); return; }
         if (feature === 'welcome') { drawWelcome(time); return; }
         if (feature === 'tickets') { drawTickets(time); return; }
         if (feature === 'giveaways') { drawGiveaways(time); return; }
@@ -188,6 +189,46 @@ try {
           : (pt ? '3. Com o pedido resolvido, o ticket é fechado' : '3. Once resolved, the ticket is closed');
         label(step, 42, 484, 22);
         label(pt ? '* Administradores mantêm o acesso · exemplo sem criar canais' : '* Administrators retain access · example creates no channels', 42, 518, 14, '#a3b6d1');
+      }
+      function drawPolls(time) {
+        const voted = time >= 4.5;
+        const closed = time >= 7;
+        const question = pt ? 'O que jogamos no sábado?' : 'What should we play on Saturday?';
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / SONDAGENS' : 'VOZEN HELPER / POLLS', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Uma pergunta, uma escolha, um resultado' : 'A question, a choice, a result', 42, 111, 30);
+        card(42, 135, 876, 80);
+        label(`/poll question: ${question}`, 62, 169, 22, '#8ee5d2');
+        label('option1: Minecraft  ·  option2: Rocket League  ·  duration: 1h', 62, 199, 18, '#a3b6d1');
+        if (time >= 2) {
+          const reveal = Math.min(1, (time - 2) / .3);
+          const eased = 1 - (1 - reveal) ** 3;
+          const y = 232 + 10 * (1 - eased);
+          card(42, y, 876, 212, eased);
+          ctx.globalAlpha = eased;
+          label('# polls · Vozen Helper', 64, y + 30, 16, '#a3b6d1');
+          label(question, 64, y + 69, 27);
+          label(closed ? (pt ? 'Encerrada · resultados' : 'Closed · results') : (pt ? 'Aberta · termina em 1 hora' : 'Open · ends in 1 hour'), 64, y + 100, 18, closed ? '#8ee5d2' : '#ffd170');
+          if (closed) {
+            label(pt ? '1. Minecraft — 3 votos' : '1. Minecraft — 3 votes', 64, y + 143, 24, '#8ee5d2');
+            label(pt ? '2. Rocket League — 1 voto' : '2. Rocket League — 1 vote', 64, y + 182, 24, '#a3b6d1');
+          } else {
+            for (const [index, option] of ['Minecraft', 'Rocket League'].entries()) {
+              const x = 64 + index * 278;
+              ctx.fillStyle = voted && index === 0 ? '#245044' : '#253c51';
+              ctx.beginPath(); ctx.roundRect(x, y + 120, 260, 44, 9); ctx.fill();
+              label(`${index + 1}: ${option}`, x + 16, y + 149, 21, voted && index === 0 ? '#8ee5d2' : '#f4f7fb');
+            }
+            if (voted) label(pt ? 'Voto registado · podes alterar a escolha' : 'Vote recorded · you can change your choice', 64, y + 195, 18, '#8ee5d2');
+          }
+          ctx.globalAlpha = 1;
+        }
+        const step = time < 2 ? (pt ? '1. Cria a pergunta e as opções com /poll' : '1. Create the question and options with /poll')
+          : time < 7 ? (pt ? '2. Cada membro escolhe uma opção nos botões' : '2. Each member chooses an option using the buttons')
+          : (pt ? '3. No fim do prazo, aparecem os totais' : '3. When time is up, the vote totals appear');
+        label(step, 42, 484, 22);
+        label(pt ? 'Exemplo ilustrativo · nenhuma sondagem é criada · tempo acelerado' : 'Illustrative example · no poll is created · accelerated time', 42, 518, 14, '#a3b6d1');
       }
       function drawWelcome(time) {
         const greeted = time >= 2;
