@@ -1,0 +1,30 @@
+.welcome-settings .section-heading {margin-bottom:24px;}
+.welcome-settings__groups {display:grid;gap:32px;}
+.welcome-settings__group {min-width:0;}
+.welcome-settings__group + .welcome-settings__group {border-top:1px solid var(--line);padding-top:24px;}
+.welcome-settings__group h4 {margin:0 0 6px;font-size:16px;}
+.welcome-settings__hint {max-width:68ch;margin:0 0 18px;color:var(--muted);font-size:13px;line-height:1.6;}
+.panel-main .welcome-settings__group .field-grid {gap:18px 24px;align-items:start;}
+.panel-main .welcome-settings__group[data-group='public'] .field-grid,
+.panel-main .welcome-settings__group[data-group='private'] .field-grid {grid-template-columns:minmax(0,1fr);}
+.panel-main .welcome-settings__group[data-group='links'] .field-grid {grid-template-columns:repeat(3,minmax(0,1fr));}
+.welcome-settings__wide {grid-column:1 / -1;min-width:0;}
+.welcome-settings .toggle-field {min-height:44px;margin:0;padding:0;border:0;background:transparent;box-shadow:none;}
+.welcome-settings .field > span > small:empty {display:none;}
+.welcome-settings__steps {min-width:0;margin:0;padding:0;border:0;}
+.welcome-settings__steps legend {padding:0;margin-bottom:8px;font-size:13px;font-weight:600;}
+.welcome-settings__choices {display:flex;flex-wrap:wrap;gap:4px 24px;}
+.welcome-settings__choices label {display:flex;align-items:center;gap:10px;min-height:44px;font-size:14px;cursor:pointer;}
+.welcome-settings__choices span {min-width:0;overflow-wrap:anywhere;}
+.welcome-settings__choices label:has(input:disabled) {cursor:default;}
+.panel-main .welcome-settings__steps input[type='checkbox'] {appearance:auto;width:16px;height:16px;min-height:0;margin:0;padding:0;flex:none;accent-color:var(--mint);box-shadow:none;}
+.welcome-settings__steps input:focus-visible {outline:2px solid var(--mint);outline-offset:3px;}
+.welcome-settings__steps small {display:block;margin-top:8px;color:var(--muted);font-size:12px;}
+.welcome-settings__groups > .field-grid:empty {display:none;}
+@media(max-width:1000px) {
+  .panel-main .welcome-settings__group[data-group='links'] .field-grid {grid-template-columns:minmax(0,1fr);}
+}
+@media(max-width:600px) {
+  .panel-main .welcome-settings__group .field-grid {grid-template-columns:minmax(0,1fr);}
+  .welcome-settings__choices {display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;}
+}

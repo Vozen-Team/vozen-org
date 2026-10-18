@@ -6,6 +6,8 @@ import { StarboardChannel } from './starboard-channel-setup';
 import { TicketPanelChannel } from './ticket-channel-setup';
 import { ticketSettingsGroups, ticketSettingCopy } from './ticket-settings';
 import './ticket-settings.css';
+import { welcomeSettingsGroups, welcomeSettingCopy, WelcomeGuideSteps } from './welcome-settings';
+import './welcome-settings.css';
 import { guildStorage, preferredGuild, rememberGuild } from './last-guild';
 import {
   api,
@@ -110,6 +112,7 @@ type FieldSpec = {
     | 'role'
     | 'roles';
   help?: string;
+  emptyLabel?: string;
   options?: Array<[string, string] | string>;
   min?: number;
   max?: number;
@@ -5817,21 +5820,42 @@ function ConfigSection({
     value={config[field.key]} context={context} onChange={onChange} />;
   const ticketGroups = section.fields.some(field => field.key === 'panelChannel')
     && section.fields.some(field => field.key === 'categoryId') ? ticketSettingsGroups(helperLocale()) : null;
+  const welcomeGroups = section.fields.some(field => field.key === 'guideEnabled')
+    && section.fields.some(field => field.key === 'message') ? welcomeSettingsGroups(helperLocale()) : null;
+  const renderWelcomeField = (field:FieldSpec) => {
+    if (field.key === 'steps') return <WelcomeGuideSteps value={config.steps} locale={helperLocale()} onChange={steps => onChange('steps',steps)} />;
+    const copy = welcomeSettingCopy(field,helperLocale());
+    const unavailable = field.kind === 'channel' && !context?.capabilities.channelSelectors
+      || field.kind === 'role' && !context?.capabilities.roleSelectors;
+    return renderField({...copy,help:unavailable ? undefined : copy.help});
+  };
   const starboardGroups = beforeFields && section.fields.some(field => field.key === 'threshold') ? [
     {title: helperLocale() === 'pt' ? 'Regras de destaque' : 'Highlight rules', keys: ['channel', 'threshold', 'emoji']},
     {title: helperLocale() === 'pt' ? 'Comportamento' : 'Behaviour', keys: ['allowSelfStar', 'includeImages']},
     {title: helperLocale() === 'pt' ? 'Exclusões' : 'Exclusions', keys: ['ignoredChannels', 'ignoredRoles']},
   ] : null;
   return (
-    <section className={`config-section card${ticketGroups ? ' ticket-settings' : ''}`}>
+    <section className={`config-section card${ticketGroups ? ' ticket-settings' : welcomeGroups ? ' welcome-settings' : ''}`}>
       <div className="section-heading">
         <div>
-          {!ticketGroups && <small className="eyebrow">{helperT('helper.configuration', 'CONFIGURATION')}</small>}
-          <h3>{ticketGroups ? (helperLocale() === 'pt' ? 'Configurar tickets' : 'Ticket setup') : section.title}</h3>
-          {!ticketGroups && <p>{section.description}</p>}
+          {!ticketGroups && !welcomeGroups && <small className="eyebrow">{helperT('helper.configuration', 'CONFIGURATION')}</small>}
+          <h3>{welcomeGroups ? (helperLocale() === 'pt' ? 'Configurar boas-vindas' : 'Welcome setup') : ticketGroups ? (helperLocale() === 'pt' ? 'Configurar tickets' : 'Ticket setup') : section.title}</h3>
+          {!ticketGroups && !welcomeGroups && <p>{section.description}</p>}
         </div>
       </div>
-      {ticketGroups ? <div className="ticket-settings__groups">
+      {welcomeGroups ? <div className="welcome-settings__groups">
+        {welcomeGroups.map(group => {
+          const fields = group.keys.flatMap(key => section.fields.filter(field => field.key === key));
+          return fields.length ? <section className="welcome-settings__group" data-group={group.id} key={group.id} aria-label={group.title}>
+            <h4>{group.title}</h4><p className="welcome-settings__hint">{group.description}</p>
+            <div className="field-grid">{fields.map(field => <div key={field.key}
+              className={['message','guideEnabled','steps','sendDm','dmMessage','farewellMessage'].includes(field.key) ? 'welcome-settings__wide' : undefined}>
+              {renderWelcomeField(field)}
+            </div>)}</div>
+          </section> : null;
+        })}
+        <div className="field-grid">{section.fields.filter(field => !welcomeGroups.some(group => group.keys.includes(field.key))).map(renderField)}</div>
+      </div> : ticketGroups ? <div className="ticket-settings__groups">
         {ticketGroups.map(group => {
           const fields = group.keys.flatMap(key => section.fields.filter(field => field.key === key));
           return fields.length ? <section className="ticket-settings__group" key={group.title} aria-label={group.title}>
@@ -5910,11 +5934,11 @@ function FieldControl({
           onChange={event => onChange(field.key,event.currentTarget.value)}
           disabled={!context?.capabilities.channelSelectors && (field.kind === 'channel' || field.kind === 'category') || !context?.capabilities.roleSelectors && field.kind === 'role'}
         >
-          {<option value="">{field.key === 'staffRole'
+          {<option value="">{field.emptyLabel ?? (field.key === 'staffRole'
             ? helperT('helper.ticketStaffNone', 'No staff notification — choose a role')
             : field.key === 'panelChannel'
               ? helperT('helper.ticketPanelNone', 'Choose the channel for the Open ticket button')
-            : helperT('helper.chooseResource', 'Choose a resource')}</option>}
+            : helperT('helper.chooseResource', 'Choose a resource'))}</option>}
           {resourceOptions.map((option) => {
             const roleOption = isRoleResource ? option : null;
             return (
