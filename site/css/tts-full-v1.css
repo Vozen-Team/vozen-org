@@ -2534,13 +2534,14 @@ body.tts-page .pill {
 
 body.tts-page .hero__title {
   margin: 27px 0 22px;
-  font-size: clamp(40px, 4.5vw, 64px);
+  font-size: clamp(40px, 4.2vw, 60px);
   line-height: 1.04;
   letter-spacing: -.04em;
 }
 
 body.tts-page .hero__title span {
   max-width: 100%;
+  padding-inline-end: .12em;
   overflow-wrap: normal;
   white-space: normal;
   text-wrap: balance;

@@ -176,6 +176,9 @@ for (const path of entryPages) {
         }).map((node) => ({
           tag: node.tagName,
           text: node.textContent?.trim().slice(0, 80),
+          clientWidth: node.clientWidth,
+          scrollWidth: node.scrollWidth,
+          font: getComputedStyle(node).font,
           rect: node.getBoundingClientRect().toJSON(),
         })),
       );
