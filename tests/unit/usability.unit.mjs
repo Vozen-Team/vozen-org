@@ -54,6 +54,15 @@ test('primary homepage action uses a dark foreground on its bright brand gradien
   assert.match(css, /\.eco-home-hero__primary\s*\{\s*color: #07070d;/);
 });
 
+test('homepage requests its above-the-fold fonts before loading styles', () => {
+  const html = readFileSync('site/index.html', 'utf8');
+  const stylesheet = html.indexOf('rel="stylesheet"');
+  for (const font of ['unbounded-critical-latin.woff2', 'outfit-400-latin.woff2']) {
+    const preload = html.indexOf(`rel="preload" href="assets/fonts/${font}" as="font" type="font/woff2" crossorigin`);
+    assert.ok(preload >= 0 && preload < stylesheet, `${font}: early anonymous font preload`);
+  }
+});
+
 test('language menu closes on Escape and when keyboard focus leaves it', () => {
   const source = readFileSync('site/js/main-v51.js', 'utf8').replaceAll('\r\n', '\n');
   const start = source.indexOf('    // clique fora fecha');
