@@ -87,7 +87,7 @@
     "price.pro.pitch": "为整个社区解锁完整的 Vozen 体验。",
     "price.compare.title": "查看所有差异",
     "price.compare.sub": "完整比较各方案，没有隐藏内容。",
-    "price.checkout": "付款目前已停用",
+    "price.checkout": "前往結帳",
     "price.recommended": "最适合服务器",
     "price.free.name": "Free",
     "price.free.price": "€0",
@@ -681,7 +681,7 @@
     ],
     [
       "我現在可以購買 Premium 嗎？",
-      "付款功能暫時停用。Helper 核心功能仍然免費；在重新開放結帳前，顯示的 Premium 價格僅供參考。"
+      "可以。請在 Premium 頁面選擇方案並使用 Discord 登入。付款資料由 Stripe 處理。Helper 核心功能仍然免費。"
     ]
   ],
   "faq": [

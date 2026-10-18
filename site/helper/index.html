@@ -57,7 +57,7 @@
           <a class="" href="docs/" data-i18n="ecosystem.docs">Docs</a>
           <a class="" href="commands/" data-i18n="ecosystem.commands">Commands</a>
           <a class="" href="status.html" data-i18n="ecosystem.status">Status</a>
-          <span class="nav__premium-disabled" aria-disabled="true" title="Premium is temporarily unavailable" data-i18n-title="ecosystem.premiumUnavailable" data-i18n="nav.premium">Premium</span>
+          <a class="" href="premium#plans" data-i18n="nav.premium">Premium</a>
         </nav>
         <div class="nav__actions">
           <a class="nav__gh" href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener" aria-label="Vozen on GitHub (open source)" data-i18n-aria-label="common.githubLabel" title="Open source on GitHub" data-i18n-title="common.githubTitle"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></a>
@@ -103,7 +103,7 @@
             <h1 id="helper-title"><span>Run your server</span><span>without six bots.</span></h1>
             <p class="helper-hero__lede">Moderation, tickets, roles, events, and automations — coordinated by one transparent Discord companion.</p>
             <div class="helper-hero__actions">
-              <a class="helper-private-action js-helper-invite" href="https://api.vozen.org/rust/api/install/start?source=helper-hero"><span class="helper-private-action__dot" aria-hidden="true"></span> Get started with Helper</a>
+              <a class="helper-private-action js-helper-invite" href="https://api.vozen.org/rust/api/install/start?source=helper-pricing"><span class="helper-private-action__dot" aria-hidden="true"></span> Get started with Helper</a>
               <a class="helper-explore-action" href="#modules">Explore the modules <span aria-hidden="true">↓</span></a>
             </div>
             <p class="helper-hero__proof">Base invite: channels, messages, embeds and history · sensitive permissions only when a module needs them · never Administrator</p>
@@ -322,7 +322,6 @@
               <button type="button" class="bill-toggle__btn" data-bill="year"><span>Yearly</span><span class="bill-toggle__save">-20%</span></button>
             </div>
           </div>
-          <p class="payments-paused" role="status"><span aria-hidden="true">•</span> Payments are temporarily disabled. Pricing is shown for reference.</p>
           <div class="bundle-ribbon" role="note" aria-label="Vozen bundle">
             <span class="bundle-ribbon__eyebrow">VOZEN BUNDLE</span>
             <div class="bundle-ribbon__copy">
@@ -346,7 +345,7 @@
                 <div class="seat-toggle plan-scope"><span class="seat-toggle__btn is-active">Goes with you to any server</span></div>
                 <p class="price-card__scope-note">Helper stays on Free server limits. Plus upgrades TTS only.</p>
                 <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m">€3.99</span><span class="amt amt--y">€37.99</span></b></span><span class="per per--m">/ month · per user</span><span class="per per--y">/ year · per user</span></div>
-                <ul class="ticks price-card__highlights"><li class="price-card__included-free">Everything in Free</li><li>Kokoro neural engine</li><li>Google HD voices</li><li>All 8 voice effects (deep, demon, radio...)</li><li>50 personal pronunciations</li><li>Word Chain game</li><li>Wordle game</li><li>/rizz</li></ul><p class="price-card__note">Digital subscription · no shipping</p><button class="price-card__buy price-card__buy--disabled" type="button" disabled="" aria-disabled="true">Payments temporarily disabled</button><p class="price-card__idnote">Checkout will return when payments are enabled again.</p>
+                <ul class="ticks price-card__highlights"><li class="price-card__included-free">Everything in Free</li><li>Kokoro neural engine</li><li>Google HD voices</li><li>All 8 voice effects (deep, demon, radio...)</li><li>50 personal pronunciations</li><li>Word Chain game</li><li>Wordle game</li><li>/rizz</li></ul><p class="price-card__note">Digital subscription · no shipping</p><a class="price-card__buy" href="/premium#plans" data-i18n="price.checkout">Continue to checkout</a><p class="price-card__idnote">Sign in with Discord first. Stripe handles payment details.</p>
               </article>
               <article class="price-card price-card--pro">
                 <div class="price-card__topline"><span class="price-card__badge"><span aria-hidden="true">💎</span> PREMIUM</span><span class="price-card__recommended">BEST FOR SERVERS</span></div><h3>Vozen Premium</h3><p class="price-card__pitch">Unlock the full Vozen experience for everyone in your community</p>
@@ -354,7 +353,7 @@
                  <ul class="ticks ticks--amber price-card__highlights helper-premium-highlights" aria-label="Premium Helper bundle highlights"><li class="price-card__included-free">Everything in Free</li><li>Premium TTS voices and effects for everyone</li><li>Helper Premium for everyone in each server</li><li>Vozen TTS Premium for every selected server</li><li>More panels, workflows, feeds and templates</li><li>Longer audit, analytics and transcript history</li><li>Advanced roles, XP and automation options</li></ul>
                 <p class="price-card__scope-note">One subscription covers the selected servers and their communities.</p>
                 <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m amt--s2">€6.99</span><span class="amt amt--m amt--s5">€14.99</span><span class="amt amt--y amt--s2">€66.99</span><span class="amt amt--y amt--s5">€133.99</span></b><s class="was was--y was--s2">€83.88</s><s class="was was--y was--s5">€179.88</s></span><span class="per per--m per--s2">/ month · 2 servers</span><span class="per per--m per--s5">/ month · 5 servers</span><span class="per per--y per--s2">/ year · 2 servers</span><span class="per per--y per--s5">/ year · 5 servers</span></div>
-                <ul class="ticks ticks--amber price-card__highlights"><li class="price-card__included-free">Everything in Free</li><li>Works for everyone in the server</li><li>Kokoro neural engine</li><li>Google HD voices</li><li>All 8 voice effects (deep, demon, radio...)</li><li>50 server pronunciations</li><li>In the call 24/7</li><li>Live voice transcription</li><li>Word Chain game</li></ul><p class="price-card__note note--s2">Digital subscription · no shipping</p><p class="price-card__note note--s5">Digital subscription · no shipping</p><button class="price-card__buy price-card__buy--pro price-card__buy--disabled" type="button" disabled="" aria-disabled="true">Payments temporarily disabled</button><p class="price-card__idnote">Checkout will return when payments are enabled again.</p>
+                <ul class="ticks ticks--amber price-card__highlights"><li class="price-card__included-free">Everything in Free</li><li>Works for everyone in the server</li><li>Kokoro neural engine</li><li>Google HD voices</li><li>All 8 voice effects (deep, demon, radio...)</li><li>50 server pronunciations</li><li>In the call 24/7</li><li>Live voice transcription</li><li>Word Chain game</li></ul><p class="price-card__note note--s2">Digital subscription · no shipping</p><p class="price-card__note note--s5">Digital subscription · no shipping</p><a class="price-card__buy price-card__buy--pro" href="/premium#plans" data-i18n="price.checkout">Continue to checkout</a><p class="price-card__idnote">Sign in with Discord first. Stripe handles payment details.</p>
               </article>
             </div>
           </div>
@@ -367,7 +366,6 @@
               <h2 id="helper-plan-comparison-title">See every Helper difference</h2>
               <p>Compare what stays free and what Premium adds for your server.</p>
             </div>
-            <p class="helper-plan-comparison__status" role="status"><span aria-hidden="true">•</span> Payments temporarily disabled</p>
           </div>
           <div class="helper-plan-comparison__table-wrap">
             <table class="helper-plan-comparison__table">
@@ -415,7 +413,7 @@
             </details>
             <details class="qa">
               <summary class="qa__q">Can I buy Premium now?</summary>
-              <div class="qa__a"><p>Payments are temporarily disabled. The Helper core remains free, and the displayed Premium prices are for reference until checkout is enabled again.</p></div>
+              <div class="qa__a"><p>Yes. Choose a plan on the Premium page and sign in with Discord. Payment details are handled by Stripe. The Helper core remains free.</p></div>
             </details>
           </div>
         </section>
@@ -435,7 +433,7 @@
     </footer>
 
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen Helper","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/helper/","description":"A Discord operations companion for moderation, tickets, roles, events and automations with clear permissions and traceable actions.","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"Is Vozen Helper available now?","acceptedAnswer":{"@type":"Answer","text":"Yes. Helper is publicly available. Install it from this page, choose a server, and configure your first module through the guided setup."}},{"@type":"Question","name":"Does Helper request Administrator?","acceptedAnswer":{"@type":"Answer","text":"No. The base invite uses limited permissions and never requests Administrator. If a module needs an additional sensitive permission, Helper explains why before you enable it."}},{"@type":"Question","name":"How do I get started?","acceptedAnswer":{"@type":"Answer","text":"Install Helper, choose your server, complete the guided setup, enable one module, and run its first useful action."}},{"@type":"Question","name":"Which modules does Helper include?","acceptedAnswer":{"@type":"Answer","text":"Helper brings together protection and moderation, tickets, roles and community tools, events, automation, and operational insights. The panel shows the exact options available to your server."}},{"@type":"Question","name":"Can I buy Premium now?","acceptedAnswer":{"@type":"Answer","text":"Payments are temporarily disabled. The Helper core remains free, and the displayed Premium prices are for reference until checkout is enabled again."}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"Is Vozen Helper available now?","acceptedAnswer":{"@type":"Answer","text":"Yes. Helper is publicly available. Install it from this page, choose a server, and configure your first module through the guided setup."}},{"@type":"Question","name":"Does Helper request Administrator?","acceptedAnswer":{"@type":"Answer","text":"No. The base invite uses limited permissions and never requests Administrator. If a module needs an additional sensitive permission, Helper explains why before you enable it."}},{"@type":"Question","name":"How do I get started?","acceptedAnswer":{"@type":"Answer","text":"Install Helper, choose your server, complete the guided setup, enable one module, and run its first useful action."}},{"@type":"Question","name":"Which modules does Helper include?","acceptedAnswer":{"@type":"Answer","text":"Helper brings together protection and moderation, tickets, roles and community tools, events, automation, and operational insights. The panel shows the exact options available to your server."}},{"@type":"Question","name":"Can I buy Premium now?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose a plan on the Premium page and sign in with Discord. Payment details are handled by Stripe. The Helper core remains free."}}]}</script>
     <script defer="" src="js/analytics-config.js?v=f6b49da441d8"></script>
     <script defer="" src="js/web-analytics-v1.js?v=e934b4dd1f34"></script>
     <script defer="" src="js/global-nav-v1.js?v=577bf4843bac"></script>

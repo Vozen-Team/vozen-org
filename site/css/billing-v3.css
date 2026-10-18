@@ -4,6 +4,7 @@
 }
 
 .billing-modal {
+  font-family: Outfit, system-ui, sans-serif;
   position: fixed;
   inset: 0;
   z-index: 1000;

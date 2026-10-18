@@ -87,7 +87,7 @@
     "price.pro.pitch": "Schalte das volle Vozen-Erlebnis für deine Community frei",
     "price.compare.title": "Alle Unterschiede im Vergleich",
     "price.compare.sub": "Der vollständige Planvergleich, ohne Überraschungen",
-    "price.checkout": "Zahlungen sind derzeit deaktiviert",
+    "price.checkout": "Weiter zur Kasse",
     "price.recommended": "BESTE WAHL FÜR SERVER",
     "price.free.name": "Free",
     "price.free.price": "€0",
@@ -681,7 +681,7 @@
     ],
     [
       "Kann ich Premium jetzt kaufen?",
-      "Zahlungen sind vorübergehend deaktiviert. Der Helper-Kern bleibt kostenlos; die angezeigten Premium-Preise dienen nur als Information, bis der Checkout wieder aktiviert wird."
+      "Ja. Wähle einen Tarif auf der Premium-Seite und melde dich mit Discord an. Stripe verarbeitet die Zahlungsdaten. Der Helper-Kern bleibt kostenlos."
     ]
   ],
   "faq": [
