@@ -12,6 +12,7 @@ import './welcome-settings.css';
 import { guildStorage, preferredGuild, rememberGuild } from './last-guild';
 import {
   api,
+  ApiError,
   restoreOAuthReturnHash,
   type ActivityRecord,
   type AuditRecord,
@@ -45,6 +46,7 @@ import { bundledFeatureSchema } from './feature-contract-fallback';
 import { ticketStaffField, ticketStaffRoleOptions } from './ticket-staff';
 import { createLoadGuard, isAbortError } from './load-lifecycle';
 import { loadGuildResources } from './guild-resources';
+import { readWorkspaceGuilds, requireWorkspaceGuild } from './workspace';
 import { isRoleResourceOptionDisabled, roleResourceLabel, roleRequiresAssignment } from './role-resource';
 import { ResourceMultiSelect } from './resource-multi-select';
 import { createAutosave, type AutosaveState } from './autosave';
@@ -1956,6 +1958,8 @@ function App() {
   const [studioTemplates, setStudioTemplates] = useState<StudioTemplate[]>([]);
   const [route, setRoute] = useState<Route>(() => parseRoute(window.location.hash));
   const [me, setMe] = useState<Me | null>(null);
+  const [workspaceAttempt, setWorkspaceAttempt] = useState(0);
+  const [workspaceError, setWorkspaceError] = useState(false);
   const [guilds, setGuilds] = useState<Guild[]>(() => (localPreviewMode ? demoGuilds : []));
   const [guildContextState, setGuildContext] = useState<GuildContext | null>(null);
   const guildContext = guildContextState?.guildId === me?.guildId ? guildContextState : null;
@@ -2092,11 +2096,7 @@ function App() {
         // background. Every request shares this guard so leaving the panel
         // cannot leave an old response writing into a new route.
         let nextMe = await api.meOrBootstrap({ signal: load.signal });
-        const nextGuilds = await api.guilds({ signal: load.signal }).catch((cause) => {
-          if (isAbortError(cause) || !load.isCurrent()) throw cause;
-          setMessage('Could not load your servers. Return to your account and try again.');
-          return { guilds: [] };
-        });
+        const nextGuilds = { guilds: readWorkspaceGuilds(await api.guilds({ signal: load.signal })) };
         if (!load.isCurrent()) return;
 
         const selectedGuild = preferredGuild(guildStorage(), nextMe.id, nextMe.guildId, nextGuilds.guilds);
@@ -2107,9 +2107,8 @@ function App() {
           if (nextMe.guildId !== selectedGuild) throw new Error('guild_switch_mismatch');
         }
         if (!load.isCurrent()) return;
-        if (nextGuilds.guilds.some(guild => guild.id === nextMe.guildId && guild.canManage)) {
-          rememberGuild(guildStorage(), nextMe.id, nextMe.guildId);
-        }
+        requireWorkspaceGuild(nextMe, nextGuilds.guilds);
+        rememberGuild(guildStorage(), nextMe.id, nextMe.guildId);
         setMe(nextMe);
         setGuilds(nextGuilds.guilds);
         restoreOAuthReturnHash();
@@ -2165,11 +2164,18 @@ function App() {
       } catch (cause) {
         if (!load.isCurrent() || isAbortError(cause)) return;
         setMessage(cause instanceof Error ? cause.message : helperT('helper.dashboardLoadError', 'Could not load the dashboard.'));
-        setStatus('error');
+        if (cause instanceof ApiError && cause.status === 401) {
+          setMe(null);
+          setGuilds([]);
+          setStatus('auth');
+        } else {
+          setWorkspaceError(true);
+          setStatus('error');
+        }
       }
     })();
     return () => load.dispose();
-  }, []);
+  }, [workspaceAttempt]);
   useEffect(() => {
     if (!me || route.page === 'servers') return;
     const guildId = me?.guildId ?? 'demo';
@@ -3037,6 +3043,24 @@ function App() {
     }
   }
   if (status === 'loading') return <WorkspaceSkeleton />;
+  if (workspaceError && !me)
+    return (
+      <div className="workspace-standalone workspace-app workspace-standalone--helper">
+        <EcosystemTopbar />
+        <main className="workspace-standalone__content" role="alert">
+          <h1>{helperLocale() === 'pt' ? 'Não foi possível carregar os teus servidores' : 'Unable to load your servers'}</h1>
+          <p>{helperLocale() === 'pt' ? 'Confirma a ligação e tenta novamente.' : 'Check your connection and try again.'}</p>
+          <button type="button" className="button primary" onClick={() => {
+            setWorkspaceError(false);
+            setMe(null);
+            setGuilds([]);
+            setMessage('');
+            setStatus('loading');
+            setWorkspaceAttempt(value => value + 1);
+          }}>{helperT('helper.tryAgain', 'Try again')}</button>
+        </main>
+      </div>
+    );
   if ((status === 'auth' || status === 'error') && !me)
     return <AuthScreen />;
   if (route.page === 'servers')
