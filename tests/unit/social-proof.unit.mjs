@@ -20,6 +20,9 @@ test('homepage proof keeps TTS and its public link without the snapshot caption'
   const strip = proof(source);
   assert.match(text(strip), /Vozen TTS/);
   assert.match(text(strip), /454/);
+  assert.equal(nodes(strip, node => attr(node, 'data-proof-count') === '').length, 1);
+  assert.equal(nodes(strip, node => attr(node, 'data-proof-count') === '' && attr(node, 'aria-hidden') === 'true').length, 1);
+  assert.equal(nodes(strip, node => attr(node, 'class') === 'eco-proof__count-readable' && text(node) === '454').length, 1);
   assert.match(text(strip), /5\/5/);
   assert.equal(nodes(strip, node => (attr(node, 'class') || '').split(' ').includes('eco-proof__reviews')).length, 0);
   assert.doesNotMatch(text(strip), /\d+\s+reviews/);
@@ -42,6 +45,8 @@ test('all ten locale routes preserve the actual values and translate proof label
     assert.equal(nodes(strip, node => attr(node, 'data-i18n') === 'home.proof.snapshot').length, 0, code);
     assert.doesNotMatch(copy, /2026-10-18/, code);
     assert.ok(copy.includes(catalogue.messages['home.proof.servers']), code);
+    assert.equal(nodes(strip, node => attr(node, 'data-proof-count') === '').length, 1, code);
+    assert.match(html, /social-proof-counter-v1\.js/, code);
     assert.equal(nodes(strip, node => attr(node, 'data-i18n') === 'home.proof.reviews').length, 0, code);
     assert.equal(attr(strip, 'aria-label'), catalogue.messages['home.proof.aria']);
   }
