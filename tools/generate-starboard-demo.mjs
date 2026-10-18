@@ -10,7 +10,7 @@ const destination = path.join(root, 'apps/helper-panel/public/feature-demos');
 // Retain the original command; pass a feature name to generate only that storyboard
 // without replacing any existing Starboard assets.
 const feature = process.argv[2] ?? 'starboard';
-if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls'].includes(feature)) throw new Error('Unknown feature demo');
+if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events'].includes(feature)) throw new Error('Unknown feature demo');
 await fs.mkdir(destination, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -51,6 +51,7 @@ try {
         ctx.fillText(content, x, y);
       }
       function draw(time) {
+        if (feature === 'events') { drawEvents(time); return; }
         if (feature === 'polls') { drawPolls(time); return; }
         if (feature === 'welcome') { drawWelcome(time); return; }
         if (feature === 'tickets') { drawTickets(time); return; }
@@ -230,6 +231,40 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Exemplo ilustrativo · nenhuma sondagem é criada · tempo acelerado' : 'Illustrative example · no poll is created · accelerated time', 42, 518, 14, '#a3b6d1');
       }
+      function drawEvents(time) {
+        const joined = time >= 4.5;
+        const reminder = time >= 5.5 && time < 7;
+        const checkedIn = time >= 7;
+        const name = pt ? 'Noite de jogos' : 'Game night';
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / EVENTOS' : 'VOZEN HELPER / EVENTS', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Planear, inscrever e participar' : 'Plan, register and take part', 42, 111, 30);
+        card(42, 135, 876, 80);
+        label(`/event-create name: ${name}`, 62, 169, 22, '#8ee5d2');
+        label(`start: 2030-01-12T20:00:00Z  ·  location: ${pt ? 'Sala da comunidade' : 'Community hub'}`, 62, 199, 17, '#a3b6d1');
+        if (time >= 2) {
+          const reveal = Math.min(1, (time - 2) / .3);
+          const eased = 1 - (1 - reveal) ** 3;
+          const y = 232 + 10 * (1 - eased);
+          card(42, y, 876, 212, eased);
+          ctx.globalAlpha = eased;
+          label(pt ? 'Evento agendado do Discord · exemplo' : 'Discord scheduled event · sample', 64, y + 30, 16, '#a3b6d1');
+          label(name, 64, y + 68, 28);
+          label('12 Jan 2030 · 20:00 UTC', 64, y + 99, 19, '#a3b6d1');
+          label(pt ? `Inscrições: ${joined ? 1 : 0} / 20` : `Registrations: ${joined ? 1 : 0} / 20`, 64, y + 130, 21, joined ? '#8ee5d2' : '#f4f7fb');
+          label(`/${checkedIn ? 'event-checkin' : 'event-register'} event_id: 123456789012345678`, 64, y + 165, 19, '#8ee5d2');
+          if (checkedIn) label(pt ? 'Membro de exemplo · presença registada' : 'Sample member · check-in recorded', 64, y + 195, 18, '#8ee5d2');
+          else if (reminder) label(pt ? '# eventos · Lembrete: Noite de jogos começa daqui a 1 hora' : '# events · Reminder: Game night starts in 1 hour', 64, y + 195, 18, '#ffd170');
+          else if (joined) label(pt ? 'Membro de exemplo · inscrição confirmada' : 'Sample member · registration confirmed', 64, y + 195, 18, '#8ee5d2');
+          ctx.globalAlpha = 1;
+        }
+        const step = time < 2 ? (pt ? '1. Um moderador agenda o evento com /event-create' : '1. A moderator schedules the event with /event-create')
+          : time < 7 ? (pt ? '2. Os membros inscrevem-se; o lembrete é opcional' : '2. Members register; the reminder is optional')
+          : (pt ? '3. Um membro inscrito regista a presença com /event-checkin' : '3. A registered member checks in with /event-checkin');
+        label(step, 42, 484, 22);
+        label(pt ? 'Exemplo: lotação de 20 · lembretes ativos no #eventos · tempo acelerado' : 'Example: capacity 20 · reminders enabled in #events · accelerated time', 42, 518, 14, '#a3b6d1');
+      }
       function drawWelcome(time) {
         const greeted = time >= 2;
         const assigned = time >= 5;
@@ -262,7 +297,7 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Sem canal escolhido, o botão não aparece · exemplo ilustrativo' : 'Without a chosen channel, the button stays hidden · illustrative example', 42, 518, 14, '#a3b6d1');
       }
-      draw(0);
+      draw(feature === 'events' ? 8 : 0);
       const poster = canvas.toDataURL('image/png').split(',')[1];
       const stream = canvas.captureStream(24);
       const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: 700_000 });

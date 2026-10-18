@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { featureDemo } from './feature-demo';
 
 describe('feature-specific demonstrations', () => {
-  for (const [key, asset] of [['community.starboard', 'starboard'], ['community.suggestions', 'suggestions'], ['community.giveaways', 'giveaways'], ['support.tickets', 'tickets'], ['support.welcome', 'welcome'], ['management.polls', 'polls']]) {
+  for (const [key, asset] of [['community.starboard', 'starboard'], ['community.suggestions', 'suggestions'], ['community.giveaways', 'giveaways'], ['support.tickets', 'tickets'], ['support.welcome', 'welcome'], ['management.polls', 'polls'], ['community.events', 'events']]) {
     for (const locale of ['en', 'pt']) {
       it(`selects the owned ${locale} animation and written steps for ${key}`, () => {
         const demo = featureDemo(key, locale);
@@ -28,6 +28,18 @@ describe('feature-specific demonstrations', () => {
   });
   it('uses English media when a localized video is unavailable', () => {
     expect(featureDemo('community.suggestions', 'fr')?.asset).toBe('suggestions-en');
+  });
+  it('explains native events, registrations and optional reminders without real server actions', () => {
+    const demo = featureDemo('community.events', 'en');
+    expect(demo?.example).toMatch(/sample data/i);
+    expect(demo?.example).toMatch(/accelerated time/i);
+    expect(demo?.example).toMatch(/no events are created/i);
+    expect(demo?.steps.join(' ')).toMatch(/\/event-create/);
+    expect(demo?.steps.join(' ')).toMatch(/\/event-register/);
+    expect(demo?.steps.join(' ')).toMatch(/\/event-checkin/);
+    expect(demo?.steps.join(' ')).toMatch(/enabled.*announcement channel/i);
+    expect(featureDemo('community.events', 'pt')?.steps.join(' ')).toMatch(/lotação/);
+    expect(featureDemo('community.events', 'fr')?.asset).toBe('events-en');
   });
   it('explains poll creation, voting and automatic closing using sample data', () => {
     const demo = featureDemo('management.polls', 'en');
