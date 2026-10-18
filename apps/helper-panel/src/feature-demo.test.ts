@@ -2,6 +2,21 @@ import { describe, expect, it } from 'vitest';
 import { featureDemo } from './feature-demo';
 
 describe('feature-specific demonstrations', () => {
+  it('explains birthdays using day/month, configured timezone and optional removal without real messages', () => {
+    const demo = featureDemo('community.birthdays', 'en');
+    expect(demo?.asset).toBe('birthdays-en');
+    expect(demo?.example).toMatch(/sample data/i);
+    expect(demo?.example).toMatch(/no messages are sent/i);
+    expect(demo?.steps).toHaveLength(3);
+    expect(demo?.steps.join(' ')).toMatch(/\/birthday-set/);
+    expect(demo?.steps.join(' ')).toMatch(/day and month/);
+    expect(demo?.steps.join(' ')).toMatch(/time zone/);
+    expect(demo?.steps.join(' ')).toMatch(/configured channel/);
+    expect(demo?.steps.join(' ')).toMatch(/\/birthday-remove/);
+    expect(featureDemo('community.birthdays', 'pt')?.asset).toBe('birthdays-pt');
+    expect(featureDemo('community.birthdays', 'pt')?.steps.join(' ')).toMatch(/fuso horário/);
+    expect(featureDemo('community.birthdays', 'fr')?.asset).toBe('birthdays-en');
+  });
   for (const [key, asset] of [['community.starboard', 'starboard'], ['community.suggestions', 'suggestions'], ['community.giveaways', 'giveaways'], ['support.tickets', 'tickets'], ['support.welcome', 'welcome'], ['management.polls', 'polls'], ['community.events', 'events']]) {
     for (const locale of ['en', 'pt']) {
       it(`selects the owned ${locale} animation and written steps for ${key}`, () => {

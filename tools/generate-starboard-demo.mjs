@@ -10,7 +10,7 @@ const destination = path.join(root, 'apps/helper-panel/public/feature-demos');
 // Retain the original command; pass a feature name to generate only that storyboard
 // without replacing any existing Starboard assets.
 const feature = process.argv[2] ?? 'starboard';
-if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events'].includes(feature)) throw new Error('Unknown feature demo');
+if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays'].includes(feature)) throw new Error('Unknown feature demo');
 await fs.mkdir(destination, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -51,6 +51,7 @@ try {
         ctx.fillText(content, x, y);
       }
       function draw(time) {
+        if (feature === 'birthdays') { drawBirthdays(time); return; }
         if (feature === 'events') { drawEvents(time); return; }
         if (feature === 'polls') { drawPolls(time); return; }
         if (feature === 'welcome') { drawWelcome(time); return; }
@@ -231,6 +232,52 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Exemplo ilustrativo · nenhuma sondagem é criada · tempo acelerado' : 'Illustrative example · no poll is created · accelerated time', 42, 518, 14, '#a3b6d1');
       }
+      function drawBirthdays(time) {
+        const saved = time >= 2;
+        const celebrating = time >= 5;
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / ANIVERSÁRIOS' : 'VOZEN HELPER / BIRTHDAYS', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Uma data para celebrar em comunidade' : 'A day to celebrate together', 42, 111, 30);
+        card(42, 135, 876, 101);
+        label(pt ? 'Membro de exemplo · só dia e mês' : 'Sample member · day and month only', 64, 164, 16, '#a3b6d1');
+        label('/birthday-set month: 10  day: 18', 64, 197, 24, '#8ee5d2');
+        if (saved) label(pt ? '✓ Aniversário guardado · confirmação privada' : '✓ Birthday saved · private confirmation', 64, 222, 17, '#8ee5d2');
+        if (saved) {
+          const progress = Math.min(1, (time - 2) / .35);
+          const eased = 1 - (1 - progress) ** 3;
+          const y = 254 + 10 * (1 - eased);
+          card(42, y, 876, 184, eased);
+          ctx.globalAlpha = eased;
+          label(pt ? '# aniversários · Vozen Helper' : '# birthdays · Vozen Helper', 64, y + 30, 17, '#a3b6d1');
+          // A simple owned calendar illustration avoids platform-dependent emoji.
+          ctx.fillStyle = '#243c51'; ctx.beginPath(); ctx.roundRect(64, y + 48, 82, 91, 12); ctx.fill();
+          ctx.fillStyle = '#8ee5d2'; ctx.fillRect(64, y + 66, 82, 3);
+          label(pt ? 'OUT' : 'OCT', 83, y + 64, 14, '#8ee5d2');
+          label(celebrating ? '18' : '17', 82, y + 112, 32);
+          label(celebrating ? (pt ? 'Parabéns, @Membro! 🎉' : 'Happy birthday, @Member! 🎉')
+            : (pt ? 'À espera da data guardada…' : 'Waiting for the saved date…'), 171, y + 87, 28, celebrating ? '#8ee5d2' : '#f4f7fb');
+          label(pt ? 'Data verificada no fuso configurado · exemplo UTC' : 'Date checked in the configured time zone · sample UTC', 171, y + 119, 17, '#a3b6d1');
+          label(time >= 7 ? (pt ? 'Podes apagar a data com /birthday-remove' : 'Remove your saved date with /birthday-remove')
+            : (pt ? 'O ano de nascimento não é pedido' : 'No birth year is requested'), 64, y + 162, 18, '#a3b6d1');
+          if (celebrating) {
+            const burst = Math.min(1, (time - 5) / .5);
+            const easedBurst = 1 - (1 - burst) ** 3;
+            for (let i = 0; i < 8; i++) {
+              const angle = i * Math.PI / 4;
+              ctx.fillStyle = i % 2 ? '#ffd170' : '#8ee5d2';
+              ctx.globalAlpha = eased * (1 - burst);
+              ctx.fillRect(865 + Math.cos(angle) * 28 * easedBurst, y + 73 + Math.sin(angle) * 28 * easedBurst, 5, 5);
+            }
+          }
+          ctx.globalAlpha = 1;
+        }
+        const step = time < 2 ? (pt ? '1. Guarda o dia e o mês com /birthday-set' : '1. Save your day and month with /birthday-set')
+          : time < 5 ? (pt ? '2. O Helper acompanha a data no fuso escolhido' : '2. Helper checks the date in your chosen time zone')
+          : (pt ? '3. Quando chega o dia, a comunidade celebra' : '3. When the date arrives, the community celebrates');
+        label(step, 42, 484, 22);
+        label(pt ? 'Exemplo: funcionalidade ativa · canal configurado · tempo acelerado' : 'Example: feature enabled · channel configured · accelerated time', 42, 518, 14, '#a3b6d1');
+      }
       function drawEvents(time) {
         const joined = time >= 4.5;
         const reminder = time >= 5.5 && time < 7;
@@ -297,7 +344,7 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Sem canal escolhido, o botão não aparece · exemplo ilustrativo' : 'Without a chosen channel, the button stays hidden · illustrative example', 42, 518, 14, '#a3b6d1');
       }
-      draw(feature === 'events' ? 8 : 0);
+      draw(feature === 'events' || feature === 'birthdays' ? 8 : 0);
       const poster = canvas.toDataURL('image/png').split(',')[1];
       const stream = canvas.captureStream(24);
       const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: 700_000 });
