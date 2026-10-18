@@ -349,7 +349,7 @@ const AUTH_CHANNEL_NAME = 'vozen.ecosystem.auth.v1';
 const SESSION_BRIDGE_TIMEOUT_MS = 6_000;
 let vozenAccountBootstrapAttempted = false;
 
-class ApiError extends Error {
+export class ApiError extends Error {
   constructor(message: string, readonly status: number) {
     super(message);
     this.name = 'ApiError';

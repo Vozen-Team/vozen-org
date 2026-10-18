@@ -79,6 +79,7 @@ jobs:
             if curl -fsS http://127.0.0.1:5179/panel/helper-tracker/ >/dev/null; then break; fi
             sleep 1
           done
+          node tools/helper-workspace-regression.mjs
           node tools/helper-session-regression.mjs
           node tools/helper-suggestions-demo-regression.mjs
           node tools/helper-giveaways-demo-regression.mjs
