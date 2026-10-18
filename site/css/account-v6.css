@@ -2251,14 +2251,14 @@ body.page-account .account-next:has(#helperSessionMessage) {
 
   .account-membership {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
   }
 
   .account-rail {
     position: static;
     display: grid;
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 2;
     grid-template-columns: minmax(0, 1fr) minmax(240px, 0.7fr);
   }
 
@@ -2709,17 +2709,18 @@ body.page-account .ppanel__claimbox .ppanel__claimhead {
   }
 }
 
-/* Compact mobile dashboard: keep the complete account view in one screen. */
+/* Compact mobile cards, with account details before management actions. */
 @media (max-width: 760px) and (min-height: 700px) {
   body.page-account {
-    height: 100dvh;
-    overflow: hidden;
+    height: auto;
+    min-height: 100dvh;
+    overflow-y: auto;
   }
 
   body.page-account main,
   body.page-account .account-section {
-    height: calc(100dvh - var(--nav-h) - 1px);
-    min-height: 0;
+    height: auto;
+    min-height: calc(100dvh - var(--nav-h) - 1px);
   }
 
   body.page-account .account-section {
@@ -2730,7 +2731,7 @@ body.page-account .ppanel__claimbox .ppanel__claimhead {
     display: grid;
     grid-template-rows: auto auto minmax(0, 1fr);
     width: calc(100% - 20px);
-    height: 100%;
+    height: auto;
   }
 
   body.page-account .account-back {
@@ -2776,10 +2777,10 @@ body.page-account .ppanel__claimbox .ppanel__claimhead {
 
   body.page-account .account-workspace {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
     gap: 7px;
     min-height: 0;
-    height: 100%;
+    height: auto;
   }
 
   body.page-account .account-rail,
@@ -3463,8 +3464,22 @@ body.page-account #ppClaimHelp {
 
 /* Desktop expansion: restore the generous presence of the original layout. */
 @media (min-width: 1021px) and (min-height: 700px) {
+  /* Keep task content in normal flow when the window is shorter than the cards. */
+  body.page-account {
+    height: auto;
+    min-height: 100dvh;
+    overflow-y: auto;
+  }
+
+  body.page-account main,
+  body.page-account .account-section {
+    height: auto;
+    min-height: calc(100dvh - var(--nav-h) - 1px);
+  }
+
   body.page-account .account-shell {
     max-width: 1220px;
+    height: auto;
   }
 
   body.page-account .account-hero h1 {
@@ -3474,13 +3489,13 @@ body.page-account #ppClaimHelp {
   body.page-account .account-workspace {
     grid-template-columns: minmax(0, 1fr) minmax(360px, 390px);
     gap: 24px;
-    height: 100%;
+    height: auto;
     align-self: stretch;
   }
 
   body.page-account .account-membership,
   body.page-account .account-rail {
-    height: 100%;
+    height: auto;
     border-radius: 24px;
   }
 
@@ -3575,7 +3590,7 @@ body.page-account #ppClaimHelp {
 
   body.page-account .account-rail {
     display: grid;
-    grid-template-rows: minmax(0, 1fr) auto auto;
+    grid-template-rows: minmax(min-content, 1fr) auto auto;
   }
 
   body.page-account .account-next {
@@ -4104,10 +4119,6 @@ body.page-account .ppanel__logoutaction:active {
 
   body.page-account .nav__product {
     font-size: 16px;
-  }
-
-  body.page-account .nav__links {
-    gap: 36px;
   }
 
   body.page-account .nav__links a {

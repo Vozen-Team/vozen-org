@@ -1,6 +1,11 @@
 {
   "locale": "tr",
   "messages": {
+    "home.proof.aria": "Top.gg üzerindeki Vozen TTS topluluğu",
+    "home.proof.servers": "Discord sunucusu",
+    "home.proof.rating": "Top.gg üzerinde",
+    "home.proof.snapshot": "Top.gg verileri",
+    "ecosystem.status": "Durum",
     "hear.loading": "Ses yükleniyor…",
     "hear.error": "Ses çalınamadı. Oynat düğmesiyle tekrar dene.",
     "nav.features": "Özellikler",

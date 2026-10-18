@@ -1,0 +1,86 @@
+.page-status { background: #0b0d16; color: #f4f5fc; }
+.status-page { width: min(1040px, calc(100% - 48px)); margin: 0 auto; padding: 64px 0 56px; font-family: Outfit, system-ui, sans-serif; }
+.status-page *, .status-page *::before, .status-page *::after { box-sizing: border-box; }
+.status-page h1, .status-page h2, .status-page p { margin: 0; }
+.status-page h1 { font: 650 clamp(26px, 4vw, 44px)/1.2 var(--f-display, Unbounded, sans-serif); letter-spacing: -.035em; text-wrap: balance; }
+.status-page h2 { font: 600 19px/1.4 Outfit, sans-serif; letter-spacing: -.015em; }
+.status-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 36px; }
+.status-page .status-lead { color: #b2bad2; margin-top: 14px; font-size: 17px; line-height: 1.6; }
+.status-refresh { display: inline-flex; flex: none; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 10px 15px; border: 1px solid #3b435b; border-radius: 10px; background: #161c2a; color: #edf1ff; font: 500 14px/1.4 Outfit, sans-serif; cursor: pointer; }
+.status-refresh:hover:not(:disabled) { background: #20283b; border-color: #6b7795; }
+.status-refresh:disabled { opacity: .65; cursor: wait; }
+.status-page a { color: #61ded1; text-underline-offset: 4px; }
+.status-page a:hover { color: #aefff0; }
+.status-page :is(a, button, summary):focus-visible { outline: 2px solid #61ded1; outline-offset: 5px; border-radius: 5px; }
+.status-overview { display: flex; align-items: center; gap: 18px; padding: 23px 25px; border: 1px solid #3a4359; border-radius: 14px; background: #141a28; }
+.status-page .status-overview p { color: #b2bad2; font-size: 14px; line-height: 1.6; margin-top: 5px; }
+.status-signal { width: 11px; height: 11px; flex: none; border-radius: 50%; background: #b4bed5; }
+.status-overview[data-state='operational'] { background: #10231f; border-color: #286153; }
+.status-overview[data-state='operational'] .status-signal { background: #62e2b4; }
+.status-overview[data-state='degraded'] { background: #292217; border-color: #7d6431; }
+.status-overview[data-state='degraded'] .status-signal { background: #f1cf81; }
+.status-overview[data-state='unavailable'] { background: #2a1a24; border-color: #87485f; }
+.status-overview[data-state='unavailable'] .status-signal { background: #ffa1b8; }
+.status-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; color: #aab4cf; font-size: 12px; line-height: 1.6; margin: 12px 0 30px; }
+.status-services { border-top: 1px solid #30364a; }
+.status-service { padding: 28px 24px 0; border-bottom: 1px solid #30364a; }
+.status-service__head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.status-service__identity { display: flex; align-items: flex-start; gap: 16px; min-width: 0; }
+.status-product-icon { width: 32px; height: 32px; flex: none; margin-top: 3px; color: #61ded1; }
+.status-service:first-child .status-product-icon { color: #a6b1ff; }
+.status-page .status-service__identity p { color: #aab4cf; font-size: 14px; line-height: 1.5; margin-top: 5px; }
+.status-scope-tag { display: inline-block; vertical-align: middle; padding: 2px 6px; margin-inline-start: 4px; border: 1px solid #434e67; border-radius: 5px; color: #b8c8e9; font: 500 11px/1.2 Outfit, sans-serif; letter-spacing: .05em; }
+.status-badge { display: inline-flex; flex: none; align-items: center; gap: 7px; padding: 6px 10px; border-radius: 7px; background: #202739; color: #c6cfe5; font-size: 12px; line-height: 1.4; font-weight: 500; }
+.status-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+[data-state='operational'] > .status-service__head .status-badge { background: #12332b; color: #79edc2; }
+[data-state='degraded'] > .status-service__head .status-badge { background: #342b19; color: #f1cf81; }
+[data-state='unavailable'] > .status-service__head .status-badge { background: #391f2c; color: #ffa1b8; }
+.status-service__reading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 24px; padding: 18px 0 18px 48px; font-size: 13px; line-height: 1.6; }
+.status-service__reading p { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; color: #aab4cf; }
+.status-service__reading strong { color: #e1e6f7; font-variant-numeric: tabular-nums; font-weight: 500; }
+.status-page .status-check-note { color: #d4bc89; font-size: 13px; line-height: 1.6; max-width: 70ch; padding: 0 0 18px 48px; }
+.status-check-note:empty { display: none; }
+.status-details { margin-inline-start: 48px; }
+.status-details summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 46px; padding: 12px 0; color: #b2bad2; cursor: pointer; font-size: 13px; list-style: none; border-top: 1px solid #242b3e; }
+.status-details summary::-webkit-details-marker { display: none; }
+.status-details summary::after { content: ''; width: 7px; height: 7px; border-right: 1px solid; border-bottom: 1px solid; transform: rotate(45deg); margin-inline-end: 4px; }
+.status-details[open] summary::after { transform: rotate(225deg); }
+.status-components { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 0; padding: 8px 0 22px; }
+.status-components div { min-width: 0; }
+.status-components dt { color: #aab4cf; font-size: 12px; margin-bottom: 5px; }
+.status-components dd { margin: 0; color: #e1e6f7; font-size: 14px; }
+.status-components dd[data-state='operational'] { color: #79edc2; }
+.status-components dd[data-state='degraded'] { color: #f1cf81; }
+.status-components dd[data-state='unavailable'] { color: #ffa1b8; }
+.status-history { display: flex; align-items: flex-start; gap: 16px; padding: 30px 24px; }
+.status-history > svg { flex: none; margin-top: 2px; color: #9caccf; }
+.status-history h2 { font-size: 16px; }
+.status-page .status-history p { color: #aab4cf; font-size: 14px; line-height: 1.65; max-width: 70ch; margin-top: 8px; }
+.status-help { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 26px; background: #171b2a; border-radius: 14px; }
+.status-page .status-help p { margin-top: 7px; color: #b2bad2; font-size: 14px; line-height: 1.6; }
+.status-page .status-help__link { flex: none; display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 9px; background: #65e0d1; color: #06131b; font-size: 14px; font-weight: 600; text-decoration: none; }
+.status-page .status-help__link:hover { background: #a0f5e9; color: #06131b; }
+.status-footer { display: flex; justify-content: space-between; gap: 20px; width: min(1040px, calc(100% - 48px)); margin: 0 auto; padding: 0 0 30px; font: 400 13px/1.6 Outfit, sans-serif; }
+.status-footer a { color: #aab4cf; text-underline-offset: 4px; }
+.status-footer nav { display: flex; gap: 18px; }
+.status-nojs { padding: 16px; color: #f1cf81; border: 1px solid #7d6431; border-radius: 10px; margin-bottom: 20px; }
+.page-status > .status-skip { position: fixed; top: -100px; inset-inline-start: 20px; z-index: 200; padding: 12px 18px; background: #65e0d1; color: #06131b; border-radius: 6px; }
+.status-skip:focus { top: 10px; }
+.page-status ::selection { background: #286153; color: #effff9; }
+@media (max-width: 600px) {
+  .status-page { width: calc(100% - 32px); padding-top: 34px; }
+  .status-heading { align-items: flex-start; flex-direction: column; gap: 18px; margin-bottom: 24px; }
+  .status-overview { padding: 18px; align-items: flex-start; gap: 12px; }
+  .status-signal { margin-top: 8px; }
+  .status-service { padding: 22px 4px 0; }
+  .status-service__head { flex-wrap: wrap; gap: 14px; }
+  .status-product-icon { width: 28px; height: 28px; }
+  .status-service__identity { gap: 12px; }
+  .status-badge { margin-inline-start: 40px; }
+  .status-service__reading, .status-page .status-check-note { padding-inline-start: 40px; }
+  .status-details { margin-inline-start: 40px; }
+  .status-components { grid-template-columns: 1fr; gap: 14px; }
+  .status-history { padding: 26px 4px; gap: 12px; }
+  .status-help { align-items: stretch; flex-direction: column; padding: 22px; }
+  .status-footer { width: calc(100% - 32px); }
+}

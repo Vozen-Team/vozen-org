@@ -14,7 +14,7 @@
   };
   const text = (key, fallback, variables) => {
     const dictionaries = window.VOZEN_I18N || {};
-    let value = dictionaries[locale]?.[key] || dictionaries.en?.[key] || fallback || key;
+    let value = dictionaries[locale()]?.[key] || dictionaries.en?.[key] || fallback || key;
     Object.keys(variables || {}).forEach((name) => {
       value = value.replace(new RegExp("\\{" + name + "\\}", "g"), String(variables[name]));
     });

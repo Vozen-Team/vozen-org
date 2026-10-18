@@ -2699,6 +2699,24 @@ main {
   }
 }
 
+.eco-social-proof { margin-bottom: 40px; padding: 14px 0; border-block: 1px solid var(--line); }
+.eco-proof__facts { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 28px; }
+.eco-proof__scope { color: var(--aqua); font-size: 15px; font-weight: 600; }
+.eco-proof__item { display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; min-height: 44px; margin: 0; padding-inline-start: 28px; border-inline-start: 1px solid var(--line); color: var(--muted); font-size: 15px; line-height: 1.6; text-decoration: none; }
+.eco-proof__item strong { display: inline-flex; align-items: center; gap: 5px; color: var(--text); font-size: 18px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.eco-proof__item strong svg { color: var(--aqua); }
+.eco-proof__external { flex: none; margin-inline-start: 3px; }
+.eco-proof__rating:hover { color: var(--text); text-decoration: underline; text-underline-offset: 5px; }
+.eco-proof__rating:focus-visible { outline: 2px solid var(--aqua); outline-offset: 4px; border-radius: 4px; }
+.eco-proof__source { margin: 7px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; text-align: center; }
+.eco-proof__source time { font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
+.eco-social-proof ::selection { background: #286153; color: #effff9; }
+@media (max-width: 720px) {
+  .eco-proof__facts { gap: 3px 20px; }
+  .eco-proof__scope { flex-basis: 100%; text-align: center; }
+  .eco-proof__item { padding-inline-start: 0; border-inline-start: 0; }
+}
+
 /* Ecosystem homepage: the map introduces the products without an extra page. */
 .eco-home-hero {
   position: relative;
@@ -4916,6 +4934,11 @@ header.vozen-global-nav .nav__burger { display: none; }
   .vozen-global-nav .nav__gh svg { width: 23px; height: 23px; }
   header.vozen-global-nav .lang__btn { gap: 9px; padding: 8px 15px; font-size: 15px; }
   header.vozen-global-nav .nav__login { min-height: 52px; padding: 0 22px; font-size: 17px; }
+}
+
+/* Six links and translated account actions need the compact desktop spacing. */
+@media (min-width: 1280px) and (max-width: 1359px) {
+  .vozen-global-nav .nav__links { gap: 18px; }
 }
 
 .vozen-global-nav .lang__btn {

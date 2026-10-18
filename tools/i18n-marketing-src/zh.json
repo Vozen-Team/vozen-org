@@ -1,6 +1,11 @@
 {
   "locale": "zh",
   "messages": {
+    "home.proof.aria": "Top.gg 上的 Vozen TTS 社群",
+    "home.proof.servers": "個 Discord 伺服器",
+    "home.proof.rating": "在 Top.gg",
+    "home.proof.snapshot": "Top.gg 資料日期",
+    "ecosystem.status": "服務狀態",
     "hear.loading": "正在加载音频…",
     "hear.error": "无法播放音频。请点击播放按钮重试。",
     "nav.features": "功能",

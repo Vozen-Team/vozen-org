@@ -1,6 +1,11 @@
 {
   "locale": "ar",
   "messages": {
+    "home.proof.aria": "مجتمع Vozen TTS على Top.gg",
+    "home.proof.servers": "خادم Discord",
+    "home.proof.rating": "على Top.gg",
+    "home.proof.snapshot": "بيانات Top.gg بتاريخ",
+    "ecosystem.status": "الحالة",
     "hear.loading": "جارٍ تحميل الصوت…",
     "hear.error": "تعذّر تشغيل الصوت. حاول مجددًا باستخدام زر التشغيل.",
     "nav.features": "المزايا",

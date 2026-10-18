@@ -1,6 +1,11 @@
 {
   "locale": "ru",
   "messages": {
+    "home.proof.aria": "Сообщество Vozen TTS на Top.gg",
+    "home.proof.servers": "серверов Discord",
+    "home.proof.rating": "на Top.gg",
+    "home.proof.snapshot": "Данные Top.gg на",
+    "ecosystem.status": "Статус",
     "hear.loading": "Загрузка аудио…",
     "hear.error": "Не удалось воспроизвести аудио. Нажми кнопку воспроизведения ещё раз.",
     "nav.features": "Возможности",

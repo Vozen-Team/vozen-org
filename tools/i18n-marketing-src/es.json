@@ -1,6 +1,11 @@
 {
   "locale": "es",
   "messages": {
+    "home.proof.aria": "Comunidad de Vozen TTS en Top.gg",
+    "home.proof.servers": "servidores de Discord",
+    "home.proof.rating": "en Top.gg",
+    "home.proof.snapshot": "Consulta en Top.gg",
+    "ecosystem.status": "Estado",
     "hear.loading": "Cargando audio…",
     "hear.error": "No se pudo reproducir el audio. Inténtalo de nuevo con el botón de reproducción.",
     "nav.features": "Funciones",

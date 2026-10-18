@@ -1,107 +1,108 @@
-"use strict";
-
 (function () {
-  const endpoint = "https://api.vozen.org/api/public/status";
-  const healthEndpoint = "https://api.vozen.org/health";
-  const allowed = new Set(["operational", "degraded", "unavailable"]);
-  const componentStates = new Set(["operational", "degraded", "unavailable", "unknown"]);
-  const translate = (key, fallback, variables) => typeof window.VOZEN_PAGE_T === "function"
-    ? window.VOZEN_PAGE_T(key, fallback, variables)
-    : fallback;
-  const labels = {
-    operational: () => translate("status.operational", "Operational"),
-    degraded: () => translate("status.degraded", "Degraded"),
-    unavailable: () => translate("status.unavailable", "Unavailable"),
-    unknown: () => translate("status.unknown", "Not exposed"),
-  };
-  const instance = document.getElementById("statusInstance");
-  const overall = document.getElementById("statusOverall");
-  const checked = document.getElementById("statusChecked");
-  const latency = document.getElementById("statusLatency");
-  const services = document.getElementById("statusServices");
-  const incident = document.getElementById("statusIncident");
-  const fields = {
-    bot: { value: document.getElementById("statusBot"), card: document.getElementById("statusCheckBot") },
-    database: { value: document.getElementById("statusDatabase"), card: document.getElementById("statusCheckDatabase") },
-    providers: { value: document.getElementById("statusProviders"), card: document.getElementById("statusCheckProviders") },
-  };
-
-  function safeState(value) {
-    return allowed.has(value) ? value : "unavailable";
+  'use strict';
+  const states = new Set(['operational', 'degraded', 'unavailable']);
+  const safeState = value => states.has(value) ? value : 'unknown';
+  function summarize(values) {
+    if (values.includes('unavailable')) return 'unavailable';
+    if (values.includes('degraded')) return 'degraded';
+    return values.length && values.every(value => value === 'operational') ? 'operational' : 'unknown';
   }
-
-  function safeComponentState(value) {
-    return componentStates.has(value) ? value : "unknown";
+  function tts(data) {
+    const components = Object.fromEntries(['bot', 'database', 'providers'].map(key => [key, safeState(data?.components?.[key])]));
+    return { state: summarize([safeState(data?.status), ...Object.values(components)]), components };
   }
-
-  function stateLabel(state) {
-    return (labels[state] || labels.unavailable)();
+  function helper(data) {
+    const state = data?.status === 'ok' ? 'operational' : 'unknown';
+    return { state, components: { api: state, bot: 'unknown', database: 'unknown' } };
   }
-
-  function updateClock() {
-    const now = new Date();
-    checked.textContent = now.toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
-    checked.dateTime = now.toISOString();
+  window.VozenPublicStatus = { tts, helper, summarize };
+  const root = document.querySelector('[data-vozen-status]');
+  if (!root) return;
+  const translate = (key, fallback, variables) => typeof window.VOZEN_PAGE_T === 'function' ? window.VOZEN_PAGE_T(key, fallback, variables) : fallback.replace(/\{(\w+)\}/g, (_, name) => variables?.[name] ?? '');
+  const label = state => translate('status.' + state, { operational: 'Operational', degraded: 'Degraded', unavailable: 'Unavailable', unknown: 'Not measured' }[state]);
+  const cards = [...root.querySelectorAll('[data-status-service]')];
+  const button = root.querySelector('[data-status-refresh]');
+  const overview = root.querySelector('[data-status-overview]');
+  root.querySelectorAll('[data-status-summary], [data-status-label]').forEach(node => node.removeAttribute('data-i18n'));
+  const endpoints = { tts: 'https://api.vozen.org/api/public/status', helper: 'https://api.vozen.org/rust/health', website: new URL('/', document.baseURI).href };
+  if (['localhost', '127.0.0.1'].includes(new URL(document.baseURI).hostname)) {
+    endpoints.tts = '/__preview/public-status/tts';
+    endpoints.helper = '/__preview/public-status/helper';
   }
-
-  function render(data, measuredLatency) {
-    const state = safeState(data && data.status);
-    const components = (data && data.components) || {};
-    const states = Object.keys(fields).map(function (key) {
-      return safeComponentState(components[key]);
-    });
-
-    instance.className = "status-instance is-" + state;
-    overall.className = "status-badge is-" + state;
-    overall.textContent = stateLabel(state);
-    services.textContent = stateLabel(state);
-    latency.textContent = Number.isFinite(measuredLatency)
-      ? translate("status.ms", "{n} ms", { n: Math.max(0, Math.round(measuredLatency)) })
-      : translate("status.unavailableValue", "Unavailable");
-
-    Object.keys(fields).forEach(function (key, index) {
-      const componentState = states[index];
-      fields[key].value.textContent = stateLabel(componentState);
-      fields[key].card.className = "status-check is-" + componentState;
-    });
-
-    const notice = data && typeof data.incident === "string" ? data.incident.slice(0, 240) : "";
-    incident.textContent = notice;
-    incident.hidden = !notice;
-    updateClock();
+  const results = {};
+  let checkedAt = null;
+  let timer;
+  let busy = false;
+  function render() {
+    if (['localhost', '127.0.0.1'].includes(new URL(document.baseURI).hostname)) {
+      root.querySelector('[data-status-service="website"] h2').textContent = translate('status.previewSite', 'Local preview');
+    }
+    if (!Object.keys(results).length) return;
+    for (const card of cards) {
+      const result = results[card.dataset.statusService];
+      if (!result) continue;
+      card.dataset.state = result.state;
+      card.querySelector('[data-status-label]').textContent = result.failed ? translate('status.checkFailed', 'Check unavailable') : label(result.state);
+      card.querySelector('[data-status-latency]').textContent = result.failed ? '—' : translate('status.ms', '{n} ms', { n: result.latency });
+      card.querySelector('[data-status-note]').textContent = result.failed ? translate('status.checkFailedNotice', 'This browser could not verify the service. This does not confirm an outage.') : result.incident || '';
+      card.querySelectorAll('[data-component]').forEach(node => {
+        const state = result.components?.[node.dataset.component] || 'unknown';
+        node.dataset.state = state;
+        node.textContent = label(state);
+      });
+    }
+    const state = summarize(cards.map(card => results[card.dataset.statusService]?.state || 'unknown'));
+    overview.dataset.state = state;
+    const summaries = { operational: ['status.checksPassing', 'Available public checks are passing'], degraded: ['status.checksDegraded', 'A service reports degraded performance'], unavailable: ['status.checksDown', 'A service reports an interruption'], unknown: ['status.checksUnknown', 'Some checks could not be verified'] };
+    root.querySelector('[data-status-summary]').textContent = translate(...summaries[state]);
+    if (checkedAt) {
+      const time = root.querySelector('[data-status-checked]');
+      time.dateTime = checkedAt.toISOString();
+      time.textContent = checkedAt.toLocaleString(document.documentElement.lang, { dateStyle: 'medium', timeStyle: 'short' });
+    }
   }
-
-  const started = performance.now();
-  fetch(endpoint, { method: "GET", cache: "no-store", mode: "cors" })
-    .then(function (response) {
-      if (response.status === 404) {
-        return fetch(healthEndpoint, { method: "GET", cache: "no-store", mode: "cors" })
-          .then(function (healthResponse) {
-            if (!healthResponse.ok) throw new Error("health request failed");
-            return healthResponse.json();
-          })
-          .then(function (health) {
-            const online = health && health.status === "ok";
-            return {
-              status: online ? "operational" : "unavailable",
-              components: {
-                bot: online ? "operational" : "unavailable",
-                database: "unknown",
-                providers: "unknown",
-              },
-              incident: online
-                ? translate("status.incidentDetailed", "Detailed component checks are not publicly exposed yet")
-                : translate("status.incidentUnavailable", "Vozen health check is unavailable"),
-            };
-          });
+  async function readService(key) {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 8000);
+    const started = performance.now();
+    try {
+      const response = await fetch(endpoints[key], { method: key === 'website' ? 'HEAD' : 'GET', cache: 'no-store', credentials: 'omit', signal: controller.signal });
+      let result;
+      if (key === 'website') result = { state: response.ok ? 'operational' : 'unavailable', components: {} };
+      else {
+        if (!response.ok) throw new Error('Public check unavailable');
+        const data = await response.json();
+        result = key === 'tts' ? tts(data) : helper(data);
+        if (key === 'tts' && typeof data?.incident === 'string') result.incident = data.incident.slice(0, 240);
       }
-      if (!response.ok) throw new Error("status request failed");
-      return response.json();
-    })
-    .then(function (data) {
-      render(data, performance.now() - started);
-    })
-    .catch(function () {
-      render({ status: "unavailable", components: {} }, performance.now() - started);
-    });
+      results[key] = { ...result, latency: Math.max(0, Math.round(performance.now() - started)) };
+    } catch (_) {
+      results[key] = { state: 'unknown', failed: true, components: {} };
+    } finally {
+      window.clearTimeout(timeout);
+      render();
+    }
+  }
+  async function refresh() {
+    if (busy || document.hidden) return;
+    busy = true;
+    window.clearTimeout(timer);
+    button.disabled = true;
+    button.setAttribute('aria-busy', 'true');
+    await Promise.all(Object.keys(endpoints).map(readService));
+    checkedAt = new Date();
+    busy = false;
+    button.disabled = false;
+    button.removeAttribute('aria-busy');
+    render();
+    if (!document.hidden) timer = window.setTimeout(refresh, 60000);
+  }
+  button.addEventListener('click', refresh);
+  document.addEventListener('visibilitychange', () => {
+    window.clearTimeout(timer);
+    if (!document.hidden) void refresh();
+  });
+  window.addEventListener('vozen:i18nready', render);
+  window.addEventListener('vozen:languagechange', render);
+  void refresh();
 })();

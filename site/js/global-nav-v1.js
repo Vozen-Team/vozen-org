@@ -254,6 +254,7 @@
             <a class="${currentClass('helper').trim()}" href="${link('helper/')}"${currentAria('helper')} data-i18n="ecosystem.helper">Vozen Helper</a>
             <a class="${currentClass('docs').trim()}" href="${link('docs/')}"${currentAria('docs')} data-i18n="ecosystem.docs">Docs</a>
             <a class="${currentClass('commands').trim()}" href="${link('commands/')}"${currentAria('commands')} data-i18n="ecosystem.commands">Commands</a>
+            <a class="${currentClass('status').trim()}" href="${link('status.html')}"${currentAria('status')} data-i18n="ecosystem.status">Status</a>
             <span class="docs-ecosystem-nav__premium-disabled nav__premium-disabled" aria-disabled="true" title="Premium is temporarily unavailable" data-i18n-title="ecosystem.premiumUnavailable" data-i18n="nav.premium">Premium</span>
           </nav>
           <div class="docs-ecosystem-nav__actions nav__actions">
@@ -285,6 +286,7 @@
           <a class="${currentClass('helper').trim()}" href="${link('helper/')}"${currentAria('helper')} data-i18n="ecosystem.helper">Vozen Helper</a>
           <a class="${currentClass('docs').trim()}" href="${link('docs/')}"${currentAria('docs')} data-i18n="ecosystem.docs">Docs</a>
           <a class="${currentClass('commands').trim()}" href="${link('commands/')}"${currentAria('commands')} data-i18n="ecosystem.commands">Commands</a>
+          <a class="${currentClass('status').trim()}" href="${link('status.html')}"${currentAria('status')} data-i18n="ecosystem.status">Status</a>
           <span class="nav__premium-disabled" aria-disabled="true" title="Premium is temporarily unavailable" data-i18n-title="ecosystem.premiumUnavailable" data-i18n="nav.premium">Premium</span>
         </nav>
         <div class="nav__actions">

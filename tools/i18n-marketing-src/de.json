@@ -1,6 +1,11 @@
 {
   "locale": "de",
   "messages": {
+    "home.proof.aria": "Vozen-TTS-Community auf Top.gg",
+    "home.proof.servers": "Discord-Server",
+    "home.proof.rating": "auf Top.gg",
+    "home.proof.snapshot": "Top.gg-Stand",
+    "ecosystem.status": "Status",
     "hear.loading": "Audio wird geladen…",
     "hear.error": "Audio konnte nicht abgespielt werden. Versuche es erneut mit der Wiedergabetaste.",
     "nav.features": "Funktionen",

@@ -285,6 +285,11 @@ header.vozen-global-nav .nav__burger { display: none; }
   header.vozen-global-nav .nav__login { min-height: 52px; padding: 0 22px; font-size: 17px; }
 }
 
+/* Six links and translated account actions need the compact desktop spacing. */
+@media (min-width: 1280px) and (max-width: 1359px) {
+  .vozen-global-nav .nav__links { gap: 18px; }
+}
+
 .vozen-global-nav .lang__btn {
   min-height: 42px;
   border-color: rgba(255, 255, 255, .08);

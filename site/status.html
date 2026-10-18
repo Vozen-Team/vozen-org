@@ -1,73 +1,32 @@
 <!DOCTYPE html><html lang="en" data-vozen-prerendered="true"><head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://cdn.discordapp.com; connect-src https://api.vozen.org https://cloudflareinsights.com; form-action 'self'">
-    <meta name="referrer" content="no-referrer">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#07070d">
-    <title data-i18n="status.documentTitle">Vozen service status</title>
-    <meta name="description" content="Live health, latency and system checks for Vozen">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="css/main-v43.css?v=e09fb8a4f245">
-    <style>
-      .status-page { min-height: 100vh; padding: clamp(48px, 8vw, 92px) 22px 72px; }
-      .status-shell { width: min(1120px, 100%); margin: 0 auto; }
-      .status-back { display: inline-flex; align-items: center; gap: 8px; color: var(--aqua); text-decoration: none; font-weight: 700; }
-      .status-kicker { margin: 48px 0 12px; color: var(--aqua); font-family: var(--f-mono); font-size: 12px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
-      .status-title { margin: 0 0 12px; font-family: var(--f-display, "Unbounded", sans-serif); font-size: clamp(38px, 7vw, 72px); line-height: 1.04; letter-spacing: -.05em; }
-      .status-lead { max-width: 720px; margin: 0; color: var(--text-1); font-size: clamp(17px, 2.1vw, 21px); }
-      .status-copy { max-width: 850px; margin: 18px 0 0; color: var(--text-2); line-height: 1.6; }
-      .status-updated { margin: 48px 0 14px; color: var(--text-2); font-size: 14px; }
-      .status-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 30px; }
-      .status-stat, .status-instance, .status-help { border: 1px solid var(--line); background: rgba(12, 15, 30, .78); border-radius: 20px; box-shadow: inset 0 1px 0 var(--hi); }
-      .status-stat { min-height: 122px; padding: 25px 26px; }
-      .status-label { display: block; color: var(--text-2); font-family: var(--f-mono); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; }
-      .status-stat strong { display: block; margin-top: 20px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -.04em; }
-      .status-instance { padding: 28px; margin-bottom: 20px; }
-      .status-instance-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
-      .status-instance-title { display: flex; align-items: center; gap: 10px; margin: 9px 0 0; font-size: 25px; letter-spacing: -.035em; }
-      .status-instance-title::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #697184; }
-      .status-instance.is-operational .status-instance-title::before { background: #37d9b6; box-shadow: 0 0 16px rgba(55, 217, 182, .75); }
-      .status-instance.is-degraded .status-instance-title::before { background: #e8b44d; box-shadow: 0 0 16px rgba(232, 180, 77, .65); }
-      .status-instance.is-unavailable .status-instance-title::before { background: #ff5f7f; box-shadow: 0 0 16px rgba(255, 95, 127, .65); }
-      .status-badge { display: inline-flex; align-items: center; gap: 7px; border: 1px solid rgba(55, 217, 182, .28); border-radius: 999px; padding: 8px 12px; color: #66e0be; background: rgba(55, 217, 182, .08); font-family: var(--f-mono); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
-      .status-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-      .status-badge.is-degraded { color: #e8b44d; border-color: rgba(232, 180, 77, .3); background: rgba(232, 180, 77, .08); }
-      .status-badge.is-unavailable { color: #ff7893; border-color: rgba(255, 95, 127, .3); background: rgba(255, 95, 127, .08); }
-      .status-checks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-      .status-check { min-height: 100px; padding: 18px; border: 1px solid rgba(55, 217, 182, .22); border-radius: 16px; background: rgba(5, 25, 21, .58); }
-      .status-check.is-degraded { border-color: rgba(232, 180, 77, .3); background: rgba(48, 34, 7, .38); }
-      .status-check.is-unavailable { border-color: rgba(255, 95, 127, .3); background: rgba(53, 12, 25, .36); }
-      .status-check.is-unknown { border-color: var(--line); background: rgba(255, 255, 255, .025); }
-      .status-check strong { display: block; margin: 11px 0 8px; font-size: 16px; }
-      .status-check span:last-child { color: var(--text-2); font-size: 14px; }
-      .status-incident { margin: 0 0 20px; padding: 17px 20px; border: 1px solid rgba(232,180,77,.35); border-radius: 16px; color: #f0d69c; background: rgba(232,180,77,.07); }
-      .status-help { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding: 26px 28px; }
-      .status-help h2 { margin: 0 0 7px; font-size: 22px; }
-      .status-help p { margin: 0; color: var(--text-2); }
-      .status-help a { flex: none; }
-      .status-error { color: #ff7893; }
-      @media (max-width: 720px) {
-        .status-summary, .status-checks { grid-template-columns: 1fr; }
-        .status-instance-head, .status-help { align-items: flex-start; flex-direction: column; }
-        .status-help a { width: 100%; text-align: center; }
-      }
-    </style>
-      <link rel="canonical" href="https://vozen.org/status">
-      <meta property="og:site_name" content="Vozen">
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://cdn.discordapp.com; connect-src 'self' https://api.vozen.org https://cloudflareinsights.com; form-action 'self'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Current public service checks for Vozen TTS, Vozen Helper and the Vozen website, with clear monitoring coverage.">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#07070d">
+  <title>Vozen service status</title>
+  <link rel="canonical" href="https://vozen.org/status">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/main-v43.css?v=e09fb8a4f245">
+  <link rel="stylesheet" href="css/global-nav-v1.css?v=e6d9da224efa">
+  <link rel="stylesheet" href="css/status-v2.css?v=9aa2ec812c55">
+    <meta property="og:site_name" content="Vozen">
       <meta property="og:type" content="website">
       <meta property="og:url" content="https://vozen.org/status">
       <meta property="og:title" content="Vozen service status">
-      <meta property="og:description" content="Live health, latency and system checks for Vozen">
+      <meta property="og:description" content="Current public service checks for Vozen TTS, Vozen Helper and the Vozen website, with clear monitoring coverage.">
       <meta property="og:image" content="https://vozen.org/assets/og-image.png">
       <meta property="og:image:alt" content="Vozen">
       <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:title" content="Vozen service status">
-      <meta name="twitter:description" content="Live health, latency and system checks for Vozen">
+      <meta name="twitter:description" content="Current public service checks for Vozen TTS, Vozen Helper and the Vozen website, with clear monitoring coverage.">
       <meta name="twitter:image" content="https://vozen.org/assets/og-image.png">
-      <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Vozen service status","description":"Live health, latency and system checks for Vozen","url":"https://vozen.org/status","isPartOf":{"@type":"WebSite","name":"Vozen","url":"https://vozen.org/"},"publisher":{"@type":"Organization","name":"Vozen","url":"https://vozen.org/"}}</script>
-  <link rel="stylesheet" href="/css/global-nav-v1.css?v=b1cbe9a96a6a"></head>
-  <body>
-    <header class="nav vozen-global-nav docs-ecosystem-nav" data-vozen-standalone-nav="" data-vozen-nav="" data-nav-root="/" data-nav-product="Ecosystem" data-nav-surface="docs" data-nav-prerendered="true" data-prerender-fragment="navigation">
+      <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Vozen service status","description":"Current public service checks for Vozen TTS, Vozen Helper and the Vozen website, with clear monitoring coverage.","url":"https://vozen.org/status","isPartOf":{"@type":"WebSite","name":"Vozen","url":"https://vozen.org/"},"publisher":{"@type":"Organization","name":"Vozen","url":"https://vozen.org/"}}</script>
+  </head>
+<body class="page-status" data-vozen-static-page="status">
+  <a class="skip-link status-skip" href="#main" data-i18n="common.skipToContent">Skip to content</a>
+  <header class="nav vozen-global-nav docs-ecosystem-nav" data-vozen-standalone-nav="" data-vozen-nav="" data-nav-root="/" data-nav-product="Ecosystem" data-nav-current="status" data-nav-surface="docs" data-nav-prerendered="true" data-prerender-fragment="navigation">
         <div class="docs-ecosystem-nav__inner nav__inner">
           <a class="docs-ecosystem-nav__brand brand" href="/" aria-label="Vozen ecosystem home" data-i18n-aria-label="ecosystem.homeAria">
             <span class="docs-ecosystem-nav__mark brand__mark" aria-hidden="true"><img class="brand__portal" src="/favicon.svg" alt="" width="40" height="40"></span>
@@ -79,6 +38,7 @@
             <a class="" href="/helper/" data-i18n="ecosystem.helper">Vozen Helper</a>
             <a class="" href="/docs/" data-i18n="ecosystem.docs">Docs</a>
             <a class="" href="/commands/" data-i18n="ecosystem.commands">Commands</a>
+            <a class="is-current" href="/status.html" aria-current="page" data-i18n="ecosystem.status">Status</a>
             <span class="docs-ecosystem-nav__premium-disabled nav__premium-disabled" aria-disabled="true" title="Premium is temporarily unavailable" data-i18n-title="ecosystem.premiumUnavailable" data-i18n="nav.premium">Premium</span>
           </nav>
           <div class="docs-ecosystem-nav__actions nav__actions">
@@ -95,47 +55,45 @@
           </div>
         </div>
       </header>
-    <div class="grain" aria-hidden="true"></div>
-    <main class="status-page">
-      <div class="status-shell">
-        <a class="status-back" href="/" data-i18n="status.back">← Back to Vozen</a>
-        <p class="status-kicker" data-i18n="status.kicker">Live system health</p>
-        <h1 class="status-title" data-i18n="status.title">Vozen service status</h1>
-        <p class="status-lead" data-i18n="status.lead">Live health, latency and system checks for the voice bot</p>
-        <p class="status-copy" data-i18n="status.copy">If a component is degraded, voice playback or command responses may take longer to recover</p>
-
-        <p class="status-updated"><span data-i18n="status.lastUpdate">Last update:</span> <time id="statusChecked" datetime="" data-i18n="status.checking">Checking</time></p>
-        <section class="status-summary" aria-label="Status summary" data-i18n-aria-label="status.summaryAria">
-          <article class="status-stat"><span class="status-label" data-i18n="status.system">System status</span><strong id="statusServices" data-i18n="status.checking">Checking</strong></article>
-          <article class="status-stat"><span class="status-label" data-i18n="status.latency">Check latency</span><strong id="statusLatency">—</strong></article>
-        </section>
-
-        <section class="status-instance" id="statusInstance" aria-labelledby="statusInstanceTitle">
-          <div class="status-instance-head">
-            <div><span class="status-label" data-i18n="status.instance">Instance</span><h2 class="status-instance-title" id="statusInstanceTitle" data-i18n="status.production">Vozen production</h2></div>
-            <span class="status-badge" id="statusOverall" aria-live="polite" data-i18n="status.checking">Checking</span>
-          </div>
-          <div class="status-checks" aria-label="Vozen component checks" data-i18n-aria-label="status.componentsAria">
-            <article class="status-check" id="statusCheckBot"><span class="status-label" data-i18n="status.component">Component</span><strong data-i18n="status.discordBot">Discord bot</strong><span id="statusBot" data-i18n="status.checking">Checking</span></article>
-            <article class="status-check" id="statusCheckDatabase"><span class="status-label" data-i18n="status.component">Component</span><strong data-i18n="status.database">Database</strong><span id="statusDatabase" data-i18n="status.checking">Checking</span></article>
-            <article class="status-check" id="statusCheckProviders"><span class="status-label" data-i18n="status.component">Component</span><strong data-i18n="status.providers">Voice providers</strong><span id="statusProviders" data-i18n="status.checking">Checking</span></article>
-          </div>
-        </section>
-
-        <p class="status-incident" id="statusIncident" hidden=""></p>
-        <section class="status-help">
-          <div><h2 data-i18n="status.issues">Still having issues?</h2><p data-i18n="status.helpCopy">Check the quick fixes first, then ask for help in the support server</p></div>
-          <a class="btn btn--ghost" href="https://discord.gg/4kYw2WUbNN" target="_blank" rel="noopener" data-i18n="status.getHelp">Get help</a>
-        </section>
-      </div>
-    </main>
-    <script defer="" src="js/i18n-public-loader-v1.js?v=d29fcfb97378"></script>
-    <script defer="" src="js/static-pages-i18n-v1.js?v=777c31c666dd"></script>
-    <script defer="" src="js/status-v1.js?v=680d6daf34f6"></script>
-    <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
+  <main class="status-page" id="main" data-vozen-status="">
+    <div class="status-heading">
+      <div><h1 data-i18n="status.title">Vozen service status</h1><p class="status-lead" data-i18n="status.newLead">Current checks for TTS, Helper and the website.</p></div>
+      <button class="status-refresh" type="button" data-status-refresh=""><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M5.1 8a7 7 0 0 1 11.6-3L20 8M4 16l3.3 3A7 7 0 0 0 18.9 16"></path></svg><span data-i18n="status.refresh">Refresh</span></button>
+    </div>
+    <section class="status-overview" data-status-overview="" data-state="unknown" aria-live="polite" aria-atomic="true" aria-labelledby="status-summary-title">
+      <span class="status-signal" aria-hidden="true"></span>
+      <div><h2 id="status-summary-title" data-status-summary="" data-i18n="status.awaiting">Awaiting live checks</h2><p data-i18n="status.coverage">Public checks only. API availability does not confirm every Discord connection.</p></div>
+    </section>
+    <div class="status-meta"><p><span data-i18n="status.lastUpdate">Last update:</span> <time data-status-checked="">—</time></p><p data-i18n="status.autoRefresh">Refreshes every 60 seconds while this page is visible.</p></div>
+    <noscript><p class="status-nojs">Live checks require JavaScript. The monitoring scope, documentation and support links below remain available.</p></noscript>
+    <section class="status-services" aria-label="Public service checks" data-i18n-aria-label="status.checksTitle">
+      <article class="status-service" data-status-service="tts" data-state="unknown">
+        <div class="status-service__head"><div class="status-service__identity"><svg class="status-product-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 14v4m6-9v14m6-19v24m6-18v12m6-8v4"></path></svg><div><h2>Vozen TTS</h2><p data-i18n="status.ttsScope">Bot, database and voice-provider health</p></div></div><span class="status-badge" data-status-label="" data-i18n="status.awaiting">Awaiting live checks</span></div>
+        <div class="status-service__reading"><p><span data-i18n="status.httpLatency">HTTP check latency</span><strong data-status-latency="">—</strong></p><a href="docs/tts/troubleshooting/no-audio/" data-i18n="status.ttsGuide">Troubleshoot voice</a></div><p class="status-check-note" data-status-note=""></p>
+        <details class="status-details"><summary data-i18n="status.details">Component details</summary><dl class="status-components"><div><dt data-i18n="status.discordBot">Discord bot</dt><dd data-component="bot">—</dd></div><div><dt data-i18n="status.database">Database</dt><dd data-component="database">—</dd></div><div><dt data-i18n="status.providers">Voice providers</dt><dd data-component="providers">—</dd></div></dl></details>
+      </article>
+      <article class="status-service" data-status-service="helper" data-state="unknown">
+        <div class="status-service__head"><div class="status-service__identity"><svg class="status-product-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="6" y="9" width="20" height="17" rx="6"></rect><path d="M16 5v4M3 15v6m26-6v6M11 21c3 2 7 2 10 0"></path><circle cx="11" cy="16" r="1"></circle><circle cx="21" cy="16" r="1"></circle></svg><div><h2>Vozen Helper <span class="status-scope-tag">API</span></h2><p data-i18n="status.helperScope">Public API reachability; Discord health is not exposed</p></div></div><span class="status-badge" data-status-label="" data-i18n="status.awaiting">Awaiting live checks</span></div>
+        <div class="status-service__reading"><p><span data-i18n="status.httpLatency">HTTP check latency</span><strong data-status-latency="">—</strong></p><a href="docs/helper/troubleshooting/bot-not-responding/" data-i18n="status.helperGuide">Troubleshoot Helper</a></div><p class="status-check-note" data-status-note=""></p>
+        <details class="status-details"><summary data-i18n="status.details">Component details</summary><dl class="status-components"><div><dt>API</dt><dd data-component="api">—</dd></div><div><dt data-i18n="status.discordBot">Discord bot</dt><dd data-component="bot">—</dd></div><div><dt data-i18n="status.database">Database</dt><dd data-component="database">—</dd></div></dl></details>
+      </article>
+      <article class="status-service" data-status-service="website" data-state="unknown">
+        <div class="status-service__head"><div class="status-service__identity"><svg class="status-product-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="16" cy="16" r="12"></circle><ellipse cx="16" cy="16" rx="5" ry="12"></ellipse><path d="M4 16h24M7 9h18M7 23h18"></path></svg><div><h2>vozen.org</h2><p data-i18n="status.websiteScope">Homepage delivery from this browser</p></div></div><span class="status-badge" data-status-label="" data-i18n="status.awaiting">Awaiting live checks</span></div>
+        <div class="status-service__reading"><p><span data-i18n="status.httpLatency">HTTP check latency</span><strong data-status-latency="">—</strong></p><a href="docs/" data-i18n="status.browseDocs">Browse documentation</a></div><p class="status-check-note" data-status-note=""></p>
+      </article>
+    </section>
+    <section class="status-history" aria-labelledby="status-history-title"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><div><h2 id="status-history-title" data-i18n="status.historyTitle">About uptime history</h2><p data-i18n="status.historyNotice">The public APIs do not expose 7-, 30- or 90-day uptime history or shard readings. No percentages or historical bars are estimated here.</p></div></section>
+    <section class="status-help"><div><h2 data-i18n="status.issues">Still having issues?</h2><p data-i18n="status.helpCopy">Check the quick fixes first, then ask for help in the support server</p></div><a class="status-help__link" href="https://discord.gg/4kYw2WUbNN" target="_blank" rel="noopener" data-i18n="status.getHelp">Get help</a></section>
+  </main>
+  <footer class="status-footer"><a href="/">Vozen</a><nav aria-label="Legal"><a href="privacy.html" data-i18n="foot.privacy">Privacy</a><a href="terms.html" data-i18n="foot.terms">Terms</a></nav></footer>
+  <script defer="" src="js/i18n-public-loader-v1.js?v=d29fcfb97378"></script>
+  <script defer="" src="js/static-pages-i18n-v1.js?v=459ffbe2b374"></script>
+  <script defer="" src="js/status-v1.js?v=aebe56e2bac9"></script>
+  <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
+  <script defer="" src="js/global-nav-v1.js?v=577bf4843bac"></script>
 
 
-<script src="/js/oauth-config.js?v=15ffe1a765c9"></script><script src="/js/global-nav-v1.js?v=2fa04031d5b2"></script>
+
 <noscript data-prerender-fallback=""><style>
 .reveal{opacity:1!important;transform:none!important}.qa__a{max-height:none!important}
 .helper-module-panel[hidden]{display:block!important}.nav__links{display:flex!important;flex-wrap:wrap}
