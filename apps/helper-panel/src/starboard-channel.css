@@ -5,6 +5,12 @@
 .starboard-channel .field-grid {margin:16px 0;}
 .starboard-channel .starboard-channel__error {color:var(--danger);}
 .starboard-channel .starboard-channel__success {color:var(--mint);}
+.birthday-channel {display:grid;gap:12px;margin-top:16px;}
+.birthday-channel .field {margin:0;}
+.birthday-channel button {justify-self:start;max-width:100%;white-space:normal;}
+.birthday-channel p {margin:0;color:var(--muted);line-height:1.6;}
+.birthday-channel .starboard-channel__error {color:var(--danger);}
+.birthday-channel .starboard-channel__success {color:var(--mint);}
 .starboard-channel button {max-width:100%;white-space:normal;}
 .panel-main .starboard-channel .field-grid {align-items:start;grid-template-columns:1fr;gap:16px;}
 .starboard-channel .resource-multi__choices {display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));max-height:144px;}

@@ -4,6 +4,7 @@ import { PremiumBannerSwitch } from './premium-banner-switch';
 import { FeatureSimulation, type SimulationDraft } from './feature-simulation';
 import { StarboardChannel } from './starboard-channel-setup';
 import { TicketPanelChannel } from './ticket-channel-setup';
+import { BirthdayChannel } from './birthday-channel-setup';
 import { ticketSettingsGroups, ticketSettingCopy } from './ticket-settings';
 import './ticket-settings.css';
 import { welcomeSettingsGroups, welcomeSettingCopy, WelcomeGuideSteps } from './welcome-settings';
@@ -4850,6 +4851,10 @@ function FeatureDetail({
                 ? <TicketPanelChannel key={`${context?.guildId}:tickets`} context={context} onCreated={channel => {
                     rememberCreatedResource(channel); onChange('panelChannel', channel.id);
                   }} /> : undefined}
+              channelSetup={feature?.key === 'community.birthdays' && !localPreviewMode && section.fields.some(field => field.key === 'channel')
+                ? <BirthdayChannel key={context?.guildId} context={context} onCreated={channel => {
+                    rememberCreatedResource(channel); onChange('channel', channel.id);
+                  }} /> : undefined}
               categorySetup={feature?.key === 'support.tickets' && !localPreviewMode && section.fields.some(field => field.key === 'categoryId')
                 ? <TicketPanelChannel key={`${context?.guildId}:category`} category context={context} onCreated={channel => {
                     rememberCreatedResource(channel); onChange('categoryId', channel.id);
@@ -5817,6 +5822,7 @@ function ConfigSection({
   onChange,
   beforeFields,
   categorySetup,
+  channelSetup,
 }: {
   section: SectionSpec;
   config: FeatureConfig;
@@ -5824,6 +5830,7 @@ function ConfigSection({
   onChange: (key: string, value: unknown) => void;
   beforeFields?: import('react').ReactNode;
   categorySetup?: import('react').ReactNode;
+  channelSetup?: import('react').ReactNode;
 }) {
   const renderField = (field: FieldSpec) => <FieldControl field={field} key={field.key}
     value={config[field.key]} context={context} onChange={onChange} />;
@@ -5885,7 +5892,8 @@ function ConfigSection({
           </section> : null;
         })}
         <div className="field-grid">{section.fields.filter(field => !starboardGroups.some(group => group.keys.includes(field.key))).map(renderField)}</div>
-      </div> : <div className="field-grid">{section.fields.map(renderField)}</div>}</>}
+      </div> : <div className="field-grid">{section.fields.map(field => field.key === 'channel' && channelSetup
+        ? <div key={field.key}>{renderField(field)}{channelSetup}</div> : renderField(field))}</div>}</>}
     </section>
   );
 }

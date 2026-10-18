@@ -87,6 +87,7 @@ jobs:
           node tools/helper-polls-demo-regression.mjs
           node tools/helper-events-demo-regression.mjs
           node tools/helper-birthdays-demo-regression.mjs
+          node tools/helper-birthday-channel-regression.mjs
           node tools/helper-welcome-settings-regression.mjs
           node tools/helper-ticket-channel-regression.mjs
           node tools/helper-ticket-category-regression.mjs
