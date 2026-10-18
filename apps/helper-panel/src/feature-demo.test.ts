@@ -2,6 +2,21 @@ import { describe, expect, it } from 'vitest';
 import { featureDemo } from './feature-demo';
 
 describe('feature-specific demonstrations', () => {
+  it('explains levels, XP cooldowns and rank using sample data without awarding real XP', () => {
+    const demo = featureDemo('community.levels', 'en');
+    expect(demo?.asset).toBe('levels-en');
+    expect(demo?.example).toMatch(/sample data/i);
+    expect(demo?.example).toMatch(/accelerated time/i);
+    expect(demo?.example).toMatch(/no XP is awarded/i);
+    expect(demo?.steps).toHaveLength(3);
+    expect(demo?.steps.join(' ')).toMatch(/cooldown/i);
+    expect(demo?.steps.join(' ')).toMatch(/excluded channels/i);
+    expect(demo?.steps.join(' ')).toMatch(/\/rank/);
+    expect(demo?.steps.join(' ')).toMatch(/Role rewards are optional/);
+    expect(demo?.steps.join(' ')).toMatch(/Voice XP is optional/);
+    expect(featureDemo('community.levels', 'pt')?.asset).toBe('levels-pt');
+    expect(featureDemo('community.levels', 'fr')?.asset).toBe('levels-en');
+  });
   it('explains birthdays using day/month, configured timezone and optional removal without real messages', () => {
     const demo = featureDemo('community.birthdays', 'en');
     expect(demo?.asset).toBe('birthdays-en');
@@ -29,7 +44,7 @@ describe('feature-specific demonstrations', () => {
     }
   }
   it('does not misrepresent a Starboard video as a different feature', () => {
-    expect(featureDemo('community.levels', 'en')).toBeNull();
+    expect(featureDemo('community.economy', 'en')).toBeNull();
     expect(featureDemo('unknown', 'pt')).toBeNull();
   });
   it('explains ticket privacy and staff handling without claiming real server actions', () => {

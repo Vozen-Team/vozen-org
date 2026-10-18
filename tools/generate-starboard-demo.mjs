@@ -10,7 +10,7 @@ const destination = path.join(root, 'apps/helper-panel/public/feature-demos');
 // Retain the original command; pass a feature name to generate only that storyboard
 // without replacing any existing Starboard assets.
 const feature = process.argv[2] ?? 'starboard';
-if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays'].includes(feature)) throw new Error('Unknown feature demo');
+if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels'].includes(feature)) throw new Error('Unknown feature demo');
 await fs.mkdir(destination, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -51,6 +51,7 @@ try {
         ctx.fillText(content, x, y);
       }
       function draw(time) {
+        if (feature === 'levels') { drawLevels(time); return; }
         if (feature === 'birthdays') { drawBirthdays(time); return; }
         if (feature === 'events') { drawEvents(time); return; }
         if (feature === 'polls') { drawPolls(time); return; }
@@ -232,6 +233,50 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Exemplo ilustrativo · nenhuma sondagem é criada · tempo acelerado' : 'Illustrative example · no poll is created · accelerated time', 42, 518, 14, '#a3b6d1');
       }
+      function drawLevels(time) {
+        const earned = time >= 2;
+        const cooldown = time >= 4;
+        const rank = time >= 6.5;
+        const total = earned ? 100 : 80;
+        const level = earned ? 2 : 1;
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / NÍVEIS E XP' : 'VOZEN HELPER / LEVELS & XP', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Participar, progredir e subir de nível' : 'Take part, progress and level up', 42, 111, 30);
+        card(42, 135, 876, 101);
+        label(pt ? '# geral · Membro de exemplo' : '# general · Sample member', 64, 164, 16, '#a3b6d1');
+        label(rank ? '/rank' : cooldown ? (pt ? 'Outra mensagem logo a seguir…' : 'Another message right away…')
+          : (pt ? 'Partilhei uma dica para ajudar a comunidade!' : 'I shared a tip to help the community!'), 64, 197, 24, '#8ee5d2');
+        label(rank ? (pt ? 'Consulta o progresso, sem alterar o XP' : 'Check progress without changing XP')
+          : cooldown ? (pt ? 'Sem XP adicional · o tempo de espera ainda está ativo' : 'No extra XP · the cooldown is still active')
+          : earned ? (pt ? '+20 XP por uma mensagem elegível' : '+20 XP for an eligible message')
+          : (pt ? 'O membro já tem 80 XP neste exemplo' : 'The member already has 80 XP in this example'), 64, 222, 17, '#a3b6d1');
+        const progress = rank ? Math.min(1, (time - 6.5) / .35) : 1;
+        const eased = 1 - (1 - progress) ** 3;
+        const y = 254 + 10 * (1 - eased);
+        card(42, y, 876, 184, eased);
+        ctx.globalAlpha = eased;
+        label(rank ? (pt ? 'Cartão de XP · exemplo ilustrativo' : 'XP card · illustrative example') : (pt ? 'Progresso do membro' : 'Member progress'), 64, y + 30, 17, '#a3b6d1');
+        const contentX = rank ? 153 : 64;
+        if (rank) {
+          ctx.fillStyle = '#243c51'; ctx.beginPath(); ctx.arc(99, y + 84, 31, 0, Math.PI * 2); ctx.fill();
+          label('M', 87, y + 94, 29, '#8ee5d2');
+        }
+        label(rank ? (pt ? 'Membro de exemplo' : 'Sample member')
+          : (pt ? `Nível ${level} · ${total} XP no total` : `Level ${level} · ${total} total XP`), contentX, y + 72, 28, '#8ee5d2');
+        if (rank) label(pt ? 'Nível 2 · 100 XP no total' : 'Level 2 · 100 total XP', contentX, y + 104, 21);
+        const barY = y + (rank ? 122 : 96);
+        ctx.fillStyle = '#243c51'; ctx.beginPath(); ctx.roundRect(contentX, barY, 700, 10, 5); ctx.fill();
+        if (!earned) { ctx.fillStyle = '#8ee5d2'; ctx.beginPath(); ctx.roundRect(contentX, barY, 560, 10, 5); ctx.fill(); }
+        label(pt ? `${total % 100} / 100 XP até ao nível ${level + 1}` : `${total % 100} / 100 XP to level ${level + 1}`, contentX, y + (rank ? 162 : 133), 18, '#a3b6d1');
+        if (earned && !rank) label(pt ? 'O Helper anuncia: @Membro atingiu o nível 2!' : 'Helper announces: @Member reached level 2!', 64, y + 163, 20, '#8ee5d2');
+        ctx.globalAlpha = 1;
+        const step = time < 2 ? (pt ? '1. Uma mensagem elegível dá XP' : '1. An eligible message earns XP')
+          : time < 6.5 ? (pt ? '2. O membro sobe de nível; o cooldown evita XP repetido' : '2. The member levels up; the cooldown skips extra XP')
+          : (pt ? '3. Usa /rank para consultar o teu cartão de XP' : '3. Use /rank to check your XP card');
+        label(step, 42, 484, 22);
+        label(pt ? 'Exemplo: 20 XP por mensagem · espera de 60 s · voz e cargos não demonstrados' : 'Example: 20 XP per message · 60 s cooldown · voice and role rewards not shown', 42, 518, 14, '#a3b6d1');
+      }
       function drawBirthdays(time) {
         const saved = time >= 2;
         const celebrating = time >= 5;
@@ -344,7 +389,7 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Sem canal escolhido, o botão não aparece · exemplo ilustrativo' : 'Without a chosen channel, the button stays hidden · illustrative example', 42, 518, 14, '#a3b6d1');
       }
-      draw(feature === 'events' || feature === 'birthdays' ? 8 : 0);
+      draw(['events', 'birthdays', 'levels'].includes(feature) ? 8 : 0);
       const poster = canvas.toDataURL('image/png').split(',')[1];
       const stream = canvas.captureStream(24);
       const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: 700_000 });
