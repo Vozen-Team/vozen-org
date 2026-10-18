@@ -16,7 +16,6 @@
   const config = {
     docs: {
       label: 'Docs',
-      mark: 'D',
       root: docsRoot,
       search: null,
       nav: null,
@@ -24,7 +23,6 @@
     },
     helper: {
       label: 'Vozen Helper',
-      mark: 'H',
       root: new URL('helper/', docsRoot),
       search: new URL('helper/search-data.js', docsRoot),
       nav: new URL('helper/data/helper-docs-manifest.js', docsRoot),
@@ -32,7 +30,6 @@
     },
     tts: {
       label: 'Vozen TTS',
-      mark: 'T',
       root: new URL('tts/', docsRoot),
       search: new URL('tts/search-data.js', docsRoot),
       nav: new URL('tts/data/tts-docs-manifest.js', docsRoot),
@@ -238,6 +235,37 @@
     return topbar;
   }
 
+  function productMark() {
+    const drawing = product === 'helper'
+      ? '<rect x="5" y="7" width="14" height="13" rx="4"/><path d="M12 3v4M2 11v5m20-5v5M8 16c2 2 6 2 8 0"/><circle cx="8" cy="12" r=".5"/><circle cx="16" cy="12" r=".5"/>'
+      : product === 'tts'
+        ? '<path d="M4 10v4m4-7v10m4-14v18m4-14v10m4-7v4"/>'
+        : '<path d="M12 6C9 4 6 4 3 5v14c3-1 6-1 9 1m0-14c3-2 6-2 9-1v14c-3-1-6-1-9 1V6Z"/>';
+    return '<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false">' + drawing + '</svg>';
+  }
+
+  function setupProductIconMotion() {
+    const icons = [...document.querySelectorAll('.docs-overview__card .docs-product-symbol')];
+    if (!icons.length) return;
+    const visible = new Set();
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => icons.forEach(icon => {
+      icon.dataset.motion = !document.hidden && !preference.matches && visible.has(icon) ? 'playing' : 'paused';
+    });
+    update();
+    if (!window.IntersectionObserver) return;
+    const observer = new window.IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) visible.add(entry.target);
+        else visible.delete(entry.target);
+      });
+      update();
+    });
+    icons.forEach(icon => observer.observe(icon));
+    document.addEventListener('visibilitychange', update);
+    preference.addEventListener('change', update);
+  }
+
   function createSidebar(topbar) {
     let sidebar = document.querySelector('.docs-sidebar');
     if (!sidebar) {
@@ -255,7 +283,7 @@
     const sidebarHome = product === 'docs' ? (localFile ? new URL('index.html', siteRoot).href : siteRoot.href) : docsHome;
     const sidebarHomeLabel = product === 'docs' ? docsText('docs.backToVozen', 'Back to Vozen') : docsText('docs.backToDocs', 'Back to Docs');
     sidebar.innerHTML = '<div class="docs-sidebar__inner">' +
-      '<div class="docs-sidebar__product"><span class="docs-sidebar__product-mark" aria-hidden="true">' + config.mark + '</span><span><strong>' + esc(config.label) + '</strong><small>' + esc(docsText('docs.documentation', 'Documentation')) + '</small></span></div>' +
+      '<div class="docs-sidebar__product"><span class="docs-sidebar__product-mark" aria-hidden="true">' + productMark() + '</span><span><strong>' + esc(config.label) + '</strong><small>' + esc(docsText('docs.documentation', 'Documentation')) + '</small></span></div>' +
       searchMarkup +
       searchResultsMarkup +
       '<nav class="docs-sidebar__tree" aria-label="' + esc(docsText('docs.sections', 'Documentation sections')) + '"><p class="docs-search-empty">' + esc(docsText('docs.loadingNavigation', 'Loading navigation…')) + '</p></nav>' +
@@ -754,6 +782,7 @@
     document.body.classList.add('docs-shell-active');
     const topbar = createTopbar();
     const sidebar = createSidebar(topbar);
+    setupProductIconMotion();
     const resources = product === 'docs' ? Promise.resolve({ search: null, nav: null }) : Promise.all([loadScript(config.search), loadScript(config.nav)]).then(() => ({
       search: globalThis.VOZEN_DOCS_SEARCH?.[product] || null,
       nav: globalThis.VOZEN_DOCS_NAV?.[product] || null
