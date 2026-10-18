@@ -11,6 +11,9 @@ test('plan management retains the separate new-checkout pause', () => {
   assert.match(account, /id="planChangeConfirm" hidden(?:="")? disabled/);
   assert.match(script, /planApi\("change\/preview"/);
   assert.match(script, /planApi\("change\/confirm", \{ token \}\)/);
+  assert.match(script, /planApi\("change\/cancel", \{ token \}\)/);
+  assert.match(script, /if \(busy \|\| !pendingToken\) return;/);
+  assert.match(account, /id="planChangeCancelScheduled" hidden(?:="")? disabled/);
   assert.match(script, /if \(busy \|\| !quote\) return;/);
   assert.match(script, /destination.hostname !== "invoice.stripe.com"/);
   const portal = script.slice(script.indexOf('document.getElementById("accountBilling")?.addEventListener'));
