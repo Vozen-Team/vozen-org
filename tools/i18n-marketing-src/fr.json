@@ -87,7 +87,7 @@
     "price.pro.pitch": "Débloquez toute l’expérience Vozen pour votre communauté",
     "price.compare.title": "Comparez chaque détail",
     "price.compare.sub": "La comparaison complète, sans surprise",
-    "price.checkout": "Les paiements sont temporairement désactivés",
+    "price.checkout": "Passer au paiement",
     "price.recommended": "IDÉAL POUR LES SERVEURS",
     "price.free.name": "Free",
     "price.free.price": "€0",
@@ -681,7 +681,7 @@
     ],
     [
       "Puis-je acheter Premium maintenant ?",
-      "Les paiements sont temporairement désactivés. Le cœur de Helper reste gratuit et les tarifs Premium affichés sont fournis à titre indicatif jusqu’au retour du paiement."
+      "Oui. Choisissez un forfait sur la page Premium et connectez-vous avec Discord. Stripe traite les informations de paiement. Le cœur de Helper reste gratuit."
     ]
   ],
   "faq": [

@@ -87,7 +87,7 @@
     "price.pro.pitch": "Desbloquea toda la experiencia Vozen para tu comunidad",
     "price.compare.title": "Compara cada detalle",
     "price.compare.sub": "La comparación completa, sin sorpresas",
-    "price.checkout": "Los pagos están desactivados temporalmente",
+    "price.checkout": "Continuar al pago",
     "price.recommended": "MEJOR PARA SERVIDORES",
     "price.free.name": "Free",
     "price.free.price": "€0",
@@ -681,7 +681,7 @@
     ],
     [
       "¿Puedo comprar Premium ahora?",
-      "Los pagos están desactivados temporalmente. El núcleo de Helper sigue siendo gratuito y los precios Premium mostrados son solo informativos hasta que vuelva a habilitarse el pago."
+      "Sí. Elige un plan en la página Premium e inicia sesión con Discord. Stripe gestiona los datos de pago. El núcleo de Helper sigue siendo gratuito."
     ]
   ],
   "faq": [

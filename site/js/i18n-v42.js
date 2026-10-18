@@ -1135,6 +1135,7 @@
     });
   });
   var premiumRows = [
+    ["price.checkout", "Continue to checkout", "Continuar para o pagamento", "Passer au paiement", "Continuar al pago", "Weiter zur Kasse", "Ödemeye devam et", "المتابعة إلى الدفع", "前往結帳", "Перейти к оплате", "결제 계속하기"],
     ["premium.documentTitle", "Premium — Vozen", "Premium — Vozen", "Premium — Vozen", "Premium — Vozen", "Premium — Vozen", "Premium — Vozen", "Premium — Vozen", "Premium — Vozen", "Premium — Vozen", "Premium — Vozen"],
     ["premium.skip", "Skip to plans", "Saltar para os planos", "Aller aux forfaits", "Ir a los planes", "Zu den Plänen", "Planlara atla", "الانتقال إلى الخطط", "跳至方案", "Перейти к планам", "요금제로 이동"],
     ["premium.pricing", "Pricing", "Preços", "Tarifs", "Precios", "Preise", "Fiyatlandırma", "الأسعار", "價格", "Цены", "요금"],
