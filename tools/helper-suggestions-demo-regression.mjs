@@ -19,7 +19,7 @@ try {
     const dismissScenario = scenario.startsWith('dismiss-');
     const pt = scenario === 'pt';
     let simulations = 0, writes = 0;
-    const config = polls ? { channel: 'sample-polls', defaultDurationHours: 24 }
+    const config = polls ? { channel: '', defaultDurationHours: 24 }
       : welcome ? { channel: 'sample-welcome', message: 'Welcome {member} to {server}!', guideEnabled: true, autoRole: '', sendDm: false }
       : tickets ? { panelChannel: 'sample-support', categoryId: '', staffRole: '', transcriptChannel: '', maxOpen: 1, panelTitle: 'Need support?', panelDescription: 'Open a private ticket.', closeAfterHours: 1 }
       : giveaway ? { defaultDurationHours: 24, defaultWinners: 1, requiredRole: '' }
@@ -71,6 +71,19 @@ try {
       await route.fulfill({ json: value });
     });
     await page.goto(`${base}#/config/${featureKey}`);
+    if (polls) {
+      const channel = page.getByRole('combobox', { name: pt ? /Canal predefinido \(opcional\)/ : /Default channel \(optional\)/ });
+      await channel.waitFor();
+      assert.equal(await channel.inputValue(), '', 'the command channel remains the default; do not choose a channel automatically');
+      assert.equal(await channel.locator('option:checked').textContent(), pt ? 'Canal onde usas /poll' : 'Channel where you use /poll');
+      await page.getByText(pt
+        ? 'Deixa vazio para publicar a sondagem no canal onde usares /poll. Se escolheres um canal, as sondagens são publicadas aí.'
+        : 'Leave empty to post each poll in the channel where you use /poll. Choose a channel to send all polls there.', { exact: true }).waitFor();
+      if (['en','pt','mobile'].includes(scenario)) {
+        await mkdir('output/playwright', { recursive: true });
+        await channel.locator('..').screenshot({ path: `output/playwright/polls-channel-${scenario}.png` });
+      }
+    }
     const simulate = page.getByRole('button', { name: pt ? 'Simular configuração' : 'Simulate configuration', exact: true });
     await simulate.click();
     const dialog = page.getByRole('dialog', { name: localizedLabel, exact: true });

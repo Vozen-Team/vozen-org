@@ -4831,7 +4831,14 @@ function FeatureDetail({
           {sections.map((section) => (
             <ConfigSection
               key={section.title}
-              section={section}
+              section={feature?.key === 'management.polls' ? {...section,fields:section.fields.map(field => field.key === 'channel' ? {
+                ...field,
+                label: helperLocale() === 'pt' ? 'Canal predefinido (opcional)' : 'Default channel (optional)',
+                help: helperLocale() === 'pt'
+                  ? 'Deixa vazio para publicar a sondagem no canal onde usares /poll. Se escolheres um canal, as sondagens são publicadas aí.'
+                  : 'Leave empty to post each poll in the channel where you use /poll. Choose a channel to send all polls there.',
+                emptyLabel: helperLocale() === 'pt' ? 'Canal onde usas /poll' : 'Channel where you use /poll',
+              } : field)} : section}
               config={config}
               context={resourceContext}
               onChange={onChange}
