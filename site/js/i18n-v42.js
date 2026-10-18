@@ -957,7 +957,7 @@
     ["selectionMode", "Selection mode", "Modo de seleção", "Mode de sélection", "Modo de selección", "Auswahlmodus", "Seçim modu", "وضع الاختيار", "選擇模式", "Режим выбора", "선택 모드"],
     ["removeOnUnselect", "Remove role when unselected", "Remover o cargo ao desmarcar", "Retirer le rôle lors de la désélection", "Quitar el rol al desmarcar", "Rolle bei Abwahl entfernen", "Seçim kaldırılınca rolü kaldır", "إزالة الدور عند إلغاء الاختيار", "取消選取時移除身分組", "Снимать роль при отмене выбора", "선택 해제 시 역할 제거"],
     ["defaultDurationHours", "Default duration (hours)", "Duração predefinida (horas)", "Durée par défaut (heures)", "Duración predeterminada (horas)", "Standarddauer (Stunden)", "Varsayılan süre (saat)", "المدة الافتراضية (بالساعات)", "預設時長（小時）", "Длительность по умолчанию (часы)", "기본 기간(시간)"],
-    ["defaultCapacity", "Participant limit", "Limite de participantes", "Limite de participants", "Límite de participantes", "Teilnehmerlimit", "Katılımcı sınırı", "حد المشاركين", "參與者上限", "Лимит участников", "참가자 제한"],
+    ["defaultCapacity", "Participant limit (optional)", "Limite de participantes (opcional)", "Limite de participants (facultatif)", "Límite de participantes (opcional)", "Teilnehmerlimit (optional)", "Katılımcı sınırı (isteğe bağlı)", "حد المشاركين (اختياري)", "參與者上限（選填）", "Лимит участников (необязательно)", "참가자 제한(선택 사항)"],
     ["announcementChannel", "Announcement channel", "Canal de anúncios", "Salon d’annonce", "Canal de anuncios", "Ankündigungskanal", "Duyuru kanalı", "قناة الإعلانات", "公告頻道", "Канал объявлений", "공지 채널"],
     ["reminders", "Send reminders", "Enviar lembretes", "Envoyer des rappels", "Enviar recordatorios", "Erinnerungen senden", "Hatırlatıcı gönder", "إرسال تذكيرات", "傳送提醒", "Отправлять напоминания", "알림 보내기"],
     ["reminderHours", "Hours before the event", "Horas antes do evento", "Heures avant l’événement", "Horas antes del evento", "Stunden vor dem Ereignis", "Etkinlikten önceki saat", "الساعات قبل الحدث", "活動前的小時數", "Часов до события", "이벤트 전 시간"],
@@ -1045,6 +1045,10 @@
       extra[locale] = extra[locale] || {};
       extra[locale]["helper.field." + row[0] + ".label"] = row[index + 1];
     });
+  });
+  var capacityHelp = ["0 = unlimited.", "0 = sem limite.", "0 = sans limite.", "0 = sin límite.", "0 = unbegrenzt.", "0 = sınırsız.", "0 = بلا حد.", "0 = 不限人數。", "0 = без ограничений.", "0 = 무제한."];
+  fieldLocales.forEach(function (locale, index) {
+    extra[locale]["helper.field.defaultCapacity.help"] = capacityHelp[index];
   });
   var fieldOptionRows = {
     currency: { eur: ["EUR", "EUR", "EUR", "EUR", "EUR", "EUR", "EUR", "EUR", "EUR", "EUR"], usd: ["USD", "USD", "USD", "USD", "USD", "USD", "USD", "USD", "USD", "USD"] },

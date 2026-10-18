@@ -1143,7 +1143,8 @@ const additionalSpecs: Record<string, SectionSpec[]> = {
         },
         {
           key: 'defaultCapacity',
-          label: 'Participant limit',
+          label: 'Participant limit (optional)',
+          help: '0 = unlimited.',
           kind: 'number',
           min: 0,
           max: 100000,
@@ -5787,6 +5788,7 @@ function schemaSlug(value: string): string {
 
 function localizedField(field: FieldSpec): FieldSpec {
   if (field.key === 'staffRole') field = { ...field, ...ticketStaffField };
+  if (field.key === 'defaultCapacity') field = { ...field, label: 'Participant limit (optional)', help: '0 = unlimited.' };
   const label = helperT(`helper.field.${field.key}.label`, field.label);
   const help = field.help
     ? helperT(`helper.field.${field.key}.help`, field.help)

@@ -14,13 +14,13 @@ const events = demoFeature === 'events';
 const featureKey = `${polls ? 'management' : tickets || welcome ? 'support' : 'community'}.${demoFeature}`;
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events ? ['disabled-feature'] : [])]) {
+  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : [])]) {
     if (process.env.SUGGESTIONS_DEMO_SCENARIO && process.env.SUGGESTIONS_DEMO_SCENARIO !== scenario) continue;
     const page = await browser.newPage(scenario === 'dismiss-touch' ? { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true } : {});
     const dismissScenario = scenario.startsWith('dismiss-');
     const pt = scenario === 'pt';
     let simulations = 0, writes = 0;
-    const config = events ? { defaultDurationHours: 2, defaultCapacity: 20, announcementChannel: 'sample-events', reminders: true, reminderHours: 1 }
+    const config = events ? { defaultDurationHours: 2, defaultCapacity: scenario === 'limited-capacity' ? 20 : 0, announcementChannel: 'sample-events', reminders: true, reminderHours: 1 }
       : polls ? { channel: '', defaultDurationHours: 24 }
       : welcome ? { channel: 'sample-welcome', message: 'Welcome {member} to {server}!', guideEnabled: true, autoRole: '', sendDm: false }
       : tickets ? { panelChannel: 'sample-support', categoryId: '', staffRole: '', transcriptChannel: '', maxOpen: 1, panelTitle: 'Need support?', panelDescription: 'Open a private ticket.', closeAfterHours: 1 }
@@ -74,6 +74,16 @@ try {
       await route.fulfill({ json: value });
     });
     await page.goto(`${base}#/config/${featureKey}`);
+    if (events) {
+      const capacity = page.getByRole('spinbutton', { name: pt ? /Limite de participantes \(opcional\)/ : /Participant limit \(optional\)/ });
+      await capacity.waitFor();
+      assert.equal(await capacity.inputValue(), String(config.defaultCapacity), 'presentation must preserve unlimited and configured limits');
+      await capacity.locator('..').getByText(pt ? '0 = sem limite.' : '0 = unlimited.', { exact: true }).waitFor();
+      if (['en','pt','mobile'].includes(scenario)) {
+        await mkdir('output/playwright', { recursive: true });
+        await capacity.locator('..').screenshot({ path: `output/playwright/events-capacity-${scenario}.png` });
+      }
+    }
     if (polls) {
       const channel = page.getByRole('combobox', { name: pt ? /Canal predefinido \(opcional\)/ : /Default channel \(optional\)/ });
       await channel.waitFor();
