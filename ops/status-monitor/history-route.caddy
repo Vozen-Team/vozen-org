@@ -1,0 +1,10 @@
+api.vozen.org {
+    handle /api/public/status/history {
+        root * /var/lib/vozen-status/public
+        rewrite * /history.json
+        header Access-Control-Allow-Origin https://vozen.org
+        header Cache-Control "public, max-age=30"
+        header X-Content-Type-Options nosniff
+        file_server
+    }
+}

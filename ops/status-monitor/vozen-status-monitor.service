@@ -1,0 +1,29 @@
+[Unit]
+Description=Vozen public daily status observations
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=vozen
+Group=vozen
+Environment=VOZEN_STATUS_DIRECTORY=/var/lib/vozen-status/public
+ExecStart=/usr/bin/node /opt/vozen-status-monitor/current/tools/status-monitor.mjs
+Restart=on-failure
+RestartSec=10
+StateDirectory=vozen-status
+StateDirectoryMode=0755
+UMask=0022
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/var/lib/vozen-status
+MemoryMax=192M
+TasksMax=32
+
+[Install]
+WantedBy=multi-user.target

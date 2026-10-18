@@ -10,7 +10,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="css/main-v43.css?v=e09fb8a4f245">
   <link rel="stylesheet" href="css/global-nav-v1.css?v=e6d9da224efa">
-  <link rel="stylesheet" href="css/status-v2.css?v=9aa2ec812c55">
+  <link rel="stylesheet" href="css/status-v2.css?v=da2a44f87648">
     <meta property="og:site_name" content="Vozen">
       <meta property="og:type" content="website">
       <meta property="og:url" content="https://vozen.org/status">
@@ -65,32 +65,38 @@
       <div><h2 id="status-summary-title" data-status-summary="" data-i18n="status.awaiting">Awaiting live checks</h2><p data-i18n="status.coverage">Public checks only. API availability does not confirm every Discord connection.</p></div>
     </section>
     <div class="status-meta"><p><span data-i18n="status.lastUpdate">Last update:</span> <time data-status-checked="">—</time></p><p data-i18n="status.autoRefresh">Refreshes every 60 seconds while this page is visible.</p></div>
-    <noscript><p class="status-nojs">Live checks require JavaScript. The monitoring scope, documentation and support links below remain available.</p></noscript>
+    <noscript><p class="status-nojs">Live checks and daily history require JavaScript. The monitoring scope, documentation and support links below remain available.</p></noscript>
     <section class="status-services" aria-label="Public service checks" data-i18n-aria-label="status.checksTitle">
       <article class="status-service" data-status-service="tts" data-state="unknown">
         <div class="status-service__head"><div class="status-service__identity"><svg class="status-product-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 14v4m6-9v14m6-19v24m6-18v12m6-8v4"></path></svg><div><h2>Vozen TTS</h2><p data-i18n="status.ttsScope">Bot, database and voice-provider health</p></div></div><span class="status-badge" data-status-label="" data-i18n="status.awaiting">Awaiting live checks</span></div>
+        <div class="status-uptime" data-status-history=""></div>
         <div class="status-service__reading"><p><span data-i18n="status.httpLatency">HTTP check latency</span><strong data-status-latency="">—</strong></p><a href="docs/tts/troubleshooting/no-audio/" data-i18n="status.ttsGuide">Troubleshoot voice</a></div><p class="status-check-note" data-status-note=""></p>
         <details class="status-details"><summary data-i18n="status.details">Component details</summary><dl class="status-components"><div><dt data-i18n="status.discordBot">Discord bot</dt><dd data-component="bot">—</dd></div><div><dt data-i18n="status.database">Database</dt><dd data-component="database">—</dd></div><div><dt data-i18n="status.providers">Voice providers</dt><dd data-component="providers">—</dd></div></dl></details>
       </article>
       <article class="status-service" data-status-service="helper" data-state="unknown">
         <div class="status-service__head"><div class="status-service__identity"><svg class="status-product-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="6" y="9" width="20" height="17" rx="6"></rect><path d="M16 5v4M3 15v6m26-6v6M11 21c3 2 7 2 10 0"></path><circle cx="11" cy="16" r="1"></circle><circle cx="21" cy="16" r="1"></circle></svg><div><h2>Vozen Helper <span class="status-scope-tag">API</span></h2><p data-i18n="status.helperScope">Public API reachability; Discord health is not exposed</p></div></div><span class="status-badge" data-status-label="" data-i18n="status.awaiting">Awaiting live checks</span></div>
+        <div class="status-uptime" data-status-history=""></div>
         <div class="status-service__reading"><p><span data-i18n="status.httpLatency">HTTP check latency</span><strong data-status-latency="">—</strong></p><a href="docs/helper/troubleshooting/bot-not-responding/" data-i18n="status.helperGuide">Troubleshoot Helper</a></div><p class="status-check-note" data-status-note=""></p>
         <details class="status-details"><summary data-i18n="status.details">Component details</summary><dl class="status-components"><div><dt>API</dt><dd data-component="api">—</dd></div><div><dt data-i18n="status.discordBot">Discord bot</dt><dd data-component="bot">—</dd></div><div><dt data-i18n="status.database">Database</dt><dd data-component="database">—</dd></div></dl></details>
       </article>
       <article class="status-service" data-status-service="website" data-state="unknown">
         <div class="status-service__head"><div class="status-service__identity"><svg class="status-product-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="16" cy="16" r="12"></circle><ellipse cx="16" cy="16" rx="5" ry="12"></ellipse><path d="M4 16h24M7 9h18M7 23h18"></path></svg><div><h2>vozen.org</h2><p data-i18n="status.websiteScope">Homepage delivery from this browser</p></div></div><span class="status-badge" data-status-label="" data-i18n="status.awaiting">Awaiting live checks</span></div>
+        <div class="status-uptime" data-status-history=""></div>
         <div class="status-service__reading"><p><span data-i18n="status.httpLatency">HTTP check latency</span><strong data-status-latency="">—</strong></p><a href="docs/" data-i18n="status.browseDocs">Browse documentation</a></div><p class="status-check-note" data-status-note=""></p>
       </article>
     </section>
-    <section class="status-history" aria-labelledby="status-history-title"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><div><h2 id="status-history-title" data-i18n="status.historyTitle">About uptime history</h2><p data-i18n="status.historyNotice">The public APIs do not expose 7-, 30- or 90-day uptime history or shard readings. No percentages or historical bars are estimated here.</p></div></section>
+    <section class="status-history" aria-labelledby="status-history-title"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><div><h2 id="status-history-title" data-i18n="status.historyTitle">About uptime history</h2><p data-i18n="status.historyNotice">Each bar is one UTC day. Checks are recorded once per minute, starting when monitoring is enabled. Pale green hatching means no history, not confirmed uptime; partial days are marked separately. Percentages describe recorded checks, not unobserved time.</p><p data-history-error="" hidden="" data-i18n="status.historyError">History could not be refreshed. Previously loaded measurements, if any, remain visible.</p><ul class="status-history-legend"><li data-state="operational" data-i18n="status.operational">Operational</li><li data-state="degraded" data-i18n="status.degraded">Degraded</li><li data-state="unavailable" data-i18n="status.unavailable">Unavailable</li><li data-state="partial" data-i18n="status.partial">Partial data</li><li data-state="unknown" data-i18n="status.historyNoData">No history</li></ul></div></section>
     <section class="status-help"><div><h2 data-i18n="status.issues">Still having issues?</h2><p data-i18n="status.helpCopy">Check the quick fixes first, then ask for help in the support server</p></div><a class="status-help__link" href="https://discord.gg/4kYw2WUbNN" target="_blank" rel="noopener" data-i18n="status.getHelp">Get help</a></section>
   </main>
   <footer class="status-footer"><a href="/">Vozen</a><nav aria-label="Legal"><a href="privacy.html" data-i18n="foot.privacy">Privacy</a><a href="terms.html" data-i18n="foot.terms">Terms</a></nav></footer>
   <script defer="" src="js/i18n-public-loader-v1.js?v=d29fcfb97378"></script>
   <script defer="" src="js/static-pages-i18n-v1.js?v=459ffbe2b374"></script>
   <script defer="" src="js/status-v1.js?v=aebe56e2bac9"></script>
+  <script defer="" src="js/status-history-model-v1.js?v=9d6c91923080"></script>
+  <script defer="" src="js/status-history-v1.js?v=0ff6b2345c4b"></script>
   <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
   <script defer="" src="js/global-nav-v1.js?v=577bf4843bac"></script>
+
 
 
 

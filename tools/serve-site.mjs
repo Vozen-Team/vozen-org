@@ -27,6 +27,7 @@ const productionCsp = "default-src 'self'; base-uri 'self'; object-src 'none'; s
 const publicStatusEndpoints = {
   tts: 'https://api.vozen.org/api/public/status',
   helper: 'https://api.vozen.org/rust/health',
+  history: 'https://api.vozen.org/api/public/status/history',
 };
 
 async function handleRequest(request, response, fetchPublic, publicStatusPreview) {
@@ -45,7 +46,7 @@ async function handleRequest(request, response, fetchPublic, publicStatusPreview
       const upstream = await fetchPublic(endpoint, { headers: { accept: 'application/json' }, redirect: 'error', signal: AbortSignal.timeout(8000) });
       if (!upstream.ok) throw new Error('Public check failed');
       const body = await upstream.text();
-      if (body.length > 16384) throw new Error('Oversized public check');
+      if (body.length > (key === 'history' ? 131072 : 16384)) throw new Error('Oversized public check');
       JSON.parse(body);
       response.writeHead(200, headers);
       response.end(body);

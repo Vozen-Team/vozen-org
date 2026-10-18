@@ -1,0 +1,16 @@
+{
+  "status": "collector-live-frontend-local",
+  "sourceRevision": "0a0edf256060f6c4bd4ebf344bb7581b98ae8be8 plus uncommitted status-history changes",
+  "collectorRelease": "2cb3b36b-9d6c9192",
+  "collectorSha256": "2cb3b36b9f39ec5918f1cb5333f9d56effefc26c06f2475d447e6b0226f3867d",
+  "modelSha256": "9d6c91923080b1b502513a70ee064ba5f72b2587b96a1e3505847befa16fe3de",
+  "startedAt": "2026-10-18T02:08:09.821Z",
+  "service": "vozen-status-monitor.service",
+  "publicEndpoint": "https://api.vozen.org/api/public/status/history",
+  "historyFile": "/var/lib/vozen-status/public/history.json",
+  "caddyBackup": "/var/backups/vozen-status/caddy-before-history-20261018.json",
+  "caddyBeforeSha256": "99c8e97ec78778fa1c75eb3a3958fda512a6682d03f48be29897e48c1650d888",
+  "caddyCandidateSha256": "95ff4385e54b1433dba76a1b315326ade0c5bdeb1bf165a3642336eb2bcd1a97",
+  "checks": ["collector enabled and active", "multiple UTC minute observations", "history survives collector restart without reset", "GET and HEAD 200", "POST and OPTIONS 405", "CORS scoped to vozen.org", "direct-origin guard remains 403", "existing TTS and Helper health 200", "previous proxy settings preserved plus exactly one history route"],
+  "rollback": "Disable and stop only vozen-status-monitor; retain history. Validate and reload the saved live Caddy JSON if reverting its history route. Do not reload the stale Caddyfile or touch bot containers."
+}
