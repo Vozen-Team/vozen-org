@@ -10,7 +10,10 @@ test('public copy and navigation work with JavaScript disabled', async ({ browse
     await expect(page.locator('header nav a[href*="tts/"]').first()).toHaveAttribute('href', /tts\//);
     await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /.+/);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /^https:\/\/vozen.org\//);
-    if (route.startsWith('/docs/')) {
+    if (route === '/docs/') {
+      await expect(page.locator('[data-docs-visual-guide]')).toHaveCount(0);
+      await expect(page.locator('img[src*="docs-home"]')).toHaveCount(0);
+    } else if (route.startsWith('/docs/')) {
       await expect(page.locator('[data-docs-visual-guide]')).toHaveCount(1);
       await expect(page.locator('[data-docs-visual-guide] img')).toHaveAttribute('alt', /Illustrated example/);
     }
