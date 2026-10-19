@@ -2601,7 +2601,7 @@ function App() {
           setFeatures(items => items.map(item => item.key === key ? { ...item, enabled: result.enabled } : item));
           setSavedDetailConfig(result.config);
           setDetailRevision(result.revision ?? detailRevision);
-          if (key === 'community.levels' && sent.config.bannerEnabled === true) setSavedRankConfig(sent.rank);
+          if (key === 'community.levels') setSavedRankConfig(sent.rank);
           // An earlier response acknowledges only its own snapshot. It must
           // not reset fields that were edited while that request was running.
           if (latest) {
@@ -2640,8 +2640,9 @@ function App() {
   async function publishSettings(key: string, guildId: string | undefined, sent: SettingsDraft, revision: number): Promise<Awaited<ReturnType<typeof api.saveFeature>>> {
       const publishConfig = { ...sent.config };
       if (key === 'community.levels') {
+        publishConfig.bannerEnabled = true;
         delete publishConfig.rankCard;
-        if (publishConfig.bannerEnabled === true && features.some(item => item.key === 'studio.rank_card' && item.premium_unlocked)) {
+        if (features.some(item => item.key === 'studio.rank_card' && item.premium_unlocked)) {
           publishConfig.rankCard = sent.rank;
         }
       }
@@ -4823,12 +4824,8 @@ function FeatureDetail({
           {feature?.key === 'community.levels' && (
             <section className="config-section card">
               <h3>{helperT('helper.levelBanners', 'Level-up banners')}</h3>
-              <label className="switch-row">
-                <span>{helperT('helper.enableLevelBanner', 'Show the banner in the level-up message')}</span>
-                <input type="checkbox" checked={config.bannerEnabled === true} onChange={event => onChange('bannerEnabled', event.target.checked)} />
-              </label>
-              <p>{helperT('helper.freeLevelCard', 'The default card is free: name, avatar, level and XP, with no background image or customization.')}</p>
-              {!bannerPremium && <PremiumBannerSwitch key={premiumGuildId} guildId={premiumGuildId} guildName={premiumGuildName} premium={false} checked={false} onChange={value => onChange('bannerEnabled', value)} onActivated={onPremiumActivated} />}
+              <p>{helperT('helper.mandatoryLevelCard', 'Every level-up message includes a card. The default card is free; background images and customization require Premium.')}</p>
+              {!bannerPremium && <PremiumBannerSwitch key={premiumGuildId} guildId={premiumGuildId} guildName={premiumGuildName} onActivated={onPremiumActivated} />}
             </section>
           )}
           {feature?.key === 'management.templates' && (
@@ -4922,7 +4919,7 @@ function FeatureDetail({
           </div>
         </aside>
       </div>
-      {feature?.key === 'community.levels' && bannerPremium && config.bannerEnabled === true && bannerEditor}
+      {feature?.key === 'community.levels' && bannerPremium && bannerEditor}
     </section>
   );
 }

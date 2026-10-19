@@ -399,9 +399,11 @@ try {
       await dialog.waitFor({state:'hidden'});
     }
     if (scenario === 'free-card') {
-      await page.getByRole('checkbox',{name:'Show the banner in the level-up message',exact:true}).click();
+      assert.equal(await page.getByRole('checkbox',{name:'Show the banner in the level-up message',exact:true}).count(),0,'mandatory cards have no off switch');
+      await page.getByText('Every level-up message includes a card. The default card is free; background images and customization require Premium.',{exact:true}).waitFor();
       assert.equal(await page.getByRole('dialog').isVisible(),false);
       assert.equal(await page.getByRole('button',{name:'Moonlit Village',exact:true}).count(),0);
+      await page.getByRole('spinbutton',{name:'XP minimum by message',exact:true}).fill('20');
       await saved();
       assert.equal(savedConfig.bannerEnabled,true);
       assert.equal('rankCard' in savedConfig,false,'free save cannot include customization');

@@ -4,12 +4,11 @@ import { helperT as t } from './i18n';
 import { activationChoice, type PremiumSeatStatus } from './premium-activation';
 import './premium-activation.css';
 
-export function PremiumBannerSwitch({ guildId, guildName, premium, checked, onChange, onActivated }: {
-  guildId: string; guildName: string; premium: boolean; checked: boolean;
-  onChange: (value: boolean) => void; onActivated: () => Promise<void>;
+export function PremiumBannerSwitch({ guildId, guildName, onActivated }: {
+  guildId: string; guildName: string; onActivated: () => Promise<void>;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
-  const trigger = useRef<HTMLInputElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
   const mounted = useRef(true);
   const generation = useRef(0);
   const inFlight = useRef(false);
@@ -45,7 +44,7 @@ export function PremiumBannerSwitch({ guildId, guildName, premium, checked, onCh
       if (!mounted.current) return;
       await onActivated();
       if (!mounted.current) return;
-      onChange(true); setOpen(false); trigger.current?.focus();
+      setOpen(false); trigger.current?.focus();
     } catch {
       if (mounted.current) { setError(true); setStatus(null); }
     } finally {
@@ -55,13 +54,9 @@ export function PremiumBannerSwitch({ guildId, guildName, premium, checked, onCh
   }
   const choice = status ? activationChoice(status) : null;
   return <>
-    <label className="switch-row">
-      <span>{t('helper.customizeLevelBanner', 'Customize the card and use background images')}{!premium && ' · 🔒 Premium'}</span>
-      <input ref={trigger} type="checkbox" checked={checked} aria-haspopup={!premium ? 'dialog' : undefined} onChange={event => {
-        if (premium || !event.target.checked) onChange(event.target.checked);
-        else { setOpen(true); void load(); }
-      }} />
-    </label>
+    <button ref={trigger} type="button" className="button secondary" aria-haspopup="dialog" onClick={() => { setOpen(true); void load(); }}>
+      {t('helper.customizeLevelBanner', 'Customize the card and use background images')} · Premium
+    </button>
     <dialog ref={dialog} className="premium-activation-dialog" aria-labelledby="premium-activation-title" onCancel={event => { event.preventDefault(); close(); }}>
       <h2 id="premium-activation-title">{t('helper.premiumActivateTitle', 'Activate Premium on this server?')}</h2>
       <p className="premium-activation-server">{guildName}</p>
@@ -69,7 +64,7 @@ export function PremiumBannerSwitch({ guildId, guildName, premium, checked, onCh
         : !status ? <p role="status">{t('helper.premiumChecking', 'Checking your subscription…')}</p>
         : choice === 'plans' ? <p>{t('helper.premiumNoPass', 'You do not have an active Premium subscription. Would you like to see the plans? This does not start a purchase.')}</p>
         : choice === 'full' ? <p>{t('helper.premiumNoSeats', 'All your Premium server slots are in use. Manage your servers or change your plan.')}</p>
-        : choice === 'active' ? <p>{t('helper.premiumAlreadyActive', 'This server already has Premium. Enable banners without using another slot?')}</p>
+        : choice === 'active' ? <p>{t('helper.premiumCustomizeActive', 'This server already has Premium. Open customization without using another slot?')}</p>
         : <p>{t('helper.premiumUseSeat', 'Use one slot from your subscription to activate Premium on this server?')}</p>}
       {status?.pass_active && <p>{t('helper.premiumSeatsUsed', 'Slots used')}: <strong>{status.used} / {status.seats}</strong></p>}
       <div className="premium-activation-actions">
