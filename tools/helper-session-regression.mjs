@@ -23,7 +23,8 @@ try {
     const simulationScenario = scenario.startsWith('simulation-');
     const starboard = resourceScenario || simulationScenario || channelScenario || multipleScenario;
     const feature = {key:autosaveScenario ? 'community.suggestions' : starboard ? 'community.starboard' : 'community.levels',label:autosaveScenario ? 'Suggestions' : starboard ? 'Starboard' : 'Levels & XP',category:'community',available:true,enabled:true};
-    if (scenario === 'simulation-pt' || scenario === 'channel-pt') await page.addInitScript(() => localStorage.setItem('vozen.lang','pt'));
+    if (scenario === 'simulation-pt' || scenario === 'channel-pt' || (scenario === 'free-card' && process.env.HELPER_CARD_LOCALE === 'pt')) await page.addInitScript(() => localStorage.setItem('vozen.lang','pt'));
+    if (scenario === 'free-card' && process.env.HELPER_CARD_MOBILE) await page.setViewportSize({width:390,height:844});
     if (scenario === 'channel-mobile' || scenario === 'multiple-mobile') await page.setViewportSize({width:390,height:844});
     if (scenario === 'simulation-video') await page.emulateMedia({reducedMotion:'reduce'});
     if (scenario === 'simulation-timeout') await page.addInitScript(() => {
@@ -75,7 +76,7 @@ try {
         switches++; guild = route.request().postDataJSON().guild_id;
         if (scenario === 'uncertain-switch') { await route.fulfill({status:503,json:{code:'lost_response'}}); return; }
         value = {ok:true,guildId:guild};
-      } else if (path === '/api/config/features') value = {guildId:guild,features:[feature]};
+      } else if (path === '/api/config/features') value = {guildId:guild,features:[feature,...(scenario === 'free-card' && process.env.HELPER_CARD_PREMIUM ? [{key:'studio.rank_card',premium_unlocked:true}] : [])]};
       else if (path === `/api/config/features/${feature.key}`) {
         if (route.request().method() === 'PUT') {
           const body = route.request().postDataJSON();
@@ -92,7 +93,7 @@ try {
         if (!ready) { earlyReads++; await route.fulfill({status:401,json:{code:'session_not_ready'}}); return; }
         if (scenario === 'retry-detail' && detailReads === 1) { await route.fulfill({status:503,json:{code:'temporary_failure'}}); return; }
         if (scenario === 'stale-detail' && number === 1) await new Promise(resolve => setTimeout(resolve, 600));
-        value = {...feature,guildId:guild,enabled:savedEnabled,config:savedConfig ?? {xpMin:(guild === 'b' || (scenario === 'stale-detail' && number > 1)) ? 42 : 15},defaults:{},schema:{sections:[{title:'XP progression',fields:[{key:'xpMin',label:'Minimum XP',kind:'number'}]}]},revision};
+        value = {...feature,guildId:guild,enabled:savedEnabled,config:savedConfig ?? {bannerEnabled:false,xpMin:(guild === 'b' || (scenario === 'stale-detail' && number > 1)) ? 42 : 15},defaults:{},schema:{sections:[{title:'XP progression',fields:[{key:'xpMin',label:'Minimum XP',kind:'number'}]}]},revision};
         if (starboard) value = {...feature,guildId:guild,enabled:savedEnabled,config:savedConfig ?? {channel:'a-starboard',threshold:3,emoji:'⭐'},defaults:{},schema:{sections:[{title:'Starboard',fields:[{key:'channel',label:'Default channel',kind:'channel'},{key:'threshold',label:'Required reactions',kind:'number',min:1,max:100},{key:'emoji',label:'Highlight emoji',kind:'text'}]}]},revision};
         if (autosaveScenario) value = {...feature,guildId:guild,enabled:savedEnabled,config:savedConfig ?? {channel:'a-starboard',voteMode:'up_down',anonymous:false,cooldownHours:24,requiredRole:'',staffChannel:''},schema:{sections:[{title:'Suggestion intake',fields:[{key:'channel',label:'Suggestion channel',kind:'channel'},{key:'voteMode',label:'Voting mode',kind:'select',options:[['up_down','Support / against'],['up_only','Support only']]},{key:'anonymous',label:'Hide author in the public message',kind:'toggle'}]},{title:'Moderation',fields:[{key:'cooldownHours',label:'Cooldown per member (hours)',kind:'number',min:0,max:720,advanced:true},{key:'requiredRole',label:'Required role (optional)',kind:'role',advanced:true},{key:'staffChannel',label:'Staff notification channel (optional)',kind:'channel',advanced:true}]}]},revision};
         if (multipleScenario) {
@@ -381,7 +382,7 @@ try {
       await page.goto(`${base}#/config/community.levels`);
     }
     if (scenario === 'retry-detail' || scenario === 'missing-schema') await page.getByRole('button',{name:'Retry configuration',exact:true}).click();
-    try { await page.getByRole('spinbutton',{name:'XP minimum by message',exact:true}).waitFor({timeout:5000}); }
+    try { await page.getByRole('spinbutton',{name:scenario === 'free-card' && process.env.HELPER_CARD_LOCALE === 'pt' ? 'XP mínimo por mensagem' : 'XP minimum by message',exact:true}).waitFor({timeout:5000}); }
     catch (error) { console.log({scenario,earlyReads,detailReads}); console.log(await page.locator('body').innerText()); throw error; }
     assert.equal(earlyReads,0,'configuration must wait for the session');
     if (scenario === 'delayed-session') {
@@ -399,14 +400,31 @@ try {
       await dialog.waitFor({state:'hidden'});
     }
     if (scenario === 'free-card') {
+      const pt = process.env.HELPER_CARD_LOCALE === 'pt';
+      const premium = !!process.env.HELPER_CARD_PREMIUM;
       assert.equal(await page.getByRole('checkbox',{name:'Show the banner in the level-up message',exact:true}).count(),0,'mandatory cards have no off switch');
-      await page.getByText('Every level-up message includes a card. The default card is free; background images and customization require Premium.',{exact:true}).waitFor();
+      await page.getByText(pt ? 'Cada mensagem de subida de nível inclui sempre um cartão. O cartão padrão é gratuito; as imagens de fundo e a personalização são exclusivas do Premium.' : 'Every level-up message includes a card. The default card is free; background images and customization require Premium.',{exact:true}).waitFor();
       assert.equal(await page.getByRole('dialog').isVisible(),false);
-      assert.equal(await page.getByRole('button',{name:'Moonlit Village',exact:true}).count(),0);
-      await page.getByRole('spinbutton',{name:'XP minimum by message',exact:true}).fill('20');
+      assert.equal(await page.getByRole('combobox',{name:pt ? 'Tipo de letra' : 'Font',exact:true}).count(),premium ? 1 : 0,'only Premium can access customization, even when an old config has bannerEnabled=false');
+      assert.equal(writes.length,0,'loading a legacy config must not mutate server settings');
+      const cardSection = page.locator('.config-section').filter({has:page.getByRole('heading',{name:pt ? 'Banners de subida de nível' : 'Level-up banners',exact:true})});
+      assert.equal(await cardSection.getByRole('checkbox').count(),0);
+      if (!premium) {
+        await cardSection.getByRole('button').click();
+        await page.getByRole('dialog').waitFor();
+        await page.keyboard.press('Escape');
+        assert.equal(writes.length,0,'opening customization must not enable Premium or save a style');
+      } else {
+        await page.getByRole('button',{name:'Banners',exact:true}).click();
+        await page.getByRole('button',{name:'Moonlit Village',exact:true}).click();
+      }
+      await page.getByRole('spinbutton',{name:pt ? 'XP mínimo por mensagem' : 'XP minimum by message',exact:true}).fill('20');
       await saved();
       assert.equal(savedConfig.bannerEnabled,true);
-      assert.equal('rankCard' in savedConfig,false,'free save cannot include customization');
+      assert.equal('rankCard' in savedConfig,premium,'free save cannot include customization');
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth),false,'card controls must fit the viewport');
+      await mkdir('output/playwright',{recursive:true});
+      await cardSection.screenshot({path:`output/playwright/mandatory-card-${pt ? 'pt' : 'en'}-${premium ? 'premium' : 'free'}-${process.env.HELPER_CARD_MOBILE ? 'mobile' : 'desktop'}.png`});
     }
     if (scenario === 'uncertain-switch') {
       await page.getByRole('combobox',{name:'Current server',exact:true}).selectOption('b');
