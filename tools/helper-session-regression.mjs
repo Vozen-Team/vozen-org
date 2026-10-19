@@ -405,9 +405,10 @@ try {
       assert.equal(await page.getByRole('checkbox',{name:'Show the banner in the level-up message',exact:true}).count(),0,'mandatory cards have no off switch');
       await page.getByText(pt ? 'Cada mensagem de subida de nível inclui sempre um cartão. O cartão padrão é gratuito; as imagens de fundo e a personalização são exclusivas do Premium.' : 'Every level-up message includes a card. The default card is free; background images and customization require Premium.',{exact:true}).waitFor();
       assert.equal(await page.getByRole('dialog').isVisible(),false);
+      if (premium) await page.locator('.levels-customization > summary').click();
       assert.equal(await page.getByRole('combobox',{name:pt ? 'Tipo de letra' : 'Font',exact:true}).count(),premium ? 1 : 0,'only Premium can access customization, even when an old config has bannerEnabled=false');
       assert.equal(writes.length,0,'loading a legacy config must not mutate server settings');
-      const cardSection = page.locator('.config-section').filter({has:page.getByRole('heading',{name:pt ? 'Banners de subida de nível' : 'Level-up banners',exact:true})});
+      const cardSection = page.locator('.config-section').filter({has:page.getByRole('heading',{name:pt ? 'Cartão de subida de nível' : 'Level-up banners',exact:true})});
       assert.equal(await cardSection.getByRole('checkbox').count(),0);
       if (!premium) {
         await cardSection.getByRole('button').click();

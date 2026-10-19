@@ -1,0 +1,36 @@
+.levels-settings__group + .levels-settings__group {border-top:1px solid var(--line);margin-top:24px;padding-top:24px;}
+.levels-settings h3 {margin:0 0 8px;}
+.levels-settings p {margin:0 0 18px;max-width:68ch;color:var(--muted);font-size:13px;line-height:1.65;}
+.levels-settings__wait {margin-top:18px;}
+.levels-settings__group > .field + .field {margin-top:18px;}
+.levels-settings__card-info p {margin-bottom:12px;}
+.levels-settings .field > span > small:empty {display:none;}
+.levels-settings .toggle-field {border:0;padding:0;background:transparent;min-height:44px;}
+.levels-settings__disclosure {border-top:1px solid var(--line);margin-top:24px;padding-top:4px;}
+.levels-settings__disclosure summary,.levels-customization > summary {display:flex;align-items:center;gap:12px;list-style:none;cursor:pointer;min-height:56px;font-size:15px;font-weight:600;}
+.levels-settings__disclosure summary::-webkit-details-marker,.levels-customization > summary::-webkit-details-marker {display:none;}
+.levels-settings__disclosure summary::after,.levels-customization > summary::after {content:'';border:solid currentColor;border-width:0 1.5px 1.5px 0;padding:3px;transform:rotate(45deg);margin:0 3px 4px auto;}
+.levels-settings__disclosure[open] > summary::after,.levels-customization[open] > summary::after {transform:rotate(225deg);margin-bottom:0;}
+.levels-settings__disclosure summary small,.levels-customization summary small {color:var(--muted);font-weight:400;font-size:12px;}
+.levels-settings__disclosure summary:focus-visible,.levels-customization > summary:focus-visible {outline:2px solid var(--mint);outline-offset:4px;border-radius:4px;}
+.levels-settings__disclosure[open] > .field {margin-top:12px;}
+.levels-customization {min-width:0;}
+.levels-customization > summary {padding:0 24px;border:1px solid var(--line);border-radius:14px;}
+.levels-customization[open] > summary {margin-bottom:16px;}
+.levels-preview-note {color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 16px;}
+.levels-customization .editor-grid {grid-template-columns:minmax(0,1fr);}
+.levels-customization .preview-panel,.levels-customization .controls {min-width:0;}
+.levels-customization .preview-panel {position:static;}
+.levels-rewards ul {list-style:none;padding:0;margin:0 0 18px;}
+.levels-rewards li {display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;border-bottom:1px solid var(--line);font-size:13px;}
+.levels-rewards li span {overflow-wrap:anywhere;}
+.levels-rewards__add {display:grid;grid-template-columns:100px minmax(0,1fr);gap:16px;align-items:end;}
+.levels-rewards__add > button {grid-column:1/-1;justify-self:start;min-height:44px;}
+.levels-rewards .toggle-field {margin-top:18px;}
+@media(max-width:600px) {
+  .panel-main .levels-settings .field-grid {grid-template-columns:minmax(0,1fr);gap:16px;}
+  .levels-rewards__add {grid-template-columns:minmax(0,1fr);}
+  .levels-rewards__add > button {justify-self:stretch;}
+  .levels-settings__disclosure summary {flex-wrap:wrap;gap:8px;}
+  .levels-settings__disclosure summary small {font-size:11px;}
+}

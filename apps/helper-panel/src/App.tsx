@@ -9,6 +9,8 @@ import { ticketSettingsGroups, ticketSettingCopy } from './ticket-settings';
 import './ticket-settings.css';
 import { welcomeSettingsGroups, welcomeSettingCopy, WelcomeGuideSteps } from './welcome-settings';
 import './welcome-settings.css';
+import { LevelsSettings } from './levels-settings-panel';
+import { levelSettingCopy } from './levels-settings';
 import { guildStorage, preferredGuild, rememberGuild } from './last-guild';
 import {
   api,
@@ -4822,11 +4824,14 @@ function FeatureDetail({
       <div className="detail-layout">
         <div className="detail-sections">
           {feature?.key === 'community.levels' && (
-            <section className="config-section card">
-              <h3>{helperT('helper.levelBanners', 'Level-up banners')}</h3>
-              <p>{helperT('helper.mandatoryLevelCard', 'Every level-up message includes a card. The default card is free; background images and customization require Premium.')}</p>
-              {!bannerPremium && <PremiumBannerSwitch key={premiumGuildId} guildId={premiumGuildId} guildName={premiumGuildName} onActivated={onPremiumActivated} />}
-            </section>
+            <LevelsSettings key={premiumGuildId} config={config} keys={sections.flatMap(section => section.fields.map(field => field.key))}
+              context={resourceContext} locale={helperLocale()} premium={bannerPremium} onChange={onChange}
+              renderField={key => {
+                const field = sections.flatMap(section => section.fields).find(field => field.key === key);
+                return field ? <FieldControl key={key} field={{...field,...levelSettingCopy(key,helperLocale()),...(key === 'announceTemplate' ? {kind:'textarea' as const} : {})}}
+                  value={config[key]} context={resourceContext} onChange={onChange} /> : null;
+              }}
+              customization={bannerPremium ? bannerEditor : <PremiumBannerSwitch key={premiumGuildId} guildId={premiumGuildId} guildName={premiumGuildName} onActivated={onPremiumActivated} />} />
           )}
           {feature?.key === 'management.templates' && (
             <TemplateManager
@@ -4851,7 +4856,7 @@ function FeatureDetail({
             <RolePanelManager context={context} localPreviewMode={localPreviewMode} />
           )}
           {feature?.key === 'social.tiktok' && !localPreviewMode && <TikTokConnection />}
-          {sections.map((section) => (
+          {(feature?.key === 'community.levels' ? [] : sections).map((section) => (
             <ConfigSection
               key={section.title}
               section={feature?.key === 'management.polls' ? {...section,fields:section.fields.map(field => field.key === 'channel' ? {
@@ -4919,7 +4924,6 @@ function FeatureDetail({
           </div>
         </aside>
       </div>
-      {feature?.key === 'community.levels' && bannerPremium && bannerEditor}
     </section>
   );
 }
