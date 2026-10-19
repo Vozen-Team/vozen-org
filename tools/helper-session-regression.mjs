@@ -241,6 +241,7 @@ try {
       console.log(`PASS ${scenario}`);await page.close();continue;
     }
     if (scenario === 'fields-visible') {
+      await page.locator('.levels-settings summary').filter({hasText:'Other settings'}).click();
       await page.getByRole('spinbutton',{name:/Cooldown/}).waitFor();
       assert.equal(await page.locator('details.advanced').count(),0);
       console.log(`PASS ${scenario}`);await page.close();continue;
