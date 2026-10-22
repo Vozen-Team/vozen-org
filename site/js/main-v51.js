@@ -52,8 +52,8 @@
   // principal — e mostra o estado "em breve" enquanto o backend não está no ar.
   const IS_ACCOUNT = document.body.classList.contains("page-account");
   const IS_PREMIUM = document.body.classList.contains("page-premium");
-  // New subscriptions use the current server-side Stripe catalogue and require Discord sign-in.
-  const PAYMENTS_ENABLED = true;
+  // Purchases and paid plan changes stay paused; existing billing management remains available.
+  const PAYMENTS_ENABLED = false;
   const PREMIUM_PLANS_URL = "premium.html#plans";
   // Deterministic fixture for local visual QA. The hostname gate keeps this branch unreachable on
   // vozen.org; it exists so the authenticated layout can be reviewed without copying a real token
@@ -666,6 +666,11 @@
 
   const billingInterval = () => pricingGrid?.classList.contains("is-annual") ? "yearly" : "monthly";
   $$('[data-billing-plan]').forEach((button) => {
+    if (!PAYMENTS_ENABLED) {
+      button.disabled = true;
+      button.dataset.i18n = "price.paused";
+      button.textContent = t("price.paused");
+    }
     const preserveScrollBeforeFocus = (event) => {
       if (event.type === "keydown" && !["Enter", " "].includes(event.key)) return;
       billingPendingScrollY = window.scrollY;
@@ -2208,7 +2213,14 @@
     ?.addEventListener("click", openPurchaseActivation);
 
   const planDialog = document.getElementById("planChangeDialog");
-  if (planDialog) {
+  if (!PAYMENTS_ENABLED) {
+    const trigger = document.getElementById("accountPlanChange");
+    if (trigger) {
+      trigger.disabled = true;
+      trigger.title = t("price.paused");
+    }
+  }
+  if (planDialog && PAYMENTS_ENABLED) {
     const node = (id) => document.getElementById("planChange" + id);
     const copy = (key) => {
       const en = {

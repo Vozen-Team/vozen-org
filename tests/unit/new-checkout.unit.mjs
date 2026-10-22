@@ -17,13 +17,14 @@ const documentNodes = file => {
 };
 const attrs = node => Object.fromEntries((node.attrs || []).map(({name, value}) => [name, value]));
 
-test('new checkout is enabled and pricing pages provide working purchase entry points', () => {
-  assert.ok(/const PAYMENTS_ENABLED = true;/.test(script), 'new checkout enabled');
+test('new checkout is paused and pricing cannot start a purchase even without JavaScript', () => {
+  assert.ok(/const PAYMENTS_ENABLED = false;/.test(script), 'new checkout paused');
   const premium = documentNodes('site/premium.html');
   for (const plan of ['plus', 'premium']) {
     const button = premium.find(node => attrs(node)['data-billing-plan'] === plan);
     assert.ok(button);
-    assert.equal(attrs(button).disabled, undefined);
+    assert.equal(attrs(button).disabled, '');
+    assert.equal(attrs(button)['data-i18n'], 'price.paused');
   }
   for (const file of ['site/tts.html', 'site/helper.html', 'site/tts/index.html', 'site/helper/index.html']) {
     const nodes = documentNodes(file);
@@ -32,6 +33,17 @@ test('new checkout is enabled and pricing pages provide working purchase entry p
     assert.doesNotMatch(read(file), /Payments (?:are )?temporarily disabled|Checkout will return/);
   }
   assert.doesNotMatch(read('site/js/global-nav-v1.js'), /<span[^>]+premium-disabled/);
+});
+
+test('paused checkout entry points make no requests or provider calls', () => {
+  for (const name of ['openBillingCheckout', 'continueHostedBillingCheckout', 'continueBillingCheckout', 'startCheckout']) {
+    const start = script.indexOf(`function ${name}(`);
+    assert.ok(start >= 0, name);
+    const header = script.slice(start, script.indexOf('\n', start));
+    const guard = script.slice(script.indexOf('\n', start) + 1).split('\n')[0];
+    assert.match(guard, /if \(!PAYMENTS_ENABLED\) return/);
+    vm.runInNewContext(`${header}\n${guard}\n}; ${name}()`, { PAYMENTS_ENABLED: false });
+  }
 });
 
 test('checkout labels agree in public and account locale catalogues', () => {

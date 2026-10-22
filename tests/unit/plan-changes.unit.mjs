@@ -3,10 +3,11 @@ import fs from 'node:fs';
 import test from 'node:test';
 
 const read = (file) => fs.readFileSync(file, 'utf8');
-test('plan management remains separate from enabled new checkout', () => {
+test('paid plan changes are paused while existing billing management remains available', () => {
   const script = read('site/js/main-v51.js');
   const account = read('site/account/index.html');
-  assert.match(script, /const PAYMENTS_ENABLED = true;/);
+  assert.match(script, /const PAYMENTS_ENABLED = false;/);
+  assert.match(script, /if \(planDialog && PAYMENTS_ENABLED\)/);
   assert.match(account, /<dialog[^>]+id="planChangeDialog"/);
   assert.match(account, /id="planChangeConfirm" hidden(?:="")? disabled/);
   assert.match(script, /planApi\("change\/preview"/);
