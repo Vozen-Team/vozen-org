@@ -669,7 +669,6 @@
     if (!PAYMENTS_ENABLED) {
       button.disabled = true;
       button.dataset.i18n = "price.paused";
-      button.textContent = t("price.paused");
     }
     const preserveScrollBeforeFocus = (event) => {
       if (event.type === "keydown" && !["Enter", " "].includes(event.key)) return;

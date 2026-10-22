@@ -17,6 +17,24 @@ test('the shared wordmark has a small dedicated font subset', async ({ page }) =
 const entryPages = ['/', '/tts/', '/helper/'];
 const widths = [320, 375, 768, 1024, 1440];
 
+test('Premium finishes initialization and darkens navigation on scroll while purchases stay paused', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  for (const width of [320, 1440]) {
+    await page.setViewportSize({ width, height: 700 });
+    await page.goto('/premium.html', { waitUntil: 'networkidle' });
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await expect(page.locator('#nav')).not.toHaveClass(/is-stuck/);
+    await page.evaluate(() => window.scrollTo(0, 600));
+    await expect(page.locator('#nav')).toHaveClass(/is-stuck/);
+    await expect(page.locator('#nav')).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+    for (const button of await page.locator('[data-billing-plan]').all()) await expect(button).toBeDisabled();
+    expect(errors).toEqual([]);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await expect(page.locator('#nav')).not.toHaveClass(/is-stuck/);
+  }
+});
+
 test('TTS scroll-reveal sections actually become opaque, not merely clickable', async ({ page }) => {
   test.setTimeout(90_000);
   await page.setViewportSize({ width: 375, height: 812 });
