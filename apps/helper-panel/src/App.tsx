@@ -5374,7 +5374,7 @@ function LeaderboardPreview({
           {entries.map((entry) => (
             <div className="template-row" key={`${entry.userId}-${entry.rank}`}>
               <div>
-                <b>#{entry.rank} · {entry.userId}</b>
+                <b>#{entry.rank} · {entry.displayName || entry.userId}</b>
                 <small>{entry.xp.toLocaleString()} XP</small>
               </div>
               <span className="status-pill">{entry.rank <= maxEntries ? helperT('helper.included', 'Included') : helperT('helper.hidden', 'Hidden')}</span>

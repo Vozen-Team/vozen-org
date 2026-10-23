@@ -82,7 +82,7 @@ try {
           if (scenario === 'ranking-error') {
             await route.fulfill({ status: 503, json: { code: 'unavailable' } }); return;
           }
-          value = { guildId: 'sample', enabled: true, entries: scenario === 'ranking-data' ? [{ userId: 'sample-member', rank: 1, xp: 1620 }] : [], maxEntries: 10, public: true };
+          value = { guildId: 'sample', enabled: true, entries: scenario === 'ranking-data' ? [{ userId: 'sample-member', displayName: 'Membro de teste <b>seguro</b>', rank: 1, xp: 1620 }, { userId: 'unavailable-member', rank: 2, xp: 438 }] : [], maxEntries: 10, public: true };
         }
         else { await route.fulfill({ status: 503, json: {} }); return; }
       }
@@ -95,7 +95,9 @@ try {
         await preview.getByRole('alert').waitFor();
         assert.equal(await preview.getByText(/No eligible XP data yet/).count(), 0, 'an API failure is not an empty leaderboard');
       } else if (scenario === 'ranking-data') {
-        await preview.getByText('#1 · sample-member', { exact: true }).waitFor();
+        await preview.getByText('#1 · Membro de teste <b>seguro</b>', { exact: true }).waitFor();
+        await preview.getByText('#2 · unavailable-member', { exact: true }).waitFor();
+        assert.equal(await preview.locator('b b').count(), 0, 'member names are text, not HTML');
         assert.equal(await preview.getByRole('alert').count(), 0);
         assert.equal(await preview.getByText(/No eligible XP data yet/).count(), 0);
       } else if (scenario === 'en') {
