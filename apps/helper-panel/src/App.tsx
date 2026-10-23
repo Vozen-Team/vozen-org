@@ -5366,7 +5366,7 @@ function LeaderboardPreview({
       )}
       {loading && <p className="tip" role="status">{helperT('helper.loadingLeaderboard', 'Loading the latest XP ranking…')}</p>}
       {error && <p className="tip" role="alert">{error}</p>}
-      {!loading && enabled && entries.length === 0 && (
+      {!loading && !error && enabled && entries.length === 0 && (
         <p className="tip">{helperT('helper.noXpData', 'No eligible XP data yet. Members can opt out with /leaderboard-privacy.')}</p>
       )}
       {entries.length > 0 && (

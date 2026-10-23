@@ -17,7 +17,7 @@ const leaderboard = demoFeature === 'leaderboard';
 const featureKey = `${polls ? 'management' : tickets || welcome ? 'support' : 'community'}.${demoFeature}`;
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : [])]) {
+  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : []), ...(leaderboard ? ['ranking-error', 'ranking-data'] : [])]) {
     if (process.env.SUGGESTIONS_DEMO_SCENARIO && process.env.SUGGESTIONS_DEMO_SCENARIO !== scenario) continue;
     const page = await browser.newPage(scenario === 'dismiss-touch' ? { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true } : {});
     const dismissScenario = scenario.startsWith('dismiss-');
@@ -78,12 +78,30 @@ try {
         else if (path === '/api/audit') value = { events: [] };
         else if (path === '/api/activity') value = { activity: [] };
         else if (path === '/api/quotas') value = { plan: 'Free', limits: {}, usage: {} };
-        else if (path === '/api/leaderboard') value = { entries: [], maxEntries: 10, public: true };
+        else if (path === '/api/leaderboard') {
+          if (scenario === 'ranking-error') {
+            await route.fulfill({ status: 503, json: { code: 'unavailable' } }); return;
+          }
+          value = { guildId: 'sample', enabled: true, entries: scenario === 'ranking-data' ? [{ userId: 'sample-member', rank: 1, xp: 1620 }] : [], maxEntries: 10, public: true };
+        }
         else { await route.fulfill({ status: 503, json: {} }); return; }
       }
       await route.fulfill({ json: value });
     });
     await page.goto(`${base}#/config/${featureKey}`);
+    if (leaderboard) {
+      const preview = page.locator('section').filter({ has: page.getByRole('heading', { name: pt ? 'Pré-visualização da classificação' : 'Leaderboard preview', exact: true }) });
+      if (scenario === 'ranking-error') {
+        await preview.getByRole('alert').waitFor();
+        assert.equal(await preview.getByText(/No eligible XP data yet/).count(), 0, 'an API failure is not an empty leaderboard');
+      } else if (scenario === 'ranking-data') {
+        await preview.getByText('#1 · sample-member', { exact: true }).waitFor();
+        assert.equal(await preview.getByRole('alert').count(), 0);
+        assert.equal(await preview.getByText(/No eligible XP data yet/).count(), 0);
+      } else if (scenario === 'en') {
+        await preview.getByText(/No eligible XP data yet/).waitFor();
+      }
+    }
     if (events) {
       const capacity = page.getByRole('spinbutton', { name: pt ? /Limite de participantes \(opcional\)/ : /Participant limit \(optional\)/ });
       await capacity.waitFor();
