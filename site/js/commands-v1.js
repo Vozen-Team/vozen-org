@@ -185,7 +185,6 @@
   };
   const applyStaticCopy = () => {
     const copy = [
-      [".commands-hero .eyebrow", "commands.catalogueEyebrow"],
       [".commands-hero h1", "commands.heroTitle"],
       [".commands-hero__lead", "commands.heroLead"],
       [".command-finder__kicker", "commands.chooseBot"],
