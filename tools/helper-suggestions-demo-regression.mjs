@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { mkdir } from 'node:fs/promises';
 const base = process.env.HELPER_TEST_URL || 'http://127.0.0.1:5179/panel/helper-tracker/';
 const demoFeature = process.env.FEATURE_DEMO_FEATURE || 'suggestions';
-if (!['suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels'].includes(demoFeature)) throw new Error('Unknown regression feature');
+if (!['suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard'].includes(demoFeature)) throw new Error('Unknown regression feature');
 const giveaway = demoFeature === 'giveaways';
 const tickets = demoFeature === 'tickets';
 const welcome = demoFeature === 'welcome';
@@ -13,16 +13,18 @@ const polls = demoFeature === 'polls';
 const events = demoFeature === 'events';
 const birthdays = demoFeature === 'birthdays';
 const levels = demoFeature === 'levels';
+const leaderboard = demoFeature === 'leaderboard';
 const featureKey = `${polls ? 'management' : tickets || welcome ? 'support' : 'community'}.${demoFeature}`;
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : [])]) {
+  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : [])]) {
     if (process.env.SUGGESTIONS_DEMO_SCENARIO && process.env.SUGGESTIONS_DEMO_SCENARIO !== scenario) continue;
     const page = await browser.newPage(scenario === 'dismiss-touch' ? { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true } : {});
     const dismissScenario = scenario.startsWith('dismiss-');
     const pt = scenario === 'pt';
     let simulations = 0, writes = 0;
-    const config = levels ? { xpMin: 20, xpMax: 20, cooldownSeconds: 60, voiceXpEnabled: false, voiceXpPerMinute: 2, ignoredChannels: [], announceChannel: '', announceTemplate: '{member} reached level {level}!', stackRoles: true, levelRoles: [] }
+    const config = leaderboard ? { maxEntries: 10, public: true }
+      : levels ? { xpMin: 20, xpMax: 20, cooldownSeconds: 60, voiceXpEnabled: false, voiceXpPerMinute: 2, ignoredChannels: [], announceChannel: '', announceTemplate: '{member} reached level {level}!', stackRoles: true, levelRoles: [] }
       : birthdays ? { channel: 'sample-birthdays', message: 'Happy birthday, {user}!', timezone: 'UTC' }
       : events ? { defaultDurationHours: 2, defaultCapacity: scenario === 'limited-capacity' ? 20 : 0, announcementChannel: 'sample-events', reminders: true, reminderHours: 1 }
       : polls ? { channel: '', defaultDurationHours: 24 }
@@ -30,8 +32,8 @@ try {
       : tickets ? { panelChannel: 'sample-support', categoryId: '', staffRole: '', transcriptChannel: '', maxOpen: 1, panelTitle: 'Need support?', panelDescription: 'Open a private ticket.', closeAfterHours: 1 }
       : giveaway ? { defaultDurationHours: 24, defaultWinners: 1, requiredRole: '' }
       : { channel: 'sample-suggestions', voteMode: 'up_down', anonymous: false, cooldownHours: 24, requiredRole: '', staffChannel: '' };
-    const feature = { key: featureKey, label: levels ? 'Levels & XP' : birthdays ? 'Birthdays' : events ? 'Server events' : polls ? 'Polls' : welcome ? 'Welcome' : tickets ? 'Tickets' : giveaway ? 'Giveaways' : 'Suggestions', category: polls ? 'management' : tickets || welcome ? 'support' : 'community', enabled: scenario !== 'disabled-feature', available: true };
-    const localizedLabel = levels ? (pt ? 'Níveis e XP' : 'Levels & XP') : birthdays ? (pt ? 'Aniversários' : 'Birthdays') : events ? (pt ? 'Eventos do servidor' : 'Server events') : polls ? (pt ? 'Sondagens' : 'Polls') : welcome ? (pt ? 'Boas-vindas' : 'Welcome') : tickets ? 'Tickets' : pt ? (giveaway ? 'Sorteios' : 'Sugestões') : feature.label;
+    const feature = { key: featureKey, label: leaderboard ? 'XP leaderboard' : levels ? 'Levels & XP' : birthdays ? 'Birthdays' : events ? 'Server events' : polls ? 'Polls' : welcome ? 'Welcome' : tickets ? 'Tickets' : giveaway ? 'Giveaways' : 'Suggestions', category: polls ? 'management' : tickets || welcome ? 'support' : 'community', enabled: scenario !== 'disabled-feature', available: true };
+    const localizedLabel = leaderboard ? (pt ? 'Classificação de XP' : 'XP leaderboard') : levels ? (pt ? 'Níveis e XP' : 'Levels & XP') : birthdays ? (pt ? 'Aniversários' : 'Birthdays') : events ? (pt ? 'Eventos do servidor' : 'Server events') : polls ? (pt ? 'Sondagens' : 'Polls') : welcome ? (pt ? 'Boas-vindas' : 'Welcome') : tickets ? 'Tickets' : pt ? (giveaway ? 'Sorteios' : 'Sugestões') : feature.label;
     if (pt) await page.addInitScript(() => localStorage.setItem('vozen.lang', 'pt'));
     if (scenario === 'mobile' || scenario === 'dismiss-mobile') await page.setViewportSize({ width: 390, height: 844 });
     await page.emulateMedia({ reducedMotion: scenario === 'reduced-motion' ? 'reduce' : 'no-preference' });
@@ -60,7 +62,8 @@ try {
         else if (path === '/api/config/features') value = { guildId: 'sample', features: [feature] };
         else if (path === `/api/config/features/${featureKey}`) value = {
           ...feature, guildId: 'sample', config, defaults: {}, revision: 1,
-          schema: { sections: levels ? [{ title: 'Levels & XP', fields: [{ key: 'xpMin', label: 'XP minimum', kind: 'number' }, { key: 'xpMax', label: 'XP maximum', kind: 'number' }, { key: 'cooldownSeconds', label: 'Cooldown (seconds)', kind: 'number' }, { key: 'voiceXpEnabled', label: 'Voice XP', kind: 'toggle' }, { key: 'voiceXpPerMinute', label: 'Voice XP per minute', kind: 'number' }, { key: 'ignoredChannels', label: 'Excluded channels', kind: 'channels' }, { key: 'announceChannel', label: 'Announcement channel', kind: 'channel' }, { key: 'announceTemplate', label: 'Level-up message', kind: 'text' }, { key: 'stackRoles', label: 'Keep previous level roles', kind: 'toggle' }, { key: 'levelRoles', label: 'Level role rewards', kind: 'tags' }] }]
+          schema: { sections: leaderboard ? [{ title: 'XP leaderboard', fields: [{ key: 'maxEntries', label: 'Maximum entries', kind: 'number' }, { key: 'public', label: 'Show the leaderboard publicly', kind: 'toggle' }] }]
+            : levels ? [{ title: 'Levels & XP', fields: [{ key: 'xpMin', label: 'XP minimum', kind: 'number' }, { key: 'xpMax', label: 'XP maximum', kind: 'number' }, { key: 'cooldownSeconds', label: 'Cooldown (seconds)', kind: 'number' }, { key: 'voiceXpEnabled', label: 'Voice XP', kind: 'toggle' }, { key: 'voiceXpPerMinute', label: 'Voice XP per minute', kind: 'number' }, { key: 'ignoredChannels', label: 'Excluded channels', kind: 'channels' }, { key: 'announceChannel', label: 'Announcement channel', kind: 'channel' }, { key: 'announceTemplate', label: 'Level-up message', kind: 'text' }, { key: 'stackRoles', label: 'Keep previous level roles', kind: 'toggle' }, { key: 'levelRoles', label: 'Level role rewards', kind: 'tags' }] }]
             : birthdays ? [{ title: 'Birthdays', fields: [{ key: 'channel', label: 'Birthday channel', kind: 'channel' }, { key: 'message', label: 'Birthday message', kind: 'textarea' }, { key: 'timezone', label: 'Time zone', kind: 'text' }] }]
             : events ? [{ title: 'Events', fields: [{ key: 'defaultDurationHours', label: 'Default duration (hours)', kind: 'number' }, { key: 'defaultCapacity', label: 'Default capacity', kind: 'number' }, { key: 'announcementChannel', label: 'Announcement channel', kind: 'channel' }, { key: 'reminders', label: 'Send reminders', kind: 'toggle' }, { key: 'reminderHours', label: 'Reminder before start (hours)', kind: 'number' }] }]
             : polls ? [{ title: 'Polls', fields: [{ key: 'channel', label: 'Default channel', kind: 'channel' }, { key: 'defaultDurationHours', label: 'Default duration (hours)', kind: 'number', min: 1, max: 168 }] }]
@@ -75,6 +78,7 @@ try {
         else if (path === '/api/audit') value = { events: [] };
         else if (path === '/api/activity') value = { activity: [] };
         else if (path === '/api/quotas') value = { plan: 'Free', limits: {}, usage: {} };
+        else if (path === '/api/leaderboard') value = { entries: [], maxEntries: 10, public: true };
         else { await route.fulfill({ status: 503, json: {} }); return; }
       }
       await route.fulfill({ json: value });

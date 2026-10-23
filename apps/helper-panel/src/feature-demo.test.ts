@@ -2,6 +2,19 @@ import { describe, expect, it } from 'vitest';
 import { featureDemo } from './feature-demo';
 
 describe('feature-specific demonstrations', () => {
+  it('explains leaderboard order, visibility and opt-out with sample data', () => {
+    const demo = featureDemo('community.leaderboard', 'en');
+    expect(demo?.asset).toBe('leaderboard-en');
+    expect(demo?.example).toMatch(/sample data/i);
+    expect(demo?.example).toMatch(/no messages are sent/i);
+    expect(demo?.steps).toHaveLength(3);
+    expect(demo?.steps.join(' ')).toMatch(/highest XP/i);
+    expect(demo?.steps.join(' ')).toMatch(/public.*private/i);
+    expect(demo?.steps.join(' ')).toMatch(/\/leaderboard-privacy opt_out: true/);
+    expect(featureDemo('community.leaderboard', 'pt')?.asset).toBe('leaderboard-pt');
+    expect(featureDemo('community.leaderboard', 'pt')?.steps.join(' ')).toMatch(/não apaga o XP/);
+    expect(featureDemo('community.leaderboard', 'fr')?.asset).toBe('leaderboard-en');
+  });
   it('explains levels, XP cooldowns and rank using sample data without awarding real XP', () => {
     const demo = featureDemo('community.levels', 'en');
     expect(demo?.asset).toBe('levels-en');

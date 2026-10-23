@@ -10,7 +10,7 @@ const destination = path.join(root, 'apps/helper-panel/public/feature-demos');
 // Retain the original command; pass a feature name to generate only that storyboard
 // without replacing any existing Starboard assets.
 const feature = process.argv[2] ?? 'starboard';
-if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels'].includes(feature)) throw new Error('Unknown feature demo');
+if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard'].includes(feature)) throw new Error('Unknown feature demo');
 await fs.mkdir(destination, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -51,6 +51,7 @@ try {
         ctx.fillText(content, x, y);
       }
       function draw(time) {
+        if (feature === 'leaderboard') { drawLeaderboard(time); return; }
         if (feature === 'levels') { drawLevels(time); return; }
         if (feature === 'birthdays') { drawBirthdays(time); return; }
         if (feature === 'events') { drawEvents(time); return; }
@@ -85,6 +86,31 @@ try {
         label(text.sample, 42, 518, 14, '#a3b6d1');
         ctx.fillStyle = '#24354c'; ctx.fillRect(42, 531, 876, 3);
         ctx.fillStyle = '#8ee5d2'; ctx.fillRect(42, 531, 876 * Math.min(time / 10, 1), 3);
+      }
+      function drawLeaderboard(time) {
+        const hidden = time >= 6.5;
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / CLASSIFICAÇÃO' : 'VOZEN HELPER / LEADERBOARD', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Consulta o top e controla a tua privacidade' : 'Check the top and control your privacy', 42, 111, 28);
+        card(42, 135, 876, 65);
+        label(time < 4 || hidden ? '/leaderboard' : '/leaderboard-privacy opt_out: true', 64, 176, 23, '#8ee5d2');
+        if (time >= 2) {
+          card(42, 217, 876, 211);
+          label(pt ? 'Vozen Helper · Top XP · resposta pública' : 'Vozen Helper · Top XP · public response', 64, 250, 19, '#8ee5d2');
+          const rows = hidden ? [[`${member} 1`, '1 250'], [`${member} 3`, '730']] : [[`${member} 1`, '1 250'], [`${member} 2`, '980'], [`${member} 3`, '730']];
+          rows.forEach(([name, xp], index) => {
+            const y = 291 + index * 44;
+            label(`#${index + 1}`, 64, y, 22, index === 0 ? '#ffd170' : '#a3b6d1');
+            label(name, 138, y, 22);
+            label(`${xp} XP`, 720, y, 22, '#8ee5d2');
+          });
+          if (hidden) label(pt ? 'Nova consulta · Membro 2 oculto · XP guardado' : 'New response · Member 2 hidden · XP saved', 64, 401, 18, '#a3b6d1');
+        }
+        label(time < 2 ? (pt ? '1. Consulta /leaderboard com a feature ativa' : '1. Run /leaderboard with the feature enabled')
+          : time < 4 ? (pt ? '2. Os membros aparecem por ordem de XP' : '2. Members appear in XP order')
+          : (pt ? '3. Podes ocultar a tua entrada sem perder XP' : '3. Hide your entry without losing XP'), 42, 482, 22);
+        label(pt ? 'Dados de exemplo · visibilidade e limite definidos no dashboard' : 'Sample data · visibility and limit are set in the dashboard', 42, 516, 14, '#a3b6d1');
       }
       function drawSuggestions(time) {
         const idea = pt ? 'Criar um canal para eventos' : 'Create a channel for events';
@@ -389,7 +415,7 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Sem canal escolhido, o botão não aparece · exemplo ilustrativo' : 'Without a chosen channel, the button stays hidden · illustrative example', 42, 518, 14, '#a3b6d1');
       }
-      draw(['events', 'birthdays', 'levels'].includes(feature) ? 8 : 0);
+      draw(['events', 'birthdays', 'levels', 'leaderboard'].includes(feature) ? 8 : 0);
       const poster = canvas.toDataURL('image/png').split(',')[1];
       const stream = canvas.captureStream(24);
       const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: 700_000 });
