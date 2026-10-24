@@ -14,30 +14,42 @@
 .levels-settings__disclosure summary small,.levels-customization summary small {color:var(--muted);font-weight:400;font-size:12px;}
 .levels-settings__disclosure summary:focus-visible,.levels-customization > summary:focus-visible {outline:2px solid var(--mint);outline-offset:4px;border-radius:4px;}
 .levels-settings__disclosure[open] > .field {margin-top:12px;}
-.levels-customization {min-width:0;--rank-preview-height:clamp(128px,18dvh,192px);}
+.levels-customization {min-width:0;--rank-preview-height:clamp(88px,14dvh,144px);}
 .levels-customization > summary {padding:0 24px;border:1px solid var(--line);border-radius:14px;}
 .levels-customization[open] > summary {margin-bottom:16px;}
 .levels-preview-note {color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 16px;}
-.panel-main .levels-customization .editor-grid {position:sticky;top:0;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);height:calc(100dvh - var(--workspace-topbar-height) - 80px);min-height:0;}
+.panel-main .levels-customization .editor-grid {position:sticky;top:0;grid-template-columns:minmax(0,1fr);gap:8px;}
 .levels-customization .preview-panel,.levels-customization .controls {min-width:0;}
-.panel-main .levels-customization .preview-panel {position:static;padding:12px;background:var(--panel-surface);}
+.panel-main .levels-customization .preview-panel {position:static;padding:10px;background:var(--panel-surface);}
 .panel-main .levels-customization .preview-panel .card-title {align-items:center;gap:12px;margin-bottom:8px;}
 .panel-main .levels-customization .preview-panel .eyebrow {display:none;}
 .panel-main .levels-customization .preview-panel h2 {font-size:13px;line-height:1.4;margin:0;}
 .panel-main .levels-customization .rank-preview {display:flex;align-items:center;gap:16px;min-height:var(--rank-preview-height);height:auto;max-height:none;aspect-ratio:auto;padding:12px 16px;text-align:left;}
 .panel-main .levels-customization .rank-avatar {width:clamp(44px,8vw,80px);height:clamp(44px,8vw,80px);}
 .panel-main .levels-customization .rank-top {display:block;}
-.panel-main .levels-customization .rank-top strong {font-size:20px;}
-.panel-main .levels-customization .rank-top div {margin-top:4px;gap:8px;font-size:11px;flex-wrap:wrap;}
-.panel-main .levels-customization .rank-content p {margin:4px 0 8px;font-size:11px;}
-.panel-main .levels-customization .xp-meta {font-size:10px;margin-bottom:6px;justify-content:space-between;}
+.panel-main .levels-customization .rank-top strong {font-size:20px;line-height:24px;}
+.panel-main .levels-customization .rank-top div {margin-top:4px;gap:8px;font-size:11px;line-height:14px;flex-wrap:wrap;}
+.panel-main .levels-customization .rank-content p {margin:4px 0 8px;font-size:11px;line-height:14px;}
+.panel-main .levels-customization .xp-meta {font-size:10px;line-height:12px;margin-bottom:6px;justify-content:space-between;}
 .panel-main .levels-customization .xp-track {height:6px;}
-.panel-main .levels-customization .editor-grid.panel-editor-grid > .controls {position:static;height:100%;min-height:0;max-height:none;overflow-y:auto;overscroll-behavior-y:contain;align-content:start;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:var(--mint) transparent;scroll-padding-block:12px;}
+.panel-main .levels-customization .editor-grid.panel-editor-grid > .controls {position:static;height:auto;min-height:0;max-height:none;overflow:visible;padding:12px;gap:8px;}
 .panel-main .levels-customization .controls :is(button,input,select) {scroll-margin-block:12px;}
 .panel-main .levels-customization .banner-grid {max-height:none;overflow:visible;}
+.rank-filters {display:grid;grid-template-columns:1fr 1fr 1.6fr;gap:8px;}
+.rank-filters button {min-height:44px;}
+.rank-filter-panel {display:grid;gap:12px;min-height:216px;align-content:start;}
+.rank-banner-pages {display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.rank-banner-pages button {min-height:44px;}
+.rank-banner-pages span {color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;}
+.panel-main .levels-customization .background-picker {gap:8px;}
+.panel-main .levels-customization .background-modes button {min-height:44px;}
+.panel-main .levels-customization .banner-option img {height:48px;}
+.panel-main .levels-customization .rank-actions {padding-top:8px;margin:0;}
+.panel-main .levels-customization .rank-actions button {min-height:44px;}
+.rank-filters button:focus-visible,.rank-banner-pages button:focus-visible {outline:2px solid var(--mint);outline-offset:2px;}
 @media(max-width:760px) {
   .workspace-shell--helper:has(.levels-customization[open]) > .panel-main.workspace-main {overflow:visible;}
-  .panel-main .levels-customization .editor-grid {top:var(--workspace-topbar-height);}
+  .panel-main .levels-customization .editor-grid {top:var(--workspace-topbar-height);scroll-margin-top:var(--workspace-topbar-height);}
 }
 .levels-rewards ul {list-style:none;padding:0;margin:0 0 18px;}
 .levels-rewards li {display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;border-bottom:1px solid var(--line);font-size:13px;}

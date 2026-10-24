@@ -6215,6 +6215,8 @@ function RankCardEditor({
   patch: (next: Partial<RankCardConfig>) => void;
   onReset: () => void;
 }) {
+  const [filter, setFilter] = useState<'colors' | 'text' | 'background'>('colors');
+  const pt = helperLocale() === 'pt';
   return (
     <section className="editor-grid panel-editor-grid">
       <div className="card preview-panel panel-preview-panel">
@@ -6228,14 +6230,15 @@ function RankCardEditor({
         <RankPreview config={config} />
       </div>
       <div className="card controls panel-controls">
-        <div className="card-title">
-          <div>
-            <small className="eyebrow">{helperT('helper.safeEditor', 'SAFE EDITOR')}</small>
-            <h2>{helperT('helper.xpIdentity', 'XP card identity')}</h2>
-            <p>{helperT('helper.xpIdentityHint', 'Use only Vozen-curated banners or a solid color.')}</p>
-          </div>
+        <div className="rank-filters" role="group" aria-label={pt ? 'Personalizar o cartão' : 'Customize the card'}>
+          {([
+            ['colors', pt ? 'Cores' : 'Colors'],
+            ['text', pt ? 'Texto' : 'Text'],
+            ['background', pt ? 'Fundo e banners' : 'Background & banners'],
+          ] as const).map(([key, label]) => <button type="button" className={filter === key ? 'mode selected' : 'mode'} aria-pressed={filter === key} key={key} onClick={() => setFilter(key)}>{label}</button>)}
         </div>
-        <label>
+        <div className="rank-filter-panel">
+        {filter === 'text' && <><label>
           {helperT('helper.font', 'Font')}
           <select value={config.font} onChange={(event) => patch({ font: event.target.value })}>
             <option value="system">System</option>
@@ -6247,16 +6250,16 @@ function RankCardEditor({
           </select>
         </label>
         <ColorField
-          label={helperT('helper.primaryColor', 'Primary color')}
-          value={config.primary_color}
-          swatches={swatches}
-          onChange={(value) => patch({ primary_color: value, avatar_ring_color: value })}
-        />
-        <ColorField
           label={helperT('helper.textColor', 'Text color')}
           value={config.text_color}
           swatches={swatches}
           onChange={(value) => patch({ text_color: value })}
+        /></>}
+        {filter === 'colors' && <><ColorField
+          label={helperT('helper.primaryColor', 'Primary color')}
+          value={config.primary_color}
+          swatches={swatches}
+          onChange={(value) => patch({ primary_color: value, avatar_ring_color: value })}
         />
         <label>
           {helperT('helper.overlayOpacity', 'Overlay opacity')} <output>{Math.round(config.overlay_opacity * 100)}%</output>
@@ -6268,8 +6271,9 @@ function RankCardEditor({
             value={config.overlay_opacity}
             onChange={(event) => patch({ overlay_opacity: Number(event.target.value) })}
           />
-        </label>
-        <BackgroundPicker config={config} patch={patch} />
+        </label></>}
+        {filter === 'background' && <BackgroundPicker config={config} patch={patch} />}
+        </div>
         <div className="actions rank-actions">
           <button type="button" className="secondary" onClick={onReset}>
             {helperT('helper.restore', 'Restore')}
@@ -6287,6 +6291,9 @@ function BackgroundPicker({
   patch: (next: Partial<RankCardConfig>) => void;
 }) {
   const preset = config.background_preset;
+  const [page, setPage] = useState(() => Math.max(0, Math.floor(presetOptions.findIndex(([id]) => id === preset) / 2)));
+  const pt = helperLocale() === 'pt';
+  const pageCount = Math.ceil(presetOptions.length / 2);
   return (
     <div className="background-picker">
       <div className="field-label">
@@ -6306,23 +6313,25 @@ function BackgroundPicker({
         <button
           type="button"
           className={preset ? 'mode selected' : 'mode'}
-          onClick={() =>
+          onClick={() => {
+            setPage(Math.max(0, Math.floor(presetOptions.findIndex(([id]) => id === preset) / 2)));
             patch({
               background_preset: preset ?? presetOptions[0][0],
               background_url: null,
               background_data: null,
-            })
-          }
+            });
+          }}
         >
           {helperT('helper.banners', 'Banners')}
         </button>
       </div>
       {preset ? (
-        <div className="banner-grid">
-          {presetOptions.map(([id, label, webp, fallback]) => (
+        <><div className="banner-grid">
+          {presetOptions.slice(page * 2, page * 2 + 2).map(([id, label, webp, fallback]) => (
             <button
               type="button"
               className={preset === id ? 'banner-option selected' : 'banner-option'}
+              aria-pressed={preset === id}
               key={id}
               onClick={() =>
                 patch({ background_preset: id, background_url: null, background_data: null })
@@ -6343,6 +6352,11 @@ function BackgroundPicker({
             </button>
           ))}
         </div>
+        <div className="rank-banner-pages">
+          <button type="button" className="mode" aria-label={pt ? 'Banners anteriores' : 'Previous banners'} disabled={page === 0} onClick={() => setPage(page - 1)}>{pt ? 'Anterior' : 'Previous'}</button>
+          <span role="status" aria-live="polite">{page + 1} / {pageCount}</span>
+          <button type="button" className="mode" aria-label={pt ? 'Banners seguintes' : 'Next banners'} disabled={page === pageCount - 1} onClick={() => setPage(page + 1)}>{pt ? 'Seguinte' : 'Next'}</button>
+        </div></>
       ) : (
         <ColorField
           label={helperT('helper.backgroundColor', 'Choose a background color')}
@@ -6371,6 +6385,7 @@ function ColorField({
         <span>{label}</span>
         <input
           type="color"
+          aria-label={label}
           value={value}
           onChange={(event) => onChange(event.target.value.toUpperCase())}
         />
