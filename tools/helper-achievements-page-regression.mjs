@@ -1,6 +1,9 @@
 // Synthetic fixtures only: no guild writes, login or Discord messages.
 import assert from 'node:assert/strict';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
+const source = await readFile(new URL('../apps/helper-panel/src/achievements-page.tsx', import.meta.url), 'utf8');
+const catalogue = await readFile(new URL('../apps/helper-panel/src/achievements-i18n.ts', import.meta.url), 'utf8');
+for (const match of source.matchAll(/\bt\('([^']+)'/g)) assert.ok(catalogue.includes(`'${match[1]}'`), `Missing translation: ${match[1]}`);
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const base = process.env.HELPER_TEST_URL || 'http://127.0.0.1:5179/panel/helper-tracker/';
 const guild = '1524199248248176751', token = 'a'.repeat(64);
@@ -27,6 +30,16 @@ try {
     });
     await page.route('https://cdn.discordapp.com/**',route=>route.fulfill({contentType:'image/svg+xml',body:'<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96"><rect width="96" height="96" rx="48" fill="#243f52"/><text x="48" y="65" text-anchor="middle" fill="#8ee5d2" font-size="48" font-family="sans-serif">M</text></svg>'}));
     await page.goto(`${base}#/achievements/${scenario==='invalid'?'invalid':guild}${personal?`/${token}`:''}?lang=${pt?'pt':'en'}`);
+    await page.locator('.workspace-global-nav').waitFor();
+    assert.equal(await page.locator('.workspace-global-nav').count(),1);
+    if(mobile) {
+      const menu = page.locator('.workspace-global-nav__menu');
+      await menu.click();
+      await page.locator('#ecosystem-products a[href="/commands/"]').waitFor({state:'visible'});
+      await page.keyboard.press('Escape');
+      assert.equal(await menu.getAttribute('aria-expanded'),'false');
+      assert.equal(await page.locator('#ecosystem-products').isVisible(),false);
+    }
     if (['expired','unavailable','invalid'].includes(scenario)) {
       await page.getByRole('alert').waitFor();
       assert.equal(await page.locator('.achievement-tile').count(),0);
@@ -54,13 +67,11 @@ try {
           await page.getByRole('button',{name:pt?'Desbloqueadas':'Unlocked',exact:true}).click();
           assert.equal(await page.locator('.achievement-tile').count(),3);
           await page.getByRole('button',{name:pt?'Todas':'All',exact:true}).click();
-          await Promise.all([
-            page.waitForResponse(response=>response.url().includes(`/api/achievements/${guild}`)),
-            page.getByRole('link',{name:pt?'English':'Português',exact:true}).click(),
-          ]);
-          await page.locator('.achievement-toolbar').waitFor();
+          await page.locator('.workspace-global-nav__language-button').click();
+          await page.getByRole('button',{name:pt?'English':'Português',exact:true}).click();
+          await page.getByRole('heading',{name:pt?'All achievements':'Todas as conquistas',exact:true}).waitFor();
           assert.ok(page.url().includes(token),'language switch must keep the private profile');
-          assert.ok(profileRequests>=2);
+          assert.equal(profileRequests,1,'language changes reuse the loaded private profile');
         }
         assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'no horizontal overflow');
       }
@@ -68,5 +79,30 @@ try {
     assert.equal(writes,0); assert.equal(otherApi,0,'public pages must not initialize management authentication');
     console.log(`${scenario}: passed`);
     await page.close();
+  }
+  for (const [locale, heading] of Object.entries({fr:'Tous les succès',es:'Todos los logros',de:'Alle Erfolge',tr:'Tüm başarımlar',ar:'كل الإنجازات',zh:'所有成就',ru:'Все достижения',ko:'모든 업적'})) {
+    for (const personal of [false,true]) {
+      const page=await browser.newPage({viewport:{width:390,height:844}});
+      let requests=0;
+      await page.route('https://api.vozen.org/**',route=>{
+        assert.ok(route.request().url().includes(`/api/achievements/${guild}`));
+        requests++;
+        assert.equal(route.request().headers().authorization,personal?`Achievement ${token}`:undefined);
+        return route.fulfill({json:{guildId:guild,guildName:'Test',profile:personal?{name:'Test member',avatar:''}:null,achievements:rows,trackedMembers:2,tierCounts:{}}});
+      });
+      await page.goto(`${base}#/achievements/${guild}${personal?`/${token}`:''}?lang=${locale}`);
+      await page.getByRole('heading',{name:heading,exact:true}).waitFor();
+      assert.equal(await page.locator('.achievement-tile').count(),7);
+      assert.equal(await page.locator('html').getAttribute('dir'),locale==='ar'?'rtl':'ltr');
+      assert.equal(await page.locator('html').getAttribute('lang'),locale);
+      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+      assert.equal(await page.evaluate(()=>localStorage.getItem('vozen.lang')),locale);
+      await page.reload();
+      await page.getByRole('heading',{name:heading,exact:true}).waitFor();
+      if(locale==='ar'||locale==='ko') await page.screenshot({path:`output/playwright/achievements-page-${locale}-${personal?'personal':'catalog'}.png`,fullPage:true});
+      assert.equal(requests,2);
+      await page.close();
+    }
+    console.log(`${locale}: public/private passed`);
   }
 } finally {await browser.close();}

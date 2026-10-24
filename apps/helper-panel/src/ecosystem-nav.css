@@ -512,3 +512,19 @@
   .workspace-global-nav__language-panel,
   .workspace-global-nav__language-option { transition: none; }
 }
+
+.workspace-global-nav__menu {display:none;}
+@media (max-width: 820px) {
+  .workspace-global-nav__links {display:none;}
+  .workspace-global-nav__links.is-open {display:flex;position:absolute;inset-inline:0;top:100%;flex-direction:column;gap:0;padding:12px 24px;background:#080d17;border-bottom:1px solid var(--ecosystem-nav-border);}
+  .workspace-global-nav__links.is-open a,.workspace-global-nav__links.is-open span {display:flex;}
+  .workspace-global-nav__language {display:block;}
+  .workspace-global-nav__language-button {min-width:44px;min-height:44px;padding-inline:10px;}
+  .workspace-global-nav__language-name {display:none;}
+  .workspace-global-nav__language-panel {right:auto;inset-inline-end:0;}
+  .workspace-global-nav__account {min-width:44px;width:44px;padding:10px;justify-content:center;}
+  .workspace-global-nav__account>span:last-child {display:none;}
+  .workspace-global-nav__menu {display:grid;place-items:center;width:44px;height:44px;padding:10px;border:0;border-radius:10px;background:transparent;color:inherit;}
+  .workspace-global-nav__menu svg {width:24px;height:24px;}
+  .workspace-global-nav__menu:focus-visible {outline:2px solid var(--ecosystem-nav-aqua);}
+}

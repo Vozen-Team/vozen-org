@@ -1,0 +1,66 @@
+import type { SupportedLocale } from './i18n';
+
+export const achievementLocales = ['fr', 'es', 'de', 'tr', 'ar', 'zh', 'ru', 'ko'] as const;
+// Columns follow achievementLocales; English and Portuguese live beside the UI.
+export const achievementMessages: Record<string, readonly [string, string, string, string, string, string, string, string]> = {
+  'min': ['min', 'min', 'Min.', 'dk', 'د', '分鐘', 'мин', '분'],
+  'Messages, voice, reactions, threads, boosts and XP.': ['Messages, vocal, réactions, fils, boosts et XP.', 'Mensajes, voz, reacciones, hilos, mejoras y XP.', 'Nachrichten, Sprache, Reaktionen, Threads, Boosts und XP.', 'Mesajlar, ses, tepkiler, konular, takviyeler ve XP.', 'الرسائل والصوت والتفاعلات والمواضيع والتعزيزات وXP.', '訊息、語音、反應、討論串、加成與 XP。', 'Сообщения, голос, реакции, ветки, бусты и XP.', '메시지, 음성, 반응, 스레드, 부스트, XP.'],
+  'Use /achievements for your card and private progress.': ['Utilise /achievements pour ta carte et ta progression privée.', 'Usa /achievements para ver tu tarjeta y progreso privado.', 'Nutze /achievements für deine Karte und deinen privaten Fortschritt.', 'Kartın ve özel ilerlemen için /achievements kullan.', 'استخدم /achievements لعرض بطاقتك وتقدمك الخاص.', '使用 /achievements 查看卡片與私人進度。', 'Используй /achievements для карточки и личного прогресса.', '/achievements로 카드와 비공개 진행 상황을 확인하세요.'],
+  'Achievements': ['Succès', 'Logros', 'Erfolge', 'Başarımlar', 'الإنجازات', '成就', 'Достижения', '업적'],
+  'This private link has expired': ['Ce lien privé a expiré', 'Este enlace privado ha caducado', 'Dieser private Link ist abgelaufen', 'Bu özel bağlantının süresi doldu', 'انتهت صلاحية هذا الرابط الخاص', '此私人連結已過期', 'Срок действия личной ссылки истёк', '비공개 링크가 만료되었습니다'],
+  'Collection unavailable': ['Collection indisponible', 'Colección no disponible', 'Sammlung nicht verfügbar', 'Koleksiyon kullanılamıyor', 'المجموعة غير متاحة', '無法載入收藏', 'Коллекция недоступна', '컬렉션을 볼 수 없습니다'],
+  'Use /achievements in Discord to get a new personal link.': ['Utilise /achievements sur Discord pour obtenir un nouveau lien personnel.', 'Usa /achievements en Discord para obtener un nuevo enlace personal.', 'Nutze /achievements in Discord für einen neuen persönlichen Link.', 'Yeni kişisel bağlantı için Discord’da /achievements kullan.', 'استخدم /achievements في Discord للحصول على رابط شخصي جديد.', '在 Discord 使用 /achievements 取得新的個人連結。', 'Используй /achievements в Discord, чтобы получить новую личную ссылку.', 'Discord에서 /achievements로 새 개인 링크를 받으세요.'],
+  'Check that Achievements is enabled for this server and try again.': ['Vérifie que les succès sont activés sur ce serveur et réessaie.', 'Comprueba que los logros estén activados en este servidor e inténtalo de nuevo.', 'Prüfe, ob Erfolge auf diesem Server aktiviert sind, und versuche es erneut.', 'Bu sunucuda başarımların açık olduğunu kontrol edip tekrar dene.', 'تأكد من تفعيل الإنجازات في هذا الخادم وحاول مجددًا.', '請確認此伺服器已啟用成就，然後重試。', 'Проверь, включены ли достижения на сервере, и попробуй снова.', '서버에서 업적이 활성화되어 있는지 확인하고 다시 시도하세요.'],
+  'Loading achievements…': ['Chargement des succès…', 'Cargando logros…', 'Erfolge werden geladen…', 'Başarımlar yükleniyor…', 'جارٍ تحميل الإنجازات…', '正在載入成就…', 'Загрузка достижений…', '업적 불러오는 중…'],
+  'Private link · valid for 1 hour': ['Lien privé · valable 1 heure', 'Enlace privado · válido durante 1 hora', 'Privater Link · 1 Stunde gültig', 'Özel bağlantı · 1 saat geçerli', 'رابط خاص · صالح لمدة ساعة', '私人連結 · 有效期限 1 小時', 'Личная ссылка · действует 1 час', '비공개 링크 · 1시간 유효'],
+  'Your progress:': ['Ta progression :', 'Tu progreso:', 'Dein Fortschritt:', 'İlerlemen:', 'تقدمك:', '你的進度：', 'Твой прогресс:', '내 진행 상황:'],
+  'How it works': ['Comment ça marche', 'Cómo funciona', 'So funktioniert’s', 'Nasıl çalışır', 'كيف تعمل', '使用說明', 'Как это работает', '이용 안내'],
+  'New activity counts from activation. Existing XP is kept.': ['L’activité compte dès l’activation. L’XP existante est conservée.', 'La actividad cuenta desde la activación. Se conserva la XP anterior.', 'Aktivität zählt ab der Aktivierung. Vorhandene XP bleiben erhalten.', 'Etkinlik, etkinleştirmeden itibaren sayılır. Mevcut XP korunur.', 'يُحتسب النشاط منذ التفعيل. تبقى نقاط XP السابقة محفوظة.', '活動從啟用後開始計算。原有 XP 會保留。', 'Активность учитывается с момента включения. Прежний XP сохраняется.', '활동은 활성화 이후부터 집계됩니다. 기존 XP는 유지됩니다.'],
+  'Member counts include recorded activity only.': ['Seuls les membres avec une activité enregistrée sont comptés.', 'Solo se cuentan miembros con actividad registrada.', 'Gezählt werden nur Mitglieder mit erfasster Aktivität.', 'Yalnızca etkinliği kaydedilmiş üyeler sayılır.', 'تشمل الأعداد الأعضاء ذوي النشاط المسجل فقط.', '人數僅包含有活動紀錄的成員。', 'Учитываются только участники с записанной активностью.', '활동 기록이 있는 멤버만 집계됩니다.'],
+  'Voice progress includes your current session. Achievements do not award extra XP.': ['La progression vocale inclut la session en cours. Les succès ne donnent pas d’XP supplémentaire.', 'El progreso de voz incluye la sesión actual. Los logros no dan XP adicional.', 'Der Sprachfortschritt umfasst die laufende Sitzung. Erfolge geben keine zusätzlichen XP.', 'Ses ilerlemesi mevcut oturumu içerir. Başarımlar ek XP vermez.', 'يشمل تقدم الصوت الجلسة الحالية. لا تمنح الإنجازات نقاط XP إضافية.', '語音進度包含目前的通話。成就不會額外給予 XP。', 'Голосовой прогресс включает текущий сеанс. Достижения не дают дополнительный XP.', '음성 진행도에는 현재 세션이 포함됩니다. 업적은 추가 XP를 지급하지 않습니다.'],
+  'Keep this link private. Use /achievements for a new link; the old one stops working.': ['Garde ce lien privé. /achievements en crée un nouveau et désactive l’ancien.', 'No compartas este enlace. /achievements crea uno nuevo y desactiva el anterior.', 'Halte diesen Link privat. /achievements erstellt einen neuen und deaktiviert den alten.', 'Bu bağlantıyı gizli tut. /achievements yeni bağlantı oluşturur ve eskisini geçersiz kılar.', 'احتفظ بهذا الرابط لنفسك. ينشئ /achievements رابطًا جديدًا ويعطّل القديم.', '請勿分享此連結。使用 /achievements 會產生新連結，舊連結隨即失效。', 'Не передавай эту ссылку. /achievements создаёт новую и отключает старую.', '이 링크를 공유하지 마세요. /achievements로 새 링크를 만들면 이전 링크는 만료됩니다.'],
+  'Rare finds': ['Les plus rares', 'Los más raros', 'Seltene Erfolge', 'En nadirler', 'الأكثر ندرة', '稀有成就', 'Самые редкие', '희귀 업적'],
+  'members': ['membres', 'miembros', 'Mitglieder', 'üye', 'أعضاء', '位成員', 'участников', '명'],
+  'All achievements': ['Tous les succès', 'Todos los logros', 'Alle Erfolge', 'Tüm başarımlar', 'كل الإنجازات', '所有成就', 'Все достижения', '모든 업적'],
+  'Server achievements': ['Succès du serveur', 'Logros del servidor', 'Server-Erfolge', 'Sunucu başarımları', 'إنجازات الخادم', '伺服器成就', 'Достижения сервера', '서버 업적'],
+  'Search achievements': ['Rechercher des succès', 'Buscar logros', 'Erfolge suchen', 'Başarım ara', 'البحث عن إنجاز', '搜尋成就', 'Поиск достижений', '업적 검색'],
+  'Find an achievement…': ['Trouver un succès…', 'Encuentra un logro…', 'Erfolg finden…', 'Başarım bul…', 'ابحث عن إنجاز…', '尋找成就…', 'Найти достижение…', '업적 찾기…'],
+  'Filter achievements': ['Filtrer les succès', 'Filtrar logros', 'Erfolge filtern', 'Başarımları filtrele', 'تصفية الإنجازات', '篩選成就', 'Фильтр достижений', '업적 필터'],
+  'All': ['Tous', 'Todos', 'Alle', 'Tümü', 'الكل', '全部', 'Все', '전체'],
+  'Unlocked': ['Débloqués', 'Desbloqueados', 'Freigeschaltet', 'Açılanlar', 'مفتوحة', '已解鎖', 'Открытые', '달성'],
+  'To complete': ['À terminer', 'Por completar', 'Noch offen', 'Tamamlanacaklar', 'غير مكتملة', '待完成', 'Не завершены', '미완료'],
+  'Sort by': ['Trier par', 'Ordenar por', 'Sortieren nach', 'Sıralama', 'ترتيب حسب', '排序方式', 'Сортировка', '정렬 기준'],
+  'Rarity': ['Rareté', 'Rareza', 'Seltenheit', 'Nadirlik', 'الندرة', '稀有度', 'Редкость', '희귀도'],
+  'Name': ['Nom', 'Nombre', 'Name', 'Ad', 'الاسم', '名稱', 'Название', '이름'],
+  'Progress': ['Progression', 'Progreso', 'Fortschritt', 'İlerleme', 'التقدم', '進度', 'Прогресс', '진행도'],
+  'Unique': ['Unique', 'Único', 'Einzigartig', 'Tek', 'فريدة', '唯一', 'Уникальное', '유일'],
+  'Locked': ['Verrouillés', 'Bloqueados', 'Gesperrt', 'Kilitli', 'مقفلة', '未解鎖', 'Закрытые', '미달성'],
+  'Next milestone': ['Prochaine étape', 'Próxima meta', 'Nächster Meilenstein', 'Sonraki hedef', 'الهدف التالي', '下一個里程碑', 'Следующая цель', '다음 목표'],
+  'Collection complete': ['Collection terminée', 'Colección completa', 'Sammlung vollständig', 'Koleksiyon tamamlandı', 'اكتملت المجموعة', '收藏完成', 'Коллекция собрана', '컬렉션 완료'],
+  'unlocked': ['ont débloqué', 'lo desbloquearon', 'freigeschaltet', 'açtı', 'فتحوا الإنجاز', '已解鎖', 'открыли', '달성'],
+  'No achievements match this filter.': ['Aucun succès ne correspond à ce filtre.', 'No hay logros con este filtro.', 'Keine Erfolge für diesen Filter.', 'Bu filtreye uygun başarım yok.', 'لا توجد إنجازات تطابق هذا الفلتر.', '沒有符合此篩選條件的成就。', 'Нет достижений с таким фильтром.', '이 필터에 해당하는 업적이 없습니다.'],
+  'Bronze': ['Bronze', 'Bronce', 'Bronze', 'Bronz', 'برونزي', '銅', 'Бронза', '브론즈'],
+  'Silver': ['Argent', 'Plata', 'Silber', 'Gümüş', 'فضي', '銀', 'Серебро', '실버'],
+  'Gold': ['Or', 'Oro', 'Gold', 'Altın', 'ذهبي', '金', 'Золото', '골드'],
+  'Diamond': ['Diamant', 'Diamante', 'Diamant', 'Elmas', 'ماسي', '鑽石', 'Алмаз', '다이아몬드'],
+  'Conversation starter': ['À la discussion', 'De charla', 'Gesprächsstarter', 'Sohbet başlatıcı', 'بداية الحديث', '話題發起人', 'Начало разговора', '대화의 시작'],
+  'Send messages in the server': ['Envoie des messages sur le serveur', 'Envía mensajes en el servidor', 'Schreibe Nachrichten auf dem Server', 'Sunucuda mesaj gönder', 'أرسل رسائل في الخادم', '在伺服器傳送訊息', 'Отправляй сообщения на сервере', '서버에서 메시지 보내기'],
+  'Stay awhile': ['Reste un peu', 'Quédate un rato', 'Bleib noch etwas', 'Biraz daha kal', 'ابقَ قليلًا', '多待一會', 'Останься ещё', '조금 더 머물러요'],
+  'Spend time in voice channels': ['Passe du temps dans les salons vocaux', 'Pasa tiempo en canales de voz', 'Verbringe Zeit in Sprachkanälen', 'Ses kanallarında zaman geçir', 'اقضِ وقتًا في القنوات الصوتية', '在語音頻道停留', 'Проводи время в голосовых каналах', '음성 채널에서 시간 보내기'],
+  'Reaction master': ['Maître des réactions', 'Maestro de reacciones', 'Reaktionsmeister', 'Tepki ustası', 'خبير التفاعلات', '反應達人', 'Мастер реакций', '반응의 달인'],
+  'Add reactions to messages': ['Ajoute des réactions aux messages', 'Añade reacciones a mensajes', 'Reagiere auf Nachrichten', 'Mesajlara tepki ekle', 'أضف تفاعلات إلى الرسائل', '對訊息新增反應', 'Добавляй реакции к сообщениям', '메시지에 반응 추가하기'],
+  'Thread creator': ['Créateur de fils', 'Creador de hilos', 'Thread-Ersteller', 'Konu oluşturucu', 'منشئ المواضيع', '討論串建立者', 'Создатель веток', '스레드 개설자'],
+  'Create threads in the server': ['Crée des fils sur le serveur', 'Crea hilos en el servidor', 'Erstelle Threads auf dem Server', 'Sunucuda konu oluştur', 'أنشئ مواضيع في الخادم', '在伺服器建立討論串', 'Создавай ветки на сервере', '서버에서 스레드 만들기'],
+  'Thread explorer': ['Explorateur de fils', 'Explorador de hilos', 'Thread-Entdecker', 'Konu kaşifi', 'مستكشف المواضيع', '討論串探索者', 'Исследователь веток', '스레드 탐험가'],
+  'Participate in different threads': ['Participe à différents fils', 'Participa en distintos hilos', 'Beteilige dich an verschiedenen Threads', 'Farklı konulara katıl', 'شارك في مواضيع مختلفة', '參與不同討論串', 'Участвуй в разных ветках', '다양한 스레드에 참여하기'],
+  'Server supporter': ['Soutien du serveur', 'Apoyo del servidor', 'Server-Unterstützer', 'Sunucu destekçisi', 'داعم الخادم', '伺服器支持者', 'Поддержка сервера', '서버 후원자'],
+  'Boost the server': ['Booste le serveur', 'Mejora el servidor', 'Booste den Server', 'Sunucuya takviye yap', 'عزّز الخادم', '加成伺服器', 'Поддержи сервер бустом', '서버 부스트하기'],
+  'XP milestones': ['Paliers d’XP', 'Metas de XP', 'XP-Meilensteine', 'XP hedefleri', 'مراحل XP', 'XP 里程碑', 'Рубежи XP', 'XP 목표'],
+  'Earn XP in the server': ['Gagne de l’XP sur le serveur', 'Gana XP en el servidor', 'Sammle XP auf dem Server', 'Sunucuda XP kazan', 'اكسب XP في الخادم', '在伺服器獲得 XP', 'Зарабатывай XP на сервере', '서버에서 XP 얻기'],
+};
+
+export function achievementText(locale: SupportedLocale, en: string, pt: string) {
+  if (locale === 'pt') return pt;
+  if (locale === 'en') return en;
+  return achievementMessages[en]?.[achievementLocales.indexOf(locale)] ?? en;
+}
