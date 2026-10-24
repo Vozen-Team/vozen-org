@@ -4894,6 +4894,16 @@ function FeatureDetail({
           {feature?.key === 'community.leaderboard' && (
             <LeaderboardPreview enabled={enabled} localPreviewMode={localPreviewMode} revision={revision} />
           )}
+          {feature?.key === 'community.achievements' && (
+            <section className="card">
+              <h3>{helperLocale() === 'pt' ? 'Uma coleção para o servidor' : 'A collection for your server'}</h3>
+              <p>{helperLocale() === 'pt'
+                ? 'Mensagens, voz, reações, tópicos e impulsos têm medalhas próprias. Os marcos de XP configurados acima continuam disponíveis. A nova atividade conta a partir da ativação; não é importada do MEE6.'
+                : 'Messages, voice, reactions, threads and boosts have their own medals. Your XP milestones above remain available. New activity is tracked from activation; it is not imported from MEE6.'}</p>
+              <p>{helperLocale() === 'pt' ? 'Usa /achievements para receber o cartão e um link privado para o teu progresso. A lista geral não mostra perfis individuais.' : 'Use /achievements for your card and a private link to your progress. The general list does not display individual profiles.'}</p>
+              {!localPreviewMode && enabled && premiumGuildId && <a className="secondary" href={`#/achievements/${premiumGuildId}?lang=${helperLocale() === 'pt' ? 'pt' : 'en'}`}>{helperLocale() === 'pt' ? 'Ver a lista de conquistas' : 'Open achievements list'}</a>}
+            </section>
+          )}
         </div>
         <aside className="detail-aside card">
           <div>

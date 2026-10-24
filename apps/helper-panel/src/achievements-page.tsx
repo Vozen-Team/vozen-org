@@ -1,0 +1,89 @@
+import { useEffect, useState } from 'react';
+import './achievements-page.css';
+
+export type Achievement = { id: string; name: string; description: string; value: number; thresholds: number[]; unlocked: boolean[] };
+type Collection = { guildId: string; guildName: string | null; profile: { name: string; avatar: string } | null; achievements: Achievement[]; trackedMembers: number; tierCounts: Record<string, number[]> };
+const badgePaths: Record<string, string> = {
+  messages: 'M-15-12H15V7H-4L-13 15V7H-15Z',
+  voice: 'M-16 5V-5A16 16 0 0 1 16-5V5M-16 0H-9V13H-16ZM9 0H16V13H9Z',
+  reactions: 'M-15 0A15 15 0 1 0 15 0A15 15 0 1 0-15 0M-7-4H-5M5-4H7M-7 5Q0 13 7 5',
+  threads_created: 'M-7-16L-11 16M8-16L4 16M-17-6H17M-17 7H17',
+  threads_joined: 'M-15-10H15V13H-15ZM-6-15V-5M6-15V-5M-7 4L-1 10L10-1',
+  boost: 'M2-19L-12 3H0L-3 20L14-4H3Z', xp: 'M-15-12L-5 0L-15 12M15-12L5 0L15 12',
+};
+const ptNames: Record<string, [string, string]> = {
+  messages: ['À conversa', 'Envia mensagens no servidor'], voice: ['Fica mais um pouco', 'Passa tempo nos canais de voz'],
+  reactions: ['Mestre das reações', 'Adiciona reações a mensagens'], threads_created: ['Criador de tópicos', 'Cria tópicos no servidor'],
+  threads_joined: ['Explorador de tópicos', 'Participa em tópicos diferentes'], boost: ['Apoiante do servidor', 'Impulsiona o servidor'],
+  xp: ['Marcos de XP', 'Ganha XP no servidor'],
+};
+export function achievementRoute(hash: string) {
+  const match = /^#\/achievements\/(\d{15,22})(?:\/([a-f0-9]{64}))?(?:\?(.*))?$/.exec(hash);
+  return match ? { guild: match[1], token: match[2], pt: new URLSearchParams(match[3]).get('lang') === 'pt' } : null;
+}
+export function achievementScore(rows: Achievement[]) {
+  return rows.reduce((score, row) => score + row.unlocked.filter(Boolean).length / Math.max(1, row.thresholds.length), 0);
+}
+function Medal({ id, tier, earned }: { id: string; tier: number; earned: boolean }) {
+  return <span className={`achievement-medal tier-${tier} ${earned ? 'earned' : 'locked'}`} aria-hidden="true"><span><svg viewBox="-24 -24 48 48" width="80%" height="80%"><path d={badgePaths[id]} fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg></span></span>;
+}
+
+export function AchievementsPage({ hash }: { hash: string }) {
+  const route = achievementRoute(hash);
+  const [data, setData] = useState<Collection | null>(null);
+  const [error, setError] = useState('');
+  const [query, setQuery] = useState('');
+  const [filter, setFilter] = useState('all');
+  const [sort, setSort] = useState('rarity');
+  const pt = route?.pt ?? navigator.language.startsWith('pt');
+  const t = (en: string, translated: string) => pt ? translated : en;
+  useEffect(() => {
+    const controller = new AbortController();
+    setData(null); setError(''); setQuery(''); setFilter('all');
+    if (!route) { setError('invalid'); return; }
+    const base = (import.meta.env.VITE_HELPER_API_BASE as string | undefined)?.replace(/\/$/, '') || 'https://api.vozen.org/rust';
+    fetch(`${base}/api/achievements/${route.guild}`, {
+      signal: controller.signal, credentials: 'omit',
+      headers: route.token ? { Authorization: `Achievement ${route.token}` } : {},
+    }).then(async response => {
+      if (!response.ok) throw new Error(response.status === 401 ? 'expired' : 'unavailable');
+      const result: Collection = await response.json();
+      if (result.guildId !== route.guild || !Array.isArray(result.achievements)) throw new Error('unavailable');
+      if (!controller.signal.aborted) setData(result);
+    }).catch(cause => { if (!controller.signal.aborted) setError(cause.message); });
+    return () => controller.abort();
+  }, [hash]);
+  useEffect(() => {
+    const previous = document.documentElement.lang;
+    document.documentElement.lang = pt ? 'pt-PT' : 'en';
+    return () => { document.documentElement.lang = previous; };
+  }, [pt]);
+  const title = (row: Achievement) => pt ? (ptNames[row.id]?.[0] || row.name) : row.name;
+  const description = (row: Achievement) => pt ? (ptNames[row.id]?.[1] || row.description) : row.description;
+  const score = achievementScore(data?.achievements || []);
+  const rarity = (row: Achievement) => data?.tierCounts[row.id]?.[0] || 0;
+  const all = data?.achievements || [];
+  const visible = all.filter(row => title(row).toLocaleLowerCase().includes(query.toLocaleLowerCase()) && (filter === 'all' || (filter === 'unlocked' ? row.unlocked.some(Boolean) : !row.unlocked.every(Boolean))))
+    .sort((a, b) => sort === 'name' ? title(a).localeCompare(title(b)) : sort === 'progress' ? b.unlocked.filter(Boolean).length / b.thresholds.length - a.unlocked.filter(Boolean).length / a.thresholds.length : rarity(a) - rarity(b));
+  const tiers = pt ? ['Bronze', 'Prata', 'Ouro', 'Diamante'] : ['Bronze', 'Silver', 'Gold', 'Diamond'];
+  return <main className="achievement-page">
+    <header className="achievement-nav"><a href="https://vozen.org">Vozen <span>Helper</span></a><div><a href={`#/achievements/${route?.guild || ''}${route?.token ? `/${route.token}` : ''}?lang=${pt ? 'en' : 'pt'}`}>{pt ? 'English' : 'Português'}</a><a href="#/">{t('Dashboard', 'Painel')}</a></div></header>
+    <section className="achievement-hero">
+      {data?.profile?.avatar.startsWith('https://cdn.discordapp.com/') && <img src={data.profile.avatar} referrerPolicy="no-referrer" alt="" />}
+      <div><p>{data?.guildName || t('Server collection', 'Coleção do servidor')}</p><h1>{data?.profile ? data.profile.name : t('Achievements', 'Conquistas')}</h1><p>{data?.profile ? t('Your collection, one milestone at a time.', 'A tua coleção, uma conquista de cada vez.') : t('Seven ways to take part. A collection to build together.', 'Sete formas de participar. Uma coleção para construir em conjunto.')}</p></div>
+      {data && <div className="achievement-total"><strong>{data.profile ? score.toLocaleString(pt ? 'pt-PT' : 'en', { maximumFractionDigits: 2 }) : all.length}<span>{data.profile ? ` / ${all.length}` : ''}</span></strong><span>{t('Achievements', 'Conquistas')}</span></div>}
+    </section>
+    {error ? <section className="achievement-notice" role="alert"><h2>{error === 'expired' ? t('This private link has expired', 'Este link privado expirou') : t('Collection unavailable', 'Coleção indisponível')}</h2><p>{error === 'expired' ? t('Use /achievements in Discord to get a new personal link.', 'Usa /achievements no Discord para obteres um novo link pessoal.') : t('Check that Achievements is enabled for this server and try again.', 'Confirma que as Conquistas estão ativas neste servidor e tenta novamente.')}</p></section> : !data ? <p role="status">{t('Loading achievements…', 'A carregar conquistas…')}</p> : <>
+      <p className="achievement-notice">{t('Activity is counted from activation. Old XP milestones are kept. Voice time updates when you change or leave a channel; the personal page also includes your current session.', 'A atividade conta a partir da ativação. Os marcos de XP anteriores mantêm-se. O tempo em voz atualiza ao mudares ou saíres de canal; a página pessoal também inclui a sessão atual.')}{data.profile && ` ${t('Your personal link lasts one hour. Keep it private; using /achievements again replaces it.', 'O teu link pessoal dura uma hora. Mantém-no privado; usar /achievements novamente substitui-o.')}`}</p>
+      {!data.profile && <section className="achievement-rarest"><div><h2>{t('Rare finds', 'As mais raras')}</h2><p>{t('Members with a recorded unlock', 'Membros com um desbloqueio registado')}</p></div>{[...all].sort((a, b) => rarity(a) - rarity(b)).slice(0, 3).map(row => <a href={`#achievement-${row.id}`} key={row.id} onClick={event => { event.preventDefault(); document.getElementById(`achievement-${row.id}`)?.scrollIntoView({ behavior: 'auto', block: 'center' }); }}><Medal id={row.id} tier={4} earned /><span>{title(row)}<small>{rarity(row)} / {data.trackedMembers} {t('tracked members', 'membros acompanhados')}</small></span></a>)}</section>}
+      <section className="achievement-collection"><div className="achievement-section-heading"><h2>{t('The collection', 'A coleção')} <span>{all.length}</span></h2>{data.profile && <a href={`#/achievements/${route?.guild}?lang=${pt ? 'pt' : 'en'}`}>{t('Server achievements', 'Conquistas do servidor')}</a>}</div>
+        <div className="achievement-toolbar"><label><span className="sr-only">{t('Search achievements', 'Pesquisar conquistas')}</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder={t('Find an achievement…', 'Encontra uma conquista…')} /></label>{data.profile && <div className="achievement-filters" aria-label={t('Filter achievements', 'Filtrar conquistas')}>{[['all', t('All', 'Todas')], ['unlocked', t('Unlocked', 'Desbloqueadas')], ['locked', t('To complete', 'Por completar')]].map(([value, label]) => <button type="button" key={value} aria-pressed={filter === value} onClick={() => setFilter(value)}>{label}</button>)}</div>}<label className="achievement-sort">{t('Sort by', 'Ordenar por')}<select value={sort} onChange={event => setSort(event.target.value)}><option value="rarity">{t('Rarity', 'Raridade')}</option><option value="name">{t('Name', 'Nome')}</option>{data.profile && <option value="progress">{t('Progress', 'Progresso')}</option>}</select></label></div>
+        <div className="achievement-grid">{visible.map(row => {
+          const tier = row.unlocked.filter(Boolean).length;
+          const next = row.thresholds.find((_, index) => !row.unlocked[index]);
+          return <article className="achievement-tile" key={row.id} id={`achievement-${row.id}`}><div className="achievement-tile-top"><Medal id={row.id} tier={data.profile ? Math.max(tier, 1) : 1} earned={!data.profile || tier > 0} /><div><h3>{title(row)}</h3><p>{description(row)}</p></div>{data.profile && <span className="achievement-fraction">{tier}/{row.thresholds.length}</span>}</div><ol className="achievement-tiers">{row.thresholds.map((threshold, index) => <li key={index} className={data.profile && !row.unlocked[index] ? 'not-earned' : 'is-earned'}><Medal id={row.id} tier={index + 1} earned={!data.profile || row.unlocked[index]} /><span>{row.thresholds.length === 1 ? t('Unique', 'Única') : tiers[index]}</span><strong>{threshold.toLocaleString(pt ? 'pt-PT' : 'en')}{row.id === 'voice' ? ' min' : row.id === 'xp' ? ' XP' : ''}</strong>{data.profile && <span className="achievement-state">{row.unlocked[index] ? t('Unlocked', 'Desbloqueada') : t('Locked', 'Bloqueada')}</span>}</li>)}</ol>{data.profile ? <div className="achievement-progress"><div><span>{next ? t('Next milestone', 'Próximo marco') : t('Collection complete', 'Coleção completa')}</span><strong>{row.value.toLocaleString(pt ? 'pt-PT' : 'en')}{next ? ` / ${next.toLocaleString(pt ? 'pt-PT' : 'en')}` : ''}</strong></div><progress value={Math.min(row.value, next || row.value || 1)} max={next || row.value || 1} aria-label={title(row)} /></div> : <p className="achievement-server-stat">{rarity(row)} / {data.trackedMembers} {t('tracked members have earned a medal', 'membros acompanhados ganharam uma medalha')}</p>}</article>;
+        })}</div>{!visible.length && <p role="status">{t('No achievements match this filter.', 'Não há conquistas com este filtro.')}</p>}
+      </section><footer>{t('See your personal collection with /achievements in Discord. Activity counts are separate from XP and do not award extra XP.', 'Vê a tua coleção pessoal com /achievements no Discord. Os contadores de atividade são separados do XP e não atribuem XP extra.')}</footer>
+    </>}
+  </main>;
+}
