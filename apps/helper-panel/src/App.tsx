@@ -6217,8 +6217,21 @@ function RankCardEditor({
 }) {
   const [filter, setFilter] = useState<'colors' | 'text' | 'background'>('colors');
   const pt = helperLocale() === 'pt';
+  const editorRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const editor = editorRef.current;
+    const preview = editor?.querySelector<HTMLElement>('.preview-panel');
+    if (!editor || !preview) return;
+    // Keep keyboard/automatic scrolling below the preview, including wrapped names.
+    const measure = () => editor.style.setProperty('--rank-preview-space', `${preview.offsetHeight + 12}px`);
+    const observer = new ResizeObserver(measure);
+    observer.observe(preview);
+    measure();
+    return () => observer.disconnect();
+  }, []);
   return (
-    <section className="editor-grid panel-editor-grid">
+    <section ref={editorRef} className="editor-grid panel-editor-grid">
+      <div className="rank-preview-dock">
       <div className="card preview-panel panel-preview-panel">
         <div className="card-title">
           <div>
@@ -6228,6 +6241,7 @@ function RankCardEditor({
           <span className="live-dot">{helperT('helper.live', '● live')}</span>
         </div>
         <RankPreview config={config} />
+      </div>
       </div>
       <div className="card controls panel-controls">
         <div className="rank-filters" role="group" aria-label={pt ? 'Personalizar o cartão' : 'Customize the card'}>
@@ -6291,7 +6305,7 @@ function BackgroundPicker({
   patch: (next: Partial<RankCardConfig>) => void;
 }) {
   const preset = config.background_preset;
-  const pageSize = 4;
+  const pageSize = 8;
   const [page, setPage] = useState(() => Math.max(0, Math.floor(presetOptions.findIndex(([id]) => id === preset) / pageSize)));
   const pt = helperLocale() === 'pt';
   const pageCount = Math.ceil(presetOptions.length / pageSize);

@@ -142,9 +142,6 @@ try {
         assert.equal(await appearance.evaluate(element => element.scrollWidth > element.clientWidth),false);
         const cardBody = await preview.locator('.rank-preview').boundingBox(), content = await preview.locator('.rank-content').boundingBox();
         assert.ok(content.y >= cardBody.y && content.y + content.height <= cardBody.y + cardBody.height,'names and XP must not be cropped by the compact preview');
-        const options = await controls.boundingBox();
-        assert.ok(options.y >= card.y + card.height,'options must not overlap the preview');
-        assert.ok(options.y + options.height <= page.viewportSize().height + 1,`the whole selected category fits without scrolling: ${JSON.stringify({card,options,viewport:page.viewportSize()})}`);
         assert.equal(await controls.evaluate(element => element.scrollHeight > element.clientHeight + 1 || ['auto','scroll'].includes(getComputedStyle(element).overflowY)),false,'options have no internal scroll');
       };
       await visiblePreview();
@@ -169,13 +166,31 @@ try {
       const beforePaging = writes;
       let bannerCount = 0;
       while (!await next.isDisabled()) {
-        assert.equal(await appearance.locator('.banner-option').count(),4,'show four banners before asking users to change pages');
+        const banners = appearance.locator('.banner-option');
+        assert.equal(await banners.count(),8,'show eight banners before asking users to change pages');
+        const boxes = await banners.evaluateAll(elements => elements.map(element => {const {x,y}=element.getBoundingClientRect();return {x,y};}));
+        for (let row = 0; row < 4; row++) {
+          assert.equal(boxes[row * 2].y,boxes[row * 2 + 1].y,'each row contains two banners');
+          assert.equal(boxes[row * 2].x,boxes[0].x,'the gallery keeps exactly two columns');
+          if (row > 0) assert.ok(boxes[row * 2].y > boxes[(row - 1) * 2].y,'four distinct rows');
+        }
+        await controls.hover();
+        for (const delta of [100,140]) {
+          await page.mouse.wheel(0,delta);
+          await page.waitForTimeout(100);
+          await visiblePreview();
+        }
+        await banners.last().click();
+        await waitFor(() => saved.rankCard?.background_preset === 'moonlit-village');
+        await visiblePreview();
+        assert.equal(await banners.last().evaluate(element => {const box=element.getBoundingClientRect();return element.contains(document.elementFromPoint(box.x + box.width / 2,box.y + box.height / 2));}),true,'the last row remains clickable while the preview stays visible');
+        if (process.env.LEVELS_SETTINGS_CAPTURE !== '0') await page.screenshot({path:`output/playwright/rank-gallery-bottom-${scenario}.png`});
         bannerCount += await appearance.locator('.banner-option').count();
         await next.click(); await visiblePreview();
       }
       bannerCount += await appearance.locator('.banner-option').count();
       assert.equal(bannerCount,10,'every banner stays reachable, including the final partial page');
-      assert.equal(writes,beforePaging,'paging never changes the saved banner');
+      assert.equal(writes,beforePaging + 1,'only selecting a banner saves; paging never does');
       await appearance.getByRole('button',{name:'Lavender Storm',exact:true}).click();
       await waitFor(() => saved.rankCard?.background_preset === 'lavender-storm');
       assert.equal(saved.rankCard.font,'inter');
@@ -187,7 +202,7 @@ try {
       assert.equal(await appearance.getByRole('button',{name:'Lavender Storm',exact:true}).getAttribute('aria-pressed'),'true','returning to Background shows the selected banner page');
       const restore = appearance.locator('.rank-actions').getByRole('button');
       const previewBox = await preview.boundingBox(), restoreBox = await restore.boundingBox();
-      assert.ok(restoreBox.y >= previewBox.y + previewBox.height,'the preview must not cover the last control');
+      assert.ok(restoreBox.x >= previewBox.x + previewBox.width || restoreBox.y >= previewBox.y + previewBox.height,'the preview must not cover the last control');
       if (process.env.LEVELS_SETTINGS_CAPTURE !== '0') {
         await mkdir('output/playwright',{recursive:true});
         await page.screenshot({path:`output/playwright/rank-${scenario}.png`});
