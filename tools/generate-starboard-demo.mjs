@@ -10,7 +10,7 @@ const destination = path.join(root, 'apps/helper-panel/public/feature-demos');
 // Retain the original command; pass a feature name to generate only that storyboard
 // without replacing any existing Starboard assets.
 const feature = process.argv[2] ?? 'starboard';
-if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard'].includes(feature)) throw new Error('Unknown feature demo');
+if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements'].includes(feature)) throw new Error('Unknown feature demo');
 await fs.mkdir(destination, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -51,6 +51,7 @@ try {
         ctx.fillText(content, x, y);
       }
       function draw(time) {
+        if (feature === 'achievements') { drawAchievements(time); return; }
         if (feature === 'leaderboard') { drawLeaderboard(time); return; }
         if (feature === 'levels') { drawLevels(time); return; }
         if (feature === 'birthdays') { drawBirthdays(time); return; }
@@ -86,6 +87,29 @@ try {
         label(text.sample, 42, 518, 14, '#a3b6d1');
         ctx.fillStyle = '#24354c'; ctx.fillRect(42, 531, 876, 3);
         ctx.fillStyle = '#8ee5d2'; ctx.fillRect(42, 531, 876 * Math.min(time / 10, 1), 3);
+      }
+      function drawAchievements(time) {
+        const xp = Math.round(80 + 20 * Math.min(time / 3, 1));
+        const unlocked = time >= 3;
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / CONQUISTAS' : 'VOZEN HELPER / ACHIEVEMENTS', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'A participação transforma-se em conquistas' : 'Participation becomes a milestone', 42, 111, 28);
+        card(42, 135, 876, 90);
+        label(time < 6 ? (pt ? 'Membro de exemplo · XP por participação' : 'Sample member · participation XP') : '/achievements', 64, 170, 21, '#8ee5d2');
+        label(`${xp} / 100 XP`, 64, 205, 23);
+        ctx.fillStyle = '#24354c'; ctx.fillRect(340, 188, 540, 12);
+        ctx.fillStyle = '#8ee5d2'; ctx.fillRect(340, 188, 540 * xp / 100, 12);
+        card(42, 242, 876, 197);
+        label(time < 6 ? (pt ? 'Primeiro marco · 100 XP' : 'First milestone · 100 XP') : (pt ? 'As tuas conquistas · 100 XP' : 'Your achievements · 100 XP'), 64, 279, 22, '#8ee5d2');
+        const rows = [[pt ? 'Primeiros passos' : 'First steps', '100', unlocked], [pt ? 'Participante habitual' : 'Regular', '1 000', false], [pt ? 'Pilar da comunidade' : 'Community pillar', '10 000', false]];
+        rows.forEach(([name, threshold, done], index) => {
+          const y = 321 + index * 36;
+          label(`${done ? (pt ? 'Desbloqueada' : 'Unlocked') : (pt ? 'Bloqueada' : 'Locked')} · ${name}`, 64, y, 20, done ? '#ffd170' : '#a3b6d1');
+          label(`${threshold} XP`, 744, y, 20);
+        });
+        label(time < 3 ? (pt ? '1. Ganhas XP com Níveis e XP ativos' : '1. Earn XP with Levels & XP enabled') : time < 6 ? (pt ? '2. Ao atingir o marco, a conquista é registada' : '2. Reaching the milestone records the achievement') : (pt ? '3. Consulta o progresso com /achievements' : '3. Check your progress with /achievements'), 42, 482, 22);
+        label(pt ? 'Valores de exemplo · marcos e cargos opcionais definidos no dashboard' : 'Sample values · milestones and optional roles are set in the dashboard', 42, 516, 14, '#a3b6d1');
       }
       function drawLeaderboard(time) {
         const hidden = time >= 6.5;
@@ -415,7 +439,7 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Sem canal escolhido, o botão não aparece · exemplo ilustrativo' : 'Without a chosen channel, the button stays hidden · illustrative example', 42, 518, 14, '#a3b6d1');
       }
-      draw(['events', 'birthdays', 'levels', 'leaderboard'].includes(feature) ? 8 : 0);
+      draw(['events', 'birthdays', 'levels', 'leaderboard', 'achievements'].includes(feature) ? 8 : 0);
       const poster = canvas.toDataURL('image/png').split(',')[1];
       const stream = canvas.captureStream(24);
       const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: 700_000 });
