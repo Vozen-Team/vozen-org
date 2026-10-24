@@ -34,6 +34,14 @@ try {
     } else {
       await page.locator('.achievement-toolbar').waitFor();
       assert.equal(await page.locator('.achievement-tile').count(),scenario==='empty'?0:7);
+      const helpText=page.getByText(pt?'A nova atividade conta desde a ativação. O XP anterior mantém-se.':'New activity counts from activation. Existing XP is kept.',{exact:true});
+      assert.equal(await helpText.isVisible(),false,'extra explanations start collapsed');
+      const help=page.locator('.achievement-help summary');
+      await help.press('Enter');
+      await helpText.waitFor({state:'visible'});
+      await help.press('Enter');
+      assert.equal(await helpText.isVisible(),false);
+      if(personal) assert.match(await page.locator('.achievement-quick-help>span').innerText(),pt?/Link privado.*1 hora/:/Private link.*1 hour/);
       if(scenario!=='empty') {
         assert.equal(await page.locator('.achievement-tile').first().locator('ol li').count(),4);
         await page.screenshot({path:`output/playwright/achievements-page-${scenario}.png`,fullPage:true});
