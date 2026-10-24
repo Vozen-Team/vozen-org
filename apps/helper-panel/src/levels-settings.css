@@ -47,6 +47,13 @@
 .panel-main .levels-customization .rank-actions {padding-top:8px;margin:0;}
 .panel-main .levels-customization .rank-actions button {min-height:44px;}
 .rank-filters button:focus-visible,.rank-banner-pages button:focus-visible {outline:2px solid var(--mint);outline-offset:2px;}
+@media(min-width:1101px) {
+  .panel-main .levels-customization .banner-grid {grid-template-columns:repeat(4,minmax(0,1fr));}
+}
+@media(max-height:650px) {
+  .panel-main .levels-customization .banner-option img {height:24px;}
+  .panel-main .levels-customization .banner-option span {padding:4px 6px;line-height:14px;}
+}
 @media(max-width:760px) {
   .workspace-shell--helper:has(.levels-customization[open]) > .panel-main.workspace-main {overflow:visible;}
   .panel-main .levels-customization .editor-grid {top:var(--workspace-topbar-height);scroll-margin-top:var(--workspace-topbar-height);}

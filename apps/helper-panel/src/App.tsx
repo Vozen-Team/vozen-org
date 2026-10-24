@@ -6291,15 +6291,12 @@ function BackgroundPicker({
   patch: (next: Partial<RankCardConfig>) => void;
 }) {
   const preset = config.background_preset;
-  const [page, setPage] = useState(() => Math.max(0, Math.floor(presetOptions.findIndex(([id]) => id === preset) / 2)));
+  const pageSize = 4;
+  const [page, setPage] = useState(() => Math.max(0, Math.floor(presetOptions.findIndex(([id]) => id === preset) / pageSize)));
   const pt = helperLocale() === 'pt';
-  const pageCount = Math.ceil(presetOptions.length / 2);
+  const pageCount = Math.ceil(presetOptions.length / pageSize);
   return (
     <div className="background-picker">
-      <div className="field-label">
-        <span>{helperT('helper.xpBackground', 'XP card background')}</span>
-        <small>{preset ? helperT('helper.curatedBanner', 'Curated banner') : helperT('helper.solidColour', 'Solid colour')}</small>
-      </div>
       <div className="background-modes">
         <button
           type="button"
@@ -6314,7 +6311,7 @@ function BackgroundPicker({
           type="button"
           className={preset ? 'mode selected' : 'mode'}
           onClick={() => {
-            setPage(Math.max(0, Math.floor(presetOptions.findIndex(([id]) => id === preset) / 2)));
+            setPage(Math.max(0, Math.floor(presetOptions.findIndex(([id]) => id === preset) / pageSize)));
             patch({
               background_preset: preset ?? presetOptions[0][0],
               background_url: null,
@@ -6327,7 +6324,7 @@ function BackgroundPicker({
       </div>
       {preset ? (
         <><div className="banner-grid">
-          {presetOptions.slice(page * 2, page * 2 + 2).map(([id, label, webp, fallback]) => (
+          {presetOptions.slice(page * pageSize, (page + 1) * pageSize).map(([id, label, webp, fallback]) => (
             <button
               type="button"
               className={preset === id ? 'banner-option selected' : 'banner-option'}

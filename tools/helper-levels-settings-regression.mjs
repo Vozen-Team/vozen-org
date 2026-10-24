@@ -158,14 +158,23 @@ try {
       await visiblePreview();
       await appearance.getByRole('button',{name:'Banners',exact:true}).click();
       await waitFor(() => saved.rankCard?.background_preset === 'aurora-lake');
+      await visiblePreview();
+      if (process.env.LEVELS_SETTINGS_CAPTURE !== '0') {
+        await mkdir('output/playwright',{recursive:true});
+        await page.screenshot({path:`output/playwright/rank-gallery-${scenario}.png`});
+      }
       const next = appearance.getByRole('button',{name:pt ? 'Banners seguintes' : 'Next banners',exact:true});
       const previous = appearance.getByRole('button',{name:pt ? 'Banners anteriores' : 'Previous banners',exact:true});
       assert.equal(await previous.isDisabled(),true);
       const beforePaging = writes;
+      let bannerCount = 0;
       while (!await next.isDisabled()) {
-        assert.equal(await appearance.locator('.banner-option').count(),2,'only two banners appear at once');
+        assert.equal(await appearance.locator('.banner-option').count(),4,'show four banners before asking users to change pages');
+        bannerCount += await appearance.locator('.banner-option').count();
         await next.click(); await visiblePreview();
       }
+      bannerCount += await appearance.locator('.banner-option').count();
+      assert.equal(bannerCount,10,'every banner stays reachable, including the final partial page');
       assert.equal(writes,beforePaging,'paging never changes the saved banner');
       await appearance.getByRole('button',{name:'Lavender Storm',exact:true}).click();
       await waitFor(() => saved.rankCard?.background_preset === 'lavender-storm');
