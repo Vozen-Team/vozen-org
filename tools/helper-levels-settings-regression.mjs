@@ -63,17 +63,18 @@ try {
     await page.goto(`${base}#/config/community.levels`);
     const setup = page.locator('.levels-settings');
     await setup.waitFor();
-    const voice = setup.locator('details').filter({has:page.locator('summary').filter({hasText:pt ? 'XP em canais de voz' : 'Voice channel XP'})});
-    const exclusions = setup.locator('details').filter({has:page.locator('summary').filter({hasText:pt ? 'Canais sem XP' : 'Channels without XP'})});
-    const rewards = setup.locator('details').filter({has:page.locator('summary').filter({hasText:pt ? 'Recompensas por nível' : 'Level rewards'})});
-    assert.equal(await setup.locator('details[open]').count(),0,'optional settings start collapsed without changing their values');
-    assert.equal(await setup.getByRole('spinbutton').count(),3,'only the three core XP fields are initially visible');
-    assert.equal(await setup.getByRole('combobox').count(),1,'only announcement destination is initially visible');
+    const voice = setup.getByRole('region',{name:pt ? 'XP em canais de voz' : 'Voice channel XP',exact:true});
+    const exclusions = setup.getByRole('region',{name:pt ? 'Canais sem XP' : 'Channels without XP',exact:true});
+    const rewards = setup.getByRole('region',{name:pt ? 'Recompensas por nível' : 'Level rewards',exact:true});
+    assert.equal(await voice.count(),1,'voice settings are directly accessible without expanding a section');
+    assert.equal(await exclusions.count(),1);
+    assert.equal(await rewards.count(),1);
+    assert.equal(await setup.getByRole('spinbutton').count(),4,'core XP and reward level fields are initially visible');
+    assert.equal(await setup.getByRole('combobox').count(),2,'announcement and role selectors remain available');
     assert.equal(writes,0,'opening or expanding the UI must not save defaults');
     const announcement = setup.getByRole('combobox',{name:pt ? /^Canal dos avisos/ : /^Announcement channel/});
     assert.equal(await announcement.locator('option:checked').innerText(),pt ? 'Mesmo canal da mensagem' : 'Same channel as the message');
     if (scenario === 'voice') {
-      await voice.locator('summary').click();
       assert.equal(await voice.getByRole('spinbutton').count(),0);
       await voice.getByRole('checkbox').check();
       await waitFor(() => saved.voiceXpEnabled === true);
@@ -83,13 +84,11 @@ try {
       await waitFor(() => saved.voiceXpEnabled === false);
       assert.equal(saved.voiceXpPerMinute,4,'hiding voice options keeps the saved rate');
     } else if (scenario === 'exclusions') {
-      await exclusions.locator('summary').click();
       await exclusions.getByRole('checkbox',{name:'#general',exact:true}).check();
       await waitFor(() => saved.ignoredChannels.length === 1);
       assert.deepEqual(saved.ignoredChannels,['20']);
-      assert.match(await exclusions.locator('summary').innerText(),/1 selected/);
+      assert.match(await exclusions.innerText(),/1 selected/);
     } else if (['rewards','saved-reward','missing-resources'].includes(scenario)) {
-      await rewards.locator('summary').click();
       const role = rewards.getByRole('combobox',{name:'Give this role',exact:true});
       if (scenario === 'missing-resources') {
         assert.equal(await role.isDisabled(),true);
@@ -116,8 +115,6 @@ try {
       await page.getByText('Changes not saved',{exact:true}).waitFor();
       assert.deepEqual(saved,initial);
     } else if (scenario === 'keyboard') {
-      await voice.locator('summary').focus(); await page.keyboard.press('Enter');
-      assert.equal(await voice.getAttribute('open'),'');
       await voice.getByRole('checkbox').focus(); await page.keyboard.press('Space');
       await waitFor(() => saved.voiceXpEnabled === true);
     } else if (previewScenario) {

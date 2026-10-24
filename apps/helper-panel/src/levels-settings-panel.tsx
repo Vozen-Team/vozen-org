@@ -11,7 +11,6 @@ export function LevelsSettings({ config, keys, context, locale, renderField, onC
   const pt = locale === 'pt';
   const rewards = levelRewardEntries(config.levelRoles);
   const unknown = keys.filter(key => !LEVEL_SETTING_KEYS.includes(key));
-  const excluded = Array.isArray(config.ignoredChannels) ? config.ignoredChannels.length : 0;
   return <>
     <section className="config-section card levels-settings" aria-label={pt ? 'Configurar níveis e XP' : 'Levels and XP setup'}>
       <section className="levels-settings__group" aria-labelledby="levels-messages">
@@ -30,22 +29,21 @@ export function LevelsSettings({ config, keys, context, locale, renderField, onC
         <p>{pt ? 'Cada mensagem de subida de nível inclui sempre um cartão. O cartão padrão é gratuito; as imagens de fundo e a personalização são exclusivas do Premium.' : 'Every level-up message includes a card. The default card is free; background images and customization require Premium.'}</p>
         {!premium && customization}
       </section>
-      {keys.includes('voiceXpEnabled') && <details className="levels-settings__disclosure">
-        <summary><span>{pt ? 'XP em canais de voz' : 'Voice channel XP'}</span><small>{config.voiceXpEnabled ? (pt ? 'Ativado' : 'On') : (pt ? 'Desativado' : 'Off')}</small></summary>
+      {keys.includes('voiceXpEnabled') && <section className="levels-settings__group" aria-labelledby="levels-voice">
+        <h3 id="levels-voice">{pt ? 'XP em canais de voz' : 'Voice channel XP'}</h3>
         <p>{pt ? 'Opcional. Dá XP também pela participação em voz.' : 'Optional. Also award XP for time spent in voice channels.'}</p>
         {renderField('voiceXpEnabled')}
         {config.voiceXpEnabled === true && renderField('voiceXpPerMinute')}
-      </details>}
-      {keys.includes('ignoredChannels') && <details className="levels-settings__disclosure">
-        <summary><span>{pt ? 'Canais sem XP' : 'Channels without XP'}</span><small>{excluded ? `${excluded} ${pt ? 'selecionados' : 'selected'}` : (pt ? 'Nenhum' : 'None')}</small></summary>
+      </section>}
+      {keys.includes('ignoredChannels') && <section className="levels-settings__group" aria-label={pt ? 'Canais sem XP' : 'Channels without XP'}>
         {renderField('ignoredChannels')}
-      </details>}
-      {keys.includes('levelRoles') && <details className="levels-settings__disclosure">
-        <summary><span>{pt ? 'Recompensas por nível' : 'Level rewards'}</span><small>{rewards.length ? `${rewards.length} ${pt ? 'configuradas' : 'configured'}` : (pt ? 'Opcional' : 'Optional')}</small></summary>
+      </section>}
+      {keys.includes('levelRoles') && <section className="levels-settings__group" aria-labelledby="levels-rewards">
+        <h3 id="levels-rewards">{pt ? 'Recompensas por nível' : 'Level rewards'}</h3>
         <p>{pt ? 'Atribui um cargo quando o membro atinge um nível.' : 'Give a member a role when they reach a level.'}</p>
         <LevelRewards value={config.levelRoles} context={context} pt={pt} onChange={value => onChange('levelRoles', value)} />
         {rewards.length > 0 && renderField('stackRoles')}
-      </details>}
+      </section>}
       {unknown.length > 0 && <details className="levels-settings__disclosure"><summary>{pt ? 'Outras definições' : 'Other settings'}</summary>{unknown.map(renderField)}</details>}
     </section>
     {premium && <details className="levels-customization">
