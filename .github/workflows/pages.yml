@@ -82,6 +82,7 @@ jobs:
           node tools/helper-workspace-regression.mjs
           node tools/helper-session-regression.mjs
           node tools/helper-activity-regression.mjs
+          node tools/helper-overview-regression.mjs
           node tools/helper-levels-settings-regression.mjs
           node tools/helper-suggestions-demo-regression.mjs
           node tools/helper-giveaways-demo-regression.mjs

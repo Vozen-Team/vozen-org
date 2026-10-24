@@ -1,3 +1,5 @@
+import { overviewText } from './overview-i18n';
+import './overview.css';
 import { ActivityFeed } from './activity-feed';
 import { achievementText } from './achievements-i18n';
 import { EcosystemTopbar, EcosystemAccountAvatar, useEcosystemAccount, discordAvatarUrl } from './ecosystem-topbar';
@@ -19,7 +21,6 @@ import {
   api,
   ApiError,
   restoreOAuthReturnHash,
-  type CaseRecord,
   type CustomCommand,
   type Feature,
   type FeatureConfig,
@@ -1983,7 +1984,6 @@ function App() {
   );
   const featuresRef = useRef(features);
   featuresRef.current = features;
-  const [cases, setCases] = useState<CaseRecord[]>([]);
   const [stats, setStats] = useState({ totalCases: 0 });
   const [quota, setQuota] = useState({
     plan: 'Free',
@@ -2123,7 +2123,7 @@ function App() {
 
         if (parseRoute(window.location.hash).page === 'servers') return;
 
-        const [nextFeatures, nextStats, nextCases, nextQuota, nextRank] =
+        const [nextFeatures, nextStats, nextQuota, nextRank] =
           await Promise.all([
             api.features({ signal: load.signal }).catch((cause) => {
               if (isAbortError(cause) || !load.isCurrent()) throw cause;
@@ -2136,10 +2136,6 @@ function App() {
             api.stats({ signal: load.signal }).catch((cause) => {
               if (isAbortError(cause)) throw cause;
               return { totalCases: 0, guildId: '' };
-            }),
-            api.cases({ signal: load.signal }).catch((cause) => {
-              if (isAbortError(cause)) throw cause;
-              return { cases: [] };
             }),
             api.quotas({ signal: load.signal }).catch((cause) => {
               if (isAbortError(cause)) throw cause;
@@ -2154,7 +2150,6 @@ function App() {
 
         setFeatures(visibleWelcomeFeatures(nextFeatures.features).map(presentFeature));
         setStats(nextStats);
-        setCases(nextCases.cases);
         setQuota(nextQuota);
         setRankConfig(nextRank.config);
         setSavedRankConfig(nextRank.config);
@@ -3234,7 +3229,6 @@ function App() {
             features={features}
             stats={stats}
             quota={quota}
-            cases={cases}
             guildName={currentGuild?.name ?? 'your server'}
             onOpen={navigate}
           />
@@ -3953,171 +3947,54 @@ function AuthScreen() {
   return <WorkspaceSkeleton />;
 }
 
-function Overview({
-  features,
-  stats,
-  quota,
-  cases,
-  guildName,
-  onOpen,
-}: {
+function Overview({ features, stats, quota, guildName, onOpen }: {
   features: Feature[];
   stats: { totalCases: number };
   quota: { plan: string; limits: Record<string, number>; usage: Record<string, number> };
-  cases: CaseRecord[];
   guildName: string;
   onOpen: (path: string) => void;
 }) {
-  const enabled = features.filter((feature) => feature.enabled).length;
-  const protection = features.find((feature) => feature.key === 'protection.antispam');
-  const welcome = features.find((feature) => feature.key === 'support.welcome');
-  const levels = features.find((feature) => feature.key === 'community.levels');
-  const readiness = [
-    {
-      label: helperT('helper.protection', 'Protection'),
-      detail: protection?.enabled
-        ? helperT('helper.protectionActive', 'Active and protecting your server.')
-        : helperT('helper.readyConfigure', 'Ready to configure.'),
-      done: Boolean(protection?.enabled),
-      path: '#/config/protection.antispam',
-    },
-    {
-      label: helperT('helper.welcomeFlow', 'Welcome flow'),
-      detail: welcome?.enabled
-        ? helperT('helper.welcomeConfigured', 'New members receive the configured welcome.')
-        : helperT('helper.readyConfigure', 'Ready to configure.'),
-      done: Boolean(welcome?.enabled),
-      path: '#/config/support.welcome',
-    },
-    {
-      label: helperT('helper.community', 'Community'),
-      detail: levels?.enabled
-        ? helperT('helper.levelsEnabled', 'Levels and rewards are enabled.')
-        : helperT('helper.readyConfigure', 'Ready to configure.'),
-      done: Boolean(levels?.enabled),
-      path: '#/config/community.levels',
-    },
+  const setup = [
+    {key:'protection.antispam',label:helperT('helper.protection','Protection')},
+    {key:'support.welcome',label:helperT('helper.welcomeFlow','Welcome flow')},
+    {key:'community.levels',label:overviewText('Levels & XP')},
   ];
-  return (
-    <>
-      <section className="helper-overview" aria-labelledby="route-heading">
-        <div className="helper-overview__intro">
-          <small className="eyebrow">{helperT('helper.overviewEyebrow', 'VOZEN HELPER · OVERVIEW')}</small>
-          <h1 id="route-heading" data-route-heading tabIndex={-1}>
-            {helperT('helper.overviewTitle', 'Run your server with confidence.')}
-          </h1>
-          <p>{helperT('helper.overviewIntro', 'See what is ready on {name} and complete the next small step.', { name: guildName })}</p>
-        </div>
-        <div className="helper-overview__grid">
-          <section className="helper-overview__readiness">
-            <small className="eyebrow">{helperT('helper.readiness', 'READINESS')}</small>
-            <h2>{helperT('helper.serverSetup', 'Your server setup')}</h2>
-            <div className="helper-overview__checklist">
-              {readiness.map((item) => (
-                <button
-                  type="button"
-                  className="helper-overview__check"
-                  key={item.label}
-                  onClick={() => onOpen(item.path)}
-                >
-                  <span className={item.done ? 'is-done' : ''} aria-hidden="true">
-                    {item.done ? '✓' : '•'}
-                  </span>
-                  <span>
-                    <strong>{item.label}</strong>
-                    <small>{item.detail}</small>
-                  </span>
-                  <b aria-hidden="true">›</b>
-                </button>
-              ))}
-            </div>
-            <button
-              type="button"
-              className="primary helper-overview__continue"
-              onClick={() => onOpen('#/quick-setup')}
-            >
-              {helperT('helper.continueSetup', 'Continue setup')} <span aria-hidden="true">→</span>
-            </button>
-          </section>
-          <aside className="helper-overview__snapshot">
-            <small className="eyebrow">{helperT('helper.serverSnapshot', 'SERVER SNAPSHOT')}</small>
-            <h2>{guildName}</h2>
-            <div className="helper-overview__snapshot-item">
-              <strong>{helperT('helper.activeModules', 'Active modules')}</strong>
-              <span>{enabled}</span>
-            </div>
-            <div className="helper-overview__snapshot-item">
-              <strong>{helperT('helper.moderationCases', 'Moderation cases')}</strong>
-              <span>{stats.totalCases}</span>
-            </div>
-            <div className="helper-overview__snapshot-item">
-              <strong>{helperT('helper.recentEvents', 'Recent events')}</strong>
-              <span>{cases.length}</span>
-            </div>
-          </aside>
-        </div>
+  const shortcuts = [
+    {path:'#/features',label:helperPageLabel('features','Features')},
+    {path:'#/activity',label:helperT('helper.activity','Recent activity')},
+    {path:'#/rank-card',label:overviewText('XP card')},
+  ];
+  return <section className="vozen-overview" aria-labelledby="route-heading">
+    <header className="vozen-overview__header">
+      <div><h1 id="route-heading" data-route-heading tabIndex={-1}>{helperT('dashboard.overview','Overview')}</h1><p><bdi>{guildName}</bdi></p></div>
+      <button type="button" className="primary" onClick={()=>onOpen('#/quick-setup')}>{overviewText('Quick setup')}</button>
+    </header>
+    <dl className="vozen-overview__metrics">
+      <div><dt>{helperT('helper.activeModules','Active modules')}</dt><dd>{features.filter(feature=>feature.enabled && feature.available!==false).length}</dd></div>
+      <div><dt>{helperT('helper.moderationCases','Moderation cases')}</dt><dd>{stats.totalCases}</dd></div>
+      <div><dt>{helperT('helper.currentPlan','Current plan')}</dt><dd>{quotaPlanLabel(quota.plan)}</dd></div>
+    </dl>
+    <div className="vozen-overview__columns">
+      <section className="vozen-overview__panel"><h2>{helperT('helper.serverSetup','Your server setup')}</h2>
+        {setup.map(item=>{
+          const feature=features.find(feature=>feature.key===item.key);
+          const available=Boolean(feature && feature.available!==false);
+          const enabled=available && feature?.enabled;
+          return <button type="button" className="vozen-overview__row" key={item.key} disabled={!available} onClick={()=>onOpen(`#/config/${item.key}`)}>
+            <span>{item.label}</span><span className={`vozen-overview__state${enabled?' is-on':''}`}>{overviewText(!available?'Unavailable':enabled?'On':'Off')}</span><span aria-hidden="true">›</span>
+          </button>;
+        })}
       </section>
-      <div className="metrics">
-        <Metric value={String(enabled)} label={helperT('helper.activeFeatures', 'active features')} />
-        <Metric value={String(stats.totalCases)} label={helperT('helper.moderationCases', 'moderation cases')} />
-        <Metric value={String(cases.length)} label={helperT('helper.recentEvents', 'recent events')} />
-        <Metric value={quotaPlanLabel(quota.plan)} label={helperT('helper.currentPlan', 'current plan')} />
-      </div>
-      <section className="section-heading">
-        <div>
-          <small className="eyebrow">{helperT('helper.recommended', 'RECOMMENDED')}</small>
-          <h2>{helperT('helper.doFirst', 'What would you like to do first?')}</h2>
-        </div>
-        <button type="button" className="link-button" onClick={() => onOpen('#/features')}>
-          {helperT('helper.viewEverything', 'View everything →')}
-        </button>
+      <section className="vozen-overview__panel"><h2>{overviewText('Shortcuts')}</h2>
+        {shortcuts.map(item=><button type="button" className="vozen-overview__row" key={item.path} onClick={()=>onOpen(item.path)}><span>{item.label}</span><span aria-hidden="true">›</span></button>)}
       </section>
-      <div className="quick-grid">
-        <Quick
-          icon="🛡"
-          title={helperT('helper.protectTitle', 'Protect the server')}
-          text={helperT('helper.protectText', 'Anti-spam, anti-raid, and join protection.')}
-          onClick={() => onOpen('#/config/protection.antispam')}
-        />
-        <Quick
-          icon="✦"
-          title={helperT('helper.communityTitle', 'Bring your community to life')}
-          text={helperT('helper.communityText', 'Levels, suggestions, giveaways, and starboard.')}
-          onClick={() => onOpen('#/config/community.levels')}
-        />
-        <Quick
-          icon="▣"
-          title={helperT('helper.identityTitle', 'Create an identity')}
-          text={helperT('helper.identityText', 'Choose colors, typography, and a safe banner.')}
-          onClick={() => onOpen('#/rank-card')}
-        />
-      </div>
-      <section className="quota card">
-        <div>
-          <small className="eyebrow">{helperT('helper.planLimits', 'PLAN LIMITS')}</small>
-          <h3>{helperT('helper.roomToGrow', 'Use the Helper with room to grow')}</h3>
-          <p>{helperT('helper.planHint', 'The current plan shows limits before an action is blocked.')}</p>
-        </div>
-        <div className="quota-items">
-          <Quota
-            label={helperT('helper.workflows', 'Workflows')}
-            used={quota.usage.workflows ?? 0}
-            limit={quota.limits.workflows ?? 0}
-          />
-          <Quota
-            label={helperT('helper.templates', 'Templates')}
-            used={quota.usage.templates ?? 0}
-            limit={quota.limits.templates ?? 0}
-          />
-          <Quota
-            label={helperT('helper.rolePanels', 'Role panels')}
-            used={quota.usage.role_panels ?? 0}
-            limit={quota.limits.role_panels ?? 0}
-          />
-        </div>
-      </section>
-    </>
-  );
+    </div>
+    <section className="vozen-overview__panel"><h2>{overviewText('Plan limits')}</h2><div className="vozen-overview__limits">
+      <Quota label={helperT('helper.workflows','Workflows')} used={quota.usage.workflows??0} limit={quota.limits.workflows??0}/>
+      <Quota label={helperT('helper.templates','Templates')} used={quota.usage.templates??0} limit={quota.limits.templates??0}/>
+      <Quota label={helperT('helper.rolePanels','Role panels')} used={quota.usage.role_panels??0} limit={quota.limits.role_panels??0}/>
+    </div></section>
+  </section>;
 }
 function quotaPlanLabel(value: unknown): string {
   if (typeof value === 'string' || typeof value === 'number') {
@@ -4141,14 +4018,6 @@ function quotaPlanLabel(value: unknown): string {
   return 'Free';
 }
 
-function Metric({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="metric card">
-      <strong>{value}</strong>
-      <span>{label}</span>
-    </div>
-  );
-}
 function Quota({ label, used, limit }: { label: string; used: number; limit: number }) {
   const percent = limit > 0 ? Math.min(100, Math.round((used / limit) * 100)) : 0;
   return (
@@ -4165,29 +4034,6 @@ function Quota({ label, used, limit }: { label: string; used: number; limit: num
     </div>
   );
 }
-function Quick({
-  icon,
-  title,
-  text,
-  onClick,
-}: {
-  icon: string;
-  title: string;
-  text: string;
-  onClick: () => void;
-}) {
-  return (
-    <button type="button" className="quick card" onClick={onClick}>
-      <span className="quick-icon">{icon}</span>
-      <div>
-        <h3>{title}</h3>
-        <p>{text}</p>
-      </div>
-      <b>→</b>
-    </button>
-  );
-}
-
 function FeatureCatalogue({
   features,
   filter,

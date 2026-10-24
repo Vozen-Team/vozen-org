@@ -1,0 +1,28 @@
+.vozen-overview{min-width:0;display:grid;gap:24px}
+.vozen-overview__header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.vozen-overview__header h1{margin:0;font-size:clamp(30px,3vw,42px);line-height:1.15;letter-spacing:-.04em}
+.vozen-overview__header p{margin:8px 0 0;color:var(--muted);overflow-wrap:anywhere}
+.vozen-overview__header button{min-height:44px;flex-shrink:0}
+.vozen-overview__metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;border-block:1px solid var(--line);padding:24px 0;gap:24px}
+.vozen-overview__metrics div{min-width:0}
+.vozen-overview__metrics dt{color:var(--muted);font-size:13px;margin-bottom:8px;text-transform:none}
+.vozen-overview__metrics dd{margin:0;font-size:28px;font-weight:600;line-height:1.2;overflow-wrap:anywhere}
+.vozen-overview__columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.vozen-overview__panel{min-width:0;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+.vozen-overview__panel h2{margin:0 0 16px;font-size:18px;letter-spacing:-.02em;line-height:1.35;text-transform:none}
+.vozen-overview__row{display:flex;align-items:center;gap:12px;width:100%;min-height:58px;padding:12px 0;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;color:var(--text);font-size:14px;text-align:start}
+.vozen-overview__row>span:first-child{flex:1;min-width:0;overflow-wrap:anywhere}
+.vozen-overview__row>span:last-child{color:var(--mint);font-size:20px}
+.vozen-overview__row:disabled{opacity:.6;cursor:default}
+.vozen-overview__row:hover:not(:disabled){color:var(--mint)}
+.vozen-overview button:focus-visible{outline:2px solid var(--mint);outline-offset:4px}
+.vozen-overview__state{color:var(--muted);font-size:11px;padding:4px 8px;border-radius:6px;background:#8d9ab514}
+.vozen-overview__state.is-on{color:var(--mint);background:#8ee5d214}
+.vozen-overview__limits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.vozen-overview__limits .quota-item{min-width:0}
+@media(max-width:900px){.vozen-overview__columns{grid-template-columns:1fr}}
+@media(max-width:560px){
+  .vozen-overview{gap:20px}.vozen-overview__header{align-items:flex-start;flex-direction:column;gap:16px}
+  .vozen-overview__metrics{gap:12px;padding:20px 0}.vozen-overview__metrics dt{font-size:11px}.vozen-overview__metrics dd{font-size:22px}
+  .vozen-overview__panel{padding:18px}.vozen-overview__limits{grid-template-columns:1fr;gap:18px}
+}
