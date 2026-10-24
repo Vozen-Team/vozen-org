@@ -124,7 +124,22 @@ try {
       const appearance = page.locator('.levels-customization');
       await appearance.locator('summary').click();
       const preview = appearance.locator('.preview-panel');
-      assert.equal(await preview.evaluate(element => getComputedStyle(element).position),'sticky');
+      const controls = appearance.locator('.controls');
+      await appearance.locator('.editor-grid').scrollIntoViewIfNeeded();
+      const beforeScroll = await preview.boundingBox();
+      const scrollArea = await controls.evaluate(element => ({overflow:getComputedStyle(element).overflowY,content:element.scrollHeight,height:element.clientHeight,editorHeight:element.parentElement.clientHeight,rows:getComputedStyle(element.parentElement).gridTemplateRows}));
+      assert.ok(['auto','scroll'].includes(scrollArea.overflow) && scrollArea.content > scrollArea.height,`options must have their own scroll area, separate from the preview: ${JSON.stringify(scrollArea)}`);
+      await controls.hover();
+      await page.mouse.wheel(0,350);
+      await page.waitForFunction(() => document.querySelector('.levels-customization .controls').scrollTop > 0);
+      const afterScroll = await preview.boundingBox(), controlsBox = await controls.boundingBox();
+      assert.ok(Math.abs(beforeScroll.y - afterScroll.y) < 1,'scrolling options must not move the preview');
+      assert.ok(controlsBox.y >= afterScroll.y + afterScroll.height,'the entire scrolling region must stay below the preview');
+      assert.equal(await preview.evaluate(element => {
+        const controls = element.parentElement.querySelector('.controls');
+        const box = element.getBoundingClientRect();
+        return document.elementsFromPoint(box.x + box.width / 2,box.bottom - 8).some(hit => controls.contains(hit));
+      }),false,'no scrolling controls may paint beneath the preview');
       await appearance.getByRole('button',{name:'Banners',exact:true}).click();
       await waitFor(() => saved.rankCard?.background_preset === 'aurora-lake');
       const lastBanner = appearance.locator('.banner-option').last();
@@ -134,7 +149,7 @@ try {
         const card = await preview.boundingBox();
         const viewport = await page.locator('.workspace-main').boundingBox();
         const header = await page.locator('.workspace-global-nav').boundingBox();
-        assert.ok(card.y >= Math.max(viewport.y,header.y + header.height,0) - 1 && card.y + card.height <= Math.min(viewport.y + viewport.height, page.viewportSize().height) + 1,'the entire preview stays inside the visible viewport below navigation');
+        assert.ok(card.y >= Math.max(viewport.y,header.y + header.height,0) - 1 && card.y + card.height <= Math.min(viewport.y + viewport.height, page.viewportSize().height) + 1,`the entire preview stays inside the visible viewport below navigation: ${JSON.stringify({card,viewport,header})}`);
         assert.equal(await preview.evaluate(element => {const box=element.getBoundingClientRect();return element.contains(document.elementFromPoint(box.x + box.width / 2,box.y + box.height / 2));}),true,'the preview is not hidden behind another panel');
         assert.equal(await appearance.evaluate(element => element.scrollWidth > element.clientWidth),false);
         const cardBody = await preview.locator('.rank-preview').boundingBox(), content = await preview.locator('.rank-content').boundingBox();
@@ -144,6 +159,10 @@ try {
       const restore = appearance.locator('.rank-actions').getByRole('button');
       await restore.scrollIntoViewIfNeeded();
       await visiblePreview();
+      await controls.hover();
+      await page.mouse.wheel(0,900);
+      await page.waitForTimeout(150);
+      await visiblePreview();
       const previewBox = await preview.boundingBox(), restoreBox = await restore.boundingBox();
       assert.ok(restoreBox.y >= previewBox.y + previewBox.height,'the preview must not cover the last control');
       if (process.env.LEVELS_SETTINGS_CAPTURE !== '0') {
@@ -152,6 +171,10 @@ try {
       }
       await appearance.locator('.banner-option').first().click();
       await waitFor(() => saved.rankCard?.background_preset === 'aurora-lake');
+      await visiblePreview();
+      await appearance.getByRole('combobox').focus();
+      for (let index = 0; index < 100 && !await restore.evaluate(element => element === document.activeElement); index++) await page.keyboard.press('Tab');
+      assert.equal(await restore.evaluate(element => element === document.activeElement),true,'all options remain reachable by keyboard');
       await visiblePreview();
       await restore.click();
       await waitFor(() => saved.rankCard?.background_preset === null);
