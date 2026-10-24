@@ -4698,7 +4698,8 @@ function FeatureDetail({
       options: field.key === 'templateId' ? templateOptions : field.options,
     })),
   })) ?? (localPreviewMode ? spec(feature?.key ?? '') : []);
-  const sections = rawSections.map(section => ({ ...section, fields: section.fields.filter(field => field.key !== 'bannerEnabled') })).map(localizedSection);
+  const sections = rawSections.map(section => ({ ...section, fields: section.fields.filter(field => field.key !== 'bannerEnabled') }))
+    .map(section => localizedSection(section, feature?.key));
   const premiumLocked = Boolean(feature?.premium_required && !feature.premium_unlocked);
   // Keep blocked providers discoverable, but do not expose a save/enable
   // form that can only fail at publication time. Their detail page is a
@@ -4846,9 +4847,6 @@ function FeatureDetail({
           {feature?.key === 'management.workflows' && (
             <WorkflowManager enabled={enabled} localPreviewMode={localPreviewMode} />
           )}
-          {feature?.key === 'community.leaderboard' && (
-            <LeaderboardPreview enabled={enabled} localPreviewMode={localPreviewMode} />
-          )}
           {feature?.key === 'utility.reminders' && (
             <RemindersManager enabled={enabled} localPreviewMode={localPreviewMode} />
           )}
@@ -4887,6 +4885,9 @@ function FeatureDetail({
                   }} /> : undefined}
             />
           ))}
+          {feature?.key === 'community.leaderboard' && (
+            <LeaderboardPreview enabled={enabled} localPreviewMode={localPreviewMode} revision={revision} />
+          )}
         </div>
         <aside className="detail-aside card">
           <div>
@@ -5322,9 +5323,11 @@ function CustomCommandManager({ localPreviewMode }: { localPreviewMode: boolean 
 function LeaderboardPreview({
   enabled,
   localPreviewMode,
+  revision,
 }: {
   enabled: boolean;
   localPreviewMode: boolean;
+  revision: number;
 }) {
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const [maxEntries, setMaxEntries] = useState(10);
@@ -5335,6 +5338,8 @@ function LeaderboardPreview({
   useEffect(() => {
     if (localPreviewMode) return;
     let cancelled = false;
+    setLoading(true);
+    setError('');
     void api.leaderboard()
       .then((result) => {
         if (cancelled) return;
@@ -5349,7 +5354,7 @@ function LeaderboardPreview({
         if (!cancelled) setLoading(false);
       });
     return () => { cancelled = true; };
-  }, [localPreviewMode]);
+  }, [localPreviewMode, revision]);
 
   return (
     <section className="config-section card">
@@ -5369,9 +5374,9 @@ function LeaderboardPreview({
       {!loading && !error && enabled && entries.length === 0 && (
         <p className="tip">{helperT('helper.noXpData', 'No eligible XP data yet. Members can opt out with /leaderboard-privacy.')}</p>
       )}
-      {entries.length > 0 && (
+      {!loading && !error && entries.length > 0 && (
         <div className="template-list" aria-label={helperT('helper.leaderboardTitle', 'Leaderboard preview')}>
-          {entries.map((entry) => (
+          {entries.slice(0, 10).map((entry) => (
             <div className="template-row" key={`${entry.userId}-${entry.rank}`}>
               <div>
                 <b>#{entry.rank} · {entry.displayName || entry.userId}</b>
@@ -5380,6 +5385,11 @@ function LeaderboardPreview({
               <span className="status-pill">{entry.rank <= maxEntries ? helperT('helper.included', 'Included') : helperT('helper.hidden', 'Hidden')}</span>
             </div>
           ))}
+          {entries.length > 10 && (
+            <p className="tip"><span aria-hidden="true">…</span>{' '}{helperLocale() === 'pt'
+              ? `Mais ${entries.length - 10} pessoas no /leaderboard.`
+              : `${entries.length - 10} more members in /leaderboard.`}</p>
+          )}
         </div>
       )}
     </section>
@@ -5816,7 +5826,21 @@ function schemaSlug(value: string): string {
     .replace(/^_|_$/g, '') || 'section';
 }
 
-function localizedField(field: FieldSpec): FieldSpec {
+function localizedField(field: FieldSpec, featureKey = ''): FieldSpec {
+  if (field.key === 'maxEntries' && featureKey === 'community.leaderboard') return {
+    ...field, min: 1, max: 100,
+    label: helperLocale() === 'pt' ? 'Máximo de pessoas na classificação' : 'Maximum members in /leaderboard',
+    help: helperLocale() === 'pt'
+      ? 'Entre 1 e 100 pessoas no /leaderboard. A pré-visualização mostra no máximo 10.'
+      : 'Between 1 and 100 members in /leaderboard. The preview shows at most 10.',
+  };
+  if (field.key === 'maxEntries' && featureKey === 'utility.emojis') return {
+    ...field,
+    label: helperLocale() === 'pt' ? 'Emojis apresentados no /emojis' : 'Emojis listed by /emojis',
+    help: helperLocale() === 'pt'
+      ? 'Número de emojis personalizados listados pelo comando /emojis. Não limita a utilização de emojis pelos membros.'
+      : 'Number of custom emojis listed by /emojis. This does not limit emoji usage.',
+  };
   if (field.key === 'staffRole') field = { ...field, ...ticketStaffField };
   if (field.key === 'defaultCapacity') field = { ...field, label: 'Participant limit (optional)', help: '0 = unlimited.' };
   const label = helperT(`helper.field.${field.key}.label`, field.label);
@@ -5830,13 +5854,15 @@ function localizedField(field: FieldSpec): FieldSpec {
   return { ...field, label, help, options };
 }
 
-function localizedSection(section: SectionSpec): SectionSpec {
+function localizedSection(section: SectionSpec, featureKey = ''): SectionSpec {
   const slug = schemaSlug(section.title);
   return {
     ...section,
-    title: helperT(`helper.section.${slug}.title`, section.title),
-    description: helperT(`helper.section.${slug}.description`, section.description),
-    fields: section.fields.map(localizedField),
+    title: featureKey === 'community.leaderboard'
+      ? helperLocale() === 'pt' ? 'Definições da classificação' : 'Leaderboard settings'
+      : helperT(`helper.section.${slug}.title`, section.title),
+    description: featureKey === 'community.leaderboard' ? '' : helperT(`helper.section.${slug}.description`, section.description),
+    fields: section.fields.map(field => localizedField(field, featureKey)),
   };
 }
 

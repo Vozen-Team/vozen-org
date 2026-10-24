@@ -14,16 +14,19 @@ const events = demoFeature === 'events';
 const birthdays = demoFeature === 'birthdays';
 const levels = demoFeature === 'levels';
 const leaderboard = demoFeature === 'leaderboard';
-const featureKey = `${polls ? 'management' : tickets || welcome ? 'support' : 'community'}.${demoFeature}`;
+const defaultFeatureKey = `${polls ? 'management' : tickets || welcome ? 'support' : 'community'}.${demoFeature}`;
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : []), ...(leaderboard ? ['ranking-error', 'ranking-data'] : [])]) {
+  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : []), ...(leaderboard ? ['ranking-error', 'ranking-data', 'ranking-many', 'ranking-many-pt', 'ranking-many-mobile', 'ranking-ten', 'emoji-copy', 'emoji-copy-pt'] : [])]) {
     if (process.env.SUGGESTIONS_DEMO_SCENARIO && process.env.SUGGESTIONS_DEMO_SCENARIO !== scenario) continue;
     const page = await browser.newPage(scenario === 'dismiss-touch' ? { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true } : {});
     const dismissScenario = scenario.startsWith('dismiss-');
-    const pt = scenario === 'pt';
+    const pt = scenario === 'pt' || scenario.endsWith('-pt');
+    const emojiCopy = scenario.startsWith('emoji-copy');
+    const featureKey = emojiCopy ? 'utility.emojis' : defaultFeatureKey;
+    const many = scenario.startsWith('ranking-many');
     let simulations = 0, writes = 0;
-    const config = leaderboard ? { maxEntries: 10, public: true }
+    const config = emojiCopy ? { maxEntries: 10, animatedOnly: false } : leaderboard ? { maxEntries: many ? 100 : 10, public: true }
       : levels ? { xpMin: 20, xpMax: 20, cooldownSeconds: 60, voiceXpEnabled: false, voiceXpPerMinute: 2, ignoredChannels: [], announceChannel: '', announceTemplate: '{member} reached level {level}!', stackRoles: true, levelRoles: [] }
       : birthdays ? { channel: 'sample-birthdays', message: 'Happy birthday, {user}!', timezone: 'UTC' }
       : events ? { defaultDurationHours: 2, defaultCapacity: scenario === 'limited-capacity' ? 20 : 0, announcementChannel: 'sample-events', reminders: true, reminderHours: 1 }
@@ -35,7 +38,7 @@ try {
     const feature = { key: featureKey, label: leaderboard ? 'XP leaderboard' : levels ? 'Levels & XP' : birthdays ? 'Birthdays' : events ? 'Server events' : polls ? 'Polls' : welcome ? 'Welcome' : tickets ? 'Tickets' : giveaway ? 'Giveaways' : 'Suggestions', category: polls ? 'management' : tickets || welcome ? 'support' : 'community', enabled: scenario !== 'disabled-feature', available: true };
     const localizedLabel = leaderboard ? (pt ? 'Classificação de XP' : 'XP leaderboard') : levels ? (pt ? 'Níveis e XP' : 'Levels & XP') : birthdays ? (pt ? 'Aniversários' : 'Birthdays') : events ? (pt ? 'Eventos do servidor' : 'Server events') : polls ? (pt ? 'Sondagens' : 'Polls') : welcome ? (pt ? 'Boas-vindas' : 'Welcome') : tickets ? 'Tickets' : pt ? (giveaway ? 'Sorteios' : 'Sugestões') : feature.label;
     if (pt) await page.addInitScript(() => localStorage.setItem('vozen.lang', 'pt'));
-    if (scenario === 'mobile' || scenario === 'dismiss-mobile') await page.setViewportSize({ width: 390, height: 844 });
+    if (scenario === 'mobile' || scenario === 'dismiss-mobile' || scenario === 'ranking-many-mobile') await page.setViewportSize({ width: 390, height: 844 });
     await page.emulateMedia({ reducedMotion: scenario === 'reduced-motion' ? 'reduce' : 'no-preference' });
     if (scenario === 'timeout') await page.addInitScript(() => {
       const original = window.setTimeout;
@@ -62,7 +65,7 @@ try {
         else if (path === '/api/config/features') value = { guildId: 'sample', features: [feature] };
         else if (path === `/api/config/features/${featureKey}`) value = {
           ...feature, guildId: 'sample', config, defaults: {}, revision: 1,
-          schema: { sections: leaderboard ? [{ title: 'XP leaderboard', fields: [{ key: 'maxEntries', label: 'Maximum entries', kind: 'number' }, { key: 'public', label: 'Show the leaderboard publicly', kind: 'toggle' }] }]
+          schema: { sections: emojiCopy ? [{title: 'Emoji inventory', fields: [{key:'maxEntries',label:'Emojis shown',kind:'number',min:1,max:100}]}] : leaderboard ? [{ title: 'XP leaderboard', fields: [{ key: 'maxEntries', label: 'Maximum entries', kind: 'number', min: 1, max: 100 }, { key: 'public', label: 'Show the leaderboard publicly', kind: 'toggle' }] }]
             : levels ? [{ title: 'Levels & XP', fields: [{ key: 'xpMin', label: 'XP minimum', kind: 'number' }, { key: 'xpMax', label: 'XP maximum', kind: 'number' }, { key: 'cooldownSeconds', label: 'Cooldown (seconds)', kind: 'number' }, { key: 'voiceXpEnabled', label: 'Voice XP', kind: 'toggle' }, { key: 'voiceXpPerMinute', label: 'Voice XP per minute', kind: 'number' }, { key: 'ignoredChannels', label: 'Excluded channels', kind: 'channels' }, { key: 'announceChannel', label: 'Announcement channel', kind: 'channel' }, { key: 'announceTemplate', label: 'Level-up message', kind: 'text' }, { key: 'stackRoles', label: 'Keep previous level roles', kind: 'toggle' }, { key: 'levelRoles', label: 'Level role rewards', kind: 'tags' }] }]
             : birthdays ? [{ title: 'Birthdays', fields: [{ key: 'channel', label: 'Birthday channel', kind: 'channel' }, { key: 'message', label: 'Birthday message', kind: 'textarea' }, { key: 'timezone', label: 'Time zone', kind: 'text' }] }]
             : events ? [{ title: 'Events', fields: [{ key: 'defaultDurationHours', label: 'Default duration (hours)', kind: 'number' }, { key: 'defaultCapacity', label: 'Default capacity', kind: 'number' }, { key: 'announcementChannel', label: 'Announcement channel', kind: 'channel' }, { key: 'reminders', label: 'Send reminders', kind: 'toggle' }, { key: 'reminderHours', label: 'Reminder before start (hours)', kind: 'number' }] }]
@@ -82,15 +85,41 @@ try {
           if (scenario === 'ranking-error') {
             await route.fulfill({ status: 503, json: { code: 'unavailable' } }); return;
           }
-          value = { guildId: 'sample', enabled: true, entries: scenario === 'ranking-data' ? [{ userId: 'sample-member', displayName: 'Membro de teste <b>seguro</b>', rank: 1, xp: 1620 }, { userId: 'unavailable-member', rank: 2, xp: 438 }] : [], maxEntries: 10, public: true };
+          value = { guildId: 'sample', enabled: true, entries: many || scenario === 'ranking-ten' ? Array.from({length: many ? 100 : 10}, (_,index) => ({userId:`sample-${index+1}`,displayName:`Member ${index+1}`,rank:index+1,xp:2000-index})) : scenario === 'ranking-data' ? [{ userId: 'sample-member', displayName: 'Membro de teste <b>seguro</b>', rank: 1, xp: 1620 }, { userId: 'unavailable-member', rank: 2, xp: 438 }] : [], maxEntries: config.maxEntries, public: true };
         }
         else { await route.fulfill({ status: 503, json: {} }); return; }
       }
       await route.fulfill({ json: value });
     });
     await page.goto(`${base}#/config/${featureKey}`);
+    if (emojiCopy) {
+      const control = page.getByRole('spinbutton', {name: pt ? /Emojis apresentados no/ : /Emojis listed by/});
+      await control.waitFor();
+      await control.locator('..').getByText(pt ? /Não limita a utilização/ : /does not limit emoji usage/).waitFor();
+      assert.equal(await control.inputValue(), '10');
+      assert.equal(writes, 0);
+      console.log(`PASS ${scenario}`);
+      await page.close();
+      continue;
+    }
     if (leaderboard) {
-      const preview = page.locator('section').filter({ has: page.getByRole('heading', { name: pt ? 'Pré-visualização da classificação' : 'Leaderboard preview', exact: true }) });
+      const preview = many || scenario === 'ranking-ten'
+        ? page.locator('section.config-section').filter({has:page.locator('.template-list')})
+        : page.locator('section.config-section').filter({ has: page.getByRole('heading', { name: /Leaderboard preview|Pré-visualização da classificação/, exact: true }) });
+      if (many || scenario === 'ranking-ten') {
+        const control = page.getByRole('spinbutton', {name: pt ? /Máximo de pessoas na classificação/ : /Maximum members in/});
+        await control.waitFor();
+        await preview.getByText('#1 · Member 1', {exact:true}).waitFor();
+        assert.equal(await control.inputValue(), String(config.maxEntries));
+        assert.equal(await control.getAttribute('max'), '100');
+        assert.ok((await control.boundingBox()).y < (await preview.boundingBox()).y, 'settings precede preview');
+        assert.equal(await preview.locator('.template-row').count(), 10);
+        assert.equal(await preview.getByText('…', {exact:true}).count(), many ? 1 : 0);
+        if (many) await preview.getByText(pt ? /Mais 90 pessoas/ : /90 more members/).waitFor();
+        await mkdir('output/playwright', {recursive:true});
+        if (scenario !== 'ranking-many-mobile') await page.setViewportSize({width:1280,height:1800});
+        await page.screenshot({path:`output/playwright/leaderboard-settings-${scenario}.png`,fullPage:true});
+      }
       if (scenario === 'ranking-error') {
         await preview.getByRole('alert').waitFor();
         assert.equal(await preview.getByText(/No eligible XP data yet/).count(), 0, 'an API failure is not an empty leaderboard');
