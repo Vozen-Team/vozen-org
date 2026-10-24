@@ -25,8 +25,12 @@ assert.match(panelScript, /loading:["'`]lazy["'`]/);
 
 const bannerDirectory = resolve(root, 'site/panel/helper-tracker/rank-card-banners');
 const bannerFiles = await readdir(bannerDirectory);
-assert.equal(bannerFiles.filter((name) => name.endsWith('.webp')).length, 10);
-assert.equal(bannerFiles.filter((name) => name.endsWith('.png')).length, 10);
+assert.equal(bannerFiles.filter((name) => name.endsWith('.webp')).length, 16);
+assert.equal(bannerFiles.filter((name) => name.endsWith('.png')).length, 16);
+for (const name of bannerFiles.filter((entry) => entry.endsWith('.webp'))) {
+  assert.ok(panelScript.includes(`rank-card-banners/${name}`), `${name} is missing from the catalogue`);
+  assert.ok(bannerFiles.includes(name.replace(/\.webp$/, '.png')), `${name} needs a PNG fallback`);
+}
 for (const name of bannerFiles.filter((entry) => /\.(?:png|webp)$/i.test(entry))) {
   assert.ok((await stat(resolve(bannerDirectory, name))).size <= 200 * 1024, `${name} exceeds 200 KB`);
 }
