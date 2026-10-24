@@ -15,12 +15,15 @@ const waitFor = async predicate => {
 };
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['en','pt','mobile','voice','exclusions','rewards','saved-reward','missing-resources','future-field','save-failure','keyboard','premium','disabled-feature']) {
+  for (const scenario of ['en','pt','mobile','voice','exclusions','rewards','saved-reward','missing-resources','future-field','save-failure','keyboard','premium','disabled-feature','preview-desktop','preview-mobile','preview-short','preview-tablet','preview-pt','preview-small','preview-breakpoint']) {
     if (process.env.LEVELS_SETTINGS_SCENARIO && !process.env.LEVELS_SETTINGS_SCENARIO.split(',').includes(scenario)) continue;
-    const pt = scenario === 'pt';
-    const premium = scenario === 'premium';
-    const page = await browser.newPage({viewport:{width:scenario === 'mobile' ? 390 : 1440,height:1000}});
+    const pt = scenario === 'pt' || scenario === 'preview-pt';
+    const previewScenario = scenario.startsWith('preview-');
+    const premium = scenario === 'premium' || previewScenario;
+    const narrow = ['mobile','preview-mobile','preview-short'].includes(scenario);
+    const page = await browser.newPage({viewport:{width:narrow ? 390 : scenario === 'preview-small' ? 320 : scenario === 'preview-breakpoint' ? 740 : scenario === 'preview-tablet' ? 900 : 1440,height:scenario === 'preview-short' ? 600 : previewScenario ? 844 : 1000}});
     if (pt) await page.addInitScript(() => localStorage.setItem('vozen.lang','pt'));
+    if (scenario === 'preview-small') await page.addInitScript(() => sessionStorage.setItem('vozen.navuser',JSON.stringify({user:{username:'VeryLongDiscordUsernameForPreview'}})));
     const initial = {xpMin:15,xpMax:30,cooldownSeconds:60,voiceXpEnabled:false,voiceXpPerMinute:2,ignoredChannels:[],levelRoles:[],stackRoles:true,announceChannel:'',announceTemplate:'{member} reached level {level}!'};
     if (scenario === 'future-field') initial.futureSetting = 'Keep this';
     if (scenario === 'saved-reward') initial.levelRoles = ['3=99'];
@@ -117,6 +120,44 @@ try {
       assert.equal(await voice.getAttribute('open'),'');
       await voice.getByRole('checkbox').focus(); await page.keyboard.press('Space');
       await waitFor(() => saved.voiceXpEnabled === true);
+    } else if (previewScenario) {
+      const appearance = page.locator('.levels-customization');
+      await appearance.locator('summary').click();
+      const preview = appearance.locator('.preview-panel');
+      assert.equal(await preview.evaluate(element => getComputedStyle(element).position),'sticky');
+      await appearance.getByRole('button',{name:'Banners',exact:true}).click();
+      await waitFor(() => saved.rankCard?.background_preset === 'aurora-lake');
+      const lastBanner = appearance.locator('.banner-option').last();
+      await lastBanner.click();
+      await waitFor(() => saved.rankCard?.background_preset === 'lavender-storm');
+      const visiblePreview = async () => {
+        const card = await preview.boundingBox();
+        const viewport = await page.locator('.workspace-main').boundingBox();
+        const header = await page.locator('.workspace-global-nav').boundingBox();
+        assert.ok(card.y >= Math.max(viewport.y,header.y + header.height,0) - 1 && card.y + card.height <= Math.min(viewport.y + viewport.height, page.viewportSize().height) + 1,'the entire preview stays inside the visible viewport below navigation');
+        assert.equal(await preview.evaluate(element => {const box=element.getBoundingClientRect();return element.contains(document.elementFromPoint(box.x + box.width / 2,box.y + box.height / 2));}),true,'the preview is not hidden behind another panel');
+        assert.equal(await appearance.evaluate(element => element.scrollWidth > element.clientWidth),false);
+        const cardBody = await preview.locator('.rank-preview').boundingBox(), content = await preview.locator('.rank-content').boundingBox();
+        assert.ok(content.y >= cardBody.y && content.y + content.height <= cardBody.y + cardBody.height,'names and XP must not be cropped by the compact preview');
+      };
+      await visiblePreview();
+      const restore = appearance.locator('.rank-actions').getByRole('button');
+      await restore.scrollIntoViewIfNeeded();
+      await visiblePreview();
+      const previewBox = await preview.boundingBox(), restoreBox = await restore.boundingBox();
+      assert.ok(restoreBox.y >= previewBox.y + previewBox.height,'the preview must not cover the last control');
+      if (process.env.LEVELS_SETTINGS_CAPTURE !== '0') {
+        await mkdir('output/playwright',{recursive:true});
+        await page.screenshot({path:`output/playwright/rank-${scenario}.png`});
+      }
+      await appearance.locator('.banner-option').first().click();
+      await waitFor(() => saved.rankCard?.background_preset === 'aurora-lake');
+      await visiblePreview();
+      await restore.click();
+      await waitFor(() => saved.rankCard?.background_preset === null);
+      await visiblePreview();
+      await appearance.locator('summary').click();
+      assert.equal(await preview.isVisible(),false,'closing customization must remove the sticky preview');
     } else if (scenario === 'premium') {
       const appearance = page.locator('.levels-customization');
       assert.equal(await appearance.getByRole('combobox').count(),0);
