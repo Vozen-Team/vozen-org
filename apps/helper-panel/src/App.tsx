@@ -84,6 +84,12 @@ const presetOptions = [
   ['moonlit-village', 'Moonlit Village', './rank-card-banners/banner-08-moonlit-village.webp', './rank-card-banners/banner-08-moonlit-village.png'],
   ['starship-hangar', 'Starship Hangar', './rank-card-banners/banner-09-starship-hangar.webp', './rank-card-banners/banner-09-starship-hangar.png'],
   ['lavender-storm', 'Lavender Storm', './rank-card-banners/banner-10-lavender-storm.webp', './rank-card-banners/banner-10-lavender-storm.png'],
+  ['crystal-cavern', 'Crystal Cavern', './rank-card-banners/banner-11-crystal-cavern.webp', './rank-card-banners/banner-11-crystal-cavern.png'],
+  ['sakura-shrine', 'Sakura Shrine', './rank-card-banners/banner-12-sakura-shrine.webp', './rank-card-banners/banner-12-sakura-shrine.png'],
+  ['cosmic-nebula', 'Cosmic Nebula', './rank-card-banners/banner-13-cosmic-nebula.webp', './rank-card-banners/banner-13-cosmic-nebula.png'],
+  ['frost-citadel', 'Frost Citadel', './rank-card-banners/banner-14-frost-citadel.webp', './rank-card-banners/banner-14-frost-citadel.png'],
+  ['tropical-lagoon', 'Tropical Lagoon', './rank-card-banners/banner-15-tropical-lagoon.webp', './rank-card-banners/banner-15-tropical-lagoon.png'],
+  ['clockwork-library', 'Clockwork Library', './rank-card-banners/banner-16-clockwork-library.webp', './rank-card-banners/banner-16-clockwork-library.png'],
 ] as const;
 // Production builds must talk to the Rust API even when GitHub Pages does not
 // inject Vite environment variables. Local preview is opt-in so a missing build

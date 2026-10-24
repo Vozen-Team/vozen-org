@@ -165,7 +165,7 @@ try {
       assert.equal(await previous.isDisabled(),true);
       const beforePaging = writes;
       let bannerCount = 0;
-      while (!await next.isDisabled()) {
+      while (true) {
         const banners = appearance.locator('.banner-option');
         assert.equal(await banners.count(),8,'show eight banners before asking users to change pages');
         const boxes = await banners.evaluateAll(elements => elements.map(element => {const {x,y}=element.getBoundingClientRect();return {x,y};}));
@@ -174,32 +174,43 @@ try {
           assert.equal(boxes[row * 2].x,boxes[0].x,'the gallery keeps exactly two columns');
           if (row > 0) assert.ok(boxes[row * 2].y > boxes[(row - 1) * 2].y,'four distinct rows');
         }
-        await controls.hover();
-        for (const delta of [100,140]) {
-          await page.mouse.wheel(0,delta);
-          await page.waitForTimeout(100);
+        for (const image of await banners.locator('img').all()) {
+          await image.scrollIntoViewIfNeeded();
+          await image.evaluate(image => image.decode());
+          assert.ok(await image.evaluate(image => image.naturalWidth >= 640),'every thumbnail loads its bundled image');
           await visiblePreview();
         }
+        if (bannerCount === 0) {
+          await controls.hover();
+          for (const delta of [100,140]) {
+            await page.mouse.wheel(0,delta);
+            await page.waitForTimeout(100);
+            await visiblePreview();
+          }
+        }
         await banners.last().click();
-        await waitFor(() => saved.rankCard?.background_preset === 'moonlit-village');
+        await waitFor(() => saved.rankCard?.background_preset === (bannerCount === 0 ? 'moonlit-village' : 'clockwork-library'));
         await visiblePreview();
         assert.equal(await banners.last().evaluate(element => {const box=element.getBoundingClientRect();return element.contains(document.elementFromPoint(box.x + box.width / 2,box.y + box.height / 2));}),true,'the last row remains clickable while the preview stays visible');
         if (process.env.LEVELS_SETTINGS_CAPTURE !== '0') await page.screenshot({path:`output/playwright/rank-gallery-bottom-${scenario}.png`});
         bannerCount += await appearance.locator('.banner-option').count();
+        if (await next.isDisabled()) break;
         await next.click(); await visiblePreview();
       }
-      bannerCount += await appearance.locator('.banner-option').count();
-      assert.equal(bannerCount,10,'every banner stays reachable, including the final partial page');
-      assert.equal(writes,beforePaging + 1,'only selecting a banner saves; paging never does');
-      await appearance.getByRole('button',{name:'Lavender Storm',exact:true}).click();
-      await waitFor(() => saved.rankCard?.background_preset === 'lavender-storm');
+      assert.equal(bannerCount,16,'two complete pages of eight banners');
+      assert.equal(writes,beforePaging + 2,'only selecting a banner saves; paging never does');
+      for (const [label,id] of [['Crystal Cavern','crystal-cavern'],['Sakura Shrine','sakura-shrine'],['Cosmic Nebula','cosmic-nebula'],['Frost Citadel','frost-citadel'],['Tropical Lagoon','tropical-lagoon'],['Clockwork Library','clockwork-library']]) {
+        await appearance.getByRole('button',{name:label,exact:true}).click();
+        await waitFor(() => saved.rankCard?.background_preset === id);
+        await visiblePreview();
+      }
       assert.equal(saved.rankCard.font,'inter');
       await colors.click(); await visiblePreview();
       assert.equal(await controls.getByRole('slider').count(),1);
       await controls.locator('.swatch').nth(1).click();
       await waitFor(() => saved.rankCard?.primary_color === '#7F9CF5');
       await background.click(); await visiblePreview();
-      assert.equal(await appearance.getByRole('button',{name:'Lavender Storm',exact:true}).getAttribute('aria-pressed'),'true','returning to Background shows the selected banner page');
+      assert.equal(await appearance.getByRole('button',{name:'Clockwork Library',exact:true}).getAttribute('aria-pressed'),'true','returning to Background shows the selected banner page');
       const restore = appearance.locator('.rank-actions').getByRole('button');
       const previewBox = await preview.boundingBox(), restoreBox = await restore.boundingBox();
       assert.ok(restoreBox.x >= previewBox.x + previewBox.width || restoreBox.y >= previewBox.y + previewBox.height,'the preview must not cover the last control');
