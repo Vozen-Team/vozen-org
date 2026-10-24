@@ -329,6 +329,11 @@ export type AuditRecord = {
   outcome: string;
   created_at?: number;
 };
+export type ActivityFeedRecord = {
+  id:string; source:'activity'|'case'|'audit'; kind:string; user_id:string; user_tag?:string|null; actor_id?:string|null;
+  memberName?:string|null; actorName?:string|null; detail:string; outcome:string; created_at:number; category:string; helper:boolean;
+};
+
 export type ActivityRecord = {
   id: number;
   guild_id: string;
@@ -641,6 +646,7 @@ export const api = {
     request<{ ok: boolean; id: number }>(`/api/reminders/${id}/retry`, { method: 'POST' }),
   cases: (options?: ReadOptions) => request<{ cases: CaseRecord[] }>('/api/cases?limit=8', options),
   audit: (options?: ReadOptions) => request<{ events: AuditRecord[] }>('/api/audit?limit=12', options),
+  activityFeed: (category: string, before?: string, options?: ReadOptions) => request<{guildId:string;events:ActivityFeedRecord[];nextCursor:string|null}>(`/api/activity/feed?${new URLSearchParams({category,limit:'50',...(before?{before}:{})})}`,options),
   activity: (options?: ReadOptions) => request<{ activity: ActivityRecord[] }>('/api/activity?limit=24', options),
   quotas: (options?: ReadOptions) =>
     request<{ plan: string; limits: Record<string, number>; usage: Record<string, number> }>(

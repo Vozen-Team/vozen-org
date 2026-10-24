@@ -1,0 +1,57 @@
+import { helperLocale, type SupportedLocale } from './i18n';
+
+const languages = ['pt','fr','es','de','tr','ar','zh','ru','ko'] as const;
+export const activityCopy = {
+  'All': ['Todas','Tout','Todo','Alle','Tümü','الكل','全部','Все','전체'],
+  'Joins': ['Entradas','Arrivées','Entradas','Beitritte','Katılanlar','الانضمامات','加入','Вступления','입장'],
+  'Leaves': ['Saídas','Départs','Salidas','Austritte','Ayrılanlar','المغادرات','離開','Выходы','퇴장'],
+  'Bans': ['Banimentos','Bannissements','Baneos','Sperren','Yasaklamalar','الحظر','封鎖','Блокировки','차단'],
+  'Timeouts': ['Timeouts','Exclusions temporaires','Aislamientos','Timeouts','Zaman aşımları','المهلات','禁言','Тайм-ауты','타임아웃'],
+  'Activity filters': ['Filtrar atividade','Filtrer l’activité','Filtrar actividad','Aktivität filtern','Etkinliği filtrele','تصفية النشاط','篩選活動','Фильтры активности','활동 필터'],
+  'Action': ['Ação','Action','Acción','Aktion','Eylem','الإجراء','動作','Действие','작업'],
+  'Member': ['Membro','Membre','Miembro','Mitglied','Üye','العضو','成員','Участник','멤버'],
+  'Status': ['Estado','État','Estado','Status','Durum','الحالة','狀態','Статус','상태'],
+  'Date': ['Data','Date','Fecha','Datum','Tarih','التاريخ','日期','Дата','날짜'],
+  'Details': ['Detalhes','Détails','Detalles','Details','Ayrıntılar','التفاصيل','詳細資料','Подробности','세부 정보'],
+  'By': ['Por','Par','Por','Von','Yapan','بواسطة','執行者','Кем','실행자'],
+  'Name unavailable': ['Nome indisponível','Nom indisponible','Nombre no disponible','Name nicht verfügbar','Ad kullanılamıyor','الاسم غير متاح','名稱無法取得','Имя недоступно','이름을 불러올 수 없음'],
+  'System': ['Sistema','Système','Sistema','System','Sistem','النظام','系統','Система','시스템'],
+  'Recorded': ['Registado','Enregistré','Registrado','Erfasst','Kaydedildi','مسجل','已記錄','Записано','기록됨'],
+  'Detected': ['Detetado','Détecté','Detectado','Erkannt','Tespit edildi','تم رصده','已偵測','Обнаружено','감지됨'],
+  'Sent': ['Enviado','Envoyé','Enviado','Gesendet','Gönderildi','تم الإرسال','已傳送','Отправлено','전송됨'],
+  'Processed': ['Processado','Traité','Procesado','Verarbeitet','İşlendi','تمت المعالجة','已處理','Обработано','처리됨'],
+  'Updated': ['Atualizado','Mis à jour','Actualizado','Aktualisiert','Güncellendi','تم التحديث','已更新','Обновлено','업데이트됨'],
+  'Done': ['Concluído','Terminé','Completado','Erledigt','Tamamlandı','مكتمل','已完成','Выполнено','완료됨'],
+  'Failed': ['Falhou','Échec','Falló','Fehlgeschlagen','Başarısız','فشل','失敗','Ошибка','실패'],
+  'Blocked': ['Bloqueado','Bloqué','Bloqueado','Blockiert','Engellendi','محظور','已阻擋','Заблокировано','차단됨'],
+  'Skipped': ['Ignorado','Ignoré','Omitido','Übersprungen','Atlandı','تم التخطي','已略過','Пропущено','건너뜀'],
+  'Simulation': ['Simulação','Simulation','Simulación','Simulation','Simülasyon','محاكاة','模擬','Симуляция','시뮬레이션'],
+  'Joined': ['Entrou','A rejoint','Entró','Beigetreten','Katıldı','انضم','已加入','Вступил','입장함'],
+  'Left': ['Saiu','A quitté','Salió','Ausgetreten','Ayrıldı','غادر','已離開','Вышел','퇴장함'],
+  'Ban': ['Banimento','Bannissement','Baneo','Sperre','Yasaklama','حظر','封鎖','Блокировка','차단'],
+  'Unban': ['Banimento removido','Bannissement levé','Baneo retirado','Sperre aufgehoben','Yasak kaldırıldı','رفع الحظر','解除封鎖','Разблокировка','차단 해제'],
+  'Timeout': ['Timeout','Exclusion temporaire','Aislamiento','Timeout','Zaman aşımı','مهلة','禁言','Тайм-аут','타임아웃'],
+  'Timeout removed': ['Timeout removido','Exclusion levée','Aislamiento retirado','Timeout aufgehoben','Zaman aşımı kaldırıldı','إلغاء المهلة','解除禁言','Тайм-аут снят','타임아웃 해제'],
+  'Warning': ['Aviso','Avertissement','Advertencia','Verwarnung','Uyarı','تحذير','警告','Предупреждение','경고'],
+  'Kick': ['Expulsão','Expulsion','Expulsión','Ausschluss','Atma','طرد','踢出','Исключение','추방'],
+  'Protection': ['Proteção','Protection','Protección','Schutz','Koruma','الحماية','防護','Защита','보호'],
+  'Command': ['Comando','Commande','Comando','Befehl','Komut','أمر','指令','Команда','명령어'],
+  'Message': ['Mensagem','Message','Mensaje','Nachricht','Mesaj','رسالة','訊息','Сообщение','메시지'],
+  'Helper action': ['Ação do Helper','Action du Helper','Acción del Helper','Helper-Aktion','Helper eylemi','إجراء Helper','Helper 動作','Действие Helper','Helper 작업'],
+  'Settings': ['Definições','Réglages','Ajustes','Einstellungen','Ayarlar','الإعدادات','設定','Настройки','설정'],
+  'Event': ['Evento','Événement','Evento','Ereignis','Olay','حدث','事件','Событие','이벤트'],
+  'Refresh': ['Atualizar','Actualiser','Actualizar','Aktualisieren','Yenile','تحديث','重新整理','Обновить','새로고침'],
+  'Loading…': ['A carregar…','Chargement…','Cargando…','Wird geladen…','Yükleniyor…','جارٍ التحميل…','載入中…','Загрузка…','불러오는 중…'],
+  'Load more': ['Carregar mais','Afficher plus','Cargar más','Mehr laden','Daha fazla yükle','تحميل المزيد','載入更多','Загрузить ещё','더 보기'],
+  'Try again': ['Tentar novamente','Réessayer','Reintentar','Erneut versuchen','Tekrar dene','إعادة المحاولة','重試','Повторить','다시 시도'],
+  'Could not load activity.': ['Não foi possível carregar a atividade.','Impossible de charger l’activité.','No se pudo cargar la actividad.','Aktivität konnte nicht geladen werden.','Etkinlik yüklenemedi.','تعذر تحميل النشاط.','無法載入活動。','Не удалось загрузить активность.','활동을 불러올 수 없습니다.'],
+  'No activity yet.': ['Ainda não há atividade.','Aucune activité pour le moment.','Todavía no hay actividad.','Noch keine Aktivität.','Henüz etkinlik yok.','لا يوجد نشاط بعد.','尚無活動。','Пока нет активности.','아직 활동이 없습니다.'],
+  'No activity in this filter.': ['Sem atividade neste filtro.','Aucune activité pour ce filtre.','No hay actividad en este filtro.','Keine Aktivität für diesen Filter.','Bu filtrede etkinlik yok.','لا يوجد نشاط لهذا الفلتر.','此篩選條件下沒有活動。','Нет активности с этим фильтром.','이 필터에 해당하는 활동이 없습니다.'],
+  'Activity list': ['Lista de atividade','Liste d’activité','Lista de actividad','Aktivitätsliste','Etkinlik listesi','قائمة النشاط','活動清單','Список активности','활동 목록'],
+  'Actor': ['Autor da ação','Auteur de l’action','Autor de la acción','Ausführende Person','İşlemi yapan','منفذ الإجراء','執行者','Исполнитель','작업 실행자'],
+} as const satisfies Record<string,readonly [string,string,string,string,string,string,string,string,string]>;
+
+export type ActivityKey = keyof typeof activityCopy;
+export function activityText(key: ActivityKey, locale: SupportedLocale = helperLocale()): string {
+  return locale === 'en' ? key : activityCopy[key][languages.indexOf(locale)];
+}

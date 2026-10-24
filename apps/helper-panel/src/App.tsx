@@ -1,3 +1,4 @@
+import { ActivityFeed } from './activity-feed';
 import { achievementText } from './achievements-i18n';
 import { EcosystemTopbar, EcosystemAccountAvatar, useEcosystemAccount, discordAvatarUrl } from './ecosystem-topbar';
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
@@ -18,8 +19,6 @@ import {
   api,
   ApiError,
   restoreOAuthReturnHash,
-  type ActivityRecord,
-  type AuditRecord,
   type CaseRecord,
   type CustomCommand,
   type Feature,
@@ -1985,8 +1984,6 @@ function App() {
   const featuresRef = useRef(features);
   featuresRef.current = features;
   const [cases, setCases] = useState<CaseRecord[]>([]);
-  const [audit, setAudit] = useState<AuditRecord[]>([]);
-  const [activity, setActivity] = useState<ActivityRecord[]>([]);
   const [stats, setStats] = useState({ totalCases: 0 });
   const [quota, setQuota] = useState({
     plan: 'Free',
@@ -2126,7 +2123,7 @@ function App() {
 
         if (parseRoute(window.location.hash).page === 'servers') return;
 
-        const [nextFeatures, nextStats, nextCases, nextAudit, nextActivity, nextQuota, nextRank] =
+        const [nextFeatures, nextStats, nextCases, nextQuota, nextRank] =
           await Promise.all([
             api.features({ signal: load.signal }).catch((cause) => {
               if (isAbortError(cause) || !load.isCurrent()) throw cause;
@@ -2144,14 +2141,6 @@ function App() {
               if (isAbortError(cause)) throw cause;
               return { cases: [] };
             }),
-            api.audit({ signal: load.signal }).catch((cause) => {
-              if (isAbortError(cause)) throw cause;
-              return { events: [] };
-            }),
-            api.activity({ signal: load.signal }).catch((cause) => {
-              if (isAbortError(cause)) throw cause;
-              return { activity: [] };
-            }),
             api.quotas({ signal: load.signal }).catch((cause) => {
               if (isAbortError(cause)) throw cause;
               return { plan: 'Free', limits: {}, usage: {} };
@@ -2166,8 +2155,6 @@ function App() {
         setFeatures(visibleWelcomeFeatures(nextFeatures.features).map(presentFeature));
         setStats(nextStats);
         setCases(nextCases.cases);
-        setAudit(nextAudit.events);
-        setActivity(nextActivity.activity);
         setQuota(nextQuota);
         setRankConfig(nextRank.config);
         setSavedRankConfig(nextRank.config);
@@ -3183,9 +3170,9 @@ function App() {
             <div>
               <small className="eyebrow">{currentGuild?.name ?? helperT('helper.serverWorkspace', 'WORKSPACE')} · HELPER</small>
               <h1 id="route-heading" data-route-heading tabIndex={-1}>{title}</h1>
-              <p className="subtitle">{subtitle}</p>
+              {route.page !== 'activity' && <p className="subtitle">{subtitle}</p>}
             </div>
-            <div className="header-state" role="status" aria-live="polite">
+            {route.page !== 'activity' && <div className="header-state" role="status" aria-live="polite">
               <span className="status-dot" />{' '}
               {autosaveState === 'saving'
                 ? helperT('helper.saving', 'Saving…')
@@ -3206,7 +3193,7 @@ function App() {
                 : localPreviewMode
                   ? helperT('helper.demoMode', 'Demo mode')
                   : helperT('helper.fullySynced', 'Fully synced')}
-            </div>
+            </div>}
           </header>
         )}
         {message && (
@@ -3278,7 +3265,7 @@ function App() {
             }
           />
         )}
-        {route.page === 'activity' && <Activity cases={cases} audit={audit} activity={activity} />}
+        {route.page === 'activity' && <ActivityFeed key={me?.guildId} guildId={me?.guildId || ''} preview={localPreviewMode} />}
         {route.page === 'detail' &&
           (detailLoading ? (
             <div className="loading-card card">
@@ -5914,68 +5901,6 @@ function FieldControl({
   );
 }
 
-function Activity({
-  cases,
-  audit,
-  activity,
-}: {
-  cases: CaseRecord[];
-  audit: AuditRecord[];
-  activity: ActivityRecord[];
-}) {
-  return (
-    <section className="activity">
-      <div className="section-heading">
-        <div>
-          <small className="eyebrow">{helperT('helper.transparency', 'TRANSPARENCY')}</small>
-          <h2>{helperT('helper.activity', 'Recent activity')}</h2>
-          <p>{helperT('helper.activityIntro', 'Every action shows what happened without hiding important details.')}</p>
-        </div>
-      </div>
-      <div className="table card">
-        <div className="table-head">
-          <span>{helperT('helper.action', 'Action')}</span>
-          <span>{helperT('helper.targetActor', 'Target / actor')}</span>
-          <span>{helperT('helper.status', 'Status')}</span>
-          <span>{helperT('helper.date', 'Date')}</span>
-        </div>
-        {cases.map((item) => (
-          <div className="table-row" key={`case-${item.id}`}>
-            <span>
-              <b className="tag danger">{item.kind ?? item.type ?? 'moderation'}</b>
-            </span>
-            <span>{item.target_id ?? item.targetId ?? '—'}</span>
-            <span>{item.reason || 'in the reason provided'}</span>
-            <span>{formatDate(item.created_at ?? item.createdAt)}</span>
-          </div>
-        ))}
-        {audit.map((item, index) => (
-          <div className="table-row" key={`audit-${index}`}>
-            <span>
-              <b className="tag">{item.action}</b>
-            </span>
-            <span>{item.actor_id ?? item.actorId ?? '—'}</span>
-            <span>{item.outcome}</span>
-            <span>{formatDate(item.created_at)}</span>
-          </div>
-        ))}
-        {activity.map((item) => (
-          <div className="table-row" key={`activity-${item.id}`}>
-            <span>
-              <b className="tag">{item.kind.replaceAll('_', ' ')}</b>
-            </span>
-            <span>{item.user_tag ?? item.user_id}</span>
-            <span>{helperT('helper.metadataOnly', 'Metadata only')} · {item.detail}</span>
-            <span>{formatDate(item.created_at)}</span>
-          </div>
-        ))}
-        {!cases.length && !audit.length && !activity.length && (
-          <div className="empty">{helperT('helper.activityEmpty', 'No activity to show.')}</div>
-        )}
-      </div>
-    </section>
-  );
-}
 function formatDate(value?: number | string) {
   if (!value) return '—';
   const date =
