@@ -5827,6 +5827,13 @@ function schemaSlug(value: string): string {
 }
 
 function localizedField(field: FieldSpec, featureKey = ''): FieldSpec {
+  if (field.key === 'public' && featureKey === 'community.leaderboard') return {
+    ...field,
+    label: helperLocale() === 'pt' ? 'Mostrar a resposta do /leaderboard a todos no canal' : 'Show the /leaderboard response to everyone in the channel',
+    help: helperLocale() === 'pt'
+      ? 'Ligado: todos no canal veem a resposta. Desligado: só quem usa o comando vê a resposta.'
+      : 'On: everyone in the channel can see the response. Off: only the person using the command can see it.',
+  };
   if (field.key === 'maxEntries' && featureKey === 'community.leaderboard') return {
     ...field, min: 1, max: 100,
     label: helperLocale() === 'pt' ? 'Máximo de pessoas na classificação' : 'Maximum members in /leaderboard',

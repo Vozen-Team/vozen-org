@@ -107,6 +107,12 @@ try {
         ? page.locator('section.config-section').filter({has:page.locator('.template-list')})
         : page.locator('section.config-section').filter({ has: page.getByRole('heading', { name: /Leaderboard preview|Pré-visualização da classificação/, exact: true }) });
       if (many || scenario === 'ranking-ten') {
+        const visibility = page.getByRole('checkbox', {name: pt ? /Mostrar a resposta do \/leaderboard a todos no canal/ : /Show the \/leaderboard response to everyone in the channel/});
+        await visibility.waitFor();
+        assert.equal(await visibility.isChecked(), true);
+        await page.getByText(pt
+          ? 'Ligado: todos no canal veem a resposta. Desligado: só quem usa o comando vê a resposta.'
+          : 'On: everyone in the channel can see the response. Off: only the person using the command can see it.', {exact:true}).waitFor();
         const control = page.getByRole('spinbutton', {name: pt ? /Máximo de pessoas na classificação/ : /Maximum members in/});
         await control.waitFor();
         await preview.getByText('#1 · Member 1', {exact:true}).waitFor();
