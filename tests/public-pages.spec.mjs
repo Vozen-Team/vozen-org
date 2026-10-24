@@ -17,6 +17,14 @@ test('the shared wordmark has a small dedicated font subset', async ({ page }) =
 const entryPages = ['/', '/tts/', '/helper/'];
 const widths = [320, 375, 768, 1024, 1440];
 
+test('TTS discovers its headline font before the stylesheet finishes', async ({ page }) => {
+  await page.goto('/tts/');
+  const preload = page.locator('link[rel="preload"][as="font"][href="/assets/fonts/unbounded-critical-latin.woff2"]');
+  await expect(preload).toHaveAttribute('crossorigin', 'anonymous');
+  await expect(preload).toHaveAttribute('type', 'font/woff2');
+  expect(await preload.evaluate(node => Boolean(node.compareDocumentPosition(document.querySelector('link[rel="stylesheet"]')) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+});
+
 test('Premium finishes initialization and darkens navigation on scroll while purchases stay paused', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
