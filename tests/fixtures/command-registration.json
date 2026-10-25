@@ -295,7 +295,7 @@
     ]
   },
   "helper": {
-    "revision": "5f158887507b36ef9ce91c90e305932629a98385",
+    "revision": "f8eb09f2edcaaac41f82bac42af1b7f7b953bab8",
     "source": "crates/helper-discord/src/lib.rs",
     "commands": [
       {
@@ -590,6 +590,13 @@
         "description": "Show current server invite usage",
         "permission": "MANAGE_GUILD",
         "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "shop",
+        "description": "Browse and buy community rewards",
+        "permission": "",
+        "access": "Free",
         "premiumExtras": ""
       },
       {
