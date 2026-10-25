@@ -61,10 +61,10 @@ export function EconomyShop({context,localPreviewMode}:{context:GuildContext|nul
       <form onSubmit={event=>{event.preventDefault();void mutate(()=>api.saveShopProduct(guild,{...draft,name:draft.name.trim()},editing),true);}}>
         <fieldset disabled={busy||loading||!usable||(!editing&&products.length>=20)}>
           <div className="economy-shop__fields">
-            <label>{t('name')}<input required maxLength={60} value={draft.name} onChange={event=>setDraft({...draft,name:event.target.value})}/></label>
-            <label>{t('price')}<input type="number" required min={1} max={1000000} step={1} value={draft.price} onChange={event=>setDraft({...draft,price:Number(event.target.value)})}/></label>
-            <label>{t('delivery')}<select value={draft.delivery} onChange={event=>setDraft({...draft,delivery:event.target.value as 'manual'|'role',roleId:null})}><option value="manual">{t('manual')}</option><option value="role">{t('role')}</option></select></label>
-            {draft.delivery==='role'&&<label>{t('role')}<select required value={draft.roleId??''} onChange={event=>setDraft({...draft,roleId:event.target.value||null})}><option value="">—</option>{roles.map(role=><option key={role.id} value={role.id}>{roleResourceLabel(role)}</option>)}</select></label>}
+            <label className="field">{t('name')}<input required maxLength={60} value={draft.name} onChange={event=>setDraft({...draft,name:event.target.value})}/></label>
+            <label className="field">{t('price')}<input type="number" required min={1} max={1000000} step={1} value={draft.price} onChange={event=>setDraft({...draft,price:Number(event.target.value)})}/></label>
+            <label className="field">{t('delivery')}<select value={draft.delivery} onChange={event=>setDraft({...draft,delivery:event.target.value as 'manual'|'role',roleId:null})}><option value="manual">{t('manual')}</option><option value="role">{t('role')}</option></select></label>
+            {draft.delivery==='role'&&<label className="field">{t('role')}<select required value={draft.roleId??''} onChange={event=>setDraft({...draft,roleId:event.target.value||null})}><option value="">—</option>{roles.map(role=><option key={role.id} value={role.id}>{roleResourceLabel(role)}</option>)}</select></label>}
           </div>
           {draft.delivery==='manual'&&<small>{t('manualHelp')}</small>}
           <div className="economy-shop__actions"><button type="submit" className="primary" disabled={!draft.name.trim()}>{t(editing?'save':'add')}</button>{editing&&<button type="button" className="secondary" onClick={()=>{setEditing(undefined);setDraft(blank);}}>{t('cancel')}</button>}</div>
