@@ -48,6 +48,7 @@ try {
       const menu = page.locator('.workspace-global-nav__menu');
       await menu.click();
       await page.locator('#ecosystem-products a[href="/commands/"]').waitFor({state:'visible'});
+      await page.waitForFunction(() => Math.abs(document.querySelector('#ecosystem-products').getBoundingClientRect().right - innerWidth) < 2);
       const drawer = await page.locator('#ecosystem-products').boundingBox();
       assert.ok(drawer && Math.abs(drawer.x + drawer.width - 390) < 2, 'same right-edge drawer as the public site');
       assert.ok(drawer.height >= 844, 'drawer fills the viewport');
