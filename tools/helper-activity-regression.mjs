@@ -67,6 +67,11 @@ try {
     assert.equal(await page.locator('[role=dialog]').count(),0);
     await feed.locator('.activity-feed__details button').first().click();
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no horizontal overflow');
+    if (locale === 'ru') {
+      const inner = await page.locator('.vozen-global-nav .nav__inner').boundingBox();
+      const actions = await page.locator('.vozen-global-nav .nav__actions').boundingBox();
+      assert.ok(actions.x + actions.width <= inner.x + inner.width + 1, 'translated navigation stays inside the shared header width');
+    }
     if(['en','pt','ar'].includes(locale)) {
       await mkdir('output/playwright',{recursive:true});
       await page.evaluate(()=>window.scrollTo(0,0));
