@@ -10,7 +10,7 @@ const destination = path.join(root, 'apps/helper-panel/public/feature-demos');
 // Retain the original command; pass a feature name to generate only that storyboard
 // without replacing any existing Starboard assets.
 const feature = process.argv[2] ?? 'starboard';
-if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements'].includes(feature)) throw new Error('Unknown feature demo');
+if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy'].includes(feature)) throw new Error('Unknown feature demo');
 await fs.mkdir(destination, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -51,6 +51,7 @@ try {
         ctx.fillText(content, x, y);
       }
       function draw(time) {
+        if (feature === 'economy') { drawEconomy(time); return; }
         if (feature === 'achievements') { drawAchievements(time); return; }
         if (feature === 'leaderboard') { drawLeaderboard(time); return; }
         if (feature === 'levels') { drawLevels(time); return; }
@@ -87,6 +88,43 @@ try {
         label(text.sample, 42, 518, 14, '#a3b6d1');
         ctx.fillStyle = '#24354c'; ctx.fillRect(42, 531, 876, 3);
         ctx.fillStyle = '#8ee5d2'; ctx.fillRect(42, 531, 876 * Math.min(time / 10, 1), 3);
+      }
+      function drawEconomy(time) {
+        const daily = time >= 2;
+        const work = time >= 4.5;
+        const top = time >= 7;
+        const balance = work ? 150 : daily ? 100 : 0;
+        const currency = pt ? 'créditos' : 'credits';
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / ECONOMIA' : 'VOZEN HELPER / ECONOMY', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Ganha moedas. Acompanha o teu saldo.' : 'Earn credits. Track your balance.', 42, 111, 30);
+        card(42, 136, 340, 304);
+        label('/balance', 66, 174, 21, '#8ee5d2');
+        label(pt ? '@Membro · saldo de exemplo' : '@Member · sample balance', 66, 213, 18, '#a3b6d1');
+        label(String(balance), 66, 287, 56);
+        label(currency, 66, 322, 22, '#a3b6d1');
+        if (daily) label(work ? '/work  +50' : '/daily  +100', 66, 393, 25, '#8ee5d2');
+        card(402, 136, 516, 304);
+        if (top) {
+          label('/economy-top', 426, 174, 21, '#8ee5d2');
+          label(pt ? '1. @Membro' : '1. @Member', 426, 237, 24);
+          label(`150 ${currency}`, 696, 237, 21, '#ffd170');
+          label(pt ? '2. @Amigo' : '2. @Friend', 426, 294, 24);
+          label(`100 ${currency}`, 696, 294, 21, '#a3b6d1');
+          label(pt ? 'Até 10 membros por saldo' : 'Up to 10 members by balance', 426, 395, 18, '#a3b6d1');
+        } else {
+          label('/daily', 426, 181, 24, daily ? '#8ee5d2' : '#f4f7fb');
+          label(`+100 ${currency}`, 426, 219, 26);
+          label(pt ? 'Uma vez a cada 24 horas' : 'Once every 24 hours', 426, 250, 18, '#a3b6d1');
+          label('/work', 426, 315, 24, work ? '#8ee5d2' : '#f4f7fb');
+          label(`+50 ${currency}`, 426, 353, 26);
+          label(pt ? 'Exemplo: espera de 60 minutos' : 'Example: 60-minute cooldown', 426, 391, 18, '#a3b6d1');
+        }
+        label(time < 2 ? (pt ? '1. Começa pelo teu saldo' : '1. Start with your balance')
+          : time < 7 ? (pt ? '2. Recolhe as recompensas' : '2. Claim your rewards')
+          : (pt ? '3. Consulta a classificação' : '3. Check the ranking'), 42, 484, 22);
+        label(pt ? 'Valores de exemplo · moeda e recompensas configuráveis' : 'Sample values · configurable currency and rewards', 42, 518, 14, '#a3b6d1');
       }
       function drawAchievements(time) {
         const xp = Math.round(80 + 20 * Math.min(time / 3, 1));
@@ -439,7 +477,7 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Sem canal escolhido, o botão não aparece · exemplo ilustrativo' : 'Without a chosen channel, the button stays hidden · illustrative example', 42, 518, 14, '#a3b6d1');
       }
-      draw(['events', 'birthdays', 'levels', 'leaderboard', 'achievements'].includes(feature) ? 8 : 0);
+      draw(['events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy'].includes(feature) ? 8 : 0);
       const poster = canvas.toDataURL('image/png').split(',')[1];
       const stream = canvas.captureStream(24);
       const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: 700_000 });

@@ -1,5 +1,10 @@
 type DemoCopy = { title: string; example: string; steps: [string, string, string] };
 const demos = new Map<string, { asset: string; en: DemoCopy; pt: DemoCopy }>([
+  ['community.economy', {
+    asset: 'economy',
+    en: { title: 'How Economy works · looping animation', example: 'Sample data: daily +100, work +50 credits. This animation does not change balances or send Discord messages.', steps: ['1. Enable Economy and choose the currency and rewards.', '2. Use /daily once every 24 hours and /work after its configured cooldown.', '3. Check your balance with /balance and the top 10 with /economy-top.'] },
+    pt: { title: 'Como funciona a Economia · animação em loop', example: 'Dados de exemplo: daily +100, work +50 créditos. Esta animação não altera saldos nem envia mensagens no Discord.', steps: ['1. Ativa a Economia e escolhe a moeda e as recompensas.', '2. Usa /daily a cada 24 horas e /work após o tempo de espera configurado.', '3. Consulta o saldo com /balance e o top 10 com /economy-top.'] },
+  }],
   ['community.achievements', {
     asset: 'achievements',
     en: { title: 'How Achievements work · looping animation', example: 'Illustrative example: a member reaches an XP milestone and checks /achievements. Sample data and accelerated time; no XP is awarded, roles assigned or messages sent by this animation.', steps: ['1. Enable Achievements. Members earn medals through messages, voice, reactions, threads, boosts and XP.', '2. Medals change color as members progress. The XP example uses existing XP; achievements do not award extra XP.', '3. Use /achievements for your card and personal progress, or open the server collection on the site.'] },

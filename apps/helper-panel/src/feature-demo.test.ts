@@ -2,6 +2,13 @@ import { describe, expect, it } from 'vitest';
 import { featureDemo } from './feature-demo';
 
 describe('feature-specific demonstrations', () => {
+  it('explains economy commands and cooldowns without changing balances', () => {
+    const demo = featureDemo('community.economy', 'en');
+    expect(demo?.example).toMatch(/does not change balances/);
+    for (const command of ['/daily', '/work', '/balance', '/economy-top', '24 hours', 'cooldown']) expect(demo?.steps.join(' ')).toContain(command);
+    expect(featureDemo('community.economy', 'pt')?.asset).toBe('economy-pt');
+    expect(featureDemo('community.economy', 'fr')?.asset).toBe('economy-en');
+  });
   it('explains activity medals and existing XP without obsolete milestone controls', () => {
     const demo = featureDemo('community.achievements', 'en');
     expect(demo?.asset).toBe('achievements-en');
@@ -70,7 +77,7 @@ describe('feature-specific demonstrations', () => {
     }
   }
   it('does not misrepresent a Starboard video as a different feature', () => {
-    expect(featureDemo('community.economy', 'en')).toBeNull();
+    expect(featureDemo('community.economy', 'en')?.asset).toBe('economy-en');
     expect(featureDemo('unknown', 'pt')).toBeNull();
   });
   it('explains ticket privacy and staff handling without claiming real server actions', () => {
