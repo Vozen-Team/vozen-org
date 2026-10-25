@@ -1,0 +1,924 @@
+{
+  "tts": {
+    "revision": "89c15fb82cd72a91ee60ec51b8bb27caa57ac702",
+    "source": "crates/vozen-contracts/src/commands.rs",
+    "commands": [
+      {
+        "name": "invite",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "vote",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "help",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "join",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "leave",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "tts",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "tts-file",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "skip",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "queue",
+        "type": 1,
+        "subcommands": [
+          "show",
+          "remove",
+          "clear",
+          "skip",
+          "pause",
+          "resume"
+        ]
+      },
+      {
+        "name": "shut-up",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "laugh",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "joke",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "rizz",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "sound",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "8-ball",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "fortune",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "cast",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "fact",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "wyr",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "birthday",
+        "type": 1,
+        "subcommands": [
+          "set",
+          "clear",
+          "show"
+        ]
+      },
+      {
+        "name": "privacy",
+        "type": 1,
+        "subcommands": [
+          "erase"
+        ]
+      },
+      {
+        "name": "translate",
+        "type": 1,
+        "subcommands": [
+          "text",
+          "language",
+          "speak-language",
+          "status",
+          "enable",
+          "disable",
+          "clear",
+          "map-add",
+          "map-remove",
+          "map-list",
+          "preview",
+          "opt-out"
+        ]
+      },
+      {
+        "name": "top-speakers",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "server-stats",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "premium",
+        "type": 1,
+        "subcommands": [
+          "info",
+          "activate",
+          "deactivate"
+        ]
+      },
+      {
+        "name": "transcribe",
+        "type": 1,
+        "subcommands": [
+          "start",
+          "stop",
+          "revoke"
+        ]
+      },
+      {
+        "name": "voice",
+        "type": 1,
+        "subcommands": [
+          "set",
+          "config",
+          "list",
+          "favorite",
+          "unfavorite",
+          "favorites",
+          "recent",
+          "browse",
+          "reset",
+          "detection",
+          "opt-out",
+          "opt-in",
+          "preview",
+          "nickname",
+          "effect"
+        ]
+      },
+      {
+        "name": "config",
+        "type": 1,
+        "subcommands": [
+          "tts-channel",
+          "auto-read",
+          "max-chars",
+          "rate-limit",
+          "role",
+          "priority-role",
+          "blocked-role",
+          "enabled",
+          "x-said",
+          "auto-join",
+          "read-bots",
+          "voice-channel-reading",
+          "anti-spam",
+          "streaks",
+          "soundboard",
+          "vote-reminders",
+          "greet",
+          "greet-language",
+          "default-voice",
+          "language",
+          "show",
+          "reset",
+          "block-word add",
+          "block-word remove"
+        ]
+      },
+      {
+        "name": "setup",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "stats",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "uptime",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "bot-stats",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "game",
+        "type": 1,
+        "subcommands": [
+          "play",
+          "stop",
+          "list",
+          "leaderboard",
+          "stats"
+        ]
+      },
+      {
+        "name": "pronunciation",
+        "type": 1,
+        "subcommands": [
+          "add",
+          "remove",
+          "list"
+        ]
+      },
+      {
+        "name": "server-pronunciation",
+        "type": 1,
+        "subcommands": [
+          "add",
+          "remove",
+          "list"
+        ]
+      },
+      {
+        "name": "randomizer",
+        "type": 1,
+        "subcommands": []
+      },
+      {
+        "name": "Speak",
+        "type": 3,
+        "subcommands": []
+      },
+      {
+        "name": "Translate",
+        "type": 3,
+        "subcommands": []
+      },
+      {
+        "name": "Transcribe voice message",
+        "type": 3,
+        "subcommands": []
+      },
+      {
+        "name": "redeem",
+        "type": 1,
+        "subcommands": []
+      }
+    ]
+  },
+  "helper": {
+    "revision": "5f158887507b36ef9ce91c90e305932629a98385",
+    "source": "crates/helper-discord/src/lib.rs",
+    "commands": [
+      {
+        "name": "ping",
+        "description": "Check Helper latency",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "language",
+        "description": "View or set the Helper language",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "help",
+        "description": "Show Helper modules",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "setup",
+        "description": "Run the guided Helper setup for this server",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "modules",
+        "description": "Show enabled Helper modules",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "status",
+        "description": "Show Helper setup and health status",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "dashboard",
+        "description": "Open the Helper dashboard",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "plan",
+        "description": "Show the active Vozen plan",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "privacy",
+        "description": "Request your Helper data or erase voluntary data",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "permissions",
+        "description": "Show the Helper Permission Passport",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "cases",
+        "description": "List recent moderation cases",
+        "permission": "MODERATE_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "modlogs",
+        "description": "Show a member's moderation history",
+        "permission": "MODERATE_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "warn",
+        "description": "Create a moderation warning",
+        "permission": "MODERATE_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "violation",
+        "description": "Record a policy violation",
+        "permission": "MODERATE_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "note",
+        "description": "Add a moderation note",
+        "permission": "MODERATE_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "reason",
+        "description": "Update a case reason",
+        "permission": "MODERATE_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "kick",
+        "description": "Kick a member",
+        "permission": "KICK_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "ban",
+        "description": "Ban a member",
+        "permission": "BAN_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "timeout",
+        "description": "Timeout a member",
+        "permission": "MODERATE_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "tempban",
+        "description": "Temporarily ban a member; automatically unban after the duration",
+        "permission": "BAN_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "softban",
+        "description": "Ban and immediately unban a member to clear recent messages",
+        "permission": "BAN_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "untimeout",
+        "description": "Remove a member timeout",
+        "permission": "MODERATE_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "unban",
+        "description": "Unban a user",
+        "permission": "BAN_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "purge",
+        "description": "Delete recent messages",
+        "permission": "MANAGE_MESSAGES",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "afk",
+        "description": "Set or clear your AFK status",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "remind",
+        "description": "Create a durable reminder",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "tag",
+        "description": "Show a saved tag",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "tags",
+        "description": "List saved tags",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "birthday-set",
+        "description": "Save your birthday day and month",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "birthday-remove",
+        "description": "Remove your saved birthday",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "tag-set",
+        "description": "Create or update a tag",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "tag-delete",
+        "description": "Delete a tag",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "rank",
+        "description": "Show a member's XP rank",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": "Premium unlocks custom rank-card styling; the default rank card is free."
+      },
+      {
+        "name": "leaderboard",
+        "description": "Show the XP leaderboard",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "leaderboard-privacy",
+        "description": "Choose whether your XP appears on the leaderboard",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "achievements",
+        "description": "Show your community achievements",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "serverstats",
+        "description": "Show basic server statistics",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "crypto",
+        "description": "Show read-only CoinGecko prices",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "gas",
+        "description": "Show a read-only gas price from an approved RPC",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "search",
+        "description": "Search an approved knowledge provider",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "emojis",
+        "description": "List this server's custom emojis",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "invites",
+        "description": "Show current server invite usage",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "balance",
+        "description": "Show your community balance",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "daily",
+        "description": "Claim your daily community reward",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "work",
+        "description": "Claim a cooldown-based community work reward",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "economy-top",
+        "description": "Show the richest community members",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "temp-channel",
+        "description": "Create a temporary voice channel for yourself",
+        "permission": "MANAGE_CHANNELS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "embed",
+        "description": "Publish a safe embed in this channel (staff)",
+        "permission": "MANAGE_MESSAGES",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "starboard-set",
+        "description": "Configure the starboard channel (staff)",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "suggest",
+        "description": "Submit a community suggestion",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "suggestion",
+        "description": "Review a community suggestion (staff)",
+        "permission": "MANAGE_MESSAGES",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "giveaway-start",
+        "description": "Start a durable giveaway (staff)",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "gstart",
+        "description": "Legacy alias for giveaway-start",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "giveaway-end",
+        "description": "End a giveaway now (staff)",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "gend",
+        "description": "Legacy alias for giveaway-end",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "giveaway-list",
+        "description": "List active giveaways",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "glist",
+        "description": "Legacy alias for giveaway-list",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "greroll",
+        "description": "Reroll a finished giveaway",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "poll",
+        "description": "Create a multi-choice poll",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "workflow-create",
+        "description": "Create a bounded message automation (staff)",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": "Free: 3 workflows per server. Premium: 25. Server-configured limits may be lower."
+      },
+      {
+        "name": "workflow-list",
+        "description": "List message automations",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "workflow-dry-run",
+        "description": "Preview a workflow without executing it (staff)",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "workflow-toggle",
+        "description": "Enable or disable a workflow immediately (staff)",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "workflow-delete",
+        "description": "Delete a message automation (staff)",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "ticket-panel",
+        "description": "Create a support ticket panel",
+        "permission": "MANAGE_CHANNELS",
+        "access": "Admin",
+        "premiumExtras": "Free: 1 ticket panel per server. Premium: 10."
+      },
+      {
+        "name": "ticket-config",
+        "description": "Configure ticket routing, transcripts and SLA (staff)",
+        "permission": "MANAGE_CHANNELS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "ticket-update",
+        "description": "Update ticket category, priority or internal note",
+        "permission": "MANAGE_CHANNELS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "ticket-rate",
+        "description": "Rate a closed support ticket",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "rolepanel",
+        "description": "Create a self-role panel",
+        "permission": "MANAGE_ROLES",
+        "access": "Admin",
+        "premiumExtras": "Free: 3 role panels per server. Premium: 25."
+      },
+      {
+        "name": "slowmode",
+        "description": "Set channel slowmode",
+        "permission": "MANAGE_CHANNELS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "userinfo",
+        "description": "Show basic user information",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "quarantine",
+        "description": "Remove a member's roles and quarantine them",
+        "permission": "MODERATE_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "unquarantine",
+        "description": "Restore a quarantined member's roles",
+        "permission": "MODERATE_MEMBERS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "join-gate",
+        "description": "Configure the bounded new-member join gate",
+        "permission": "MANAGE_ROLES",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "verify-panel",
+        "description": "Post the verification panel using the configured join gate",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "lockdown",
+        "description": "Lock text channels for @everyone",
+        "permission": "MANAGE_CHANNELS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "unlock",
+        "description": "Remove the Helper lockdown from text channels",
+        "permission": "MANAGE_CHANNELS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "anti-raid",
+        "description": "Configure the bounded join-burst anti-raid response",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "security-mode",
+        "description": "Enable or disable shadow mode for high-risk security responses",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "anti-nuke",
+        "description": "Configure the audit-log destructive-action guard",
+        "permission": "MANAGE_GUILD",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "event-create",
+        "description": "Create a native Discord scheduled event",
+        "permission": "CREATE_EVENTS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "event-list",
+        "description": "List native Discord scheduled events",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "event-edit",
+        "description": "Edit a native Discord scheduled event",
+        "permission": "CREATE_EVENTS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "event-register",
+        "description": "Register yourself for a native Discord scheduled event",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "event-unregister",
+        "description": "Remove yourself from a scheduled event",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "event-checkin",
+        "description": "Check yourself in to a registered scheduled event",
+        "permission": "",
+        "access": "Free",
+        "premiumExtras": ""
+      },
+      {
+        "name": "event-attendees",
+        "description": "List registrations for a scheduled event",
+        "permission": "CREATE_EVENTS",
+        "access": "Admin",
+        "premiumExtras": ""
+      },
+      {
+        "name": "event-cancel",
+        "description": "Cancel a native Discord scheduled event",
+        "permission": "CREATE_EVENTS",
+        "access": "Admin",
+        "premiumExtras": ""
+      }
+    ],
+    "accessSources": [
+      "crates/helper-discord/src/lib.rs: required_permission and handle_command",
+      "crates/helper-core/src/lib.rs: quota_limit",
+      "crates/helper-discord/src/rank_card.rs: config_for_plan"
+    ]
+  }
+}

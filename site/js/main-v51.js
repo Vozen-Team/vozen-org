@@ -2551,18 +2551,32 @@
   /* ── commands ────────────────────────────────────────── */
   const cmdList = $("#cmdList");
   let activeTab = "general";
-  function renderCommands() {
+  function renderCommands(animate = false) {
     if (!cmdList) return;
-    const rows = window.VOZEN_COMMANDS[activeTab] || [];
+    let rows = window.VOZEN_COMMANDS[activeTab] || [];
+    const compact = !!cmdList.closest("[data-command-preview]");
+    if (compact) {
+      if (activeTab === "general") {
+        rows = ["/setup", "/join", "/tts", "/skip", "/leave", "/help"]
+          .map((name) => rows.find(([command]) => command === name)).filter(Boolean);
+      }
+      rows = rows.slice(0, 6);
+      $$("#cmdTabs button").forEach((button) =>
+        button.setAttribute("aria-pressed", String(button.dataset.tab === activeTab)));
+    }
     cmdList.innerHTML = rows
       .map(([cmd, desc]) => `<div class="cmd"><code>${cmd}</code><span>${desc[lang] || desc.en}</span></div>`)
       .join("");
+    if (compact && animate && !reduce && typeof cmdList.animate === "function") {
+      cmdList.animate([{ opacity: .7, transform: "translateY(3px)" }, { opacity: 1, transform: "none" }],
+        { duration: 180, easing: "cubic-bezier(.16,1,.3,1)" });
+    }
   }
   $$("#cmdTabs button").forEach((b) =>
     b.addEventListener("click", () => {
       activeTab = b.dataset.tab;
       $$("#cmdTabs button").forEach((x) => x.classList.toggle("is-active", x === b));
-      renderCommands();
+      renderCommands(true);
     }),
   );
 

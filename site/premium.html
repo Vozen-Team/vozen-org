@@ -9,11 +9,9 @@
     <link rel="canonical" href="https://vozen.org/premium">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="css/main-v43.css?v=3b9071956753">
-    <link rel="stylesheet" href="css/pricing-cards-v3.css?v=298c3ed269fa">
-    <link rel="stylesheet" href="css/pricing-cards-v9.css?v=e9e341e02c99">
     <link rel="stylesheet" href="css/billing-v3.css?v=79522ffcb267">
-    <link rel="stylesheet" href="css/premium-page-v1.css?v=99e110cdb3db">
-    <link rel="stylesheet" href="css/global-nav-v1.css?v=9e004321eb6a">
+    <link rel="stylesheet" href="css/premium-page-v1.css?v=7ea1db2118c2">
+    <link rel="stylesheet" href="css/global-nav-v1.css?v=475756f32c65">
       <meta property="og:site_name" content="Vozen">
       <meta property="og:type" content="website">
       <meta property="og:url" content="https://vozen.org/premium">
@@ -39,7 +37,7 @@
           <span class="brand__word">Vozen</span>
           <span class="nav__product" data-i18n="ecosystem.label">Ecosystem</span>
         </a>
-        <nav class="nav__links" aria-label="Vozen products" data-i18n-aria-label="ecosystem.productsAria">
+        <nav class="nav__links" aria-label="Vozen products" data-i18n-aria-label="ecosystem.productsAria" id="vozen-primary-links">
           <a class="" href="tts/" data-i18n="ecosystem.tts">Vozen TTS</a>
           <a class="" href="helper/" data-i18n="ecosystem.helper">Vozen Helper</a>
           <a class="" href="docs/" data-i18n="ecosystem.docs">Docs</a>
@@ -57,7 +55,7 @@
             <ul class="lang__panel" id="langPanel" role="listbox" tabindex="-1" aria-label="Choose language" data-i18n-aria-label="ecosystem.chooseLanguage"><li role="presentation"><a class="lang__opt is-active" href="/" role="option" data-lang="en" aria-selected="true" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-gb"></use></svg><span class="lang__optname">English</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/pt/" role="option" data-lang="pt" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-pt"></use></svg><span class="lang__optname">Português</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/fr/" role="option" data-lang="fr" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-fr"></use></svg><span class="lang__optname">Français</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/es/" role="option" data-lang="es" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-es"></use></svg><span class="lang__optname">Español</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/de/" role="option" data-lang="de" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-de"></use></svg><span class="lang__optname">Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/tr/" role="option" data-lang="tr" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-tr"></use></svg><span class="lang__optname">Türkçe</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ar/" role="option" data-lang="ar" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-sa"></use></svg><span class="lang__optname">العربية</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/zh/" role="option" data-lang="zh" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-tw"></use></svg><span class="lang__optname">繁體中文</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ru/" role="option" data-lang="ru" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-ru"></use></svg><span class="lang__optname">Русский</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ko/" role="option" data-lang="ko" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-kr"></use></svg><span class="lang__optname">한국어</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li></ul>
           </div>
           <a class="btn btn--primary btn--discord-cta btn--sm nav__login" id="navLogin" href="account/"><svg viewBox="0 0 24 18" width="20" height="15" aria-hidden="true" fill="currentColor"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4 2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Z"></path></svg><span data-i18n="nav.login">Log in</span></a>
-          <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="vozen-primary-links"><span></span><span></span><span></span></button>
         </div>
       </div>
     </header>
@@ -66,62 +64,59 @@
     <main>
       <section class="premium-hero" aria-labelledby="premiumTitle">
         <div class="wrap premium-hero__inner">
-          <span class="eyebrow eyebrow--amber" data-i18n="premium.pricing">Pricing</span>
-          <h1 id="premiumTitle" data-i18n="premium.title">Choose who gets the upgrade.</h1>
-          <p data-i18n="premium.subtitle">Keep the core free, upgrade your personal voice experience, or unlock Premium for every member in your community.</p>
-          <div class="bill-toggle" role="group" aria-label="Billing period" data-i18n-aria-label="price.billingPeriod">
-            <button class="bill-toggle__btn is-active" type="button" data-period="monthly" data-i18n="price.billMonthly">Monthly</button>
-            <button class="bill-toggle__btn" type="button" data-period="yearly"><span data-i18n="price.billYearly">Yearly</span> <span>−20%</span></button>
+          <div class="premium-intro">
+            <h1 id="premiumTitle">More voice. More community.</h1>
+            <p>Plus is personal. Premium upgrades everyone in your selected servers.</p>
           </div>
-          <p class="premium-hero__notice" data-i18n="price.paused">Payments are temporarily disabled. Pricing is shown for reference.</p>
+          <aside class="premium-bundle" aria-label="Premium includes both bots">
+            <div class="plan-bundle-art" aria-hidden="true"><span class="eco-product__icon eco-product__icon--tts"><svg class="eco-tts-icon" viewBox="0 0 64 64"><rect x="10" y="27" width="6" height="10" rx="3"></rect><rect x="20" y="22" width="6" height="20" rx="3"></rect><rect x="30" y="18" width="6" height="28" rx="3"></rect><rect x="40" y="23" width="6" height="18" rx="3"></rect><rect x="50" y="28" width="4" height="8" rx="2"></rect></svg></span><span class="eco-product__icon eco-product__icon--helper"><svg class="eco-helper-character eco-helper-character--classic" viewBox="0 0 64 64"><path d="M32 19v-7"></path><circle cx="32" cy="9" r="3" class="white"></circle><path d="m15 36-6-4m2 0-2 4M49 36l6-4m-2 0 2 4"></path><rect x="13" y="20" width="38" height="29" rx="13" class="white"></rect><rect x="18" y="26" width="28" height="18" rx="8" class="screen"></rect><circle cx="26" cy="35" r="2.4" class="white"></circle><circle cx="38" cy="35" r="2.4" class="white"></circle><path d="M27 39c3 2.5 7 2.5 10 0"></path></svg></span></div>
+            <div><strong>Two bots. One Premium.</strong><span>Vozen TTS + Vozen Helper</span></div>
+          </aside>
         </div>
       </section>
-
       <section class="section section--premium" id="plans" aria-labelledby="plansTitle">
         <div class="wrap">
-          <h2 class="sr-only" id="plansTitle" data-i18n="premium.plans">Vozen plans</h2>
+          <div class="premium-controls">
+            <div class="bill-toggle" role="group" aria-label="Billing period">
+              <button class="bill-toggle__btn is-active" type="button" data-bill="month" aria-pressed="true">Monthly</button>
+              <button class="bill-toggle__btn" type="button" data-bill="year" aria-pressed="false">Yearly <span class="premium-year-hint">Save yearly</span></button>
+            </div>
+            <p class="premium-billing-note" id="billingNote" aria-live="polite">Showing monthly prices.</p>
+            <p class="premium-hero__notice" id="paymentsNotice" role="note">Payments paused. Prices shown for reference.</p>
+          </div>
+          <h2 class="sr-only" id="plansTitle">Vozen plans</h2>
           <div class="pricing" id="pricingGrid">
             <article class="price-card price-card--free">
-              <div class="price-card__topline"><span class="price-card__badge price-card__badge--free">✦ <span data-i18n="premium.freeBadge">forever</span></span></div>
-              <h3 data-i18n="price.free.name">Free</h3>
-              <p class="price-card__pitch" data-i18n="premium.freePitch">All the essentials. No card, no trial.</p>
-              <div class="seat-toggle plan-scope plan-scope--free"><span class="seat-toggle__btn is-active" data-i18n="price.free.per">forever</span></div>
-              <div class="price-card__price"><span class="price-line"><b><span class="amt" data-i18n="price.free.price">€0</span></b></span><span class="per" data-i18n="price.free.per">forever</span></div>
-              <ul class="ticks price-card__highlights" aria-label="Free plan highlights" data-i18n-aria-label="price.freeHighlights">
-                <li data-i18n="price.m.1">38 Piper voices</li><li data-i18n="price.m.2">35 languages</li><li data-i18n="price.m.3">Auto-read your channel</li><li data-i18n="price.m.5">13 of the 16 games</li><li data-i18n="price.m.20">Daily talk streaks</li>
-              </ul>
-              <p class="price-card__note" data-i18n="premium.coreNote">Core features, free forever</p>
-              <a class="price-card__buy price-card__buy--free js-invite" href="#" data-i18n="cta.add">Add to Discord</a>
-              <p class="price-card__idnote" data-i18n="premium.freeIdNote">All the essentials. No card, no trial.</p>
+              <div class="premium-audience">Free to get started</div>
+              <h3>Free</h3><p class="price-card__pitch">The essentials. Yours to keep.</p>
+              <div class="plan-scope">No card. No trial.</div>
+              <div class="price-card__price"><span class="price-line"><b><span class="amt">€0</span></b></span><span class="per">forever</span></div>
+              <ul class="ticks price-card__highlights"><li>38 Piper voices in 35 languages</li><li>Auto-read your text channel</li><li>13 voice minigames</li><li>Daily talk streaks</li><li>Helper protection and moderation</li><li>Basic tickets, roles and workflows</li></ul>
+              <div class="premium-card-action"><div class="premium-free-links"><a class="price-card__buy price-card__buy--free" href="tts/">Explore TTS</a><a class="price-card__buy price-card__buy--free" href="helper/">Explore Helper</a></div><span>Start free. Upgrade only if you need more.</span></div>
             </article>
-
             <div class="paid-plans">
               <article class="price-card price-card--plus">
-                <div class="price-card__topline"><span class="price-card__badge price-card__badge--plus">✦ <span data-i18n="premium.plusBadge">PERSONAL</span></span></div>
-                <h3 data-i18n="price.plus.name">Vozen Plus</h3>
-                <p class="price-card__pitch" data-i18n="price.plus.pitch">Your premium voice perks follow you into every server.</p>
-                <div class="seat-toggle plan-scope"><span class="seat-toggle__btn is-active" data-i18n="premium.plusScope">Goes with you to any server</span></div>
-                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m">€3.99</span><span class="amt amt--y">€37.99</span></b><s class="was was--y">€47.88</s></span><span class="per per--m" data-i18n="premium.monthPerUser">/ month · per user</span><span class="per per--y" data-i18n="premium.yearPerUser">/ year · per user</span></div>
-                <ul class="ticks price-card__highlights"><li class="price-card__included-free" data-i18n="price.includesFree">Everything in Free</li><li data-i18n="price.m.21">Kokoro neural engine</li><li data-i18n="price.m.22">Google HD voices</li><li data-i18n="price.m.9">All 8 voice effects</li><li data-i18n="price.m.15">50 personal pronunciations</li><li data-i18n="premium.plusFeatures">Word Chain, Wordle and /rizz</li></ul>
-                <p class="price-card__note" data-i18n="price.digital">Digital subscription · no shipping</p>
-                <button class="price-card__buy" type="button" data-billing-plan="plus" disabled data-i18n="price.paused">Payments are temporarily disabled. Pricing is shown for reference.</button>
-                <p class="price-card__idnote" data-i18n="price.checkoutLater">Checkout will return when payments are enabled again.</p>
+                <div class="premium-audience">For you</div>
+                <h3>Vozen Plus</h3><p class="price-card__pitch">Your voice, with more personality.</p>
+                <div class="plan-scope">Follows you across servers</div>
+                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m">€3.99</span><span class="amt amt--y">€37.99</span></b><s class="was was--y">€47.88</s></span><span class="per per--m" data-i18n="premium.monthPerUser">/ month · per user</span><span class="per per--y" data-i18n="premium.yearPerUser">/ year · per user</span><span class="premium-saving">Save €9.89 / year</span></div>
+                <ul class="ticks price-card__highlights"><li>Everything in Free</li><li>Kokoro neural voices</li><li>All 8 voice effects</li><li>50 personal pronunciations</li><li>Wordle, Word Chain and Chess</li><li>Access to /rizz</li><li>Perks follow your Discord account</li></ul>
+                <div class="premium-card-action"><button class="price-card__buy premium-unavailable" type="button" disabled="" aria-describedby="paymentsNotice">Payments paused</button><span>Personal perks. Not a server subscription.</span></div>
               </article>
-
               <article class="price-card price-card--pro" id="proCard">
-                <div class="price-card__topline"><span class="price-card__badge">💎 <span data-i18n="premium.proBadge">PREMIUM</span></span><span class="price-card__recommended" data-i18n="premium.bestForServers">BEST FOR SERVERS</span></div>
-                <h3 data-i18n="price.pro.name">Vozen Premium</h3>
-                <p class="price-card__pitch" data-i18n="premium.premiumPitch">Premium TTS and Helper for everyone in each selected server.</p>
-                <aside class="price-card__bundle" aria-label="Premium bundle" data-i18n-aria-label="premium.bundleAria"><span>VOZEN TTS + VOZEN HELPER</span><strong data-i18n="premium.bundleTitle">Two bots. One subscription.</strong></aside>
-                <div class="seat-toggle" role="group" aria-label="Servers per subscription" data-i18n-aria-label="price.serversPerSubscription"><button type="button" class="seat-toggle__btn is-active" data-seats="2" data-i18n="premium.seat2">2 servers</button><button type="button" class="seat-toggle__btn" data-seats="5" data-i18n="premium.seat5">5 servers</button></div>
-                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m amt--s2">€6.99</span><span class="amt amt--m amt--s5">€14.99</span><span class="amt amt--y amt--s2">€66.99</span><span class="amt amt--y amt--s5">€133.99</span></b><s class="was was--y was--s2">€83.88</s><s class="was was--y was--s5">€179.88</s></span><span class="per per--m per--s2" data-i18n="premium.monthServers2">/ month · 2 servers</span><span class="per per--m per--s5" data-i18n="premium.monthServers5">/ month · 5 servers</span><span class="per per--y per--s2" data-i18n="premium.yearServers2">/ year · 2 servers</span><span class="per per--y per--s5" data-i18n="premium.yearServers5">/ year · 5 servers</span></div>
-                <ul class="ticks ticks--amber price-card__highlights"><li class="price-card__included-free" data-i18n="price.includesFree">Everything in Free</li><li data-i18n="premium.proFeature1">Premium TTS voices and effects for everyone</li><li data-i18n="premium.proFeature2">Helper Premium for every selected server</li><li data-i18n="premium.proFeature3">More panels, workflows, feeds and templates</li><li data-i18n="premium.proFeature4">Longer audit, analytics and transcript history</li><li data-i18n="premium.proFeature5">Advanced roles, XP and automation options</li></ul>
-                <p class="price-card__note" data-i18n="price.digital">Digital subscription · no shipping</p>
-                <button class="price-card__buy price-card__buy--pro" type="button" data-billing-plan="premium" disabled data-i18n="price.paused">Payments are temporarily disabled. Pricing is shown for reference.</button>
-                <p class="price-card__idnote" data-i18n="price.checkoutLater">Checkout will return when payments are enabled again.</p>
+                <div class="premium-audience">For your servers</div>
+                <h3>Vozen Premium</h3><p class="price-card__pitch">Better voices. More room to grow.</p>
+                <div class="seat-toggle" role="group" aria-label="Servers per subscription"><button class="seat-toggle__btn is-active" type="button" data-seats="2" aria-pressed="true">2 servers</button><button class="seat-toggle__btn" type="button" data-seats="5" aria-pressed="false">5 servers</button></div>
+                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m amt--s2">€6.99</span><span class="amt amt--m amt--s5">€14.99</span><span class="amt amt--y amt--s2">€66.99</span><span class="amt amt--y amt--s5">€133.99</span></b><s class="was was--y was--s2">€83.88</s><s class="was was--y was--s5">€179.88</s></span><span class="per per--m per--s2" data-i18n="premium.monthServers2">/ month · 2 servers</span><span class="per per--m per--s5" data-i18n="premium.monthServers5">/ month · 5 servers</span><span class="per per--y per--s2" data-i18n="premium.yearServers2">/ year · 2 servers</span><span class="per per--y per--s5" data-i18n="premium.yearServers5">/ year · 5 servers</span><span class="premium-saving premium-saving--s2">Save €16.89 / year</span><span class="premium-saving premium-saving--s5">Save €45.89 / year</span></div>
+                <ul class="ticks price-card__highlights"><li>Everything in Free</li><li>Kokoro voices + all 8 effects for everyone</li><li>50 personal + 50 server pronunciations</li><li>Wordle, Word Chain, Chess and /rizz</li><li>24/7 voice + live transcription</li><li>More Helper panels and workflows</li><li>Longer audit and analytics history</li></ul>
+                <div class="premium-card-action"><button class="price-card__buy price-card__buy--pro premium-unavailable" type="button" disabled="" aria-describedby="paymentsNotice">Payments paused</button><span>Both bots. Every member in selected servers.</span></div>
               </article>
             </div>
           </div>
+          <section class="premium-comparison" aria-labelledby="capacityTitle">
+            <div><h2 id="capacityTitle">More room for your community.</h2><p>Helper capacity per server. Core tools stay free.</p><div class="premium-product-links"><a href="tts/">Explore TTS</a><a href="helper/">Explore Helper</a></div></div>
+            <table><caption class="sr-only">Helper capacity: Free and Premium</caption><thead><tr><th scope="col">Included capacity</th><th scope="col">Free</th><th scope="col">Premium</th></tr></thead><tbody><tr><th scope="row">Ticket panels</th><td>1</td><td>10</td></tr><tr><th scope="row">Role panels</th><td>3</td><td>25</td></tr><tr><th scope="row">Workflows</th><td>3</td><td>25</td></tr><tr><th scope="row">Audit history</th><td>30 days</td><td>365 days</td></tr></tbody></table>
+          </section>
         </div>
       </section>
     </main>
@@ -129,12 +124,14 @@
     <footer class="foot"><div class="wrap foot__base"><span>© 2026 Vozen</span><span class="foot__legal"><a href="/privacy" data-i18n="foot.privacy">Privacy</a><a href="/terms" data-i18n="foot.terms">Terms</a></span><span data-i18n="foot.legal">Not affiliated with Discord</span></div></footer>
     <script defer="" src="js/analytics-config.js?v=f6b49da441d8"></script>
     <script defer="" src="js/web-analytics-v1.js?v=e934b4dd1f34"></script>
-    <script defer="" src="js/global-nav-v1.js?v=b13acaf2e0f2"></script>
+    <script defer="" src="js/global-nav-v1.js?v=e2404ec866f5"></script>
     <script defer="" src="js/i18n-v41.js?v=09e9c1d6b6ff"></script>
     <script defer="" src="js/i18n-v42.js?v=fa2d41bd9dd3"></script>
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v3&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=1&amp;v=36a89c18c2ef"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v3&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=1&amp;v=0e4cebc4d829"></script>
+    <script defer="" src="js/premium-preview-v1.js?v=07d872c11f8c"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
+
 
 
 

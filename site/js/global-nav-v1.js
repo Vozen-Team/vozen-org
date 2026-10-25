@@ -307,6 +307,10 @@
   document.querySelectorAll('header.vozen-global-nav').forEach(header => {
     const burger = header.querySelector('.nav__burger');
     const links = header.querySelector('.nav__links');
+    if (links && burger) {
+      links.id ||= 'vozen-primary-links';
+      burger.setAttribute('aria-controls', links.id);
+    }
     const close = () => {
       links?.classList.remove('is-open');
       burger?.setAttribute('aria-expanded', 'false');
@@ -325,6 +329,12 @@
         close();
         burger.focus();
       }
+    });
+    document.addEventListener('click', event => {
+      if (!header.contains(event.target)) close();
+    });
+    window.matchMedia('(min-width: 1280px)').addEventListener('change', event => {
+      if (event.matches) close();
     });
   });
   document.querySelectorAll("[data-vozen-docs-language-menu]").forEach((menu) => {

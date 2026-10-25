@@ -36,7 +36,8 @@ test('Premium finishes initialization and darkens navigation on scroll while pur
     await page.evaluate(() => window.scrollTo(0, 600));
     await expect(page.locator('#nav')).toHaveClass(/is-stuck/);
     await expect(page.locator('#nav')).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
-    for (const button of await page.locator('[data-billing-plan]').all()) await expect(button).toBeDisabled();
+    await expect(page.locator('.premium-unavailable')).toHaveCount(2);
+    for (const button of await page.locator('.premium-unavailable').all()) await expect(button).toBeDisabled();
     expect(errors).toEqual([]);
     await page.evaluate(() => window.scrollTo(0, 0));
     await expect(page.locator('#nav')).not.toHaveClass(/is-stuck/);
@@ -74,7 +75,7 @@ test('selected billing controls meet AA contrast on both product pages', async (
 test('Helper does not rewrite translated content for a duplicate locale event', async ({ page }) => {
   await page.goto('/helper/', { waitUntil: 'networkidle' });
   const mutations = await page.evaluate(() => {
-    const list = document.querySelector('.helper-feature-list');
+    const list = document.querySelector('[data-helper-cards]');
     const observer = new MutationObserver(() => {});
     observer.observe(list, { childList: true, subtree: true, characterData: true });
     window.dispatchEvent(new CustomEvent('vozen:languagechange', { detail: { language: 'en' } }));
@@ -288,7 +289,8 @@ test('marketing and Docs language menus use all ten bundled SVG flags', async ({
 test('the localized Helper page exposes translated product copy and a real accessible FAQ', async ({ page }) => {
   await page.goto('/pt/helper/', { waitUntil: 'networkidle' });
 
-  await expect(page.locator('#outcomes-title')).toContainText('O trabalho à volta do teu servidor, mais leve.');
+  await expect(page.locator('#helper-title')).toContainText('Uma ajuda mais inteligente');
+  await expect(page.locator('[data-helper-cards]')).toBeVisible();
   const faq = page.locator('#helper-faq');
   await expect(faq.getByRole('heading', { name: 'Perguntas, respondidas' })).toBeVisible();
   const questions = faq.locator('details');
@@ -319,6 +321,23 @@ test('mobile navigation opens without obscuring the page or losing keyboard focu
   await expect(burger).toHaveAttribute('aria-expanded', 'true');
   await expect(page.locator('.nav__links')).toHaveClass(/is-open/);
   await expect(page.locator('.nav__links a', { hasText: 'Vozen TTS' })).toBeVisible();
+  await expect(burger).toHaveAttribute('aria-controls', 'vozen-primary-links');
+  await expect(page.locator('.nav__links')).toHaveCSS('display', 'grid');
+  const menuIcons = await page.locator('.nav__links a').evaluateAll(links => links.map(link => getComputedStyle(link, '::before').backgroundImage));
+  expect(menuIcons).toHaveLength(6);
+  expect(menuIcons.every(icon => icon.includes('data:image/svg+xml'))).toBe(true);
+  const currentDot = await page.locator('.nav__links a[aria-current="page"]').evaluate(link => getComputedStyle(link, '::after').width);
+  expect(currentDot).toBe('6px');
+  await page.keyboard.press('Escape');
+  await expect(burger).toHaveAttribute('aria-expanded', 'false');
+  await expect(burger).toBeFocused();
+  await expect(page.locator('.nav__links')).toBeHidden();
+  await burger.click();
+  await page.mouse.click(2, 700);
+  await expect(burger).toHaveAttribute('aria-expanded', 'false');
+  await burger.click();
+  await page.setViewportSize({width: 1440, height: 900});
+  await expect(burger).toHaveAttribute('aria-expanded', 'false');
 });
 
 test('Helper FAQ and return link keep 44px mobile touch targets', async ({ page }) => {

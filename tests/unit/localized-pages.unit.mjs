@@ -56,7 +56,7 @@ test('Helper localization is static, indexable, complete, and aligned with its s
   assert.match(html, /<html[^>]+lang="pt-PT"/);
   assert.match(html, /<link rel="canonical" href="https:\/\/vozen\.org\/pt\/helper\/">/);
   assert.match(html, /Uma ajuda mais inteligente/);
-  assert.match(html, /O trabalho à volta do teu servidor, mais leve\./);
+  assert.match(html, /data-helper-cards/);
   assert.match(html, /O Vozen Helper já está disponível\?/);
   assert.doesNotMatch(html, /The work around your server, made lighter\./);
 

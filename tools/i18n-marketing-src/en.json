@@ -111,7 +111,7 @@
     "cmd.sub": "Use /cast to assign a random theme role to everyone in your voice call and hear the result",
     "price.eyebrow": "Pricing",
     "price.title": "Free core. Fair Premium",
-    "price.sub": "The Piper-powered core stays free. Premium unlocks Kokoro, Google HD and the extras that use more compute",
+    "price.sub": "The Piper-powered core stays free. Premium unlocks Kokoro and the extras that use more compute",
     "price.choose.title": "Choose who gets the upgrade",
     "price.choose.sub": "Keep the core free, upgrade yourself, or unlock Premium for everyone in your server",
     "price.free.pitch": "All the essentials. No card, no trial",
@@ -721,11 +721,11 @@
   "faq": [
     [
       "Is Vozen really free?",
-      "Yes — the core stays free: 38 Piper voices in 35 languages, auto-read, greetings, most games and every admin control. Kokoro and Google HD are Premium voice engines; Plus unlocks them personally and server Premium unlocks them for that server"
+      "Yes — the core stays free: 38 Piper voices in 35 languages, auto-read, greetings, most games and every admin control. Kokoro is a Premium voice engine; Plus unlocks it personally and server Premium unlocks it for that server"
     ],
     [
       "What does Premium include?",
-      "Kokoro neural and Google HD voice engines, all 8 voice effects, 24/7 in-call, 50 personal pronunciations, /rizz and the premium games (Word Chain, Wordle, Chess). Server Premium also includes live voice transcription. €6.99/month covers 2 servers, or €14.99/month covers 5; annual saves about 20%. Vozen Plus (€3.99/month) gives the personal perks on any server"
+      "Kokoro neural voices, all 8 voice effects, 24/7 in-call, 50 personal pronunciations, /rizz and the premium games (Word Chain, Wordle, Chess). Server Premium also includes live voice transcription. €6.99/month covers 2 servers, or €14.99/month covers 5; annual saves about 20%. Vozen Plus (€3.99/month) gives the personal perks on any server"
     ],
     [
       "How do I add Vozen to my server?",
@@ -744,8 +744,8 @@
       "Yes. Each member sets their own voice and language with /voice set. That voice is the default; optional per-message detection can be enabled with /voice detection on"
     ],
     [
-      "Piper, Kokoro or Google HD — which voice engine?",
-      "Piper is the free local engine. Kokoro neural and Google HD require Vozen Plus for you or Vozen Premium on the server. Switch anytime with /voice set; expired access automatically returns to the free engine"
+      "Piper or Kokoro — which voice engine?",
+      "Piper is the free local engine. Kokoro requires Vozen Plus for you or Vozen Premium on the server. Switch anytime with /voice set; expired access automatically returns to the free engine"
     ],
     [
       "How do I turn features off?",

@@ -17,20 +17,50 @@ const documentNodes = file => {
 };
 const attrs = node => Object.fromEntries((node.attrs || []).map(({name, value}) => [name, value]));
 
+test('Premium selection announces billing totals and keeps seat selection independent', () => {
+  const note = {textContent: ''};
+  const makeGroup = (kind, values) => {
+    const buttons = values.map(value => ({
+      dataset: {[kind]: value}, attributes: {},
+      setAttribute(name, value) { this.attributes[name] = value; },
+      closest() { return this; },
+    }));
+    return {buttons, contains: button => buttons.includes(button),
+      querySelectorAll: () => buttons,
+      addEventListener(_, handler) { this.click = handler; }};
+  };
+  const period = makeGroup('bill', ['month', 'year']);
+  const seats = makeGroup('seats', ['2', '5']);
+  vm.runInNewContext(read('site/js/premium-preview-v1.js'), {
+    document: {querySelectorAll: () => [period, seats], getElementById: () => note},
+  });
+  period.click({target: period.buttons[1]});
+  assert.equal(note.textContent, 'Showing full yearly totals.');
+  assert.deepEqual(period.buttons.map(button => button.attributes['aria-pressed']), ['false', 'true']);
+  seats.click({target: seats.buttons[1]});
+  assert.equal(note.textContent, 'Showing full yearly totals.');
+  assert.deepEqual(seats.buttons.map(button => button.attributes['aria-pressed']), ['false', 'true']);
+  period.click({target: period.buttons[0]});
+  assert.equal(note.textContent, 'Showing monthly prices.');
+});
+
 test('new checkout is paused and pricing cannot start a purchase even without JavaScript', () => {
   assert.ok(/const PAYMENTS_ENABLED = false;/.test(script), 'new checkout paused');
   const premium = documentNodes('site/premium.html');
-  for (const plan of ['plus', 'premium']) {
-    const button = premium.find(node => attrs(node)['data-billing-plan'] === plan);
-    assert.ok(button);
+  const paidButtons = premium.filter(node => node.tagName === 'button' && (attrs(node).class || '').split(' ').includes('premium-unavailable'));
+  assert.equal(paidButtons.length, 2);
+  for (const button of paidButtons) {
     assert.equal(attrs(button).disabled, '');
-    assert.equal(attrs(button)['data-i18n'], 'price.paused');
+    assert.equal(attrs(button)['aria-describedby'], 'paymentsNotice');
+    assert.equal(attrs(button)['data-billing-plan'], undefined);
   }
   for (const file of ['site/tts.html', 'site/helper.html', 'site/tts/index.html', 'site/helper/index.html']) {
     const nodes = documentNodes(file);
     const links = nodes.filter(node => node.tagName === 'a' && attrs(node).href === '/premium#plans');
     assert.ok(links.length >= 2, file);
-    assert.doesNotMatch(read(file), /Payments (?:are )?temporarily disabled|Checkout will return/);
+    const pricing = nodes.find(node => ['premium', 'plans'].includes(attrs(node).id));
+    assert.ok(pricing, `${file}: pricing section`);
+    assert.doesNotMatch(parse5.serialize(pricing), /Payments (?:are )?temporarily disabled|Checkout will return/);
   }
   assert.doesNotMatch(read('site/js/global-nav-v1.js'), /<span[^>]+premium-disabled/);
 });
