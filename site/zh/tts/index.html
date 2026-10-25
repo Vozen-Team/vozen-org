@@ -41,14 +41,14 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <link rel="preload" href="/assets/fonts/unbounded-critical-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/tts-page-v1.css?v=61243987a694">
+    <link rel="preload" href="/assets/fonts/outfit-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/tts-page-v1.css?v=33a28c3082d5">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/zh/tts/","description":"Vozen 用自然的神經網路語音，把你的 Discord 聊天內容大聲朗讀出來——支援 35 種語言，內建遊戲與歡笑，核心功能永久免費。","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"},"inLanguage":"zh-Hant"}</script>
 
     <!-- FAQ structured data (Google rich results). Mantém em sincronia com
          window.VOZEN_FAQ (js/i18n.js) — o JSON-LD tem de ser ESTÁTICO porque os
          crawlers não correm o JS que renderiza o FAQ. -->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"zh-Hant","mainEntity":[{"@type":"Question","name":"Vozen 真的免費嗎？","acceptedAnswer":{"@type":"Answer","text":"是的——核心功能仍然免费：35 种语言的 38 种 Piper 语音、自动朗读、问候、大多数游戏和全部管理控制。Kokoro 与 Google HD 属于 Premium 引擎；Plus 为个人解锁，服务器 Premium 为全服解锁。"}},{"@type":"Question","name":"Premium 包含哪些內容？","acceptedAnswer":{"@type":"Answer","text":"Kokoro 神经语音与 Google HD 引擎、全部 8 种语音特效、全天候驻留、50 条个人发音、/rizz 和 Premium 游戏。伺服器 Premium 也包含即時語音轉錄。每月 €6.99 覆盖 2 个服务器，€14.99 覆盖 5 个；Vozen Plus（每月 €3.99）可在任何服务器提供个人权益。"}},{"@type":"Question","name":"我要怎麼把 Vozen 加入我的伺服器？","acceptedAnswer":{"@type":"Answer","text":"點擊「加入 Discord」，選擇你的伺服器（你需要具備管理伺服器權限），然後執行 /setup。就這麼簡單。"}},{"@type":"Question","name":"它支援哪些語言？","acceptedAnswer":{"@type":"Answer","text":"35 種語言搭配 38 種神經網路語音——中文、英文、西班牙文、法文、德文、日文、阿拉伯文、俄文以及更多語言，每一種都配有道地的母語語音。"}},{"@type":"Question","name":"我需要設定任何東西嗎？","acceptedAnswer":{"@type":"Answer","text":"不需要。/setup 一步就能搞定。之後一切都會以合理的預設值運作——你日後可以用 /config 進行細部調整。"}},{"@type":"Question","name":"每個人都能使用不同的語音嗎？","acceptedAnswer":{"@type":"Answer","text":"可以。每位成員都能用 /voice set 設定自己的語音與語言。預設使用該語音；可用 /voice detection on 啟用每則訊息的選用語言偵測。"}},{"@type":"Question","name":"Piper、Kokoro 还是 Google HD——该选哪个语音引擎？","acceptedAnswer":{"@type":"Answer","text":"Piper 是免费的本地引擎。Kokoro 神经语音和 Google HD 需要个人 Vozen Plus 或服务器 Vozen Premium。可用 /voice set 切换；权益到期后会自动回到免费引擎。"}},{"@type":"Question","name":"我要怎麼關閉功能？","acceptedAnswer":{"@type":"Answer","text":"一切都能透過 /config 切換——問候、自動朗讀、發話者宣告、反垃圾訊息過濾器等等。也有一個完整的緊急停用開關。"}}]}</script>
-      <link rel="stylesheet" href="css/product-preview-v1.css?v=ade7a3cfe71e">
   </head>
   <body class="tts-page product-preview product-preview--expressive" data-i18n-document-title="tts.documentTitle" data-vozen-public-analytics="true">
     <!-- grain overlay -->
@@ -101,8 +101,8 @@
 
 
             <h1 class="hero__title reveal" data-r="2">
-              <span data-i18n="hero.title1" data-preview-copy="Your chat.">没有麦克风？</span>
-              <span class="grad" data-i18n="hero.title2" data-preview-copy="Out loud.">继续参与对话。</span>
+              <span data-preview-i18n="hero.title1" data-preview-copy="Your chat.">没有麦克风？</span>
+              <span class="grad" data-preview-i18n="hero.title2" data-preview-copy="Out loud.">继续参与对话。</span>
             </h1>
 
             <p class="hero__sub reveal" data-r="3">Text-to-speech for your Discord calls.</p>
@@ -157,7 +157,7 @@
             </button>
             <div class="hear__meta">
               <div class="hear__nowrow">
-                <span class="hear__flag" id="hearFlag">🇬🇧</span>
+                <span class="hear__flag" id="hearFlag"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-gb"></use></svg></span>
                 <span class="hear__lang" id="hearLang">English</span>
                 <span class="hear__engtag" id="hearEngTag">Google</span>
               </div>
@@ -175,11 +175,11 @@
             <button class="hear__eng" data-engine="piper" type="button">Piper</button>
             <button class="hear__eng" data-engine="kokoro" type="button" data-i18n="tts.premiumEngine">Kokoro · Premium</button>
           </div><div class="hear__chips" id="hearChips" role="group" aria-label="選擇語言範例" data-i18n-aria-label="tts.chooseSample">
-            <button class="hear__chip is-active" data-sample="en" type="button"><span>🇬🇧</span> <span class="hear__chip-name">English</span></button>
-            <button class="hear__chip" data-sample="pt" type="button"><span>🇵🇹</span> <span class="hear__chip-name">Português</span></button>
-            <button class="hear__chip" data-sample="es" type="button"><span>🇪🇸</span> <span class="hear__chip-name">Español</span></button>
-            <button class="hear__chip" data-sample="fr" type="button"><span>🇫🇷</span> <span class="hear__chip-name">Français</span></button>
-            <button class="hear__chip" data-sample="it" type="button"><span>🇮🇹</span> <span class="hear__chip-name">Italiano</span></button>
+            <button class="hear__chip is-active" data-sample="en" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-gb"></use></svg> <span class="hear__chip-name">English</span></button>
+            <button class="hear__chip" data-sample="pt" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-pt"></use></svg> <span class="hear__chip-name">Português</span></button>
+            <button class="hear__chip" data-sample="es" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-es"></use></svg> <span class="hear__chip-name">Español</span></button>
+            <button class="hear__chip" data-sample="fr" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-fr"></use></svg> <span class="hear__chip-name">Français</span></button>
+            <button class="hear__chip" data-sample="it" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-it"></use></svg> <span class="hear__chip-name">Italiano</span></button>
           </div><p class="hear__sub" data-i18n="hear.sub">试听所有引擎。Piper 免费；Kokoro 需通过 Vozen Plus 或 Premium 解锁。</p></div><audio id="hearAudio" preload="none"></audio>
         </div>
       </section>
@@ -743,11 +743,13 @@
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
     <script defer="" src="js/global-nav-v1.js?v=e2404ec866f5"></script>
     <script defer="" src="js/i18n-public-loader-v1.js?v=d29fcfb97378"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=0e4cebc4d829"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=b8e397533023"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
-<script defer="" src="js/product-preview-v1.js?v=4118ff38f988"></script>
+<script defer="" src="js/product-preview-v1.js?v=8765318a48b5"></script>
 <script defer="" src="js/tts-player-preview-v1.js?v=98f9725fcf83"></script>
 <script defer="" src="js/tts-features-preview-v1.js?v=50a88a38197c"></script>
+
+
 
 
 

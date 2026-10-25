@@ -41,14 +41,14 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <link rel="preload" href="/assets/fonts/unbounded-critical-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/tts-page-v1.css?v=61243987a694">
+    <link rel="preload" href="/assets/fonts/outfit-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/tts-page-v1.css?v=33a28c3082d5">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/ar/tts/","description":"يقرأ Vozen محادثات Discord بصوت مسموع وأصوات عصبية طبيعية — بـ 35 لغة، مع ألعاب وضحكات وأساسيات مجانية للأبد","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"},"inLanguage":"ar"}</script>
 
     <!-- FAQ structured data (Google rich results). Mantém em sincronia com
          window.VOZEN_FAQ (js/i18n.js) — o JSON-LD tem de ser ESTÁTICO porque os
          crawlers não correm o JS que renderiza o FAQ. -->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"ar","mainEntity":[{"@type":"Question","name":"هل Vozen مجاني حقًا؟","acceptedAnswer":{"@type":"Answer","text":"نعم — يبقى الأساس مجانيًا: 38 صوت Piper في 35 لغة، والقراءة التلقائية، والترحيب، ومعظم الألعاب، وكل أدوات الإدارة. Kokoro وGoogle HD محركان Premium؛ يفتحهما Plus لك شخصيًا وPremium للخادم"}},{"@type":"Question","name":"ماذا يشمل Premium؟","acceptedAnswer":{"@type":"Answer","text":"محركا Kokoro العصبي وGoogle HD، وكل المؤثرات الصوتية الثمانية، والبقاء 24/7، و50 نطقًا شخصيًا، و/rizz، وألعاب Premium. يتضمن Premium للخادم أيضًا تحويل الصوت المباشر إلى نص. يغطي €6.99 شهريًا خادمين أو €14.99 عدد 5؛ ويمنح Vozen Plus (€3.99 شهريًا) المزايا الشخصية في أي خادم"}},{"@type":"Question","name":"كيف أضيف Vozen إلى خادمي؟","acceptedAnswer":{"@type":"Answer","text":"انقر \"أضِفه إلى Discord\"، واختر خادمك (تحتاج صلاحية إدارة الخادم)، ثم شغّل /setup. هذا كل شيء"}},{"@type":"Question","name":"ما اللغات التي يدعمها؟","acceptedAnswer":{"@type":"Answer","text":"35 لغة مع 38 صوتًا عصبيًا — العربية والبرتغالية والإنجليزية والإسبانية والفرنسية والألمانية واليابانية والروسية وغيرها الكثير، لكل منها صوت أصلي"}},{"@type":"Question","name":"هل عليّ ضبط أي شيء؟","acceptedAnswer":{"@type":"Answer","text":"لا. يقوم /setup بذلك في خطوة واحدة. بعدها يعمل كل شيء بإعدادات افتراضية معقولة — ويمكنك الضبط الدقيق لاحقًا عبر /config"}},{"@type":"Question","name":"هل يمكن أن يكون لكل شخص صوت مختلف؟","acceptedAnswer":{"@type":"Answer","text":"نعم. يضبط كل عضو صوته ولغته عبر /voice set. يُستخدم هذا الصوت افتراضيًا؛ ويمكن تفعيل الاكتشاف الاختياري لكل رسالة عبر /voice detection on"}},{"@type":"Question","name":"Piper أم Kokoro أم Google HD — أي محرك صوتي؟","acceptedAnswer":{"@type":"Answer","text":"Piper هو المحرك المحلي المجاني. يحتاج Kokoro العصبي وGoogle HD إلى Vozen Plus لك أو Vozen Premium في الخادم. بدّل عبر /voice set؛ وعند انتهاء الوصول يعود تلقائيًا إلى المحرك المجاني"}},{"@type":"Question","name":"كيف أوقف المزايا؟","acceptedAnswer":{"@type":"Answer","text":"كل شيء قابل للتبديل عبر /config — الترحيب، والقراءة التلقائية، وإعلانات من-قال، والفلتر المضاد للإزعاج، وغيرها. وهناك أيضًا زر إيقاف طارئ كامل"}}]}</script>
-      <link rel="stylesheet" href="css/product-preview-v1.css?v=ade7a3cfe71e">
   </head>
   <body class="tts-page product-preview product-preview--expressive" data-i18n-document-title="tts.documentTitle" data-vozen-public-analytics="true">
     <!-- grain overlay -->
@@ -101,8 +101,8 @@
 
 
             <h1 class="hero__title reveal" data-r="2">
-              <span data-i18n="hero.title1" data-preview-copy="Your chat.">لا ميكروفون؟</span>
-              <span class="grad" data-i18n="hero.title2" data-preview-copy="Out loud.">ابقَ في المحادثة.</span>
+              <span data-preview-i18n="hero.title1" data-preview-copy="Your chat.">لا ميكروفون؟</span>
+              <span class="grad" data-preview-i18n="hero.title2" data-preview-copy="Out loud.">ابقَ في المحادثة.</span>
             </h1>
 
             <p class="hero__sub reveal" data-r="3">Text-to-speech for your Discord calls.</p>
@@ -157,7 +157,7 @@
             </button>
             <div class="hear__meta">
               <div class="hear__nowrow">
-                <span class="hear__flag" id="hearFlag">🇬🇧</span>
+                <span class="hear__flag" id="hearFlag"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-gb"></use></svg></span>
                 <span class="hear__lang" id="hearLang">English</span>
                 <span class="hear__engtag" id="hearEngTag">Google</span>
               </div>
@@ -175,11 +175,11 @@
             <button class="hear__eng" data-engine="piper" type="button">Piper</button>
             <button class="hear__eng" data-engine="kokoro" type="button" data-i18n="tts.premiumEngine">Kokoro · Premium</button>
           </div><div class="hear__chips" id="hearChips" role="group" aria-label="اختر عينة لغة" data-i18n-aria-label="tts.chooseSample">
-            <button class="hear__chip is-active" data-sample="en" type="button"><span>🇬🇧</span> <span class="hear__chip-name">English</span></button>
-            <button class="hear__chip" data-sample="pt" type="button"><span>🇵🇹</span> <span class="hear__chip-name">Português</span></button>
-            <button class="hear__chip" data-sample="es" type="button"><span>🇪🇸</span> <span class="hear__chip-name">Español</span></button>
-            <button class="hear__chip" data-sample="fr" type="button"><span>🇫🇷</span> <span class="hear__chip-name">Français</span></button>
-            <button class="hear__chip" data-sample="it" type="button"><span>🇮🇹</span> <span class="hear__chip-name">Italiano</span></button>
+            <button class="hear__chip is-active" data-sample="en" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-gb"></use></svg> <span class="hear__chip-name">English</span></button>
+            <button class="hear__chip" data-sample="pt" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-pt"></use></svg> <span class="hear__chip-name">Português</span></button>
+            <button class="hear__chip" data-sample="es" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-es"></use></svg> <span class="hear__chip-name">Español</span></button>
+            <button class="hear__chip" data-sample="fr" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-fr"></use></svg> <span class="hear__chip-name">Français</span></button>
+            <button class="hear__chip" data-sample="it" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-it"></use></svg> <span class="hear__chip-name">Italiano</span></button>
           </div><p class="hear__sub" data-i18n="hear.sub">جرّب كل المحركات. Piper مجاني؛ يُفتح Kokoro مع Vozen Plus أو Premium</p></div><audio id="hearAudio" preload="none"></audio>
         </div>
       </section>
@@ -743,11 +743,13 @@
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
     <script defer="" src="js/global-nav-v1.js?v=e2404ec866f5"></script>
     <script defer="" src="js/i18n-public-loader-v1.js?v=d29fcfb97378"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=0e4cebc4d829"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=b8e397533023"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
-<script defer="" src="js/product-preview-v1.js?v=4118ff38f988"></script>
+<script defer="" src="js/product-preview-v1.js?v=8765318a48b5"></script>
 <script defer="" src="js/tts-player-preview-v1.js?v=98f9725fcf83"></script>
 <script defer="" src="js/tts-features-preview-v1.js?v=50a88a38197c"></script>
+
+
 
 
 

@@ -9,7 +9,7 @@
   const refreshExample = () => {
     const locale = document.documentElement.dataset.vozenLocale || 'en';
     if (locale === 'en') document.querySelectorAll('[data-preview-copy]').forEach((element) => {
-      element.textContent = element.dataset.previewCopy;
+      if (element.textContent !== element.dataset.previewCopy) element.textContent = element.dataset.previewCopy;
     });
     const labels = window.VOZEN_I18N?.[locale] || window.VOZEN_I18N?.en;
     document.querySelectorAll('.product-preview .speaking').forEach((element) => {

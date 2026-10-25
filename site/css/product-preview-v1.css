@@ -1,29 +1,4 @@
 /* Local product-page study. Shared behavior, navigation and billing remain unchanged. */
-/* The incumbent optional face can keep a cold-load fallback; this preview swaps to the same local files. */
-@font-face {
-  font-family: 'Vozen Product Display';
-  font-style: normal;
-  font-weight: 400 900;
-  font-display: swap;
-  src: url('../assets/fonts/unbounded-critical-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Vozen Product Display';
-  font-style: normal;
-  font-weight: 400 900;
-  font-display: swap;
-  src: url('../assets/fonts/unbounded-critical-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Vozen Product Display';
-  font-style: normal;
-  font-weight: 400 900;
-  font-display: swap;
-  src: url('../assets/fonts/unbounded-critical-cyrillic.woff2') format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
 
 /* Restore the product's own scenes; the v1 neutral-panel composition was rejected. */
 body.product-preview {
@@ -35,11 +10,14 @@ body.product-preview {
   scrollbar-color: #495477 #090d18;
 }
 body.product-preview ::selection { background: #55ebd1; color: #08121c; }
+/* Keep offscreen language flags out of the initial font/rendering work. */
+body.product-preview #languages { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+body.product-preview :is(.hear__flag,.hear__chip) svg { width: 24px; height: 18px; vertical-align: middle; }
 body.product-preview :focus-visible { outline: 2px solid #55ebd1; outline-offset: 5px; }
-body.product-preview :is(h1,h2,h3) { font-family: 'Vozen Product Display', sans-serif; letter-spacing: -.035em; }
+body.product-preview :is(h1,h2,h3) { font-family: 'Vozen Critical Display', sans-serif; letter-spacing: -.035em; }
 body.product-preview .reveal { opacity: 1; transform: none; filter: none; }
 body.product-preview :is(.hero__title,#helper-title) {
-  font-family: 'Vozen Product Display', sans-serif;
+  font-family: 'Vozen Critical Display', sans-serif;
   font-size: clamp(42px, 4.3vw, 62px);
   line-height: 1.07;
   letter-spacing: -.04em;
@@ -639,7 +617,7 @@ body.product-preview .helper-story-section { display: grid; grid-template-column
 body.product-preview .helper-story-section:nth-child(even) { grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); }
 body.product-preview .helper-story-section:nth-child(even) .helper-story-copy { grid-column: 2; grid-row: 1; }
 body.product-preview .helper-story-section:nth-child(even) figure { grid-column: 1; grid-row: 1; }
-body.product-preview .helper-story-copy h2, body.product-preview .helper-story-more h2 { margin: 0 0 24px; font: 600 clamp(30px,3.6vw,48px)/1.18 'Vozen Product Display',sans-serif; letter-spacing: -.035em; }
+body.product-preview .helper-story-copy h2, body.product-preview .helper-story-more h2 { margin: 0 0 24px; font: 600 clamp(30px,3.6vw,48px)/1.18 'Vozen Critical Display',sans-serif; letter-spacing: -.035em; }
 .helper-story-copy h2 span, .helper-story-more h2 span { color: #55ebd1; }
 body.product-preview .helper-story-copy > p { max-width: 33ch; margin: 0 0 22px; color: #b2bfd9; font-size: 17px; line-height: 1.6; }
 body.product-preview .helper-stories .module-demo { width: 100%; grid-row: auto; overflow: visible; background: none; border: none; box-shadow: none; }
@@ -657,7 +635,7 @@ body.product-preview .helper-stories .demo-action { min-height: 44px; padding: 8
 .glance-event { display: flex; align-items: center; justify-content: center; gap: 32px; }
 .glance-calendar { flex: 0 0 142px; border-radius: 16px; background: #142039; text-align: center; transform: rotate(-5deg); }
 .glance-calendar > span { display: block; padding: 12px 16px; border-radius: 16px 16px 0 0; background: #7383ff; color: #071019; font: 650 16px 'Outfit',sans-serif; }
-.glance-calendar > strong { display: block; padding: 18px 12px; font: 600 64px/1 'Vozen Product Display',sans-serif; color: #f4f5ff; }
+.glance-calendar > strong { display: block; padding: 18px 12px; font: 600 64px/1 'Vozen Critical Display',sans-serif; color: #f4f5ff; }
 .glance-event-info { display: grid; gap: 20px; }
 .glance-event-info > strong { font: 650 24px/1.3 'Outfit',sans-serif; }
 .glance-joined, .glance-reward { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 16px; border-radius: 12px; background: #55ebd1; color: #071019; font: 650 17px/1.4 'Outfit',sans-serif; }
@@ -665,7 +643,7 @@ body.product-preview .helper-stories .demo-action { min-height: 44px; padding: 8
 .glance-progression { display: flex; align-items: center; justify-content: center; gap: 36px; }
 .glance-level { display: grid; gap: 10px; text-align: center; }
 .glance-level > span { font: 550 13px 'Outfit',sans-serif; letter-spacing: .12em; color: #b2bfd9; }
-.glance-level > strong { font: 600 clamp(82px,10vw,128px)/1 'Vozen Product Display',sans-serif; letter-spacing: -.04em; color: #a8aeff; }
+.glance-level > strong { font: 600 clamp(82px,10vw,128px)/1 'Vozen Critical Display',sans-serif; letter-spacing: -.04em; color: #a8aeff; }
 .glance-automation { display: grid; grid-template-columns: minmax(0,1fr) 44px minmax(0,1fr); align-items: center; gap: 16px; }
 .glance-trigger, .glance-auto-reply { padding: 24px 18px; border-radius: 16px; background: #142039; }
 .glance-trigger > small, .glance-auto-reply > small { display: block; margin-bottom: 14px; color: #b2bfd9; font: 450 12px 'Outfit',sans-serif; }
@@ -745,14 +723,14 @@ body.product-preview .spam-result { margin: 12px 0 0; color: #8cebd8; font: 600 
 /* Compact Helper cards: one illustration, one title and one short line. */
 body.product-preview .helper-stories[data-helper-cards] { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; padding: 48px 0; }
 .helper-cards-heading { grid-column: 1 / -1; margin-bottom: 10px; text-align: center; }
-body.product-preview .helper-cards-heading h2 { margin: 0 0 14px; font: 600 clamp(28px,3.5vw,44px)/1.15 'Vozen Product Display',sans-serif; letter-spacing: -.035em; text-wrap: balance; }
+body.product-preview .helper-cards-heading h2 { margin: 0 0 14px; font: 600 clamp(28px,3.5vw,44px)/1.15 'Vozen Critical Display',sans-serif; letter-spacing: -.035em; text-wrap: balance; }
 .helper-cards-heading p { margin: 0 0 24px; color: #b9c6df; font: 400 17px/1.5 'Outfit',sans-serif; }
 body.product-preview [data-helper-cards] .helper-story-section,
 body.product-preview [data-helper-cards] .helper-story-more { display: flex; flex-direction: column; align-items: stretch; gap: 0; min-width: 0; min-height: 268px; padding: 22px; border: 1px solid rgba(255,255,255,.08); border-radius: 16px; background: #10192b; }
 body.product-preview [data-helper-cards] .helper-story-section:nth-of-type(2n) { background: #1c2344; }
 body.product-preview [data-helper-cards] .helper-story-section:first-of-type { background: linear-gradient(125deg,#15313e,#101b30); }
 body.product-preview [data-helper-cards] .helper-story-copy { margin-top: auto; }
-body.product-preview [data-helper-cards] h3 { display: flex; align-items: center; min-height: 44px; margin: 0; color: #f6f7fe; font: 600 18px/1.3 'Vozen Product Display',sans-serif; letter-spacing: -.035em; }
+body.product-preview [data-helper-cards] h3 { display: flex; align-items: center; min-height: 44px; margin: 0; color: #f6f7fe; font: 600 18px/1.3 'Vozen Critical Display',sans-serif; letter-spacing: -.035em; }
 body.product-preview [data-helper-cards] h3 a { display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; min-height: 44px; color: inherit; text-decoration: none; }
 body.product-preview [data-helper-cards] h3 a:hover { color: #55ebd1; }
 .helper-card-arrow { width: 20px; height: 20px; flex-shrink: 0; color: #55ebd1; }

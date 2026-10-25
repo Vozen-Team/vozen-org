@@ -43,3 +43,26 @@ test('local proposal copy is applied after the translation catalogue is ready', 
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(element.textContent, 'Your server.');
 });
+
+test('authored headline copy is not repainted after initialization', async () => {
+  let writes = 0;
+  const element = {
+    dataset: {previewCopy: 'Out loud.'},
+    get textContent() { return 'Out loud.'; },
+    set textContent(value) { writes++; },
+  };
+  vm.runInNewContext(source, {
+    Node: {TEXT_NODE: 3},
+    window: {vozenPublicI18nReady: Promise.resolve()},
+    document: {documentElement: {dataset: {}},
+      querySelectorAll: selector => selector === '[data-preview-copy]' ? [element] : []},
+  });
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(writes, 0);
+  const html = readFileSync(new URL('../../site/tts/index.html', import.meta.url), 'utf8');
+  assert.match(html, /data-preview-i18n="hero.title2"/);
+  assert.doesNotMatch(html, /data-i18n="hero.title[12]"/);
+  const css = readFileSync(new URL('../../site/css/product-preview-v1.css', import.meta.url), 'utf8');
+  assert.match(css, /:is\(\.hero__title,#helper-title\)\s*\{\s*font-family: 'Vozen Critical Display'/);
+  assert.doesNotMatch(css, /Vozen Product Display/);
+});

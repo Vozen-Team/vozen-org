@@ -41,14 +41,14 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <link rel="preload" href="/assets/fonts/unbounded-critical-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/tts-page-v1.css?v=61243987a694">
+    <link rel="preload" href="/assets/fonts/outfit-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/tts-page-v1.css?v=33a28c3082d5">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/tr/tts/","description":"Vozen, Discord sohbetini doğal nöral seslerle yüksek sesle okur — 35 dilde, oyunlar, kahkahalar ve sonsuza dek ücretsiz bir temel sürümle","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"},"inLanguage":"tr"}</script>
 
     <!-- FAQ structured data (Google rich results). Mantém em sincronia com
          window.VOZEN_FAQ (js/i18n.js) — o JSON-LD tem de ser ESTÁTICO porque os
          crawlers não correm o JS que renderiza o FAQ. -->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"tr","mainEntity":[{"@type":"Question","name":"Vozen gerçekten ücretsiz mi?","acceptedAnswer":{"@type":"Answer","text":"Evet — çekirdek ücretsiz kalır: 35 dilde 38 Piper sesi, otomatik okuma, selamlamalar, oyunların çoğu ve tüm yönetici kontrolleri. Kokoro ve Google HD Premium motorlardır; Plus kişisel, Premium ise sunucu çapında açar"}},{"@type":"Question","name":"Premium neleri içerir?","acceptedAnswer":{"@type":"Answer","text":"Kokoro nöral ve Google HD motorları, 8 ses efektinin tamamı, 7/24 kanalda kalma, 50 kişisel telaffuz, /rizz ve Premium oyunlar. Sunucu Premium ayrıca canlı ses transkripsiyonu içerir. Aylık €6.99 2 sunucuyu, €14.99 ise 5 sunucuyu kapsar; Vozen Plus (€3.99/ay) kişisel ayrıcalıkları her sunucuda verir"}},{"@type":"Question","name":"Vozen'i sunucuma nasıl eklerim?","acceptedAnswer":{"@type":"Answer","text":"\"Discord'a Ekle\"ye tıkla, sunucunu seç (Sunucuyu Yönet yetkisi gerekir) ve /setup çalıştır. Hepsi bu"}},{"@type":"Question","name":"Hangi dilleri destekliyor?","acceptedAnswer":{"@type":"Answer","text":"38 nöral sesle 35 dil — Portekizce, İngilizce, İspanyolca, Fransızca, Almanca, Japonca, Arapça, Rusça ve çok daha fazlası, her biri ana dilde bir sesle"}},{"@type":"Question","name":"Bir şey yapılandırmam gerekiyor mu?","acceptedAnswer":{"@type":"Answer","text":"Hayır. /setup bunu tek adımda yapar. Ardından her şey mantıklı varsayılanlarla çalışır — daha sonra /config ile ince ayar yapabilirsin"}},{"@type":"Question","name":"Herkesin farklı bir sesi olabilir mi?","acceptedAnswer":{"@type":"Answer","text":"Evet. Her üye /voice set ile kendi sesini ve dilini ayarlar. Bu ses varsayılandır; mesaj başına isteğe bağlı algılama /voice detection on ile açılır"}},{"@type":"Question","name":"Piper, Kokoro veya Google HD — hangi ses motoru?","acceptedAnswer":{"@type":"Answer","text":"Piper ücretsiz yerel motordur. Kokoro nöral ve Google HD için kişisel Vozen Plus ya da sunucuda Vozen Premium gerekir. /voice set ile değiştir; erişim bitince otomatik olarak ücretsiz motora döner"}},{"@type":"Question","name":"Özellikleri nasıl kapatırım?","acceptedAnswer":{"@type":"Answer","text":"Her şey /config ile açılıp kapatılabilir — selamlama, otomatik okuma, kim-söyledi duyuruları, anti-spam filtresi ve daha fazlası. Ayrıca tam bir acil durdurma da var"}}]}</script>
-      <link rel="stylesheet" href="css/product-preview-v1.css?v=ade7a3cfe71e">
   </head>
   <body class="tts-page product-preview product-preview--expressive" data-i18n-document-title="tts.documentTitle" data-vozen-public-analytics="true">
     <!-- grain overlay -->
@@ -101,8 +101,8 @@
 
 
             <h1 class="hero__title reveal" data-r="2">
-              <span data-i18n="hero.title1" data-preview-copy="Your chat.">Mikrofon yok mu?</span>
-              <span class="grad" data-i18n="hero.title2" data-preview-copy="Out loud.">Sohbette kal.</span>
+              <span data-preview-i18n="hero.title1" data-preview-copy="Your chat.">Mikrofon yok mu?</span>
+              <span class="grad" data-preview-i18n="hero.title2" data-preview-copy="Out loud.">Sohbette kal.</span>
             </h1>
 
             <p class="hero__sub reveal" data-r="3">Text-to-speech for your Discord calls.</p>
@@ -157,7 +157,7 @@
             </button>
             <div class="hear__meta">
               <div class="hear__nowrow">
-                <span class="hear__flag" id="hearFlag">🇬🇧</span>
+                <span class="hear__flag" id="hearFlag"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-gb"></use></svg></span>
                 <span class="hear__lang" id="hearLang">English</span>
                 <span class="hear__engtag" id="hearEngTag">Google</span>
               </div>
@@ -175,11 +175,11 @@
             <button class="hear__eng" data-engine="piper" type="button">Piper</button>
             <button class="hear__eng" data-engine="kokoro" type="button" data-i18n="tts.premiumEngine">Kokoro · Premium</button>
           </div><div class="hear__chips" id="hearChips" role="group" aria-label="Dil örneği seçin" data-i18n-aria-label="tts.chooseSample">
-            <button class="hear__chip is-active" data-sample="en" type="button"><span>🇬🇧</span> <span class="hear__chip-name">English</span></button>
-            <button class="hear__chip" data-sample="pt" type="button"><span>🇵🇹</span> <span class="hear__chip-name">Português</span></button>
-            <button class="hear__chip" data-sample="es" type="button"><span>🇪🇸</span> <span class="hear__chip-name">Español</span></button>
-            <button class="hear__chip" data-sample="fr" type="button"><span>🇫🇷</span> <span class="hear__chip-name">Français</span></button>
-            <button class="hear__chip" data-sample="it" type="button"><span>🇮🇹</span> <span class="hear__chip-name">Italiano</span></button>
+            <button class="hear__chip is-active" data-sample="en" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-gb"></use></svg> <span class="hear__chip-name">English</span></button>
+            <button class="hear__chip" data-sample="pt" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-pt"></use></svg> <span class="hear__chip-name">Português</span></button>
+            <button class="hear__chip" data-sample="es" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-es"></use></svg> <span class="hear__chip-name">Español</span></button>
+            <button class="hear__chip" data-sample="fr" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-fr"></use></svg> <span class="hear__chip-name">Français</span></button>
+            <button class="hear__chip" data-sample="it" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-it"></use></svg> <span class="hear__chip-name">Italiano</span></button>
           </div><p class="hear__sub" data-i18n="hear.sub">Tüm motorları dene. Piper ücretsizdir; Kokoro, Vozen Plus veya Premium ile açılır</p></div><audio id="hearAudio" preload="none"></audio>
         </div>
       </section>
@@ -743,11 +743,13 @@
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
     <script defer="" src="js/global-nav-v1.js?v=e2404ec866f5"></script>
     <script defer="" src="js/i18n-public-loader-v1.js?v=d29fcfb97378"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=0e4cebc4d829"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=b8e397533023"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
-<script defer="" src="js/product-preview-v1.js?v=4118ff38f988"></script>
+<script defer="" src="js/product-preview-v1.js?v=8765318a48b5"></script>
 <script defer="" src="js/tts-player-preview-v1.js?v=98f9725fcf83"></script>
 <script defer="" src="js/tts-features-preview-v1.js?v=50a88a38197c"></script>
+
+
 
 
 

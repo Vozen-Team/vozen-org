@@ -2798,7 +2798,7 @@
       // Se a lingua nao tem o motor escolhido (ex.: japones sem Piper), toca no Google.
       const eng = s.engines.includes(engine) ? engine : "google";
       current = code;
-      flagEl.textContent = s.flag;
+      flagEl.innerHTML = flagMarkup(code === "en" ? "gb" : code);
       langEl.textContent = hearLangName(code, lang); // nome na língua do site (segue EN/PT)
       phraseEl.textContent = s.phrase;
       engTag.textContent = ENGINE_NAME[eng];

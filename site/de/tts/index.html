@@ -41,14 +41,14 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <link rel="preload" href="/assets/fonts/unbounded-critical-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/tts-page-v1.css?v=61243987a694">
+    <link rel="preload" href="/assets/fonts/outfit-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/tts-page-v1.css?v=33a28c3082d5">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/de/tts/","description":"Vozen liest deinen Discord-Chat laut vor — mit natürlichen neuronalen Stimmen in 35 Sprachen, mit Spielen, Gelächter und einem Kern, der für immer kostenlos bleibt","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"},"inLanguage":"de"}</script>
 
     <!-- FAQ structured data (Google rich results). Mantém em sincronia com
          window.VOZEN_FAQ (js/i18n.js) — o JSON-LD tem de ser ESTÁTICO porque os
          crawlers não correm o JS que renderiza o FAQ. -->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"de","mainEntity":[{"@type":"Question","name":"Ist Vozen wirklich kostenlos?","acceptedAnswer":{"@type":"Answer","text":"Ja — der Kern bleibt kostenlos: 38 Piper-Stimmen in 35 Sprachen, Auto-Vorlesen, Begrüßungen, die meisten Spiele und alle Admin-Kontrollen. Kokoro und Google HD sind Premium-Engines; Plus schaltet sie persönlich frei, Premium für den Server"}},{"@type":"Question","name":"Was ist in Premium enthalten?","acceptedAnswer":{"@type":"Answer","text":"Kokoro und Google HD, alle 8 Stimmeffekte, 24/7 im Sprachkanal, 50 persönliche Aussprachen, /rizz und die Premium-Spiele. Server-Premium enthält außerdem Live-Sprachtranskription. 6,99 €/Monat decken 2 Server ab, 13,99 €/Monat 5; Vozen Plus (3,99 €/Monat) bietet die persönlichen Vorteile auf jedem Server"}},{"@type":"Question","name":"Wie füge ich Vozen zu meinem Server hinzu?","acceptedAnswer":{"@type":"Answer","text":"Klick auf \"Zu Discord hinzufügen\", wähle deinen Server (du brauchst „Server verwalten“) und führe /setup aus. Das war's"}},{"@type":"Question","name":"Welche Sprachen werden unterstützt?","acceptedAnswer":{"@type":"Answer","text":"35 Sprachen mit 38 neuronalen Stimmen — Portugiesisch, Englisch, Spanisch, Französisch, Deutsch, Japanisch, Arabisch, Russisch und viele mehr, jede mit einer nativen Stimme"}},{"@type":"Question","name":"Muss ich irgendetwas konfigurieren?","acceptedAnswer":{"@type":"Answer","text":"Nein. /setup erledigt es in einem Schritt. Danach läuft alles mit sinnvollen Voreinstellungen — später kannst du mit /config feinjustieren"}},{"@type":"Question","name":"Kann jeder eine andere Stimme haben?","acceptedAnswer":{"@type":"Answer","text":"Ja. Jedes Mitglied legt mit /voice set Stimme und Sprache fest. Diese Stimme ist der Standard; die optionale Erkennung pro Nachricht wird mit /voice detection on aktiviert"}},{"@type":"Question","name":"Piper, Kokoro oder Google HD — welche Stimmen-Engine?","acceptedAnswer":{"@type":"Answer","text":"Piper ist die kostenlose lokale Engine. Kokoro und Google HD benötigen Vozen Plus für dich oder Vozen Premium auf dem Server. Wechsel mit /voice set; nach Ablauf geht es automatisch zur kostenlosen Engine zurück"}},{"@type":"Question","name":"Wie schalte ich Funktionen aus?","acceptedAnswer":{"@type":"Answer","text":"Alles ist über /config schaltbar — die Begrüßung, das Auto-Vorlesen, die Wer-hat-gesagt-Ansagen, der Anti-Spam-Filter und mehr. Es gibt außerdem einen kompletten Kill-Switch"}}]}</script>
-      <link rel="stylesheet" href="css/product-preview-v1.css?v=ade7a3cfe71e">
   </head>
   <body class="tts-page product-preview product-preview--expressive" data-i18n-document-title="tts.documentTitle" data-vozen-public-analytics="true">
     <!-- grain overlay -->
@@ -101,8 +101,8 @@
 
 
             <h1 class="hero__title reveal" data-r="2">
-              <span data-i18n="hero.title1" data-preview-copy="Your chat.">Kein Mikro?</span>
-              <span class="grad" data-i18n="hero.title2" data-preview-copy="Out loud.">Bleib im Gespräch.</span>
+              <span data-preview-i18n="hero.title1" data-preview-copy="Your chat.">Kein Mikro?</span>
+              <span class="grad" data-preview-i18n="hero.title2" data-preview-copy="Out loud.">Bleib im Gespräch.</span>
             </h1>
 
             <p class="hero__sub reveal" data-r="3">Text-to-speech for your Discord calls.</p>
@@ -157,7 +157,7 @@
             </button>
             <div class="hear__meta">
               <div class="hear__nowrow">
-                <span class="hear__flag" id="hearFlag">🇬🇧</span>
+                <span class="hear__flag" id="hearFlag"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-gb"></use></svg></span>
                 <span class="hear__lang" id="hearLang">English</span>
                 <span class="hear__engtag" id="hearEngTag">Google</span>
               </div>
@@ -175,11 +175,11 @@
             <button class="hear__eng" data-engine="piper" type="button">Piper</button>
             <button class="hear__eng" data-engine="kokoro" type="button" data-i18n="tts.premiumEngine">Kokoro · Premium</button>
           </div><div class="hear__chips" id="hearChips" role="group" aria-label="Sprachbeispiel auswählen" data-i18n-aria-label="tts.chooseSample">
-            <button class="hear__chip is-active" data-sample="en" type="button"><span>🇬🇧</span> <span class="hear__chip-name">English</span></button>
-            <button class="hear__chip" data-sample="pt" type="button"><span>🇵🇹</span> <span class="hear__chip-name">Português</span></button>
-            <button class="hear__chip" data-sample="es" type="button"><span>🇪🇸</span> <span class="hear__chip-name">Español</span></button>
-            <button class="hear__chip" data-sample="fr" type="button"><span>🇫🇷</span> <span class="hear__chip-name">Français</span></button>
-            <button class="hear__chip" data-sample="it" type="button"><span>🇮🇹</span> <span class="hear__chip-name">Italiano</span></button>
+            <button class="hear__chip is-active" data-sample="en" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-gb"></use></svg> <span class="hear__chip-name">English</span></button>
+            <button class="hear__chip" data-sample="pt" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-pt"></use></svg> <span class="hear__chip-name">Português</span></button>
+            <button class="hear__chip" data-sample="es" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-es"></use></svg> <span class="hear__chip-name">Español</span></button>
+            <button class="hear__chip" data-sample="fr" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-fr"></use></svg> <span class="hear__chip-name">Français</span></button>
+            <button class="hear__chip" data-sample="it" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-it"></use></svg> <span class="hear__chip-name">Italiano</span></button>
           </div><p class="hear__sub" data-i18n="hear.sub">Teste alle Engines. Piper ist kostenlos; Kokoro gibt es mit Vozen Plus oder Premium</p></div><audio id="hearAudio" preload="none"></audio>
         </div>
       </section>
@@ -743,11 +743,13 @@
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
     <script defer="" src="js/global-nav-v1.js?v=e2404ec866f5"></script>
     <script defer="" src="js/i18n-public-loader-v1.js?v=d29fcfb97378"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=0e4cebc4d829"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=b8e397533023"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
-<script defer="" src="js/product-preview-v1.js?v=4118ff38f988"></script>
+<script defer="" src="js/product-preview-v1.js?v=8765318a48b5"></script>
 <script defer="" src="js/tts-player-preview-v1.js?v=98f9725fcf83"></script>
 <script defer="" src="js/tts-features-preview-v1.js?v=50a88a38197c"></script>
+
+
 
 
 

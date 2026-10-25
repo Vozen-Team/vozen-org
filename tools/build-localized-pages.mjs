@@ -282,7 +282,7 @@ export function localize(sourceHtml, locale, page, catalogue) {
 
   visit(document, (node) => {
     if (!node.tagName) return;
-    const key = attr(node, 'data-i18n');
+    const key = attr(node, 'data-i18n') || attr(node, 'data-preview-i18n');
     if (key && messages[key] != null) setText(node, messages[key]);
     for (const [marker, target] of [
       ['data-i18n-aria-label', 'aria-label'],

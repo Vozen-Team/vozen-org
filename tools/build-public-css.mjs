@@ -14,7 +14,7 @@ const pages = {
   },
   tts: {
     html: path.join(siteRoot, 'tts', 'index.html'),
-    sources: ['main-v43.css', 'ecosystem-bridge.css', 'global-nav-v1.css', 'tts-ui-v1.css'],
+    sources: ['main-v43.css', 'ecosystem-bridge.css', 'global-nav-v1.css', 'tts-ui-v1.css', 'product-preview-v1.css'],
     pageSources: [
       'main-v43.css',
       'ecosystem-bridge.css',
@@ -24,6 +24,7 @@ const pages = {
       'pricing-cards-v9.css',
       'billing-v3.css',
       'bundle-pricing-v1.css',
+      'product-preview-v1.css',
     ],
   },
   helper: {
@@ -152,6 +153,10 @@ try {
           /^\.eco-back/,
           /^\.helper-/,
           /^\.tts-/,
+          /^body\.product-preview/,
+          /^\.feature-/,
+          /^\.setup-/,
+          /^\.command-/,
           /^\.hear(?:\b|__)/,
           // Runtime scroll states do not exist in the JS-disabled extraction
           // document. Preserve their rules or sections stay permanently hidden.
