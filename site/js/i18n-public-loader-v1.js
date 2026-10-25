@@ -8,6 +8,7 @@
   var script = document.currentScript;
   var baseUrl = new URL("i18n-public/", script && script.src ? script.src : document.baseURI);
   var pending = {};
+  var bundleVersions = {"en":"aebafeb03033","pt":"cc64833b4431","fr":"988d4f82f3f2","es":"1f2974da1b67","de":"22fa0651cac4","tr":"a437def21a3e","ar":"bc59ec14a645","zh":"08c129328b73","ru":"55a24d301f80","ko":"e09ede5f47cc"};
   window.VOZEN_I18N = window.VOZEN_I18N || {};
 
   function safeLocale(value) {
@@ -20,7 +21,7 @@
     if (pending[locale]) return pending[locale];
     pending[locale] = new Promise(function (resolve, reject) {
       var element = document.createElement("script");
-      element.src = new URL(locale + ".js", baseUrl).href;
+      element.src = new URL(locale + ".js?v=" + bundleVersions[locale], baseUrl).href;
       element.async = true;
       element.onload = function () { resolve(locale); };
       element.onerror = function () {

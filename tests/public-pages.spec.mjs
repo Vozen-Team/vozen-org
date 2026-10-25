@@ -17,6 +17,27 @@ test('the shared wordmark has a small dedicated font subset', async ({ page }) =
 const entryPages = ['/', '/tts/', '/helper/'];
 const widths = [320, 375, 768, 1024, 1440];
 
+test('the shared header stays pinned and darkens consistently across public page families', async ({ page }) => {
+  test.setTimeout(60_000);
+  for (const width of [375, 1440]) {
+    await page.setViewportSize({ width, height: 700 });
+    for (const route of ['/', '/tts/', '/helper/', '/commands/', '/premium.html', '/status.html', '/account/', '/dashboard.html', '/docs/', '/docs/tts/getting-started/install/', '/guides/discord-without-a-mic/', '/privacy.html', '/terms.html']) {
+      await page.goto(route);
+      const header = page.locator('header.vozen-global-nav');
+      await expect(header).toHaveCount(1);
+      await expect(header).not.toHaveClass(/is-stuck/);
+      await expect(header).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+      // Exercise scroll behavior even on the signed-out, short account page.
+      await page.evaluate(() => { document.body.style.minHeight = '2200px'; window.scrollTo(0, 600); });
+      await expect(header).toHaveClass(/is-stuck/);
+      await expect(header).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+      expect(Math.abs((await header.boundingBox()).y), route).toBeLessThan(2);
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await expect(header).not.toHaveClass(/is-stuck/);
+    }
+  }
+});
+
 test('TTS discovers its headline font before the stylesheet finishes', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/tts/');
@@ -24,11 +45,12 @@ test('TTS discovers its headline font before the stylesheet finishes', async ({ 
   await expect(preload).toHaveAttribute('crossorigin', 'anonymous');
   await expect(preload).toHaveAttribute('type', 'font/woff2');
   expect(await preload.evaluate(node => Boolean(node.compareDocumentPosition(document.querySelector('link[rel="stylesheet"]')) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
-  await expect(page.locator('#hearFlag use')).toHaveAttribute('href', '/assets/flags.svg#flag-gb');
-  await expect(page.locator('.hear__chip svg')).toHaveCount(5);
+  await expect(page.locator('#hearFlag img')).toHaveAttribute('src', '/assets/flags-v2/gb.svg');
+  await expect(page.locator('.hear__chip img')).toHaveCount(5);
   await expect(page.locator('.voice-options')).not.toContainText(/[\u{1F1E6}-\u{1F1FF}]/u);
   await page.locator('.hear__chip[data-sample="it"]').click();
-  await expect(page.locator('#hearFlag use')).toHaveAttribute('href', '/assets/flags.svg#flag-it');
+  await expect(page.locator('#hearFlag img')).toHaveAttribute('src', '/assets/flags-v2/it.svg');
+  await page.locator('#hearFlag img').evaluate(image => image.decode());
   await page.locator('#languages').scrollIntoViewIfNeeded();
   await expect(page.locator('#languages')).toBeVisible();
   await expect(page.locator('#languages')).toHaveCSS('content-visibility', 'auto');
@@ -280,19 +302,23 @@ test('marketing and Docs language menus use all ten bundled SVG flags', async ({
   page.on('requestfailed', (request) => failedResources.push(`FAILED ${request.url()}`));
   await page.goto('/tts/', { waitUntil: 'networkidle' });
   await page.locator('#langBtn').click();
-  const marketingFlags = await page.locator('#langPanel .lang__opt use').evaluateAll((nodes) =>
-    nodes.map((node) => node.getAttribute('href')));
+  const marketingFlags = await page.locator('#langPanel .lang__opt img').evaluateAll(async (nodes) => {
+    await Promise.all(nodes.map(image => image.decode()));
+    return nodes.map(image => image.getAttribute('src'));
+  });
   expect(marketingFlags).toHaveLength(10);
-  expect(marketingFlags.every((href) => /^\/assets\/flags\.svg#flag-(gb|pt|fr|es|de|tr|sa|tw|ru|kr)$/.test(href || ''))).toBe(true);
-  await expect(page.locator('#langBtnFlag use')).toHaveAttribute('href', '/assets/flags.svg#flag-gb');
+  expect(marketingFlags.every((src) => /^\/assets\/flags-v2\/(gb|pt|fr|es|de|tr|sa|tw|ru|kr)\.svg$/.test(src || ''))).toBe(true);
+  await expect(page.locator('#langBtnFlag img')).toHaveAttribute('src', '/assets/flags-v2/gb.svg');
 
   await page.goto('/docs/', { waitUntil: 'networkidle' });
   const docsMenu = page.locator('[data-vozen-docs-language-menu]');
   await docsMenu.locator('[data-vozen-docs-language-button]').click();
-  const docsFlags = await docsMenu.locator('[data-vozen-docs-language-panel] use').evaluateAll((nodes) =>
-    nodes.map((node) => node.getAttribute('href')));
+  const docsFlags = await docsMenu.locator('[data-vozen-docs-language-panel] img').evaluateAll(async (nodes) => {
+    await Promise.all(nodes.map(image => image.decode()));
+    return nodes.map(image => image.getAttribute('src'));
+  });
   expect(docsFlags).toHaveLength(10);
-  expect(docsFlags.every((href) => /^\/assets\/flags\.svg#flag-(gb|pt|fr|es|de|tr|sa|tw|ru|kr)$/.test(href || ''))).toBe(true);
+  expect(docsFlags.every((src) => /^\/assets\/flags-v2\/(gb|pt|fr|es|de|tr|sa|tw|ru|kr)\.svg$/.test(src || ''))).toBe(true);
   expect(consoleErrors).toEqual([]);
   expect(failedResources).toEqual([]);
 });
@@ -363,25 +389,45 @@ test('Helper FAQ and return link keep 44px mobile touch targets', async ({ page 
   }
 });
 
-test('TTS links to independently hosted Top.gg reviews without republishing identities or quotes', async ({ page }) => {
-  await page.goto('/tts/', { waitUntil: 'networkidle' });
-
-  const reviews = page.locator('#reviews');
-  await expect(reviews.getByRole('heading', { name: 'Reviews you can verify' })).toBeVisible();
-  const link = reviews.getByRole('link', { name: 'Read verified reviews on Top.gg' });
-  await expect(link).toHaveAttribute('href', 'https://top.gg/bot/1523826014935842997');
-  await expect(reviews.locator('img')).toHaveCount(0);
-  await expect(reviews.locator('blockquote')).toHaveCount(0);
+test('the refreshed TTS FAQ has six useful questions and working mobile answers', async ({ page }) => {
+  const localeRequests=[];
+  page.on('request', request=>{if(request.url().includes('/i18n-public/'))localeRequests.push(request.url());});
+  await page.setViewportSize({width:375,height:812});
+  await page.goto('/tts/', {waitUntil:'networkidle'});
+  const questions=page.locator('#faq-list .qa__q');
+  await expect(questions).toHaveCount(6);
+  for (const question of await questions.all()) {
+    await question.click();
+    await expect(question).toHaveAttribute('aria-expanded','true');
+    const id=await question.getAttribute('aria-controls');
+    await expect(page.locator(`#${id}`)).toBeVisible();
+  }
+  await expect(page.locator('#faq-list')).toContainText('/setup');
+  await expect(page.locator('#faq-list')).toContainText('/join');
+  await expect(page.locator('#faq-list')).toContainText('Payments are currently paused.');
+  await questions.first().click();
+  await expect(questions.first()).toHaveAttribute('aria-expanded','false');
+  for (const locale of ['fr','es','de','tr','ar','zh','ru','ko']) {
+    await page.goto(`/${locale}/tts/`);
+    await expect(page.locator('#faq-list .qa__q')).toHaveCount(6);
+    await expect(page.locator('#faq-list')).not.toContainText('Google HD');
+  }
+  expect(localeRequests.length).toBeGreaterThan(0);
+  for (const url of localeRequests) expect(new URL(url).searchParams.get('v')).toMatch(/^[a-f0-9]{12}$/);
 });
 
-test('the editorial Portuguese TTS page exposes the same verifiable review source', async ({ page }) => {
+test('TTS does not show the removed Top.gg review section in any generated locale', async ({ page }) => {
+  for (const locale of ['', 'fr/', 'es/', 'de/', 'tr/', 'ar/', 'zh/', 'ru/', 'ko/']) {
+    await page.goto(`/${locale}tts/`);
+    await expect(page.locator('#reviews, .review-proof, [data-i18n^="reviews."]')).toHaveCount(0);
+  }
+});
+
+test('the editorial Portuguese TTS page also omits the removed review section', async ({ page }) => {
   await page.goto('/pt/tts/', { waitUntil: 'networkidle' });
 
-  const reviews = page.locator('#reviews');
-  await expect(reviews.getByRole('heading', { name: 'Avaliações que podes verificar' })).toBeVisible();
-  const link = reviews.getByRole('link', { name: 'Ler avaliações verificadas no Top.gg' });
-  await expect(link).toHaveAttribute('href', 'https://top.gg/bot/1523826014935842997');
-  await expect(reviews.locator('img, blockquote')).toHaveCount(0);
+  await expect(page.locator('#reviews, #reviews-title')).toHaveCount(0);
+  await expect(page.getByText('Avaliações que podes verificar', { exact: true })).toHaveCount(0);
 });
 
 test('the editorial guides expose complete Portuguese counterparts', async ({ page }) => {

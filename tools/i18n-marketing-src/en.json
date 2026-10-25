@@ -720,36 +720,28 @@
   ],
   "faq": [
     [
-      "Is Vozen really free?",
-      "Yes — the core stays free: 38 Piper voices in 35 languages, auto-read, greetings, most games and every admin control. Kokoro is a Premium voice engine; Plus unlocks it personally and server Premium unlocks it for that server"
+      "Can I use Vozen for free?",
+      "Yes. Use Piper voices, automatic reading and the free games without a subscription."
     ],
     [
-      "What does Premium include?",
-      "Kokoro neural voices, all 8 voice effects, 24/7 in-call, 50 personal pronunciations, /rizz and the premium games (Word Chain, Wordle, Chess). Server Premium also includes live voice transcription. €6.99/month covers 2 servers, or €14.99/month covers 5; annual saves about 20%. Vozen Plus (€3.99/month) gives the personal perks on any server"
+      "How do I start using Vozen?",
+      "Add Vozen to a server you manage. Run /setup to choose a text channel and enable auto-read, then join a voice channel and run /join."
     ],
     [
-      "How do I add Vozen to my server?",
-      "Click \"Add to Discord\", pick your server (you need Manage Server), and run /setup. That's it"
+      "Can each member choose a voice?",
+      "Use /voice set to choose your voice and language. Each member can keep their own settings."
     ],
     [
-      "Which languages does it support?",
-      "35 languages with 38 neural voices — Portuguese, English, Spanish, French, German, Japanese, Arabic, Russian and many more, each with a native voice"
+      "Should I choose Plus or Premium?",
+      "Plus gives your Discord account Kokoro voices and extra effects. Premium adds paid features to selected servers across TTS and Helper. Payments are currently paused."
     ],
     [
-      "Do I need to configure anything?",
-      "No. /setup does it in one step. After that, everything works with sensible defaults — you can fine-tune later with /config"
+      "Why can't I hear anything?",
+      "Join a voice channel and run /join. Check that Vozen can connect and speak, and that /setup points to the text channel you're using."
     ],
     [
-      "Can everyone have a different voice?",
-      "Yes. Each member sets their own voice and language with /voice set. That voice is the default; optional per-message detection can be enabled with /voice detection on"
-    ],
-    [
-      "Piper or Kokoro — which voice engine?",
-      "Piper is the free local engine. Kokoro requires Vozen Plus for you or Vozen Premium on the server. Switch anytime with /voice set; expired access automatically returns to the free engine"
-    ],
-    [
-      "How do I turn features off?",
-      "Everything is toggleable via /config — the greeting, auto-read, who-said announcements, the anti-spam filter, and more. There's also a full kill-switch"
+      "How do I stop the voice?",
+      "Use /shut-up to clear the queue, or /leave to disconnect Vozen. Disable auto-read in /config to stop reading new messages."
     ]
   ]
 }

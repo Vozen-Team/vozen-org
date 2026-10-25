@@ -687,36 +687,28 @@
   ],
   "faq": [
     [
-      "Ist Vozen wirklich kostenlos?",
-      "Ja — der Kern bleibt kostenlos: 38 Piper-Stimmen in 35 Sprachen, Auto-Vorlesen, Begrüßungen, die meisten Spiele und alle Admin-Kontrollen. Kokoro und Google HD sind Premium-Engines; Plus schaltet sie persönlich frei, Premium für den Server"
+      "Kann ich Vozen kostenlos nutzen?",
+      "Ja. Du kannst Piper-Stimmen, automatisches Vorlesen und die kostenlosen Spiele ohne Abo nutzen."
     ],
     [
-      "Was ist in Premium enthalten?",
-      "Kokoro und Google HD, alle 8 Stimmeffekte, 24/7 im Sprachkanal, 50 persönliche Aussprachen, /rizz und die Premium-Spiele. Server-Premium enthält außerdem Live-Sprachtranskription. 6,99 €/Monat decken 2 Server ab, 13,99 €/Monat 5; Vozen Plus (3,99 €/Monat) bietet die persönlichen Vorteile auf jedem Server"
+      "Wie starte ich mit Vozen?",
+      "Füge Vozen zu einem Server hinzu, den du verwaltest. Wähle mit /setup einen Textkanal und aktiviere das automatische Vorlesen. Tritt dann einem Sprachkanal bei und nutze /join."
     ],
     [
-      "Wie füge ich Vozen zu meinem Server hinzu?",
-      "Klick auf \"Zu Discord hinzufügen\", wähle deinen Server (du brauchst „Server verwalten“) und führe /setup aus. Das war's"
+      "Kann jedes Mitglied eine Stimme wählen?",
+      "Wähle mit /voice set deine Stimme und Sprache. Jedes Mitglied kann eigene Einstellungen speichern."
     ],
     [
-      "Welche Sprachen werden unterstützt?",
-      "35 Sprachen mit 38 neuronalen Stimmen — Portugiesisch, Englisch, Spanisch, Französisch, Deutsch, Japanisch, Arabisch, Russisch und viele mehr, jede mit einer nativen Stimme"
+      "Soll ich Plus oder Premium wählen?",
+      "Plus erweitert dein Discord-Konto um Kokoro-Stimmen und zusätzliche Effekte. Premium erweitert ausgewählte Server um kostenpflichtige Funktionen in TTS und Helper. Zahlungen sind derzeit ausgesetzt."
     ],
     [
-      "Muss ich irgendetwas konfigurieren?",
-      "Nein. /setup erledigt es in einem Schritt. Danach läuft alles mit sinnvollen Voreinstellungen — später kannst du mit /config feinjustieren"
+      "Warum höre ich nichts?",
+      "Tritt einem Sprachkanal bei und nutze /join. Prüfe, ob Vozen sich verbinden und sprechen darf und ob /setup auf den verwendeten Textkanal verweist."
     ],
     [
-      "Kann jeder eine andere Stimme haben?",
-      "Ja. Jedes Mitglied legt mit /voice set Stimme und Sprache fest. Diese Stimme ist der Standard; die optionale Erkennung pro Nachricht wird mit /voice detection on aktiviert"
-    ],
-    [
-      "Piper, Kokoro oder Google HD — welche Stimmen-Engine?",
-      "Piper ist die kostenlose lokale Engine. Kokoro und Google HD benötigen Vozen Plus für dich oder Vozen Premium auf dem Server. Wechsel mit /voice set; nach Ablauf geht es automatisch zur kostenlosen Engine zurück"
-    ],
-    [
-      "Wie schalte ich Funktionen aus?",
-      "Alles ist über /config schaltbar — die Begrüßung, das Auto-Vorlesen, die Wer-hat-gesagt-Ansagen, der Anti-Spam-Filter und mehr. Es gibt außerdem einen kompletten Kill-Switch"
+      "Wie stoppe ich die Sprachausgabe?",
+      "Leere die Warteschlange mit /shut-up oder trenne Vozen mit /leave. Deaktiviere das automatische Vorlesen in /config, damit neue Nachrichten nicht vorgelesen werden."
     ]
   ]
 }

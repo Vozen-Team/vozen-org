@@ -140,7 +140,7 @@
     ["ko", "kr", "한국어"],
   ];
   const flagMarkup = (flag, className = "lang__flag") =>
-    `<svg class="${className}" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-${flag}"></use></svg>`;
+    `<img class="${className}" src="/assets/flags-v2/${flag}.svg" width="24" height="18" alt="" loading="lazy" decoding="async">`;
   const LANG_META = Object.fromEntries(LANG_UI.map(([c, flag, name]) => [c, { flag, name }]));
   const LANG_HTML = { pt: "pt-PT", zh: "zh-Hant" };
 

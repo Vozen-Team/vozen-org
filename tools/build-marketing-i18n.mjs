@@ -7,6 +7,7 @@
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import vm from 'node:vm';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -90,6 +91,7 @@ function generatedBundle(source) {
     '    target[0][locale] = row[0];\n' +
     '    target[1][locale] = row[1];\n' +
     '  });\n' +
+    '  faq.length = incomingFaq.length;\n' +
     '  window.VOZEN_FAQ = faq;\n' +
     '  try { window.dispatchEvent(new CustomEvent("vozen:i18nready", { detail: { language: locale } })); } catch (_) {}\n' +
     '}());\n';
@@ -99,12 +101,14 @@ if (extractLegacy) extractLegacySources();
 
 mkdirSync(outputDirectory, { recursive: true });
 const availableSources = new Set(readdirSync(sourceDirectory).filter((name) => name.endsWith('.json')));
+const bundleVersions = {};
 for (const locale of locales) {
   const filename = `${locale}.json`;
   if (!availableSources.has(filename)) throw new Error(`missing structured public source: ${filename}`);
   const source = JSON.parse(readFileSync(join(sourceDirectory, filename), 'utf8'));
   if (source.locale !== locale) throw new Error(`${filename} declares locale ${source.locale}`);
   const generated = generatedBundle(source);
+  bundleVersions[locale] = createHash('sha256').update(generated).digest('hex').slice(0, 12);
   const output = join(outputDirectory, `${locale}.js`);
   if (checkOnly) {
     let current = '';
@@ -117,4 +121,12 @@ for (const locale of locales) {
   }
 }
 
+// Stamp the loader so edits to locale content also invalidate its cached URL.
+const loaderPath = join(outputDirectory, '..', 'i18n-public-loader-v1.js');
+const loader = readFileSync(loaderPath, 'utf8');
+const versionedLoader = loader.replace(/var bundleVersions = \{[^\r\n]*\};/, `var bundleVersions = ${JSON.stringify(bundleVersions)};`);
+if (loader !== versionedLoader) {
+  if (checkOnly) throw new Error('locale cache versions are stale; run npm run build:i18n:marketing');
+  writeFileSync(loaderPath, versionedLoader);
+}
 console.log(`[${checkOnly ? 'check' : 'build'}-marketing-i18n] ${locales.length} isolated locale bundles are current`);

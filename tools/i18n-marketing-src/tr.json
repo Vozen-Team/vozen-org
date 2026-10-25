@@ -687,36 +687,28 @@
   ],
   "faq": [
     [
-      "Vozen gerçekten ücretsiz mi?",
-      "Evet — çekirdek ücretsiz kalır: 35 dilde 38 Piper sesi, otomatik okuma, selamlamalar, oyunların çoğu ve tüm yönetici kontrolleri. Kokoro ve Google HD Premium motorlardır; Plus kişisel, Premium ise sunucu çapında açar"
+      "Vozen'i ücretsiz kullanabilir miyim?",
+      "Evet. Piper seslerini, otomatik okumayı ve ücretsiz oyunları abonelik olmadan kullanabilirsin."
     ],
     [
-      "Premium neleri içerir?",
-      "Kokoro nöral ve Google HD motorları, 8 ses efektinin tamamı, 7/24 kanalda kalma, 50 kişisel telaffuz, /rizz ve Premium oyunlar. Sunucu Premium ayrıca canlı ses transkripsiyonu içerir. Aylık €6.99 2 sunucuyu, €14.99 ise 5 sunucuyu kapsar; Vozen Plus (€3.99/ay) kişisel ayrıcalıkları her sunucuda verir"
+      "Vozen'i kullanmaya nasıl başlarım?",
+      "Vozen'i yönettiğin bir sunucuya ekle. /setup ile bir metin kanalı seç ve otomatik okumayı aç. Ardından bir ses kanalına katıl ve /join kullan."
     ],
     [
-      "Vozen'i sunucuma nasıl eklerim?",
-      "\"Discord'a Ekle\"ye tıkla, sunucunu seç (Sunucuyu Yönet yetkisi gerekir) ve /setup çalıştır. Hepsi bu"
+      "Her üye kendi sesini seçebilir mi?",
+      "/voice set ile sesini ve dilini seç. Her üye kendi ayarlarını kaydedebilir."
     ],
     [
-      "Hangi dilleri destekliyor?",
-      "38 nöral sesle 35 dil — Portekizce, İngilizce, İspanyolca, Fransızca, Almanca, Japonca, Arapça, Rusça ve çok daha fazlası, her biri ana dilde bir sesle"
+      "Plus mı Premium mu seçmeliyim?",
+      "Plus, Discord hesabına Kokoro sesleri ve ek efektler ekler. Premium, seçilen sunucularda TTS ve Helper için ücretli özellikler ekler. Ödemeler şu anda duraklatılmıştır."
     ],
     [
-      "Bir şey yapılandırmam gerekiyor mu?",
-      "Hayır. /setup bunu tek adımda yapar. Ardından her şey mantıklı varsayılanlarla çalışır — daha sonra /config ile ince ayar yapabilirsin"
+      "Neden ses duyamıyorum?",
+      "Bir ses kanalına katıl ve /join kullan. Vozen'in bağlanma ve konuşma izinlerini kontrol et. /setup ayarının kullandığın metin kanalını gösterdiğinden emin ol."
     ],
     [
-      "Herkesin farklı bir sesi olabilir mi?",
-      "Evet. Her üye /voice set ile kendi sesini ve dilini ayarlar. Bu ses varsayılandır; mesaj başına isteğe bağlı algılama /voice detection on ile açılır"
-    ],
-    [
-      "Piper, Kokoro veya Google HD — hangi ses motoru?",
-      "Piper ücretsiz yerel motordur. Kokoro nöral ve Google HD için kişisel Vozen Plus ya da sunucuda Vozen Premium gerekir. /voice set ile değiştir; erişim bitince otomatik olarak ücretsiz motora döner"
-    ],
-    [
-      "Özellikleri nasıl kapatırım?",
-      "Her şey /config ile açılıp kapatılabilir — selamlama, otomatik okuma, kim-söyledi duyuruları, anti-spam filtresi ve daha fazlası. Ayrıca tam bir acil durdurma da var"
+      "Okumayı nasıl durdururum?",
+      "Kuyruğu temizlemek için /shut-up, Vozen'in bağlantısını kesmek için /leave kullan. Yeni mesajların okunmasını durdurmak için /config içinde otomatik okumayı kapat."
     ]
   ]
 }

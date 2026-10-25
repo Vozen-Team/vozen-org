@@ -687,36 +687,28 @@
   ],
   "faq": [
     [
-      "Vozen est-il vraiment gratuit ?",
-      "Oui — le cœur reste gratuit : 38 voix Piper dans 35 langues, lecture automatique, accueils, la plupart des jeux et tous les contrôles admin. Kokoro et Google HD sont des moteurs Premium ; Plus les débloque pour vous et Premium pour le serveur"
+      "Puis-je utiliser Vozen gratuitement ?",
+      "Oui. Tu peux utiliser les voix Piper, la lecture automatique et les jeux gratuits sans abonnement."
     ],
     [
-      "Que comprend Premium ?",
-      "Les moteurs Kokoro neuronal et Google HD, les 8 effets vocaux, le mode 24/7, 50 prononciations personnelles, /rizz et les jeux Premium. Le Premium serveur inclut aussi la transcription vocale en direct. 6,99 €/mois couvrent 2 serveurs, ou 13,99 €/mois en couvrent 5 ; Vozen Plus (3,99 €/mois) donne les avantages personnels sur tous les serveurs"
+      "Comment commencer avec Vozen ?",
+      "Ajoute Vozen à un serveur que tu gères. Lance /setup pour choisir un salon textuel et activer la lecture automatique, puis rejoins un salon vocal et lance /join."
     ],
     [
-      "Comment ajouter Vozen à mon serveur ?",
-      "Cliquez sur « Ajouter à Discord », choisissez votre serveur (il vous faut la permission Gérer le serveur) et lancez /setup. C'est tout"
+      "Chaque membre peut-il choisir sa voix ?",
+      "Utilise /voice set pour choisir ta voix et ta langue. Chaque membre peut garder ses propres réglages."
     ],
     [
-      "Quelles langues sont prises en charge ?",
-      "35 langues avec 38 voix neuronales — portugais, anglais, espagnol, français, allemand, japonais, arabe, russe et bien d'autres, chacune avec une voix native"
+      "Dois-je choisir Plus ou Premium ?",
+      "Plus ajoute les voix Kokoro et des effets supplémentaires à ton compte Discord. Premium ajoute des fonctions payantes aux serveurs sélectionnés, dans TTS et Helper. Les paiements sont suspendus pour le moment."
     ],
     [
-      "Y a-t-il quelque chose à configurer ?",
-      "Non. /setup s'en occupe en une seule étape. Ensuite, tout fonctionne avec des réglages par défaut bien pensés — vous pourrez affiner plus tard avec /config"
+      "Pourquoi n'entends-je rien ?",
+      "Rejoins un salon vocal et lance /join. Vérifie que Vozen peut se connecter et parler, et que /setup désigne le salon textuel que tu utilises."
     ],
     [
-      "Chacun peut-il avoir une voix différente ?",
-      "Oui. Chaque membre définit sa voix et sa langue avec /voice set. Cette voix est utilisée par défaut ; la détection facultative par message s'active avec /voice detection on"
-    ],
-    [
-      "Piper, Kokoro ou Google HD — quel moteur vocal ?",
-      "Piper est le moteur local gratuit. Kokoro neuronal et Google HD exigent Vozen Plus pour vous ou Vozen Premium sur le serveur. Changez avec /voice set ; à l’expiration, Vozen revient automatiquement au moteur gratuit"
-    ],
-    [
-      "Comment désactiver des fonctionnalités ?",
-      "Tout se règle via /config — l'accueil, la lecture auto, les annonces de qui a parlé, le filtre anti-spam, et plus encore. Il y a aussi un coupe-circuit complet"
+      "Comment arrêter la lecture ?",
+      "Utilise /shut-up pour vider la file ou /leave pour déconnecter Vozen. Désactive la lecture automatique dans /config pour arrêter de lire les nouveaux messages."
     ]
   ]
 }

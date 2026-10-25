@@ -43,7 +43,7 @@
     ["ko", "kr", "한국어"],
   ];
   const flagMarkup = (flag, className = "docs-ecosystem-nav__language-flag") =>
-    `<svg class="${className}" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-${flag}"></use></svg>`;
+    `<img class="${className}" src="/assets/flags-v2/${flag}.svg" width="24" height="18" alt="" loading="lazy" decoding="async">`;
   const HTML_LANGUAGES = { pt: "pt-PT", zh: "zh-Hant" };
   const setNavLocale = (value) => {
     const locale = NAV_LANGUAGES.some(([code]) => code === value) ? value : "en";
@@ -322,8 +322,11 @@
         burger.setAttribute('aria-expanded', String(open));
       });
       links?.addEventListener('click', event => { if (event.target.closest('a')) close(); });
-      window.addEventListener('scroll', () => header.classList.toggle('is-stuck', window.scrollY > 8), { passive: true });
     }
+    const updateScroll = () => header.classList.toggle('is-stuck',
+      window.scrollY > 12 || Array.from(document.querySelectorAll('.workspace-main')).some(node => node.scrollTop > 12));
+    updateScroll();
+    document.addEventListener('scroll', updateScroll, { capture: true, passive: true });
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape' && burger?.getAttribute('aria-expanded') === 'true') {
         close();

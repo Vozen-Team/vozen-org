@@ -2034,13 +2034,16 @@ body.page-dashboard .dash-picker h2 {
 /* The logo must not remain in the system fallback after an optional font load. */
 @font-face {
   font-family: "Vozen Header Display";
-  src: url('../assets/fonts/unbounded-brand-latin.woff2') format('woff2');
+  /* Keep this small font external: the Helper CSP does not permit data: fonts. */
+  src: url('../assets/fonts/unbounded-brand-latin.woff2?no-inline') format('woff2');
   font-style: normal;
   font-weight: 400 900;
   font-display: swap;
 }
 
 :root { --docs-ecosystem-nav-height: 92px; }
+/* Hidden horizontal overflow creates a second scroll container and breaks sticky headers. */
+body:has(header.vozen-global-nav) { overflow-x: clip; overflow-y: visible; }
 @media (max-width: 1000px) { :root { --docs-ecosystem-nav-height: 76px; } }
 @media (max-width: 720px) { :root { --docs-ecosystem-nav-height: 70px; } }
 
@@ -2127,7 +2130,8 @@ header.vozen-global-nav .lang__panel {
   background: rgba(28,32,52,.96); backdrop-filter: blur(14px);
   box-shadow: 0 12px 32px rgba(0,0,0,.45); opacity: 0; visibility: hidden; transform: translateY(-6px);
 }
-header.vozen-global-nav .lang.is-open .lang__panel { opacity: 1; visibility: visible; transform: none; }
+header.vozen-global-nav .lang:not(.is-open) .lang__panel { content-visibility: hidden; }
+header.vozen-global-nav .lang.is-open .lang__panel { content-visibility: visible; opacity: 1; visibility: visible; transform: none; }
 header.vozen-global-nav .lang__panel li { margin: 0; padding: 0; list-style: none; }
 header.vozen-global-nav .lang__opt {
   display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 9px 10px;
@@ -2214,7 +2218,14 @@ header.vozen-global-nav .nav__burger { display: none; }
   padding: 0;
 }
 
-.vozen-global-nav.is-stuck {
+body header.nav.vozen-global-nav:not(.is-stuck) {
+  background: transparent;
+  border-bottom-color: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+body header.nav.vozen-global-nav.is-stuck {
   background: rgba(5, 6, 15, .84);
   border-bottom-color: rgba(173, 185, 228, .12);
   -webkit-backdrop-filter: blur(18px);
@@ -2343,7 +2354,7 @@ header.vozen-global-nav .nav__login--account:hover { color: var(--text-0); }
 }
 
 @media (min-width: 1101px) {
-  body:not(.page-account):not(.docs-shell-active):not(.vozen-guide-page) .vozen-global-nav { zoom: .9090909091; }
+  body:not(.page-account):not(.docs-shell-active):not(.vozen-guide-page) .vozen-global-nav:not(.workspace-global-nav) { zoom: .9090909091; }
 }
 
 header.vozen-global-nav .nav__links a.is-current {
@@ -2727,43 +2738,6 @@ body.tts-page .hear__chip.is-active { background: rgba(85, 235, 209, .12); borde
 body.tts-page .section { padding-block: clamp(80px, 10vw, 126px); }
 body.tts-page .section--alt { background: linear-gradient(180deg, transparent, rgba(25, 42, 83, .12), transparent); }
 
-body.tts-page .section--reviews { padding-block: clamp(48px, 7vw, 88px); }
-.review-proof {
-  align-items: center;
-  background: linear-gradient(135deg, rgba(102, 114, 255, .12), rgba(46, 230, 200, .06));
-  border: 1px solid rgba(163, 169, 196, .2);
-  border-radius: 22px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, .2);
-  display: grid;
-  gap: 32px;
-  grid-template-columns: minmax(0, 1fr) auto;
-  padding: clamp(24px, 4vw, 42px);
-}
-.review-proof h2 { font-size: clamp(28px, 4vw, 42px); margin: 8px 0 12px; }
-.review-proof p { color: var(--text-2); line-height: 1.65; margin: 0; max-width: 680px; }
-.review-proof__link {
-  align-items: center;
-  background: rgba(46, 230, 200, .1);
-  border: 1px solid rgba(46, 230, 200, .42);
-  border-radius: 14px;
-  color: var(--aqua, #2ee6c8);
-  display: inline-flex;
-  font-weight: 800;
-  gap: 10px;
-  justify-content: center;
-  min-height: 44px;
-  padding: 12px 18px;
-  text-align: center;
-  text-decoration: none;
-  transition: background .16s ease, border-color .16s ease, transform .16s ease;
-}
-.review-proof__link:hover { background: rgba(46, 230, 200, .16); border-color: rgba(46, 230, 200, .72); transform: translateY(-1px); }
-.review-proof__link:focus-visible { outline: 3px solid rgba(46, 230, 200, .55); outline-offset: 3px; }
-
-@media (max-width: 639px) {
-  .review-proof { grid-template-columns: 1fr; }
-  .review-proof__link { width: 100%; }
-}
 body.tts-page .head { max-width: 720px; margin-inline: auto; text-align: center; }
 body.tts-page .head .eyebrow { justify-content: center; }
 body.tts-page .eyebrow::before { display: none; }
@@ -2877,7 +2851,7 @@ body.tts-page { --product-display: 'Vozen Critical Display'; }
 body.product-preview ::selection { background: #55ebd1; color: #08121c; }
 /* Keep offscreen language flags out of the initial font/rendering work. */
 body.product-preview #languages { content-visibility: auto; contain-intrinsic-size: auto 900px; }
-body.product-preview :is(.hear__flag,.hear__chip) svg { width: 24px; height: 18px; vertical-align: middle; }
+body.product-preview :is(.hear__flag,.hear__chip) :is(svg,img) { width: 24px; height: 18px; vertical-align: middle; flex: none; border-radius: 2px; }
 body.product-preview :focus-visible { outline: 2px solid #55ebd1; outline-offset: 5px; }
 body.product-preview :is(h1,h2,h3) { font-family: var(--product-display, 'Vozen Product Display'), sans-serif; letter-spacing: -.035em; }
 body.product-preview .reveal { opacity: 1; transform: none; filter: none; }

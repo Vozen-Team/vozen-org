@@ -9,13 +9,16 @@
 /* The logo must not remain in the system fallback after an optional font load. */
 @font-face {
   font-family: "Vozen Header Display";
-  src: url('../assets/fonts/unbounded-brand-latin.woff2') format('woff2');
+  /* Keep this small font external: the Helper CSP does not permit data: fonts. */
+  src: url('../assets/fonts/unbounded-brand-latin.woff2?no-inline') format('woff2');
   font-style: normal;
   font-weight: 400 900;
   font-display: swap;
 }
 
 :root { --docs-ecosystem-nav-height: 92px; }
+/* Hidden horizontal overflow creates a second scroll container and breaks sticky headers. */
+body:has(header.vozen-global-nav) { overflow-x: clip; overflow-y: visible; }
 @media (max-width: 1000px) { :root { --docs-ecosystem-nav-height: 76px; } }
 @media (max-width: 720px) { :root { --docs-ecosystem-nav-height: 70px; } }
 
@@ -102,7 +105,8 @@ header.vozen-global-nav .lang__panel {
   background: rgba(28,32,52,.96); backdrop-filter: blur(14px);
   box-shadow: 0 12px 32px rgba(0,0,0,.45); opacity: 0; visibility: hidden; transform: translateY(-6px);
 }
-header.vozen-global-nav .lang.is-open .lang__panel { opacity: 1; visibility: visible; transform: none; }
+header.vozen-global-nav .lang:not(.is-open) .lang__panel { content-visibility: hidden; }
+header.vozen-global-nav .lang.is-open .lang__panel { content-visibility: visible; opacity: 1; visibility: visible; transform: none; }
 header.vozen-global-nav .lang__panel li { margin: 0; padding: 0; list-style: none; }
 header.vozen-global-nav .lang__opt {
   display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 9px 10px;
@@ -189,7 +193,14 @@ header.vozen-global-nav .nav__burger { display: none; }
   padding: 0;
 }
 
-.vozen-global-nav.is-stuck {
+body header.nav.vozen-global-nav:not(.is-stuck) {
+  background: transparent;
+  border-bottom-color: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+body header.nav.vozen-global-nav.is-stuck {
   background: rgba(5, 6, 15, .84);
   border-bottom-color: rgba(173, 185, 228, .12);
   -webkit-backdrop-filter: blur(18px);
@@ -318,7 +329,7 @@ header.vozen-global-nav .nav__login--account:hover { color: var(--text-0); }
 }
 
 @media (min-width: 1101px) {
-  body:not(.page-account):not(.docs-shell-active):not(.vozen-guide-page) .vozen-global-nav { zoom: .9090909091; }
+  body:not(.page-account):not(.docs-shell-active):not(.vozen-guide-page) .vozen-global-nav:not(.workspace-global-nav) { zoom: .9090909091; }
 }
 
 header.vozen-global-nav .nav__links a.is-current {

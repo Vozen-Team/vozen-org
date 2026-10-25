@@ -3,6 +3,12 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 
+test('the homepage lead matches its runtime translation before scripts load', () => {
+  const html = readFileSync('site/index.html', 'utf8');
+  const { messages } = JSON.parse(readFileSync('tools/i18n-marketing-src/en.json', 'utf8'));
+  assert.ok(html.includes(`data-i18n="home.heroLead">${messages['home.heroLead']}</p>`));
+});
+
 test('Docs drawer is inert while closed on mobile and accessible after resizing to desktop', () => {
   const source = readFileSync('site/docs/shared/docs-shell.js', 'utf8');
   const snippet = source.slice(source.indexOf('    let lastFocus = null;'), source.indexOf("    toggle.addEventListener('click'"));

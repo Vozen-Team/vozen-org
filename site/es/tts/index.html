@@ -42,13 +42,13 @@
 
     <link rel="preload" href="/assets/fonts/unbounded-critical-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="/assets/fonts/outfit-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/tts-page-v1.css?v=8256b93a8708">
+    <link rel="stylesheet" href="css/tts-page-v1.css?v=b6347c8e59ac">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/es/tts/","description":"Vozen lee tu chat de Discord en voz alta con voces neuronales naturales — en 35 idiomas, con juegos, risas y un núcleo que es gratis para siempre","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"},"inLanguage":"es"}</script>
 
     <!-- FAQ structured data (Google rich results). Mantém em sincronia com
          window.VOZEN_FAQ (js/i18n.js) — o JSON-LD tem de ser ESTÁTICO porque os
          crawlers não correm o JS que renderiza o FAQ. -->
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"es","mainEntity":[{"@type":"Question","name":"¿Vozen es realmente gratis?","acceptedAnswer":{"@type":"Answer","text":"Sí — el núcleo sigue siendo gratis: 38 voces Piper en 35 idiomas, lectura automática, saludos, la mayoría de los juegos y todos los controles de administración. Kokoro y Google HD son motores Premium; Plus los desbloquea para ti y Premium para el servidor"}},{"@type":"Question","name":"¿Qué incluye Premium?","acceptedAnswer":{"@type":"Answer","text":"Motores Kokoro neuronal y Google HD, los 8 efectos de voz, permanencia 24/7, 50 pronunciaciones personales, /rizz y los juegos Premium. Premium de servidor también incluye transcripción de voz en directo. 6,99 €/mes cubre 2 servidores o 13,99 €/mes cubre 5; Vozen Plus (3,99 €/mes) da las ventajas personales en cualquier servidor"}},{"@type":"Question","name":"¿Cómo añado Vozen a mi servidor?","acceptedAnswer":{"@type":"Answer","text":"Haz clic en \"Añadir a Discord\", elige tu servidor (necesitas Gestionar servidor) y ejecuta /setup. Así de fácil"}},{"@type":"Question","name":"¿Qué idiomas admite?","acceptedAnswer":{"@type":"Answer","text":"35 idiomas con 38 voces neuronales — portugués, inglés, español, francés, alemán, japonés, árabe, ruso y muchos más, cada uno con una voz nativa"}},{"@type":"Question","name":"¿Tengo que configurar algo?","acceptedAnswer":{"@type":"Answer","text":"No. /setup lo hace en un solo paso. Después, todo funciona con valores predeterminados sensatos — puedes ajustarlo más tarde con /config"}},{"@type":"Question","name":"¿Puede cada uno tener una voz distinta?","acceptedAnswer":{"@type":"Answer","text":"Sí. Cada miembro define su voz e idioma con /voice set. Esa voz se usa de forma predeterminada; la detección opcional por mensaje se activa con /voice detection on"}},{"@type":"Question","name":"Piper, Kokoro o Google HD — ¿qué motor de voz?","acceptedAnswer":{"@type":"Answer","text":"Piper es el motor local gratuito. Kokoro neuronal y Google HD requieren Vozen Plus para ti o Vozen Premium en el servidor. Cambia con /voice set; al expirar el acceso, vuelve automáticamente al motor gratuito"}},{"@type":"Question","name":"¿Cómo desactivo funciones?","acceptedAnswer":{"@type":"Answer","text":"Todo se puede activar y desactivar desde /config — el saludo, la lectura automática, los avisos de quién habló, el filtro antispam y más. También hay un botón de apagado total"}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"es","mainEntity":[{"@type":"Question","name":"¿Puedo usar Vozen gratis?","acceptedAnswer":{"@type":"Answer","text":"Sí. Puedes usar las voces Piper, la lectura automática y los juegos gratuitos sin suscripción."}},{"@type":"Question","name":"¿Cómo empiezo a usar Vozen?","acceptedAnswer":{"@type":"Answer","text":"Añade Vozen a un servidor que administras. Usa /setup para elegir un canal de texto y activar la lectura automática. Después, entra en un canal de voz y usa /join."}},{"@type":"Question","name":"¿Cada miembro puede elegir su voz?","acceptedAnswer":{"@type":"Answer","text":"Usa /voice set para elegir tu voz e idioma. Cada miembro puede guardar sus propios ajustes."}},{"@type":"Question","name":"¿Me conviene Plus o Premium?","acceptedAnswer":{"@type":"Answer","text":"Plus añade voces Kokoro y efectos extra a tu cuenta de Discord. Premium añade funciones de pago a los servidores seleccionados, en TTS y Helper. Los pagos están suspendidos por el momento."}},{"@type":"Question","name":"¿Por qué no oigo nada?","acceptedAnswer":{"@type":"Answer","text":"Entra en un canal de voz y usa /join. Comprueba que Vozen tiene permiso para conectarse y hablar, y que /setup apunta al canal de texto que estás usando."}},{"@type":"Question","name":"¿Cómo detengo la lectura?","acceptedAnswer":{"@type":"Answer","text":"Usa /shut-up para vaciar la cola o /leave para desconectar a Vozen. Desactiva la lectura automática en /config para dejar de leer mensajes nuevos."}}]}</script>
   </head>
   <body class="tts-page product-preview product-preview--expressive" data-i18n-document-title="tts.documentTitle" data-vozen-public-analytics="true">
     <!-- grain overlay -->
@@ -81,10 +81,10 @@
           <a class="nav__gh" href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener" aria-label="Vozen en GitHub (código abierto)" data-i18n-aria-label="common.githubLabel" title="Código abierto en GitHub" data-i18n-title="common.githubTitle"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></a>
           <div class="lang" id="langMenu">
             <button class="lang__btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Idioma del sitio" data-i18n-aria-label="ecosystem.siteLanguage">
-              <span class="lang__flag" id="langBtnFlag"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-es"></use></svg></span><span class="lang__name" id="langBtnName">Español</span>
+              <span class="lang__flag" id="langBtnFlag"><img class="lang__flag" src="/assets/flags-v2/es.svg" width="24" height="18" alt="" loading="lazy" decoding="async"></span><span class="lang__name" id="langBtnName">Español</span>
               <svg class="lang__chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
             </button>
-            <ul class="lang__panel" id="langPanel" role="listbox" tabindex="-1" aria-label="Elegir idioma" data-i18n-aria-label="ecosystem.chooseLanguage"><li role="presentation"><a class="lang__opt" href="/tts/" role="option" data-lang="en" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-gb"></use></svg><span class="lang__optname">English</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/pt/tts/" role="option" data-lang="pt" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-pt"></use></svg><span class="lang__optname">Português</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/fr/tts/" role="option" data-lang="fr" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-fr"></use></svg><span class="lang__optname">Français</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt is-active" href="/es/tts/" role="option" data-lang="es" aria-selected="true" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-es"></use></svg><span class="lang__optname">Español</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/de/tts/" role="option" data-lang="de" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-de"></use></svg><span class="lang__optname">Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/tr/tts/" role="option" data-lang="tr" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-tr"></use></svg><span class="lang__optname">Türkçe</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ar/tts/" role="option" data-lang="ar" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-sa"></use></svg><span class="lang__optname">العربية</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/zh/tts/" role="option" data-lang="zh" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-tw"></use></svg><span class="lang__optname">繁體中文</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ru/tts/" role="option" data-lang="ru" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-ru"></use></svg><span class="lang__optname">Русский</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ko/tts/" role="option" data-lang="ko" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-kr"></use></svg><span class="lang__optname">한국어</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li></ul>
+            <ul class="lang__panel" id="langPanel" role="listbox" tabindex="-1" aria-label="Elegir idioma" data-i18n-aria-label="ecosystem.chooseLanguage"><li role="presentation"><a class="lang__opt" href="/tts/" role="option" data-lang="en" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">English</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/pt/tts/" role="option" data-lang="pt" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Português</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/fr/tts/" role="option" data-lang="fr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/fr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Français</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt is-active" href="/es/tts/" role="option" data-lang="es" aria-selected="true" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/es.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Español</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/de/tts/" role="option" data-lang="de" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/de.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/tr/tts/" role="option" data-lang="tr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Türkçe</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ar/tts/" role="option" data-lang="ar" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/sa.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">العربية</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/zh/tts/" role="option" data-lang="zh" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tw.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">繁體中文</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ru/tts/" role="option" data-lang="ru" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/ru.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Русский</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ko/tts/" role="option" data-lang="ko" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/kr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">한국어</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li></ul>
           </div>
           <a class="btn btn--primary btn--discord-cta btn--sm nav__login" id="navLogin" href="account/"><svg viewBox="0 0 24 18" width="20" height="15" aria-hidden="true" fill="currentColor"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4 2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Z"></path></svg><span data-i18n="nav.login">Entrar</span></a>
           <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="vozen-primary-links"><span></span><span></span><span></span></button>
@@ -157,7 +157,7 @@
             </button>
             <div class="hear__meta">
               <div class="hear__nowrow">
-                <span class="hear__flag" id="hearFlag"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-gb"></use></svg></span>
+                <span class="hear__flag" id="hearFlag"><img src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"></span>
                 <span class="hear__lang" id="hearLang">English</span>
                 <span class="hear__engtag" id="hearEngTag">Google</span>
               </div>
@@ -175,11 +175,11 @@
             <button class="hear__eng" data-engine="piper" type="button">Piper</button>
             <button class="hear__eng" data-engine="kokoro" type="button" data-i18n="tts.premiumEngine">Kokoro · Premium</button>
           </div><div class="hear__chips" id="hearChips" role="group" aria-label="Elegir una muestra de idioma" data-i18n-aria-label="tts.chooseSample">
-            <button class="hear__chip is-active" data-sample="en" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-gb"></use></svg> <span class="hear__chip-name">English</span></button>
-            <button class="hear__chip" data-sample="pt" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-pt"></use></svg> <span class="hear__chip-name">Português</span></button>
-            <button class="hear__chip" data-sample="es" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-es"></use></svg> <span class="hear__chip-name">Español</span></button>
-            <button class="hear__chip" data-sample="fr" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-fr"></use></svg> <span class="hear__chip-name">Français</span></button>
-            <button class="hear__chip" data-sample="it" type="button"><svg viewBox="0 0 24 18" aria-hidden="true"><use href="/assets/flags.svg#flag-it"></use></svg> <span class="hear__chip-name">Italiano</span></button>
+            <button class="hear__chip is-active" data-sample="en" type="button"><img src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"> <span class="hear__chip-name">English</span></button>
+            <button class="hear__chip" data-sample="pt" type="button"><img src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"> <span class="hear__chip-name">Português</span></button>
+            <button class="hear__chip" data-sample="es" type="button"><img src="/assets/flags-v2/es.svg" width="24" height="18" alt="" loading="lazy" decoding="async"> <span class="hear__chip-name">Español</span></button>
+            <button class="hear__chip" data-sample="fr" type="button"><img src="/assets/flags-v2/fr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"> <span class="hear__chip-name">Français</span></button>
+            <button class="hear__chip" data-sample="it" type="button"><img src="/assets/flags-v2/it.svg" width="24" height="18" alt="" loading="lazy" decoding="async"> <span class="hear__chip-name">Italiano</span></button>
           </div><p class="hear__sub" data-i18n="hear.sub">Prueba todos los motores. Piper es gratis; Kokoro se desbloquea con Vozen Plus o Premium</p></div><audio id="hearAudio" preload="none"></audio>
         </div>
       </section>
@@ -612,22 +612,6 @@
         </div>
       </section>
 
-      <!-- ─────────────── INDEPENDENT REVIEWS ─────────────── -->
-      <section class="section section--reviews" id="reviews">
-        <div class="wrap wrap--narrow">
-          <article class="review-proof reveal">
-            <div>
-              <h2 data-i18n="reviews.title">Reseñas que puedes verificar</h2>
-              <p data-i18n="reviews.body">Las puntuaciones y la moderación permanecen en Top.gg para que puedas consultar el registro público actual sin que Vozen vuelva a publicar identidades ni citas.</p>
-            </div>
-            <a class="review-proof__link" href="https://top.gg/bot/1523826014935842997" target="_blank" rel="noopener noreferrer">
-              <span data-i18n="reviews.link">Leer reseñas verificadas en Top.gg</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </article>
-        </div>
-      </section>
-
       <!-- ─────────────── FAQ ─────────────── -->
       <section class="section" id="faq">
         <div class="wrap wrap--narrow">
@@ -637,51 +621,39 @@
           <div class="faq" id="faq-list" data-prerender-fragment="faq-list">
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-0">
-          <span>¿Vozen es realmente gratis?</span>
+          <span>¿Puedo usar Vozen gratis?</span>
         </button>
-        <div class="qa__a" id="qa-0" role="region"><p>Sí — el núcleo sigue siendo gratis: 38 voces Piper en 35 idiomas, lectura automática, saludos, la mayoría de los juegos y todos los controles de administración. Kokoro y Google HD son motores Premium; Plus los desbloquea para ti y Premium para el servidor</p></div>
+        <div class="qa__a" id="qa-0" role="region"><p>Sí. Puedes usar las voces Piper, la lectura automática y los juegos gratuitos sin suscripción.</p></div>
       </div>
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-1">
-          <span>¿Qué incluye Premium?</span>
+          <span>¿Cómo empiezo a usar Vozen?</span>
         </button>
-        <div class="qa__a" id="qa-1" role="region"><p>Motores Kokoro neuronal y Google HD, los 8 efectos de voz, permanencia 24/7, 50 pronunciaciones personales, /rizz y los juegos Premium. Premium de servidor también incluye transcripción de voz en directo. 6,99 €/mes cubre 2 servidores o 13,99 €/mes cubre 5; Vozen Plus (3,99 €/mes) da las ventajas personales en cualquier servidor</p></div>
+        <div class="qa__a" id="qa-1" role="region"><p>Añade Vozen a un servidor que administras. Usa /setup para elegir un canal de texto y activar la lectura automática. Después, entra en un canal de voz y usa /join.</p></div>
       </div>
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-2">
-          <span>¿Cómo añado Vozen a mi servidor?</span>
+          <span>¿Cada miembro puede elegir su voz?</span>
         </button>
-        <div class="qa__a" id="qa-2" role="region"><p>Haz clic en "Añadir a Discord", elige tu servidor (necesitas Gestionar servidor) y ejecuta /setup. Así de fácil</p></div>
+        <div class="qa__a" id="qa-2" role="region"><p>Usa /voice set para elegir tu voz e idioma. Cada miembro puede guardar sus propios ajustes.</p></div>
       </div>
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-3">
-          <span>¿Qué idiomas admite?</span>
+          <span>¿Me conviene Plus o Premium?</span>
         </button>
-        <div class="qa__a" id="qa-3" role="region"><p>35 idiomas con 38 voces neuronales — portugués, inglés, español, francés, alemán, japonés, árabe, ruso y muchos más, cada uno con una voz nativa</p></div>
+        <div class="qa__a" id="qa-3" role="region"><p>Plus añade voces Kokoro y efectos extra a tu cuenta de Discord. Premium añade funciones de pago a los servidores seleccionados, en TTS y Helper. Los pagos están suspendidos por el momento.</p></div>
       </div>
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-4">
-          <span>¿Tengo que configurar algo?</span>
+          <span>¿Por qué no oigo nada?</span>
         </button>
-        <div class="qa__a" id="qa-4" role="region"><p>No. /setup lo hace en un solo paso. Después, todo funciona con valores predeterminados sensatos — puedes ajustarlo más tarde con /config</p></div>
+        <div class="qa__a" id="qa-4" role="region"><p>Entra en un canal de voz y usa /join. Comprueba que Vozen tiene permiso para conectarse y hablar, y que /setup apunta al canal de texto que estás usando.</p></div>
       </div>
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-5">
-          <span>¿Puede cada uno tener una voz distinta?</span>
+          <span>¿Cómo detengo la lectura?</span>
         </button>
-        <div class="qa__a" id="qa-5" role="region"><p>Sí. Cada miembro define su voz e idioma con /voice set. Esa voz se usa de forma predeterminada; la detección opcional por mensaje se activa con /voice detection on</p></div>
-      </div>
-      <div class="qa">
-        <button class="qa__q" aria-expanded="false" aria-controls="qa-6">
-          <span>Piper, Kokoro o Google HD — ¿qué motor de voz?</span>
-        </button>
-        <div class="qa__a" id="qa-6" role="region"><p>Piper es el motor local gratuito. Kokoro neuronal y Google HD requieren Vozen Plus para ti o Vozen Premium en el servidor. Cambia con /voice set; al expirar el acceso, vuelve automáticamente al motor gratuito</p></div>
-      </div>
-      <div class="qa">
-        <button class="qa__q" aria-expanded="false" aria-controls="qa-7">
-          <span>¿Cómo desactivo funciones?</span>
-        </button>
-        <div class="qa__a" id="qa-7" role="region"><p>Todo se puede activar y desactivar desde /config — el saludo, la lectura automática, los avisos de quién habló, el filtro antispam y más. También hay un botón de apagado total</p></div>
+        <div class="qa__a" id="qa-5" role="region"><p>Usa /shut-up para vaciar la cola o /leave para desconectar a Vozen. Desactiva la lectura automática en /config para dejar de leer mensajes nuevos.</p></div>
       </div></div>
         </div>
       </section>
@@ -741,13 +713,15 @@
     <script defer="" src="js/install-config-v1.js?v=97c30a4aaef1"></script>
     <script defer="" src="js/tts-install-v1.js?v=06da33493db0"></script>
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer="" src="js/global-nav-v1.js?v=e2404ec866f5"></script>
-    <script defer="" src="js/i18n-public-loader-v1.js?v=d29fcfb97378"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=b8e397533023"></script>
+    <script defer="" src="js/global-nav-v1.js?v=57a07a63a608"></script>
+    <script defer="" src="js/i18n-public-loader-v1.js?v=e998362111e0"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=3e5ee2a2a1c7"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
 <script defer="" src="js/product-preview-v1.js?v=8765318a48b5"></script>
 <script defer="" src="js/tts-player-preview-v1.js?v=98f9725fcf83"></script>
 <script defer="" src="js/tts-features-preview-v1.js?v=50a88a38197c"></script>
+
+
 
 
 

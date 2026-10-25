@@ -39,7 +39,7 @@ body.tts-page { --product-display: 'Vozen Critical Display'; }
 body.product-preview ::selection { background: #55ebd1; color: #08121c; }
 /* Keep offscreen language flags out of the initial font/rendering work. */
 body.product-preview #languages { content-visibility: auto; contain-intrinsic-size: auto 900px; }
-body.product-preview :is(.hear__flag,.hear__chip) svg { width: 24px; height: 18px; vertical-align: middle; }
+body.product-preview :is(.hear__flag,.hear__chip) :is(svg,img) { width: 24px; height: 18px; vertical-align: middle; flex: none; border-radius: 2px; }
 body.product-preview :focus-visible { outline: 2px solid #55ebd1; outline-offset: 5px; }
 body.product-preview :is(h1,h2,h3) { font-family: var(--product-display, 'Vozen Product Display'), sans-serif; letter-spacing: -.035em; }
 body.product-preview .reveal { opacity: 1; transform: none; filter: none; }

@@ -32,10 +32,25 @@ try {
     await page.goto(`${base}#/achievements/${scenario==='invalid'?'invalid':guild}${personal?`/${token}`:''}?lang=${pt?'pt':'en'}`);
     await page.locator('.workspace-global-nav').waitFor();
     assert.equal(await page.locator('.workspace-global-nav').count(),1);
+    const header = page.locator('header.vozen-global-nav');
+    assert.equal(await header.locator('.nav__links a').count(),6);
+    assert.equal(await header.locator('a[href="/status.html"]').count(),1);
+    assert.equal(await header.locator('a[href="/premium#plans"]').count(),1);
+    assert.equal(await header.evaluate(node => getComputedStyle(node).position),'sticky');
+    assert.equal(await header.evaluate(node => getComputedStyle(node).backgroundColor),'rgba(0, 0, 0, 0)');
+    await page.evaluate(() => document.fonts.ready);
+    if (!mobile) {
+      assert.equal(await header.locator('.brand__mark').evaluate(node => node.getBoundingClientRect().width),52);
+      assert.ok(await header.locator('.brand__word').evaluate(node => node.getBoundingClientRect().width > 100), 'the real Vozen wordmark font loads under the production CSP');
+    }
     if(mobile) {
+      assert.equal((await header.boundingBox()).height,70,'same compact mobile height as the public header');
       const menu = page.locator('.workspace-global-nav__menu');
       await menu.click();
       await page.locator('#ecosystem-products a[href="/commands/"]').waitFor({state:'visible'});
+      const drawer = await page.locator('#ecosystem-products').boundingBox();
+      assert.ok(drawer && Math.abs(drawer.x + drawer.width - 390) < 2, 'same right-edge drawer as the public site');
+      assert.ok(drawer.height >= 844, 'drawer fills the viewport');
       await page.keyboard.press('Escape');
       assert.equal(await menu.getAttribute('aria-expanded'),'false');
       assert.equal(await page.locator('#ecosystem-products').isVisible(),false);
@@ -46,6 +61,15 @@ try {
       if(scenario==='expired') assert.match(await page.getByRole('alert').innerText(),/expired/);
     } else {
       await page.locator('.achievement-toolbar').waitFor();
+      if (scenario === 'catalog-en' || mobile) {
+        await page.evaluate(() => window.scrollTo(0, 500));
+        await page.waitForFunction(() => document.querySelector('header.vozen-global-nav')?.classList.contains('is-stuck'));
+        await page.waitForFunction(() => getComputedStyle(document.querySelector('header.vozen-global-nav')).backgroundColor !== 'rgba(0, 0, 0, 0)');
+        assert.notEqual(await header.evaluate(node => getComputedStyle(node).backgroundColor),'rgba(0, 0, 0, 0)');
+        assert.ok(Math.abs((await header.boundingBox()).y) < 2, 'header stays at the viewport top');
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.waitForFunction(() => !document.querySelector('header.vozen-global-nav')?.classList.contains('is-stuck'));
+      }
       assert.equal(await page.locator('.achievement-tile').count(),scenario==='empty'?0:7);
       const helpText=page.getByText(pt?'A nova atividade conta desde a ativação. O XP anterior mantém-se.':'New activity counts from activation. Existing XP is kept.',{exact:true});
       assert.equal(await helpText.isVisible(),false,'extra explanations start collapsed');
