@@ -32,7 +32,14 @@ const publicStatusEndpoints = {
 };
 
 async function handleRequest(request, response, fetchPublic, publicStatusPreview) {
-  const pathname = decodeURIComponent(new URL(request.url || '/', 'http://local.test').pathname);
+  let pathname;
+  try {
+    pathname = decodeURIComponent(new URL(request.url || '/', 'http://local.test').pathname);
+  } catch {
+    response.writeHead(400);
+    response.end('Invalid request URL');
+    return;
+  }
   if (pathname.startsWith('/__preview/public-status/')) {
     if (!publicStatusPreview) { response.writeHead(404); response.end(); return; }
     const key = pathname.slice('/__preview/public-status/'.length);
@@ -57,7 +64,7 @@ async function handleRequest(request, response, fetchPublic, publicStatusPreview
     }
     return;
   }
-  const relative = pathname.endsWith('/') ? `${pathname}index.html` : pathname;
+  const relative = pathname === '/premium' ? '/premium.html' : pathname.endsWith('/') ? `${pathname}index.html` : pathname;
   const filename = path.resolve(root, `.${relative}`);
   if (!filename.startsWith(`${root}${path.sep}`) || !fs.existsSync(filename) || !fs.statSync(filename).isFile()) {
     response.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' });

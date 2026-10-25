@@ -33,6 +33,7 @@ const englishCatalogue = JSON.parse(
 const normalized = (value) => value.replace(/\r\n?/g, '\n');
 
 function visit(node, callback) {
+  if (!node) return;
   callback(node);
   for (const child of node.childNodes || []) visit(child, callback);
   if (node.content) visit(node.content, callback);
@@ -40,6 +41,7 @@ function visit(node, callback) {
 
 const attr = (node, name) => node.attrs?.find((item) => item.name === name)?.value;
 function setAttr(node, name, value) {
+  if (!node) return;
   node.attrs ||= [];
   const current = node.attrs.find((item) => item.name === name);
   if (current) current.value = value;
@@ -209,135 +211,6 @@ function applyHelperTranslations(document, messages) {
     set(first(document, (node) => attr(node, 'data-console-module') === module), key);
   }
 
-  const outcomes = byClass(document, 'helper-outcomes');
-  set(byId(outcomes, 'outcomes-title'), 'helper.landing.outcomesTitle');
-  set(byClass(outcomes, 'helper-kicker'), 'helper.landing.whatFor');
-  const outcomeCopy = [
-    ['helper.landing.protect', 'helper.landing.protectText', 'helper.landing.exploreProtection'],
-    ['helper.moduleSupport', 'helper.landing.supportText', 'helper.landing.exploreSupport'],
-    ['helper.landing.run', 'helper.landing.runText', 'helper.landing.exploreInsights'],
-  ];
-  allByClass(outcomes, 'helper-outcome').forEach((outcome, index) => {
-    const copy = outcomeCopy[index];
-    if (!copy) return;
-    set(first(outcome, (node) => isElement(node, 'h3')), copy[0]);
-    set(first(outcome, (node) => isElement(node, 'p')), copy[1]);
-    setOwn(first(outcome, (node) => isElement(node, 'a')), copy[2]);
-  });
-
-  const explorer = byClass(document, 'helper-explorer');
-  set(byId(explorer, 'modules-title'), 'helper.landing.explorerTitle');
-  set(byClass(explorer, 'helper-kicker'), 'helper.landing.moduleMap');
-  const splitHeading = byClass(explorer, 'helper-section-heading--split');
-  set(first(splitHeading, (node) => isElement(node, 'p')), 'helper.landing.explorerText');
-  const moduleNav = byClass(explorer, 'helper-module-nav');
-  setAttr(moduleNav, 'aria-label', message('helper.landing.moduleMap'));
-  const moduleLabels = {
-    core: 'helper.moduleCore', security: 'helper.moduleProtection', support: 'helper.moduleSupport',
-    events: 'helper.moduleEvents', community: 'helper.moduleCommunity', automate: 'helper.moduleAutomation',
-    insights: 'helper.moduleInsights', studio: 'helper.moduleStudio',
-  };
-  const moduleCopy = {
-    core: ['helper.landing.moduleCoreTitle', 'helper.landing.moduleCoreBody'],
-    security: ['helper.landing.moduleSecurityTitle', 'helper.landing.moduleSecurityBody'],
-    support: ['helper.landing.moduleSupportTitle', 'helper.landing.moduleSupportBody'],
-    events: ['helper.landing.moduleEventsTitle', 'helper.landing.moduleEventsBody'],
-    community: ['helper.landing.moduleCommunityTitle', 'helper.landing.moduleCommunityBody'],
-    automate: ['helper.landing.moduleAutomateTitle', 'helper.landing.moduleAutomateBody'],
-    insights: ['helper.landing.moduleInsightsTitle', 'helper.landing.moduleInsightsBody'],
-    studio: ['helper.landing.moduleStudioTitle', 'helper.landing.moduleStudioBody'],
-  };
-  elements(moduleNav, (node) => hasClass(node, 'helper-module-tab')).forEach((tab) => {
-    set(first(tab, (node) => isElement(node, 'b')), moduleLabels[attr(tab, 'data-module')]);
-    set(first(tab, (node) => isElement(node, 'small')), 'helper.landing.commandSurface');
-  });
-  elements(explorer, (node) => attr(node, 'data-panel') != null).forEach((panel) => {
-    const id = attr(panel, 'data-panel');
-    const [titleKey, bodyKey] = moduleCopy[id] || [];
-    const top = byClass(panel, 'helper-module-panel__top');
-    set(byClass(top, 'helper-kicker'), moduleLabels[id]);
-    set(byClass(top, 'helper-module-state'), 'helper.landing.moduleState');
-    set(first(panel, (node) => isElement(node, 'h3')), titleKey);
-    set(elements(panel, (node) => isElement(node, 'p') && !hasClass(node, 'helper-command'))[0], bodyKey);
-    elements(byClass(panel, 'helper-feature-list'), (node) => isElement(node, 'li')).forEach((item, index) => {
-      set(item, `helper.landing.bullet${Math.min(index + 1, 4)}`);
-    });
-    set(first(byClass(panel, 'helper-command'), (node) => isElement(node, 'span')), 'helper.landing.commandSurface');
-  });
-
-  const setup = byClass(document, 'helper-setup');
-  set(byId(setup, 'setup-title'), 'helper.landing.setupTitle');
-  set(byClass(setup, 'helper-kicker'), 'helper.landing.ready');
-  const setupCopy = [
-    ['helper.landing.chooseModules', 'helper.landing.chooseModulesText'],
-    ['helper.landing.confirmPermissions', 'helper.landing.confirmPermissionsText'],
-    ['helper.landing.configureMonitor', 'helper.landing.configureMonitorText'],
-  ];
-  elements(byClass(setup, 'helper-setup__steps'), (node) => isElement(node, 'li')).forEach((step, index) => {
-    const [titleKey, bodyKey] = setupCopy[index] || [];
-    set(first(step, (node) => isElement(node, 'h3')), titleKey);
-    set(first(step, (node) => isElement(node, 'p')), bodyKey);
-  });
-  const access = byClass(document, 'helper-access');
-  set(byId(access, 'access-title'), 'helper.landing.accessTitle');
-  set(byClass(access, 'helper-kicker'), 'helper.landing.access');
-  set(first(access, (node) => isElement(node, 'p')), 'helper.landing.accessText');
-  setOwn(byClass(access, 'helper-access__badge'), 'helper.landing.available');
-
-  const pricing = byClass(document, 'helper-pricing');
-  set(byId(pricing, 'helper-plans-title'), 'premium.title');
-  set(byClass(pricing, 'eyebrow'), 'premium.pricing');
-  set(first(byClass(pricing, 'helper-pricing__heading'), (node) => isElement(node, 'p')), 'premium.subtitle');
-  setOwn(byClass(pricing, 'payments-paused'), 'price.paused');
-  const freeCard = byClass(pricing, 'price-card--free');
-  set(first(freeCard, (node) => isElement(node, 'h3')), 'price.free.name');
-  set(byClass(freeCard, 'price-card__pitch'), 'helper.landing.freePitch');
-  set(byClass(freeCard, 'price-card__note'), 'helper.landing.freeNote');
-  set(byClass(freeCard, 'price-card__idnote'), 'helper.landing.startNote');
-  elements(byClass(freeCard, 'price-card__highlights'), (node) => isElement(node, 'li')).forEach((item, index) => {
-    set(item, `helper.landing.freeFeature${index + 1}`);
-  });
-  const plusCard = byClass(pricing, 'price-card--plus');
-  const plusKeys = [
-    'price.includesFree', 'price.m.21', 'price.m.22', 'price.m.9',
-    'price.m.15', 'price.m.11', 'price.m.12', 'price.m.14',
-  ];
-  elements(byClass(plusCard, 'price-card__highlights'), (node) => isElement(node, 'li')).forEach((item, index) => {
-    set(item, plusKeys[index]);
-  });
-  const proCard = byClass(pricing, 'price-card--pro');
-  set(first(proCard, (node) => isElement(node, 'h3')), 'price.pro.name');
-  set(byClass(proCard, 'price-card__pitch'), 'premium.premiumPitch');
-  set(byClass(proCard, 'price-card__scope-note'), 'helper.landing.scopeNote');
-  const proLists = allByClass(proCard, 'price-card__highlights');
-  const helperBundleKeys = [
-    'price.includesFree', 'premium.proFeature1', 'premium.proFeature2',
-    'helper.landing.ttsPremiumFeature', 'premium.proFeature3', 'premium.proFeature4', 'premium.proFeature5',
-  ];
-  elements(proLists[0], (node) => isElement(node, 'li')).forEach((item, index) => set(item, helperBundleKeys[index]));
-  const ttsBundleKeys = [
-    'price.includesFree', 'price.m.18', 'price.m.21', 'price.m.22', 'price.m.9',
-    'price.m.19', 'price.m.16', 'price.m.23', 'price.m.11',
-  ];
-  elements(proLists[1], (node) => isElement(node, 'li')).forEach((item, index) => set(item, ttsBundleKeys[index]));
-
-  const comparison = byClass(document, 'helper-plan-comparison');
-  set(byClass(comparison, 'helper-kicker'), 'helper.landing.planComparison');
-  set(byId(comparison, 'helper-plan-comparison-title'), 'helper.landing.comparisonTitle');
-  set(first(byClass(comparison, 'helper-plan-comparison__header'), (node) => isElement(node, 'p')), 'helper.landing.comparisonText');
-  setOwn(byClass(comparison, 'helper-plan-comparison__status'), 'helper.landing.paymentsPaused');
-  set(byClass(comparison, 'helper-plan-comparison__caption'), 'helper.landing.comparisonCaption');
-  const headers = elements(comparison, (node) => isElement(node, 'th'));
-  set(headers[0], 'helper.landing.features');
-  const rowKeys = [
-    'helper.landing.freeFeature1', 'helper.landing.freeFeature2', 'helper.landing.freeFeature3',
-    'helper.landing.freeFeature4', 'helper.landing.freeFeature5', 'premium.proFeature3',
-    'premium.proFeature4', 'premium.proFeature5', 'premium.proFeature1',
-  ];
-  headers.filter((header) => attr(header, 'scope') === 'row').forEach((header, index) => set(header, rowKeys[index]));
-  set(byClass(comparison, 'helper-plan-comparison__footnote'), 'helper.landing.limitsNote');
-  allByClass(comparison, 'helper-plan-comparison__mark--yes').forEach((mark) => setAttr(mark, 'aria-label', message('helper.landing.included')));
-  allByClass(comparison, 'helper-plan-comparison__mark--no').forEach((mark) => setAttr(mark, 'aria-label', message('helper.landing.notIncluded')));
 }
 
 export function localize(sourceHtml, locale, page, catalogue) {

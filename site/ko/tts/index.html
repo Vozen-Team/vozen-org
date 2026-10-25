@@ -40,15 +40,17 @@
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-    <link rel="stylesheet" href="css/tts-page-v1.css?v=590beac3c440">
+    <link rel="preload" href="/assets/fonts/unbounded-critical-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/tts-page-v1.css?v=61243987a694">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/ko/tts/","description":"Vozen이 자연스러운 뉴럴 음성으로 Discord 채팅을 소리 내어 읽어드립니다 — 35개 언어, 다양한 게임, 웃음, 그리고 영원히 무료인 핵심 기능까지","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"},"inLanguage":"ko"}</script>
 
     <!-- FAQ structured data (Google rich results). Mantém em sincronia com
          window.VOZEN_FAQ (js/i18n.js) — o JSON-LD tem de ser ESTÁTICO porque os
          crawlers não correm o JS que renderiza o FAQ. -->
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"ko","mainEntity":[{"@type":"Question","name":"Vozen은 정말 무료인가요?","acceptedAnswer":{"@type":"Answer","text":"네 — 핵심 기능은 계속 무료입니다: 35개 언어의 38개 Piper 음성, 자동 읽기, 인사, 대부분의 게임과 모든 관리자 제어. Kokoro와 Google HD는 Premium 엔진이며 Plus는 개인용, 서버 Premium은 서버 전체에 잠금 해제합니다"}},{"@type":"Question","name":"Premium에는 무엇이 포함되나요?","acceptedAnswer":{"@type":"Answer","text":"Kokoro 신경망 및 Google HD 엔진, 8가지 음성 효과 전체, 24시간 채널 유지, 개인 발음 50개, /rizz와 Premium 게임이 포함됩니다. 서버 Premium에는 실시간 음성 텍스트 변환도 포함됩니다. 월 €6.99는 서버 2개, €14.99는 5개를 지원하며 Vozen Plus(월 €3.99)는 모든 서버에서 개인 혜택을 제공합니다"}},{"@type":"Question","name":"서버에 Vozen을 어떻게 추가하나요?","acceptedAnswer":{"@type":"Answer","text":"\"Discord에 추가\"를 클릭하고, 서버를 선택한 뒤(서버 관리 권한 필요) /setup을 실행하세요. 그게 전부입니다"}},{"@type":"Question","name":"어떤 언어를 지원하나요?","acceptedAnswer":{"@type":"Answer","text":"38가지 뉴럴 음성으로 35개 언어를 지원합니다 — 포르투갈어, 영어, 스페인어, 프랑스어, 독일어, 일본어, 아랍어, 러시아어 등 다양한 언어를 각각 원어민 음성으로"}},{"@type":"Question","name":"따로 설정할 게 있나요?","acceptedAnswer":{"@type":"Answer","text":"아니요. /setup이 한 단계로 처리합니다. 그 이후에는 합리적인 기본값으로 모든 것이 작동하며 — 나중에 /config로 세부 조정할 수 있습니다"}},{"@type":"Question","name":"모두가 다른 음성을 가질 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네. 각 멤버가 /voice set으로 음성과 언어를 설정합니다. 해당 음성이 기본값이며 메시지별 선택적 언어 감지는 /voice detection on으로 켤 수 있습니다"}},{"@type":"Question","name":"Piper, Kokoro, Google HD 중 어떤 음성 엔진을 써야 하나요?","acceptedAnswer":{"@type":"Answer","text":"Piper는 무료 로컬 엔진입니다. Kokoro와 Google HD는 개인 Vozen Plus 또는 서버 Vozen Premium이 필요합니다. /voice set으로 바꿀 수 있으며 이용 기간이 끝나면 무료 엔진으로 자동 복귀합니다"}},{"@type":"Question","name":"기능은 어떻게 끄나요?","acceptedAnswer":{"@type":"Answer","text":"모든 것은 /config로 켜고 끌 수 있습니다 — 인사, 자동 읽기, 발화자 안내, 스팸 방지 필터 등등. 전체 킬 스위치도 있습니다"}}]}</script>
+      <link rel="stylesheet" href="css/product-preview-v1.css?v=ade7a3cfe71e">
   </head>
-  <body class="tts-page" data-i18n-document-title="tts.documentTitle" data-vozen-public-analytics="true">
+  <body class="tts-page product-preview product-preview--expressive" data-i18n-document-title="tts.documentTitle" data-vozen-public-analytics="true">
     <!-- grain overlay -->
     <div class="grain" aria-hidden="true"></div>
     <!-- atmospheric glow orbs -->
@@ -67,7 +69,7 @@
           <span class="brand__word">Vozen</span>
           <span class="nav__product" data-i18n="ecosystem.label">생태계</span>
         </a>
-        <nav class="nav__links" aria-label="Vozen 제품" data-i18n-aria-label="ecosystem.productsAria">
+        <nav class="nav__links" aria-label="Vozen 제품" data-i18n-aria-label="ecosystem.productsAria" id="vozen-primary-links">
           <a class="is-current" href="ko/tts/" aria-current="page" data-i18n="ecosystem.tts">Vozen TTS</a>
           <a class="" href="ko/helper/" data-i18n="ecosystem.helper">Vozen Helper</a>
           <a class="" href="docs/" data-i18n="ecosystem.docs">문서</a>
@@ -85,7 +87,7 @@
             <ul class="lang__panel" id="langPanel" role="listbox" tabindex="-1" aria-label="언어 선택" data-i18n-aria-label="ecosystem.chooseLanguage"><li role="presentation"><a class="lang__opt" href="/tts/" role="option" data-lang="en" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-gb"></use></svg><span class="lang__optname">English</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/pt/tts/" role="option" data-lang="pt" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-pt"></use></svg><span class="lang__optname">Português</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/fr/tts/" role="option" data-lang="fr" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-fr"></use></svg><span class="lang__optname">Français</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/es/tts/" role="option" data-lang="es" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-es"></use></svg><span class="lang__optname">Español</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/de/tts/" role="option" data-lang="de" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-de"></use></svg><span class="lang__optname">Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/tr/tts/" role="option" data-lang="tr" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-tr"></use></svg><span class="lang__optname">Türkçe</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ar/tts/" role="option" data-lang="ar" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-sa"></use></svg><span class="lang__optname">العربية</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/zh/tts/" role="option" data-lang="zh" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-tw"></use></svg><span class="lang__optname">繁體中文</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ru/tts/" role="option" data-lang="ru" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-ru"></use></svg><span class="lang__optname">Русский</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt is-active" href="/ko/tts/" role="option" data-lang="ko" aria-selected="true" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-kr"></use></svg><span class="lang__optname">한국어</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li></ul>
           </div>
           <a class="btn btn--primary btn--discord-cta btn--sm nav__login" id="navLogin" href="account/"><svg viewBox="0 0 24 18" width="20" height="15" aria-hidden="true" fill="currentColor"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4 2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Z"></path></svg><span data-i18n="nav.login">로그인</span></a>
-          <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="vozen-primary-links"><span></span><span></span><span></span></button>
         </div>
       </div>
     </header>
@@ -96,17 +98,14 @@
         <canvas id="wave" class="hero__wave" aria-hidden="true"></canvas>
         <div class="wrap hero__grid">
           <div class="hero__copy">
-            <span class="pill reveal" data-r="1">
-              <span class="pill__dot"></span>
-              <span data-i18n="hero.badge">핵심 기능은 영원히 무료 · 오픈 소스</span>
-            </span>
+
 
             <h1 class="hero__title reveal" data-r="2">
-              <span data-i18n="hero.title1">마이크가 없나요?</span>
-              <span class="grad" data-i18n="hero.title2">대화에 계속 참여하세요.</span>
+              <span data-i18n="hero.title1" data-preview-copy="Your chat.">마이크가 없나요?</span>
+              <span class="grad" data-i18n="hero.title2" data-preview-copy="Out loud.">대화에 계속 참여하세요.</span>
             </h1>
 
-            <p class="hero__sub reveal" data-r="3" data-i18n="hero.sub">Vozen이 자연스러운 뉴럴 음성으로 Discord 채팅을 소리 내어 읽어드립니다 — 35개 언어, 다양한 게임, 웃음, 그리고 영원히 무료인 핵심 기능까지</p>
+            <p class="hero__sub reveal" data-r="3">Text-to-speech for your Discord calls.</p>
 
             <div class="hero__cta reveal" data-r="4">
               <a class="btn btn--primary btn--discord-cta js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero">
@@ -118,13 +117,10 @@
               <a class="btn btn--ghost js-support" href="https://discord.gg/4kYw2WUbNN" data-i18n="cta.support">지원 서버 참여</a>
             </div>
 
-            <p class="hero__mini reveal" data-r="5">
-              <span data-i18n="hero.mini">35개 언어 · 38가지 음성 · 16가지 미니게임 · 무료 핵심 기능</span>
-            </p>
           </div>
 
           <!-- animated Discord chat mock -->
-          <div class="hero__demo reveal" data-r="4" aria-hidden="true">
+          <div class="hero__demo reveal" data-r="4"><div class="voice-field" aria-hidden="true"><span></span><span></span><span></span></div><div class="voice-spectrum" aria-hidden="true"><i style="--bar:12px;--delay:0.00s"></i><i style="--bar:31px;--delay:0.08s"></i><i style="--bar:45px;--delay:0.16s"></i><i style="--bar:48px;--delay:0.24s"></i><i style="--bar:39px;--delay:0.32s"></i><i style="--bar:22px;--delay:0.40s"></i><i style="--bar:22px;--delay:0.48s"></i><i style="--bar:39px;--delay:0.56s"></i><i style="--bar:48px;--delay:0.64s"></i><i style="--bar:45px;--delay:0.72s"></i><i style="--bar:32px;--delay:0.80s"></i><i style="--bar:12px;--delay:0.88s"></i><i style="--bar:31px;--delay:0.96s"></i><i style="--bar:45px;--delay:1.04s"></i><i style="--bar:48px;--delay:1.12s"></i><i style="--bar:40px;--delay:1.20s"></i><i style="--bar:23px;--delay:1.28s"></i><i style="--bar:21px;--delay:1.36s"></i><i style="--bar:39px;--delay:1.44s"></i><i style="--bar:48px;--delay:1.52s"></i><i style="--bar:45px;--delay:1.60s"></i><i style="--bar:32px;--delay:1.68s"></i><i style="--bar:13px;--delay:1.76s"></i><i style="--bar:31px;--delay:1.84s"></i><i style="--bar:44px;--delay:1.92s"></i><i style="--bar:48px;--delay:2.00s"></i><i style="--bar:40px;--delay:2.08s"></i><i style="--bar:23px;--delay:2.16s"></i><i style="--bar:21px;--delay:2.24s"></i><i style="--bar:38px;--delay:2.32s"></i><i style="--bar:47px;--delay:2.40s"></i><i style="--bar:45px;--delay:2.48s"></i></div>
             <div class="discord">
               <div class="discord__bar">
                 <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
@@ -140,26 +136,19 @@
       <div class="msg__av msg__av--v"><span class="eq" style="height:16px"><i></i><i></i><i></i><i></i><i></i></span></div>
       <div class="msg__b">
         <div class="msg__name"><b>Vozen</b><span class="tag">APP</span></div>
-        <div class="speaking"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span> tts.reading</div>
+        <div class="speaking"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span> 소리 내어 읽는 중…</div>
       </div></div></div>
             </div>
-            <div class="demo__glow"></div>
           </div>
         </div>
       </section>
 
-      <!-- ─────────────── HEAR (audio demo) ─────────────── -->
       <section class="hear" id="hear">
         <div class="wrap hear__inner reveal">
-          <span class="eyebrow" data-i18n="hear.eyebrow">들어보기</span>
           <h2 class="hear__title" data-i18n="hear.title">재생을 눌러보세요. 진짜 Vozen 음성입니다</h2>
-          <p class="hear__sub" data-i18n="hear.sub">모든 엔진을 미리 들어보세요. Piper는 무료이며 Kokoro는 Vozen Plus 또는 Premium으로 잠금 해제됩니다</p>
 
-          <div class="hear__engines" id="hearEngines" role="group" aria-label="음성 엔진" data-i18n-aria-label="tts.engineAria">
-            <button class="hear__eng is-active" data-engine="google" type="button">Google</button>
-            <button class="hear__eng" data-engine="piper" type="button">Piper</button>
-            <button class="hear__eng" data-engine="kokoro" type="button" data-i18n="tts.premiumEngine">Kokoro · Premium</button>
-          </div>
+
+
 
           <div class="hear__stage" id="hearStage">
             <button class="hear__btn" id="hearBtn" type="button" aria-label="샘플 재생" data-i18n-aria-label="tts.playSample" aria-pressed="false">
@@ -171,20 +160,27 @@
                 <span class="hear__flag" id="hearFlag">🇬🇧</span>
                 <span class="hear__lang" id="hearLang">English</span>
                 <span class="hear__engtag" id="hearEngTag">Google</span>
-                <span class="eq hear__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
               </div>
               <p class="hear__phrase" id="hearPhrase">Hey! Welcome to the server. Type anything and I'll read it out loud</p>
             </div>
+            <div class="hear__sound" aria-hidden="true">
+              <canvas id="hearWave" width="640" height="96"></canvas>
+              <div class="hear__clock"><span id="hearElapsed">0:00</span><span id="hearDuration">—</span></div>
+            </div>
           </div>
 
-          <div class="hear__chips" id="hearChips" role="group" aria-label="언어 샘플 선택" data-i18n-aria-label="tts.chooseSample">
+
+          <div class="voice-options"><div class="hear__engines" id="hearEngines" role="group" aria-label="음성 엔진" data-i18n-aria-label="tts.engineAria">
+            <button class="hear__eng is-active" data-engine="google" type="button">Google</button>
+            <button class="hear__eng" data-engine="piper" type="button">Piper</button>
+            <button class="hear__eng" data-engine="kokoro" type="button" data-i18n="tts.premiumEngine">Kokoro · Premium</button>
+          </div><div class="hear__chips" id="hearChips" role="group" aria-label="언어 샘플 선택" data-i18n-aria-label="tts.chooseSample">
             <button class="hear__chip is-active" data-sample="en" type="button"><span>🇬🇧</span> <span class="hear__chip-name">English</span></button>
             <button class="hear__chip" data-sample="pt" type="button"><span>🇵🇹</span> <span class="hear__chip-name">Português</span></button>
             <button class="hear__chip" data-sample="es" type="button"><span>🇪🇸</span> <span class="hear__chip-name">Español</span></button>
             <button class="hear__chip" data-sample="fr" type="button"><span>🇫🇷</span> <span class="hear__chip-name">Français</span></button>
             <button class="hear__chip" data-sample="it" type="button"><span>🇮🇹</span> <span class="hear__chip-name">Italiano</span></button>
-          </div>
-          <audio id="hearAudio" preload="none"></audio>
+          </div><p class="hear__sub" data-i18n="hear.sub">모든 엔진을 미리 들어보세요. Piper는 무료이며 Kokoro는 Vozen Plus 또는 Premium으로 잠금 해제됩니다</p></div><audio id="hearAudio" preload="none"></audio>
         </div>
       </section>
 
@@ -202,106 +198,113 @@
       <section class="section" id="features">
         <div class="wrap">
           <header class="head reveal">
-            <span class="eyebrow" data-i18n="feat.eyebrow">기능</span>
             <h2 data-i18n="feat.title">서버에 필요한 모든 것</h2>
             <p data-i18n="feat.sub">하나의 봇으로. Discord에 있었으면 했던 모든 음성 기능 — 핵심 기능은 영원히 무료입니다</p>
           </header>
 
-          <div class="cards">
-            <article class="card reveal">
-              <span class="card__ic">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h4l5-4v16l-5-4H4z"></path><path d="M17 9a4 4 0 0 1 0 6"></path></svg>
-              </span>
+          <div class="feature-highlights">
+            <article class="card feature-card feature-card--read">
+              <div class="feature-scene feature-read" data-feature-scene="" aria-hidden="true">
+                <span class="feature-message">Hey!</span>
+                <span class="feature-sound"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+              </div>
               <h3 data-i18n="feat.1.t">자동 읽기 채널</h3>
               <p data-i18n="feat.1.d">채널을 선택하면 Vozen이 모든 메시지를 소리 내어 읽어드립니다. /setup으로 한 번만 설정하세요</p>
             </article>
 
-            <article class="card reveal">
-              <span class="card__ic">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18"></path><path d="M8 6v12M16 6v12M4 10v4M20 10v4"></path></svg>
-              </span>
+            <article class="card feature-card feature-card--languages">
+              <div class="feature-scene feature-languages" data-feature-scene="" aria-hidden="true">
+                <span class="feature-greeting">Hello!</span><span class="feature-greeting">Olá!</span><span class="feature-greeting">¡Hola!</span>
+              </div>
               <h3 data-i18n="feat.2.t">나만의 음성, 나만의 언어</h3>
               <p data-i18n="feat.2.d">모든 멤버가 35개 언어 중에서 자신만의 음성을 선택합니다 — Google 또는 로컬 뉴럴 엔진으로</p>
             </article>
 
-            <article class="card reveal">
-              <span class="card__ic">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"></path></svg>
-              </span>
-              <h3 data-i18n="feat.3.t">사람처럼 말합니다</h3>
-              <p data-i18n="feat.3.d">기본적으로 선택한 음성을 사용합니다. 메시지별 선택적 언어 감지는 /voice detection on으로 켤 수 있으며 !와 대문자는 강조를 더합니다</p>
-            </article>
-
-            <article class="card reveal">
-              <span class="card__ic card__ic--amber">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 12h4M8 10v4"></path><circle cx="16" cy="11" r="1"></circle><circle cx="18" cy="13" r="1"></circle><rect x="2" y="6" width="20" height="12" rx="4"></rect></svg>
-              </span>
+            <article class="card feature-card feature-card--games">
+              <div class="feature-scene feature-game" data-feature-scene="" aria-hidden="true">
+                <span>V</span><span>O</span><span>Z</span><span>E</span><span>N</span>
+              </div>
               <h3 data-i18n="feat.4.t">16가지 음성 미니게임</h3>
               <p data-i18n="feat.4.d">언어 맞히기, 스펠링 비, Wordle, 반응 속도 대결 — 서버 리더보드와 함께</p>
             </article>
 
-            <article class="card reveal">
-              <span class="card__ic">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 11a4 4 0 1 0 0-.01"></path><path d="M2 20a6 6 0 0 1 12 0"></path><path d="M16 4a4 4 0 0 1 0 8M18 20a6 6 0 0 0-4-5.6"></path></svg>
-              </span>
-              <h3 data-i18n="feat.5.t">개성까지 담았습니다</h3>
-              <p data-i18n="feat.5.d">새로 들어온 사람을 반겨주고 — 매번 다르게 — 생일을 축하하고, 농담을 하고, 매직 8볼에 답하며, 서버에서 가장 많이 말한 사람을 기록합니다</p>
-            </article>
-
-            <article class="card reveal">
-              <span class="card__ic">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
-              </span>
-              <h3 data-i18n="feat.6.t">관리자도 안심</h3>
-              <p data-i18n="feat.6.d">차단 목록, 속도 제한, 도배 메시지를 음소거하는 스팸 방지 필터, 역할 제한, 참여 거부, 그리고 킬 스위치까지. 통제권은 언제나 당신에게 있습니다</p>
-            </article>
-
-            <article class="card card--accent reveal">
+            <article class="card feature-card feature-card--effects">
               <span class="card__badge" data-i18n="feat.new">NEW</span>
-              <span class="card__ic card__ic--amber">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h2l2-6 3 12 3-9 2 3h6"></path></svg>
-              </span>
+              <div class="feature-scene feature-echo" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 360 120" fill="none" stroke-width="4" stroke-linecap="round">
+                  <path class="feature-echo-trail" d="M38 60h12l10-20 12 40 15-64 18 88 18-66 12 22h28" transform="translate(150 0)"></path>
+                  <path class="feature-echo-trail" d="M38 60h12l10-20 12 40 15-64 18 88 18-66 12 22h28" transform="translate(75 0)"></path>
+                  <path class="feature-echo-source" d="M38 60h12l10-20 12 40 15-64 18 88 18-66 12 22h28"></path>
+                </svg>
+              </div>
               <h3 data-i18n="feat.7.t">음성 효과</h3>
               <p data-i18n="feat.7.d">로봇, 에코, 저음, 다람쥐, 라디오, 악마… 당신의 메시지가 변신합니다. 두 가지 효과는 무료, 여덟 가지 전부는 Premium으로</p>
             </article>
 
             <article class="card reveal">
-              <span class="card__ic">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12l4 6-10 12L2 9z"></path><path d="M2 9h20M9 3l3 6 3-6M12 21l-3-12M12 21l3-12"></path></svg>
-              </span>
+              <div class="feature-scene feature-emphasis" data-feature-scene="" aria-hidden="true">
+                <span class="feature-message">Hello<span class="feature-punctuation">!</span></span>
+              </div>
+              <h3 data-i18n="feat.3.t">사람처럼 말합니다</h3>
+              <p data-i18n="feat.3.d">기본적으로 선택한 음성을 사용합니다. 메시지별 선택적 언어 감지는 /voice detection on으로 켤 수 있으며 !와 대문자는 강조를 더합니다</p>
+            </article>
+
+            <article class="card reveal">
+              <div class="feature-scene feature-welcome" data-feature-scene="" aria-hidden="true">
+                <span class="feature-message">Welcome!</span>
+                <svg viewBox="0 0 180 120" fill="none" stroke="currentColor" stroke-width="3"><path d="m15 28 7-12 7 12-7 12Z"></path><path d="M155 16v20m-10-10h20M154 91v16m-8-8h16"></path></svg>
+              </div>
+              <h3 data-i18n="feat.5.t">개성까지 담았습니다</h3>
+              <p data-i18n="feat.5.d">새로 들어온 사람을 반겨주고 — 매번 다르게 — 생일을 축하하고, 농담을 하고, 매직 8볼에 답하며, 서버에서 가장 많이 말한 사람을 기록합니다</p>
+            </article>
+
+            <article class="card reveal">
+              <div class="feature-scene feature-guard" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 160 130" fill="none" stroke-width="3" stroke-linejoin="round"><path class="feature-shield" d="m80 12 43 17v32c0 25-19 44-43 57-24-13-43-32-43-57V29Z"></path><path class="feature-shield-check" d="m58 64 15 15 29-31" pathLength="1"></path><circle class="feature-block-mark" cx="126" cy="26" r="18"></circle><path class="feature-block-mark" d="m113 13 26 26"></path></svg>
+              </div>
+              <h3 data-i18n="feat.6.t">관리자도 안심</h3>
+              <p data-i18n="feat.6.d">차단 목록, 속도 제한, 도배 메시지를 음소거하는 스팸 방지 필터, 역할 제한, 참여 거부, 그리고 킬 스위치까지. 통제권은 언제나 당신에게 있습니다</p>
+            </article>
+
+            <article class="card reveal">
+              <div class="feature-scene feature-premium" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 180 120" fill="none" stroke="#ffc95b" stroke-width="3" stroke-linejoin="round"><path class="feature-gem" d="M48 18h84l27 29-69 62-69-62Z"></path><path class="feature-gem-facet" d="m65 18 25 91 25-91M21 47h138M65 18l25 29 25-29"></path></svg>
+              </div>
               <h3 data-i18n="feat.8.t">공정한 Premium</h3>
               <p data-i18n="feat.8.d">월 €6.99로 Kokoro와 서버용 부가 기능을 잠금 해제합니다. 필수 Piper 핵심 기능은 계속 무료입니다</p>
             </article>
 
             <article class="card card--accent reveal">
               <span class="card__badge" data-i18n="feat.new">NEW</span>
-              <span class="card__ic">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v12H8l-4 3z"></path><path d="M8 9h8M8 13h5"></path></svg>
-              </span>
+              <div class="feature-scene feature-private" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 180 130" fill="none" stroke-width="3" stroke-linejoin="round"><path class="feature-file" d="M49 12h57l23 23v80H49Z"></path><path class="feature-file-fold" d="M106 12v23h23"></path><path class="feature-file-wave" d="M64 67h5l6-15 9 35 10-43 9 23h11"></path><rect class="feature-file-lock" x="113" y="78" width="43" height="36" rx="8"></rect><path class="feature-file-lock-bar" d="M123 78V67a12 12 0 0 1 24 0v11"></path></svg>
+              </div>
               <h3 data-i18n="feat.10.t">어디서나 사용하는 비공개 도구</h3>
               <p data-i18n="feat.10.d">/tts-file 및 /translate text를 사용하거나 메시지를 마우스 오른쪽 버튼으로 눌러 통화에 참여하지 않고 지원되는 Discord 오디오를 비공개로 번역하거나 전사하세요</p>
             </article>
 
             <article class="card reveal">
-              <span class="card__ic">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="3"></rect><path d="M7 9h10M7 14h6"></path></svg>
-              </span>
+              <div class="feature-scene feature-profiles" data-feature-scene="" aria-hidden="true">
+                <span class="feature-channel"># general <b>EN</b></span>
+                <span class="feature-channel"># games <b>PT</b></span>
+              </div>
               <h3 data-i18n="feat.11.t">채널 프로필</h3>
               <p data-i18n="feat.11.d">안전한 서버 대시보드에서 각 채널의 음성, 엔진, 언어, 속도, 제한 및 음성 채널 연결을 설정하세요</p>
             </article>
 
             <article class="card reveal">
-              <span class="card__ic">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"></path></svg>
-              </span>
+              <div class="feature-scene feature-favourites" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 240 120" fill="none" stroke-width="2.5" stroke-linejoin="round"><path class="feature-star-side" d="m32 39 7 14 16 2-11 11 2 16-14-8-14 8 2-16L9 55l16-2Z"></path><path class="feature-star-main" d="m120 13 15 29 32 5-23 23 5 32-29-15-29 15 5-32-23-23 32-5Z"></path><path class="feature-star-side" d="m208 39 7 14 16 2-11 11 2 16-14-8-14 8 2-16-11-11 16-2Z"></path></svg>
+              </div>
               <h3 data-i18n="feat.12.t">즐겨찾는 음성</h3>
               <p data-i18n="feat.12.d">최대 25개의 음성을 저장하고 전체 라이브러리를 다시 검색하지 않고 최근 사용한 10개로 돌아가세요</p>
             </article>
 
             <a class="card card--link reveal" href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener">
-              <span class="card__ic">
-                <svg viewBox="0 0 16 16" fill="currentColor" stroke="none"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
-              </span>
+              <div class="feature-scene feature-code" data-feature-scene="" aria-hidden="true">
+                <span class="feature-code-mark">&lt;/&gt;</span>
+                <svg viewBox="0 0 80 100" fill="none" stroke="currentColor" stroke-width="3"><path class="feature-branch" d="M20 19v62M20 58c0-22 40-10 40-35" pathLength="1"></path><circle cx="20" cy="14" r="7"></circle><circle cx="20" cy="86" r="7"></circle><circle cx="60" cy="16" r="7"></circle></svg>
+              </div>
               <h3 data-i18n="feat.9.t">오픈 소스</h3>
               <p data-i18n="feat.9.d">Vozen의 모든 코드는 GitHub에 공개되어 있습니다. 직접 검토하고, 배우고, PR을 열어보세요 — 비밀도, 스파이웨어도 없습니다</p>
               <span class="card__arrow" aria-hidden="true">↗</span>
@@ -314,7 +317,6 @@
       <section class="section section--alt" id="languages">
         <div class="wrap show">
           <div class="show__copy reveal">
-            <span class="eyebrow" data-i18n="lang.eyebrow">언어</span>
             <h2 data-i18n="lang.title">하나의 서버, 모든 언어</h2>
             <p data-i18n="lang.sub">Vozen은 35개 이상의 언어를 말합니다. 모두가 자신만의 음성을 선택하며 — 포르투갈어, 영어, 일본어, 아랍어 등 — 이름은 각자의 언어로 표시됩니다</p>
             <ul class="ticks">
@@ -353,7 +355,6 @@
             </div>
           </div>
           <div class="show__copy reveal">
-            <span class="eyebrow eyebrow--amber" data-i18n="games.eyebrow">미니게임</span>
             <h2 data-i18n="games.title">소리 내어 즐기세요</h2>
             <p data-i18n="games.sub">음성을 위해 만든 16가지 미니게임: 자신의 언어로 즐기는 턴제 끝말잇기(Vozen이 각 단어를 소리 내어 읽어줍니다), 들려주는 언어 맞히기, 초고속 발화 해독, 스펠링 비, 반응 속도 대결, 여기에 Wordle, 행맨, 틱택토, 그리고 실제 그래픽 보드로 즐기는 체스까지. 모든 서버가 리더보드를 유지합니다</p>
             <ul class="ticks ticks--amber">
@@ -366,17 +367,51 @@
       </section>
 
       <!-- ─────────────── SHOWCASE C · SETUP ─────────────── -->
-      <section class="section">
+      <section class="section" id="setup">
         <div class="wrap">
           <header class="head reveal">
-            <span class="eyebrow" data-i18n="setup.eyebrow">시작하기</span>
-            <h2 data-i18n="setup.title">30초면 준비 완료</h2>
+            <h2>Start in 3 steps</h2>
           </header>
           <div class="steps">
-            <div class="step reveal"><span class="step__n">1</span><h3 data-i18n="setup.1.t">초대</h3><p data-i18n="setup.1.d">클릭 한 번으로 서버에 Vozen을 추가하세요</p></div>
-            <div class="step reveal"><span class="step__n">2</span><h3 data-i18n="setup.2.t">/join</h3><p data-i18n="setup.2.d">Vozen이 음성 채널에 들어옵니다</p></div>
-            <div class="step reveal"><span class="step__n">3</span><h3 data-i18n="setup.3.t">입력</h3><p data-i18n="setup.3.d">메시지를 작성하면 — 소리로 들립니다</p></div>
+            <div class="step reveal">
+              <div class="setup-scene setup-scene--invite" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 300 120" fill="none">
+                  <path d="M102 60h75m-8-8 8 8-8 8" stroke="#8d96c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <g class="setup-bot"><rect x="27" y="24" width="72" height="72" rx="22" fill="#55ebd1"></rect><path d="M47 55v10m8-20v30m8-38v46m8-38v30m8-20v10" stroke="#071421" stroke-width="4" stroke-linecap="round"></path></g>
+                  <rect x="184" y="20" width="89" height="80" rx="16" fill="#303d67" transform="rotate(4 228 60)"></rect>
+                  <path d="m217 42-4 36m19-36-4 36m-23-25h39m-41 15h39" stroke="#b5b4ff" stroke-width="3" stroke-linecap="round"></path>
+                  <circle cx="266" cy="24" r="16" fill="#55ebd1"></circle><path class="setup-check" d="m259 24 5 5 9-10" stroke="#071421" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1"></path>
+                </svg>
+              </div>
+              <div class="setup-label"><span class="step__n">1</span><h3 data-i18n="setup.1.t">초대</h3></div>
+              <p data-i18n="setup.1.d">클릭 한 번으로 서버에 Vozen을 추가하세요</p>
+            </div>
+            <div class="step reveal">
+              <div class="setup-scene setup-scene--join" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 300 120" fill="none">
+                  <rect x="28" y="10" width="96" height="30" rx="8" fill="#303d67"></rect><text x="40" y="31" fill="#c4c3ff" class="setup-code">/setup</text>
+                  <path d="m56 65-4 29m18-29-4 29M45 75h33M43 85h33" stroke="#55ebd1" stroke-width="2.5" stroke-linecap="round"></path>
+                  <text x="90" y="85" fill="#edf3ff" class="setup-channel">chat</text>
+                  <g class="setup-member"><rect x="193" y="52" width="76" height="50" rx="14" fill="#55ebd1"></rect><path d="M211 73v8m7-16v24m7-29v34m7-29v24m7-16v8" stroke="#071421" stroke-width="3" stroke-linecap="round"></path><circle cx="261" cy="57" r="7" fill="#b5b4ff" stroke="#111b2f" stroke-width="3"></circle></g>
+                  <path class="setup-connection" d="M29 110h241" stroke="#55ebd1" stroke-width="2" stroke-linecap="round" pathLength="1"></path>
+                </svg>
+              </div>
+              <div class="setup-label"><span class="step__n">2</span><h3>/setup</h3></div>
+              <p>Choose a text channel and enable auto-read.</p>
+            </div>
+            <div class="step reveal">
+              <div class="setup-scene setup-scene--speak" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 300 120" fill="none">
+                  <g class="setup-message"><path d="M29 25h116a13 13 0 0 1 13 13v37a13 13 0 0 1-13 13H49L29 100V38a13 13 0 0 1 13-13" fill="#aaa7ff"></path><text x="47" y="65" fill="#10192b" class="setup-message-text">Hello!</text></g>
+                  <path d="M173 60h23m-7-7 7 7-7 7" stroke="#8d96c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <g class="setup-sound" stroke="#55ebd1" stroke-width="5" stroke-linecap="round"><path d="M216 51v18m12-32v46m12-57v68m12-52v36m12-28v20"></path></g>
+                </svg>
+              </div>
+              <div class="setup-label"><span class="step__n">3</span><h3>Join &amp; type</h3></div>
+              <p>Enter a voice channel, run /join, then type in your configured text channel.</p>
+            </div>
           </div>
+          <p class="setup-caption"><a href="docs/tts/text-to-speech/reading-messages/">Auto-read guide</a></p>
         </div>
       </section>
 
@@ -384,27 +419,37 @@
       <section class="section section--alt" id="commands">
         <div class="wrap">
           <header class="head reveal">
-            <span class="eyebrow" data-i18n="cmd.eyebrow">명령어</span>
             <h2 data-i18n="cmd.title">간단한 슬래시 명령어</h2>
-            <p data-i18n="cmd.sub">음성 통화의 모든 사람에게 테마 역할을 무작위로 배정하고 결과를 들으려면 /cast를 사용하세요</p>
           </header>
-          <div class="tabs reveal" id="cmdTabs">
-            <button class="is-active" data-tab="general" data-i18n="cmd.general">일반</button>
-            <button data-tab="voice" data-i18n="cmd.voice">음성</button>
-            <button data-tab="fun" data-i18n="cmd.fun">재미</button>
-            <button data-tab="admin" data-i18n="cmd.admin">관리자</button>
+          <div class="command-preview-layout" data-command-preview="">
+          <div class="command-browser">
+            <div class="tabs reveal" id="cmdTabs" role="group" aria-label="Command categories">
+              <button type="button" class="is-active" data-tab="general" data-i18n="cmd.general" aria-pressed="true">일반</button>
+              <button type="button" data-tab="voice" data-i18n="cmd.voice" aria-pressed="false">음성</button>
+              <button type="button" data-tab="fun" data-i18n="cmd.fun" aria-pressed="false">재미</button>
+              <button type="button" data-tab="admin" data-i18n="cmd.admin" aria-pressed="false">관리자</button>
+            </div>
+          <div class="cmd-list reveal" id="cmdList" data-prerender-fragment="cmdList"><section aria-label="일반"><div class="cmd"><code>/setup</code><span>단계별 원스텝 설정</span></div><div class="cmd"><code>/join</code><span>음성 채널에 참여</span></div><div class="cmd"><code>/tts</code><span>텍스트를 소리 내어 읽기</span></div><div class="cmd"><code>/skip</code><span>현재 오디오 건너뛰기</span></div><div class="cmd"><code>/leave</code><span>음성 채널에서 나가기</span></div><div class="cmd"><code>/help</code><span>Vozen의 명령어 목록 보기</span></div></section><section aria-label="음성"><div class="cmd"><code>/voice set</code><span>음성, 언어, 엔진 선택</span></div><div class="cmd"><code>/voice list</code><span>모든 음성 둘러보기</span></div><div class="cmd"><code>/voice favorites</code><span>Open your saved favourite voices</span></div><div class="cmd"><code>/voice recent</code><span>Open your recently used voices</span></div><div class="cmd"><code>/voice preview</code><span>음성 샘플 들어보기</span></div><div class="cmd"><code>/voice effect</code><span>로봇, 에코, 악마… 음성 효과</span></div></section><section aria-label="재미"><div class="cmd"><code>/game play</code><span>16가지 미니게임 중 하나 시작</span></div><div class="cmd"><code>/game leaderboard</code><span>서버 상위 플레이어</span></div><div class="cmd"><code>/game stats</code><span>나의 점수, 승리, 순위</span></div><div class="cmd"><code>/joke</code><span>어떤 언어로든 짧은 농담</span></div><div class="cmd"><code>/laugh</code><span>Vozen이 당신의 목소리로 웃습니다</span></div><div class="cmd"><code>/8-ball</code><span>매직 8볼에게 소리 내어 질문하기</span></div></section><section aria-label="관리자"><div class="cmd"><code>/config greet</code><span>통화에 참여하는 사람 인사하기</span></div><div class="cmd"><code>/config language</code><span>인터페이스 언어 설정</span></div><div class="cmd"><code>/config default-voice</code><span>서버 기본 음성 설정</span></div><div class="cmd"><code>/config auto-read</code><span>자동 읽기 켜기/끄기</span></div><div class="cmd"><code>/config block-word</code><span>차단 목록 관리</span></div><div class="cmd"><code>/server-pronunciation</code><span>서버 전체 발음 (관리자, 3개 · Premium은 50개)</span></div></section></div>
+            <a class="command-catalogue-link" href="commands/">View all commands</a>
           </div>
-          <div class="cmd-list reveal" id="cmdList" data-prerender-fragment="cmdList"><section aria-label="일반"><div class="cmd"><code>/help</code><span>Vozen의 명령어 목록 보기</span></div><div class="cmd"><code>/join</code><span>음성 채널에 참여</span></div><div class="cmd"><code>/leave</code><span>음성 채널에서 나가기</span></div><div class="cmd"><code>/tts</code><span>텍스트를 소리 내어 읽기</span></div><div class="cmd"><code>/tts-file</code><span>Create a private audio file without joining a call</span></div><div class="cmd"><code>/translate text</code><span>Translate text privately, including as a User App</span></div><div class="cmd"><code>/skip</code><span>현재 오디오 건너뛰기</span></div><div class="cmd"><code>/shut-up</code><span>지금 바로 Vozen 조용히 시키기 (대기열 비우기)</span></div><div class="cmd"><code>/setup</code><span>단계별 원스텝 설정</span></div><div class="cmd"><code>/invite</code><span>초대 링크 받기</span></div><div class="cmd"><code>/vote</code><span>top.gg에서 Vozen에 투표</span></div><div class="cmd"><code>/uptime</code><span>Vozen이 온라인 상태인 시간</span></div><div class="cmd"><code>/premium</code><span>서버와 나의 Premium 상태</span></div></section><section aria-label="음성"><div class="cmd"><code>/voice set</code><span>음성, 언어, 엔진 선택</span></div><div class="cmd"><code>/voice list</code><span>모든 음성 둘러보기</span></div><div class="cmd"><code>/voice favorites</code><span>Open your saved favourite voices</span></div><div class="cmd"><code>/voice recent</code><span>Open your recently used voices</span></div><div class="cmd"><code>/voice preview</code><span>음성 샘플 들어보기</span></div><div class="cmd"><code>/voice effect</code><span>로봇, 에코, 악마… 음성 효과</span></div><div class="cmd"><code>/voice nickname</code><span>Vozen이 나를 부르는 방식</span></div><div class="cmd"><code>/voice opt-out</code><span>자동 읽기 대상에서 제외</span></div><div class="cmd"><code>/pronunciation</code><span>Vozen에게 단어 발음을 가르치기 (나에게만 적용)</span></div></section><section aria-label="재미"><div class="cmd"><code>/game play</code><span>16가지 미니게임 중 하나 시작</span></div><div class="cmd"><code>/game leaderboard</code><span>서버 상위 플레이어</span></div><div class="cmd"><code>/game stats</code><span>나의 점수, 승리, 순위</span></div><div class="cmd"><code>/joke</code><span>어떤 언어로든 짧은 농담</span></div><div class="cmd"><code>/laugh</code><span>Vozen이 당신의 목소리로 웃습니다</span></div><div class="cmd"><code>/8-ball</code><span>매직 8볼에게 소리 내어 질문하기</span></div><div class="cmd"><code>/fact · /fortune · /wyr</code><span>재미있는 사실, 운세, 딜레마</span></div><div class="cmd"><code>/birthday set</code><span>생일에 Vozen이 노래해줍니다</span></div><div class="cmd"><code>/top-speakers</code><span>가장 많이 말한 사람 + 연속 기록</span></div><div class="cmd"><code>/randomizer</code><span>Vozen이 무작위로 하나를 골라 말해줍니다</span></div><div class="cmd"><code>/cast</code><span>음성 통화의 모든 사람에게 테마 역할을 무작위로 배정하고 결과를 들려줍니다</span></div></section><section aria-label="관리자"><div class="cmd"><code>/config greet</code><span>통화에 참여하는 사람 인사하기</span></div><div class="cmd"><code>/config language</code><span>인터페이스 언어 설정</span></div><div class="cmd"><code>/config default-voice</code><span>서버 기본 음성 설정</span></div><div class="cmd"><code>/config auto-read</code><span>자동 읽기 켜기/끄기</span></div><div class="cmd"><code>/config block-word</code><span>차단 목록 관리</span></div><div class="cmd"><code>/server-pronunciation</code><span>서버 전체 발음 (관리자, 3개 · Premium은 50개)</span></div></section></div>
+          <figure class="command-example reveal">
+            <div class="command-example__request"><code>/tts <span>Hello!</span></code></div>
+            <div class="command-example__reply">
+              <svg class="command-example__avatar" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#55ebd1"></rect><path d="M12 18v4m4-9v14m4-18v22m4-17v12m4-8v4" stroke="#071019" stroke-width="2.5" stroke-linecap="round"></path></svg>
+              <div><strong>Vozen</strong><p>Hello!</p></div>
+              <span class="command-example__bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+            </div>
+          </figure>
+          </div>
         </div>
       </section>
 
       <!-- ─────────────── PRICING ─────────────── -->
-      <section class="section" id="premium">
+      <section class="section plan-preview" id="premium">
         <div class="wrap">
           <header class="head reveal">
-            <span class="eyebrow eyebrow--amber" data-i18n="price.eyebrow">요금제</span>
-            <h2 data-i18n="price.choose.title">누가 업그레이드를 받을지 선택하세요</h2>
-            <p data-i18n="price.choose.sub">핵심 기능은 무료로 쓰고, 나만 업그레이드하거나 서버 전체에 Premium을 열어 주세요</p>
+            <h2>Your voice. Or your whole server.</h2>
+            <p>Plus follows you. Premium upgrades your communities — in both bots.</p>
           </header>
           <!-- O login/estado da conta vivem agora numa página dedicada (account.html),
                acessível pelo botão "Log in" da navbar. -->
@@ -413,23 +458,20 @@
               <button type="button" class="bill-toggle__btn is-active" data-bill="month" data-i18n="price.billMonthly">월간</button>
               <button type="button" class="bill-toggle__btn" data-bill="year">
                 <span data-i18n="price.billYearly">연간</span>
-                <span class="bill-toggle__save">−20%</span>
+                <span class="bill-toggle__save">Annual billing</span>
               </button>
             </div>
           </div>
           <div class="bundle-ribbon" role="note" aria-label="Vozen 번들" data-i18n-aria-label="price.bundleAria">
-            <span class="bundle-ribbon__eyebrow" data-i18n="price.bundleEyebrow">VOZEN 번들</span>
+            <div class="plan-bundle-art" aria-hidden="true"><span class="eco-product__icon eco-product__icon--tts"><svg class="eco-tts-icon" viewBox="0 0 64 64"><rect x="10" y="27" width="6" height="10" rx="3"></rect><rect x="20" y="22" width="6" height="20" rx="3"></rect><rect x="30" y="18" width="6" height="28" rx="3"></rect><rect x="40" y="23" width="6" height="18" rx="3"></rect><rect x="50" y="28" width="4" height="8" rx="2"></rect></svg></span><span class="eco-product__icon eco-product__icon--helper"><svg class="eco-helper-character eco-helper-character--classic" viewBox="0 0 64 64"><path d="M32 19v-7"></path><circle cx="32" cy="9" r="3" class="white"></circle><path d="m15 36-6-4m2 0-2 4M49 36l6-4m-2 0 2 4"></path><rect x="13" y="20" width="38" height="29" rx="13" class="white"></rect><rect x="18" y="26" width="28" height="18" rx="8" class="screen"></rect><circle cx="26" cy="35" r="2.4" class="white"></circle><circle cx="38" cy="35" r="2.4" class="white"></circle><path d="M27 39c3 2.5 7 2.5 10 0"></path></svg></span></div>
             <div class="bundle-ribbon__copy">
-              <strong data-i18n="price.bundleTitle">봇 두 개. 구독 하나.</strong>
-              <span data-i18n="price.bundleText">선택한 커뮤니티를 위한 Premium TTS 및 Helper입니다.</span>
+              <strong>봇 두 개. 구독 하나.</strong>
+              <span>TTS + Helper Premium for everyone in your selected servers.</span>
             </div>
             <span class="bundle-ribbon__value" data-i18n="price.bundleValue">TTS + HELPER</span>
           </div>
           <div class="pricing">
             <article class="price-card price-card--free reveal">
-              <div class="price-card__topline">
-                <span class="price-card__badge price-card__badge--free"><span aria-hidden="true">✦</span> <span data-i18n="price.free.per">영원히</span></span>
-              </div>
               <h3 data-i18n="price.free.name">무료</h3>
               <p class="price-card__pitch" data-i18n="price.free.pitch">모든 핵심 기능. 카드도 체험판도 필요 없습니다</p>
               <div class="seat-toggle plan-scope plan-scope--free">
@@ -455,11 +497,8 @@
 
             <div class="paid-plans">
             <article class="price-card price-card--plus reveal">
-              <div class="price-card__topline">
-                <span class="price-card__badge price-card__badge--plus"><span aria-hidden="true">✦</span> <span data-i18n="price.plus.badge">개인용</span></span>
-              </div>
               <h3 data-i18n="price.plus.name">Vozen Plus</h3>
-              <p class="price-card__pitch" data-i18n="price.plus.pitch">프리미엄 음성 혜택이 어느 서버에서든 나를 따라옵니다</p>
+              <p class="price-card__pitch">Your voice upgrades, wherever you chat.</p>
               <div class="seat-toggle plan-scope">
                 <span class="seat-toggle__btn is-active" data-i18n="price.m.17">어느 서버든 함께</span>
               </div>
@@ -469,27 +508,22 @@
                 <span class="per per--y" data-i18n="price.plus.perYear">/ 년 · 사용자당</span>
               </div>
               <ul class="ticks price-card__highlights">
-                <li class="price-card__included-free" data-i18n="price.includesFree">Free의 모든 기능</li>
-                <li data-i18n="price.m.21">Kokoro 신경망 음성 엔진</li>
-                <li data-i18n="price.m.22">Google HD 음성</li>
-                <li data-i18n="price.m.9">8가지 음성 효과 모두 (저음, 악마, 라디오…)</li>
-                <li data-i18n="price.m.15">개인 발음 50개</li>
-                <li data-i18n="price.m.11">Word Chain 게임</li>
-                <li data-i18n="price.m.12">Wordle 게임</li>
-                <li data-i18n="price.m.14">/rizz</li>
+                <li>Free의 모든 기능</li>
+                <li>Kokoro neural voices</li>
+                <li>All 8 voice effects</li>
+                <li>개인 발음 50개</li>
+                <li>Wordle, Word Chain and Chess</li>
+                <li>Access to /rizz</li>
+                <li>Your perks follow your Discord account</li>
               </ul>
               <p class="price-card__note" data-i18n="price.digital">디지털 구독 · 배송 없음</p>
-              <a class="price-card__buy" href="/premium#plans" data-i18n="price.checkout">결제 계속하기</a>
+              <a class="price-card__buy" href="/premium#plans">View Plus</a>
               <p class="price-card__idnote">
                 <span data-i18n="premium.signInNote">먼저 Discord로 로그인하세요. 결제 정보는 Stripe가 처리합니다.</span>              </p>
             </article>
             <article class="price-card price-card--pro reveal">
-              <div class="price-card__topline">
-                <span class="price-card__badge"><span aria-hidden="true">💎</span> <span data-i18n="price.pro.badge">PREMIUM</span></span>
-                <span class="price-card__recommended" data-i18n="price.recommended">서버에 가장 적합</span>
-              </div>
               <h3 data-i18n="price.pro.name">Vozen Premium</h3>
-              <p class="price-card__pitch" data-i18n="price.pro.pitch">커뮤니티 전체에 완전한 Vozen 경험을 열어 주세요</p>
+              <p class="price-card__pitch">Premium voices and Helper extras for everyone.</p>
               <!-- Toggle de licenças: a mesma tier muda o número de servidores e o preço. -->
               <div class="seat-toggle" role="group" aria-label="구독당 서버 수" data-i18n-aria-label="price.serversPerSubscription">
                 <button type="button" class="seat-toggle__btn is-active" data-seats="2" data-i18n="price.pro.seats2">서버 2개</button>
@@ -503,25 +537,26 @@
                 <span class="per per--y per--s5" data-i18n="price.max.perYear">/ 년 · 서버 5개</span>
               </div>
               <ul class="ticks ticks--amber price-card__highlights">
-                <li class="price-card__included-free" data-i18n="price.includesFree">Free의 모든 기능</li>
-                <li data-i18n="price.m.18">서버의 모든 사람에게 적용</li>
-                <li data-i18n="price.m.24">선택한 각 서버의 Vozen Helper Premium</li>
-                <li data-i18n="price.m.21">Kokoro 신경망 음성 엔진</li>
-                <li data-i18n="price.m.22">Google HD 음성</li>
-                <li data-i18n="price.m.9">8가지 음성 효과 모두 (저음, 악마, 라디오…)</li>
-                <li data-i18n="price.m.19">서버 발음 50개</li>
-                <li data-i18n="price.m.16">24시간 통화 참여</li>
-                <li data-i18n="price.m.23">실시간 음성 텍스트 변환</li>
-                <li data-i18n="price.m.11">Word Chain 게임</li>
+                <li>Free의 모든 기능</li>
+                <li>Kokoro voices for everyone</li>
+                <li>All 8 voice effects</li>
+                <li>50 personal + 50 server pronunciations</li>
+                <li>Wordle, Word Chain, Chess and /rizz</li>
+                <li>Keep Vozen in the voice channel 24/7</li>
+                <li>실시간 음성 텍스트 변환</li>
+                <li>Helper Premium in your selected servers</li>
               </ul>
               <p class="price-card__note note--s2" data-i18n="price.digital">디지털 구독 · 배송 없음</p>
               <p class="price-card__note note--s5" data-i18n="price.digital">디지털 구독 · 배송 없음</p>
-              <a class="price-card__buy price-card__buy--pro" href="/premium#plans" data-i18n="price.checkout">결제 계속하기</a>
+              <a class="price-card__buy price-card__buy--pro" href="/premium#plans">View Premium</a>
               <p class="price-card__idnote">
                 <span data-i18n="premium.signInNote">먼저 Discord로 로그인하세요. 결제 정보는 Stripe가 처리합니다.</span>              </p>
             </article>
             </div>
 
+          </div>
+            <details class="plan-full-comparison">
+              <summary>Compare all Free, Plus &amp; Premium features</summary>
             <section class="plan-comparison reveal" aria-labelledby="planComparisonTitle">
               <div class="plan-comparison__head">
                 <div>
@@ -557,7 +592,6 @@
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.8">전체 관리자 도구</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <!-- Bloco B — extras pagos: iguais no Plus e no Premium. -->
                     <tr role="row" class="group-b"><th scope="row" role="rowheader" data-i18n="price.m.21">Kokoro 신경망 음성 엔진</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
-                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.22">Google HD 음성</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.9">8가지 음성 효과 모두 (저음, 악마, 라디오…)</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.11">Word Chain 게임</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.12">Wordle 게임</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
@@ -574,7 +608,7 @@
                 </table>
               </div>
             </section>
-          </div>
+            </details>
         </div>
       </section>
 
@@ -583,7 +617,6 @@
         <div class="wrap wrap--narrow">
           <article class="review-proof reveal">
             <div>
-              <span class="eyebrow" data-i18n="reviews.eyebrow">독립 리뷰</span>
               <h2 data-i18n="reviews.title">직접 확인할 수 있는 리뷰</h2>
               <p data-i18n="reviews.body">평점과 검토는 Top.gg에 유지되므로 Vozen이 작성자의 신원이나 인용문을 다시 게시하지 않아도 최신 공개 기록을 확인할 수 있습니다.</p>
             </div>
@@ -599,7 +632,6 @@
       <section class="section" id="faq">
         <div class="wrap wrap--narrow">
           <header class="head reveal">
-            <span class="eyebrow" data-i18n="faq.eyebrow">자주 묻는 질문</span>
             <h2 data-i18n="faq.title">궁금증, 해결해 드립니다</h2>
           </header>
           <div class="faq" id="faq-list" data-prerender-fragment="faq-list">
@@ -709,10 +741,15 @@
     <script defer="" src="js/install-config-v1.js?v=97c30a4aaef1"></script>
     <script defer="" src="js/tts-install-v1.js?v=06da33493db0"></script>
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer="" src="js/global-nav-v1.js?v=b13acaf2e0f2"></script>
+    <script defer="" src="js/global-nav-v1.js?v=e2404ec866f5"></script>
     <script defer="" src="js/i18n-public-loader-v1.js?v=d29fcfb97378"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=ed5b5ebc3559"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=0e4cebc4d829"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
+<script defer="" src="js/product-preview-v1.js?v=4118ff38f988"></script>
+<script defer="" src="js/tts-player-preview-v1.js?v=98f9725fcf83"></script>
+<script defer="" src="js/tts-features-preview-v1.js?v=50a88a38197c"></script>
+
+
 
 
 

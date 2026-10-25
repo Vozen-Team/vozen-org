@@ -56,15 +56,14 @@ for (const [locale, htmlLang] of locales) {
       const messages = catalog(locale).messages;
       for (const key of [
         'helper.landing.heroLede',
-        'helper.landing.outcomesTitle',
-        'helper.landing.moduleCoreTitle',
-        'helper.landing.setupTitle',
-        'helper.landing.accessText',
-        'helper.landing.comparisonTitle',
+        'helper.landing.serverPulse',
+        'helper.landing.securityCheck',
+        'helper.landing.ticketRouted',
       ]) {
         assert.ok(html.includes(messages[key]), `${relative} leaves ${key} in English`);
       }
       assert.ok(!html.includes('The work around your server, made lighter.'), `${relative} keeps the English Helper body`);
+      assert.match(html, /data-helper-cards/, `${relative} is missing the visual module catalogue`);
     }
 
     if (page === 'helper') {

@@ -8,9 +8,10 @@
     <meta name="description" content="Find every Vozen Discord command, with quick descriptions, options and access labels.">
     <link rel="canonical" href="https://vozen.org/commands/">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../css/main-v43.css?v=e09fb8a4f245">
+    <link rel="stylesheet" href="../css/main-v43.css?v=3b9071956753">
     <link rel="stylesheet" href="../css/commands-v1.css?v=7f9aed34515b">
-    <link rel="stylesheet" href="../css/global-nav-v1.css?v=9e004321eb6a">
+    <link rel="stylesheet" href="../css/global-nav-v1.css?v=475756f32c65">
+    <link rel="stylesheet" href="../css/commands-preview-v1.css?v=2670409afcf5">
     <script>
       if (window.location.protocol !== 'file:' && /\/commands\/index\.html$/i.test(window.location.pathname)) {
         window.location.replace('/commands/' + window.location.search + window.location.hash);
@@ -45,7 +46,7 @@
           <span class="brand__word">Vozen</span>
           <span class="nav__product" data-i18n="ecosystem.label">Ecosystem</span>
         </a>
-        <nav class="nav__links" aria-label="Vozen products" data-i18n-aria-label="ecosystem.productsAria">
+        <nav class="nav__links" aria-label="Vozen products" data-i18n-aria-label="ecosystem.productsAria" id="vozen-primary-links">
           <a class="" href="../tts/" data-i18n="ecosystem.tts">Vozen TTS</a>
           <a class="" href="../helper/" data-i18n="ecosystem.helper">Vozen Helper</a>
           <a class="" href="../docs/" data-i18n="ecosystem.docs">Docs</a>
@@ -63,42 +64,35 @@
             <ul class="lang__panel" id="langPanel" role="listbox" tabindex="-1" aria-label="Choose language" data-i18n-aria-label="ecosystem.chooseLanguage"><li role="presentation"><a class="lang__opt is-active" href="/" role="option" data-lang="en" aria-selected="true" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-gb"></use></svg><span class="lang__optname">English</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/pt/" role="option" data-lang="pt" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-pt"></use></svg><span class="lang__optname">Português</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/fr/" role="option" data-lang="fr" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-fr"></use></svg><span class="lang__optname">Français</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/es/" role="option" data-lang="es" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-es"></use></svg><span class="lang__optname">Español</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/de/" role="option" data-lang="de" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-de"></use></svg><span class="lang__optname">Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/tr/" role="option" data-lang="tr" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-tr"></use></svg><span class="lang__optname">Türkçe</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ar/" role="option" data-lang="ar" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-sa"></use></svg><span class="lang__optname">العربية</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/zh/" role="option" data-lang="zh" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-tw"></use></svg><span class="lang__optname">繁體中文</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ru/" role="option" data-lang="ru" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-ru"></use></svg><span class="lang__optname">Русский</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ko/" role="option" data-lang="ko" aria-selected="false" tabindex="-1"><svg class="lang__flag" viewBox="0 0 24 18" aria-hidden="true" focusable="false"><use href="/assets/flags.svg#flag-kr"></use></svg><span class="lang__optname">한국어</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li></ul>
           </div>
           <a class="btn btn--primary btn--discord-cta btn--sm nav__login" id="navLogin" href="../account/"><svg viewBox="0 0 24 18" width="20" height="15" aria-hidden="true" fill="currentColor"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4 2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Z"></path></svg><span data-i18n="nav.login">Log in</span></a>
-          <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+          <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="vozen-primary-links"><span></span><span></span><span></span></button>
         </div>
       </div>
     </header>
 
 
-    <main>
+    <main data-command-simple="">
       <section class="commands-hero">
         <div class="wrap commands-hero__layout">
           <div class="commands-hero__copy">
             <h1>Commands</h1>
-            <p class="commands-hero__lead">Search TTS or Helper commands.</p>
+            <a class="commands-docs" href="../docs/" aria-label="Documentation"><span>Documentation</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"></path></svg></a>
           </div>
 
           <div class="command-finder" id="commandFinder">
-            <div class="command-finder__intro">
-              <p class="command-finder__kicker">Choose a bot</p>
-              <h2>What do you want to explore?</h2>
-              <p>Each catalogue stays focused on one bot.</p>
-            </div>
             <div class="command-product-picker" role="tablist" aria-label="Choose a Vozen bot">
               <button class="is-active" type="button" role="tab" aria-selected="true" data-command-product="tts">
                 <span class="command-product-picker__title">
-                  <span class="command-product-picker__icon command-product-picker__icon--tts" aria-hidden="true"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span></span>
+                  <span class="command-product-picker__icon command-product-picker__icon--tts" aria-hidden="true"><svg viewBox="0 0 64 64"><rect x="10" y="27" width="6" height="10" rx="3"></rect><rect x="20" y="22" width="6" height="20" rx="3"></rect><rect x="30" y="18" width="6" height="28" rx="3"></rect><rect x="40" y="23" width="6" height="18" rx="3"></rect><rect x="50" y="28" width="4" height="8" rx="2"></rect></svg></span>
                   <span>Vozen TTS</span>
                 </span>
-                <small>Voice &amp; community</small>
               </button>
               <button type="button" role="tab" aria-selected="false" data-command-product="helper">
                 <span class="command-product-picker__title">
                   <span class="command-product-picker__icon command-product-picker__icon--helper" aria-hidden="true">
-                    <svg viewBox="0 0 64 64"><path d="m15 34-6-4m2 0-2 4M49 34l6-4m-2 0 2 4M32 17v-5"></path><circle cx="32" cy="9" r="3"></circle><rect x="13" y="18" width="38" height="31" rx="13"></rect><rect x="18" y="24" width="28" height="19" rx="8"></rect><circle cx="26" cy="33" r="3"></circle><circle cx="38" cy="33" r="3"></circle><path d="M26 38c3.3 3.2 8.7 3.2 12 0"></path></svg>
+                    <svg viewBox="0 0 64 64"><path d="M32 19v-7"></path><circle cx="32" cy="9" r="3" class="white"></circle><path d="m15 36-6-4m2 0-2 4M49 36l6-4m-2 0 2 4"></path><rect x="13" y="20" width="38" height="29" rx="13" class="white"></rect><rect x="18" y="26" width="28" height="18" rx="8" class="screen"></rect><circle cx="26" cy="35" r="2.4" class="white"></circle><circle cx="38" cy="35" r="2.4" class="white"></circle><path d="M27 39c3 2.5 7 2.5 10 0"></path></svg>
                   </span>
                   <span>Vozen Helper</span>
                 </span>
-                <small>Server operations</small>
               </button>
             </div>
             <label class="command-search">
@@ -107,8 +101,8 @@
               <input id="commandSearch" type="search" autocomplete="off" placeholder="Try setup, voice or games">
               <kbd>/</kbd>
             </label>
-            <div class="command-filters" id="commandFilters" role="group" aria-label="Command filters" data-prerender-fragment="commandFilters"><button class="is-active" type="button" data-filter="all" aria-pressed="true">All</button><button class="" type="button" data-filter="start" aria-pressed="false">Start &amp; voice</button><button class="" type="button" data-filter="fun" aria-pressed="false">Fun &amp; games</button><button class="" type="button" data-filter="stats" aria-pressed="false">Stats &amp; activity</button><button class="" type="button" data-filter="settings" aria-pressed="false">Settings &amp; privacy</button><button class="" type="button" data-filter="premium" aria-pressed="false">Premium</button><button class="" type="button" data-filter="help" aria-pressed="false">Help &amp; community</button></div>
-            <p class="command-results" id="commandResults" aria-live="polite" data-prerender-fragment="commandResults">Showing all 46 Vozen TTS commands.</p>
+            <div class="command-filters" id="commandFilters" role="group" aria-label="Command filters" data-prerender-fragment="commandFilters"><button class="is-active" type="button" data-filter="all" aria-pressed="true"><span>All</span></button><button class="" type="button" data-filter="start" aria-pressed="false"><span>Start &amp; voice</span></button><button class="" type="button" data-filter="fun" aria-pressed="false"><span>Fun &amp; games</span></button><button class="" type="button" data-filter="stats" aria-pressed="false"><span>Stats &amp; activity</span></button><button class="" type="button" data-filter="settings" aria-pressed="false"><span>Settings &amp; privacy</span></button><button class="" type="button" data-filter="premium" aria-pressed="false"><span>Premium</span></button><button class="" type="button" data-filter="help" aria-pressed="false"><span>Help &amp; community</span></button></div>
+            <p class="command-results" id="commandResults" aria-live="polite" data-prerender-fragment="commandResults">40 commands</p>
           </div>
         </div>
       </section>
@@ -117,336 +111,687 @@
         <div class="wrap">
           <div class="commands-section__head">
             <div>
-              <p class="command-finder__kicker">Full catalogue</p>
-              <h2 id="catalogueTitle" data-prerender-fragment="catalogueTitle">Explore every command Vozen TTS commands</h2>
+              <h2 id="catalogueTitle" data-prerender-fragment="catalogueTitle">Vozen TTS</h2>
             </div>
             <p id="catalogueNote" data-prerender-fragment="catalogueNote">Choose a category above or scan the complete command set below.</p>
           </div>
 
           <div class="commands-layout">
             <div class="command-groups" id="commandGroups" data-prerender-fragment="commandGroups"><section id="catalogue-tts" aria-label="Vozen TTS commands"><section class="command-group" aria-labelledby="group-start">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-start">Start &amp; voice</h3><span class="command-group__count">11</span></div><p>Get the bot into a call and control the queue.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/invite</code><span class="command-tag command-tag--free">Free</span></div>
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4m4-8v12m4-15v18m4-15v12m4-8v4"></path></svg><h3 id="group-start">Start &amp; voice</h3><span class="command-group__count">11</span></div><p>Get the bot into a call and control the queue.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="start">
+      <div class="command-row__copy"><code>/invite</code>
       <p>Get the link to add Vozen to another server.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/setup</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Configure the text channel, auto-read and voice permissions in one guided step.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/join</code><span class="command-tag command-tag--free">Free</span></div>
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="start">
+      <div class="command-row__copy"><code>/join</code>
       <p>Join your current voice channel.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/leave</code><span class="command-tag command-tag--free">Free</span></div>
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="start">
+      <div class="command-row__copy"><code>/leave</code>
       <p>Leave the voice channel.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/tts &lt;text&gt;</code><span class="command-tag command-tag--free">Free</span></div>
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="start">
+      <div class="command-row__copy"><code>/tts &lt;text&gt;</code>
       <p>Read a message out loud with your selected voice.</p>
-      <span class="command-row__usage">Voice channel required</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/tts-file &lt;text&gt;</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">Voice channel required</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="start">
+      <div class="command-row__copy"><code>/tts-file &lt;text&gt;</code>
       <p>Create a private audio file from short text without joining a call.</p>
-      <span class="command-row__usage">Max 500 characters</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/skip</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">Max 500 characters</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="start">
+      <div class="command-row__copy"><code>/skip</code>
       <p>Skip the audio currently playing.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/queue</code><span class="command-tag command-tag--free">Free</span></div>
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="start">
+      <div class="command-row__copy"><code>/queue</code>
       <p>View or manage the privacy-safe playback queue.</p>
-      <span class="command-row__usage">show · remove · clear · pause · resume</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/shut-up</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">show · remove · clear · skip · pause · resume</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="start">
+      <div class="command-row__copy"><code>/shut-up</code>
       <p>Stop Vozen speaking now and clear the whole queue.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/laugh</code><span class="command-tag command-tag--free">Free</span></div>
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="start">
+      <div class="command-row__copy"><code>/laugh</code>
       <p>Make Vozen laugh out loud in your current voice.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/sound &lt;clip&gt;</code><span class="command-tag command-tag--free">Free</span></div>
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="start">
+      <div class="command-row__copy"><code>/sound &lt;clip&gt;</code>
       <p>Play a sound clip in the voice channel.</p>
-
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="start">
+      <div class="command-row__copy"><code>/setup</code>
+      <p>Configure the text channel, auto-read and voice permissions in one guided step.</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Admin" aria-label="Admin: Admin">Admin</span>
     </article></div>
       </section><section class="command-group" aria-labelledby="group-fun">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-fun">Fun &amp; games</h3><span class="command-group__count">12</span></div><p>Make the voice channel playful.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/joke &lt;language&gt;</code><span class="command-tag command-tag--free">Free</span></div>
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 6h10c3 0 4 3 5 10 0 3-3 4-5 1l-2-2H9l-2 2c-2 3-5 2-5-1 1-7 2-10 5-10Z"></path><path d="M6 10v4m-2-2h4m8-1h.01m3 2h.01"></path></svg><h3 id="group-fun">Fun &amp; games</h3><span class="command-group__count">10</span></div><p>Make the voice channel playful.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="fun">
+      <div class="command-row__copy"><code>/joke &lt;language&gt;</code>
       <p>Tell a short joke in the language you choose.</p>
-      <span class="command-row__usage">Optional engine · optional laughter</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/rizz &lt;language&gt;</code><span class="command-tag command-tag--premium">Premium</span></div>
+      <span class="command-row__usage">Optional engine · optional laughter</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="fun">
+      <div class="command-row__copy"><code>/rizz &lt;language&gt;</code>
       <p>Drop a pickup line in the language you choose.</p>
-      <span class="command-row__usage">Engine required · optional sound</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/8-ball &lt;question&gt;</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">Engine required · optional sound</span></div>
+      <span class="command-tag command-tag--premium" title="Premium" aria-label="Premium: Premium">Premium</span>
+    </article><article class="command-row" data-category="fun">
+      <div class="command-row__copy"><code>/8-ball &lt;question&gt;</code>
       <p>Ask the magic 8-ball a yes/no question.</p>
-      <span class="command-row__usage">Language · engine</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/fortune</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">Language · engine</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="fun">
+      <div class="command-row__copy"><code>/fortune</code>
       <p>Read a fortune out loud.</p>
-      <span class="command-row__usage">Language · engine</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/fact</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Tell a random fun fact.</p>
-      <span class="command-row__usage">Language · engine</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/wyr</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Ask a would-you-rather question.</p>
-      <span class="command-row__usage">Language · engine</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/cast</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">Language · engine</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="fun">
+      <div class="command-row__copy"><code>/cast</code>
       <p>Randomly cast everyone in your voice call and reveal the result.</p>
-      <span class="command-row__usage">Voice channel required</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/birthday</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">Voice channel required</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="fun">
+      <div class="command-row__copy"><code>/fact</code>
+      <p>Tell a random fun fact.</p>
+      <span class="command-row__usage">Language · engine</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="fun">
+      <div class="command-row__copy"><code>/wyr</code>
+      <p>Ask a would-you-rather question.</p>
+      <span class="command-row__usage">Language · engine</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="fun">
+      <div class="command-row__copy"><code>/birthday</code>
       <p>Set, show or clear your birthday greeting.</p>
-      <span class="command-row__usage">set · show · clear</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/game play</code><span class="command-tag command-tag--premium">Free + Premium</span></div>
+      <span class="command-row__usage">set · clear · show</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="fun">
+      <div class="command-row__copy"><code>/game</code>
       <p>Start a voice or text minigame with the server.</p>
-      <span class="command-row__usage">Menu · language · engine</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/game list</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>See the minigames available to this server.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/game stop</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Stop the active minigame.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/randomizer</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">play · stop · list · leaderboard · stats</span></div>
+      <span class="command-row__tags"><span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span><span class="command-tag command-tag--premium" title="Optional Premium features; base access remains available without Premium." aria-label="Optional Premium features; base access remains available without Premium.">Premium extras</span></span>
+    </article><article class="command-row" data-category="fun">
+      <div class="command-row__copy"><code>/randomizer</code>
       <p>Pick one option at random and say it out loud.</p>
-      <span class="command-row__usage">Options · language</span>
+      <span class="command-row__usage">Options · language</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
     </article></div>
       </section><section class="command-group" aria-labelledby="group-stats">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-stats">Stats &amp; activity</h3><span class="command-group__count">5</span></div><p>See what your server is saying.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/top-speakers</code><span class="command-tag command-tag--free">Free</span></div>
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M7 16v-5m5 5V4m5 12V8"></path></svg><h3 id="group-stats">Stats &amp; activity</h3><span class="command-group__count">5</span></div><p>See what your server is saying.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="stats">
+      <div class="command-row__copy"><code>/top-speakers</code>
       <p>See who Vozen has read the most, with daily streaks.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/server-stats</code><span class="command-tag command-tag--premium">Free + Premium</span></div>
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="stats">
+      <div class="command-row__copy"><code>/server-stats</code>
       <p>View server messages, top talkers and game stats.</p>
-      <span class="command-row__usage">Free preview</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/stats</code><span class="command-tag command-tag--admin">Admin</span></div>
+      <span class="command-row__usage">Free preview</span></div>
+      <span class="command-row__tags"><span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span><span class="command-tag command-tag--premium" title="Optional Premium features; base access remains available without Premium." aria-label="Optional Premium features; base access remains available without Premium.">Premium extras</span></span>
+    </article><article class="command-row" data-category="stats">
+      <div class="command-row__copy"><code>/stats</code>
       <p>Show Vozen bot statistics.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/bot-stats</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Show public servers, voice sessions and uptime.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/uptime</code><span class="command-tag command-tag--free">Free</span></div>
+      </div>
+      <span class="command-tag command-tag--admin" title="Admin" aria-label="Admin: Admin">Admin</span>
+    </article><article class="command-row" data-category="stats">
+      <div class="command-row__copy"><code>/uptime</code>
       <p>See how long Vozen has been online.</p>
-
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="stats">
+      <div class="command-row__copy"><code>/bot-stats</code>
+      <p>Show public servers, voice sessions and uptime.</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
     </article></div>
       </section><section class="command-group" aria-labelledby="group-settings">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-settings">Settings &amp; privacy</h3><span class="command-group__count">10</span></div><p>Shape Vozen around your server.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/voice</code><span class="command-tag command-tag--premium">Free + Premium</span></div>
-      <p>Manage your personal voice, language, engine and effects.</p>
-      <span class="command-row__usage">set · show · reset · preview</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/config</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Manage server-wide Vozen settings.</p>
-      <span class="command-row__usage">show · reset · channels · toggles</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/config language</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Set the language Vozen uses for this server.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/config default-voice</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Choose the server default voice and engine.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/config block-word</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Add or remove words Vozen skips while reading.</p>
-      <span class="command-row__usage">add · remove</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/config greet-language</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Choose the language used for greetings.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/privacy</code><span class="command-tag command-tag--free">Free</span></div>
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18M3 17h18"></path><circle cx="8" cy="7" r="3" fill="#111b2f"></circle><circle cx="16" cy="17" r="3" fill="#111b2f"></circle></svg><h3 id="group-settings">Settings &amp; privacy</h3><span class="command-group__count">6</span></div><p>Shape Vozen around your server.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="settings">
+      <div class="command-row__copy"><code>/privacy</code>
       <p>Manage your personal data and opt-out preferences.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/translate</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">erase</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="settings">
+      <div class="command-row__copy"><code>/translate</code>
       <p>Configure opt-in text translation.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/pronunciation</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">text · language · speak-language · status · enable · disable · clear · map-add · map-remove · map-list · preview · opt-out</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="settings">
+      <div class="command-row__copy"><code>/voice</code>
+      <p>Manage your personal voice, language, engine and effects.</p>
+      <span class="command-row__usage">set · config · list · favorite · unfavorite · favorites · recent · browse · reset · detection · opt-out · opt-in · preview · nickname · effect</span></div>
+      <span class="command-row__tags"><span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span><span class="command-tag command-tag--premium" title="Optional Premium features; base access remains available without Premium." aria-label="Optional Premium features; base access remains available without Premium.">Premium extras</span></span>
+    </article><article class="command-row" data-category="settings">
+      <div class="command-row__copy"><code>/config</code>
+      <p>Manage server-wide Vozen settings.</p>
+      <span class="command-row__usage">tts-channel · auto-read · max-chars · rate-limit · role · priority-role · blocked-role · enabled · x-said · auto-join · read-bots · voice-channel-reading · anti-spam · streaks · soundboard · vote-reminders · greet · greet-language · default-voice · language · show · reset · block-word add · block-word remove</span></div>
+      <span class="command-tag command-tag--admin" title="Admin" aria-label="Admin: Admin">Admin</span>
+    </article><article class="command-row" data-category="settings">
+      <div class="command-row__copy"><code>/pronunciation</code>
       <p>Teach Vozen how to say a word in your messages.</p>
-      <span class="command-row__usage">add · list · remove</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/server-pronunciation</code><span class="command-tag command-tag--premium">Admin + Premium</span></div>
+      <span class="command-row__usage">add · remove · list</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="settings">
+      <div class="command-row__copy"><code>/server-pronunciation</code>
       <p>Manage pronunciations for everyone in the server.</p>
-      <span class="command-row__usage">Admin · 3 free / 50 Premium</span>
+      <span class="command-row__usage">add · remove · list</span></div>
+      <span class="command-row__tags"><span class="command-tag command-tag--admin" title="Admin" aria-label="Admin: Admin">Admin</span><span class="command-tag command-tag--premium" title="Optional Premium features; base access remains available without Premium." aria-label="Optional Premium features; base access remains available without Premium.">Premium extras</span></span>
     </article></div>
       </section><section class="command-group" aria-labelledby="group-premium">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-premium">Premium</h3><span class="command-group__count">3</span></div><p>Extra engines and server-wide upgrades.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/premium</code><span class="command-tag command-tag--free">Free</span></div>
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8 4-5h10l4 5-9 13L3 8Zm0 0h18M7 3l5 18 5-18"></path></svg><h3 id="group-premium">Premium</h3><span class="command-group__count">3</span></div><p>Extra engines and server-wide upgrades.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="premium">
+      <div class="command-row__copy"><code>/premium</code>
       <p>Check Premium status or activate a server licence.</p>
-      <span class="command-row__usage">info · activate · redeem</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/transcribe</code><span class="command-tag command-tag--premium">Premium</span></div>
+      <span class="command-row__usage">info · activate · deactivate</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="premium">
+      <div class="command-row__copy"><code>/transcribe</code>
       <p>Start or stop live voice transcription for consenting speakers.</p>
-      <span class="command-row__usage">start · stop</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/redeem &lt;code&gt;</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">start · stop · revoke</span></div>
+      <span class="command-tag command-tag--premium" title="Premium" aria-label="Premium: Premium">Premium</span>
+    </article><article class="command-row" data-category="premium">
+      <div class="command-row__copy"><code>/redeem &lt;code&gt;</code>
       <p>Redeem a Vozen gift code.</p>
-
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
     </article></div>
       </section><section class="command-group" aria-labelledby="group-help">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-help">Help &amp; community</h3><span class="command-group__count">5</span></div><p>Find support and share Vozen.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/help</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Show Vozen's command list in Discord.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/vote</code><span class="command-tag command-tag--free">Free</span></div>
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9 9a3 3 0 1 1 5 2c-2 1-2 2-2 3m0 3h.01"></path></svg><h3 id="group-help">Help &amp; community</h3><span class="command-group__count">5</span></div><p>Find support and share Vozen.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="help">
+      <div class="command-row__copy"><code>/vote</code>
       <p>Get the link to vote for Vozen on top.gg.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/Speak</code><span class="command-tag command-tag--free">Free</span></div>
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="help">
+      <div class="command-row__copy"><code>/help</code>
+      <p>Show Vozen's command list in Discord.</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="help">
+      <div class="command-row__copy"><code>Speak</code>
       <p>Read a selected message out loud.</p>
-      <span class="command-row__usage">Message context action</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/Translate</code><span class="command-tag command-tag--free">Free</span></div>
+      <span class="command-row__usage">Message context menu</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="help">
+      <div class="command-row__copy"><code>Translate</code>
       <p>Translate a selected message.</p>
-      <span class="command-row__usage">Message context action</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/Transcribe voice message</code><span class="command-tag command-tag--premium">Premium</span></div>
+      <span class="command-row__usage">Message context menu</span></div>
+      <span class="command-tag command-tag--free" title="Free" aria-label="Free: Free">Free</span>
+    </article><article class="command-row" data-category="help">
+      <div class="command-row__copy"><code>Transcribe voice message</code>
       <p>Transcribe a selected voice message.</p>
-      <span class="command-row__usage">Message context action</span>
+      <span class="command-row__usage">Message context menu</span></div>
+      <span class="command-tag command-tag--premium" title="Premium" aria-label="Premium: Premium">Premium</span>
     </article></div>
       </section></section><section id="catalogue-helper" aria-label="Vozen Helper commands"><h2>Vozen Helper commands</h2><section class="command-group" aria-labelledby="group-protection">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-protection">Protection</h3><span class="command-group__count">2</span></div><p>Review safety settings before they act in Discord.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/anti-raid</code><span class="command-tag command-tag--admin">Moderator</span></div>
-      <p>Review or toggle raid-protection settings.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/join-gate</code><span class="command-tag command-tag--admin">Moderator</span></div>
-      <p>Review or toggle entry checks for new members.</p>
-
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 8 3v6c0 5-4 9-8 11-4-2-8-6-8-11V5Z"></path><path d="m8 12 3 3 5-6"></path></svg><h3 id="group-protection">Protection</h3><span class="command-group__count">9</span></div><p>Review safety settings before they act in Discord.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="protection">
+      <div class="command-row__copy"><code>/quarantine</code>
+      <p>Remove a member's roles and quarantine them</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires moderate members or Administrator." aria-label="Admin: Free plan. Requires moderate members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="protection">
+      <div class="command-row__copy"><code>/unquarantine</code>
+      <p>Restore a quarantined member's roles</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires moderate members or Administrator." aria-label="Admin: Free plan. Requires moderate members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="protection">
+      <div class="command-row__copy"><code>/join-gate</code>
+      <p>Configure the bounded new-member join gate</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage roles or Administrator." aria-label="Admin: Free plan. Requires manage roles or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="protection">
+      <div class="command-row__copy"><code>/verify-panel</code>
+      <p>Post the verification panel using the configured join gate</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="protection">
+      <div class="command-row__copy"><code>/lockdown</code>
+      <p>Lock text channels for @everyone</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage channels or Administrator." aria-label="Admin: Free plan. Requires manage channels or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="protection">
+      <div class="command-row__copy"><code>/unlock</code>
+      <p>Remove the Helper lockdown from text channels</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage channels or Administrator." aria-label="Admin: Free plan. Requires manage channels or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="protection">
+      <div class="command-row__copy"><code>/anti-raid</code>
+      <p>Configure the bounded join-burst anti-raid response</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="protection">
+      <div class="command-row__copy"><code>/security-mode</code>
+      <p>Enable or disable shadow mode for high-risk security responses</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="protection">
+      <div class="command-row__copy"><code>/anti-nuke</code>
+      <p>Configure the audit-log destructive-action guard</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
     </article></div>
       </section><section class="command-group" aria-labelledby="group-community">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-community">Community</h3><span class="command-group__count">9</span></div><p>Run healthy community tools and events.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/achievements</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>View or manage community achievements.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/balance</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Check the economy balance configured for this server.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/event-create</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Create a server event with the Helper.</p>
-      <span class="command-row__usage">Manage Events</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/giveaway-start</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Start a giveaway using this server's giveaway settings.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/leaderboard</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Show the server XP leaderboard.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/rank</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Show a member's current XP level and rank card.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/rolepanel</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Publish or open a configured role panel.</p>
-      <span class="command-row__usage">Manage Roles</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/starboard-set</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Configure the channel and threshold for a starboard.</p>
-      <span class="command-row__usage">Manage Messages</span>
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/suggest</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Submit a suggestion for the community to review.</p>
-
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="3"></circle><path d="M2 21v-3a7 7 0 0 1 14 0v3m1-17a3 3 0 0 1 0 6m3 11v-3a7 7 0 0 0-3-6"></path></svg><h3 id="group-community">Community</h3><span class="command-group__count">31</span></div><p>Run healthy community tools and events.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/afk</code>
+      <p>Set or clear your AFK status</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/birthday-set</code>
+      <p>Save your birthday day and month</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/birthday-remove</code>
+      <p>Remove your saved birthday</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/rank</code>
+      <p>Show a member's XP rank</p>
+      </div>
+      <span class="command-row__tags"><span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span><span class="command-tag command-tag--premium" title="Premium unlocks custom rank-card styling; the default rank card is free." aria-label="Premium unlocks custom rank-card styling; the default rank card is free.">Premium extras</span></span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/leaderboard</code>
+      <p>Show the XP leaderboard</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/leaderboard-privacy</code>
+      <p>Choose whether your XP appears on the leaderboard</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/achievements</code>
+      <p>Show your community achievements</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/balance</code>
+      <p>Show your community balance</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/daily</code>
+      <p>Claim your daily community reward</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/work</code>
+      <p>Claim a cooldown-based community work reward</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/economy-top</code>
+      <p>Show the richest community members</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/starboard-set</code>
+      <p>Configure the starboard channel (staff)</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/suggest</code>
+      <p>Submit a community suggestion</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/suggestion</code>
+      <p>Review a community suggestion (staff)</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage messages or Administrator." aria-label="Admin: Free plan. Requires manage messages or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/giveaway-start</code>
+      <p>Start a durable giveaway (staff)</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/gstart</code>
+      <p>Legacy alias for giveaway-start</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/giveaway-end</code>
+      <p>End a giveaway now (staff)</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/gend</code>
+      <p>Legacy alias for giveaway-end</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/giveaway-list</code>
+      <p>List active giveaways</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/glist</code>
+      <p>Legacy alias for giveaway-list</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/greroll</code>
+      <p>Reroll a finished giveaway</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/poll</code>
+      <p>Create a multi-choice poll</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/rolepanel</code>
+      <p>Create a self-role panel</p>
+      </div>
+      <span class="command-row__tags"><span class="command-tag command-tag--admin" title="Free plan. Requires manage roles or Administrator." aria-label="Admin: Free plan. Requires manage roles or Administrator.">Admin</span><span class="command-tag command-tag--premium" title="Free: 3 role panels per server. Premium: 25." aria-label="Free: 3 role panels per server. Premium: 25.">Premium extras</span></span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/event-create</code>
+      <p>Create a native Discord scheduled event</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires create events or Administrator." aria-label="Admin: Free plan. Requires create events or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/event-list</code>
+      <p>List native Discord scheduled events</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/event-edit</code>
+      <p>Edit a native Discord scheduled event</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires create events or Administrator." aria-label="Admin: Free plan. Requires create events or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/event-register</code>
+      <p>Register yourself for a native Discord scheduled event</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/event-unregister</code>
+      <p>Remove yourself from a scheduled event</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/event-checkin</code>
+      <p>Check yourself in to a registered scheduled event</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/event-attendees</code>
+      <p>List registrations for a scheduled event</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires create events or Administrator." aria-label="Admin: Free plan. Requires create events or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="community">
+      <div class="command-row__copy"><code>/event-cancel</code>
+      <p>Cancel a native Discord scheduled event</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires create events or Administrator." aria-label="Admin: Free plan. Requires create events or Administrator.">Admin</span>
     </article></div>
       </section><section class="command-group" aria-labelledby="group-support">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-support">Support</h3><span class="command-group__count">1</span></div><p>Set up private, auditable support conversations.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/ticket-panel</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Publish a configured support ticket panel.</p>
-      <span class="command-row__usage">Manage Channels</span>
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="4"></rect><path d="m7 17-1 5 7-5m-6-9h10m-10 4h6"></path></svg><h3 id="group-support">Support</h3><span class="command-group__count">4</span></div><p>Set up private, auditable support conversations.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="support">
+      <div class="command-row__copy"><code>/ticket-panel</code>
+      <p>Create a support ticket panel</p>
+      </div>
+      <span class="command-row__tags"><span class="command-tag command-tag--admin" title="Free plan. Requires manage channels or Administrator." aria-label="Admin: Free plan. Requires manage channels or Administrator.">Admin</span><span class="command-tag command-tag--premium" title="Free: 1 ticket panel per server. Premium: 10." aria-label="Free: 1 ticket panel per server. Premium: 10.">Premium extras</span></span>
+    </article><article class="command-row" data-category="support">
+      <div class="command-row__copy"><code>/ticket-config</code>
+      <p>Configure ticket routing, transcripts and SLA (staff)</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage channels or Administrator." aria-label="Admin: Free plan. Requires manage channels or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="support">
+      <div class="command-row__copy"><code>/ticket-update</code>
+      <p>Update ticket category, priority or internal note</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage channels or Administrator." aria-label="Admin: Free plan. Requires manage channels or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="support">
+      <div class="command-row__copy"><code>/ticket-rate</code>
+      <p>Rate a closed support ticket</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
     </article></div>
       </section><section class="command-group" aria-labelledby="group-management">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-management">Management</h3><span class="command-group__count">7</span></div><p>Moderate, audit and automate the server.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/modlogs</code><span class="command-tag command-tag--admin">Moderator</span></div>
-      <p>Open moderation logs for this server.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/tag</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Create, view or use a configured Helper tag.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/invites</code><span class="command-tag command-tag--admin">Moderator</span></div>
-      <p>Check invite-tracker information for the server.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/warn</code><span class="command-tag command-tag--admin">Moderator</span></div>
-      <p>Record a warning with a reason.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/poll</code><span class="command-tag command-tag--admin">Moderator</span></div>
-      <p>Create a poll with the Helper.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/privacy</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Access privacy controls and data requests.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/workflow-create</code><span class="command-tag command-tag--admin">Admin</span></div>
-      <p>Create a bounded automation workflow.</p>
-
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h18M3 17h18"></path><circle cx="8" cy="7" r="3" fill="#111b2f"></circle><circle cx="16" cy="17" r="3" fill="#111b2f"></circle></svg><h3 id="group-management">Management</h3><span class="command-group__count">25</span></div><p>Moderate, audit and automate the server.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/cases</code>
+      <p>List recent moderation cases</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires moderate members or Administrator." aria-label="Admin: Free plan. Requires moderate members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/modlogs</code>
+      <p>Show a member's moderation history</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires moderate members or Administrator." aria-label="Admin: Free plan. Requires moderate members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/warn</code>
+      <p>Create a moderation warning</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires moderate members or Administrator." aria-label="Admin: Free plan. Requires moderate members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/violation</code>
+      <p>Record a policy violation</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires moderate members or Administrator." aria-label="Admin: Free plan. Requires moderate members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/note</code>
+      <p>Add a moderation note</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires moderate members or Administrator." aria-label="Admin: Free plan. Requires moderate members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/reason</code>
+      <p>Update a case reason</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires moderate members or Administrator." aria-label="Admin: Free plan. Requires moderate members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/kick</code>
+      <p>Kick a member</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires kick members or Administrator." aria-label="Admin: Free plan. Requires kick members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/ban</code>
+      <p>Ban a member</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires ban members or Administrator." aria-label="Admin: Free plan. Requires ban members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/timeout</code>
+      <p>Timeout a member</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires moderate members or Administrator." aria-label="Admin: Free plan. Requires moderate members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/tempban</code>
+      <p>Temporarily ban a member; automatically unban after the duration</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires ban members or Administrator." aria-label="Admin: Free plan. Requires ban members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/softban</code>
+      <p>Ban and immediately unban a member to clear recent messages</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires ban members or Administrator." aria-label="Admin: Free plan. Requires ban members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/untimeout</code>
+      <p>Remove a member timeout</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires moderate members or Administrator." aria-label="Admin: Free plan. Requires moderate members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/unban</code>
+      <p>Unban a user</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires ban members or Administrator." aria-label="Admin: Free plan. Requires ban members or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/purge</code>
+      <p>Delete recent messages</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage messages or Administrator." aria-label="Admin: Free plan. Requires manage messages or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/tag</code>
+      <p>Show a saved tag</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/tags</code>
+      <p>List saved tags</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/tag-set</code>
+      <p>Create or update a tag</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/tag-delete</code>
+      <p>Delete a tag</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/invites</code>
+      <p>Show current server invite usage</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/workflow-create</code>
+      <p>Create a bounded message automation (staff)</p>
+      </div>
+      <span class="command-row__tags"><span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span><span class="command-tag command-tag--premium" title="Free: 3 workflows per server. Premium: 25. Server-configured limits may be lower." aria-label="Free: 3 workflows per server. Premium: 25. Server-configured limits may be lower.">Premium extras</span></span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/workflow-list</code>
+      <p>List message automations</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/workflow-dry-run</code>
+      <p>Preview a workflow without executing it (staff)</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/workflow-toggle</code>
+      <p>Enable or disable a workflow immediately (staff)</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/workflow-delete</code>
+      <p>Delete a message automation (staff)</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="management">
+      <div class="command-row__copy"><code>/slowmode</code>
+      <p>Set channel slowmode</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage channels or Administrator." aria-label="Admin: Free plan. Requires manage channels or Administrator.">Admin</span>
     </article></div>
       </section><section class="command-group" aria-labelledby="group-utilities">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-utilities">Utilities</h3><span class="command-group__count">6</span></div><p>Use small tools that keep work moving.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/embed</code><span class="command-tag command-tag--admin">Moderator</span></div>
-      <p>Create a bounded Discord embed.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/emojis</code><span class="command-tag command-tag--admin">Moderator</span></div>
-      <p>List or manage available server emojis.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/help</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Show contextual Helper help in Discord.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/remind</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Set a reminder through the Helper scheduler.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/search</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Run an approved, bounded search query.</p>
-
-    </article><article class="command-row">
-      <div class="command-row__top"><code>/temp-channel</code><span class="command-tag command-tag--admin">Moderator</span></div>
-      <p>Create or manage a temporary voice channel.</p>
-      <span class="command-row__usage">Manage Channels</span>
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"></rect><path d="m7 9 3 3-3 3m6 0h4"></path></svg><h3 id="group-utilities">Utilities</h3><span class="command-group__count">18</span></div><p>Use small tools that keep work moving.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/ping</code>
+      <p>Check Helper latency</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/language</code>
+      <p>View or set the Helper language</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/help</code>
+      <p>Show Helper modules</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/setup</code>
+      <p>Run the guided Helper setup for this server</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage server or Administrator." aria-label="Admin: Free plan. Requires manage server or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/modules</code>
+      <p>Show enabled Helper modules</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/status</code>
+      <p>Show Helper setup and health status</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/dashboard</code>
+      <p>Open the Helper dashboard</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/plan</code>
+      <p>Show the active Vozen plan</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/privacy</code>
+      <p>Request your Helper data or erase voluntary data</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/permissions</code>
+      <p>Show the Helper Permission Passport</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/remind</code>
+      <p>Create a durable reminder</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/crypto</code>
+      <p>Show read-only CoinGecko prices</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/gas</code>
+      <p>Show a read-only gas price from an approved RPC</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/search</code>
+      <p>Search an approved knowledge provider</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/emojis</code>
+      <p>List this server's custom emojis</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/temp-channel</code>
+      <p>Create a temporary voice channel for yourself</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage channels or Administrator." aria-label="Admin: Free plan. Requires manage channels or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/embed</code>
+      <p>Publish a safe embed in this channel (staff)</p>
+      </div>
+      <span class="command-tag command-tag--admin" title="Free plan. Requires manage messages or Administrator." aria-label="Admin: Free plan. Requires manage messages or Administrator.">Admin</span>
+    </article><article class="command-row" data-category="utilities">
+      <div class="command-row__copy"><code>/userinfo</code>
+      <p>Show basic user information</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
     </article></div>
       </section><section class="command-group" aria-labelledby="group-insights">
-        <div class="command-group__head"><div><div class="command-group__title"><h3 id="group-insights">Insights</h3><span class="command-group__count">1</span></div><p>See an at-a-glance server activity summary.</p></div></div>
-        <div class="command-list"><article class="command-row">
-      <div class="command-row__top"><code>/serverstats</code><span class="command-tag command-tag--free">Free</span></div>
-      <p>Show the server statistics summary.</p>
-
+        <div class="command-group__head"><div><div class="command-group__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16M7 16v-5m5 5V4m5 12V8"></path></svg><h3 id="group-insights">Insights</h3><span class="command-group__count">1</span></div><p>See an at-a-glance server activity summary.</p></div></div>
+        <div class="command-list"><article class="command-row" data-category="insights">
+      <div class="command-row__copy"><code>/serverstats</code>
+      <p>Show basic server statistics</p>
+      </div>
+      <span class="command-tag command-tag--free" title="Free plan. No command-specific staff permission required." aria-label="Free: Free plan. No command-specific staff permission required.">Free</span>
     </article></div>
       </section></section></div>
             <aside class="commands-aside">
@@ -488,12 +833,13 @@
     <script defer="" src="../js/web-analytics-v1.js?v=e934b4dd1f34"></script>
     <script defer="" src="../js/install-config-v1.js?v=97c30a4aaef1"></script>
     <script defer="" src="../js/tts-install-v1.js?v=06da33493db0"></script>
-    <script defer="" src="../js/global-nav-v1.js?v=b13acaf2e0f2"></script>
+    <script defer="" src="../js/global-nav-v1.js?v=e2404ec866f5"></script>
     <script defer="" src="../js/i18n-public-loader-v1.js?v=d29fcfb97378"></script>
     <script defer="" src="../js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer="" src="../js/main-v51.js?oauth=ecosystem-v3&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=1&amp;v=ed5b5ebc3559"></script>
+    <script defer="" src="../js/main-v51.js?oauth=ecosystem-v3&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=1&amp;v=0e4cebc4d829"></script>
     <script defer="" src="../js/motion-v1.js?v=e61ca8f4a378"></script>
-    <script defer="" src="../js/commands-v1.js?v=e772bdfbc52e"></script>
+    <script defer="" src="../js/commands-v1.js?v=0af5b2b9c459"></script>
+
 
 
 <noscript data-prerender-fallback=""><style>
