@@ -1,7 +1,8 @@
+import {achievementText} from './achievements-i18n';
+import {AchievementSettings} from './achievement-settings';
 import { overviewText } from './overview-i18n';
 import './overview.css';
 import { ActivityFeed } from './activity-feed';
-import { achievementText } from './achievements-i18n';
 import { EcosystemTopbar, EcosystemAccountAvatar, useEcosystemAccount, discordAvatarUrl } from './ecosystem-topbar';
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { canonicalWelcomeKey, visibleWelcomeFeatures } from './welcome';
@@ -3066,7 +3067,7 @@ function App() {
     );
   const title =
     route.page === 'detail'
-      ? (currentFeature?.label ?? 'Configuration')
+      ? (currentFeature?.key === 'community.achievements' ? achievementText(helperLocale(),'Achievements','Conquistas') : currentFeature?.label ?? 'Configuration')
       : helperPageLabel(
           route.page,
           pages.find((item) => item.id === route.page)?.label ?? 'Dashboard',
@@ -3165,7 +3166,7 @@ function App() {
             <div>
               <small className="eyebrow">{currentGuild?.name ?? helperT('helper.serverWorkspace', 'WORKSPACE')} · HELPER</small>
               <h1 id="route-heading" data-route-heading tabIndex={-1}>{title}</h1>
-              {route.page !== 'activity' && <p className="subtitle">{subtitle}</p>}
+              {route.page !== 'activity' && currentFeature?.key !== 'community.achievements' && <p className="subtitle">{subtitle}</p>}
             </div>
             {route.page !== 'activity' && <div className="header-state" role="status" aria-live="polite">
               <span className="status-dot" />{' '}
@@ -4399,8 +4400,8 @@ function FeatureDetail({
       <button type="button" className="back-link" onClick={onBack}>
         {helperT('helper.backFeatures', '← Back to features')}
       </button>
-      <div className="detail-intro card">
-        <div>
+      <div className={`detail-intro card${feature?.key === 'community.achievements' ? ' achievement-settings__controls' : ''}`}>
+        {feature?.key !== 'community.achievements' && <div>
           <small className="eyebrow">
             {helperT('helper.configuration', 'CONFIGURATION')} ·{' '}
             {feature?.category === 'protection'
@@ -4411,11 +4412,11 @@ function FeatureDetail({
           </small>
           <h2>{translatedFeature?.label ?? helperT('helper.feature', 'Feature')}</h2>
           <p>{translatedFeature?.description ?? helperT('helper.adjustFeature', 'Adjust this feature for your server.')}</p>
-        </div>
+        </div>}
         <label className="switch-row">
           <span>
             <b>{enabled ? helperT('helper.activeStatus', 'Active') : helperT('helper.disabled', 'Disabled')}</b>
-            <small>{helperT('helper.configurationApplies', 'The Helper applies this configuration on the server.')}</small>
+            {feature?.key !== 'community.achievements' && <small>{helperT('helper.configurationApplies', 'The Helper applies this configuration on the server.')}</small>}
           </span>
           <input
             type="checkbox"
@@ -4429,7 +4430,7 @@ function FeatureDetail({
           </a>
         )}
       </div>
-      <div className="detail-layout">
+      <div className={`detail-layout${feature?.key === 'community.achievements' ? ' detail-layout--achievements' : ''}`}>
         <div className="detail-sections">
           {feature?.key === 'community.levels' && (
             <LevelsSettings key={premiumGuildId} config={config} keys={sections.flatMap(section => section.fields.map(field => field.key))}
@@ -4461,7 +4462,7 @@ function FeatureDetail({
             <RolePanelManager context={context} localPreviewMode={localPreviewMode} />
           )}
           {feature?.key === 'social.tiktok' && !localPreviewMode && <TikTokConnection />}
-          {(feature?.key === 'community.levels' ? [] : sections).map((section) => (
+          {(['community.levels','community.achievements'].includes(feature?.key || '') ? [] : sections).map((section) => (
             <ConfigSection
               key={section.title}
               section={feature?.key === 'management.polls' ? {...section,fields:section.fields.map(field => field.key === 'channel' ? {
@@ -4495,16 +4496,10 @@ function FeatureDetail({
           {feature?.key === 'community.leaderboard' && (
             <LeaderboardPreview enabled={enabled} localPreviewMode={localPreviewMode} revision={revision} />
           )}
-          {feature?.key === 'community.achievements' && (
-            <section className="card">
-              <h3>{achievementText(helperLocale(), 'Achievements', 'Conquistas')}</h3>
-              <p>{achievementText(helperLocale(), 'Messages, voice, reactions, threads, boosts and XP.', 'Mensagens, voz, reações, tópicos, impulsos e XP.')}</p>
-              <p>{achievementText(helperLocale(), 'Use /achievements for your card and private progress.', 'Usa /achievements para veres o cartão e o teu progresso privado.')}</p>
-              {!localPreviewMode && enabled && premiumGuildId && <a className="secondary" href={`#/achievements/${premiumGuildId}?lang=${helperLocale()}`}>{achievementText(helperLocale(), 'All achievements', 'Todas as conquistas')}</a>}
-            </section>
-          )}
+          {feature?.key === 'community.achievements' && <AchievementSettings guildId={!localPreviewMode && enabled ? premiumGuildId : undefined} onTest={onTest} />}
+
         </div>
-        <aside className="detail-aside card">
+        {feature?.key !== 'community.achievements' && <aside className="detail-aside card">
           <div>
             <small className="eyebrow">{helperLocale() === 'pt' ? 'GRAVAÇÃO AUTOMÁTICA' : 'AUTOMATIC SAVING'}</small>
             <h3>{helperT('helper.reviewSafely', 'Review safely')}</h3>
@@ -4538,7 +4533,7 @@ function FeatureDetail({
               {helperT('helper.rollback', 'Rollback instructions')}
             </a>
           </div>
-        </aside>
+        </aside>}
       </div>
     </section>
   );

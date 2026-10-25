@@ -2,14 +2,15 @@ import { describe, expect, it } from 'vitest';
 import { featureDemo } from './feature-demo';
 
 describe('feature-specific demonstrations', () => {
-  it('explains achievement milestones, optional rewards and recorded history without real actions', () => {
+  it('explains activity medals and existing XP without obsolete milestone controls', () => {
     const demo = featureDemo('community.achievements', 'en');
     expect(demo?.asset).toBe('achievements-en');
     expect(demo?.example).toMatch(/sample data/i);
     expect(demo?.example).toMatch(/no XP.*roles/i);
     expect(demo?.steps).toHaveLength(3);
-    expect(demo?.steps.join(' ')).toMatch(/Levels & XP/);
-    expect(demo?.steps.join(' ')).toMatch(/optional.*role/i);
+    expect(demo?.steps.join(' ')).toMatch(/messages, voice, reactions, threads, boosts and XP/);
+    expect(demo?.steps.join(' ')).toMatch(/do not award extra XP/);
+    expect(demo?.steps.join(' ')).not.toMatch(/set the three|optional.*role/i);
     expect(demo?.steps.join(' ')).toMatch(/\/achievements/);
     expect(featureDemo('community.achievements', 'pt')?.asset).toBe('achievements-pt');
     expect(featureDemo('community.achievements', 'fr')?.asset).toBe('achievements-en');

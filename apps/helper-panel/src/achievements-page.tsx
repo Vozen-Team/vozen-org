@@ -1,3 +1,5 @@
+import {achievementCatalog} from './achievement-catalog';
+import {AchievementMedal as Medal} from './achievement-medal';
 import { useEffect, useState } from 'react';
 import './achievements-page.css';
 import { EcosystemTopbar } from './ecosystem-topbar';
@@ -6,29 +8,12 @@ import { achievementText } from './achievements-i18n';
 
 export type Achievement = { id: string; name: string; description: string; value: number; thresholds: number[]; unlocked: boolean[] };
 type Collection = { guildId: string; guildName: string | null; profile: { name: string; avatar: string } | null; achievements: Achievement[]; trackedMembers: number; tierCounts: Record<string, number[]> };
-const badgePaths: Record<string, string> = {
-  messages: 'M-15-12H15V7H-4L-13 15V7H-15Z',
-  voice: 'M-16 5V-5A16 16 0 0 1 16-5V5M-16 0H-9V13H-16ZM9 0H16V13H9Z',
-  reactions: 'M-15 0A15 15 0 1 0 15 0A15 15 0 1 0-15 0M-7-4H-5M5-4H7M-7 5Q0 13 7 5',
-  threads_created: 'M-7-16L-11 16M8-16L4 16M-17-6H17M-17 7H17',
-  threads_joined: 'M-15-10H15V13H-15ZM-6-15V-5M6-15V-5M-7 4L-1 10L10-1',
-  boost: 'M2-19L-12 3H0L-3 20L14-4H3Z', xp: 'M-15-12L-5 0L-15 12M15-12L5 0L15 12',
-};
-const ptNames: Record<string, [string, string]> = {
-  messages: ['À conversa', 'Envia mensagens no servidor'], voice: ['Fica mais um pouco', 'Passa tempo nos canais de voz'],
-  reactions: ['Mestre das reações', 'Adiciona reações a mensagens'], threads_created: ['Criador de tópicos', 'Cria tópicos no servidor'],
-  threads_joined: ['Explorador de tópicos', 'Participa em tópicos diferentes'], boost: ['Apoiante do servidor', 'Impulsiona o servidor'],
-  xp: ['Marcos de XP', 'Ganha XP no servidor'],
-};
 export function achievementRoute(hash: string) {
   const match = /^#\/achievements\/(\d{15,22})(?:\/([a-f0-9]{64}))?(?:\?(.*))?$/.exec(hash);
   return match ? { guild: match[1], token: match[2], locale: new URLSearchParams(match[3]).get('lang') } : null;
 }
 export function achievementScore(rows: Achievement[]) {
   return rows.reduce((score, row) => score + row.unlocked.filter(Boolean).length / Math.max(1, row.thresholds.length), 0);
-}
-function Medal({ id, tier, earned }: { id: string; tier: number; earned: boolean }) {
-  return <span className={`achievement-medal tier-${tier} ${earned ? 'earned' : 'locked'}`} aria-hidden="true"><span><svg viewBox="-24 -24 48 48" width="80%" height="80%"><path d={badgePaths[id]} fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg></span></span>;
 }
 
 export function AchievementsPage({ hash }: { hash: string }) {
@@ -79,14 +64,8 @@ export function AchievementsPage({ hash }: { hash: string }) {
       document.documentElement.dir = previous.dir;
     };
   }, []);
-  const names: Record<string, [string, string]> = {
-    messages: ['Conversation starter', 'Send messages in the server'], voice: ['Stay awhile', 'Spend time in voice channels'],
-    reactions: ['Reaction master', 'Add reactions to messages'], threads_created: ['Thread creator', 'Create threads in the server'],
-    threads_joined: ['Thread explorer', 'Participate in different threads'], boost: ['Server supporter', 'Boost the server'],
-    xp: ['XP milestones', 'Earn XP in the server'],
-  };
-  const title = (row: Achievement) => t(names[row.id]?.[0] || row.name, ptNames[row.id]?.[0] || row.name);
-  const description = (row: Achievement) => t(names[row.id]?.[1] || row.description, ptNames[row.id]?.[1] || row.description);
+  const title = (row: Achievement) => {const copy=achievementCatalog[row.id]?.name;return copy?t(copy[0],copy[1]):row.name;};
+  const description = (row: Achievement) => {const copy=achievementCatalog[row.id]?.description;return copy?t(copy[0],copy[1]):row.description;};
   const score = achievementScore(data?.achievements || []);
   const rarity = (row: Achievement) => data?.tierCounts[row.id]?.[0] || 0;
   const all = data?.achievements || [];

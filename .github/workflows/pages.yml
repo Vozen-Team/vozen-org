@@ -95,6 +95,7 @@ jobs:
           node tools/helper-leaderboard-demo-regression.mjs
           node tools/helper-achievements-demo-regression.mjs
           node tools/helper-achievements-page-regression.mjs
+          node tools/helper-achievements-settings-regression.mjs
           node tools/helper-birthday-channel-regression.mjs
           node tools/helper-welcome-settings-regression.mjs
           node tools/helper-ticket-channel-regression.mjs
