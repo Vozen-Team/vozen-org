@@ -89,6 +89,7 @@
     ["/search","Search an approved knowledge provider","utilities","Free","","",""],
     ["/emojis","List this server's custom emojis","utilities","Free","","",""],
     ["/invites","Show current server invite usage","management","Admin","","MANAGE_GUILD",""],
+    ["/shop","Browse and buy community rewards","community","Free","","",""],
     ["/balance","Show your community balance","community","Free","","",""],
     ["/daily","Claim your daily community reward","community","Free","","",""],
     ["/work","Claim a cooldown-based community work reward","community","Free","","",""],

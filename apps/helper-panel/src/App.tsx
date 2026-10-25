@@ -1,4 +1,5 @@
 import {achievementText} from './achievements-i18n';
+import {EconomyShop} from './economy-shop';
 import {AchievementSettings} from './achievement-settings';
 import { overviewText } from './overview-i18n';
 import './overview.css';
@@ -4493,6 +4494,7 @@ function FeatureDetail({
                   }} /> : undefined}
             />
           ))}
+          {feature?.key === 'community.economy' && <EconomyShop key={context?.guildId} context={context} localPreviewMode={localPreviewMode} />}
           {feature?.key === 'community.leaderboard' && (
             <LeaderboardPreview enabled={enabled} localPreviewMode={localPreviewMode} revision={revision} />
           )}

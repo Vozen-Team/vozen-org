@@ -19,9 +19,14 @@ const leaderboard = demoFeature === 'leaderboard';
 const defaultFeatureKey = `${polls ? 'management' : tickets || welcome ? 'support' : 'community'}.${demoFeature}`;
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard || achievements || economy ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : []), ...(leaderboard ? ['ranking-error', 'ranking-data', 'ranking-many', 'ranking-many-pt', 'ranking-many-mobile', 'ranking-ten', 'emoji-copy', 'emoji-copy-pt'] : [])]) {
+  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard || achievements || economy ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : []), ...(economy ? ['shop-en','shop-pt','shop-fr','shop-es','shop-de','shop-tr','shop-ar','shop-zh','shop-ru','shop-ko','shop-mobile','shop-failure'] : []), ...(leaderboard ? ['ranking-error', 'ranking-data', 'ranking-many', 'ranking-many-pt', 'ranking-many-mobile', 'ranking-ten', 'emoji-copy', 'emoji-copy-pt'] : [])]) {
     if (process.env.SUGGESTIONS_DEMO_SCENARIO && process.env.SUGGESTIONS_DEMO_SCENARIO !== scenario) continue;
     const page = await browser.newPage(scenario === 'dismiss-touch' ? { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true } : {});
+    const shopScenario=scenario.startsWith('shop-');
+    let shopProducts=[];
+    let shopOrders=[{id:1,userId:'member',displayName:'Readable member',productName:'T-shirt',price:80,delivery:'manual',roleId:null,status:'pending',createdAt:1700000000000}];
+    const shopLocale=scenario.split('-')[1];
+    const shopWrites=[];
     const dismissScenario = scenario.startsWith('dismiss-');
     const pt = scenario === 'pt' || scenario.endsWith('-pt');
     const emojiCopy = scenario.startsWith('emoji-copy');
@@ -39,8 +44,9 @@ try {
       : { channel: 'sample-suggestions', voteMode: 'up_down', anonymous: false, cooldownHours: 24, requiredRole: '', staffChannel: '' };
     const feature = { key: featureKey, label: economy ? 'Economy' : achievements ? 'Achievements' : leaderboard ? 'XP leaderboard' : levels ? 'Levels & XP' : birthdays ? 'Birthdays' : events ? 'Server events' : polls ? 'Polls' : welcome ? 'Welcome' : tickets ? 'Tickets' : giveaway ? 'Giveaways' : 'Suggestions', category: polls ? 'management' : tickets || welcome ? 'support' : 'community', enabled: scenario !== 'disabled-feature', available: true };
     const localizedLabel = economy ? (pt ? 'Economia' : 'Economy') : achievements ? (pt ? 'Conquistas' : 'Achievements') : leaderboard ? (pt ? 'Classificação de XP' : 'XP leaderboard') : levels ? (pt ? 'Níveis e XP' : 'Levels & XP') : birthdays ? (pt ? 'Aniversários' : 'Birthdays') : events ? (pt ? 'Eventos do servidor' : 'Server events') : polls ? (pt ? 'Sondagens' : 'Polls') : welcome ? (pt ? 'Boas-vindas' : 'Welcome') : tickets ? 'Tickets' : pt ? (giveaway ? 'Sorteios' : 'Sugestões') : feature.label;
+    if(shopScenario&&['en','pt','fr','es','de','tr','ar','zh','ru','ko'].includes(shopLocale)) await page.addInitScript(locale=>localStorage.setItem('vozen.lang',locale),shopLocale);
     if (pt) await page.addInitScript(() => localStorage.setItem('vozen.lang', 'pt'));
-    if (scenario === 'mobile' || scenario === 'dismiss-mobile' || scenario === 'ranking-many-mobile') await page.setViewportSize({ width: 390, height: 844 });
+    if (scenario === 'mobile' || scenario === 'shop-mobile' || scenario === 'dismiss-mobile' || scenario === 'ranking-many-mobile') await page.setViewportSize({ width: 390, height: 844 });
     await page.emulateMedia({ reducedMotion: scenario === 'reduced-motion' ? 'reduce' : 'no-preference' });
     if (scenario === 'timeout') await page.addInitScript(() => {
       const original = window.setTimeout;
@@ -49,6 +55,18 @@ try {
     if (scenario === 'media-failure') await page.route(`**/feature-demos/${demoFeature}-*.gif`, route => route.fulfill({ status: 404, body: '' }));
     await page.route('**/api/**', async route => {
       const path = new URL(route.request().url()).pathname.replace(/^.*?(?=\/api\/)/, '');
+      if(economy&&path.startsWith('/api/economy/')) {
+        const method=route.request().method();
+        if(method==='GET') {await route.fulfill({json:{guildId:'sample',products:shopProducts,orders:shopOrders,nextCursor:null}});return;}
+        const body=route.request().postDataJSON();
+        shopWrites.push({path,method,body});
+        if(scenario==='shop-failure') {await route.fulfill({status:409,json:{code:'shop_changed'}});return;}
+        if(path==='/api/economy/products'&&method==='POST') shopProducts.push({...body,id:shopProducts.length+1,version:1});
+        else if(path.startsWith('/api/economy/products/')&&method==='PUT') shopProducts=shopProducts.map(p=>p.id===Number(path.split('/').at(-1))?{...body.product,id:p.id,version:p.version+1}:p);
+        else if(method==='DELETE') shopProducts=shopProducts.filter(p=>p.id!==Number(path.split('/').at(-1)));
+        else if(path.startsWith('/api/economy/orders/')) shopOrders=shopOrders.map(o=>({...o,status:body.status}));
+        await route.fulfill({json:{ok:true}});return;
+      }
       let value;
       if (path.endsWith('/simulate')) {
         simulations++;
@@ -77,7 +95,7 @@ try {
             : giveaway ? [{ title: 'Giveaway defaults', fields: [{ key: 'defaultDurationHours', label: 'Default duration (hours)', kind: 'number' }, { key: 'defaultWinners', label: 'Default winners', kind: 'number' }, { key: 'requiredRole', label: 'Required role (optional)', kind: 'role' }] }]
             : [{ title: 'Suggestion intake', fields: [{ key: 'channel', label: 'Suggestion channel', kind: 'channel' }, { key: 'voteMode', label: 'Voting mode', kind: 'select', options: [['up_down', 'Support / against'], ['up_only', 'Support only']] }, { key: 'anonymous', label: 'Hide author in the public message', kind: 'toggle' }] }, { title: 'Moderation', fields: [{ key: 'cooldownHours', label: 'Cooldown per member (hours)', kind: 'number' }, { key: 'requiredRole', label: 'Required role (optional)', kind: 'role' }, { key: 'staffChannel', label: 'Staff notification channel (optional)', kind: 'channel' }] }] },
         };
-        else if (path === '/api/guild-context') value = { guildId: 'sample', name: 'Sample server', permissions: '8', channels: [{ id: 'sample-events', name: 'events', type: 'text' }, { id: 'sample-polls', name: 'polls', type: 'text' }, { id: 'sample-suggestions', name: 'suggestions', type: 'text' }, { id: 'sample-support', name: 'support', type: 'text' }, { id: 'sample-welcome', name: 'welcome', type: 'text' }], roles: [], hierarchy: { known: true }, capabilities: { channelSelectors: true, roleSelectors: true, permissionPreflight: true } };
+        else if (path === '/api/guild-context') value = { guildId: 'sample', name: 'Sample server', permissions: '8', channels: [{ id: 'sample-events', name: 'events', type: 'text' }, { id: 'sample-polls', name: 'polls', type: 'text' }, { id: 'sample-suggestions', name: 'suggestions', type: 'text' }, { id: 'sample-support', name: 'support', type: 'text' }, { id: 'sample-welcome', name: 'welcome', type: 'text' }], roles: economy?[{id:'123',name:'VIP',position:1,manageable:true},{id:'456',name:'Managed',position:2,manageable:false,managed:true}]:[], hierarchy: { known: true }, capabilities: { channelSelectors: true, roleSelectors: true, permissionPreflight: true } };
         else if (path === '/api/stats') value = { guildId: 'sample', totalCases: 0 };
         else if (path === '/api/cases') value = { cases: [] };
         else if (path === '/api/audit') value = { events: [] };
@@ -94,6 +112,49 @@ try {
       await route.fulfill({ json: value });
     });
     await page.goto(`${base}#/config/${featureKey}`);
+    if(shopScenario) {
+      const panel=page.locator('.economy-shop');
+      await panel.locator('form input').first().waitFor();
+      await page.waitForFunction(()=>!document.querySelector('.economy-shop fieldset').disabled);
+      assert.equal(shopWrites.length,0,'viewing the shop does not write');
+      await panel.locator('form input').first().fill('T-shirt <b>safe</b>');
+      await panel.locator('form input[type=number]').fill('80');
+      await panel.locator('button[type=submit]').click();
+      if(scenario==='shop-failure') {
+        await panel.getByRole('alert').waitFor();
+        assert.equal(shopProducts.length,0);assert.equal(await panel.locator('form input').first().inputValue(),'T-shirt <b>safe</b>');
+      } else {
+        await panel.locator('.economy-shop__row strong').filter({hasText:'T-shirt <b>safe</b>'}).waitFor();
+        assert.equal(await panel.locator('.economy-shop__row strong b').count(),0);
+        await panel.locator('form input').first().fill('VIP');
+        await panel.locator('form select').first().selectOption('role');
+        await panel.locator('form select').nth(1).selectOption('123');
+        assert.equal(await panel.locator('option[value="456"]').count(),0);
+        await panel.locator('button[type=submit]').click();
+        await page.waitForFunction(()=>document.querySelectorAll('.economy-shop__row').length===2);
+        assert.equal(shopProducts[1].roleId,'123');assert.equal(shopProducts[1].delivery,'role');
+        await panel.locator('.economy-shop__row').nth(1).getByRole('button').first().click();
+        await panel.locator('form input[type=number]').fill('120');
+        await panel.locator('button[type=submit]').click();
+        await page.waitForFunction(()=>document.querySelector('.economy-shop form input').value==='');
+        assert.equal(shopProducts[1].price,120);assert.equal(shopProducts[1].version,2);
+        if(['shop-en','shop-pt','shop-mobile'].includes(scenario)){await mkdir('output/playwright',{recursive:true});await panel.screenshot({path:`output/playwright/${scenario}-products.png`});}
+        page.on('dialog',dialog=>dialog.accept());
+        await panel.locator('.economy-shop__row').first().getByRole('button').last().click();
+        await page.waitForFunction(()=>document.querySelectorAll('.economy-shop__row').length===1);
+        await panel.locator('.economy-shop__tabs button').nth(1).click();
+        await panel.getByText('Readable member',{exact:false}).waitFor();
+        await panel.locator('.economy-shop__row').getByRole('button').last().click();
+        await page.waitForFunction(()=>document.querySelectorAll('.economy-shop__row button').length===0);
+        assert.equal(shopOrders[0].status,'refunded');
+        assert.equal(shopWrites.filter(w=>w.path.includes('orders')).length,1);
+        await mkdir('output/playwright',{recursive:true});
+        await panel.screenshot({path:`output/playwright/${scenario}.png`});
+      }
+      assert.equal(await panel.evaluate(el=>el.scrollWidth<=el.clientWidth),true);
+      assert.equal(writes,0,'shop edits must not overwrite reward configuration');
+      console.log(`PASS ${scenario}`);await page.close();continue;
+    }
     if (emojiCopy) {
       const control = page.getByRole('spinbutton', {name: pt ? /Emojis apresentados no/ : /Emojis listed by/});
       await control.waitFor();

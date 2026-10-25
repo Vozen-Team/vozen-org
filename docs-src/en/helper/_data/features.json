@@ -215,6 +215,22 @@
         {
           "name": "/balance",
           "source": "runtime-command-registry"
+        },
+        {
+          "name": "/daily",
+          "source": "runtime-command-registry"
+        },
+        {
+          "name": "/work",
+          "source": "runtime-command-registry"
+        },
+        {
+          "name": "/economy-top",
+          "source": "runtime-command-registry"
+        },
+        {
+          "name": "/shop",
+          "source": "runtime-command-registry"
         }
       ],
       "configurable": true,
@@ -4367,6 +4383,22 @@
       "commands": [
         {
           "name": "/balance",
+          "source": "runtime-command-registry"
+        },
+        {
+          "name": "/daily",
+          "source": "runtime-command-registry"
+        },
+        {
+          "name": "/work",
+          "source": "runtime-command-registry"
+        },
+        {
+          "name": "/economy-top",
+          "source": "runtime-command-registry"
+        },
+        {
+          "name": "/shop",
           "source": "runtime-command-registry"
         }
       ],
@@ -9125,6 +9157,22 @@
           "commands": [
             {
               "name": "/balance",
+              "source": "runtime-command-registry"
+            },
+            {
+              "name": "/daily",
+              "source": "runtime-command-registry"
+            },
+            {
+              "name": "/work",
+              "source": "runtime-command-registry"
+            },
+            {
+              "name": "/economy-top",
+              "source": "runtime-command-registry"
+            },
+            {
+              "name": "/shop",
               "source": "runtime-command-registry"
             }
           ],
