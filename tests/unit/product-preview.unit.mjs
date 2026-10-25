@@ -63,6 +63,6 @@ test('authored headline copy is not repainted after initialization', async () =>
   assert.match(html, /data-preview-i18n="hero.title2"/);
   assert.doesNotMatch(html, /data-i18n="hero.title[12]"/);
   const css = readFileSync(new URL('../../site/css/product-preview-v1.css', import.meta.url), 'utf8');
-  assert.match(css, /:is\(\.hero__title,#helper-title\)\s*\{\s*font-family: 'Vozen Critical Display'/);
-  assert.doesNotMatch(css, /Vozen Product Display/);
+  assert.match(css, /body\.tts-page\s*\{ --product-display: 'Vozen Critical Display'; \}/);
+  assert.match(css, /font-family: var\(--product-display, 'Vozen Product Display'\)/);
 });

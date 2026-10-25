@@ -83,6 +83,8 @@ test('selected billing controls meet AA contrast on both product pages', async (
 
 test('Helper does not rewrite translated content for a duplicate locale event', async ({ page }) => {
   await page.goto('/helper/', { waitUntil: 'networkidle' });
+  await expect(page.locator('#helper-title')).toHaveCSS('font-family', /Vozen Product Display/);
+  expect(await page.evaluate(() => document.fonts.check('600 48px "Vozen Product Display"'))).toBe(true);
   const mutations = await page.evaluate(() => {
     const list = document.querySelector('[data-helper-cards]');
     const observer = new MutationObserver(() => {});
