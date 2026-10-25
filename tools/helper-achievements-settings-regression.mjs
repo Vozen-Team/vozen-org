@@ -35,6 +35,7 @@ try {
     await page.goto(base+'#/config/community.achievements');
     const panel=page.locator('.achievement-settings');await panel.waitFor();
     assert.equal(await panel.locator('article').count(),7);
+    assert.equal(await panel.locator('p').count(),0,'details belong on the collection page');
     assert.equal(await panel.getByRole('heading',{level:2}).count(),7,'collection headings follow the page heading');
     assert.equal(await page.locator('.config-section').count(),0);
     assert.equal(await page.getByRole('spinbutton').count(),0);
