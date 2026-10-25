@@ -19,21 +19,29 @@ const widths = [320, 375, 768, 1024, 1440];
 
 test('the shared header stays pinned and darkens consistently across public page families', async ({ page }) => {
   test.setTimeout(60_000);
+  await page.route('https://api.vozen.org/api/dashboard/guilds', route => route.fulfill({ json: { guilds: [] } }));
   for (const width of [375, 1440]) {
     await page.setViewportSize({ width, height: 700 });
     for (const route of ['/', '/tts/', '/helper/', '/commands/', '/premium.html', '/status.html', '/account/', '/dashboard.html', '/docs/', '/docs/tts/getting-started/install/', '/guides/discord-without-a-mic/', '/privacy.html', '/terms.html']) {
-      await page.goto(route);
-      const header = page.locator('header.vozen-global-nav');
-      await expect(header).toHaveCount(1);
-      await expect(header).not.toHaveClass(/is-stuck/);
-      await expect(header).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
-      // Exercise scroll behavior even on the signed-out, short account page.
-      await page.evaluate(() => { document.body.style.minHeight = '2200px'; window.scrollTo(0, 600); });
-      await expect(header).toHaveClass(/is-stuck/);
-      await expect(header).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
-      expect(Math.abs((await header.boundingBox()).y), route).toBeLessThan(2);
-      await page.evaluate(() => window.scrollTo(0, 0));
-      await expect(header).not.toHaveClass(/is-stuck/);
+      await test.step(`${route} at ${width}px`, async () => {
+        await page.goto(route);
+        // Dashboard view initialization resets scroll on its next animation frame.
+        if (route === '/dashboard.html') {
+          await expect(page.locator('#dashAddServer')).toBeVisible();
+          await page.evaluate(() => new Promise(requestAnimationFrame));
+        }
+        const header = page.locator('header.vozen-global-nav');
+        await expect(header).toHaveCount(1);
+        await expect(header).not.toHaveClass(/is-stuck/);
+        await expect(header).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+        // Exercise scroll behavior even on the signed-out, short account page.
+        await page.evaluate(() => { document.body.style.minHeight = '2200px'; window.scrollTo(0, 600); });
+        await expect(header).toHaveClass(/is-stuck/);
+        await expect(header).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
+        expect(Math.abs((await header.boundingBox()).y), route).toBeLessThan(2);
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await expect(header).not.toHaveClass(/is-stuck/);
+      });
     }
   }
 });
