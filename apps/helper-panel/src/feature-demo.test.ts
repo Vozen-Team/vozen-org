@@ -2,6 +2,16 @@ import { describe, expect, it } from 'vitest';
 import { featureDemo } from './feature-demo';
 
 describe('feature-specific demonstrations', () => {
+  it('shows staff invite usage and only unambiguous attribution with sample data', () => {
+    const demo = featureDemo('management.invite_tracker', 'en');
+    expect(demo?.asset).toBe('invites-en');
+    expect(demo?.example).toMatch(/sample data/i);
+    expect(demo?.example).toMatch(/no invites are created/i);
+    expect(demo?.steps).toHaveLength(3);
+    for (const phrase of ['Manage Server', 'existing invite', '/invites', 'optional inviter names', 'unambiguous']) expect(demo?.steps.join(' ')).toContain(phrase);
+    expect(featureDemo('management.invite_tracker', 'pt')?.asset).toBe('invites-pt');
+    expect(featureDemo('management.invite_tracker', 'fr')?.asset).toBe('invites-en');
+  });
   it('shows join-to-create, automatic moving and last-member cleanup for temporary rooms', () => {
     const demo = featureDemo('utility.temp_channels', 'en');
     expect(demo?.asset).toBe('temp-channels-en');

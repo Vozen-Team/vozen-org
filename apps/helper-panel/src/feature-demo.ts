@@ -1,5 +1,10 @@
 type DemoCopy = { title: string; example: string; steps: [string, string, string] };
 const demos = new Map<string, { asset: string; en: DemoCopy; pt: DemoCopy }>([
+  ['management.invite_tracker', {
+    asset: 'invites',
+    en: { title: 'How Invite tracking works · looping animation', example: 'Sample data. No invites are created or Discord messages sent.', steps: ['1. Enable Invite tracking. Helper needs Manage Server to read invites.', '2. A member joins using an existing invite. Helper compares its usage count.', '3. Staff use /invites to see uses and optional inviter names. Joins are attributed only when the change is unambiguous.'] },
+    pt: { title: 'Como funciona o Rastreio de convites · animação em loop', example: 'Dados de exemplo. Não são criados convites nem enviadas mensagens no Discord.', steps: ['1. Ativa o Rastreio de convites. O Helper precisa de Gerir servidor para ler os convites.', '2. Um membro entra com um convite existente. O Helper compara o contador de usos.', '3. A staff usa /invites para ver os usos e, opcionalmente, quem criou o convite. Só são atribuídas entradas quando a alteração é inequívoca.'] },
+  }],
   ['utility.temp_channels', {
     asset: 'temp-channels',
     en: { title: 'How Temporary channels work · looping animation', example: 'Illustrative example. No Discord channels are created or deleted by this animation.', steps: ['1. Enable Temporary channels. Creating a category in the dashboard also sets up Creator Channel; staff can still use /temp-channel.', '2. Join Creator Channel. Helper creates a room with your display name and moves you automatically.', '3. The room stays while anyone is inside. It is deleted when the last member leaves; Creator Channel stays.'] },

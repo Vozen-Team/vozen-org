@@ -10,7 +10,7 @@ const destination = path.join(root, 'apps/helper-panel/public/feature-demos');
 // Retain the original command; pass a feature name to generate only that storyboard
 // without replacing any existing Starboard assets.
 const feature = process.argv[2] ?? 'starboard';
-if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy', 'temp-channels'].includes(feature)) throw new Error('Unknown feature demo');
+if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy', 'temp-channels', 'invites'].includes(feature)) throw new Error('Unknown feature demo');
 await fs.mkdir(destination, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -51,6 +51,7 @@ try {
         ctx.fillText(content, x, y);
       }
       function draw(time) {
+        if (feature === 'invites') { drawInvites(time); return; }
         if (feature === 'temp-channels') { drawTempChannels(time); return; }
         if (feature === 'economy') { drawEconomy(time); return; }
         if (feature === 'achievements') { drawAchievements(time); return; }
@@ -89,6 +90,34 @@ try {
         label(text.sample, 42, 518, 14, '#a3b6d1');
         ctx.fillStyle = '#24354c'; ctx.fillRect(42, 531, 876, 3);
         ctx.fillStyle = '#8ee5d2'; ctx.fillRect(42, 531, 876 * Math.min(time / 10, 1), 3);
+      }
+      function drawInvites(time) {
+        const joined = time >= 3;
+        const result = time >= 5.5;
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / RASTREIO DE CONVITES' : 'VOZEN HELPER / INVITE TRACKING', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Vê de onde chegam os membros.' : 'See where members come from.', 42, 111, 30);
+        card(42, 139, 876, 75);
+        label(pt ? 'Rastreio de convites' : 'Invite tracking', 65, 171, 23);
+        label(pt ? 'Gerir servidor · mostrar quem criou o convite' : 'Manage Server · show inviter names', 65, 199, 17, '#a3b6d1');
+        label(pt ? '● Ativo' : '● Enabled', 780, 174, 19, '#8ee5d2');
+        card(42, 233, 320, 216);
+        label(pt ? 'CONVITE DE EXEMPLO' : 'SAMPLE INVITE', 64, 265, 16, '#a3b6d1');
+        label('demo-rexy', 64, 308, 26, '#8ee5d2');
+        label(pt ? 'Criado por Rexy' : 'Created by Rexy', 64, 341, 19);
+        label(joined ? (pt ? 'Sam entrou no servidor' : 'Sam joined the server') : (pt ? '5 usos' : '5 uses'), 64, 390, 20);
+        if (joined) label(pt ? '5 → 6 usos' : '5 → 6 uses', 64, 423, 21, '#8ee5d2');
+        card(382, 233, 536, 216);
+        label('/invites', 405, 270, 25, '#8ee5d2');
+        label(pt ? 'Resposta privada para a staff' : 'Private response for staff', 405, 301, 16, '#a3b6d1');
+        if (result) {
+          label(pt ? 'demo-rexy — 6 usos — Rexy' : 'demo-rexy — 6 uses — Rexy', 405, 342, 21);
+          label(pt ? 'demo-sam — 2 usos — Sam' : 'demo-sam — 2 uses — Sam', 405, 377, 21);
+          label(pt ? 'Entradas atribuídas: demo-rexy — 1' : 'Tracked joins: demo-rexy — 1', 405, 424, 19, '#8ee5d2');
+        } else label(pt ? 'Consulta os usos de cada convite.' : 'Check how often each invite is used.', 405, 361, 21);
+        label(time < 3 ? (pt ? '1. Ativa o rastreio no painel' : '1. Enable tracking in the dashboard') : time < 5.5 ? (pt ? '2. Um membro usa um convite existente' : '2. A member uses an existing invite') : (pt ? '3. Consulta /invites' : '3. Check /invites'), 42, 490, 22);
+        label(pt ? 'Atribuição apenas quando a alteração é inequívoca · dados de exemplo' : 'Attribution only when the change is unambiguous · sample data', 42, 522, 14, '#a3b6d1');
       }
       function drawTempChannels(time) {
         const joined = time >= 3 && time < 7.5;
@@ -504,10 +533,10 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Sem canal escolhido, o botão não aparece · exemplo ilustrativo' : 'Without a chosen channel, the button stays hidden · illustrative example', 42, 518, 14, '#a3b6d1');
       }
-      draw(feature === 'temp-channels' ? 6 : ['events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy'].includes(feature) ? 8 : 0);
+      draw(feature === 'temp-channels' ? 6 : ['events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy', 'invites'].includes(feature) ? 8 : 0);
       const poster = canvas.toDataURL('image/png').split(',')[1];
       const stream = canvas.captureStream(24);
-      const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: feature === 'temp-channels' ? 2_000_000 : 700_000 });
+      const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: ['temp-channels', 'invites'].includes(feature) ? 2_000_000 : 700_000 });
       const chunks = [];
       recorder.ondataavailable = event => chunks.push(event.data);
       const done = new Promise(resolve => { recorder.onstop = resolve; });
