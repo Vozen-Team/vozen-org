@@ -11,6 +11,7 @@ import { PremiumBannerSwitch } from './premium-banner-switch';
 import { FeatureSimulation, type SimulationDraft } from './feature-simulation';
 import { StarboardChannel } from './starboard-channel-setup';
 import { TicketPanelChannel } from './ticket-channel-setup';
+import { TempCategoryCreate } from './temp-category-create';
 import { BirthdayChannel } from './birthday-channel-setup';
 import { ticketSettingsGroups, ticketSettingCopy } from './ticket-settings';
 import './ticket-settings.css';
@@ -4491,6 +4492,9 @@ function FeatureDetail({
               categorySetup={feature?.key === 'support.tickets' && !localPreviewMode && section.fields.some(field => field.key === 'categoryId')
                 ? <TicketPanelChannel key={`${context?.guildId}:category`} category context={context} onCreated={channel => {
                     rememberCreatedResource(channel); onChange('categoryId', channel.id);
+                  }} /> : feature?.key === 'utility.temp_channels' && !localPreviewMode && section.fields.some(field => field.key === 'categoryId')
+                ? <TempCategoryCreate key={`${context?.guildId}:temp-category`} context={context} onCreated={category => {
+                    rememberCreatedResource(category); onChange('categoryId', category.id);
                   }} /> : undefined}
             />
           ))}
@@ -5563,7 +5567,8 @@ function ConfigSection({
         })}
         <div className="field-grid">{section.fields.filter(field => !starboardGroups.some(group => group.keys.includes(field.key))).map(renderField)}</div>
       </div> : <div className="field-grid">{section.fields.map(field => field.key === 'channel' && channelSetup
-        ? <div key={field.key}>{renderField(field)}{channelSetup}</div> : renderField(field))}</div>}</>}
+        ? <div key={field.key}>{renderField(field)}{channelSetup}</div> : field.key === 'categoryId' && categorySetup
+        ? <div className="resource-create-field" key={field.key}>{renderField(field)}{categorySetup}</div> : renderField(field))}</div>}</>}
     </section>
   );
 }

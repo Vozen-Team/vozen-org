@@ -102,6 +102,7 @@ jobs:
           node tools/helper-welcome-settings-regression.mjs
           node tools/helper-ticket-channel-regression.mjs
           node tools/helper-ticket-category-regression.mjs
+          node tools/helper-temp-category-regression.mjs
       - name: Minify and test the publication artifact
         run: |
           npm run test:artifact
