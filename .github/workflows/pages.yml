@@ -61,7 +61,6 @@ jobs:
           npm run product-install:check
           npm run auth-session:check
           npm run test:unit
-          npm run test:ui
       - name: Build Helper panel
         run: |
           npm ci --prefix apps/helper-panel
@@ -70,6 +69,7 @@ jobs:
           node tools/install-helper-panel.mjs
           node tools/release-artifact-check.mjs
           node tools/prerender-check.mjs
+          npm run test:ui
       - name: Check Helper session and server recovery
         run: |
           node apps/helper-panel/node_modules/vite/bin/vite.js preview apps/helper-panel --host 127.0.0.1 --port 5179 --base /panel/helper-tracker/ &
