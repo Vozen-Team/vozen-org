@@ -221,7 +221,7 @@
     "title": "Temporary channels",
     "taskGroup": "community",
     "audience": "server-managers",
-    "description": "Create voice rooms that clean themselves up after ownership ends."
+    "description": "Join Creator Channel to get a personal voice room. Empty rooms are deleted automatically."
   },
   "insights.stats": {
     "slug": "activity/statistics-channels",

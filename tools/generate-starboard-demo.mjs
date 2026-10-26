@@ -91,37 +91,30 @@ try {
         ctx.fillStyle = '#8ee5d2'; ctx.fillRect(42, 531, 876 * Math.min(time / 10, 1), 3);
       }
       function drawTempChannels(time) {
-        const created = time >= 2;
-        const joined = time >= 4 && time < 7.5;
+        const joined = time >= 3 && time < 7.5;
+        const guestOnly = time >= 6 && time < 7.5;
         const removed = time >= 7.5;
         ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
         label(pt ? 'VOZEN HELPER / CANAIS TEMPORÁRIOS' : 'VOZEN HELPER / TEMPORARY CHANNELS', 42, 42, 18, '#8ee5d2');
         label(text.demo, 42, 70, 13, '#a3b6d1');
-        label(pt ? 'Uma sala para a tua conversa' : 'A room for your conversation', 42, 111, 30);
-        card(42, 137, 876, 93);
-        label('/temp-channel', 66, 175, 25, '#8ee5d2');
-        label(pt ? 'Criador: Rexy · com permissão Gerir canais' : 'Creator: Rexy · with Manage Channels permission', 66, 208, 18, '#a3b6d1');
-        card(42, 247, 340, 192);
-        label(pt ? 'VOZ DA COMUNIDADE' : 'COMMUNITY VOICE', 64, 281, 16, '#a3b6d1');
-        label('♪  General', 64, 324, 22, '#a3b6d1');
-        if (created && !removed) {
-          label("♪  Rexy's room", 64, 365, 23, '#8ee5d2');
-          if (joined) {
-            ctx.fillStyle='#8ee5d2';ctx.beginPath();ctx.arc(84,403,12,0,Math.PI*2);ctx.fill();
-            label('Rexy', 110, 410, 20);
-          }
-        }
-        card(402, 247, 516, 192);
-        label(removed ? (pt ? 'Sala removida' : 'Room removed') : joined ? (pt ? 'Ligado à voz' : 'Connected to voice') : created ? (pt ? 'Sala criada' : 'Room created') : (pt ? 'Pronto para criar' : 'Ready to create'), 426, 287, 26, '#8ee5d2');
-        label(removed ? (pt ? 'O criador desligou-se.' : 'The creator disconnected.') : joined ? (pt ? 'Conversa com a comunidade.' : 'Talk with the community.') : created ? (pt ? 'Clica na sala para entrar.' : 'Click the room to join.') : (pt ? 'Usa o comando no servidor.' : 'Use the command in the server.'), 426, 333, 21);
+        label(pt ? 'Entra. A tua sala está pronta.' : 'Join. Your room is ready.', 42, 111, 30);
+        card(42, 137, 876, 80);
+        label('/temp-channel', 66, 173, 25, '#8ee5d2');
+        label(pt ? 'A staff cria o Creator Channel uma vez.' : 'Staff creates Creator Channel once.', 66, 200, 18, '#a3b6d1');
+        card(42, 234, 360, 220);
+        label(pt ? 'VOZ DA COMUNIDADE' : 'COMMUNITY VOICE', 64, 267, 16, '#a3b6d1');
+        label('➕ Creator Channel', 64, 306, 23, '#8ee5d2');
         if (joined) {
-          for (let i=0;i<12;i++) {
-            const height=12+Math.sin(time*5+i*.7)**2*32;
-            ctx.fillStyle='#8ee5d2';ctx.fillRect(426+i*23,405-height,11,height);
-          }
-        } else label(removed ? (pt ? 'Neste exemplo, a sala fica vazia.' : 'In this example, the room is empty.') : (pt ? 'A entrada é manual.' : 'Joining is manual.'),426,397,18,'#a3b6d1');
-        label(time < 2 ? (pt ? '1. Cria a sala com /temp-channel' : '1. Create the room with /temp-channel') : time < 7.5 ? (pt ? '2. Entra na sala de voz' : '2. Join the voice room') : (pt ? '3. Ao desligar o criador, a sala é removida' : '3. The room is removed when its creator disconnects'),42,484,22);
-        label(pt ? 'Exemplo com um participante · categoria e limite configuráveis' : 'Single-participant example · configurable category and room limit',42,518,14,'#a3b6d1');
+          label("♪ Rexy's room", 64, 345, 23, '#8ee5d2');
+          if (!guestOnly) label('● Rexy', 88, 381, 20);
+          label('● Alex', 88, guestOnly ? 381 : 415, 20);
+        }
+        card(422, 234, 496, 220);
+        label(removed ? (pt ? 'Sala apagada' : 'Room deleted') : guestOnly ? (pt ? 'Ainda há alguém na sala' : 'Someone is still inside') : joined ? (pt ? 'Sala criada · entrada automática' : 'Room created · automatic move') : (pt ? 'Entra no Creator Channel' : 'Join Creator Channel'), 446, 280, 23, '#8ee5d2');
+        label(removed ? (pt ? 'Saiu a última pessoa.' : 'The last member left.') : guestOnly ? (pt ? 'Rexy saiu. Alex continua.' : 'Rexy left. Alex stays.') : joined ? (pt ? 'Rexy e Alex podem conversar.' : 'Rexy and Alex can talk.') : (pt ? 'Sem comandos para os membros.' : 'Members do not need commands.'), 446, 327, 21);
+        label(removed ? (pt ? 'O Creator Channel fica disponível.' : 'Creator Channel remains available.') : guestOnly ? (pt ? 'A sala mantém-se aberta.' : 'The room stays open.') : (pt ? 'Uma sala com o teu nome.' : 'A room with your display name.'), 446, 396, 18, '#a3b6d1');
+        label(time < 3 ? (pt ? '1. Entra no Creator Channel' : '1. Join Creator Channel') : time < 7.5 ? (pt ? '2. O Helper cria a sala e move-te para lá' : '2. Helper creates the room and moves you in') : (pt ? '3. Sala vazia → sala apagada' : '3. Empty room → room deleted'), 42, 490, 22);
+        label(pt ? 'Exemplo ilustrativo · categoria e limite configuráveis' : 'Illustrative example · configurable category and room limit', 42, 522, 14, '#a3b6d1');
       }
       function drawEconomy(time) {
         const daily = time >= 2;

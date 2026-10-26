@@ -3565,6 +3565,9 @@
       },
       "dependencies": [
         "manage_channels",
+        "move_members",
+        "voice_channels",
+        "view_channel",
         "voice_states"
       ],
       "intents": [
@@ -3574,7 +3577,10 @@
       "maturity": "operational",
       "panelPath": "/modules/utility/temp-channels",
       "permissions": [
-        "Manage Channels"
+        "Manage Channels",
+        "Move Members",
+        "Connect to Voice",
+        "View Channels"
       ],
       "schema": {
         "sections": [

@@ -3775,6 +3775,9 @@
       },
       "dependencies": [
         "manage_channels",
+        "move_members",
+        "voice_channels",
+        "view_channel",
         "voice_states"
       ],
       "intents": [
@@ -3784,7 +3787,10 @@
       "maturity": "operational",
       "panelPath": "/modules/utility/temp-channels",
       "permissions": [
-        "Manage Channels"
+        "Manage Channels",
+        "Move Members",
+        "Connect to Voice",
+        "View Channels"
       ],
       "schema": {
         "sections": [
@@ -3820,7 +3826,7 @@
         "version": 1
       },
       "schemaVersion": 1,
-      "summary": "Create voice rooms that clean themselves up after ownership ends.",
+      "summary": "Join Creator Channel to get a personal voice room. Empty rooms are deleted automatically.",
       "title": "Temporary channels",
       "slug": "community/temporary-channels",
       "taskGroup": "community",
@@ -7944,6 +7950,9 @@
       },
       "dependencies": [
         "manage_channels",
+        "move_members",
+        "voice_channels",
+        "view_channel",
         "voice_states"
       ],
       "intents": [
@@ -7953,7 +7962,10 @@
       "maturity": "operational",
       "panelPath": "/modules/utility/temp-channels",
       "permissions": [
-        "Manage Channels"
+        "Manage Channels",
+        "Move Members",
+        "Connect to Voice",
+        "View Channels"
       ],
       "schema": {
         "sections": [
@@ -7989,7 +8001,7 @@
         "version": 1
       },
       "schemaVersion": 1,
-      "summary": "Create voice rooms that clean themselves up after ownership ends.",
+      "summary": "Join Creator Channel to get a personal voice room. Empty rooms are deleted automatically.",
       "title": "Temporary channels",
       "slug": "community/temporary-channels",
       "taskGroup": "community",
@@ -9836,6 +9848,9 @@
           },
           "dependencies": [
             "manage_channels",
+            "move_members",
+            "voice_channels",
+            "view_channel",
             "voice_states"
           ],
           "intents": [
@@ -9845,7 +9860,10 @@
           "maturity": "operational",
           "panelPath": "/modules/utility/temp-channels",
           "permissions": [
-            "Manage Channels"
+            "Manage Channels",
+            "Move Members",
+            "Connect to Voice",
+            "View Channels"
           ],
           "schema": {
             "sections": [
@@ -9881,7 +9899,7 @@
             "version": 1
           },
           "schemaVersion": 1,
-          "summary": "Create voice rooms that clean themselves up after ownership ends.",
+          "summary": "Join Creator Channel to get a personal voice room. Empty rooms are deleted automatically.",
           "title": "Temporary channels",
           "slug": "community/temporary-channels",
           "taskGroup": "community",

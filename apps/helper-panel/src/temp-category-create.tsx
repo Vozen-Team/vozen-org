@@ -16,6 +16,18 @@ const copy:Record<string,string[]>={
   ru:['Или создайте категорию','Создать категорию','Создание…','Наследует права сервера. Выбирается автоматически.','Используйте 2–80 латинских букв без диакритики, цифры, дефисы или подчёркивания.','Не удалось подтвердить создание. Перед повтором проверьте Discord и право управления каналами.','Обновите ресурсы Discord и проверьте право Helper на управление каналами.','Создана и выбрана.'],
   ko:['또는 카테고리 만들기','카테고리 만들기','만드는 중…','서버 권한을 상속하며 자동으로 선택됩니다.','악센트 없는 영문자, 숫자, 하이픈 또는 밑줄 2–80자를 사용하세요.','생성을 확인하지 못했습니다. 다시 시도하기 전에 Discord와 채널 관리 권한을 확인하세요.','Discord 리소스를 새로 고치고 Helper의 채널 관리 권한을 확인하세요.','생성하고 선택했습니다.'],
 };
+const flow:Record<string,string>={
+  en:'Run /temp-channel once to create Creator Channel. Join it to get your own room. Empty rooms are deleted automatically.',
+  pt:'Usa /temp-channel uma vez para criar o Creator Channel. Entra nele para teres a tua sala. As salas vazias são apagadas automaticamente.',
+  fr:'Utilise /temp-channel une fois pour créer Creator Channel. Rejoins-le pour obtenir ton salon. Les salons vides sont supprimés automatiquement.',
+  es:'Usa /temp-channel una vez para crear Creator Channel. Entra para obtener tu sala. Las salas vacías se eliminan automáticamente.',
+  de:'Nutze /temp-channel einmal, um Creator Channel zu erstellen. Tritt bei, um deinen Raum zu erhalten. Leere Räume werden automatisch gelöscht.',
+  tr:'Creator Channel oluşturmak için /temp-channel komutunu bir kez kullan. Kendi odan için kanala katıl. Boş odalar otomatik silinir.',
+  ar:'استخدم /temp-channel مرة واحدة لإنشاء Creator Channel. انضم إليه للحصول على غرفتك. تُحذف الغرف الفارغة تلقائياً.',
+  zh:'使用 /temp-channel 建立一次 Creator Channel。加入後會建立你的房間，空房間會自動刪除。',
+  ru:'Используй /temp-channel один раз, чтобы создать Creator Channel. Войди в него, чтобы получить свою комнату. Пустые комнаты удаляются автоматически.',
+  ko:'/temp-channel 명령으로 Creator Channel을 한 번 만드세요. 참가하면 나만의 방이 생기며 빈 방은 자동 삭제됩니다.',
+};
 export function canCreateTempCategory(context:GuildContext|null){
   if(!context||context.stale||!context.bot?.available)return false;
   try{const bits=BigInt(context.bot.permissions??'0');return bits>=0n&&(bits&24n)!==0n;}catch{return false;}
@@ -42,6 +54,7 @@ export function TempCategoryCreate({context,onCreated}:{context:GuildContext|nul
     finally{submitting.current=false;if(alive.current)setBusy(false);}
   }
   return <section className="starboard-channel temp-category-create" aria-label={createLabel}>
+    <p>{flow[helperLocale()]??flow.en}</p>
     {!created&&<><div className="ticket-channel-create__row"><label className="field"><span>{title}</span><input value={name} maxLength={80} disabled={busy} aria-invalid={!validStarboardName(name)} onChange={event=>setName(event.target.value)}/>{!validStarboardName(name)&&<small>{hint}</small>}</label><button type="button" className="secondary" disabled={busy||!allowed||!validStarboardName(name)} onClick={()=>void create()}>{busy?creating:createLabel}</button></div><p>{help}</p></>}
     {!allowed&&<p role="status">{permissions}</p>}
     {error&&<p className="starboard-channel__error" role="alert">{errorMessage}</p>}
