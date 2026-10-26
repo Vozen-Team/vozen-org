@@ -107,11 +107,11 @@ try {
         if (joined) {
           label("♪ Rexy's room", 64, 345, 23, '#8ee5d2');
           if (!guestOnly) label('● Rexy', 88, 381, 20);
-          label('● Alex', 88, guestOnly ? 381 : 415, 20);
+          label('● Sam', 88, guestOnly ? 381 : 415, 20);
         }
         card(422, 234, 496, 220);
         label(removed ? (pt ? 'Sala apagada' : 'Room deleted') : guestOnly ? (pt ? 'Ainda há alguém na sala' : 'Someone is still inside') : joined ? (pt ? 'Sala criada · entrada automática' : 'Room created · automatic move') : (pt ? 'Entra no Creator Channel' : 'Join Creator Channel'), 446, 280, 23, '#8ee5d2');
-        label(removed ? (pt ? 'Saiu a última pessoa.' : 'The last member left.') : guestOnly ? (pt ? 'Rexy saiu. Alex continua.' : 'Rexy left. Alex stays.') : joined ? (pt ? 'Rexy e Alex podem conversar.' : 'Rexy and Alex can talk.') : (pt ? 'Sem comandos para os membros.' : 'Members do not need commands.'), 446, 327, 21);
+        label(removed ? (pt ? 'Saiu a última pessoa.' : 'The last member left.') : guestOnly ? (pt ? 'Rexy saiu. Sam continua.' : 'Rexy left. Sam stays.') : joined ? (pt ? 'Rexy e Sam podem conversar.' : 'Rexy and Sam can talk.') : (pt ? 'Sem comandos para os membros.' : 'Members do not need commands.'), 446, 327, 21);
         label(removed ? (pt ? 'O Creator Channel fica disponível.' : 'Creator Channel remains available.') : guestOnly ? (pt ? 'A sala mantém-se aberta.' : 'The room stays open.') : (pt ? 'Uma sala com o teu nome.' : 'A room with your display name.'), 446, 396, 18, '#a3b6d1');
         label(time < 3 ? (pt ? '1. Entra no Creator Channel' : '1. Join Creator Channel') : time < 7.5 ? (pt ? '2. O Helper cria a sala e move-te para lá' : '2. Helper creates the room and moves you in') : (pt ? '3. Sala vazia → sala apagada' : '3. Empty room → room deleted'), 42, 490, 22);
         label(pt ? 'Exemplo ilustrativo · categoria e limite configuráveis' : 'Illustrative example · configurable category and room limit', 42, 522, 14, '#a3b6d1');
