@@ -15,9 +15,10 @@ it('needs only Manage Channels on a fresh bot snapshot',()=>{
 it('binds category creation to the expected guild without permission overrides',async()=>{
   vi.stubGlobal('window',{location:{hash:''}});
   const {api}=await import('./api');
-  const fetch=vi.fn().mockResolvedValue(new Response(JSON.stringify({guildId:'10',channel:{id:'50',name:'temporary-rooms',type:4},reused:false}),{status:200,headers:{'Content-Type':'application/json'}}));
+  const fetch=vi.fn().mockResolvedValue(new Response(JSON.stringify({guildId:'10',channel:{id:'50',name:'temporary-rooms',type:4},reused:false,creatorChannel:{id:'60',name:'Creator Channel',type:2,parentId:'50',guildId:'10'}}),{status:200,headers:{'Content-Type':'application/json'}}));
   vi.stubGlobal('fetch',fetch);
-  expect((await api.createTempCategory('10','temporary-rooms')).channel.type).toBe(4);
+  const result=await api.createTempCategory('10','temporary-rooms');
+  expect(result.channel.type).toBe(4);expect(result.creatorChannel?.parentId).toBe(result.channel.id);expect(result.creatorChannel?.type).toBe(2);
   const [url,options]=fetch.mock.calls[0];
   expect(url).toContain('/api/temp-channels/category');
   expect(options.method).toBe('POST');

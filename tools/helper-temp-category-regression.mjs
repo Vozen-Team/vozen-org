@@ -6,7 +6,7 @@ const base=process.env.HELPER_TEST_URL||'http://127.0.0.1:5179/panel/helper-trac
 const locales=['en','pt','fr','es','de','tr','ar','zh','ru','ko'];
 const browser=await chromium.launch();
 try{
- for(const scenario of [...locales,'mobile','no-permissions','stale-context','manage-channels-only','collision','uncertain','wrong-guild','wrong-type','save-failure','route-change','guild-switch','reused','disabled-feature']){
+ for(const scenario of [...locales,'mobile','no-permissions','stale-context','manage-channels-only','collision','uncertain','wrong-guild','wrong-type','save-failure','route-change','guild-switch','reused','disabled-feature','creator-partial','creator-retry','wrong-creator-type','wrong-creator-parent','wrong-creator-guild','creator-missing']){
   if(process.env.TEMP_CATEGORY_SCENARIO&&process.env.TEMP_CATEGORY_SCENARIO!==scenario)continue;
   const page=await browser.newPage(scenario==='mobile'?{viewport:{width:390,height:844}}:{});
   const locale=locales.includes(scenario)?scenario:'en';
@@ -25,7 +25,10 @@ try{
     assert.deepEqual(request.postDataJSON(),{name:'temporary-rooms',guildId:requestedGuild});
     await new Promise(resolve=>setTimeout(resolve,['route-change','guild-switch'].includes(scenario)?1400:250));
     if(['collision','uncertain'].includes(scenario)){await route.fulfill({status:409,json:{code:'temp_category_'+(scenario==='collision'?'channel_name_exists':'creation_uncertain')}});return;}
-    value={guildId:scenario==='wrong-guild'?'99':requestedGuild,channel:{id:'50',name:'temporary-rooms',type:scenario==='wrong-type'?0:4},reused:scenario==='reused'};
+    const partial=scenario==='creator-partial'||(scenario==='creator-retry'&&creates===1);
+    value={guildId:scenario==='wrong-guild'?'99':requestedGuild,channel:{id:'50',name:'temporary-rooms',type:scenario==='wrong-type'?0:4},reused:scenario==='reused'||creates>1,
+      creatorChannel:partial||scenario==='creator-missing'?null:{id:'60',name:'➕ Creator Channel',type:scenario==='wrong-creator-type'?0:2,parentId:scenario==='wrong-creator-parent'?'40':'50',guildId:scenario==='wrong-creator-guild'?'99':requestedGuild},
+      ...(partial?{creatorError:'temp_creator_permissions_required'}:{})};
    }else if(path==='/api/me')value={id:'qa-user',guildId:guild,dbOk:true};
    else if(path==='/api/guilds')value={guilds:[{id:'10',name:'Alpha',canManage:true},{id:'11',name:'Beta',canManage:true}]};
    else if(path==='/api/session/switch'){guild=request.postDataJSON().guild_id;value={ok:true,guildId:guild};}
@@ -78,6 +81,17 @@ try{
     await page.waitForTimeout(1700);assert.equal(await page.locator('select option[value="50"]').count(),0);assert.equal(writes,0);
    }else if(['collision','uncertain','wrong-guild','wrong-type'].includes(scenario)){
     await setup.getByRole('alert').waitFor();assert.equal(await selected.inputValue(),'40');assert.equal(writes,0);
+   }else if(['creator-partial','creator-retry','wrong-creator-type','wrong-creator-parent','wrong-creator-guild','creator-missing'].includes(scenario)){
+    await setup.getByRole('alert').waitFor();assert.equal(await selected.inputValue(),'50');
+    assert.equal(await setup.locator('.starboard-channel__success').count(),0);
+    assert.equal(await setup.getByRole('textbox').isDisabled(),true);
+    await page.waitForTimeout(1500);assert.ok(writes>0);assert.equal(saved.categoryId,'50');
+    if(scenario==='creator-retry'){
+     assert.equal(await button.innerText(),'Finish setup');await button.click();
+     await setup.locator('.starboard-channel__success').waitFor();
+     assert.equal(await setup.getByRole('alert').count(),0);assert.equal(creates,2);
+     assert.equal(await selected.inputValue(),'50');assert.equal(saved.categoryId,'50');
+    }
    }else{
     await setup.locator('.starboard-channel__success').waitFor();assert.equal(await selected.inputValue(),'50');
     await page.waitForTimeout(1500);assert.ok(writes>0);assert.equal(saved.categoryId,scenario==='save-failure'?'40':'50');
@@ -88,7 +102,7 @@ try{
      assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
     }
    }
-   assert.equal(creates,1);
+   assert.equal(creates,scenario==='creator-retry'?2:1);
   }
   assert.ok(mutations.every(path=>['/api/temp-channels/category','/api/session/switch','/api/config/features/utility.temp_channels','/api/config/features/utility.temp_channels/preflight'].includes(path)));
   console.log(`PASS temp-category-${scenario}`);await page.close();

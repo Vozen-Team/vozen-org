@@ -5,6 +5,7 @@ describe('feature-specific demonstrations', () => {
   it('shows join-to-create, automatic moving and last-member cleanup for temporary rooms', () => {
     const demo = featureDemo('utility.temp_channels', 'en');
     expect(demo?.asset).toBe('temp-channels-en');
+    expect(demo?.steps[0]).toContain('Creating a category in the dashboard also sets up Creator Channel');
     expect(demo?.example).toMatch(/illustrative/i);
     expect(demo?.example).toMatch(/no Discord channels are created or deleted/i);
     for (const phrase of ['/temp-channel', 'Creator Channel', 'moves you automatically', 'last member leaves', 'Creator Channel stays']) expect(demo?.steps.join(' ')).toContain(phrase);
