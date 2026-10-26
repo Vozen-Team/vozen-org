@@ -569,6 +569,7 @@ async function meOrBootstrap(options?: ReadOptions): Promise<Me> {
 }
 
 export const api = {
+  createShopChannel: (guildId:string,name:string) => request<{guildId:string;channel:{id:string;name:string;type:number};reused:boolean}>(`/api/economy/channel?guildId=${encodeURIComponent(guildId)}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name})}),
   shopNotifications: (guildId:string,channelId:string) => request<{ok:boolean}>(`/api/economy/notifications?guildId=${encodeURIComponent(guildId)}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({channelId})}),
   shop: (guildId:string,before?:number,signal?:AbortSignal) => request<ShopPage>(`/api/economy/shop?guildId=${encodeURIComponent(guildId)}${before ? `&before=${before}`:''}`,{signal}),
   saveShopProduct: (guildId:string,product:ShopProductInput,existing?:ShopProduct) => request<{ok:boolean}>(`/api/economy/products${existing ? `/${existing.id}`:''}?guildId=${encodeURIComponent(guildId)}`,{method:existing?'PUT':'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(existing?{product,version:existing.version}:product)}),

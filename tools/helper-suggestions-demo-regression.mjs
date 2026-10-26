@@ -19,7 +19,7 @@ const leaderboard = demoFeature === 'leaderboard';
 const defaultFeatureKey = `${polls ? 'management' : tickets || welcome ? 'support' : 'community'}.${demoFeature}`;
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard || achievements || economy ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : []), ...(economy ? ['shop-en','shop-pt','shop-fr','shop-es','shop-de','shop-tr','shop-ar','shop-zh','shop-ru','shop-ko','shop-mobile','shop-failure','shop-channel-error','shop-notice-warning'] : []), ...(leaderboard ? ['ranking-error', 'ranking-data', 'ranking-many', 'ranking-many-pt', 'ranking-many-mobile', 'ranking-ten', 'emoji-copy', 'emoji-copy-pt'] : [])]) {
+  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard || achievements || economy ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : []), ...(economy ? ['shop-en','shop-pt','shop-fr','shop-es','shop-de','shop-tr','shop-ar','shop-zh','shop-ru','shop-ko','shop-mobile','shop-failure','shop-channel-error','shop-notice-warning','shop-create-error'] : []), ...(leaderboard ? ['ranking-error', 'ranking-data', 'ranking-many', 'ranking-many-pt', 'ranking-many-mobile', 'ranking-ten', 'emoji-copy', 'emoji-copy-pt'] : [])]) {
     if (process.env.SUGGESTIONS_DEMO_SCENARIO && process.env.SUGGESTIONS_DEMO_SCENARIO !== scenario) continue;
     const page = await browser.newPage(scenario === 'dismiss-touch' ? { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true } : {});
     const shopScenario=scenario.startsWith('shop-');
@@ -61,6 +61,11 @@ try {
         assert.equal(new URL(route.request().url()).searchParams.get('guildId'),'sample');
         const body=route.request().postDataJSON();
         shopWrites.push({path,method,body});
+        if(path==='/api/economy/channel') {
+          assert.deepEqual(body,{name:'shop-orders'});
+          if(scenario==='shop-create-error'){await route.fulfill({status:403,json:{code:'starboard_bot_permissions_required'}});return;}
+          shopChannel='30';await route.fulfill({json:{guildId:'sample',channel:{id:'30',name:'shop-orders',type:0},reused:false}});return;
+        }
         if(path==='/api/economy/notifications') {
           if(scenario==='shop-channel-error'){await route.fulfill({status:400,json:{code:'shop_invalid_channel'}});return;}
           shopChannel=body.channelId;await route.fulfill({json:{ok:true}});return;
@@ -140,6 +145,26 @@ try {
         assert.equal(shopProducts.length,0,'notification settings do not alter products');
       }
 
+      if(scenario!=='shop-failure') {
+        const create=panel.locator('.economy-shop__create-channel');
+        await create.locator('input').fill('../invalid');
+        assert.equal(await create.locator('button').isDisabled(),true);
+        await create.locator('input').fill('shop-orders');
+        await create.locator('button').click();
+        if(scenario==='shop-create-error'){
+          await panel.getByRole('alert').waitFor();assert.equal(shopChannel,'20');
+          console.log('PASS shop-create-error');await page.close();continue;
+        }
+        await page.waitForFunction(()=>document.querySelector('.economy-shop__notifications select').value==='30');
+        assert.equal(shopWrites.filter(w=>w.path==='/api/economy/channel').length,1);
+        assert.equal(await notice.locator('option[value="30"]').textContent(),'#shop-orders');
+        assert.equal(shopProducts.length,0,'channel creation does not alter products');
+        if(scenario==='shop-pt'){
+          await create.scrollIntoViewIfNeeded();
+          await mkdir('output/playwright',{recursive:true});
+          await page.screenshot({path:'output/playwright/shop-channel-created-pt.png'});
+        }
+      }
       await panel.locator('form input').first().fill('T-shirt <b>safe</b>');
       await panel.locator('form input[type=number]').fill('80');
       await panel.locator('button[type=submit]').click();

@@ -15,6 +15,8 @@ export function EconomyShop({context,localPreviewMode}:{context:GuildContext|nul
   const [busy,setBusy]=useState(false);
   const [loading,setLoading]=useState(true);
   const [error,setError]=useState('');
+  const [channelName,setChannelName]=useState('shop-orders');
+  const [createdChannel,setCreatedChannel]=useState<{guildId:string;id:string;name:string}|null>(null);
   const usable=!localPreviewMode && !!guild;
   async function load(before?:number,signal?:AbortSignal) {
     const result=await api.shop(guild,before,signal);
@@ -36,6 +38,19 @@ export function EconomyShop({context,localPreviewMode}:{context:GuildContext|nul
   }
   const products=data?.products??[];
   const roles=(context?.roles??[]).filter(role=>!role.managed&&role.manageable!==false);
+  const channels=[...(context?.channels??[])];
+  if(createdChannel?.guildId===guild&&!channels.some(channel=>channel.id===createdChannel.id))channels.push({...createdChannel,type:'text'});
+  async function createChannel() {
+    if(busy||!usable)return;
+    setBusy(true);setError('');
+    try {
+      const result=await api.createShopChannel(guild,channelName.trim().toLowerCase());
+      if(result.guildId!==guild)throw new Error('guild_changed');
+      setCreatedChannel({guildId:guild,...result.channel});
+      await load();
+    } catch {setError(t('createError'));}
+    finally {setBusy(false);}
+  }
   async function resolve(order:ShopOrder,status:'delivered'|'refunded') {
     if(status==='refunded'&&!window.confirm(t('refundConfirm')))return;
     await mutate(()=>api.resolveShopOrder(guild,order.id,status));
@@ -44,9 +59,14 @@ export function EconomyShop({context,localPreviewMode}:{context:GuildContext|nul
     <div className="economy-shop__heading"><h3>{t('shop')}</h3><code>/shop</code></div>
     <label className="field economy-shop__notifications">{t('noticeChannel')}
       <select value={data?.staffChannel??''} disabled={busy||loading||!usable} onChange={event=>void mutate(()=>api.shopNotifications(guild,event.target.value))}>
-        <option value="">{t('off')}</option>{context?.channels.filter(channel=>['text','announcement'].includes(channel.type)).map(channel=><option key={channel.id} value={channel.id}>#{channel.name}</option>)}
+        <option value="">{t('off')}</option>{channels.filter(channel=>['text','announcement'].includes(channel.type)).map(channel=><option key={channel.id} value={channel.id}>#{channel.name}</option>)}
       </select><small>{t('noticeHelp')}</small>
     </label>
+    <div className="economy-shop__create-channel">
+      <label className="field">{t('channelName')}<input value={channelName} maxLength={80} disabled={busy||loading||!usable} onChange={event=>setChannelName(event.target.value)}/></label>
+      <button type="button" className="secondary" disabled={busy||loading||!usable||! /^[a-z0-9_-]{2,80}$/.test(channelName.trim().toLowerCase())} onClick={()=>void createChannel()}>{t('createChannel')}</button>
+      <small>{t('createHelp')}</small>
+    </div>
     {!!data?.failedNotices&&<p role="alert">{t('noticeFailed')}</p>}
     <div className="economy-shop__tabs" role="group" aria-label={t('shop')}>
       <button type="button" className="secondary" aria-pressed={tab==='products'} onClick={()=>setTab('products')}>{t('products')} · {products.length}/20</button>

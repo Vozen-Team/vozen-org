@@ -1,5 +1,5 @@
 import {helperLocale} from './i18n';
-const keys = ["shop", "products", "orders", "name", "price", "delivery", "manual", "role", "add", "save", "cancel", "edit", "remove", "pending", "delivered", "refunded", "complete", "refund", "empty", "refresh", "more", "error", "roleError", "changed", "manualHelp", "refundConfirm", "loadError", "removeConfirm", "noticeChannel", "off", "noticeHelp", "noticeFailed", "channelError"] as const;
+const keys = ["shop", "products", "orders", "name", "price", "delivery", "manual", "role", "add", "save", "cancel", "edit", "remove", "pending", "delivered", "refunded", "complete", "refund", "empty", "refresh", "more", "error", "roleError", "changed", "manualHelp", "refundConfirm", "loadError", "removeConfirm", "noticeChannel", "off", "noticeHelp", "noticeFailed", "channelError", "channelName", "createChannel", "createHelp", "createError"] as const;
 const copy: Record<string,string[]> = {
   "en": [
     "Shop",
@@ -34,7 +34,11 @@ const copy: Record<string,string[]> = {
     "Off",
     "New manual-delivery purchases are announced here. Choose a staff channel.",
     "Some order alerts could not be confirmed. Check the channel and Orders.",
-    "Choose a text channel where Helper can view, send messages and embed links."
+    "Choose a text channel where Helper can view, send messages and embed links.",
+    "New channel name",
+    "Create staff channel",
+    "Private for moderators and administrators. Selected automatically.",
+    "Could not confirm creation. Check Discord before trying again; Helper needs Manage Channels and Manage Roles."
   ],
   "pt": [
     "Loja",
@@ -69,7 +73,11 @@ const copy: Record<string,string[]> = {
     "Desligado",
     "As novas compras com entrega manual são anunciadas aqui. Escolhe um canal da staff.",
     "Há avisos de pedidos por confirmar. Verifica o canal e os Pedidos.",
-    "Escolhe um canal de texto onde o Helper possa ver, enviar mensagens e incorporar links."
+    "Escolhe um canal de texto onde o Helper possa ver, enviar mensagens e incorporar links.",
+    "Nome do novo canal",
+    "Criar canal da staff",
+    "Privado para moderadores e administradores. Selecionado automaticamente.",
+    "Não foi possível confirmar a criação. Verifica o Discord antes de repetir; o Helper precisa de Gerir canais e Gerir cargos."
   ],
   "fr": [
     "Boutique",
@@ -104,7 +112,11 @@ const copy: Record<string,string[]> = {
     "Désactivé",
     "Les nouveaux achats à livraison manuelle sont annoncés ici. Choisissez un canal réservé à l’équipe.",
     "Certaines alertes restent à confirmer. Vérifiez le canal et les commandes.",
-    "Choisissez un canal texte où Helper peut voir, envoyer des messages et intégrer des liens."
+    "Choisissez un canal texte où Helper peut voir, envoyer des messages et intégrer des liens.",
+    "Nom du nouveau salon",
+    "Créer le salon de l’équipe",
+    "Privé pour les modérateurs et administrateurs. Sélection automatique.",
+    "Création non confirmée. Vérifiez Discord avant de réessayer ; Helper doit pouvoir gérer les salons et les rôles."
   ],
   "es": [
     "Tienda",
@@ -139,7 +151,11 @@ const copy: Record<string,string[]> = {
     "Desactivado",
     "Las nuevas compras con entrega manual se anuncian aquí. Elige un canal del equipo.",
     "Hay avisos sin confirmar. Revisa el canal y los pedidos.",
-    "Elige un canal de texto donde Helper pueda ver, enviar mensajes e insertar enlaces."
+    "Elige un canal de texto donde Helper pueda ver, enviar mensajes e insertar enlaces.",
+    "Nombre del nuevo canal",
+    "Crear canal del equipo",
+    "Privado para moderadores y administradores. Se selecciona automáticamente.",
+    "No se pudo confirmar la creación. Revisa Discord antes de reintentar; Helper necesita gestionar canales y roles."
   ],
   "de": [
     "Shop",
@@ -174,7 +190,11 @@ const copy: Record<string,string[]> = {
     "Aus",
     "Neue Käufe mit manueller Lieferung werden hier angekündigt. Wähle einen Teamkanal.",
     "Einige Hinweise sind unbestätigt. Prüfe Kanal und Bestellungen.",
-    "Wähle einen Textkanal, in dem Helper sehen, Nachrichten senden und Links einbetten darf."
+    "Wähle einen Textkanal, in dem Helper sehen, Nachrichten senden und Links einbetten darf.",
+    "Name des neuen Kanals",
+    "Teamkanal erstellen",
+    "Privat für Moderatoren und Administratoren. Wird automatisch ausgewählt.",
+    "Erstellung nicht bestätigt. Prüfe Discord vor einem erneuten Versuch; Helper muss Kanäle und Rollen verwalten dürfen."
   ],
   "tr": [
     "Mağaza",
@@ -209,7 +229,11 @@ const copy: Record<string,string[]> = {
     "Kapalı",
     "Yeni ekip teslimatı satın alımları burada duyurulur. Bir ekip kanalı seç.",
     "Bazı bildirimler doğrulanamadı. Kanalı ve siparişleri kontrol et.",
-    "Helper’ın görebildiği, mesaj gönderebildiği ve bağlantı ekleyebildiği bir metin kanalı seç."
+    "Helper’ın görebildiği, mesaj gönderebildiği ve bağlantı ekleyebildiği bir metin kanalı seç.",
+    "Yeni kanal adı",
+    "Ekip kanalı oluştur",
+    "Moderatörler ve yöneticiler için özeldir. Otomatik seçilir.",
+    "Oluşturma doğrulanamadı. Tekrar denemeden önce Discord’u kontrol edin; Helper için Kanalları Yönet ve Rolleri Yönet izinleri gerekir."
   ],
   "ar": [
     "المتجر",
@@ -244,7 +268,11 @@ const copy: Record<string,string[]> = {
     "متوقف",
     "تُعلن هنا المشتريات الجديدة ذات التسليم اليدوي. اختر قناة للطاقم.",
     "بعض تنبيهات الطلبات غير مؤكدة. تحقق من القناة والطلبات.",
-    "اختر قناة نصية يستطيع Helper رؤيتها وإرسال الرسائل وتضمين الروابط فيها."
+    "اختر قناة نصية يستطيع Helper رؤيتها وإرسال الرسائل وتضمين الروابط فيها.",
+    "اسم القناة الجديدة",
+    "إنشاء قناة للفريق",
+    "خاصة بالمشرفين والإداريين. يتم اختيارها تلقائياً.",
+    "تعذر تأكيد الإنشاء. تحقق من Discord قبل المحاولة مجدداً؛ يحتاج Helper إلى إدارة القنوات والأدوار."
   ],
   "zh": [
     "商店",
@@ -279,7 +307,11 @@ const copy: Record<string,string[]> = {
     "關閉",
     "新的人工交付購買將在此通知。請選擇工作人員頻道。",
     "部分訂單通知尚未確認，請檢查頻道及訂單。",
-    "請選擇 Helper 可查看、發送訊息及嵌入連結的文字頻道。"
+    "請選擇 Helper 可查看、發送訊息及嵌入連結的文字頻道。",
+    "新频道名称",
+    "创建管理团队频道",
+    "仅版主和管理员可见。自动选中。",
+    "无法确认创建结果。重试前请检查 Discord；Helper 需要管理频道和管理身份组权限。"
   ],
   "ru": [
     "Магазин",
@@ -314,7 +346,11 @@ const copy: Record<string,string[]> = {
     "Выключено",
     "Новые покупки с ручной выдачей публикуются здесь. Выберите канал персонала.",
     "Некоторые уведомления не подтверждены. Проверьте канал и заказы.",
-    "Выберите текстовый канал, где Helper может просматривать канал, отправлять сообщения и встраивать ссылки."
+    "Выберите текстовый канал, где Helper может просматривать канал, отправлять сообщения и встраивать ссылки.",
+    "Название нового канала",
+    "Создать канал команды",
+    "Только для модераторов и администраторов. Выбирается автоматически.",
+    "Не удалось подтвердить создание. Перед повтором проверьте Discord; Helper нужны права управления каналами и ролями."
   ],
   "ko": [
     "상점",
@@ -349,7 +385,11 @@ const copy: Record<string,string[]> = {
     "꺼짐",
     "운영진이 지급할 신규 구매를 이곳에 알립니다. 운영진 채널을 선택하세요.",
     "일부 주문 알림이 확인되지 않았습니다. 채널과 주문을 확인하세요.",
-    "Helper가 볼 수 있고 메시지 전송 및 링크 삽입이 가능한 텍스트 채널을 선택하세요."
+    "Helper가 볼 수 있고 메시지 전송 및 링크 삽입이 가능한 텍스트 채널을 선택하세요.",
+    "새 채널 이름",
+    "운영진 채널 만들기",
+    "관리자와 중재자만 볼 수 있습니다. 자동으로 선택됩니다.",
+    "생성을 확인하지 못했습니다. 다시 시도하기 전에 Discord를 확인하세요. Helper에 채널 및 역할 관리 권한이 필요합니다."
   ]
 };
 export function shopText(key:typeof keys[number],locale=helperLocale()):string {return (copy[locale]??copy.en)[keys.indexOf(key)];}
