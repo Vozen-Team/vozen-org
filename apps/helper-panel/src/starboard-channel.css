@@ -1,6 +1,7 @@
 .starboard-channel {border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:24px;}
 .resource-create-field {grid-column:1 / -1;min-width:0;}
-.panel-main .field-grid:has(> .resource-create-field > .temp-category-create) {align-items:end;}
+.panel-main .field-grid:has(> .resource-create-field > .temp-category-create) {align-items:stretch;}
+.panel-main .field-grid:has(> .resource-create-field > .temp-category-create) > .field {grid-template-rows:1fr auto;}
 .starboard-channel__heading {display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
 .starboard-channel h4 {margin:0;font-size:16px;color:var(--mint);}
 .starboard-channel p {color:var(--muted);max-width:70ch;line-height:1.6;margin:12px 0;}
