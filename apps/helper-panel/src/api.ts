@@ -1,7 +1,7 @@
 export type ShopProductInput = {name:string;price:number;delivery:'manual'|'role';roleId:string|null};
 export type ShopProduct = ShopProductInput & {id:number;version:number};
 export type ShopOrder = {id:number;userId:string;displayName:string;productName:string;price:number;delivery:'manual'|'role';roleId:string|null;status:'pending'|'delivered'|'refunded';createdAt:number};
-export type ShopPage = {guildId:string;products:ShopProduct[];orders:ShopOrder[];nextCursor:number|null};
+export type ShopPage = {guildId:string;products:ShopProduct[];orders:ShopOrder[];nextCursor:number|null;staffChannel:string;failedNotices:number};
 export type RankCardConfig = {
   font: string;
   primary_color: string;
@@ -569,6 +569,7 @@ async function meOrBootstrap(options?: ReadOptions): Promise<Me> {
 }
 
 export const api = {
+  shopNotifications: (guildId:string,channelId:string) => request<{ok:boolean}>(`/api/economy/notifications?guildId=${encodeURIComponent(guildId)}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({channelId})}),
   shop: (guildId:string,before?:number,signal?:AbortSignal) => request<ShopPage>(`/api/economy/shop?guildId=${encodeURIComponent(guildId)}${before ? `&before=${before}`:''}`,{signal}),
   saveShopProduct: (guildId:string,product:ShopProductInput,existing?:ShopProduct) => request<{ok:boolean}>(`/api/economy/products${existing ? `/${existing.id}`:''}?guildId=${encodeURIComponent(guildId)}`,{method:existing?'PUT':'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(existing?{product,version:existing.version}:product)}),
   removeShopProduct: (guildId:string,product:ShopProduct) => request<{ok:boolean}>(`/api/economy/products/${product.id}?guildId=${encodeURIComponent(guildId)}`,{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({version:product.version})}),

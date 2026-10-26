@@ -31,7 +31,7 @@ export function EconomyShop({context,localPreviewMode}:{context:GuildContext|nul
     if(busy||!usable)return;
     setBusy(true);setError('');
     try {await action();if(reset){setDraft(blank);setEditing(undefined);}await load();}
-    catch(cause){const message=cause instanceof Error?cause.message:'';setError(t(message==='shop_role_unavailable'?'roleError':message==='shop_changed'?'changed':'error'));}
+    catch(cause){const message=cause instanceof Error?cause.message:'';setError(t(message==='shop_invalid_channel'?'channelError':message==='shop_role_unavailable'?'roleError':message==='shop_changed'?'changed':'error'));}
     finally {setBusy(false);}
   }
   const products=data?.products??[];
@@ -42,6 +42,12 @@ export function EconomyShop({context,localPreviewMode}:{context:GuildContext|nul
   }
   return <section className="card config-section economy-shop" aria-label={t('shop')}>
     <div className="economy-shop__heading"><h3>{t('shop')}</h3><code>/shop</code></div>
+    <label className="field economy-shop__notifications">{t('noticeChannel')}
+      <select value={data?.staffChannel??''} disabled={busy||loading||!usable} onChange={event=>void mutate(()=>api.shopNotifications(guild,event.target.value))}>
+        <option value="">{t('off')}</option>{context?.channels.filter(channel=>['text','announcement'].includes(channel.type)).map(channel=><option key={channel.id} value={channel.id}>#{channel.name}</option>)}
+      </select><small>{t('noticeHelp')}</small>
+    </label>
+    {!!data?.failedNotices&&<p role="alert">{t('noticeFailed')}</p>}
     <div className="economy-shop__tabs" role="group" aria-label={t('shop')}>
       <button type="button" className="secondary" aria-pressed={tab==='products'} onClick={()=>setTab('products')}>{t('products')} · {products.length}/20</button>
       <button type="button" className="secondary" aria-pressed={tab==='orders'} onClick={()=>setTab('orders')}>{t('orders')}</button>

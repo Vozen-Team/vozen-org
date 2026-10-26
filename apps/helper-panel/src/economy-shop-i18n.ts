@@ -1,5 +1,5 @@
 import {helperLocale} from './i18n';
-const keys = ["shop", "products", "orders", "name", "price", "delivery", "manual", "role", "add", "save", "cancel", "edit", "remove", "pending", "delivered", "refunded", "complete", "refund", "empty", "refresh", "more", "error", "roleError", "changed", "manualHelp", "refundConfirm", "loadError", "removeConfirm"] as const;
+const keys = ["shop", "products", "orders", "name", "price", "delivery", "manual", "role", "add", "save", "cancel", "edit", "remove", "pending", "delivered", "refunded", "complete", "refund", "empty", "refresh", "more", "error", "roleError", "changed", "manualHelp", "refundConfirm", "loadError", "removeConfirm", "noticeChannel", "off", "noticeHelp", "noticeFailed", "channelError"] as const;
 const copy: Record<string,string[]> = {
   "en": [
     "Shop",
@@ -29,7 +29,12 @@ const copy: Record<string,string[]> = {
     "Arrange physical delivery details with the member privately.",
     "Refund this purchase? For role orders, check Discord first; the role is not removed automatically.",
     "Could not load the shop.",
-    "Remove this product? Existing orders will remain."
+    "Remove this product? Existing orders will remain.",
+    "Manual order alerts",
+    "Off",
+    "New manual-delivery purchases are announced here. Choose a staff channel.",
+    "Some order alerts could not be confirmed. Check the channel and Orders.",
+    "Choose a text channel where Helper can view, send messages and embed links."
   ],
   "pt": [
     "Loja",
@@ -59,7 +64,12 @@ const copy: Record<string,string[]> = {
     "Combina os detalhes da entrega física com o membro em privado.",
     "Devolver os pontos desta compra? Nos cargos, verifica o Discord primeiro; o cargo não é removido automaticamente.",
     "Não foi possível carregar a loja.",
-    "Remover este produto? Os pedidos existentes mantêm-se."
+    "Remover este produto? Os pedidos existentes mantêm-se.",
+    "Avisos de entrega manual",
+    "Desligado",
+    "As novas compras com entrega manual são anunciadas aqui. Escolhe um canal da staff.",
+    "Há avisos de pedidos por confirmar. Verifica o canal e os Pedidos.",
+    "Escolhe um canal de texto onde o Helper possa ver, enviar mensagens e incorporar links."
   ],
   "fr": [
     "Boutique",
@@ -89,7 +99,12 @@ const copy: Record<string,string[]> = {
     "Organisez la livraison physique en privé avec le membre.",
     "Rembourser cet achat ? Vérifiez Discord pour les rôles ; ils ne sont pas retirés automatiquement.",
     "Chargement impossible.",
-    "Supprimer ce produit ? Les commandes existantes sont conservées."
+    "Supprimer ce produit ? Les commandes existantes sont conservées.",
+    "Alertes de livraison manuelle",
+    "Désactivé",
+    "Les nouveaux achats à livraison manuelle sont annoncés ici. Choisissez un canal réservé à l’équipe.",
+    "Certaines alertes restent à confirmer. Vérifiez le canal et les commandes.",
+    "Choisissez un canal texte où Helper peut voir, envoyer des messages et intégrer des liens."
   ],
   "es": [
     "Tienda",
@@ -119,7 +134,12 @@ const copy: Record<string,string[]> = {
     "Acuerda la entrega física con el miembro en privado.",
     "¿Devolver los puntos? Comprueba Discord para los roles; no se eliminan automáticamente.",
     "No se pudo cargar la tienda.",
-    "¿Eliminar el producto? Se conservan los pedidos existentes."
+    "¿Eliminar el producto? Se conservan los pedidos existentes.",
+    "Avisos de entrega manual",
+    "Desactivado",
+    "Las nuevas compras con entrega manual se anuncian aquí. Elige un canal del equipo.",
+    "Hay avisos sin confirmar. Revisa el canal y los pedidos.",
+    "Elige un canal de texto donde Helper pueda ver, enviar mensajes e insertar enlaces."
   ],
   "de": [
     "Shop",
@@ -149,7 +169,12 @@ const copy: Record<string,string[]> = {
     "Vereinbare die physische Lieferung privat mit dem Mitglied.",
     "Kauf erstatten? Prüfe Discord bei Rollen; diese werden nicht automatisch entfernt.",
     "Shop konnte nicht geladen werden.",
-    "Produkt entfernen? Vorhandene Bestellungen bleiben erhalten."
+    "Produkt entfernen? Vorhandene Bestellungen bleiben erhalten.",
+    "Hinweise für manuelle Lieferungen",
+    "Aus",
+    "Neue Käufe mit manueller Lieferung werden hier angekündigt. Wähle einen Teamkanal.",
+    "Einige Hinweise sind unbestätigt. Prüfe Kanal und Bestellungen.",
+    "Wähle einen Textkanal, in dem Helper sehen, Nachrichten senden und Links einbetten darf."
   ],
   "tr": [
     "Mağaza",
@@ -179,7 +204,12 @@ const copy: Record<string,string[]> = {
     "Fiziksel teslimat ayrıntılarını üyeyle özelden görüş.",
     "Puanlar iade edilsin mi? Roller için önce Discord’u kontrol et; rol otomatik kaldırılmaz.",
     "Mağaza yüklenemedi.",
-    "Ürün kaldırılsın mı? Mevcut siparişler korunur."
+    "Ürün kaldırılsın mı? Mevcut siparişler korunur.",
+    "Ekip teslimatı bildirimleri",
+    "Kapalı",
+    "Yeni ekip teslimatı satın alımları burada duyurulur. Bir ekip kanalı seç.",
+    "Bazı bildirimler doğrulanamadı. Kanalı ve siparişleri kontrol et.",
+    "Helper’ın görebildiği, mesaj gönderebildiği ve bağlantı ekleyebildiği bir metin kanalı seç."
   ],
   "ar": [
     "المتجر",
@@ -209,7 +239,12 @@ const copy: Record<string,string[]> = {
     "نسّق تفاصيل التسليم المادي مع العضو على الخاص.",
     "إعادة نقاط الشراء؟ تحقق من Discord للرتب؛ لا تُزال الرتبة تلقائيًا.",
     "تعذر تحميل المتجر.",
-    "إزالة المنتج؟ ستبقى الطلبات الحالية."
+    "إزالة المنتج؟ ستبقى الطلبات الحالية.",
+    "تنبيهات التسليم اليدوي",
+    "متوقف",
+    "تُعلن هنا المشتريات الجديدة ذات التسليم اليدوي. اختر قناة للطاقم.",
+    "بعض تنبيهات الطلبات غير مؤكدة. تحقق من القناة والطلبات.",
+    "اختر قناة نصية يستطيع Helper رؤيتها وإرسال الرسائل وتضمين الروابط فيها."
   ],
   "zh": [
     "商店",
@@ -239,7 +274,12 @@ const copy: Record<string,string[]> = {
     "請私下與成員安排實體商品交付。",
     "退還購買積分？身分組訂單請先查看 Discord；身分組不會自動移除。",
     "無法載入商店。",
-    "移除此商品？現有訂單將保留。"
+    "移除此商品？現有訂單將保留。",
+    "人工交付通知",
+    "關閉",
+    "新的人工交付購買將在此通知。請選擇工作人員頻道。",
+    "部分訂單通知尚未確認，請檢查頻道及訂單。",
+    "請選擇 Helper 可查看、發送訊息及嵌入連結的文字頻道。"
   ],
   "ru": [
     "Магазин",
@@ -269,7 +309,12 @@ const copy: Record<string,string[]> = {
     "Договоритесь о физической доставке с участником лично.",
     "Вернуть баллы? Для ролей сначала проверьте Discord; роль автоматически не удаляется.",
     "Не удалось загрузить магазин.",
-    "Удалить товар? Существующие заказы сохранятся."
+    "Удалить товар? Существующие заказы сохранятся.",
+    "Оповещения о ручной выдаче",
+    "Выключено",
+    "Новые покупки с ручной выдачей публикуются здесь. Выберите канал персонала.",
+    "Некоторые уведомления не подтверждены. Проверьте канал и заказы.",
+    "Выберите текстовый канал, где Helper может просматривать канал, отправлять сообщения и встраивать ссылки."
   ],
   "ko": [
     "상점",
@@ -299,7 +344,12 @@ const copy: Record<string,string[]> = {
     "실물 배송은 회원과 비공개로 협의하세요.",
     "포인트를 환불할까요? 역할 주문은 먼저 Discord를 확인하세요. 역할은 자동 삭제되지 않습니다.",
     "상점을 불러오지 못했습니다.",
-    "상품을 삭제할까요? 기존 주문은 유지됩니다."
+    "상품을 삭제할까요? 기존 주문은 유지됩니다.",
+    "운영진 지급 알림",
+    "꺼짐",
+    "운영진이 지급할 신규 구매를 이곳에 알립니다. 운영진 채널을 선택하세요.",
+    "일부 주문 알림이 확인되지 않았습니다. 채널과 주문을 확인하세요.",
+    "Helper가 볼 수 있고 메시지 전송 및 링크 삽입이 가능한 텍스트 채널을 선택하세요."
   ]
 };
 export function shopText(key:typeof keys[number],locale=helperLocale()):string {return (copy[locale]??copy.en)[keys.indexOf(key)];}

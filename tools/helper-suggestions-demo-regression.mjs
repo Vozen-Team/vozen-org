@@ -19,11 +19,11 @@ const leaderboard = demoFeature === 'leaderboard';
 const defaultFeatureKey = `${polls ? 'management' : tickets || welcome ? 'support' : 'community'}.${demoFeature}`;
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard || achievements || economy ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : []), ...(economy ? ['shop-en','shop-pt','shop-fr','shop-es','shop-de','shop-tr','shop-ar','shop-zh','shop-ru','shop-ko','shop-mobile','shop-failure'] : []), ...(leaderboard ? ['ranking-error', 'ranking-data', 'ranking-many', 'ranking-many-pt', 'ranking-many-mobile', 'ranking-ten', 'emoji-copy', 'emoji-copy-pt'] : [])]) {
+  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard || achievements || economy ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : []), ...(economy ? ['shop-en','shop-pt','shop-fr','shop-es','shop-de','shop-tr','shop-ar','shop-zh','shop-ru','shop-ko','shop-mobile','shop-failure','shop-channel-error','shop-notice-warning'] : []), ...(leaderboard ? ['ranking-error', 'ranking-data', 'ranking-many', 'ranking-many-pt', 'ranking-many-mobile', 'ranking-ten', 'emoji-copy', 'emoji-copy-pt'] : [])]) {
     if (process.env.SUGGESTIONS_DEMO_SCENARIO && process.env.SUGGESTIONS_DEMO_SCENARIO !== scenario) continue;
     const page = await browser.newPage(scenario === 'dismiss-touch' ? { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true } : {});
     const shopScenario=scenario.startsWith('shop-');
-    let shopProducts=[];
+    let shopProducts=[];let shopChannel='';
     let shopOrders=[{id:1,userId:'member',displayName:'Readable member',productName:'T-shirt',price:80,delivery:'manual',roleId:null,status:'pending',createdAt:1700000000000}];
     const shopLocale=scenario.split('-')[1];
     const shopWrites=[];
@@ -57,9 +57,14 @@ try {
       const path = new URL(route.request().url()).pathname.replace(/^.*?(?=\/api\/)/, '');
       if(economy&&path.startsWith('/api/economy/')) {
         const method=route.request().method();
-        if(method==='GET') {await route.fulfill({json:{guildId:'sample',products:shopProducts,orders:shopOrders,nextCursor:null}});return;}
+        if(method==='GET') {await route.fulfill({json:{guildId:'sample',products:shopProducts,orders:shopOrders,nextCursor:null,staffChannel:shopChannel,failedNotices:scenario==='shop-notice-warning'?1:0}});return;}
+        assert.equal(new URL(route.request().url()).searchParams.get('guildId'),'sample');
         const body=route.request().postDataJSON();
         shopWrites.push({path,method,body});
+        if(path==='/api/economy/notifications') {
+          if(scenario==='shop-channel-error'){await route.fulfill({status:400,json:{code:'shop_invalid_channel'}});return;}
+          shopChannel=body.channelId;await route.fulfill({json:{ok:true}});return;
+        }
         if(scenario==='shop-failure') {await route.fulfill({status:409,json:{code:'shop_changed'}});return;}
         if(path==='/api/economy/products'&&method==='POST') shopProducts.push({...body,id:shopProducts.length+1,version:1});
         else if(path.startsWith('/api/economy/products/')&&method==='PUT') shopProducts=shopProducts.map(p=>p.id===Number(path.split('/').at(-1))?{...body.product,id:p.id,version:p.version+1}:p);
@@ -95,7 +100,7 @@ try {
             : giveaway ? [{ title: 'Giveaway defaults', fields: [{ key: 'defaultDurationHours', label: 'Default duration (hours)', kind: 'number' }, { key: 'defaultWinners', label: 'Default winners', kind: 'number' }, { key: 'requiredRole', label: 'Required role (optional)', kind: 'role' }] }]
             : [{ title: 'Suggestion intake', fields: [{ key: 'channel', label: 'Suggestion channel', kind: 'channel' }, { key: 'voteMode', label: 'Voting mode', kind: 'select', options: [['up_down', 'Support / against'], ['up_only', 'Support only']] }, { key: 'anonymous', label: 'Hide author in the public message', kind: 'toggle' }] }, { title: 'Moderation', fields: [{ key: 'cooldownHours', label: 'Cooldown per member (hours)', kind: 'number' }, { key: 'requiredRole', label: 'Required role (optional)', kind: 'role' }, { key: 'staffChannel', label: 'Staff notification channel (optional)', kind: 'channel' }] }] },
         };
-        else if (path === '/api/guild-context') value = { guildId: 'sample', name: 'Sample server', permissions: '8', channels: [{ id: 'sample-events', name: 'events', type: 'text' }, { id: 'sample-polls', name: 'polls', type: 'text' }, { id: 'sample-suggestions', name: 'suggestions', type: 'text' }, { id: 'sample-support', name: 'support', type: 'text' }, { id: 'sample-welcome', name: 'welcome', type: 'text' }], roles: economy?[{id:'123',name:'VIP',position:1,manageable:true},{id:'456',name:'Managed',position:2,manageable:false,managed:true}]:[], hierarchy: { known: true }, capabilities: { channelSelectors: true, roleSelectors: true, permissionPreflight: true } };
+        else if (path === '/api/guild-context') value = { guildId: 'sample', name: 'Sample server', permissions: '8', channels: [...(economy?[{id:'20',name:'shop-staff',type:'text'},{id:'21',name:'voice',type:'voice'}]:[]),{ id: 'sample-events', name: 'events', type: 'text' }, { id: 'sample-polls', name: 'polls', type: 'text' }, { id: 'sample-suggestions', name: 'suggestions', type: 'text' }, { id: 'sample-support', name: 'support', type: 'text' }, { id: 'sample-welcome', name: 'welcome', type: 'text' }], roles: economy?[{id:'123',name:'VIP',position:1,manageable:true},{id:'456',name:'Managed',position:2,manageable:false,managed:true}]:[], hierarchy: { known: true }, capabilities: { channelSelectors: true, roleSelectors: true, permissionPreflight: true } };
         else if (path === '/api/stats') value = { guildId: 'sample', totalCases: 0 };
         else if (path === '/api/cases') value = { cases: [] };
         else if (path === '/api/audit') value = { events: [] };
@@ -117,6 +122,24 @@ try {
       await panel.locator('form input').first().waitFor();
       await page.waitForFunction(()=>!document.querySelector('.economy-shop fieldset').disabled);
       assert.equal(shopWrites.length,0,'viewing the shop does not write');
+      const notice=panel.locator('.economy-shop__notifications select');
+      assert.equal(await notice.inputValue(),'');
+      assert.equal(await notice.locator('option[value="21"]').count(),0,'voice channels cannot receive notices');
+      if(scenario==='shop-notice-warning') {
+        await panel.getByRole('alert').waitFor();
+        console.log('PASS shop-notice-warning');await page.close();continue;
+      }
+      if(scenario!=='shop-failure') {
+        await notice.selectOption('20');
+        if(scenario==='shop-channel-error') {
+          await panel.getByRole('alert').waitFor();assert.equal(await notice.inputValue(),'');
+          assert.equal(shopChannel,'');console.log('PASS shop-channel-error');await page.close();continue;
+        }
+        await page.waitForFunction(()=>document.querySelector('.economy-shop__notifications select').value==='20');
+        assert.equal(shopWrites.filter(w=>w.path==='/api/economy/notifications').length,1);
+        assert.equal(shopProducts.length,0,'notification settings do not alter products');
+      }
+
       await panel.locator('form input').first().fill('T-shirt <b>safe</b>');
       await panel.locator('form input[type=number]').fill('80');
       await panel.locator('button[type=submit]').click();
