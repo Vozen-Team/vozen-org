@@ -1,5 +1,10 @@
 type DemoCopy = { title: string; example: string; steps: [string, string, string] };
 const demos = new Map<string, { asset: string; en: DemoCopy; pt: DemoCopy }>([
+  ['utility.temp_channels', {
+    asset: 'temp-channels',
+    en: { title: 'How Temporary channels work · looping animation', example: 'Single-participant example. No Discord channels are created or deleted by this animation.', steps: ['1. Enable Temporary channels. A member with Manage Channels uses /temp-channel.', '2. Helper creates a voice room with your name template and optional category. Click the room to join; joining is manual.', '3. The room is removed when its creator disconnects from voice. This example shows the creator alone in the room.'] },
+    pt: { title: 'Como funcionam os Canais temporários · animação em loop', example: 'Exemplo com um participante. Esta animação não cria nem apaga canais no Discord.', steps: ['1. Ativa Canais temporários. Um membro com Gerir canais usa /temp-channel.', '2. O Helper cria uma sala com o nome e a categoria configurados. Clica na sala para entrar; a entrada é manual.', '3. A sala é removida quando o criador se desliga da voz. Neste exemplo, o criador está sozinho na sala.'] },
+  }],
   ['community.economy', {
     asset: 'economy',
     en: { title: 'How Economy works · looping animation', example: 'Sample data: daily +100, work +50 credits. This animation does not change balances or send Discord messages.', steps: ['1. Enable Economy and choose the currency and rewards.', '2. Use /daily once every 24 hours and /work after its configured cooldown.', '3. Check your balance with /balance and the top 10 with /economy-top.'] },

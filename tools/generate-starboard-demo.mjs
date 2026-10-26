@@ -10,7 +10,7 @@ const destination = path.join(root, 'apps/helper-panel/public/feature-demos');
 // Retain the original command; pass a feature name to generate only that storyboard
 // without replacing any existing Starboard assets.
 const feature = process.argv[2] ?? 'starboard';
-if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy'].includes(feature)) throw new Error('Unknown feature demo');
+if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy', 'temp-channels'].includes(feature)) throw new Error('Unknown feature demo');
 await fs.mkdir(destination, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -51,6 +51,7 @@ try {
         ctx.fillText(content, x, y);
       }
       function draw(time) {
+        if (feature === 'temp-channels') { drawTempChannels(time); return; }
         if (feature === 'economy') { drawEconomy(time); return; }
         if (feature === 'achievements') { drawAchievements(time); return; }
         if (feature === 'leaderboard') { drawLeaderboard(time); return; }
@@ -88,6 +89,39 @@ try {
         label(text.sample, 42, 518, 14, '#a3b6d1');
         ctx.fillStyle = '#24354c'; ctx.fillRect(42, 531, 876, 3);
         ctx.fillStyle = '#8ee5d2'; ctx.fillRect(42, 531, 876 * Math.min(time / 10, 1), 3);
+      }
+      function drawTempChannels(time) {
+        const created = time >= 2;
+        const joined = time >= 4 && time < 7.5;
+        const removed = time >= 7.5;
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / CANAIS TEMPORÁRIOS' : 'VOZEN HELPER / TEMPORARY CHANNELS', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Uma sala para a tua conversa' : 'A room for your conversation', 42, 111, 30);
+        card(42, 137, 876, 93);
+        label('/temp-channel', 66, 175, 25, '#8ee5d2');
+        label(pt ? 'Criador: Rexy · com permissão Gerir canais' : 'Creator: Rexy · with Manage Channels permission', 66, 208, 18, '#a3b6d1');
+        card(42, 247, 340, 192);
+        label(pt ? 'VOZ DA COMUNIDADE' : 'COMMUNITY VOICE', 64, 281, 16, '#a3b6d1');
+        label('♪  General', 64, 324, 22, '#a3b6d1');
+        if (created && !removed) {
+          label("♪  Rexy's room", 64, 365, 23, '#8ee5d2');
+          if (joined) {
+            ctx.fillStyle='#8ee5d2';ctx.beginPath();ctx.arc(84,403,12,0,Math.PI*2);ctx.fill();
+            label('Rexy', 110, 410, 20);
+          }
+        }
+        card(402, 247, 516, 192);
+        label(removed ? (pt ? 'Sala removida' : 'Room removed') : joined ? (pt ? 'Ligado à voz' : 'Connected to voice') : created ? (pt ? 'Sala criada' : 'Room created') : (pt ? 'Pronto para criar' : 'Ready to create'), 426, 287, 26, '#8ee5d2');
+        label(removed ? (pt ? 'O criador desligou-se.' : 'The creator disconnected.') : joined ? (pt ? 'Conversa com a comunidade.' : 'Talk with the community.') : created ? (pt ? 'Clica na sala para entrar.' : 'Click the room to join.') : (pt ? 'Usa o comando no servidor.' : 'Use the command in the server.'), 426, 333, 21);
+        if (joined) {
+          for (let i=0;i<12;i++) {
+            const height=12+Math.sin(time*5+i*.7)**2*32;
+            ctx.fillStyle='#8ee5d2';ctx.fillRect(426+i*23,405-height,11,height);
+          }
+        } else label(removed ? (pt ? 'Neste exemplo, a sala fica vazia.' : 'In this example, the room is empty.') : (pt ? 'A entrada é manual.' : 'Joining is manual.'),426,397,18,'#a3b6d1');
+        label(time < 2 ? (pt ? '1. Cria a sala com /temp-channel' : '1. Create the room with /temp-channel') : time < 7.5 ? (pt ? '2. Entra na sala de voz' : '2. Join the voice room') : (pt ? '3. Ao desligar o criador, a sala é removida' : '3. The room is removed when its creator disconnects'),42,484,22);
+        label(pt ? 'Exemplo com um participante · categoria e limite configuráveis' : 'Single-participant example · configurable category and room limit',42,518,14,'#a3b6d1');
       }
       function drawEconomy(time) {
         const daily = time >= 2;
@@ -477,7 +511,7 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Sem canal escolhido, o botão não aparece · exemplo ilustrativo' : 'Without a chosen channel, the button stays hidden · illustrative example', 42, 518, 14, '#a3b6d1');
       }
-      draw(['events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy'].includes(feature) ? 8 : 0);
+      draw(feature === 'temp-channels' ? 6 : ['events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy'].includes(feature) ? 8 : 0);
       const poster = canvas.toDataURL('image/png').split(',')[1];
       const stream = canvas.captureStream(24);
       const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: 700_000 });

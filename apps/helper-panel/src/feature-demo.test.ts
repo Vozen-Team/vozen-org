@@ -2,6 +2,15 @@ import { describe, expect, it } from 'vitest';
 import { featureDemo } from './feature-demo';
 
 describe('feature-specific demonstrations', () => {
+  it('shows manual joining and creator-disconnect cleanup for temporary rooms', () => {
+    const demo = featureDemo('utility.temp_channels', 'en');
+    expect(demo?.asset).toBe('temp-channels-en');
+    expect(demo?.example).toMatch(/single-participant/i);
+    expect(demo?.example).toMatch(/no Discord channels are created or deleted/i);
+    for (const phrase of ['/temp-channel', 'Manage Channels', 'joining is manual', 'creator disconnects']) expect(demo?.steps.join(' ')).toContain(phrase);
+    expect(featureDemo('utility.temp_channels', 'pt')?.asset).toBe('temp-channels-pt');
+    expect(featureDemo('utility.temp_channels', 'fr')?.asset).toBe('temp-channels-en');
+  });
   it('explains economy commands and cooldowns without changing balances', () => {
     const demo = featureDemo('community.economy', 'en');
     expect(demo?.example).toMatch(/does not change balances/);
