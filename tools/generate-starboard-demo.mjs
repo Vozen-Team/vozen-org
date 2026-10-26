@@ -514,7 +514,7 @@ try {
       draw(feature === 'temp-channels' ? 6 : ['events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy'].includes(feature) ? 8 : 0);
       const poster = canvas.toDataURL('image/png').split(',')[1];
       const stream = canvas.captureStream(24);
-      const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: 700_000 });
+      const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: feature === 'temp-channels' ? 2_000_000 : 700_000 });
       const chunks = [];
       recorder.ondataavailable = event => chunks.push(event.data);
       const done = new Promise(resolve => { recorder.onstop = resolve; });
