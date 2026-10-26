@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
@@ -32,6 +32,13 @@ const [dashboard, dashboardInstallRedirect, installResultPage, installResultScri
 ]);
 
 assert.match(main, /FALLBACK_INVITE_URL/);
+assert.match(main, /const INVITE_PERMISSIONS = "326420745232";/);
+for (const relative of await readdir(path.join(root, 'site'), { recursive: true })) {
+  if (/\.(?:html|m?js)$/.test(relative)) {
+    assert.equal((await read(path.join('site', relative))).includes('326420745216'), false,
+      `old TTS invite permissions remain in ${relative}`);
+  }
+}
 assert.match(main, /vozenTtsInstallHref/);
 assert.match(commands, /vozenTtsInstallHref\("commands"\)/);
 assert.match(commands, /"\/dashboard\.html\?add=1"/);
