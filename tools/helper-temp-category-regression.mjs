@@ -39,7 +39,7 @@ try{
      if(scenario==='save-failure'){await route.fulfill({status:503,json:{code:'temporary_failure'}});return;}
      saved=body.config;revision++;
     }
-    value={...feature,guildId:guild,config:saved,defaults:{},revision,schema:{sections:[{title:'Temporary voice rooms',fields:[{key:'categoryId',label:'Category',kind:'category'},{key:'nameTemplate',label:'Room name template',kind:'text'},{key:'maxActive',label:'Maximum active rooms',kind:'number',min:1,max:50}]}]}};
+    value={...feature,guildId:guild,config:saved,defaults:{},revision,schema:{sections:[{title:'Temporary voice rooms',fields:[{key:'categoryId',label:'Category',kind:'category'},{key:'nameTemplate',label:'Room name template',help:'Use {user} for the member display name.',kind:'text'},{key:'maxActive',label:'Maximum active rooms',kind:'number',min:1,max:50}]}]}};
    }else if(path.endsWith('/preflight'))value={guildId:guild,ok:true,issues:[]};
    else if(path==='/api/quotas')value={plan:'Free',limits:{},usage:{}};
    else if(path==='/api/stats')value={guildId:guild,totalCases:0};
@@ -52,6 +52,12 @@ try{
   await page.goto(`${base}#/config/utility.temp_channels`);
   const setup=page.locator('.temp-category-create'),button=setup.getByRole('button');
   await button.waitFor();
+  if(scenario!=='mobile'){
+   const grid=setup.locator('..').locator('..');
+   const name=await grid.locator(':scope > .field input[type="text"]').boundingBox();
+   const limit=await grid.locator(':scope > .field input[type="number"]').boundingBox();
+   assert.ok(name&&limit&&Math.abs(name.y-limit.y)<1,'room name and room limit inputs must align');
+  }
   const selected=page.locator('select').filter({has:page.locator('option[value="40"]')});
   assert.equal(await selected.inputValue(),'40');assert.equal(creates,0);
   if(locale!=='en')assert.notEqual(await button.innerText(),'Create category');
