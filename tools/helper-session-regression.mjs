@@ -131,7 +131,7 @@ try {
         await page.getByRole('combobox',{name:/Voting mode/}).selectOption('up_only');
         await saved();
         assert.equal(savedConfig.voteMode,'up_only');
-        await page.getByRole('checkbox',{name:'Allow anonymous suggestions',exact:true}).click();
+        await page.getByRole('checkbox',{name:'Hide author in the public message',exact:true}).click();
         await saved();
         assert.equal(savedConfig.anonymous,true);
         const active = page.locator('.detail-intro input[type=checkbox]');
@@ -162,7 +162,7 @@ try {
       } else if (scenario === 'autosave-navigation') {
         await cooldown.fill('12');
         await page.getByRole('button',{name:'← Back to features',exact:true}).click();
-        await page.waitForFunction(() => window.location.hash === '#/features');
+        await page.waitForFunction(() => window.location.pathname === '/panel/features/' && !window.location.hash);
         await cooldown.waitFor({state:'hidden'});
         assert.equal(savedConfig.cooldownHours,12,'navigation flushes text edits');
       } else if (scenario === 'autosave-guild') {

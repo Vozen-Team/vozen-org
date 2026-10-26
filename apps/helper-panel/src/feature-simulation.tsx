@@ -26,7 +26,7 @@ export function FeatureSimulation({ draft, onClose }: {
   const [result, setResult] = useState<Simulation | null>(null);
   const [failed, setFailed] = useState(false);
   const [animationFailed, setAnimationFailed] = useState(false);
-  const locale = helperLocale() === 'pt' ? 'pt' : 'en';
+  const locale = helperLocale();
   const demo = featureDemo(draft.key, locale);
   const media = demo ? `${import.meta.env.BASE_URL}feature-demos/${demo.asset}` : '';
 

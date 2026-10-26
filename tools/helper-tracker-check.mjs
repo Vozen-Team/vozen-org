@@ -18,7 +18,11 @@ const publicLocales = [...publicLocaleBlock[1].matchAll(/\["([a-z]+)",/g)].map((
 assert.deepEqual(helperLocales, expectedLocales, 'Helper must expose only the site languages');
 assert.deepEqual(publicLocales, expectedLocales, 'the public site and Helper must expose the same languages');
 assert.match(helperI18n, /export const DEFAULT_LOCALE: SupportedLocale = 'en';/);
-assert.match(helperI18n, /if \(value !== null\) window\.localStorage\.setItem\(LOCALE_KEY, DEFAULT_LOCALE\);/);
+assert.match(
+  helperI18n,
+  /currentLocale\s*=\s*isSupportedLocale\(value\)\s*\?\s*value\s*:\s*DEFAULT_LOCALE;/,
+  'stored locales must normalize to the supported value or DEFAULT_LOCALE; behavioral coverage: apps/helper-panel/src/i18n.test.ts (normalizes invalid locale)',
+);
 assert.match(publicShell, /const DEFAULT_LANG = "en";/);
 assert.match(publicShell, /else if \(storedLanguage\) localStorage\.setItem\(LS_KEY, DEFAULT_LANG\);/);
 
@@ -32,7 +36,7 @@ assert.match(
 assert.doesNotMatch(legacyEntry, /<script>\s*const incomingHash/);
 assert.match(
   redirectScript,
-  /location\.replace\("\/panel\/helper-tracker\/"\s*\+\s*safeHash\)/,
+  /location\.replace\("\/panel\/"\s*\+\s*safeHash\)/,
   'the external redirect must preserve only the allow-listed product hash',
 );
 assert.match(legacyEntry, /http-equiv="refresh"/);

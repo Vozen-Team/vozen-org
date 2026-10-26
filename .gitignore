@@ -4,6 +4,10 @@ site/docs/helper/
 apps/helper-panel/node_modules/
 apps/helper-panel/dist/
 site/panel/helper-tracker/
+# Generated clean Helper entries; the legacy handoff remains source-controlled.
+site/panel/index.html
+site/panel/*/index.html
+!site/panel/helper/index.html
 # The old /panel/helper/ address is now a one-file redirect only.
 site/panel/helper/assets/
 site/panel/helper/fonts/

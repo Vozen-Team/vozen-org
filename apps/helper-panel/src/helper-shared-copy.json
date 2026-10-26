@@ -1,0 +1,142 @@
+{
+  "Could not load this configuration": {
+    "pt": "Não foi possível carregar esta configuração",
+    "fr": "Impossible de charger cette configuration",
+    "es": "No se pudo cargar esta configuración",
+    "de": "Diese Konfiguration konnte nicht geladen werden",
+    "tr": "Bu yapılandırma yüklenemedi",
+    "ar": "تعذّر تحميل هذه الإعدادات",
+    "zh": "無法載入此設定",
+    "ru": "Не удалось загрузить эти настройки",
+    "ko": "이 설정을 불러오지 못했습니다"
+  },
+  "Loading Discord channels and roles…": {
+    "pt": "A carregar canais e cargos do Discord…",
+    "fr": "Chargement des salons et rôles Discord…",
+    "es": "Cargando canales y roles de Discord…",
+    "de": "Discord-Kanäle und -Rollen werden geladen…",
+    "tr": "Discord kanalları ve rolleri yükleniyor…",
+    "ar": "جارٍ تحميل قنوات Discord ورتبه…",
+    "zh": "正在載入 Discord 頻道與身分組…",
+    "ru": "Загрузка каналов и ролей Discord…",
+    "ko": "Discord 채널과 역할을 불러오는 중…"
+  },
+  "Discord resources unavailable": {
+    "pt": "Recursos do Discord indisponíveis",
+    "fr": "Ressources Discord indisponibles",
+    "es": "Recursos de Discord no disponibles",
+    "de": "Discord-Ressourcen nicht verfügbar",
+    "tr": "Discord kaynakları kullanılamıyor",
+    "ar": "موارد Discord غير متاحة",
+    "zh": "Discord 資源無法使用",
+    "ru": "Ресурсы Discord недоступны",
+    "ko": "Discord 리소스를 사용할 수 없습니다"
+  },
+  "Could not load Discord channels and roles. Try again without leaving this page.": {
+    "pt": "Não foi possível carregar os canais e cargos do Discord. Tenta novamente sem sair desta página.",
+    "fr": "Impossible de charger les salons et rôles Discord. Réessayez sans quitter cette page.",
+    "es": "No se pudieron cargar los canales y roles de Discord. Inténtalo de nuevo sin salir de esta página.",
+    "de": "Discord-Kanäle und -Rollen konnten nicht geladen werden. Versuche es erneut, ohne diese Seite zu verlassen.",
+    "tr": "Discord kanalları ve rolleri yüklenemedi. Bu sayfadan ayrılmadan tekrar deneyin.",
+    "ar": "تعذّر تحميل قنوات Discord ورتبه. حاول مجددًا دون مغادرة هذه الصفحة.",
+    "zh": "無法載入 Discord 頻道與身分組。請留在此頁面重試。",
+    "ru": "Не удалось загрузить каналы и роли Discord. Попробуйте ещё раз, не покидая эту страницу.",
+    "ko": "Discord 채널과 역할을 불러오지 못했습니다. 이 페이지에서 나가지 않고 다시 시도하세요."
+  },
+  "Reload channels and roles": {
+    "pt": "Recarregar canais e cargos",
+    "fr": "Recharger les salons et rôles",
+    "es": "Volver a cargar canales y roles",
+    "de": "Kanäle und Rollen neu laden",
+    "tr": "Kanalları ve rolleri yeniden yükle",
+    "ar": "إعادة تحميل القنوات والرتب",
+    "zh": "重新載入頻道與身分組",
+    "ru": "Перезагрузить каналы и роли",
+    "ko": "채널과 역할 다시 불러오기"
+  },
+  "Your settings have not been changed. Check your connection and try again.": {
+    "pt": "As tuas definições não foram alteradas. Verifica a ligação e tenta novamente.",
+    "fr": "Vos paramètres n’ont pas été modifiés. Vérifiez votre connexion et réessayez.",
+    "es": "Tu configuración no se ha modificado. Comprueba tu conexión e inténtalo de nuevo.",
+    "de": "Deine Einstellungen wurden nicht geändert. Prüfe deine Verbindung und versuche es erneut.",
+    "tr": "Ayarlarınız değiştirilmedi. Bağlantınızı kontrol edip tekrar deneyin.",
+    "ar": "لم تتغيّر إعداداتك. تحقق من اتصالك وحاول مجددًا.",
+    "zh": "你的設定未變更。請檢查連線後再試一次。",
+    "ru": "Ваши настройки не изменились. Проверьте подключение и попробуйте ещё раз.",
+    "ko": "설정은 변경되지 않았습니다. 연결 상태를 확인한 후 다시 시도하세요."
+  },
+  "Retry configuration": {
+    "pt": "Voltar a carregar a configuração",
+    "fr": "Recharger la configuration",
+    "es": "Reintentar cargar la configuración",
+    "de": "Konfiguration erneut laden",
+    "tr": "Yapılandırmayı yeniden yükle",
+    "ar": "إعادة محاولة تحميل الإعدادات",
+    "zh": "重試載入設定",
+    "ru": "Повторить загрузку настроек",
+    "ko": "설정 다시 불러오기"
+  },
+  "No matching resources in this server.": {
+    "pt": "Não há recursos correspondentes neste servidor.",
+    "fr": "Aucune ressource correspondante sur ce serveur.",
+    "es": "No hay recursos coincidentes en este servidor.",
+    "de": "Keine passenden Ressourcen auf diesem Server.",
+    "tr": "Bu sunucuda eşleşen kaynak yok.",
+    "ar": "لا توجد موارد مطابقة في هذا الخادم.",
+    "zh": "此伺服器中沒有相符的資源。",
+    "ru": "На этом сервере нет подходящих ресурсов.",
+    "ko": "이 서버에 일치하는 리소스가 없습니다."
+  },
+  "No staff notification — choose a role": {
+    "pt": "Sem notificação à equipa — escolhe um cargo",
+    "fr": "Aucune notification à l’équipe — choisissez un rôle",
+    "es": "Sin notificación al equipo — elige un rol",
+    "de": "Keine Benachrichtigung ans Team — Rolle auswählen",
+    "tr": "Ekibe bildirim gönderilmez — bir rol seçin",
+    "ar": "بلا إشعار للفريق — اختر رتبة",
+    "zh": "不通知管理團隊 — 請選擇身分組",
+    "ru": "Без уведомления команды — выберите роль",
+    "ko": "운영진 알림 없음 — 역할을 선택하세요"
+  },
+  "Choose the channel for the Open ticket button": {
+    "pt": "Escolhe o canal para o botão «Abrir pedido»",
+    "fr": "Choisissez le salon du bouton « Ouvrir un ticket »",
+    "es": "Elige el canal para el botón «Abrir ticket»",
+    "de": "Wähle den Kanal für die Schaltfläche „Ticket öffnen“",
+    "tr": "“Talep aç” düğmesinin kanalını seçin",
+    "ar": "اختر القناة لزر «فتح تذكرة»",
+    "zh": "選擇放置「開啟支援單」按鈕的頻道",
+    "ru": "Выберите канал для кнопки «Открыть обращение»",
+    "ko": "‘지원 요청 열기’ 버튼을 표시할 채널을 선택하세요"
+  },
+  "Background & banners": {
+    "pt": "Fundo e banners"
+  },
+  "On: everyone in the channel can see the response. Off: only the person using the command can see it.": {
+    "pt": "Ligado: todos no canal veem a resposta. Desligado: só quem usa o comando vê a resposta."
+  },
+  "Leave empty to post each poll in the channel where you use /poll. Choose a channel to send all polls there.": {
+    "pt": "Deixa vazio para publicar a sondagem no canal onde usares /poll. Se escolheres um canal, as sondagens são publicadas aí."
+  },
+  "Previous banners": {
+    "pt": "Banners anteriores"
+  },
+  "Next banners": {
+    "pt": "Banners seguintes"
+  },
+  "Maximum members in /leaderboard": {
+    "pt": "Máximo de pessoas na classificação"
+  },
+  "Between 1 and 100 members in /leaderboard. The preview shows at most 10.": {
+    "pt": "Entre 1 e 100 pessoas no /leaderboard. A pré-visualização mostra no máximo 10."
+  },
+  "{count} more members in /leaderboard.": {
+    "pt": "Mais {count} pessoas no /leaderboard."
+  },
+  "Emojis listed by /emojis": {
+    "pt": "Emojis apresentados no /emojis"
+  },
+  "Number of custom emojis listed by /emojis. This does not limit emoji usage.": {
+    "pt": "Número de emojis personalizados listados pelo comando /emojis. Não limita a utilização de emojis pelos membros."
+  }
+}

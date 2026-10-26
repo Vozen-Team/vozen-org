@@ -1,4 +1,4 @@
-import { access, cp, readFile, rm } from 'node:fs/promises';
+import { access, cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { constants } from 'node:fs';
 import { dirname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -30,3 +30,16 @@ if (/\.map(?:["']|$)|sourceMappingURL/i.test(output)) {
 }
 
 console.log('Installed Helper panel into site/panel/helper-tracker/.');
+
+// Real static entry documents make clean deep links and reloads work on GitHub Pages.
+const featurePaths = JSON.parse(await readFile(resolve(repositoryRoot, 'apps/helper-panel/src/panel-paths.json'), 'utf8'));
+const slugs = ['', 'servers', 'setup', 'features', 'activity', 'collection', ...Object.values(featurePaths)];
+for (const slug of new Set(slugs)) {
+  if (slug !== '' && !/^[a-z][a-z0-9-]*$/.test(slug)) throw new Error('Invalid panel route');
+  const target = resolve(repositoryRoot, 'site/panel', slug, 'index.html');
+  if (!target.startsWith(approvedDestinationRoot) || slug === 'helper') throw new Error('Invalid clean panel destination');
+  await mkdir(dirname(target), { recursive: true });
+  const canonical = `https://vozen.org/panel/${slug ? `${slug}/` : ''}`;
+  await writeFile(target, output.replace('https://vozen.org/panel/helper-tracker/', canonical));
+}
+console.log(`Installed ${new Set(slugs).size} clean Helper entry documents.`);

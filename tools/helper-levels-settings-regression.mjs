@@ -72,7 +72,7 @@ try {
     assert.equal(await setup.getByRole('spinbutton').count(),4,'core XP and reward level fields are initially visible');
     assert.equal(await setup.getByRole('combobox').count(),2,'announcement and role selectors remain available');
     assert.equal(writes,0,'opening or expanding the UI must not save defaults');
-    const announcement = setup.getByRole('combobox',{name:pt ? /^Canal dos avisos/ : /^Announcement channel/});
+    const announcement = setup.getByRole('combobox',{name:pt ? /^Canal de anúncios/ : /^Announcement channel/});
     assert.equal(await announcement.locator('option:checked').innerText(),pt ? 'Mesmo canal da mensagem' : 'Same channel as the message');
     if (scenario === 'voice') {
       assert.equal(await voice.getByRole('spinbutton').count(),0);
@@ -197,7 +197,10 @@ try {
       assert.equal(bannerCount,16,'two complete pages of eight banners');
       assert.equal(writes,beforePaging + 2,'only selecting a banner saves; paging never does');
       for (const [label,id] of [['Crystal Cavern','crystal-cavern'],['Sakura Shrine','sakura-shrine'],['Cosmic Nebula','cosmic-nebula'],['Frost Citadel','frost-citadel'],['Tropical Lagoon','tropical-lagoon'],['Clockwork Library','clockwork-library']]) {
-        await appearance.getByRole('button',{name:label,exact:true}).click();
+        const option=appearance.locator(`.banner-option[data-preset="${id}"]`);
+        if(pt) assert.notEqual(await option.innerText(),label,'banner names follow the selected language');
+        else assert.equal(await option.innerText(),label);
+        await option.click();
         await waitFor(() => saved.rankCard?.background_preset === id);
         await visiblePreview();
       }
@@ -207,7 +210,7 @@ try {
       await controls.locator('.swatch').nth(1).click();
       await waitFor(() => saved.rankCard?.primary_color === '#7F9CF5');
       await background.click(); await visiblePreview();
-      assert.equal(await appearance.getByRole('button',{name:'Clockwork Library',exact:true}).getAttribute('aria-pressed'),'true','returning to Background shows the selected banner page');
+      assert.equal(await appearance.locator('.banner-option[data-preset="clockwork-library"]').getAttribute('aria-pressed'),'true','returning to Background shows the selected banner page');
       const restore = appearance.locator('.rank-actions').getByRole('button');
       const previewBox = await preview.boundingBox(), restoreBox = await restore.boundingBox();
       assert.ok(restoreBox.x >= previewBox.x + previewBox.width || restoreBox.y >= previewBox.y + previewBox.height,'the preview must not cover the last control');
@@ -216,7 +219,7 @@ try {
         await page.screenshot({path:`output/playwright/rank-${scenario}.png`});
       }
       while (!await previous.isDisabled()) await previous.click();
-      await appearance.getByRole('button',{name:'Aurora Lake',exact:true}).click();
+      await appearance.locator('.banner-option[data-preset="aurora-lake"]').click();
       await waitFor(() => saved.rankCard?.background_preset === 'aurora-lake');
       await visiblePreview();
       await colors.focus();

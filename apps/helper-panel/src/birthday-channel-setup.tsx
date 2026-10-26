@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { api, type GuildContext } from './api';
-import { helperLocale } from './i18n';
+import { helperLocale, helperText } from './i18n';
 import { canCreateStarboard, validStarboardName } from './starboard-channel';
 import './starboard-channel.css';
 
@@ -8,8 +8,8 @@ export function BirthdayChannel({ context, onCreated }: {
   context: GuildContext | null;
   onCreated: (channel: GuildContext['channels'][number]) => void;
 }) {
-  const text = (en: string, pt: string) => helperLocale() === 'pt' ? pt : en;
-  const [name, setName] = useState(() => text('birthdays', 'aniversarios'));
+  const text = (en: string, pt: string) => helperLocale() === 'pt' ? pt : helperText(en);
+  const [name, setName] = useState(() => helperLocale() === 'pt' ? 'aniversarios' : 'birthdays');
   const [busy, setBusy] = useState(false);
   const [created, setCreated] = useState('');
   const [error, setError] = useState('');
@@ -63,6 +63,6 @@ export function BirthdayChannel({ context, onCreated }: {
     </>}
     {!allowed && <p role="status">{text('Refresh Discord resources and check Helper channel, role, messaging and thread permissions. Administrator is not required.', 'Atualiza os recursos Discord e verifica as permissões de canais, cargos, mensagens e threads do Helper. Não precisa de Administrador.')}</p>}
     {error && <p className="starboard-channel__error" role="alert">{error}</p>}
-    {created && <p className="starboard-channel__success" role="status">{text(`#${created} is ready and selected. Check automatic saving above. Enable Birthdays to send announcements.`, `#${created} está pronto e selecionado. Verifica a gravação automática acima. Ativa Aniversários para enviar as mensagens.`)}</p>}
+    {created && <p className="starboard-channel__success" role="status">{(helperLocale() === 'pt' ? `#${created} está pronto e selecionado. Verifica a gravação automática acima. Ativa Aniversários para enviar as mensagens.` : helperText("#{channel} is ready and selected. Check automatic saving above. Enable Birthdays to send announcements.", { channel: created }))}</p>}
   </section>;
 }

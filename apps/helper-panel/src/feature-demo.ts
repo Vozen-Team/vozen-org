@@ -1,3 +1,6 @@
+import { helperText } from './i18n';
+import componentCopy from './helper-components-copy.json';
+
 type DemoCopy = { title: string; example: string; steps: [string, string, string] };
 const demos = new Map<string, { asset: string; en: DemoCopy; pt: DemoCopy }>([
   ['management.invite_tracker', {
@@ -75,5 +78,14 @@ const demos = new Map<string, { asset: string; en: DemoCopy; pt: DemoCopy }>([
 export function featureDemo(key: string, locale: string): (DemoCopy & { asset: string }) | null {
   const demo = demos.get(key);
   const language = locale === 'pt' ? 'pt' : 'en';
-  return demo ? { ...demo[language], asset: `${demo.asset}-${language}` } : null;
+  if (!demo) return null;
+  const translations: Record<string, Partial<Record<string, string>>> = componentCopy;
+  const text = (source: string) => locale === 'en' ? source : translations[source]?.[locale] ?? helperText(source);
+  // Media retains its EN/PT transcript; the surrounding text uses the site locale.
+  return {
+    title: text(demo.en.title),
+    example: text(demo.en.example),
+    steps: demo.en.steps.map(text) as DemoCopy['steps'],
+    asset: `${demo.asset}-${language}`,
+  };
 }

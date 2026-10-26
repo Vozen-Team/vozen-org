@@ -1,3 +1,5 @@
+import { navigatePanel, panelRoute } from './panel-route';
+
 export type ShopProductInput = {name:string;price:number;delivery:'manual'|'role';roleId:string|null};
 export type ShopProduct = ShopProductInput & {id:number;version:number};
 export type ShopOrder = {id:number;userId:string;displayName:string;productName:string;price:number;delivery:'manual'|'role';roleId:string|null;status:'pending'|'delivered'|'refunded';createdAt:number};
@@ -379,7 +381,7 @@ function isSafePanelHash(value: string): boolean {
 }
 
 function rememberOAuthReturnHash(): void {
-  const hash = window.location.hash;
+  const hash = panelRoute();
   if (!isSafePanelHash(hash)) return;
   try {
     sessionStorage.setItem(OAUTH_RETURN_HASH_KEY, hash);
@@ -396,8 +398,8 @@ export function restoreOAuthReturnHash(): void {
   } catch {
     return;
   }
-  if (!saved || !isSafePanelHash(saved) || window.location.hash === saved) return;
-  window.location.hash = saved;
+  if (!saved || !isSafePanelHash(saved) || panelRoute() === saved) return;
+  navigatePanel(saved, true);
 }
 
 function persistSessionBearer(token: string | null): void {

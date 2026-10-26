@@ -2,7 +2,8 @@
 // sends Discord messages, even when exercising validation failure/retry.
 const { chromium } = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
 import assert from 'node:assert/strict';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
+const cleanFeaturePaths=JSON.parse(await readFile(new URL('../apps/helper-panel/src/panel-paths.json',import.meta.url),'utf8'));
 const base = process.env.HELPER_TEST_URL || 'http://127.0.0.1:5179/panel/helper-tracker/';
 const demoFeature = process.env.FEATURE_DEMO_FEATURE || 'suggestions';
 if (!['suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy', 'temp-channels', 'invites'].includes(demoFeature)) throw new Error('Unknown regression feature');
@@ -308,7 +309,8 @@ try {
       await new Promise(resolve => setTimeout(resolve, 1600));
       assert.equal(await dialog.count(), 0, 'late validation response cannot reopen the modal');
       assert.equal(writes, 0, 'dismissal must not write configuration');
-      assert.equal(new URL(page.url()).hash, `#/config/${featureKey}`, 'backdrop click must not activate underlying navigation');
+      assert.equal(new URL(page.url()).pathname, `/panel/${cleanFeaturePaths[featureKey]}/`, 'backdrop click must not activate underlying navigation');
+      assert.equal(new URL(page.url()).hash, '', 'panel navigation uses clean URLs');
       console.log(`PASS ${demoFeature}-demo-${scenario}`);
       await page.close(); continue;
     }

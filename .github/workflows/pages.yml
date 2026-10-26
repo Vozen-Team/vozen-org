@@ -66,13 +66,15 @@ jobs:
           npm ci --prefix apps/helper-panel
           npm run build --prefix apps/helper-panel
           npm test --prefix apps/helper-panel
+          node tools/helper-locale-coverage.mjs
           node tools/install-helper-panel.mjs
+          node tools/helper-clean-routes-check.mjs
           node tools/release-artifact-check.mjs
           node tools/prerender-check.mjs
           npm run test:ui
       - name: Check Helper session and server recovery
         run: |
-          node apps/helper-panel/node_modules/vite/bin/vite.js preview apps/helper-panel --host 127.0.0.1 --port 5179 --base /panel/helper-tracker/ &
+          node tools/serve-site.mjs 5179 &
           preview_pid=$!
           trap 'kill "$preview_pid"' EXIT
           for attempt in $(seq 1 30); do
@@ -83,6 +85,7 @@ jobs:
           node tools/helper-session-regression.mjs
           node tools/helper-activity-regression.mjs
           node tools/helper-overview-regression.mjs
+          node tools/helper-language-routing-regression.mjs
           node tools/helper-levels-settings-regression.mjs
           node tools/helper-suggestions-demo-regression.mjs
           node tools/helper-giveaways-demo-regression.mjs

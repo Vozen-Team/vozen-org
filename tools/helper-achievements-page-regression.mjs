@@ -95,7 +95,9 @@ try {
           await page.locator('.workspace-global-nav__language-button').click();
           await page.getByRole('button',{name:pt?'English':'Português',exact:true}).click();
           await page.getByRole('heading',{name:pt?'All achievements':'Todas as conquistas',exact:true}).waitFor();
-          assert.ok(page.url().includes(token),'language switch must keep the private profile');
+          assert.equal(new URL(page.url()).pathname,'/panel/collection/');
+          assert.equal(new URL(page.url()).searchParams.get('profile'),'1','language switch keeps private context');
+          assert.ok(!page.url().includes(token)&&!new URL(page.url()).hash,'profile credentials stay out of URLs');
           assert.equal(profileRequests,1,'language changes reuse the loaded private profile');
         }
         assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'no horizontal overflow');

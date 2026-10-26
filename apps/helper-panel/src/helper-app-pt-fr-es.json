@@ -1,0 +1,3357 @@
+{
+  "0 sends without waiting.": {
+    "pt": "0 envia sem esperar.",
+    "fr": "0 envoie sans attendre.",
+    "es": "0 envía sin esperar."
+  },
+  "AUTOMATIC SAVING": {
+    "pt": "GRAVAÇÃO AUTOMÁTICA",
+    "fr": "ENREGISTREMENT AUTOMATIQUE",
+    "es": "GUARDADO AUTOMÁTICO"
+  },
+  "Account": {
+    "pt": "Conta",
+    "fr": "Compte",
+    "es": "Cuenta"
+  },
+  "Actions before containment": {
+    "pt": "Ações antes da contenção",
+    "fr": "Actions avant le confinement",
+    "es": "Acciones antes de la contención"
+  },
+  "Activity": {
+    "pt": "Atividade",
+    "fr": "Activité",
+    "es": "Actividad"
+  },
+  "Alert only, without punishment": {
+    "pt": "Apenas alertar, sem aplicar sanções",
+    "fr": "Alerter uniquement, sans sanction",
+    "es": "Solo alertar, sin sancionar"
+  },
+  "Alerts you when a new podcast episode is published.": {
+    "pt": "Avisa quando é publicado um novo episódio de podcast.",
+    "fr": "Vous avertit de la publication d’un nouvel épisode de podcast.",
+    "es": "Avisa cuando se publica un nuevo episodio de pódcast."
+  },
+  "All settings for this server.": {
+    "pt": "Todas as definições deste servidor.",
+    "fr": "Tous les paramètres de ce serveur.",
+    "es": "Todos los ajustes de este servidor."
+  },
+  "Allow authors to star their own message": {
+    "pt": "Permitir que os autores destaquem a própria mensagem",
+    "fr": "Autoriser les auteurs à ajouter une étoile à leur propre message",
+    "es": "Permitir que los autores destaquen su propio mensaje"
+  },
+  "Announcement channel (optional)": {
+    "pt": "Canal de anúncios (opcional)",
+    "fr": "Salon d’annonces (facultatif)",
+    "es": "Canal de anuncios (opcional)"
+  },
+  "Announcement message": {
+    "pt": "Mensagem de anúncio",
+    "fr": "Message d’annonce",
+    "es": "Mensaje del anuncio"
+  },
+  "Announcement timezone": {
+    "pt": "Fuso horário dos anúncios",
+    "fr": "Fuseau horaire des annonces",
+    "es": "Zona horaria de los anuncios"
+  },
+  "Append the dashboard URL for server managers.": {
+    "pt": "Acrescentar o URL do painel para os gestores do servidor.",
+    "fr": "Ajouter l’URL du tableau de bord pour les gestionnaires du serveur.",
+    "es": "Añadir la URL del panel para los administradores del servidor."
+  },
+  "Applies basic checks to new members.": {
+    "pt": "Aplica verificações básicas aos novos membros.",
+    "fr": "Applique des vérifications de base aux nouveaux membres.",
+    "es": "Aplica comprobaciones básicas a los nuevos miembros."
+  },
+  "Apply consistent moderation actions with policy and hierarchy checks.": {
+    "pt": "Aplica ações de moderação consistentes, com verificações das regras e da hierarquia.",
+    "fr": "Appliquez des mesures de modération cohérentes en vérifiant les règles et la hiérarchie.",
+    "es": "Aplica medidas de moderación coherentes con comprobaciones de las normas y la jerarquía."
+  },
+  "Approved Kick developer application": {
+    "pt": "Aplicação de programador Kick aprovada",
+    "fr": "Application développeur Kick approuvée",
+    "es": "Aplicación de desarrollador de Kick aprobada"
+  },
+  "Approved contract allow-list": {
+    "pt": "Lista de contratos autorizados",
+    "fr": "Liste des contrats autorisés",
+    "es": "Lista de contratos autorizados"
+  },
+  "Arbitrum": {
+    "pt": "Arbitrum",
+    "fr": "Arbitrum",
+    "es": "Arbitrum"
+  },
+  "Ask a focused question and keep its result auditable.": {
+    "pt": "Faz uma pergunta concreta e mantém o resultado auditável.",
+    "fr": "Posez une question précise et conservez un résultat vérifiable.",
+    "es": "Haz una pregunta concreta y conserva un resultado auditable."
+  },
+  "Audit and permissions": {
+    "pt": "Auditoria e permissões",
+    "fr": "Audit et autorisations",
+    "es": "Auditoría y permisos"
+  },
+  "Audit log channel (optional)": {
+    "pt": "Canal de registo de auditoria (opcional)",
+    "fr": "Salon du journal d’audit (facultatif)",
+    "es": "Canal del registro de auditoría (opcional)"
+  },
+  "Aurora Lake": {
+    "pt": "Lago da Aurora",
+    "fr": "Lac de l’aurore",
+    "es": "Lago de la aurora"
+  },
+  "Authorize only your public profile and video list. Helper cannot publish or change content.": {
+    "pt": "Autoriza apenas o acesso ao teu perfil público e à lista de vídeos. O Helper não pode publicar nem alterar conteúdo.",
+    "fr": "Autorisez uniquement l’accès à votre profil public et à votre liste de vidéos. Helper ne peut ni publier ni modifier de contenu.",
+    "es": "Autoriza únicamente el acceso a tu perfil público y a tu lista de vídeos. Helper no puede publicar ni modificar contenido."
+  },
+  "Automatic response": {
+    "pt": "Resposta automática",
+    "fr": "Réponse automatique",
+    "es": "Respuesta automática"
+  },
+  "Automatic role": {
+    "pt": "Cargo automático",
+    "fr": "Rôle automatique",
+    "es": "Rol automático"
+  },
+  "Avatar ring colour": {
+    "pt": "Cor do contorno do avatar",
+    "fr": "Couleur du contour de l’avatar",
+    "es": "Color del contorno del avatar"
+  },
+  "Avatar ring width": {
+    "pt": "Espessura do contorno do avatar",
+    "fr": "Épaisseur du contour de l’avatar",
+    "es": "Grosor del contorno del avatar"
+  },
+  "Avoid excessive selections.": {
+    "pt": "Evita selecionar demasiadas opções.",
+    "fr": "Évitez de sélectionner trop d’options.",
+    "es": "Evita seleccionar demasiadas opciones."
+  },
+  "Award XP in voice channels": {
+    "pt": "Atribuir XP nos canais de voz",
+    "fr": "Attribuer de l’XP dans les salons vocaux",
+    "es": "Otorgar XP en los canales de voz"
+  },
+  "Background & banners": {
+    "pt": "Fundos e faixas",
+    "fr": "Fonds et bannières",
+    "es": "Fondos y banners"
+  },
+  "Background colour": {
+    "pt": "Cor de fundo",
+    "fr": "Couleur de fond",
+    "es": "Color de fondo"
+  },
+  "Behaviour": {
+    "pt": "Comportamento",
+    "fr": "Comportement",
+    "es": "Comportamiento"
+  },
+  "Between 1 and 100 members in /leaderboard. The preview shows at most 10.": {
+    "pt": "Entre 1 e 100 membros no /leaderboard. A pré-visualização mostra, no máximo, 10.",
+    "fr": "Entre 1 et 100 membres dans /leaderboard. L’aperçu en affiche au maximum 10.",
+    "es": "Entre 1 y 100 miembros en /leaderboard. La vista previa muestra un máximo de 10."
+  },
+  "Birthday announcements": {
+    "pt": "Anúncios de aniversário",
+    "fr": "Annonces d’anniversaire",
+    "es": "Anuncios de cumpleaños"
+  },
+  "Birthday role (optional)": {
+    "pt": "Cargo de aniversário (opcional)",
+    "fr": "Rôle d’anniversaire (facultatif)",
+    "es": "Rol de cumpleaños (opcional)"
+  },
+  "Blocks suspicious links, invites, and phishing patterns.": {
+    "pt": "Bloqueia ligações suspeitas, convites e padrões de phishing.",
+    "fr": "Bloque les liens suspects, les invitations et les tentatives d’hameçonnage.",
+    "es": "Bloquea enlaces sospechosos, invitaciones y patrones de phishing."
+  },
+  "Bluesky handle": {
+    "pt": "Identificador Bluesky",
+    "fr": "Identifiant Bluesky",
+    "es": "Identificador de Bluesky"
+  },
+  "Bluesky public AppView API": {
+    "pt": "API pública AppView do Bluesky",
+    "fr": "API publique AppView de Bluesky",
+    "es": "API pública AppView de Bluesky"
+  },
+  "Bounded community rewards backed by an auditable balance ledger.": {
+    "pt": "Recompensas comunitárias com limites e um registo de saldos auditável.",
+    "fr": "Récompenses communautaires limitées, appuyées par un registre des soldes vérifiable.",
+    "es": "Recompensas comunitarias con límites y un registro de saldos auditable."
+  },
+  "Bounded message automations keep your server responsive.": {
+    "pt": "As automatizações de mensagens com limites mantêm o servidor a responder.",
+    "fr": "Des automatisations de messages limitées préservent la réactivité de votre serveur.",
+    "es": "Las automatizaciones de mensajes con límites mantienen la capacidad de respuesta del servidor."
+  },
+  "Buttons open these channels. A link stays hidden until you choose its destination.": {
+    "pt": "Os botões abrem estes canais. Cada ligação fica oculta até escolheres o destino.",
+    "fr": "Les boutons ouvrent ces salons. Un lien reste masqué tant que vous n’avez pas choisi sa destination.",
+    "es": "Los botones abren estos canales. Cada enlace permanece oculto hasta que eliges su destino."
+  },
+  "Buttons to include": {
+    "pt": "Botões a incluir",
+    "fr": "Boutons à inclure",
+    "es": "Botones que se incluirán"
+  },
+  "Canais ignorados": {
+    "pt": "Canais ignorados",
+    "fr": "Salons ignorés",
+    "es": "Canales ignorados"
+  },
+  "Cargos ignorados": {
+    "pt": "Cargos ignorados",
+    "fr": "Rôles ignorés",
+    "es": "Roles ignorados"
+  },
+  "Category (optional)": {
+    "pt": "Categoria (opcional)",
+    "fr": "Catégorie (facultatif)",
+    "es": "Categoría (opcional)"
+  },
+  "Celebrate members without requiring a birth year.": {
+    "pt": "Celebra os membros sem pedir o ano de nascimento.",
+    "fr": "Célébrez les membres sans demander leur année de naissance.",
+    "es": "Celebra a los miembros sin pedir su año de nacimiento."
+  },
+  "Celebrates birthdays automatically, with configurable privacy.": {
+    "pt": "Celebra aniversários automaticamente, com privacidade configurável.",
+    "fr": "Célèbre automatiquement les anniversaires, avec des paramètres de confidentialité.",
+    "es": "Celebra los cumpleaños automáticamente, con privacidad configurable."
+  },
+  "Centralizes server rules, alerts, and moderation actions.": {
+    "pt": "Centraliza as regras, os alertas e as ações de moderação do servidor.",
+    "fr": "Centralise les règles, les alertes et les mesures de modération du serveur.",
+    "es": "Centraliza las normas, las alertas y las medidas de moderación del servidor."
+  },
+  "Changes not saved": {
+    "pt": "Alterações não guardadas",
+    "fr": "Modifications non enregistrées",
+    "es": "Cambios sin guardar"
+  },
+  "Changes not saved.": {
+    "pt": "Alterações não guardadas.",
+    "fr": "Modifications non enregistrées.",
+    "es": "Cambios sin guardar."
+  },
+  "Channel shortcuts": {
+    "pt": "Atalhos para canais",
+    "fr": "Raccourcis vers les salons",
+    "es": "Accesos directos a canales"
+  },
+  "Channel where you use /poll": {
+    "pt": "Canal onde usas /poll",
+    "fr": "Salon dans lequel vous utilisez /poll",
+    "es": "Canal donde usas /poll"
+  },
+  "Channels guide (optional)": {
+    "pt": "Guia de canais (opcional)",
+    "fr": "Guide des salons (facultatif)",
+    "es": "Guía de canales (opcional)"
+  },
+  "Channels that do not award XP": {
+    "pt": "Canais que não atribuem XP",
+    "fr": "Salons qui n’attribuent pas d’XP",
+    "es": "Canales que no otorgan XP"
+  },
+  "Channels without XP": {
+    "pt": "Canais sem XP",
+    "fr": "Salons sans XP",
+    "es": "Canales sin XP"
+  },
+  "Check every (seconds)": {
+    "pt": "Verificar a cada (segundos)",
+    "fr": "Vérifier toutes les (secondes)",
+    "es": "Comprobar cada (segundos)"
+  },
+  "Check interval (seconds)": {
+    "pt": "Intervalo de verificação (segundos)",
+    "fr": "Intervalle de vérification (secondes)",
+    "es": "Intervalo de comprobación (segundos)"
+  },
+  "Check your connection and try again.": {
+    "pt": "Verifica a ligação e tenta novamente.",
+    "fr": "Vérifiez votre connexion et réessayez.",
+    "es": "Comprueba tu conexión y vuelve a intentarlo."
+  },
+  "Choose an existing channel or create one below.": {
+    "pt": "Escolhe um canal existente ou cria um abaixo.",
+    "fr": "Choisissez un salon existant ou créez-en un ci-dessous.",
+    "es": "Elige un canal existente o crea uno a continuación."
+  },
+  "Choose curated backgrounds and colours for the XP card rendered by /rank.": {
+    "pt": "Escolhe fundos e cores da seleção disponível para o cartão de XP apresentado pelo /rank.",
+    "fr": "Choisissez des fonds et des couleurs dans la sélection proposée pour la carte d’XP affichée par /rank.",
+    "es": "Elige fondos y colores de la selección disponible para la tarjeta de XP que muestra /rank."
+  },
+  "Choose from rules, introductions, channels and help.": {
+    "pt": "Escolhe entre regras, apresentações, canais e ajuda.",
+    "fr": "Choisissez parmi les règles, les présentations, les salons et l’aide.",
+    "es": "Elige entre normas, presentaciones, canales y ayuda."
+  },
+  "Choose how Helper appears in this server's member list.": {
+    "pt": "Escolhe como o Helper aparece na lista de membros deste servidor.",
+    "fr": "Choisissez comment Helper apparaît dans la liste des membres de ce serveur.",
+    "es": "Elige cómo aparece Helper en la lista de miembros de este servidor."
+  },
+  "Choose how Helper explains its modules.": {
+    "pt": "Escolhe como o Helper explica os seus módulos.",
+    "fr": "Choisissez comment Helper présente ses modules.",
+    "es": "Elige cómo explica Helper sus módulos."
+  },
+  "Choose how many custom emojis the staff command lists.": {
+    "pt": "Escolhe quantos emojis personalizados são listados pelo comando da equipa.",
+    "fr": "Choisissez combien d’émojis personnalisés la commande de l’équipe affiche.",
+    "es": "Elige cuántos emojis personalizados muestra el comando del equipo."
+  },
+  "Choose real server resources to reduce false positives.": {
+    "pt": "Escolhe recursos reais do servidor para reduzir os falsos positivos.",
+    "fr": "Choisissez des ressources réelles du serveur pour réduire les faux positifs.",
+    "es": "Elige recursos reales del servidor para reducir los falsos positivos."
+  },
+  "Choose the channel and reaction score required to feature a message.": {
+    "pt": "Escolhe o canal e o número de reações necessários para destacar uma mensagem.",
+    "fr": "Choisissez le salon et le nombre de réactions nécessaires pour mettre un message en avant.",
+    "es": "Elige el canal y el número de reacciones necesarios para destacar un mensaje."
+  },
+  "Choose the display name the Helper uses in this server.": {
+    "pt": "Escolhe o nome que o Helper apresenta neste servidor.",
+    "fr": "Choisissez le nom que Helper affiche sur ce serveur.",
+    "es": "Elige el nombre que muestra Helper en este servidor."
+  },
+  "Choose the links and module list shown by /help.": {
+    "pt": "Escolhe as ligações e a lista de módulos apresentados pelo /help.",
+    "fr": "Choisissez les liens et la liste des modules affichés par /help.",
+    "es": "Elige los enlaces y la lista de módulos que muestra /help."
+  },
+  "Choose the real XP thresholds used by the achievements command.": {
+    "pt": "Escolhe os limiares reais de XP usados pelo comando de conquistas.",
+    "fr": "Choisissez les seuils réels d’XP utilisés par la commande des succès.",
+    "es": "Elige los umbrales reales de XP que utiliza el comando de logros."
+  },
+  "Choose the real category, support role, transcript channel and SLA used by ticket interactions.": {
+    "pt": "Escolhe a categoria, o cargo de apoio, o canal de transcrições e o SLA reais usados nas interações dos tickets.",
+    "fr": "Choisissez la catégorie, le rôle d’assistance, le salon de transcription et le SLA réellement utilisés dans les interactions des tickets.",
+    "es": "Elige la categoría, el rol de soporte, el canal de transcripciones y el SLA reales que utilizan las interacciones de los tickets."
+  },
+  "Choose the verification level and where the team is notified.": {
+    "pt": "Escolhe o nível de verificação e onde a equipa recebe notificações.",
+    "fr": "Choisissez le niveau de vérification et l’endroit où l’équipe reçoit les notifications.",
+    "es": "Elige el nivel de verificación y dónde recibe las notificaciones el equipo."
+  },
+  "Choose what your team can review.": {
+    "pt": "Escolhe o que a tua equipa pode consultar.",
+    "fr": "Choisissez ce que votre équipe peut consulter.",
+    "es": "Elige qué puede revisar tu equipo."
+  },
+  "Choose when the message deserves to appear in the special channel.": {
+    "pt": "Escolhe quando uma mensagem merece aparecer no canal de destaque.",
+    "fr": "Choisissez quand un message mérite d’apparaître dans le salon dédié.",
+    "es": "Elige cuándo merece un mensaje aparecer en el canal destacado."
+  },
+  "Choose where farewells are posted and reuse an approved template.": {
+    "pt": "Escolhe onde publicar as despedidas e reutiliza um modelo aprovado.",
+    "fr": "Choisissez où publier les messages de départ et réutilisez un modèle approuvé.",
+    "es": "Elige dónde publicar las despedidas y reutiliza una plantilla aprobada."
+  },
+  "Choose where new members find essential information.": {
+    "pt": "Escolhe onde os novos membros encontram as informações essenciais.",
+    "fr": "Choisissez où les nouveaux membres trouvent les informations essentielles.",
+    "es": "Elige dónde encuentran los nuevos miembros la información esencial."
+  },
+  "Choose where the greeting appears and what it says.": {
+    "pt": "Escolhe onde aparece a saudação e o que diz.",
+    "fr": "Choisissez où le message d’accueil apparaît et ce qu’il contient.",
+    "es": "Elige dónde aparece el saludo y qué dice."
+  },
+  "Choose which self-service privacy requests members can make.": {
+    "pt": "Escolhe os pedidos de privacidade que os membros podem fazer por si próprios.",
+    "fr": "Choisissez les demandes de confidentialité que les membres peuvent effectuer eux-mêmes.",
+    "es": "Elige las solicitudes de privacidad que los miembros pueden realizar por su cuenta."
+  },
+  "Choose who handles requests and where private tickets go.": {
+    "pt": "Escolhe quem trata dos pedidos e onde ficam os tickets privados.",
+    "fr": "Choisissez qui traite les demandes et où sont créés les tickets privés.",
+    "es": "Elige quién atiende las solicitudes y dónde se crean los tickets privados."
+  },
+  "Clockwork Library": {
+    "pt": "Biblioteca Mecânica",
+    "fr": "Bibliothèque mécanique",
+    "es": "Biblioteca mecánica"
+  },
+  "Closed ticket transcripts are sent here.": {
+    "pt": "As transcrições dos tickets encerrados são enviadas para aqui.",
+    "fr": "Les transcriptions des tickets fermés sont envoyées ici.",
+    "es": "Las transcripciones de los tickets cerrados se envían aquí."
+  },
+  "CoinGecko public API": {
+    "pt": "API pública CoinGecko",
+    "fr": "API publique CoinGecko",
+    "es": "API pública de CoinGecko"
+  },
+  "Collect ideas, votes and decisions in one visible flow.": {
+    "pt": "Reúne ideias, votos e decisões num único processo visível.",
+    "fr": "Regroupez les idées, les votes et les décisions dans un même processus visible.",
+    "es": "Reúne ideas, votos y decisiones en un único proceso visible."
+  },
+  "Collects ideas and lets the community vote.": {
+    "pt": "Recolhe ideias e permite à comunidade votar.",
+    "fr": "Recueille les idées et permet à la communauté de voter.",
+    "es": "Recoge ideas y permite que la comunidad vote."
+  },
+  "Colors": {
+    "pt": "Cores",
+    "fr": "Couleurs",
+    "es": "Colores"
+  },
+  "Comma-separated IDs such as bitcoin, ethereum or solana.": {
+    "pt": "IDs separados por vírgulas, como bitcoin, ethereum ou solana.",
+    "fr": "Identifiants séparés par des virgules, comme bitcoin, ethereum ou solana.",
+    "es": "Identificadores separados por comas, como bitcoin, ethereum o solana."
+  },
+  "Command help": {
+    "pt": "Ajuda dos comandos",
+    "fr": "Aide sur les commandes",
+    "es": "Ayuda de los comandos"
+  },
+  "Commands are not answered in these channels.": {
+    "pt": "Os comandos não recebem resposta nestes canais.",
+    "fr": "Les commandes ne reçoivent pas de réponse dans ces salons.",
+    "es": "Los comandos no reciben respuesta en estos canales."
+  },
+  "Commands can still override these defaults when needed.": {
+    "pt": "Os comandos podem substituir estas predefinições quando necessário.",
+    "fr": "Les commandes peuvent toujours remplacer ces valeurs par défaut si nécessaire.",
+    "es": "Los comandos pueden sustituir estos valores predeterminados cuando sea necesario."
+  },
+  "Community economy": {
+    "pt": "Economia da comunidade",
+    "fr": "Économie de la communauté",
+    "es": "Economía de la comunidad"
+  },
+  "Community pillar reward role": {
+    "pt": "Cargo de recompensa de pilar da comunidade",
+    "fr": "Rôle de récompense de pilier de la communauté",
+    "es": "Rol de recompensa de pilar de la comunidad"
+  },
+  "Community pillar threshold": {
+    "pt": "Limiar de pilar da comunidade",
+    "fr": "Seuil de pilier de la communauté",
+    "es": "Umbral de pilar de la comunidad"
+  },
+  "Complete onboarding for new members.": {
+    "pt": "Integração completa dos novos membros.",
+    "fr": "Parcours d’accueil complet pour les nouveaux membres.",
+    "es": "Incorporación completa de los nuevos miembros."
+  },
+  "Configure read-only verification; never enter a seed phrase or private key.": {
+    "pt": "Configura uma verificação apenas de leitura; nunca introduzas uma frase de recuperação nem uma chave privada.",
+    "fr": "Configurez une vérification en lecture seule ; ne saisissez jamais de phrase de récupération ni de clé privée.",
+    "es": "Configura una verificación de solo lectura; nunca introduzcas una frase de recuperación ni una clave privada."
+  },
+  "Configure the channel, message, optional DM and real auto-role used on member join.": {
+    "pt": "Configura o canal, a mensagem, a mensagem privada opcional e o cargo automático real usados na entrada de membros.",
+    "fr": "Configurez le salon, le message, le message privé facultatif et le rôle automatique réellement utilisés à l’arrivée d’un membre.",
+    "es": "Configura el canal, el mensaje, el mensaje privado opcional y el rol automático real que se utilizan cuando entra un miembro."
+  },
+  "Connect TikTok": {
+    "pt": "Ligar o TikTok",
+    "fr": "Connecter TikTok",
+    "es": "Conectar TikTok"
+  },
+  "Connect a bounded trigger to an approved response without code.": {
+    "pt": "Liga um evento de ativação com limites a uma resposta aprovada, sem código.",
+    "fr": "Reliez un déclencheur limité à une réponse approuvée, sans code.",
+    "es": "Vincula un desencadenante con límites a una respuesta aprobada, sin código."
+  },
+  "Connect the account that publishes the videos": {
+    "pt": "Liga a conta que publica os vídeos",
+    "fr": "Connectez le compte qui publie les vidéos",
+    "es": "Conecta la cuenta que publica los vídeos"
+  },
+  "Connect verification to your community flow.": {
+    "pt": "Integra a verificação no funcionamento da tua comunidade.",
+    "fr": "Intégrez la vérification au parcours de votre communauté.",
+    "es": "Integra la verificación en el funcionamiento de tu comunidad."
+  },
+  "Connects a trigger to a response without code.": {
+    "pt": "Liga um evento de ativação a uma resposta, sem código.",
+    "fr": "Relie un déclencheur à une réponse sans code.",
+    "es": "Vincula un desencadenante a una respuesta sin código."
+  },
+  "Containment duration (minutes)": {
+    "pt": "Duração da contenção (minutos)",
+    "fr": "Durée du confinement (minutes)",
+    "es": "Duración de la contención (minutos)"
+  },
+  "Control how many members appear in the XP leaderboard.": {
+    "pt": "Controla quantos membros aparecem na classificação de XP.",
+    "fr": "Définissez le nombre de membres affichés dans le classement d’XP.",
+    "es": "Controla cuántos miembros aparecen en la clasificación de XP."
+  },
+  "Control submission frequency and give staff a private notification channel.": {
+    "pt": "Controla a frequência dos envios e dá à equipa um canal privado de notificações.",
+    "fr": "Réglez la fréquence des envois et donnez à l’équipe un salon privé de notifications.",
+    "es": "Controla la frecuencia de los envíos y ofrece al equipo un canal privado de notificaciones."
+  },
+  "Control the period, visibility and optional live counter channel for server statistics.": {
+    "pt": "Controla o período, a visibilidade e o canal opcional de contagem em direto das estatísticas do servidor.",
+    "fr": "Réglez la période, la visibilité et le salon facultatif de compteur en direct pour les statistiques du serveur.",
+    "es": "Controla el período, la visibilidad y el canal opcional de contador en directo de las estadísticas del servidor."
+  },
+  "Control the reporting window and an optional live counter channel.": {
+    "pt": "Controla o período do relatório e um canal opcional de contagem em direto.",
+    "fr": "Réglez la période du rapport et un salon facultatif de compteur en direct.",
+    "es": "Controla el período del informe y un canal opcional de contador en directo."
+  },
+  "Control the staff-facing invite list without scraping or storing invite tokens.": {
+    "pt": "Controla a lista de convites apresentada à equipa sem recolher nem guardar tokens de convite.",
+    "fr": "Gérez la liste d’invitations destinée à l’équipe sans extraire ni stocker de jetons d’invitation.",
+    "es": "Controla la lista de invitaciones que ve el equipo sin extraer ni almacenar tokens de invitación."
+  },
+  "Control where and who can use the responses.": {
+    "pt": "Controla onde e quem pode usar as respostas.",
+    "fr": "Définissez où les réponses peuvent être utilisées et par qui.",
+    "es": "Controla dónde se pueden usar las respuestas y quién puede hacerlo."
+  },
+  "Controls access and roles based on verified collections.": {
+    "pt": "Controla o acesso e os cargos com base em coleções verificadas.",
+    "fr": "Contrôle l’accès et les rôles selon les collections vérifiées.",
+    "es": "Controla el acceso y los roles según las colecciones verificadas."
+  },
+  "Controls how Helper responds to invites, domains, and suspicious phrases.": {
+    "pt": "Controla como o Helper responde a convites, domínios e frases suspeitas.",
+    "fr": "Contrôle la réaction de Helper aux invitations, aux domaines et aux phrases suspectes.",
+    "es": "Controla cómo responde Helper a invitaciones, dominios y frases sospechosas."
+  },
+  "Coral Cavern": {
+    "pt": "Gruta de Coral",
+    "fr": "Grotte de corail",
+    "es": "Cueva de coral"
+  },
+  "Cosmic Nebula": {
+    "pt": "Nebulosa Cósmica",
+    "fr": "Nébuleuse cosmique",
+    "es": "Nebulosa cósmica"
+  },
+  "Could not check the TikTok connection.": {
+    "pt": "Não foi possível verificar a ligação ao TikTok.",
+    "fr": "Impossible de vérifier la connexion à TikTok.",
+    "es": "No se ha podido comprobar la conexión con TikTok."
+  },
+  "Could not remove the TikTok connection.": {
+    "pt": "Não foi possível remover a ligação ao TikTok.",
+    "fr": "Impossible de supprimer la connexion à TikTok.",
+    "es": "No se ha podido eliminar la conexión con TikTok."
+  },
+  "Could not save. Your changes are still in this form.": {
+    "pt": "Não foi possível guardar. As tuas alterações continuam neste formulário.",
+    "fr": "Impossible d’enregistrer. Vos modifications sont toujours dans ce formulaire.",
+    "es": "No se ha podido guardar. Tus cambios siguen en este formulario."
+  },
+  "Could not start TikTok authorization.": {
+    "pt": "Não foi possível iniciar a autorização do TikTok.",
+    "fr": "Impossible de lancer l’autorisation TikTok.",
+    "es": "No se ha podido iniciar la autorización de TikTok."
+  },
+  "Create bounded messages with a Discord-like preview.": {
+    "pt": "Cria mensagens com limites e uma pré-visualização semelhante ao Discord.",
+    "fr": "Créez des messages de taille limitée avec un aperçu semblable à Discord.",
+    "es": "Crea mensajes con límites y una vista previa similar a Discord."
+  },
+  "Create bounded rooms with a predictable name and optional category.": {
+    "pt": "Cria salas com limites, um nome previsível e uma categoria opcional.",
+    "fr": "Créez des salons avec des limites, un nom prévisible et une catégorie facultative.",
+    "es": "Crea salas con límites, un nombre predecible y una categoría opcional."
+  },
+  "Create events, registrations, and check-ins without leaving the dashboard.": {
+    "pt": "Cria eventos, inscrições e registos de presença sem sair do painel.",
+    "fr": "Créez des événements, des inscriptions et des pointages de présence sans quitter le tableau de bord.",
+    "es": "Crea eventos, inscripciones y registros de asistencia sin salir del panel."
+  },
+  "Create goals and celebrate community milestones.": {
+    "pt": "Cria objetivos e celebra os marcos da comunidade.",
+    "fr": "Créez des objectifs et célébrez les étapes importantes de la communauté.",
+    "es": "Crea objetivos y celebra los hitos de la comunidad."
+  },
+  "Create reusable responses with safe variables and permissions.": {
+    "pt": "Cria respostas reutilizáveis com variáveis e permissões seguras.",
+    "fr": "Créez des réponses réutilisables avec des variables et des autorisations sûres.",
+    "es": "Crea respuestas reutilizables con variables y permisos seguros."
+  },
+  "Create short responses for frequently asked questions.": {
+    "pt": "Cria respostas curtas para perguntas frequentes.",
+    "fr": "Créez des réponses courtes aux questions fréquentes.",
+    "es": "Crea respuestas breves para las preguntas frecuentes."
+  },
+  "Create the fair pace for active members.": {
+    "pt": "Define um ritmo justo para os membros ativos.",
+    "fr": "Définissez un rythme équitable pour les membres actifs.",
+    "es": "Establece un ritmo justo para los miembros activos."
+  },
+  "Creates a virtual economy with rewards and progression.": {
+    "pt": "Cria uma economia virtual com recompensas e progressão.",
+    "fr": "Crée une économie virtuelle avec des récompenses et une progression.",
+    "es": "Crea una economía virtual con recompensas y progresión."
+  },
+  "Creates giveaways with trackable entries.": {
+    "pt": "Cria sorteios com participações rastreáveis.",
+    "fr": "Crée des tirages au sort avec des participations traçables.",
+    "es": "Crea sorteos con participaciones que se pueden rastrear."
+  },
+  "Creates reusable answers for community questions and routines.": {
+    "pt": "Cria respostas reutilizáveis para perguntas e rotinas da comunidade.",
+    "fr": "Crée des réponses réutilisables aux questions et aux routines de la communauté.",
+    "es": "Crea respuestas reutilizables para las preguntas y las rutinas de la comunidad."
+  },
+  "Creates rich messages for rules, announcements, and useful information.": {
+    "pt": "Cria mensagens formatadas para regras, anúncios e informações úteis.",
+    "fr": "Crée des messages enrichis pour les règles, les annonces et les informations utiles.",
+    "es": "Crea mensajes enriquecidos para normas, anuncios e información útil."
+  },
+  "Creates voice channels that disappear when no longer used.": {
+    "pt": "Cria canais de voz que desaparecem quando deixam de ser usados.",
+    "fr": "Crée des salons vocaux qui disparaissent lorsqu’ils ne sont plus utilisés.",
+    "es": "Crea canales de voz que desaparecen cuando dejan de usarse."
+  },
+  "Creator OAuth grant": {
+    "pt": "Autorização OAuth do criador",
+    "fr": "Autorisation OAuth du créateur",
+    "es": "Autorización OAuth del creador"
+  },
+  "Creator name": {
+    "pt": "Nome do criador",
+    "fr": "Nom du créateur",
+    "es": "Nombre del creador"
+  },
+  "Creator username": {
+    "pt": "Nome de utilizador do criador",
+    "fr": "Nom d’utilisateur du créateur",
+    "es": "Nombre de usuario del creador"
+  },
+  "Crystal Cavern": {
+    "pt": "Gruta de Cristal",
+    "fr": "Grotte de cristal",
+    "es": "Cueva de cristal"
+  },
+  "Curated background": {
+    "pt": "Fundo da seleção disponível",
+    "fr": "Fond de la sélection proposée",
+    "es": "Fondo de la selección disponible"
+  },
+  "Currency name": {
+    "pt": "Nome da moeda",
+    "fr": "Nom de la monnaie",
+    "es": "Nombre de la moneda"
+  },
+  "Current plan": {
+    "pt": "Plano atual",
+    "fr": "Offre actuelle",
+    "es": "Plan actual"
+  },
+  "Custom command behaviour": {
+    "pt": "Comportamento dos comandos personalizados",
+    "fr": "Comportement des commandes personnalisées",
+    "es": "Comportamiento de los comandos personalizados"
+  },
+  "Customise announcements and roles without editing commands.": {
+    "pt": "Personaliza anúncios e cargos sem editar comandos.",
+    "fr": "Personnalisez les annonces et les rôles sans modifier les commandes.",
+    "es": "Personaliza anuncios y roles sin editar comandos."
+  },
+  "Customise the alert sent when the stream starts.": {
+    "pt": "Personaliza o alerta enviado quando a transmissão começa.",
+    "fr": "Personnalisez l’alerte envoyée au début du direct.",
+    "es": "Personaliza la alerta que se envía cuando comienza la transmisión."
+  },
+  "Customise the alert without exposing credentials.": {
+    "pt": "Personaliza o alerta sem expor credenciais.",
+    "fr": "Personnalisez l’alerte sans exposer d’identifiants de connexion.",
+    "es": "Personaliza la alerta sin exponer credenciales."
+  },
+  "Customise the alert without exposing the API key.": {
+    "pt": "Personaliza o alerta sem expor a chave de API.",
+    "fr": "Personnalisez l’alerte sans exposer la clé API.",
+    "es": "Personaliza la alerta sin exponer la clave de API."
+  },
+  "Customise the stream alert.": {
+    "pt": "Personaliza o alerta de transmissão.",
+    "fr": "Personnalisez l’alerte de direct.",
+    "es": "Personaliza la alerta de transmisión."
+  },
+  "Customize the card": {
+    "pt": "Personalizar o cartão",
+    "fr": "Personnaliser la carte",
+    "es": "Personalizar la tarjeta"
+  },
+  "Daily reward": {
+    "pt": "Recompensa diária",
+    "fr": "Récompense quotidienne",
+    "es": "Recompensa diaria"
+  },
+  "Default capacity (0 = unlimited)": {
+    "pt": "Capacidade predefinida (0 = ilimitada)",
+    "fr": "Capacité par défaut (0 = illimitée)",
+    "es": "Capacidad predeterminada (0 = ilimitada)"
+  },
+  "Default channel (optional)": {
+    "pt": "Canal predefinido (opcional)",
+    "fr": "Salon par défaut (facultatif)",
+    "es": "Canal predeterminado (opcional)"
+  },
+  "Define how members submit and vote on suggestions.": {
+    "pt": "Define como os membros enviam sugestões e votam nelas.",
+    "fr": "Définissez comment les membres soumettent des suggestions et votent.",
+    "es": "Define cómo envían sugerencias los miembros y cómo votan."
+  },
+  "Define the format of post alerts.": {
+    "pt": "Define o formato dos alertas de publicações.",
+    "fr": "Définissez le format des alertes de publication.",
+    "es": "Define el formato de las alertas de publicaciones."
+  },
+  "Define the format of video alerts.": {
+    "pt": "Define o formato dos alertas de vídeos.",
+    "fr": "Définissez le format des alertes vidéo.",
+    "es": "Define el formato de las alertas de vídeos."
+  },
+  "Defines how long optional data is retained.": {
+    "pt": "Define durante quanto tempo são conservados os dados opcionais.",
+    "fr": "Définit la durée de conservation des données facultatives.",
+    "es": "Define durante cuánto tiempo se conservan los datos opcionales."
+  },
+  "Defines the support product; server payments remain unavailable until Stripe Connect legal setup is complete.": {
+    "pt": "Define o produto de apoio; os pagamentos do servidor continuam indisponíveis até concluir a configuração legal do Stripe Connect.",
+    "fr": "Définit l’offre de soutien ; les paiements du serveur restent indisponibles jusqu’à la finalisation de la configuration juridique de Stripe Connect.",
+    "es": "Define el producto de apoyo; los pagos del servidor siguen sin estar disponibles hasta completar la configuración legal de Stripe Connect."
+  },
+  "Delay before sending (seconds)": {
+    "pt": "Atraso antes do envio (segundos)",
+    "fr": "Délai avant l’envoi (secondes)",
+    "es": "Retraso antes del envío (segundos)"
+  },
+  "Deliver verified Twitch EventSub notifications with deduplication.": {
+    "pt": "Envia notificações verificadas do Twitch EventSub, sem duplicados.",
+    "fr": "Envoyez des notifications Twitch EventSub vérifiées, sans doublons.",
+    "es": "Envía notificaciones verificadas de Twitch EventSub, sin duplicados."
+  },
+  "Desert Ruins": {
+    "pt": "Ruínas do Deserto",
+    "fr": "Ruines du désert",
+    "es": "Ruinas del desierto"
+  },
+  "Destructive action protection": {
+    "pt": "Proteção contra ações destrutivas",
+    "fr": "Protection contre les actions destructrices",
+    "es": "Protección contra acciones destructivas"
+  },
+  "Detect invite scams, suspicious domains and common social-engineering phrases.": {
+    "pt": "Deteta fraudes em convites, domínios suspeitos e frases comuns de engenharia social.",
+    "fr": "Détectez les arnaques aux invitations, les domaines suspects et les phrases courantes d’ingénierie sociale.",
+    "es": "Detecta estafas en invitaciones, dominios sospechosos y frases habituales de ingeniería social."
+  },
+  "Detection window (seconds)": {
+    "pt": "Janela de deteção (segundos)",
+    "fr": "Fenêtre de détection (secondes)",
+    "es": "Ventana de detección (segundos)"
+  },
+  "Detects flooding, repeated messages, excessive mentions, links, and caps.": {
+    "pt": "Deteta mensagens em massa, mensagens repetidas, menções excessivas, ligações e uso excessivo de maiúsculas.",
+    "fr": "Détecte les envois massifs, les messages répétés, les mentions excessives, les liens et l’abus de majuscules.",
+    "es": "Detecta mensajes masivos, mensajes repetidos, menciones excesivas, enlaces y uso excesivo de mayúsculas."
+  },
+  "Detects flooding, repetition and mentions with safe limits.": {
+    "pt": "Deteta mensagens em massa, repetições e menções com limites seguros.",
+    "fr": "Détecte les envois massifs, les répétitions et les mentions avec des limites sûres.",
+    "es": "Detecta mensajes masivos, repeticiones y menciones con límites seguros."
+  },
+  "Direct message": {
+    "pt": "Mensagem privada",
+    "fr": "Message privé",
+    "es": "Mensaje privado"
+  },
+  "Disconnect TikTok": {
+    "pt": "Desligar o TikTok",
+    "fr": "Déconnecter TikTok",
+    "es": "Desconectar TikTok"
+  },
+  "Disconnecting…": {
+    "pt": "A desligar…",
+    "fr": "Déconnexion…",
+    "es": "Desconectando…"
+  },
+  "Discord allows up to 32 characters. Leave it empty when disabling to restore the default name.": {
+    "pt": "O Discord permite até 32 carateres. Deixa vazio ao desativar para repor o nome predefinido.",
+    "fr": "Discord autorise jusqu’à 32 caractères. Laissez le champ vide lors de la désactivation pour rétablir le nom par défaut.",
+    "es": "Discord permite hasta 32 caracteres. Déjalo vacío al desactivar para restaurar el nombre predeterminado."
+  },
+  "Discord channel ID": {
+    "pt": "ID do canal Discord",
+    "fr": "Identifiant du salon Discord",
+    "es": "ID del canal de Discord"
+  },
+  "ERC-1155": {
+    "pt": "ERC-1155",
+    "fr": "ERC-1155",
+    "es": "ERC-1155"
+  },
+  "ERC-20": {
+    "pt": "ERC-20",
+    "fr": "ERC-20",
+    "es": "ERC-20"
+  },
+  "ERC-721": {
+    "pt": "ERC-721",
+    "fr": "ERC-721",
+    "es": "ERC-721"
+  },
+  "Emoji management": {
+    "pt": "Gestão de emojis",
+    "fr": "Gestion des émojis",
+    "es": "Gestión de emojis"
+  },
+  "Emojis listed by /emojis": {
+    "pt": "Emojis apresentados pelo /emojis",
+    "fr": "Émojis affichés par /emojis",
+    "es": "Emojis que muestra /emojis"
+  },
+  "Empty, @here, @everyone, or the role mention.": {
+    "pt": "Vazio, @here, @everyone ou a menção do cargo.",
+    "fr": "Vide, @here, @everyone ou la mention du rôle.",
+    "es": "Vacío, @here, @everyone o la mención del rol."
+  },
+  "Enable the gate when too many members arrive in a short window.": {
+    "pt": "Ativa o controlo de entrada quando chegam demasiados membros num curto período.",
+    "fr": "Activez le contrôle d’entrée lorsqu’un trop grand nombre de membres arrive en peu de temps.",
+    "es": "Activa el control de acceso cuando llegan demasiados miembros en poco tiempo."
+  },
+  "Enchanted Forest": {
+    "pt": "Floresta Encantada",
+    "fr": "Forêt enchantée",
+    "es": "Bosque encantado"
+  },
+  "Enter the Twitch channel name and validate it through the official API before publishing.": {
+    "pt": "Introduz o nome do canal Twitch e valida-o através da API oficial antes de publicar.",
+    "fr": "Saisissez le nom du canal Twitch et validez-le via l’API officielle avant de publier.",
+    "es": "Introduce el nombre del canal de Twitch y valídalo mediante la API oficial antes de publicar."
+  },
+  "Enter the YouTube channel ID and validate it before saving.": {
+    "pt": "Introduz o ID do canal YouTube e valida-o antes de guardar.",
+    "fr": "Saisissez l’identifiant du canal YouTube et validez-le avant d’enregistrer.",
+    "es": "Introduce el ID del canal de YouTube y valídalo antes de guardar."
+  },
+  "Enter the channel slug, not a web URL.": {
+    "pt": "Introduz o identificador do canal, não um URL da Web.",
+    "fr": "Saisissez l’identifiant du canal, pas une URL web.",
+    "es": "Introduce el identificador del canal, no una URL web."
+  },
+  "Enter the public RSS or Atom feed and validate it before saving.": {
+    "pt": "Introduz o feed RSS ou Atom público e valida-o antes de guardar.",
+    "fr": "Saisissez le flux RSS ou Atom public et validez-le avant d’enregistrer.",
+    "es": "Introduce el feed RSS o Atom público y valídalo antes de guardar."
+  },
+  "Escolhe recursos reais do servidor para evitar falsos positivos e receber contexto.": {
+    "pt": "Escolhe recursos reais do servidor para evitar falsos positivos e receber contexto.",
+    "fr": "Choisissez des ressources réelles du serveur pour éviter les faux positifs et obtenir du contexte.",
+    "es": "Elige recursos reales del servidor para evitar falsos positivos y obtener contexto."
+  },
+  "Example: rexy40407 (without twitch.tv/).": {
+    "pt": "Exemplo: rexy40407 (sem twitch.tv/).",
+    "fr": "Exemple : rexy40407 (sans twitch.tv/).",
+    "es": "Ejemplo: rexy40407 (sin twitch.tv/)."
+  },
+  "Exceptions and alerts": {
+    "pt": "Exceções e alertas",
+    "fr": "Exceptions et alertes",
+    "es": "Excepciones y alertas"
+  },
+  "Exclusions": {
+    "pt": "Exclusões",
+    "fr": "Exclusions",
+    "es": "Exclusiones"
+  },
+  "Explains modules and shows the next step for each team.": {
+    "pt": "Explica os módulos e mostra o próximo passo para cada equipa.",
+    "fr": "Explique les modules et indique la prochaine étape à chaque équipe.",
+    "es": "Explica los módulos y muestra el siguiente paso a cada equipo."
+  },
+  "Explore channels": {
+    "pt": "Explorar canais",
+    "fr": "Explorer les salons",
+    "es": "Explorar canales"
+  },
+  "Filter new accounts before granting full access.": {
+    "pt": "Filtra as contas novas antes de lhes dar acesso completo.",
+    "fr": "Filtrez les nouveaux comptes avant de leur accorder un accès complet.",
+    "es": "Filtra las cuentas nuevas antes de concederles acceso completo."
+  },
+  "Find the right command, module and next troubleshooting step.": {
+    "pt": "Encontra o comando, o módulo e o próximo passo de resolução de problemas adequados.",
+    "fr": "Trouvez la commande, le module et la prochaine étape de dépannage adaptés.",
+    "es": "Encuentra el comando, el módulo y el siguiente paso de resolución de problemas adecuados."
+  },
+  "First steps reward role": {
+    "pt": "Cargo de recompensa dos primeiros passos",
+    "fr": "Rôle de récompense des premiers pas",
+    "es": "Rol de recompensa de primeros pasos"
+  },
+  "First steps threshold": {
+    "pt": "Limiar dos primeiros passos",
+    "fr": "Seuil des premiers pas",
+    "es": "Umbral de primeros pasos"
+  },
+  "First-steps message": {
+    "pt": "Mensagem dos primeiros passos",
+    "fr": "Message des premiers pas",
+    "es": "Mensaje de primeros pasos"
+  },
+  "Follow approved public Bluesky sources with cursor-aware delivery.": {
+    "pt": "Acompanha fontes públicas aprovadas do Bluesky, com envio baseado em cursores de paginação.",
+    "fr": "Suivez des sources publiques Bluesky approuvées, avec un envoi tenant compte des curseurs de pagination.",
+    "es": "Sigue fuentes públicas aprobadas de Bluesky, con envíos que tienen en cuenta los cursores de paginación."
+  },
+  "For example: vozen.org or @vozen.org.": {
+    "pt": "Por exemplo: vozen.org ou @vozen.org.",
+    "fr": "Par exemple : vozen.org ou @vozen.org.",
+    "es": "Por ejemplo: vozen.org o @vozen.org."
+  },
+  "Frost Citadel": {
+    "pt": "Cidadela Gelada",
+    "fr": "Citadelle de givre",
+    "es": "Ciudadela helada"
+  },
+  "Give new members a safer, explainable entry path.": {
+    "pt": "Dá aos novos membros um percurso de entrada mais seguro e compreensível.",
+    "fr": "Offrez aux nouveaux membres un parcours d’entrée plus sûr et compréhensible.",
+    "es": "Ofrece a los nuevos miembros un proceso de entrada más seguro y comprensible."
+  },
+  "Give newcomers rules and first steps in a focused channel.": {
+    "pt": "Apresenta as regras e os primeiros passos aos novos membros num canal dedicado.",
+    "fr": "Présentez les règles et les premiers pas aux nouveaux membres dans un salon dédié.",
+    "es": "Ofrece a los nuevos miembros las normas y los primeros pasos en un canal dedicado."
+  },
+  "Give your team context and control over the flow.": {
+    "pt": "Dá à tua equipa contexto e controlo sobre o processo.",
+    "fr": "Donnez à votre équipe du contexte et la maîtrise du processus.",
+    "es": "Ofrece a tu equipo contexto y control sobre el proceso."
+  },
+  "Giveaway defaults": {
+    "pt": "Predefinições dos sorteios",
+    "fr": "Paramètres par défaut des tirages au sort",
+    "es": "Valores predeterminados de los sorteos"
+  },
+  "Goodbye channel": {
+    "pt": "Canal de despedida",
+    "fr": "Salon de départ",
+    "es": "Canal de despedida"
+  },
+  "Goodbye message": {
+    "pt": "Mensagem de despedida",
+    "fr": "Message de départ",
+    "es": "Mensaje de despedida"
+  },
+  "Grant a Discord role after a one-time SIWE signature and read-only contract check.": {
+    "pt": "Atribui um cargo do Discord após uma assinatura SIWE única e uma verificação do contrato apenas de leitura.",
+    "fr": "Attribuez un rôle Discord après une signature SIWE unique et une vérification du contrat en lecture seule.",
+    "es": "Asigna un rol de Discord tras una firma SIWE única y una comprobación del contrato de solo lectura."
+  },
+  "Greet new members with a message, optional DM and safe role assignment.": {
+    "pt": "Recebe os novos membros com uma mensagem, uma mensagem privada opcional e uma atribuição segura de cargos.",
+    "fr": "Accueillez les nouveaux membres avec un message, un message privé facultatif et une attribution sûre de rôles.",
+    "es": "Recibe a los nuevos miembros con un mensaje, un mensaje privado opcional y una asignación segura de roles."
+  },
+  "Greeting": {
+    "pt": "Saudação",
+    "fr": "Accueil",
+    "es": "Saludo"
+  },
+  "Guide message": {
+    "pt": "Mensagem de orientação",
+    "fr": "Message d’orientation",
+    "es": "Mensaje de orientación"
+  },
+  "Guided steps": {
+    "pt": "Passos guiados",
+    "fr": "Étapes guidées",
+    "es": "Pasos guiados"
+  },
+  "Guided welcome channel": {
+    "pt": "Canal de boas-vindas guiadas",
+    "fr": "Salon d’accueil guidé",
+    "es": "Canal de bienvenida guiada"
+  },
+  "HEALTH": {
+    "pt": "ESTADO",
+    "fr": "ÉTAT",
+    "es": "ESTADO"
+  },
+  "Help and diagnostics": {
+    "pt": "Ajuda e diagnóstico",
+    "fr": "Aide et diagnostic",
+    "es": "Ayuda y diagnóstico"
+  },
+  "Help message": {
+    "pt": "Mensagem de ajuda",
+    "fr": "Message d’aide",
+    "es": "Mensaje de ayuda"
+  },
+  "Helper identity": {
+    "pt": "Identidade do Helper",
+    "fr": "Identité de Helper",
+    "es": "Identidad de Helper"
+  },
+  "Helper posts the reason and decision mode here.": {
+    "pt": "O Helper publica aqui o motivo e o modo de decisão.",
+    "fr": "Helper publie ici le motif et le mode de décision.",
+    "es": "Helper publica aquí el motivo y el modo de decisión."
+  },
+  "Helps members avoid missing the start.": {
+    "pt": "Ajuda os membros a não perder o início.",
+    "fr": "Aide les membres à ne pas manquer le début.",
+    "es": "Ayuda a los miembros a no perderse el comienzo."
+  },
+  "Hide author in the public message": {
+    "pt": "Ocultar o autor na mensagem pública",
+    "fr": "Masquer l’auteur dans le message public",
+    "es": "Ocultar al autor en el mensaje público"
+  },
+  "Hide this link": {
+    "pt": "Ocultar esta ligação",
+    "fr": "Masquer ce lien",
+    "es": "Ocultar este enlace"
+  },
+  "High": {
+    "pt": "Alto",
+    "fr": "Élevé",
+    "es": "Alto"
+  },
+  "Highlight messages that the community values.": {
+    "pt": "Destaca as mensagens valorizadas pela comunidade.",
+    "fr": "Mettez en avant les messages appréciés par la communauté.",
+    "es": "Destaca los mensajes que valora la comunidad."
+  },
+  "Highlight rules": {
+    "pt": "Regras de destaque",
+    "fr": "Règles de mise en avant",
+    "es": "Reglas de mensajes destacados"
+  },
+  "Highlights popular community messages.": {
+    "pt": "Destaca mensagens populares da comunidade.",
+    "fr": "Met en avant les messages populaires de la communauté.",
+    "es": "Destaca los mensajes populares de la comunidad."
+  },
+  "Hold accounts below the configured age behind a verification role.": {
+    "pt": "Restringe as contas com idade inferior à configurada através de um cargo de verificação.",
+    "fr": "Restreignez les comptes dont l’ancienneté est inférieure au seuil configuré à l’aide d’un rôle de vérification.",
+    "es": "Restringe las cuentas cuya antigüedad sea inferior a la configurada mediante un rol de verificación."
+  },
+  "Holder role": {
+    "pt": "Cargo de detentor",
+    "fr": "Rôle de détenteur",
+    "es": "Rol de poseedor"
+  },
+  "Hours before start": {
+    "pt": "Horas antes do início",
+    "fr": "Heures avant le début",
+    "es": "Horas antes del comienzo"
+  },
+  "How many requests one person can have at a time.": {
+    "pt": "Quantos pedidos uma pessoa pode ter em simultâneo.",
+    "fr": "Nombre de demandes qu’une personne peut avoir simultanément.",
+    "es": "Cuántas solicitudes puede tener una persona a la vez."
+  },
+  "ISO 4217 lowercase code, for example eur.": {
+    "pt": "Código ISO 4217 em minúsculas, por exemplo eur.",
+    "fr": "Code ISO 4217 en minuscules, par exemple eur.",
+    "es": "Código ISO 4217 en minúsculas, por ejemplo eur."
+  },
+  "Identical repetitions": {
+    "pt": "Repetições idênticas",
+    "fr": "Répétitions identiques",
+    "es": "Repeticiones idénticas"
+  },
+  "Identify suspicious links and phishing patterns without pretending to be an antivirus.": {
+    "pt": "Identifica ligações suspeitas e padrões de phishing sem se apresentar como um antivírus.",
+    "fr": "Repérez les liens suspects et les tentatives d’hameçonnage sans vous présenter comme un antivirus.",
+    "es": "Identifica enlaces sospechosos y patrones de phishing sin presentarse como un antivirus."
+  },
+  "Ignored channels": {
+    "pt": "Canais ignorados",
+    "fr": "Salons ignorés",
+    "es": "Canales ignorados"
+  },
+  "Ignored member roles": {
+    "pt": "Cargos de membros ignorados",
+    "fr": "Rôles des membres ignorés",
+    "es": "Roles de miembros ignorados"
+  },
+  "Ignored roles": {
+    "pt": "Cargos ignorados",
+    "fr": "Rôles ignorés",
+    "es": "Roles ignorados"
+  },
+  "Include image attachments": {
+    "pt": "Incluir imagens anexadas",
+    "fr": "Inclure les images jointes",
+    "es": "Incluir imágenes adjuntas"
+  },
+  "Include the enabled module summary in the response.": {
+    "pt": "Incluir o resumo dos módulos ativos na resposta.",
+    "fr": "Inclure le résumé des modules activés dans la réponse.",
+    "es": "Incluir el resumen de los módulos activos en la respuesta."
+  },
+  "Inter": {
+    "pt": "Inter",
+    "fr": "Inter",
+    "es": "Inter"
+  },
+  "Interval (seconds)": {
+    "pt": "Intervalo (segundos)",
+    "fr": "Intervalle (secondes)",
+    "es": "Intervalo (segundos)"
+  },
+  "Introductions": {
+    "pt": "Apresentações",
+    "fr": "Présentations",
+    "es": "Presentaciones"
+  },
+  "Introductions channel (optional)": {
+    "pt": "Canal de apresentações (opcional)",
+    "fr": "Salon de présentation (facultatif)",
+    "es": "Canal de presentaciones (opcional)"
+  },
+  "Invite overview": {
+    "pt": "Resumo dos convites",
+    "fr": "Vue d’ensemble des invitations",
+    "es": "Resumen de invitaciones"
+  },
+  "Invites shown": {
+    "pt": "Convites apresentados",
+    "fr": "Invitations affichées",
+    "es": "Invitaciones mostradas"
+  },
+  "Join Creator Channel to get a personal voice room. Empty rooms are deleted automatically.": {
+    "pt": "Entra no Canal Criador para obteres uma sala de voz pessoal. As salas vazias são eliminadas automaticamente.",
+    "fr": "Rejoignez le salon créateur pour obtenir votre propre salon vocal. Les salons vides sont supprimés automatiquement.",
+    "es": "Entra en el Canal creador para obtener una sala de voz personal. Las salas vacías se eliminan automáticamente."
+  },
+  "Join burst protection": {
+    "pt": "Proteção contra entradas em massa",
+    "fr": "Protection contre les arrivées massives",
+    "es": "Protección contra entradas masivas"
+  },
+  "Join gate": {
+    "pt": "Controlo de entrada",
+    "fr": "Contrôle d’entrée",
+    "es": "Control de acceso"
+  },
+  "Join verification": {
+    "pt": "Verificação de entrada",
+    "fr": "Vérification à l’entrée",
+    "es": "Verificación de entrada"
+  },
+  "Joins before containment": {
+    "pt": "Entradas antes da contenção",
+    "fr": "Arrivées avant le confinement",
+    "es": "Entradas antes de la contención"
+  },
+  "KYC, tax and refund policy": {
+    "pt": "KYC, impostos e política de reembolsos",
+    "fr": "KYC, fiscalité et politique de remboursement",
+    "es": "KYC, impuestos y política de reembolsos"
+  },
+  "Keep at least one option selected.": {
+    "pt": "Mantém pelo menos uma opção selecionada.",
+    "fr": "Gardez au moins une option sélectionnée.",
+    "es": "Mantén al menos una opción seleccionada."
+  },
+  "Keep counters useful, fresh and clearly labelled.": {
+    "pt": "Mantém os contadores úteis, atualizados e bem identificados.",
+    "fr": "Gardez des compteurs utiles, à jour et clairement identifiés.",
+    "es": "Mantén los contadores útiles, actualizados y claramente identificados."
+  },
+  "Keep highlights relevant and safe.": {
+    "pt": "Mantém os destaques relevantes e seguros.",
+    "fr": "Gardez des messages mis en avant pertinents et sûrs.",
+    "es": "Mantén los mensajes destacados relevantes y seguros."
+  },
+  "Keep previous level roles": {
+    "pt": "Manter os cargos dos níveis anteriores",
+    "fr": "Conserver les rôles des niveaux précédents",
+    "es": "Conservar los roles de niveles anteriores"
+  },
+  "Keep reminders useful and bounded for every member.": {
+    "pt": "Mantém os lembretes úteis e com limites para cada membro.",
+    "fr": "Gardez des rappels utiles et limités pour chaque membre.",
+    "es": "Mantén los recordatorios útiles y con límites para cada miembro."
+  },
+  "Keep rewards from earlier levels": {
+    "pt": "Manter as recompensas dos níveis anteriores",
+    "fr": "Conserver les récompenses des niveaux précédents",
+    "es": "Conservar las recompensas de niveles anteriores"
+  },
+  "Keep the public result concise and predictable.": {
+    "pt": "Mantém o resultado público conciso e previsível.",
+    "fr": "Gardez un résultat public concis et prévisible.",
+    "es": "Mantén el resultado público conciso y predecible."
+  },
+  "Keeps detection and auditing enabled without applying a timeout.": {
+    "pt": "Mantém a deteção e a auditoria ativas sem aplicar um timeout.",
+    "fr": "Maintient la détection et l’audit sans appliquer d’exclusion temporaire.",
+    "es": "Mantiene la detección y la auditoría activas sin aplicar un aislamiento temporal."
+  },
+  "Keeps privacy requests clear.": {
+    "pt": "Mantém os pedidos de privacidade claros.",
+    "fr": "Garde les demandes de confidentialité claires.",
+    "es": "Mantiene claras las solicitudes de privacidad."
+  },
+  "Keeps support requests in one place.": {
+    "pt": "Reúne os pedidos de apoio num só local.",
+    "fr": "Regroupe les demandes d’assistance au même endroit.",
+    "es": "Reúne las solicitudes de soporte en un solo lugar."
+  },
+  "Kick channel": {
+    "pt": "Canal Kick",
+    "fr": "Canal Kick",
+    "es": "Canal de Kick"
+  },
+  "Kick handle": {
+    "pt": "Identificador Kick",
+    "fr": "Identifiant Kick",
+    "es": "Identificador de Kick"
+  },
+  "Lavender Storm": {
+    "pt": "Tempestade de Lavanda",
+    "fr": "Tempête de lavande",
+    "es": "Tormenta de lavanda"
+  },
+  "Leaderboard settings": {
+    "pt": "Definições da classificação",
+    "fr": "Paramètres du classement",
+    "es": "Ajustes de la clasificación"
+  },
+  "Leave empty if you do not want to send a goodbye.": {
+    "pt": "Deixa vazio se não quiseres enviar uma despedida.",
+    "fr": "Laissez vide si vous ne souhaitez pas envoyer de message de départ.",
+    "es": "Déjalo vacío si no quieres enviar una despedida."
+  },
+  "Leave empty to announce in the channel where the member earned XP.": {
+    "pt": "Deixa vazio para anunciar no canal onde o membro ganhou XP.",
+    "fr": "Laissez vide pour annoncer dans le salon où le membre a gagné de l’XP.",
+    "es": "Déjalo vacío para anunciarlo en el canal donde el miembro ganó XP."
+  },
+  "Leave empty to post each poll in the channel where you use /poll. Choose a channel to send all polls there.": {
+    "pt": "Deixa vazio para publicar cada sondagem no canal onde usas /poll. Escolhe um canal para enviar todas as sondagens para lá.",
+    "fr": "Laissez vide pour publier chaque sondage dans le salon où vous utilisez /poll. Choisissez un salon pour y envoyer tous les sondages.",
+    "es": "Déjalo vacío para publicar cada encuesta en el canal donde usas /poll. Elige un canal para enviar allí todas las encuestas."
+  },
+  "Let members choose approved roles through buttons or menus.": {
+    "pt": "Permite que os membros escolham cargos aprovados através de botões ou menus.",
+    "fr": "Permettez aux membres de choisir des rôles approuvés à l’aide de boutons ou de menus.",
+    "es": "Permite que los miembros elijan roles aprobados mediante botones o menús."
+  },
+  "Let members choose roles through simple panels.": {
+    "pt": "Permite que os membros escolham cargos em painéis simples.",
+    "fr": "Permettez aux membres de choisir des rôles dans des panneaux simples.",
+    "es": "Permite que los miembros elijan roles en paneles sencillos."
+  },
+  "Level role rewards (level=role ID)": {
+    "pt": "Cargos de recompensa por nível (level=role ID)",
+    "fr": "Rôles de récompense par niveau (level=role ID)",
+    "es": "Roles de recompensa por nivel (level=role ID)"
+  },
+  "Level-up channel": {
+    "pt": "Canal de subida de nível",
+    "fr": "Salon de montée de niveau",
+    "es": "Canal de subida de nivel"
+  },
+  "Levels and XP": {
+    "pt": "Níveis e XP",
+    "fr": "Niveaux et XP",
+    "es": "Niveles y XP"
+  },
+  "Lexend": {
+    "pt": "Lexend",
+    "fr": "Lexend",
+    "es": "Lexend"
+  },
+  "Limit the number of simultaneous tickets one member can open.": {
+    "pt": "Limita o número de tickets que um membro pode abrir em simultâneo.",
+    "fr": "Limitez le nombre de tickets qu’un membre peut ouvrir simultanément.",
+    "es": "Limita el número de tickets que puede abrir un miembro a la vez."
+  },
+  "Limited availability": {
+    "pt": "Disponibilidade limitada",
+    "fr": "Disponibilité limitée",
+    "es": "Disponibilidad limitada"
+  },
+  "Limits how many responses this server can save.": {
+    "pt": "Limita quantas respostas este servidor pode guardar.",
+    "fr": "Limite le nombre de réponses que ce serveur peut enregistrer.",
+    "es": "Limita cuántas respuestas puede guardar este servidor."
+  },
+  "Limits how many times a recurring reminder is re-created.": {
+    "pt": "Limita quantas vezes um lembrete recorrente é criado novamente.",
+    "fr": "Limite le nombre de fois qu’un rappel récurrent est recréé.",
+    "es": "Limita cuántas veces se vuelve a crear un recordatorio recurrente."
+  },
+  "List custom emojis safely, with optional staff-only rename and delete controls.": {
+    "pt": "Lista emojis personalizados de forma segura, com controlos opcionais para renomear e eliminar reservados à equipa.",
+    "fr": "Répertoriez les émojis personnalisés de manière sûre, avec des options facultatives de renommage et de suppression réservées à l’équipe.",
+    "es": "Lista los emojis personalizados de forma segura, con controles opcionales para renombrar y eliminar reservados al equipo."
+  },
+  "Live counter channel (optional)": {
+    "pt": "Canal de contagem em direto (opcional)",
+    "fr": "Salon de compteur en direct (facultatif)",
+    "es": "Canal de contador en directo (opcional)"
+  },
+  "Longer generated replies are rejected before they can be sent.": {
+    "pt": "As respostas geradas mais longas são rejeitadas antes de serem enviadas.",
+    "fr": "Les réponses générées plus longues sont rejetées avant leur envoi.",
+    "es": "Las respuestas generadas más largas se rechazan antes de enviarse."
+  },
+  "Longer text is rejected before a job is created.": {
+    "pt": "O texto mais longo é rejeitado antes de se criar uma tarefa.",
+    "fr": "Les textes plus longs sont rejetés avant la création d’une tâche.",
+    "es": "El texto más largo se rechaza antes de crear una tarea."
+  },
+  "Manage Roles": {
+    "pt": "Gerir cargos",
+    "fr": "Gérer les rôles",
+    "es": "Gestionar roles"
+  },
+  "Manage an auditable points economy with bounded rewards.": {
+    "pt": "Gere uma economia de pontos auditável, com recompensas limitadas.",
+    "fr": "Gérez une économie de points vérifiable, avec des récompenses limitées.",
+    "es": "Gestiona una economía de puntos auditable, con recompensas limitadas."
+  },
+  "Maximum XP per message": {
+    "pt": "XP máximo por mensagem",
+    "fr": "XP maximum par message",
+    "es": "XP máximo por mensaje"
+  },
+  "Maximum members in /leaderboard": {
+    "pt": "Máximo de membros no /leaderboard",
+    "fr": "Nombre maximal de membres dans /leaderboard",
+    "es": "Máximo de miembros en /leaderboard"
+  },
+  "Maximum roles": {
+    "pt": "Máximo de cargos",
+    "fr": "Nombre maximal de rôles",
+    "es": "Máximo de roles"
+  },
+  "Medium": {
+    "pt": "Médio",
+    "fr": "Moyen",
+    "es": "Medio"
+  },
+  "Member data controls": {
+    "pt": "Controlos dos dados dos membros",
+    "fr": "Gestion des données des membres",
+    "es": "Controles de datos de los miembros"
+  },
+  "Members can choose a bounded daily or weekly reminder.": {
+    "pt": "Os membros podem escolher um lembrete diário ou semanal com limites.",
+    "fr": "Les membres peuvent choisir un rappel quotidien ou hebdomadaire avec des limites.",
+    "es": "Los miembros pueden elegir un recordatorio diario o semanal con límites."
+  },
+  "Members can choose one role": {
+    "pt": "Os membros podem escolher um cargo",
+    "fr": "Les membres peuvent choisir un rôle",
+    "es": "Los miembros pueden elegir un rol"
+  },
+  "Members can choose several roles": {
+    "pt": "Os membros podem escolher vários cargos",
+    "fr": "Les membres peuvent choisir plusieurs rôles",
+    "es": "Los miembros pueden elegir varios roles"
+  },
+  "Members can request their own JSON export through /privacy data.": {
+    "pt": "Os membros podem pedir a exportação dos seus próprios dados em JSON através de /privacy data.",
+    "fr": "Les membres peuvent demander l’exportation de leurs propres données en JSON via /privacy data.",
+    "es": "Los miembros pueden solicitar la exportación de sus propios datos en JSON mediante /privacy data."
+  },
+  "Members shown": {
+    "pt": "Membros apresentados",
+    "fr": "Membres affichés",
+    "es": "Miembros mostrados"
+  },
+  "Members with any of these roles are excluded from evaluation.": {
+    "pt": "Os membros com qualquer um destes cargos ficam excluídos da avaliação.",
+    "fr": "Les membres ayant l’un de ces rôles sont exclus de l’évaluation.",
+    "es": "Los miembros con cualquiera de estos roles quedan excluidos de la evaluación."
+  },
+  "Mensagens no intervalo": {
+    "pt": "Mensagens no intervalo",
+    "fr": "Messages dans l’intervalle",
+    "es": "Mensajes en el intervalo"
+  },
+  "Mention limit per message": {
+    "pt": "Limite de menções por mensagem",
+    "fr": "Limite de mentions par message",
+    "es": "Límite de menciones por mensaje"
+  },
+  "Message and embed builder": {
+    "pt": "Editor de mensagens e mensagens incorporadas",
+    "fr": "Éditeur de messages et de messages intégrés",
+    "es": "Editor de mensajes y mensajes integrados"
+  },
+  "Messages in these channels are excluded from evaluation.": {
+    "pt": "As mensagens nestes canais ficam excluídas da avaliação.",
+    "fr": "Les messages de ces salons sont exclus de l’évaluation.",
+    "es": "Los mensajes de estos canales quedan excluidos de la evaluación."
+  },
+  "Messages in these channels do not count towards a level.": {
+    "pt": "As mensagens nestes canais não contam para subir de nível.",
+    "fr": "Les messages de ces salons ne comptent pas pour monter de niveau.",
+    "es": "Los mensajes de estos canales no cuentan para subir de nivel."
+  },
+  "Messages sent during this wait do not earn more XP.": {
+    "pt": "As mensagens enviadas durante esta espera não dão mais XP.",
+    "fr": "Les messages envoyés pendant ce délai ne rapportent pas d’XP supplémentaire.",
+    "es": "Los mensajes enviados durante esta espera no otorgan más XP."
+  },
+  "Meta App Review and deletion callbacks": {
+    "pt": "Revisão da aplicação Meta e callbacks de eliminação",
+    "fr": "Examen de l’application Meta et rappels de suppression",
+    "es": "Revisión de la aplicación de Meta y callbacks de eliminación"
+  },
+  "Meta Instagram API app": {
+    "pt": "Aplicação da API Instagram da Meta",
+    "fr": "Application de l’API Instagram de Meta",
+    "es": "Aplicación de la API de Instagram de Meta"
+  },
+  "Minimum XP per message": {
+    "pt": "XP mínimo por mensagem",
+    "fr": "XP minimum par message",
+    "es": "XP mínimo por mensaje"
+  },
+  "Monitor only": {
+    "pt": "Apenas monitorizar",
+    "fr": "Surveiller uniquement",
+    "es": "Solo supervisar"
+  },
+  "Monitoring {account}. Tokens are encrypted on the server.": {
+    "pt": "A monitorizar {account}. Os tokens são cifrados no servidor.",
+    "fr": "Surveillance de {account}. Les jetons sont chiffrés sur le serveur.",
+    "es": "Supervisando {account}. Los tokens se cifran en el servidor."
+  },
+  "Monthly price (cents)": {
+    "pt": "Preço mensal (cêntimos)",
+    "fr": "Prix mensuel (centimes)",
+    "es": "Precio mensual (céntimos)"
+  },
+  "Moonlit Village": {
+    "pt": "Aldeia ao Luar",
+    "fr": "Village au clair de lune",
+    "es": "Aldea a la luz de la luna"
+  },
+  "Neon Rain": {
+    "pt": "Chuva Néon",
+    "fr": "Pluie de néon",
+    "es": "Lluvia de neón"
+  },
+  "New requests are created in this category.": {
+    "pt": "Os novos pedidos são criados nesta categoria.",
+    "fr": "Les nouvelles demandes sont créées dans cette catégorie.",
+    "es": "Las nuevas solicitudes se crean en esta categoría."
+  },
+  "New rooms are created inside this category when selected.": {
+    "pt": "Quando selecionada, os novos canais são criados nesta categoria.",
+    "fr": "Si cette catégorie est sélectionnée, les nouveaux salons y sont créés.",
+    "es": "Si se selecciona esta categoría, las nuevas salas se crean en ella."
+  },
+  "New ticket channels are created inside this category.": {
+    "pt": "Os novos canais de tickets são criados nesta categoria.",
+    "fr": "Les nouveaux salons de tickets sont créés dans cette catégorie.",
+    "es": "Los nuevos canales de tickets se crean en esta categoría."
+  },
+  "Next banners": {
+    "pt": "Faixas seguintes",
+    "fr": "Bannières suivantes",
+    "es": "Banners siguientes"
+  },
+  "No automatic role": {
+    "pt": "Sem cargo automático",
+    "fr": "Aucun rôle automatique",
+    "es": "Sin rol automático"
+  },
+  "Notified when a ticket opens and can manage requests. Make the role mentionable or allow Helper to mention roles. Discord notification preferences still apply.": {
+    "pt": "Recebe notificações quando um ticket é aberto e pode gerir pedidos. Permite mencionar o cargo ou autoriza o Helper a mencionar cargos. As preferências de notificação do Discord continuam a aplicar-se.",
+    "fr": "Reçoit une notification à l’ouverture d’un ticket et peut gérer les demandes. Rendez le rôle mentionnable ou autorisez Helper à mentionner des rôles. Les préférences de notification Discord continuent de s’appliquer.",
+    "es": "Recibe notificaciones cuando se abre un ticket y puede gestionar solicitudes. Permite mencionar el rol o autoriza a Helper a mencionar roles. Las preferencias de notificación de Discord siguen aplicándose."
+  },
+  "Notifies the server about new videos.": {
+    "pt": "Notifica o servidor sobre novos vídeos.",
+    "fr": "Avertit le serveur des nouvelles vidéos.",
+    "es": "Notifica al servidor sobre nuevos vídeos."
+  },
+  "Notifies the server when a creator starts streaming.": {
+    "pt": "Notifica o servidor quando um criador começa uma transmissão.",
+    "fr": "Avertit le serveur lorsqu’un créateur lance un direct.",
+    "es": "Notifica al servidor cuando un creador empieza una transmisión."
+  },
+  "Notifies the server when a new video is published.": {
+    "pt": "Notifica o servidor quando é publicado um novo vídeo.",
+    "fr": "Avertit le serveur de la publication d’une nouvelle vidéo.",
+    "es": "Notifica al servidor cuando se publica un nuevo vídeo."
+  },
+  "Notify a Discord channel about posts from a professional Instagram account authorised through Meta OAuth.": {
+    "pt": "Notifica um canal do Discord sobre publicações de uma conta profissional do Instagram autorizada através do Meta OAuth.",
+    "fr": "Envoyez dans un salon Discord les notifications de publication d’un compte Instagram professionnel autorisé via Meta OAuth.",
+    "es": "Notifica a un canal de Discord sobre publicaciones de una cuenta profesional de Instagram autorizada mediante Meta OAuth."
+  },
+  "Notify a Discord channel about streams through an approved Kick API application.": {
+    "pt": "Notifica um canal do Discord sobre transmissões através de uma aplicação aprovada da API Kick.",
+    "fr": "Envoyez dans un salon Discord les notifications de direct via une application approuvée de l’API Kick.",
+    "es": "Notifica a un canal de Discord sobre transmisiones mediante una aplicación aprobada de la API de Kick."
+  },
+  "Notify a Discord channel about videos from a creator who authorises the Display API scopes.": {
+    "pt": "Notifica um canal do Discord sobre vídeos de um criador que autoriza as permissões da Display API.",
+    "fr": "Envoyez dans un salon Discord les notifications vidéo d’un créateur qui autorise les accès de la Display API.",
+    "es": "Notifica a un canal de Discord sobre vídeos de un creador que autoriza los permisos de la Display API."
+  },
+  "Notify a Discord channel when an approved YouTube source changes.": {
+    "pt": "Notifica um canal do Discord quando uma fonte aprovada do YouTube muda.",
+    "fr": "Avertissez un salon Discord lorsqu’une source YouTube approuvée change.",
+    "es": "Notifica a un canal de Discord cuando cambia una fuente aprobada de YouTube."
+  },
+  "Number of custom emojis listed by /emojis. This does not limit emoji usage.": {
+    "pt": "Número de emojis personalizados listados pelo /emojis. Não limita a utilização de emojis.",
+    "fr": "Nombre d’émojis personnalisés affichés par /emojis. Cela ne limite pas l’utilisation des émojis.",
+    "es": "Número de emojis personalizados que muestra /emojis. No limita el uso de emojis."
+  },
+  "Number of messages from the same member before flagging.": {
+    "pt": "Número de mensagens do mesmo membro antes de sinalizar.",
+    "fr": "Nombre de messages d’un même membre avant le signalement.",
+    "es": "Número de mensajes del mismo miembro antes de señalarlo."
+  },
+  "Number of recent daily snapshots included.": {
+    "pt": "Número de registos diários recentes incluídos.",
+    "fr": "Nombre d’instantanés quotidiens récents inclus.",
+    "es": "Número de registros diarios recientes incluidos."
+  },
+  "Off by default. Discord may not provide content for every edit/delete event.": {
+    "pt": "Desativado por predefinição. O Discord pode não fornecer o conteúdo de todos os eventos de edição ou eliminação.",
+    "fr": "Désactivé par défaut. Discord peut ne pas fournir le contenu de chaque événement de modification ou de suppression.",
+    "es": "Desactivado de forma predeterminada. Discord puede no proporcionar el contenido de todos los eventos de edición o eliminación."
+  },
+  "Offer a server subscription through Stripe Connect. Production requires legal, tax and support approval.": {
+    "pt": "Oferece uma subscrição do servidor através do Stripe Connect. O uso em produção exige aprovação jurídica, fiscal e de apoio.",
+    "fr": "Proposez un abonnement au serveur via Stripe Connect. La mise en production nécessite une validation juridique, fiscale et de l’assistance.",
+    "es": "Ofrece una suscripción al servidor mediante Stripe Connect. El uso en producción requiere aprobación legal, fiscal y de soporte."
+  },
+  "Official Kick API/webhook access": {
+    "pt": "Acesso oficial à API e aos webhooks Kick",
+    "fr": "Accès officiel à l’API et aux webhooks Kick",
+    "es": "Acceso oficial a la API y a los webhooks de Kick"
+  },
+  "Older messages automatically leave this window.": {
+    "pt": "As mensagens mais antigas saem automaticamente desta janela.",
+    "fr": "Les messages plus anciens sortent automatiquement de cette fenêtre.",
+    "es": "Los mensajes más antiguos salen automáticamente de esta ventana."
+  },
+  "On: everyone in the channel can see the response. Off: only the person using the command can see it.": {
+    "pt": "Ativo: todos no canal podem ver a resposta. Inativo: só quem usa o comando a pode ver.",
+    "fr": "Activé : tout le monde dans le salon peut voir la réponse. Désactivé : seule la personne qui utilise la commande peut la voir.",
+    "es": "Activado: todos los miembros del canal pueden ver la respuesta. Desactivado: solo puede verla quien utiliza el comando."
+  },
+  "Only an approved contract is accepted; never enter a private key.": {
+    "pt": "Só é aceite um contrato aprovado; nunca introduzas uma chave privada.",
+    "fr": "Seul un contrat approuvé est accepté ; ne saisissez jamais de clé privée.",
+    "es": "Solo se acepta un contrato aprobado; nunca introduzcas una clave privada."
+  },
+  "Only members with Manage Server or Administrator can invoke saved commands.": {
+    "pt": "Só os membros com Gerir servidor ou Administrador podem executar comandos guardados.",
+    "fr": "Seuls les membres disposant de Gérer le serveur ou d’Administrateur peuvent exécuter les commandes enregistrées.",
+    "es": "Solo los miembros con Gestionar servidor o Administrador pueden ejecutar comandos guardados."
+  },
+  "Open a feature to configure all settings and review a safe simulation.": {
+    "pt": "Abre uma funcionalidade para configurar todas as opções e ver uma simulação segura.",
+    "fr": "Ouvrez une fonctionnalité pour configurer tous les paramètres et consulter une simulation sûre.",
+    "es": "Abre una función para configurar todas las opciones y ver una simulación segura."
+  },
+  "Opening TikTok…": {
+    "pt": "A abrir o TikTok…",
+    "fr": "Ouverture de TikTok…",
+    "es": "Abriendo TikTok…"
+  },
+  "Operator-approved HTTPS RPC": {
+    "pt": "RPC HTTPS aprovado pelo operador",
+    "fr": "RPC HTTPS approuvé par l’opérateur",
+    "es": "RPC HTTPS aprobado por el operador"
+  },
+  "Operator-approved RPC endpoint": {
+    "pt": "Endpoint RPC aprovado pelo operador",
+    "fr": "Point de terminaison RPC approuvé par l’opérateur",
+    "es": "Endpoint RPC aprobado por el operador"
+  },
+  "Optional. Sent only when enabled and the member allows direct messages.": {
+    "pt": "Opcional. Só é enviada se estiver ativo e o membro permitir mensagens privadas.",
+    "fr": "Facultatif. Envoyé uniquement si l’option est activée et si le membre autorise les messages privés.",
+    "es": "Opcional. Solo se envía si está activado y el miembro permite mensajes privados."
+  },
+  "Optional. Use a template from your message templates.": {
+    "pt": "Opcional. Usa um dos teus modelos de mensagem.",
+    "fr": "Facultatif. Utilisez l’un de vos modèles de message.",
+    "es": "Opcional. Usa una de tus plantillas de mensajes."
+  },
+  "Optional: assign a role, adjust the timing or use a saved template.": {
+    "pt": "Opcional: atribui um cargo, ajusta o tempo ou usa um modelo guardado.",
+    "fr": "Facultatif : attribuez un rôle, ajustez le délai ou utilisez un modèle enregistré.",
+    "es": "Opcional: asigna un rol, ajusta el tiempo o usa una plantilla guardada."
+  },
+  "Optional: choose a template created in Templates and import.": {
+    "pt": "Opcional: escolhe um modelo criado em Modelos e importação.",
+    "fr": "Facultatif : choisissez un modèle créé dans Modèles et importation.",
+    "es": "Opcional: elige una plantilla creada en Plantillas e importación."
+  },
+  "Organizes and improves custom emoji usage.": {
+    "pt": "Organiza e melhora a utilização dos emojis personalizados.",
+    "fr": "Organise et améliore l’utilisation des émojis personnalisés.",
+    "es": "Organiza y mejora el uso de los emojis personalizados."
+  },
+  "Panel channel (optional)": {
+    "pt": "Canal do painel (opcional)",
+    "fr": "Salon du panneau (facultatif)",
+    "es": "Canal del panel (opcional)"
+  },
+  "Panel defaults": {
+    "pt": "Predefinições do painel",
+    "fr": "Paramètres par défaut du panneau",
+    "es": "Valores predeterminados del panel"
+  },
+  "Panel message": {
+    "pt": "Mensagem do painel",
+    "fr": "Message du panneau",
+    "es": "Mensaje del panel"
+  },
+  "Panel roles": {
+    "pt": "Cargos do painel",
+    "fr": "Rôles du panneau",
+    "es": "Roles del panel"
+  },
+  "Pause invite entry during an incident": {
+    "pt": "Suspender a entrada por convite durante um incidente",
+    "fr": "Suspendre les arrivées par invitation pendant un incident",
+    "es": "Suspender las entradas por invitación durante un incidente"
+  },
+  "Personalise the XP card with curated backgrounds, colours and typography.": {
+    "pt": "Personaliza o cartão de XP com fundos, cores e tipos de letra da seleção disponível.",
+    "fr": "Personnalisez la carte d’XP avec une sélection de fonds, de couleurs et de polices.",
+    "es": "Personaliza la tarjeta de XP con fondos, colores y tipografías de la selección disponible."
+  },
+  "Personalizes the level card shown in Discord.": {
+    "pt": "Personaliza o cartão de nível apresentado no Discord.",
+    "fr": "Personnalise la carte de niveau affichée dans Discord.",
+    "es": "Personaliza la tarjeta de nivel que se muestra en Discord."
+  },
+  "Plan events, registrations and reminders from one workflow.": {
+    "pt": "Planeia eventos, inscrições e lembretes num único processo.",
+    "fr": "Planifiez les événements, les inscriptions et les rappels dans un même processus.",
+    "es": "Planifica eventos, inscripciones y recordatorios desde un único proceso."
+  },
+  "Plan limits": {
+    "pt": "Limites do plano",
+    "fr": "Limites de l’offre",
+    "es": "Límites del plan"
+  },
+  "Planned bounded crypto lookups with rate-limit awareness.": {
+    "pt": "Está prevista a consulta de criptomoedas, com limites e controlo da frequência de pedidos.",
+    "fr": "Consultations limitées de cryptomonnaies prévues, en tenant compte des limites de requêtes.",
+    "es": "Consultas limitadas de criptomonedas previstas, teniendo en cuenta los límites de solicitudes."
+  },
+  "Planned multi-network gas readings with cache and failover.": {
+    "pt": "Leituras de taxas de gas em várias redes planeadas, com cache e alternativa em caso de falha.",
+    "fr": "Consultation des frais de gas sur plusieurs réseaux prévue, avec cache et basculement en cas de panne.",
+    "es": "Lecturas de tarifas de gas en varias redes previstas, con caché y alternativa en caso de fallo."
+  },
+  "Planned server payments and entitlement delivery with compliance controls.": {
+    "pt": "Estão previstos pagamentos do servidor e atribuição de direitos de acesso, com controlos de conformidade.",
+    "fr": "Paiements du serveur et attribution des droits prévus, avec des contrôles de conformité.",
+    "es": "Pagos del servidor y entrega de beneficios previstos, con controles de cumplimiento."
+  },
+  "Planned signature-only wallet checks; the Helper will never request a seed phrase.": {
+    "pt": "Estão previstas verificações de carteiras apenas por assinatura; o Helper nunca pedirá uma frase de recuperação.",
+    "fr": "Vérifications de portefeuille prévues par simple signature ; Helper ne demandera jamais de phrase de récupération.",
+    "es": "Verificaciones de carteras solo mediante firma previstas; Helper nunca solicitará una frase de recuperación."
+  },
+  "Planned support for authorised professional Instagram accounts.": {
+    "pt": "Suporte planeado para contas profissionais autorizadas do Instagram.",
+    "fr": "Prise en charge prévue des comptes Instagram professionnels autorisés.",
+    "es": "Compatibilidad prevista con cuentas profesionales autorizadas de Instagram."
+  },
+  "Planned support for creators who authorise the official Display API.": {
+    "pt": "Suporte planeado para criadores que autorizem a Display API oficial.",
+    "fr": "Prise en charge prévue des créateurs qui autorisent la Display API officielle.",
+    "es": "Compatibilidad prevista con creadores que autoricen la Display API oficial."
+  },
+  "Planned support through an approved Kick integration.": {
+    "pt": "Suporte planeado através de uma integração Kick aprovada.",
+    "fr": "Prise en charge prévue via une intégration Kick approuvée.",
+    "es": "Compatibilidad prevista mediante una integración aprobada de Kick."
+  },
+  "Podcast alerts": {
+    "pt": "Alertas de podcasts",
+    "fr": "Alertes de podcasts",
+    "es": "Alertas de pódcast"
+  },
+  "Poll a public profile through the official Bluesky AppView API and post new updates in Discord.": {
+    "pt": "Consulta periodicamente um perfil público através da API oficial AppView do Bluesky e publica as novidades no Discord.",
+    "fr": "Consultez régulièrement un profil public via l’API officielle AppView de Bluesky et publiez les nouveautés dans Discord.",
+    "es": "Consulta periódicamente un perfil público mediante la API oficial AppView de Bluesky y publica las novedades en Discord."
+  },
+  "Poll a public profile through the official Bluesky AppView API.": {
+    "pt": "Consulta periodicamente um perfil público através da API oficial AppView do Bluesky.",
+    "fr": "Consultez régulièrement un profil public via l’API officielle AppView de Bluesky.",
+    "es": "Consulta periódicamente un perfil público mediante la API oficial AppView de Bluesky."
+  },
+  "Poll channel (optional)": {
+    "pt": "Canal de sondagens (opcional)",
+    "fr": "Salon de sondages (facultatif)",
+    "es": "Canal de encuestas (opcional)"
+  },
+  "Poll defaults": {
+    "pt": "Predefinições das sondagens",
+    "fr": "Paramètres par défaut des sondages",
+    "es": "Valores predeterminados de las encuestas"
+  },
+  "Polls a public podcast RSS or Atom feed with the same SSRF protection and deduplication as RSS alerts.": {
+    "pt": "Consulta periodicamente um feed público de podcast RSS ou Atom com a mesma proteção contra SSRF e remoção de duplicados dos alertas RSS.",
+    "fr": "Consulte régulièrement un flux public de podcast RSS ou Atom avec la même protection contre les SSRF et la même déduplication que les alertes RSS.",
+    "es": "Consulta periódicamente un feed público de pódcast RSS o Atom con la misma protección contra SSRF y eliminación de duplicados que las alertas RSS."
+  },
+  "Polls the official YouTube Data API and delivers deduplicated new-video alerts.": {
+    "pt": "Consulta periodicamente a API oficial YouTube Data e envia alertas de novos vídeos sem duplicados.",
+    "fr": "Consulte régulièrement l’API officielle YouTube Data et envoie des alertes de nouvelles vidéos sans doublons.",
+    "es": "Consulta periódicamente la API oficial YouTube Data y envía alertas de vídeos nuevos sin duplicados."
+  },
+  "Polls validated RSS and Atom feeds with SSRF protection and deduplication.": {
+    "pt": "Consulta periodicamente feeds RSS e Atom validados, com proteção contra SSRF e remoção de duplicados.",
+    "fr": "Consulte régulièrement des flux RSS et Atom validés, avec protection contre les SSRF et déduplication.",
+    "es": "Consulta periódicamente feeds RSS y Atom validados, con protección contra SSRF y eliminación de duplicados."
+  },
+  "Poppins": {
+    "pt": "Poppins",
+    "fr": "Poppins",
+    "es": "Poppins"
+  },
+  "Portable templates": {
+    "pt": "Modelos portáteis",
+    "fr": "Modèles portables",
+    "es": "Plantillas portátiles"
+  },
+  "Post one reminder before each new event in the announcement channel.": {
+    "pt": "Publica um lembrete no canal de anúncios antes de cada novo evento.",
+    "fr": "Publiez un rappel dans le salon d’annonces avant chaque nouvel événement.",
+    "es": "Publica un recordatorio en el canal de anuncios antes de cada evento nuevo."
+  },
+  "Post the first steps and server rules when a new member arrives.": {
+    "pt": "Publica os primeiros passos e as regras do servidor quando entra um novo membro.",
+    "fr": "Publiez les premiers pas et les règles du serveur à l’arrivée d’un nouveau membre.",
+    "es": "Publica los primeros pasos y las normas del servidor cuando entra un miembro nuevo."
+  },
+  "Posts an alert when a channel starts streaming.": {
+    "pt": "Publica um alerta quando um canal começa uma transmissão.",
+    "fr": "Publie une alerte lorsqu’un canal lance un direct.",
+    "es": "Publica una alerta cuando un canal comienza una transmisión."
+  },
+  "Prepare consistent reminders for the community.": {
+    "pt": "Prepara lembretes consistentes para a comunidade.",
+    "fr": "Préparez des rappels cohérents pour la communauté.",
+    "es": "Prepara recordatorios coherentes para la comunidad."
+  },
+  "Prepare the message where members choose roles.": {
+    "pt": "Prepara a mensagem onde os membros escolhem cargos.",
+    "fr": "Préparez le message dans lequel les membres choisissent leurs rôles.",
+    "es": "Prepara el mensaje donde los miembros eligen roles."
+  },
+  "Prepare the space for your team to answer members.": {
+    "pt": "Prepara o espaço para a tua equipa responder aos membros.",
+    "fr": "Préparez l’espace où votre équipe répond aux membres.",
+    "es": "Prepara el espacio para que tu equipo responda a los miembros."
+  },
+  "Prepares benefits and roles to support the server.": {
+    "pt": "Prepara benefícios e cargos para apoiar o servidor.",
+    "fr": "Prépare des avantages et des rôles pour soutenir le serveur.",
+    "es": "Prepara beneficios y roles para apoyar al servidor."
+  },
+  "Prevents responses that are too long for Discord.": {
+    "pt": "Impede respostas demasiado longas para o Discord.",
+    "fr": "Empêche les réponses trop longues pour Discord.",
+    "es": "Impide respuestas demasiado largas para Discord."
+  },
+  "Previous banners": {
+    "pt": "Faixas anteriores",
+    "fr": "Bannières précédentes",
+    "es": "Banners anteriores"
+  },
+  "Primary colour": {
+    "pt": "Cor principal",
+    "fr": "Couleur principale",
+    "es": "Color principal"
+  },
+  "Privacy and data": {
+    "pt": "Privacidade e dados",
+    "fr": "Confidentialité et données",
+    "es": "Privacidad y datos"
+  },
+  "Private ticket category": {
+    "pt": "Categoria de tickets privados",
+    "fr": "Catégorie des tickets privés",
+    "es": "Categoría de tickets privados"
+  },
+  "Private welcome": {
+    "pt": "Boas-vindas privadas",
+    "fr": "Accueil privé",
+    "es": "Bienvenida privada"
+  },
+  "Professional account": {
+    "pt": "Conta profissional",
+    "fr": "Compte professionnel",
+    "es": "Cuenta profesional"
+  },
+  "Professional account OAuth grant": {
+    "pt": "Autorização OAuth da conta profissional",
+    "fr": "Autorisation OAuth du compte professionnel",
+    "es": "Autorización OAuth de la cuenta profesional"
+  },
+  "Protects DMs and storage from oversized exports.": {
+    "pt": "Protege as mensagens privadas e o armazenamento contra exportações demasiado grandes.",
+    "fr": "Protège les messages privés et le stockage contre les exportations trop volumineuses.",
+    "es": "Protege los mensajes privados y el almacenamiento frente a exportaciones demasiado grandes."
+  },
+  "Public channel": {
+    "pt": "Canal público",
+    "fr": "Salon public",
+    "es": "Canal público"
+  },
+  "Public feed URL": {
+    "pt": "URL do feed público",
+    "fr": "URL du flux public",
+    "es": "URL del feed público"
+  },
+  "Public welcome": {
+    "pt": "Boas-vindas públicas",
+    "fr": "Accueil public",
+    "es": "Bienvenida pública"
+  },
+  "Publish a bounded embed from a slash command; mentions are disabled by default.": {
+    "pt": "Publica uma mensagem incorporada com limites através de um comando de barra; as menções estão desativadas por predefinição.",
+    "fr": "Publiez un message intégré de taille limitée via une commande slash ; les mentions sont désactivées par défaut.",
+    "es": "Publica un mensaje integrado con límites mediante un comando de barra; las menciones están desactivadas de forma predeterminada."
+  },
+  "Publish bounded CoinGecko price updates to a Discord channel.": {
+    "pt": "Publica atualizações de preços do CoinGecko com limites num canal do Discord.",
+    "fr": "Publiez des mises à jour limitées des prix CoinGecko dans un salon Discord.",
+    "es": "Publica actualizaciones de precios de CoinGecko con límites en un canal de Discord."
+  },
+  "Publish bounded embeds with mentions disabled by default.": {
+    "pt": "Publica mensagens incorporadas com limites e menções desativadas por predefinição.",
+    "fr": "Publiez des messages intégrés de taille limitée, avec les mentions désactivées par défaut.",
+    "es": "Publica mensajes integrados con límites y menciones desactivadas de forma predeterminada."
+  },
+  "Publish read-only gas prices from an approved HTTPS RPC.": {
+    "pt": "Publica taxas de gas apenas de leitura a partir de um RPC HTTPS aprovado.",
+    "fr": "Publiez des frais de gas en lecture seule depuis un RPC HTTPS approuvé.",
+    "es": "Publica tarifas de gas de solo lectura desde un RPC HTTPS aprobado."
+  },
+  "Publish read-only gas prices from an operator-approved RPC endpoint.": {
+    "pt": "Publica taxas de gas apenas de leitura a partir de um endpoint RPC aprovado pelo operador.",
+    "fr": "Publiez des frais de gas en lecture seule depuis un point de terminaison RPC approuvé par l’opérateur.",
+    "es": "Publica tarifas de gas de solo lectura desde un endpoint RPC aprobado por el operador."
+  },
+  "Publishes simple polls for quick decisions.": {
+    "pt": "Publica sondagens simples para decisões rápidas.",
+    "fr": "Publie des sondages simples pour prendre des décisions rapides.",
+    "es": "Publica encuestas sencillas para tomar decisiones rápidas."
+  },
+  "Quantas mensagens iguais acionam a regra.": {
+    "pt": "Quantas mensagens iguais acionam a regra.",
+    "fr": "Nombre de messages identiques qui déclenchent la règle.",
+    "es": "Cuántos mensajes iguales activan la regla."
+  },
+  "Quarantine": {
+    "pt": "Quarentena",
+    "fr": "Quarantaine",
+    "es": "Cuarentena"
+  },
+  "Quarantine role": {
+    "pt": "Cargo de quarentena",
+    "fr": "Rôle de quarantaine",
+    "es": "Rol de cuarentena"
+  },
+  "Queries cryptocurrency information inside the server.": {
+    "pt": "Consulta informações sobre criptomoedas no servidor.",
+    "fr": "Consulte des informations sur les cryptomonnaies dans le serveur.",
+    "es": "Consulta información sobre criptomonedas en el servidor."
+  },
+  "Query read-only CoinGecko prices from an application command.": {
+    "pt": "Consulta preços do CoinGecko apenas de leitura através de um comando da aplicação.",
+    "fr": "Consultez les prix CoinGecko en lecture seule via une commande d’application.",
+    "es": "Consulta precios de CoinGecko de solo lectura mediante un comando de aplicación."
+  },
+  "RSS alerts": {
+    "pt": "Alertas RSS",
+    "fr": "Alertes RSS",
+    "es": "Alertas RSS"
+  },
+  "Raid protection": {
+    "pt": "Proteção contra raids",
+    "fr": "Protection contre les raids",
+    "es": "Protección contra raids"
+  },
+  "Reaction emoji": {
+    "pt": "Emoji de reação",
+    "fr": "Émoji de réaction",
+    "es": "Emoji de reacción"
+  },
+  "Read-only market data with timestamps and provider health.": {
+    "pt": "Dados de mercado apenas de leitura, com marcas temporais e estado do fornecedor.",
+    "fr": "Données de marché en lecture seule, avec horodatage et état du fournisseur.",
+    "es": "Datos de mercado de solo lectura, con marcas de tiempo y estado del proveedor."
+  },
+  "Receives the history of closed tickets.": {
+    "pt": "Recebe o histórico dos tickets encerrados.",
+    "fr": "Reçoit l’historique des tickets fermés.",
+    "es": "Recibe el historial de los tickets cerrados."
+  },
+  "Recheck interval (seconds)": {
+    "pt": "Intervalo de nova verificação (segundos)",
+    "fr": "Intervalle de revérification (secondes)",
+    "es": "Intervalo de nueva comprobación (segundos)"
+  },
+  "Record and alert without automatic containment.": {
+    "pt": "Regista e alerta sem contenção automática.",
+    "fr": "Enregistrez et alertez sans confinement automatique.",
+    "es": "Registra y alerta sin contención automática."
+  },
+  "Record audit events and contain repeated destructive changes.": {
+    "pt": "Regista eventos de auditoria e contém alterações destrutivas repetidas.",
+    "fr": "Enregistrez les événements d’audit et contenez les modifications destructrices répétées.",
+    "es": "Registra eventos de auditoría y contiene los cambios destructivos repetidos."
+  },
+  "Records channel (optional)": {
+    "pt": "Canal de registos (opcional)",
+    "fr": "Salon des journaux (facultatif)",
+    "es": "Canal de registros (opcional)"
+  },
+  "Regular reward role": {
+    "pt": "Cargo de recompensa de membro habitual",
+    "fr": "Rôle de récompense de membre régulier",
+    "es": "Rol de recompensa de miembro habitual"
+  },
+  "Regular threshold": {
+    "pt": "Limiar de membro habitual",
+    "fr": "Seuil de membre régulier",
+    "es": "Umbral de miembro habitual"
+  },
+  "Reject destructive actions without a useful reason.": {
+    "pt": "Rejeita ações destrutivas sem um motivo útil.",
+    "fr": "Rejetez les actions destructrices sans motif pertinent.",
+    "es": "Rechaza las acciones destructivas sin un motivo útil."
+  },
+  "Reminder limits": {
+    "pt": "Limites dos lembretes",
+    "fr": "Limites des rappels",
+    "es": "Límites de los recordatorios"
+  },
+  "Remove the role when toggled off": {
+    "pt": "Remover o cargo ao desativar",
+    "fr": "Retirer le rôle à la désactivation",
+    "es": "Eliminar el rol al desactivar"
+  },
+  "Rename one existing voice or text channel with the latest message count.": {
+    "pt": "Renomeia um canal de voz ou texto existente com a contagem de mensagens mais recente.",
+    "fr": "Renommez un salon vocal ou textuel existant avec le dernier nombre de messages.",
+    "es": "Renombra un canal de voz o texto existente con el recuento de mensajes más reciente."
+  },
+  "Require a profile avatar": {
+    "pt": "Exigir um avatar de perfil",
+    "fr": "Exiger un avatar de profil",
+    "es": "Exigir un avatar de perfil"
+  },
+  "Required role (optional)": {
+    "pt": "Cargo obrigatório (opcional)",
+    "fr": "Rôle requis (facultatif)",
+    "es": "Rol obligatorio (opcional)"
+  },
+  "Respond to unusual join bursts while keeping operators in control.": {
+    "pt": "Responde a entradas em massa invulgares, mantendo o controlo nas mãos dos operadores.",
+    "fr": "Réagissez aux arrivées massives inhabituelles tout en laissant le contrôle aux opérateurs.",
+    "es": "Responde a entradas masivas inusuales manteniendo el control en manos de los operadores."
+  },
+  "Responds to unusual joins and protects the server.": {
+    "pt": "Responde a entradas invulgares e protege o servidor.",
+    "fr": "Réagit aux arrivées inhabituelles et protège le serveur.",
+    "es": "Responde a entradas inusuales y protege el servidor."
+  },
+  "Responses longer than this are rejected before they can be sent.": {
+    "pt": "As respostas mais longas do que este limite são rejeitadas antes de serem enviadas.",
+    "fr": "Les réponses dépassant cette limite sont rejetées avant leur envoi.",
+    "es": "Las respuestas que superan este límite se rechazan antes de enviarse."
+  },
+  "Results per search": {
+    "pt": "Resultados por pesquisa",
+    "fr": "Résultats par recherche",
+    "es": "Resultados por búsqueda"
+  },
+  "Reusable guide template": {
+    "pt": "Modelo de guia reutilizável",
+    "fr": "Modèle de guide réutilisable",
+    "es": "Plantilla de guía reutilizable"
+  },
+  "Reusable message template": {
+    "pt": "Modelo de mensagem reutilizável",
+    "fr": "Modèle de message réutilisable",
+    "es": "Plantilla de mensaje reutilizable"
+  },
+  "Reuse configurations with a visible diff and resource mapping.": {
+    "pt": "Reutiliza configurações com as diferenças visíveis e o mapeamento de recursos.",
+    "fr": "Réutilisez les configurations avec un aperçu des différences et la correspondance des ressources.",
+    "es": "Reutiliza configuraciones con las diferencias visibles y la correspondencia de recursos."
+  },
+  "Reuse feed delivery for new podcast episodes and metadata.": {
+    "pt": "Reutiliza o envio de feeds para novos episódios de podcast e metadados.",
+    "fr": "Réutilisez l’envoi des flux pour les nouveaux épisodes de podcast et leurs métadonnées.",
+    "es": "Reutiliza el envío de feeds para nuevos episodios de pódcast y metadatos."
+  },
+  "Review and manage server emojis within Discord limits.": {
+    "pt": "Revê e gere os emojis do servidor dentro dos limites do Discord.",
+    "fr": "Consultez et gérez les émojis du serveur dans les limites de Discord.",
+    "es": "Revisa y gestiona los emojis del servidor dentro de los límites de Discord."
+  },
+  "Review, export and remove server data safely.": {
+    "pt": "Revê, exporta e remove os dados do servidor de forma segura.",
+    "fr": "Consultez, exportez et supprimez les données du serveur de manière sûre.",
+    "es": "Revisa, exporta y elimina los datos del servidor de forma segura."
+  },
+  "Reward healthy participation with a progression system you can tune.": {
+    "pt": "Recompensa a participação saudável com um sistema de progressão ajustável.",
+    "fr": "Récompensez la participation positive avec un système de progression réglable.",
+    "es": "Recompensa la participación saludable con un sistema de progresión ajustable."
+  },
+  "Rewards": {
+    "pt": "Recompensas",
+    "fr": "Récompenses",
+    "es": "Recompensas"
+  },
+  "Rewards healthy conversation with XP and levels.": {
+    "pt": "Recompensa conversas saudáveis com XP e níveis.",
+    "fr": "Récompense les échanges positifs avec de l’XP et des niveaux.",
+    "es": "Recompensa las conversaciones saludables con XP y niveles."
+  },
+  "Roboto": {
+    "pt": "Roboto",
+    "fr": "Roboto",
+    "es": "Roboto"
+  },
+  "Role and delivery": {
+    "pt": "Cargo e envio",
+    "fr": "Rôle et envoi",
+    "es": "Rol y envío"
+  },
+  "Role for verified members": {
+    "pt": "Cargo para membros verificados",
+    "fr": "Rôle des membres vérifiés",
+    "es": "Rol para miembros verificados"
+  },
+  "Role on arrival": {
+    "pt": "Cargo à entrada",
+    "fr": "Rôle à l’arrivée",
+    "es": "Rol al entrar"
+  },
+  "Room name template": {
+    "pt": "Modelo do nome da sala",
+    "fr": "Modèle de nom du salon",
+    "es": "Plantilla del nombre de la sala"
+  },
+  "Rules": {
+    "pt": "Regras",
+    "fr": "Règles",
+    "es": "Normas"
+  },
+  "Rules channel (optional)": {
+    "pt": "Canal de regras (opcional)",
+    "fr": "Salon des règles (facultatif)",
+    "es": "Canal de normas (opcional)"
+  },
+  "Run bounded, auditable giveaways with safe entry rules.": {
+    "pt": "Organiza sorteios com limites, auditáveis e com regras de participação seguras.",
+    "fr": "Organisez des tirages au sort limités et vérifiables, avec des règles de participation sûres.",
+    "es": "Organiza sorteos con límites, auditables y con reglas de participación seguras."
+  },
+  "Rust API": {
+    "pt": "API Rust",
+    "fr": "API Rust",
+    "es": "API de Rust"
+  },
+  "SIWE domain and session secret": {
+    "pt": "Domínio SIWE e segredo de sessão",
+    "fr": "Domaine SIWE et secret de session",
+    "es": "Dominio SIWE y secreto de sesión"
+  },
+  "SLA reminder (hours)": {
+    "pt": "Lembrete de SLA (horas)",
+    "fr": "Rappel de SLA (heures)",
+    "es": "Recordatorio de SLA (horas)"
+  },
+  "Safe search": {
+    "pt": "Pesquisa segura",
+    "fr": "Recherche sécurisée",
+    "es": "Búsqueda segura"
+  },
+  "Sakura Shrine": {
+    "pt": "Santuário das Cerejeiras",
+    "fr": "Sanctuaire des cerisiers",
+    "es": "Santuario de los cerezos"
+  },
+  "Same channel as the message": {
+    "pt": "Mesmo canal da mensagem",
+    "fr": "Même salon que le message",
+    "es": "Mismo canal que el mensaje"
+  },
+  "Save and transfer validated server configuration without copying secrets.": {
+    "pt": "Guarda e transfere configurações validadas do servidor sem copiar segredos.",
+    "fr": "Enregistrez et transférez une configuration de serveur validée sans copier de secrets.",
+    "es": "Guarda y transfiere configuraciones validadas del servidor sin copiar secretos."
+  },
+  "Save the configuration and reuse it on another server.": {
+    "pt": "Guarda a configuração e reutiliza-a noutro servidor.",
+    "fr": "Enregistrez la configuration et réutilisez-la sur un autre serveur.",
+    "es": "Guarda la configuración y reutilízala en otro servidor."
+  },
+  "Saved automatically": {
+    "pt": "Guardado automaticamente",
+    "fr": "Enregistré automatiquement",
+    "es": "Guardado automáticamente"
+  },
+  "Saved message template": {
+    "pt": "Modelo de mensagem guardado",
+    "fr": "Modèle de message enregistré",
+    "es": "Plantilla de mensaje guardada"
+  },
+  "Saved option": {
+    "pt": "Opção guardada",
+    "fr": "Option enregistrée",
+    "es": "Opción guardada"
+  },
+  "Saved option: {value}": {
+    "pt": "Opção guardada: {value}",
+    "fr": "Option enregistrée : {value}",
+    "es": "Opción guardada: {value}"
+  },
+  "Saved responses are deliberately bounded and never execute code.": {
+    "pt": "As respostas guardadas têm limites definidos e nunca executam código.",
+    "fr": "Les réponses enregistrées sont volontairement limitées et n’exécutent jamais de code.",
+    "es": "Las respuestas guardadas tienen límites definidos y nunca ejecutan código."
+  },
+  "Schedule one-off or recurring reminders with an explicit timezone.": {
+    "pt": "Agenda lembretes únicos ou recorrentes com um fuso horário explícito.",
+    "fr": "Programmez des rappels ponctuels ou récurrents avec un fuseau horaire explicite.",
+    "es": "Programa recordatorios únicos o recurrentes con una zona horaria explícita."
+  },
+  "Schedule reminders for messages, tasks, and events.": {
+    "pt": "Agenda lembretes para mensagens, tarefas e eventos.",
+    "fr": "Programmez des rappels pour les messages, les tâches et les événements.",
+    "es": "Programa recordatorios para mensajes, tareas y eventos."
+  },
+  "Search content, videos, and references without leaving the app.": {
+    "pt": "Pesquisa conteúdo, vídeos e referências sem sair da aplicação.",
+    "fr": "Recherchez du contenu, des vidéos et des références sans quitter l’application.",
+    "es": "Busca contenido, vídeos y referencias sin salir de la aplicación."
+  },
+  "Search is limited to documented providers; arbitrary URLs are never fetched.": {
+    "pt": "A pesquisa limita-se a fornecedores documentados; nunca são consultados URLs arbitrários.",
+    "fr": "La recherche se limite aux fournisseurs documentés ; aucune URL arbitraire n’est consultée.",
+    "es": "La búsqueda se limita a proveedores documentados; nunca se consultan URL arbitrarias."
+  },
+  "Search is limited to providers with documented APIs; arbitrary URLs are never fetched.": {
+    "pt": "A pesquisa limita-se a fornecedores com APIs documentadas; nunca são consultados URLs arbitrários.",
+    "fr": "La recherche se limite aux fournisseurs disposant d’API documentées ; aucune URL arbitraire n’est consultée.",
+    "es": "La búsqueda se limita a proveedores con API documentadas; nunca se consultan URL arbitrarias."
+  },
+  "Search only approved providers instead of fetching arbitrary websites.": {
+    "pt": "Pesquisa apenas em fornecedores aprovados, sem consultar sites arbitrários.",
+    "fr": "Recherchez uniquement auprès de fournisseurs approuvés, sans consulter de sites arbitraires.",
+    "es": "Busca solo en proveedores aprobados, sin consultar sitios web arbitrarios."
+  },
+  "See who brought new members to the server.": {
+    "pt": "Vê quem trouxe novos membros para o servidor.",
+    "fr": "Découvrez qui a amené de nouveaux membres sur le serveur.",
+    "es": "Descubre quién ha traído nuevos miembros al servidor."
+  },
+  "Send Messages": {
+    "pt": "Enviar mensagens",
+    "fr": "Envoyer des messages",
+    "es": "Enviar mensajes"
+  },
+  "Send a direct message": {
+    "pt": "Enviar uma mensagem privada",
+    "fr": "Envoyer un message privé",
+    "es": "Enviar un mensaje privado"
+  },
+  "Send a private welcome": {
+    "pt": "Enviar boas-vindas privadas",
+    "fr": "Envoyer un accueil privé",
+    "es": "Enviar una bienvenida privada"
+  },
+  "Send start reminders": {
+    "pt": "Enviar lembretes de início",
+    "fr": "Envoyer des rappels de début",
+    "es": "Enviar recordatorios de comienzo"
+  },
+  "Sends a reminder if nobody claims the request in this time. It does not close the ticket.": {
+    "pt": "Envia um lembrete se ninguém assumir o pedido neste prazo. Não encerra o ticket.",
+    "fr": "Envoie un rappel si personne ne prend la demande en charge dans ce délai. Ne ferme pas le ticket.",
+    "es": "Envía un recordatorio si nadie se hace cargo de la solicitud en este plazo. No cierra el ticket."
+  },
+  "Server monetization": {
+    "pt": "Monetização do servidor",
+    "fr": "Monétisation du serveur",
+    "es": "Monetización del servidor"
+  },
+  "Server nickname": {
+    "pt": "Alcunha no servidor",
+    "fr": "Surnom sur le serveur",
+    "es": "Apodo en el servidor"
+  },
+  "Set defaults for creating events with fewer steps.": {
+    "pt": "Define predefinições para criar eventos em menos passos.",
+    "fr": "Définissez des paramètres par défaut pour créer des événements en moins d’étapes.",
+    "es": "Establece valores predeterminados para crear eventos en menos pasos."
+  },
+  "Set defaults for quick polls.": {
+    "pt": "Define predefinições para sondagens rápidas.",
+    "fr": "Définissez les paramètres par défaut des sondages rapides.",
+    "es": "Establece valores predeterminados para encuestas rápidas."
+  },
+  "Set guardrails used by manual moderation commands.": {
+    "pt": "Define os limites usados pelos comandos de moderação manual.",
+    "fr": "Définissez les garde-fous utilisés par les commandes de modération manuelle.",
+    "es": "Establece los límites que utilizan los comandos de moderación manual."
+  },
+  "Set the name the Helper displays in this server.": {
+    "pt": "Define o nome que o Helper apresenta neste servidor.",
+    "fr": "Définissez le nom que Helper affiche sur ce serveur.",
+    "es": "Establece el nombre que muestra Helper en este servidor."
+  },
+  "Set when the sequence of joins is considered the raid.": {
+    "pt": "Define quando uma sequência de entradas é considerada uma raid.",
+    "fr": "Définissez à quel moment une série d’arrivées est considérée comme un raid.",
+    "es": "Define cuándo se considera que una secuencia de entradas es un raid."
+  },
+  "Sets the name the Helper displays in this server.": {
+    "pt": "Define o nome que o Helper apresenta neste servidor.",
+    "fr": "Définit le nom que Helper affiche sur ce serveur.",
+    "es": "Establece el nombre que muestra Helper en este servidor."
+  },
+  "Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.": {
+    "pt": "Definições guardadas, mas não foi possível atualizar a publicação no Discord. Verifica o canal e as permissões do Helper antes de reparar a publicação.",
+    "fr": "Paramètres enregistrés, mais la publication Discord n’a pas pu être mise à jour. Vérifiez le salon et les autorisations de Helper avant de réparer la publication.",
+    "es": "Ajustes guardados, pero no se ha podido actualizar la publicación de Discord. Comprueba el canal y los permisos de Helper antes de reparar la publicación."
+  },
+  "Shortcuts": {
+    "pt": "Atalhos",
+    "fr": "Raccourcis",
+    "es": "Accesos directos"
+  },
+  "Show channel shortcuts": {
+    "pt": "Mostrar atalhos para canais",
+    "fr": "Afficher les raccourcis vers les salons",
+    "es": "Mostrar accesos directos a canales"
+  },
+  "Show community progress with privacy-aware controls.": {
+    "pt": "Mostra o progresso da comunidade com controlos de privacidade.",
+    "fr": "Affichez les progrès de la communauté avec des contrôles de confidentialité.",
+    "es": "Muestra el progreso de la comunidad con controles de privacidad."
+  },
+  "Show inviter names": {
+    "pt": "Mostrar os nomes de quem convidou",
+    "fr": "Afficher le nom des personnes à l’origine des invitations",
+    "es": "Mostrar los nombres de quienes invitaron"
+  },
+  "Show the /leaderboard response to everyone in the channel": {
+    "pt": "Mostrar a resposta do /leaderboard a todos no canal",
+    "fr": "Afficher la réponse de /leaderboard à tout le salon",
+    "es": "Mostrar la respuesta de /leaderboard a todos en el canal"
+  },
+  "Show the leaderboard publicly": {
+    "pt": "Mostrar a classificação publicamente",
+    "fr": "Afficher le classement publiquement",
+    "es": "Mostrar la clasificación públicamente"
+  },
+  "Shows community progress with configurable privacy.": {
+    "pt": "Mostra o progresso da comunidade com privacidade configurável.",
+    "fr": "Affiche les progrès de la communauté avec une confidentialité configurable.",
+    "es": "Muestra el progreso de la comunidad con privacidad configurable."
+  },
+  "Shows current network fees for the community.": {
+    "pt": "Mostra as taxas de rede atuais à comunidade.",
+    "fr": "Affiche les frais de réseau actuels à la communauté.",
+    "es": "Muestra las tarifas de red actuales a la comunidad."
+  },
+  "Signed Stripe webhooks": {
+    "pt": "Webhooks Stripe assinados",
+    "fr": "Webhooks Stripe signés",
+    "es": "Webhooks de Stripe firmados"
+  },
+  "Sky Islands": {
+    "pt": "Ilhas no Céu",
+    "fr": "Îles célestes",
+    "es": "Islas en el cielo"
+  },
+  "Space Grotesk": {
+    "pt": "Space Grotesk",
+    "fr": "Space Grotesk",
+    "es": "Space Grotesk"
+  },
+  "Speed up giveaway creation in Discord.": {
+    "pt": "Acelera a criação de sorteios no Discord.",
+    "fr": "Accélérez la création de tirages au sort dans Discord.",
+    "es": "Agiliza la creación de sorteos en Discord."
+  },
+  "Staff notification channel (optional)": {
+    "pt": "Canal de notificações da equipa (opcional)",
+    "fr": "Salon de notifications de l’équipe (facultatif)",
+    "es": "Canal de notificaciones del equipo (opcional)"
+  },
+  "Staff-only commands": {
+    "pt": "Comandos exclusivos da equipa",
+    "fr": "Commandes réservées à l’équipe",
+    "es": "Comandos exclusivos del equipo"
+  },
+  "Starboard channel": {
+    "pt": "Canal do mural de estrelas",
+    "fr": "Salon du tableau des étoiles",
+    "es": "Canal del tablón de estrellas"
+  },
+  "Stars required": {
+    "pt": "Estrelas necessárias",
+    "fr": "Étoiles requises",
+    "es": "Estrellas necesarias"
+  },
+  "Starship Hangar": {
+    "pt": "Hangar de Naves Espaciais",
+    "fr": "Hangar de vaisseaux spatiaux",
+    "es": "Hangar de naves espaciales"
+  },
+  "Start reminder": {
+    "pt": "Lembrete de início",
+    "fr": "Rappel de début",
+    "es": "Recordatorio de comienzo"
+  },
+  "Statistics channels": {
+    "pt": "Canais de estatísticas",
+    "fr": "Salons de statistiques",
+    "es": "Canales de estadísticas"
+  },
+  "Statistics message": {
+    "pt": "Mensagem de estatísticas",
+    "fr": "Message de statistiques",
+    "es": "Mensaje de estadísticas"
+  },
+  "Stop repeated messages and disruptive bursts with a clear, reviewable policy.": {
+    "pt": "Trava mensagens repetidas e envios em massa perturbadores com regras claras e fáceis de rever.",
+    "fr": "Bloquez les messages répétés et les envois massifs perturbateurs avec des règles claires et vérifiables.",
+    "es": "Frena los mensajes repetidos y los envíos masivos molestos con normas claras que se puedan revisar."
+  },
+  "Store only day and month and announce birthdays once per year.": {
+    "pt": "Guarda apenas o dia e o mês e anuncia os aniversários uma vez por ano.",
+    "fr": "Conservez uniquement le jour et le mois et annoncez les anniversaires une fois par an.",
+    "es": "Guarda solo el día y el mes y anuncia los cumpleaños una vez al año."
+  },
+  "Stripe Connect account": {
+    "pt": "Conta Stripe Connect",
+    "fr": "Compte Stripe Connect",
+    "es": "Cuenta de Stripe Connect"
+  },
+  "Subscriber role": {
+    "pt": "Cargo de subscritor",
+    "fr": "Rôle d’abonné",
+    "es": "Rol de suscriptor"
+  },
+  "Suggestion channel": {
+    "pt": "Canal de sugestões",
+    "fr": "Salon de suggestions",
+    "es": "Canal de sugerencias"
+  },
+  "Suggestion intake": {
+    "pt": "Receção de sugestões",
+    "fr": "Réception des suggestions",
+    "es": "Recepción de sugerencias"
+  },
+  "Suggestions channel": {
+    "pt": "Canal de sugestões",
+    "fr": "Salon de suggestions",
+    "es": "Canal de sugerencias"
+  },
+  "Support / against": {
+    "pt": "A favor / contra",
+    "fr": "Pour / contre",
+    "es": "A favor / en contra"
+  },
+  "Support / oppose": {
+    "pt": "A favor / contra",
+    "fr": "Pour / contre",
+    "es": "A favor / en contra"
+  },
+  "Support and chargeback process": {
+    "pt": "Processo de apoio e contestação de pagamentos",
+    "fr": "Procédure d’assistance et de rétrofacturation",
+    "es": "Proceso de soporte y reclamaciones de pagos"
+  },
+  "Support and records": {
+    "pt": "Apoio e registos",
+    "fr": "Assistance et journaux",
+    "es": "Soporte y registros"
+  },
+  "Support only": {
+    "pt": "Apenas apoio",
+    "fr": "Assistance uniquement",
+    "es": "Solo soporte"
+  },
+  "Support reminder (hours)": {
+    "pt": "Lembrete de apoio (horas)",
+    "fr": "Rappel d’assistance (heures)",
+    "es": "Recordatorio de soporte (horas)"
+  },
+  "Support team": {
+    "pt": "Equipa de apoio",
+    "fr": "Équipe d’assistance",
+    "es": "Equipo de soporte"
+  },
+  "Support team role": {
+    "pt": "Cargo da equipa de apoio",
+    "fr": "Rôle de l’équipe d’assistance",
+    "es": "Rol del equipo de soporte"
+  },
+  "Support tickets": {
+    "pt": "Tickets de apoio",
+    "fr": "Tickets d’assistance",
+    "es": "Tickets de soporte"
+  },
+  "Support workflow": {
+    "pt": "Processo de apoio",
+    "fr": "Processus d’assistance",
+    "es": "Proceso de soporte"
+  },
+  "System": {
+    "pt": "Sistema",
+    "fr": "Système",
+    "es": "Sistema"
+  },
+  "TIKTOK ACCOUNT": {
+    "pt": "CONTA TIKTOK",
+    "fr": "COMPTE TIKTOK",
+    "es": "CUENTA DE TIKTOK"
+  },
+  "TWITCH_CLIENT_ID": {
+    "pt": "TWITCH_CLIENT_ID",
+    "fr": "TWITCH_CLIENT_ID",
+    "es": "TWITCH_CLIENT_ID"
+  },
+  "TWITCH_CLIENT_SECRET": {
+    "pt": "TWITCH_CLIENT_SECRET",
+    "fr": "TWITCH_CLIENT_SECRET",
+    "es": "TWITCH_CLIENT_SECRET"
+  },
+  "TWITCH_EVENTSUB_SECRET": {
+    "pt": "TWITCH_EVENTSUB_SECRET",
+    "fr": "TWITCH_EVENTSUB_SECRET",
+    "es": "TWITCH_EVENTSUB_SECRET"
+  },
+  "Templates and import": {
+    "pt": "Modelos e importação",
+    "fr": "Modèles et importation",
+    "es": "Plantillas e importación"
+  },
+  "Temporarily give this role to the member when their birthday is announced.": {
+    "pt": "Atribuir temporariamente este cargo ao membro quando o aniversário é anunciado.",
+    "fr": "Attribuer temporairement ce rôle au membre lorsque son anniversaire est annoncé.",
+    "es": "Asignar temporalmente este rol al miembro cuando se anuncia su cumpleaños."
+  },
+  "Text": {
+    "pt": "Texto",
+    "fr": "Texte",
+    "es": "Texto"
+  },
+  "Text colour": {
+    "pt": "Cor do texto",
+    "fr": "Couleur du texte",
+    "es": "Color del texto"
+  },
+  "The Helper records an overdue ticket job after this period.": {
+    "pt": "O Helper regista uma tarefa de ticket em atraso após este período.",
+    "fr": "Helper enregistre une tâche de ticket en retard après ce délai.",
+    "es": "Helper registra una tarea de ticket vencido tras este período."
+  },
+  "The account must explicitly authorise Vozen through Meta OAuth.": {
+    "pt": "A conta tem de autorizar explicitamente o Vozen através do Meta OAuth.",
+    "fr": "Le compte doit autoriser explicitement Vozen via Meta OAuth.",
+    "es": "La cuenta debe autorizar explícitamente a Vozen mediante Meta OAuth."
+  },
+  "The channel where the alert will be posted.": {
+    "pt": "O canal onde o alerta será publicado.",
+    "fr": "Le salon où l’alerte sera publiée.",
+    "es": "El canal donde se publicará la alerta."
+  },
+  "The channel where the publication will be sent.": {
+    "pt": "O canal para onde será enviada a publicação.",
+    "fr": "Le salon où la publication sera envoyée.",
+    "es": "El canal al que se enviará la publicación."
+  },
+  "The character(s) members type before a saved command, for example !rules.": {
+    "pt": "Os carateres que os membros escrevem antes de um comando guardado, por exemplo !rules.",
+    "fr": "Le ou les caractères saisis par les membres avant une commande enregistrée, par exemple !rules.",
+    "es": "Los caracteres que los miembros escriben antes de un comando guardado, por ejemplo !rules."
+  },
+  "The command uses these values when no override is provided.": {
+    "pt": "O comando usa estes valores quando não são indicados outros.",
+    "fr": "La commande utilise ces valeurs lorsqu’aucune autre n’est fournie.",
+    "es": "El comando utiliza estos valores cuando no se indican otros."
+  },
+  "The configuration changed in another session. Reload before editing again; your draft is still here.": {
+    "pt": "A configuração foi alterada noutra sessão. Atualiza a página antes de voltares a editar; o teu rascunho continua aqui.",
+    "fr": "La configuration a été modifiée dans une autre session. Rechargez la page avant de reprendre les modifications ; votre brouillon est toujours ici.",
+    "es": "La configuración ha cambiado en otra sesión. Recarga la página antes de volver a editar; tu borrador sigue aquí."
+  },
+  "The creator must authorise the Vozen application.": {
+    "pt": "O criador tem de autorizar a aplicação Vozen.",
+    "fr": "Le créateur doit autoriser l’application Vozen.",
+    "es": "El creador debe autorizar la aplicación de Vozen."
+  },
+  "The first message should clearly explain the next step.": {
+    "pt": "A primeira mensagem deve explicar claramente o próximo passo.",
+    "fr": "Le premier message doit expliquer clairement la prochaine étape.",
+    "es": "El primer mensaje debe explicar claramente el siguiente paso."
+  },
+  "The goodbye message and where it appears.": {
+    "pt": "A mensagem de despedida e onde aparece.",
+    "fr": "Le message de départ et l’endroit où il apparaît.",
+    "es": "El mensaje de despedida y dónde aparece."
+  },
+  "The local day used to decide when a birthday announcement is sent.": {
+    "pt": "O dia local usado para decidir quando enviar o anúncio de aniversário.",
+    "fr": "Le jour local utilisé pour déterminer quand envoyer l’annonce d’anniversaire.",
+    "es": "El día local que se utiliza para decidir cuándo enviar el anuncio de cumpleaños."
+  },
+  "The longest time a member can schedule a reminder.": {
+    "pt": "A antecedência máxima com que um membro pode agendar um lembrete.",
+    "fr": "Jusqu’à combien de temps à l’avance un membre peut programmer un rappel.",
+    "es": "La antelación máxima con la que un miembro puede programar un recordatorio."
+  },
+  "The maximum number of active and paused workflows stored for this server.": {
+    "pt": "O número máximo de fluxos de trabalho ativos e em pausa guardados neste servidor.",
+    "fr": "Le nombre maximal de flux de travail actifs et en pause enregistrés pour ce serveur.",
+    "es": "El número máximo de flujos de trabajo activos y en pausa guardados para este servidor."
+  },
+  "The maximum number of saved responses this server can keep.": {
+    "pt": "O número máximo de respostas guardadas que este servidor pode manter.",
+    "fr": "Le nombre maximal de réponses enregistrées que ce serveur peut conserver.",
+    "es": "El número máximo de respuestas guardadas que puede conservar este servidor."
+  },
+  "The public channel with the Open ticket button.": {
+    "pt": "O canal público com o botão Abrir ticket.",
+    "fr": "Le salon public contenant le bouton Ouvrir un ticket.",
+    "es": "El canal público con el botón Abrir ticket."
+  },
+  "The role panel command applies these values to newly published panels.": {
+    "pt": "O comando do painel de cargos aplica estes valores aos novos painéis publicados.",
+    "fr": "La commande du panneau de rôles applique ces valeurs aux nouveaux panneaux publiés.",
+    "es": "El comando del panel de roles aplica estos valores a los nuevos paneles publicados."
+  },
+  "These options are applied to every new suggestion.": {
+    "pt": "Estas opções são aplicadas a cada nova sugestão.",
+    "fr": "Ces options sont appliquées à chaque nouvelle suggestion.",
+    "es": "Estas opciones se aplican a cada nueva sugerencia."
+  },
+  "These values are applied to new events created with the Helper.": {
+    "pt": "Estes valores são aplicados aos novos eventos criados com o Helper.",
+    "fr": "Ces valeurs sont appliquées aux nouveaux événements créés avec Helper.",
+    "es": "Estos valores se aplican a los nuevos eventos creados con Helper."
+  },
+  "This role can claim, close and reopen tickets.": {
+    "pt": "Este cargo pode assumir, encerrar e reabrir tickets.",
+    "fr": "Ce rôle peut prendre en charge, fermer et rouvrir les tickets.",
+    "es": "Este rol puede hacerse cargo de tickets, cerrarlos y volver a abrirlos."
+  },
+  "Three to ten lowercase letters, for example usd or eur.": {
+    "pt": "Entre três e dez letras minúsculas, por exemplo usd ou eur.",
+    "fr": "Trois à dix lettres minuscules, par exemple usd ou eur.",
+    "es": "Entre tres y diez letras minúsculas, por ejemplo usd o eur."
+  },
+  "Ticket category": {
+    "pt": "Categoria de tickets",
+    "fr": "Catégorie des tickets",
+    "es": "Categoría de tickets"
+  },
+  "Ticket setup": {
+    "pt": "Configuração dos tickets",
+    "fr": "Configuration des tickets",
+    "es": "Configuración de tickets"
+  },
+  "TikTok App Review": {
+    "pt": "Revisão da aplicação TikTok",
+    "fr": "Examen de l’application TikTok",
+    "es": "Revisión de la aplicación de TikTok"
+  },
+  "TikTok Display API app": {
+    "pt": "Aplicação da Display API do TikTok",
+    "fr": "Application de la Display API de TikTok",
+    "es": "Aplicación de la Display API de TikTok"
+  },
+  "TikTok connected": {
+    "pt": "TikTok ligado",
+    "fr": "TikTok connecté",
+    "es": "TikTok conectado"
+  },
+  "Time between XP gains (seconds)": {
+    "pt": "Tempo entre ganhos de XP (segundos)",
+    "fr": "Délai entre les gains d’XP (secondes)",
+    "es": "Tiempo entre ganancias de XP (segundos)"
+  },
+  "Timeout inicial (segundos)": {
+    "pt": "Timeout inicial (segundos)",
+    "fr": "Exclusion temporaire initiale (secondes)",
+    "es": "Aislamiento temporal inicial (segundos)"
+  },
+  "Title": {
+    "pt": "Título",
+    "fr": "Titre",
+    "es": "Título"
+  },
+  "Token ID (ERC-1155)": {
+    "pt": "ID do token (ERC-1155)",
+    "fr": "Identifiant du jeton (ERC-1155)",
+    "es": "ID del token (ERC-1155)"
+  },
+  "Token standard": {
+    "pt": "Padrão do token",
+    "fr": "Norme du jeton",
+    "es": "Estándar del token"
+  },
+  "Track posts from a professional account authorised by Meta.": {
+    "pt": "Acompanha publicações de uma conta profissional autorizada pela Meta.",
+    "fr": "Suivez les publications d’un compte professionnel autorisé par Meta.",
+    "es": "Sigue publicaciones de una cuenta profesional autorizada por Meta."
+  },
+  "Track streams through the official Kick API when available.": {
+    "pt": "Acompanha transmissões através da API oficial Kick quando disponível.",
+    "fr": "Suivez les directs via l’API officielle Kick lorsqu’elle est disponible.",
+    "es": "Sigue transmisiones mediante la API oficial de Kick cuando esté disponible."
+  },
+  "Track videos from a creator who authorised Vozen through the Display API.": {
+    "pt": "Acompanha vídeos de um criador que autorizou o Vozen através da Display API.",
+    "fr": "Suivez les vidéos d’un créateur qui a autorisé Vozen via la Display API.",
+    "es": "Sigue vídeos de un creador que ha autorizado a Vozen mediante la Display API."
+  },
+  "Tracks digital currency indicators.": {
+    "pt": "Acompanha indicadores de moedas digitais.",
+    "fr": "Suit les indicateurs de monnaies numériques.",
+    "es": "Sigue indicadores de monedas digitales."
+  },
+  "Tracks important changes and keeps your team aligned.": {
+    "pt": "Acompanha alterações importantes e mantém a equipa a par.",
+    "fr": "Suit les changements importants et tient votre équipe informée.",
+    "es": "Sigue los cambios importantes y mantiene informado a tu equipo."
+  },
+  "Tracks new posts from selected accounts.": {
+    "pt": "Acompanha novas publicações das contas selecionadas.",
+    "fr": "Suit les nouvelles publications des comptes sélectionnés.",
+    "es": "Sigue las nuevas publicaciones de las cuentas seleccionadas."
+  },
+  "Tracks new posts from selected profiles.": {
+    "pt": "Acompanha novas publicações dos perfis selecionados.",
+    "fr": "Suit les nouvelles publications des profils sélectionnés.",
+    "es": "Sigue las nuevas publicaciones de los perfiles seleccionados."
+  },
+  "Tracks server activity and trends.": {
+    "pt": "Acompanha a atividade e as tendências do servidor.",
+    "fr": "Suit l’activité et les tendances du serveur.",
+    "es": "Sigue la actividad y las tendencias del servidor."
+  },
+  "Trial days": {
+    "pt": "Dias de teste",
+    "fr": "Jours d’essai",
+    "es": "Días de prueba"
+  },
+  "Tropical Lagoon": {
+    "pt": "Lagoa Tropical",
+    "fr": "Lagon tropical",
+    "es": "Laguna tropical"
+  },
+  "Tune message XP and level-up announcements.": {
+    "pt": "Ajusta o XP das mensagens e os anúncios de subida de nível.",
+    "fr": "Réglez l’XP des messages et les annonces de montée de niveau.",
+    "es": "Ajusta el XP de los mensajes y los anuncios de subida de nivel."
+  },
+  "Turn meaningful participation into milestones and rewards.": {
+    "pt": "Transforma a participação relevante em marcos e recompensas.",
+    "fr": "Transformez la participation utile en étapes et en récompenses.",
+    "es": "Convierte la participación relevante en hitos y recompensas."
+  },
+  "Turn member requests into private, trackable support conversations.": {
+    "pt": "Transforma os pedidos dos membros em conversas de apoio privadas e rastreáveis.",
+    "fr": "Transformez les demandes des membres en conversations d’assistance privées et traçables.",
+    "es": "Convierte las solicitudes de los miembros en conversaciones de soporte privadas y rastreables."
+  },
+  "Turn off to post a quiet reminder without a mention.": {
+    "pt": "Desativa para publicar um lembrete discreto, sem menção.",
+    "fr": "Désactivez pour publier un rappel discret sans mention.",
+    "es": "Desactiva para publicar un recordatorio discreto, sin mención."
+  },
+  "Turns any RSS feed into an automatic update.": {
+    "pt": "Transforma qualquer feed RSS numa atualização automática.",
+    "fr": "Transforme n’importe quel flux RSS en mise à jour automatique.",
+    "es": "Convierte cualquier feed RSS en una actualización automática."
+  },
+  "Twitch channel login": {
+    "pt": "Nome de utilizador do canal Twitch",
+    "fr": "Identifiant de connexion du canal Twitch",
+    "es": "Nombre de usuario del canal de Twitch"
+  },
+  "UTC": {
+    "pt": "UTC",
+    "fr": "UTC",
+    "es": "UTC"
+  },
+  "UTC+01:00": {
+    "pt": "UTC+01:00",
+    "fr": "UTC+01:00",
+    "es": "UTC+01:00"
+  },
+  "UTC+02:00": {
+    "pt": "UTC+02:00",
+    "fr": "UTC+02:00",
+    "es": "UTC+02:00"
+  },
+  "UTC+05:30": {
+    "pt": "UTC+05:30",
+    "fr": "UTC+05:30",
+    "es": "UTC+05:30"
+  },
+  "UTC+08:00": {
+    "pt": "UTC+08:00",
+    "fr": "UTC+08:00",
+    "es": "UTC+08:00"
+  },
+  "UTC-05:00": {
+    "pt": "UTC-05:00",
+    "fr": "UTC-05:00",
+    "es": "UTC-05:00"
+  },
+  "Unable to load your servers": {
+    "pt": "Não foi possível carregar os teus servidores",
+    "fr": "Impossible de charger vos serveurs",
+    "es": "No se han podido cargar tus servidores"
+  },
+  "Understand important changes and why an action was allowed or blocked.": {
+    "pt": "Compreende as alterações importantes e porque foi uma ação permitida ou bloqueada.",
+    "fr": "Comprenez les changements importants et pourquoi une action a été autorisée ou bloquée.",
+    "es": "Comprende los cambios importantes y por qué se ha permitido o bloqueado una acción."
+  },
+  "Understand which invite campaigns bring members to your server.": {
+    "pt": "Percebe que campanhas de convite trazem membros para o teu servidor.",
+    "fr": "Découvrez quelles campagnes d’invitation amènent des membres sur votre serveur.",
+    "es": "Descubre qué campañas de invitación traen miembros a tu servidor."
+  },
+  "Up to 32 characters. Leave empty to remove the custom name.": {
+    "pt": "Até 32 carateres. Deixa vazio para remover o nome personalizado.",
+    "fr": "Jusqu’à 32 caractères. Laissez vide pour supprimer le nom personnalisé.",
+    "es": "Hasta 32 caracteres. Déjalo vacío para eliminar el nombre personalizado."
+  },
+  "Update interval (seconds)": {
+    "pt": "Intervalo de atualização (segundos)",
+    "fr": "Intervalle de mise à jour (secondes)",
+    "es": "Intervalo de actualización (segundos)"
+  },
+  "Upper bound for one purge command.": {
+    "pt": "Limite máximo para um comando de limpeza.",
+    "fr": "Limite maximale d’une commande de purge.",
+    "es": "Límite máximo para un comando de limpieza."
+  },
+  "Usa 0 para apenas registar o incidente.": {
+    "pt": "Usa 0 para apenas registar o incidente.",
+    "fr": "Utilisez 0 pour enregistrer uniquement l’incident.",
+    "es": "Usa 0 para registrar únicamente el incidente."
+  },
+  "Use Application Commands": {
+    "pt": "Usar comandos de aplicações",
+    "fr": "Utiliser les commandes d’application",
+    "es": "Usar comandos de aplicaciones"
+  },
+  "Use an HTTPS URL for the public feed.": {
+    "pt": "Usa um URL HTTPS para o feed público.",
+    "fr": "Utilisez une URL HTTPS pour le flux public.",
+    "es": "Usa una URL HTTPS para el feed público."
+  },
+  "Use server system channel": {
+    "pt": "Usar o canal de sistema do servidor",
+    "fr": "Utiliser le salon système du serveur",
+    "es": "Usar el canal de sistema del servidor"
+  },
+  "Use the ID that usually starts with UC…": {
+    "pt": "Usa o ID que normalmente começa por UC…",
+    "fr": "Utilisez l’identifiant qui commence généralement par UC…",
+    "es": "Usa el ID que normalmente empieza por UC…"
+  },
+  "Use the channel ID, not a watch URL.": {
+    "pt": "Usa o ID do canal, não um URL de visualização.",
+    "fr": "Utilisez l’identifiant du canal, pas une URL de vidéo.",
+    "es": "Usa el ID del canal, no una URL de visualización."
+  },
+  "Use the channel login, without a URL or @ prefix.": {
+    "pt": "Usa o nome de utilizador do canal, sem URL nem prefixo @.",
+    "fr": "Utilisez l’identifiant de connexion du canal, sans URL ni préfixe @.",
+    "es": "Usa el nombre de usuario del canal, sin URL ni prefijo @."
+  },
+  "Use the official CoinGecko read-only API with bounded symbols and results.": {
+    "pt": "Usa a API oficial CoinGecko apenas de leitura, com limites de símbolos e resultados.",
+    "fr": "Utilisez l’API officielle CoinGecko en lecture seule, avec un nombre limité de symboles et de résultats.",
+    "es": "Usa la API oficial de CoinGecko de solo lectura, con límites de símbolos y resultados."
+  },
+  "Use {member} and {server} as placeholders.": {
+    "pt": "Usa {member} e {server} como marcadores de substituição.",
+    "fr": "Utilisez {member} et {server} comme variables de substitution.",
+    "es": "Usa {member} y {server} como marcadores de posición."
+  },
+  "Use {member} for the member and {server} for the server name.": {
+    "pt": "Usa {member} para o membro e {server} para o nome do servidor.",
+    "fr": "Utilisez {member} pour le membre et {server} pour le nom du serveur.",
+    "es": "Usa {member} para el miembro y {server} para el nombre del servidor."
+  },
+  "Use {member} to mention the member and {level} for the new level.": {
+    "pt": "Usa {member} para mencionar o membro e {level} para o novo nível.",
+    "fr": "Utilisez {member} pour mentionner le membre et {level} pour le nouveau niveau.",
+    "es": "Usa {member} para mencionar al miembro y {level} para el nuevo nivel."
+  },
+  "Use {messages}, {joins}, {leaves} and {days}.": {
+    "pt": "Usa {messages}, {joins}, {leaves} e {days}.",
+    "fr": "Utilisez {messages}, {joins}, {leaves} et {days}.",
+    "es": "Usa {messages}, {joins}, {leaves} y {days}."
+  },
+  "Use {user} for the member display name.": {
+    "pt": "Usa {user} para o nome de apresentação do membro.",
+    "fr": "Utilisez {user} pour le nom d’affichage du membre.",
+    "es": "Usa {user} para el nombre visible del miembro."
+  },
+  "Use {user} for the member mention.": {
+    "pt": "Usa {user} para a menção do membro.",
+    "fr": "Utilisez {user} pour la mention du membre.",
+    "es": "Usa {user} para la mención del miembro."
+  },
+  "Used when a reminder time is written as HH:MM, such as 09:30.": {
+    "pt": "Usado quando a hora de um lembrete é indicada como HH:MM, por exemplo 09:30.",
+    "fr": "Utilisé lorsque l’heure d’un rappel est saisie au format HH:MM, par exemple 09:30.",
+    "es": "Se utiliza cuando la hora de un recordatorio se escribe como HH:MM, por ejemplo 09:30."
+  },
+  "Uses the join gate temporarily and restores it when containment expires.": {
+    "pt": "Usa temporariamente o controlo de entrada e repõe-no quando a contenção termina.",
+    "fr": "Utilise temporairement le contrôle d’entrée et le rétablit à la fin du confinement.",
+    "es": "Utiliza temporalmente el control de acceso y lo restaura cuando termina la contención."
+  },
+  "Uses the official Helix/EventSub API with signed webhook verification and deduplication.": {
+    "pt": "Usa a API oficial Helix/EventSub com verificação de webhooks assinados e remoção de duplicados.",
+    "fr": "Utilise l’API officielle Helix/EventSub avec vérification des webhooks signés et déduplication.",
+    "es": "Utiliza la API oficial Helix/EventSub con verificación de webhooks firmados y eliminación de duplicados."
+  },
+  "Variables: {broadcaster}, {login}, {url}, {stream_id}, {started_at}.": {
+    "pt": "Variáveis: {broadcaster}, {login}, {url}, {stream_id}, {started_at}.",
+    "fr": "Variables : {broadcaster}, {login}, {url}, {stream_id}, {started_at}.",
+    "es": "Variables: {broadcaster}, {login}, {url}, {stream_id}, {started_at}."
+  },
+  "Variables: {feed}, {title}, {url}, {published_at}.": {
+    "pt": "Variáveis: {feed}, {title}, {url}, {published_at}.",
+    "fr": "Variables : {feed}, {title}, {url}, {published_at}.",
+    "es": "Variables: {feed}, {title}, {url}, {published_at}."
+  },
+  "Variables: {member} and {server}.": {
+    "pt": "Variáveis: {member} e {server}.",
+    "fr": "Variables : {member} et {server}.",
+    "es": "Variables: {member} y {server}."
+  },
+  "Variables: {member}, {level}, {server}.": {
+    "pt": "Variáveis: {member}, {level}, {server}.",
+    "fr": "Variables : {member}, {level}, {server}.",
+    "es": "Variables: {member}, {level}, {server}."
+  },
+  "Variables: {member}, {server}, {count}.": {
+    "pt": "Variáveis: {member}, {server}, {count}.",
+    "fr": "Variables : {member}, {server}, {count}.",
+    "es": "Variables: {member}, {server}, {count}."
+  },
+  "Variables: {title}, {url}, {channel}, {published_at}.": {
+    "pt": "Variáveis: {title}, {url}, {channel}, {published_at}.",
+    "fr": "Variables : {title}, {url}, {channel}, {published_at}.",
+    "es": "Variables: {title}, {url}, {channel}, {published_at}."
+  },
+  "Verification interval (seconds)": {
+    "pt": "Intervalo de verificação (segundos)",
+    "fr": "Intervalle de vérification (secondes)",
+    "es": "Intervalo de verificación (segundos)"
+  },
+  "Very high": {
+    "pt": "Muito alto",
+    "fr": "Très élevé",
+    "es": "Muy alto"
+  },
+  "View, export, and safely delete your server data.": {
+    "pt": "Consulta, exporta e elimina os dados do teu servidor de forma segura.",
+    "fr": "Consultez, exportez et supprimez les données de votre serveur de manière sûre.",
+    "es": "Consulta, exporta y elimina los datos de tu servidor de forma segura."
+  },
+  "Voice XP per minute": {
+    "pt": "XP de voz por minuto",
+    "fr": "XP vocal par minute",
+    "es": "XP de voz por minuto"
+  },
+  "Volcanic Forge": {
+    "pt": "Forja Vulcânica",
+    "fr": "Forge volcanique",
+    "es": "Forja volcánica"
+  },
+  "Voluntary profile data is erased; moderation audit records stay retained.": {
+    "pt": "Os dados voluntários de perfil são apagados; os registos de auditoria de moderação são conservados.",
+    "fr": "Les données de profil facultatives sont effacées ; les journaux d’audit de modération sont conservés.",
+    "es": "Los datos voluntarios del perfil se borran; los registros de auditoría de moderación se conservan."
+  },
+  "Wait before sending (seconds)": {
+    "pt": "Espera antes do envio (segundos)",
+    "fr": "Attente avant l’envoi (secondes)",
+    "es": "Espera antes del envío (segundos)"
+  },
+  "Wallet access": {
+    "pt": "Acesso por carteira",
+    "fr": "Accès par portefeuille",
+    "es": "Acceso mediante cartera"
+  },
+  "Wallet gating": {
+    "pt": "Controlo de acesso por carteira",
+    "fr": "Contrôle d’accès par portefeuille",
+    "es": "Control de acceso mediante cartera"
+  },
+  "Watch a validated RSS or Atom feed with safe polling.": {
+    "pt": "Acompanha um feed RSS ou Atom validado com consultas periódicas seguras.",
+    "fr": "Suivez un flux RSS ou Atom validé avec des consultations périodiques sûres.",
+    "es": "Sigue un feed RSS o Atom validado con consultas periódicas seguras."
+  },
+  "Welcome members without editing code.": {
+    "pt": "Recebe os membros sem editar código.",
+    "fr": "Accueillez les membres sans modifier de code.",
+    "es": "Da la bienvenida a los miembros sin editar código."
+  },
+  "Welcome messages": {
+    "pt": "Mensagens de boas-vindas",
+    "fr": "Messages de bienvenue",
+    "es": "Mensajes de bienvenida"
+  },
+  "Welcome messages, optional orientation buttons, direct messages and automatic roles.": {
+    "pt": "Mensagens de boas-vindas, botões de orientação opcionais, mensagens privadas e cargos automáticos.",
+    "fr": "Messages de bienvenue, boutons d’orientation facultatifs, messages privés et rôles automatiques.",
+    "es": "Mensajes de bienvenida, botones de orientación opcionales, mensajes privados y roles automáticos."
+  },
+  "Welcome setup": {
+    "pt": "Configuração das boas-vindas",
+    "fr": "Configuration de l’accueil",
+    "es": "Configuración de bienvenida"
+  },
+  "What members see before opening a ticket.": {
+    "pt": "O que os membros veem antes de abrir um ticket.",
+    "fr": "Ce que les membres voient avant d’ouvrir un ticket.",
+    "es": "Lo que ven los miembros antes de abrir un ticket."
+  },
+  "When a member leaves": {
+    "pt": "Quando um membro sai",
+    "fr": "Lorsqu’un membre quitte le serveur",
+    "es": "Cuando un miembro sale"
+  },
+  "When disabled, everyone/here mentions are neutralised.": {
+    "pt": "Quando desativado, as menções everyone/here são neutralizadas.",
+    "fr": "Lorsque cette option est désactivée, les mentions everyone/here sont neutralisées.",
+    "es": "Cuando está desactivado, se neutralizan las menciones everyone/here."
+  },
+  "When disabled, only the requesting member sees the result.": {
+    "pt": "Quando desativado, só o membro que fez o pedido vê o resultado.",
+    "fr": "Lorsque cette option est désactivée, seul le membre à l’origine de la demande voit le résultat.",
+    "es": "Cuando está desactivado, solo el miembro que ha realizado la solicitud ve el resultado."
+  },
+  "When disabled, only the requesting member sees the summary.": {
+    "pt": "Quando desativado, só o membro que fez o pedido vê o resumo.",
+    "fr": "Lorsque cette option est désactivée, seul le membre à l’origine de la demande voit le résumé.",
+    "es": "Cuando está desactivado, solo el miembro que ha realizado la solicitud ve el resumen."
+  },
+  "When off, Helper removes the other level rewards when assigning a new one.": {
+    "pt": "Quando desativado, o Helper remove as recompensas dos outros níveis ao atribuir uma nova.",
+    "fr": "Lorsque cette option est désactivée, Helper retire les autres récompenses de niveau lorsqu’il en attribue une nouvelle.",
+    "es": "Cuando está desactivado, Helper elimina las recompensas de los otros niveles al asignar una nueva."
+  },
+  "Where members open tickets": {
+    "pt": "Onde os membros abrem tickets",
+    "fr": "Où les membres ouvrent leurs tickets",
+    "es": "Dónde abren tickets los miembros"
+  },
+  "Window (seconds)": {
+    "pt": "Janela (segundos)",
+    "fr": "Fenêtre (secondes)",
+    "es": "Ventana (segundos)"
+  },
+  "Work cooldown (minutes)": {
+    "pt": "Tempo de espera entre trabalhos (minutos)",
+    "fr": "Délai entre deux travaux (minutes)",
+    "es": "Tiempo de espera entre trabajos (minutos)"
+  },
+  "Work reward": {
+    "pt": "Recompensa de trabalho",
+    "fr": "Récompense de travail",
+    "es": "Recompensa por trabajo"
+  },
+  "XP card appearance": {
+    "pt": "Aspeto do cartão de XP",
+    "fr": "Apparence de la carte d’XP",
+    "es": "Aspecto de la tarjeta de XP"
+  },
+  "XP cooldown (seconds)": {
+    "pt": "Tempo de espera entre ganhos de XP (segundos)",
+    "fr": "Délai entre les gains d’XP (secondes)",
+    "es": "Tiempo de espera entre ganancias de XP (segundos)"
+  },
+  "XP milestones": {
+    "pt": "Marcos de XP",
+    "fr": "Étapes d’XP",
+    "es": "Hitos de XP"
+  },
+  "XP progression": {
+    "pt": "Progressão de XP",
+    "fr": "Progression d’XP",
+    "es": "Progresión de XP"
+  },
+  "YOUTUBE_API_KEY": {
+    "pt": "YOUTUBE_API_KEY",
+    "fr": "YOUTUBE_API_KEY",
+    "es": "YOUTUBE_API_KEY"
+  },
+  "Your session expired. Sign in again.": {
+    "pt": "A tua sessão expirou. Inicia sessão novamente.",
+    "fr": "Votre session a expiré. Reconnectez-vous.",
+    "es": "Tu sesión ha caducado. Vuelve a iniciar sesión."
+  },
+  "add_reactions": {
+    "pt": "add_reactions",
+    "fr": "add_reactions",
+    "es": "add_reactions"
+  },
+  "alert channel": {
+    "pt": "canal de alertas",
+    "fr": "salon d’alertes",
+    "es": "canal de alertas"
+  },
+  "arbitrum": {
+    "pt": "arbitrum",
+    "fr": "arbitrum",
+    "es": "arbitrum"
+  },
+  "attach_files": {
+    "pt": "attach_files",
+    "fr": "attach_files",
+    "es": "attach_files"
+  },
+  "base": {
+    "pt": "base",
+    "fr": "base",
+    "es": "base"
+  },
+  "change_nickname": {
+    "pt": "change_nickname",
+    "fr": "change_nickname",
+    "es": "change_nickname"
+  },
+  "channels ignored": {
+    "pt": "canais ignorados",
+    "fr": "salons ignorés",
+    "es": "canales ignorados"
+  },
+  "channels without XP": {
+    "pt": "canais sem XP",
+    "fr": "salons sans XP",
+    "es": "canales sin XP"
+  },
+  "direct_messages": {
+    "pt": "direct_messages",
+    "fr": "direct_messages",
+    "es": "direct_messages"
+  },
+  "embed_links": {
+    "pt": "embed_links",
+    "fr": "embed_links",
+    "es": "embed_links"
+  },
+  "erc1155": {
+    "pt": "erc1155",
+    "fr": "erc1155",
+    "es": "erc1155"
+  },
+  "erc20": {
+    "pt": "erc20",
+    "fr": "erc20",
+    "es": "erc20"
+  },
+  "erc721": {
+    "pt": "erc721",
+    "fr": "erc721",
+    "es": "erc721"
+  },
+  "ethereum": {
+    "pt": "ethereum",
+    "fr": "ethereum",
+    "es": "ethereum"
+  },
+  "example: vozen (without @).": {
+    "pt": "exemplo: vozen (sem @).",
+    "fr": "exemple : vozen (sans @).",
+    "es": "ejemplo: vozen (sin @)."
+  },
+  "guild_invites": {
+    "pt": "guild_invites",
+    "fr": "guild_invites",
+    "es": "guild_invites"
+  },
+  "guild_members": {
+    "pt": "guild_members",
+    "fr": "guild_members",
+    "es": "guild_members"
+  },
+  "guild_members_intent": {
+    "pt": "guild_members_intent",
+    "fr": "guild_members_intent",
+    "es": "guild_members_intent"
+  },
+  "inter": {
+    "pt": "inter",
+    "fr": "inter",
+    "es": "inter"
+  },
+  "interactions": {
+    "pt": "interactions",
+    "fr": "interactions",
+    "es": "interactions"
+  },
+  "join channel": {
+    "pt": "canal de entrada",
+    "fr": "salon d’arrivée",
+    "es": "canal de entrada"
+  },
+  "leave and templates": {
+    "pt": "despedida e modelos",
+    "fr": "départ et modèles",
+    "es": "despedida y plantillas"
+  },
+  "levels": {
+    "pt": "levels",
+    "fr": "levels",
+    "es": "levels"
+  },
+  "lexend": {
+    "pt": "lexend",
+    "fr": "lexend",
+    "es": "lexend"
+  },
+  "limited availability": {
+    "pt": "disponibilidade limitada",
+    "fr": "disponibilité limitée",
+    "es": "disponibilidad limitada"
+  },
+  "manage_channels": {
+    "pt": "manage_channels",
+    "fr": "manage_channels",
+    "es": "manage_channels"
+  },
+  "manage_events": {
+    "pt": "manage_events",
+    "fr": "manage_events",
+    "es": "manage_events"
+  },
+  "manage_expressions": {
+    "pt": "manage_expressions",
+    "fr": "manage_expressions",
+    "es": "manage_expressions"
+  },
+  "manage_guild": {
+    "pt": "manage_guild",
+    "fr": "manage_guild",
+    "es": "manage_guild"
+  },
+  "manage_messages": {
+    "pt": "manage_messages",
+    "fr": "manage_messages",
+    "es": "manage_messages"
+  },
+  "manage_nicknames": {
+    "pt": "manage_nicknames",
+    "fr": "manage_nicknames",
+    "es": "manage_nicknames"
+  },
+  "manage_roles": {
+    "pt": "manage_roles",
+    "fr": "manage_roles",
+    "es": "manage_roles"
+  },
+  "manager_session": {
+    "pt": "manager_session",
+    "fr": "manager_session",
+    "es": "manager_session"
+  },
+  "medium": {
+    "pt": "medium",
+    "fr": "medium",
+    "es": "medium"
+  },
+  "message": {
+    "pt": "mensagem",
+    "fr": "message",
+    "es": "mensaje"
+  },
+  "message_content": {
+    "pt": "message_content",
+    "fr": "message_content",
+    "es": "message_content"
+  },
+  "message_content_intent": {
+    "pt": "message_content_intent",
+    "fr": "message_content_intent",
+    "es": "message_content_intent"
+  },
+  "message_events": {
+    "pt": "message_events",
+    "fr": "message_events",
+    "es": "message_events"
+  },
+  "messages and rewards": {
+    "pt": "mensagens e recompensas",
+    "fr": "messages et récompenses",
+    "es": "mensajes y recompensas"
+  },
+  "moderate_members": {
+    "pt": "moderate_members",
+    "fr": "moderate_members",
+    "es": "moderate_members"
+  },
+  "moderation": {
+    "pt": "moderação",
+    "fr": "modération",
+    "es": "moderación"
+  },
+  "move_members": {
+    "pt": "move_members",
+    "fr": "move_members",
+    "es": "move_members"
+  },
+  "outbound_https": {
+    "pt": "outbound_https",
+    "fr": "outbound_https",
+    "es": "outbound_https"
+  },
+  "panel channel": {
+    "pt": "canal do painel",
+    "fr": "salon du panneau",
+    "es": "canal del panel"
+  },
+  "polygon": {
+    "pt": "polygon",
+    "fr": "polygon",
+    "es": "polygon"
+  },
+  "poppins": {
+    "pt": "poppins",
+    "fr": "poppins",
+    "es": "poppins"
+  },
+  "read_message_history": {
+    "pt": "read_message_history",
+    "fr": "read_message_history",
+    "es": "read_message_history"
+  },
+  "rewards by level": {
+    "pt": "recompensas por nível",
+    "fr": "récompenses par niveau",
+    "es": "recompensas por nivel"
+  },
+  "roboto": {
+    "pt": "roboto",
+    "fr": "roboto",
+    "es": "roboto"
+  },
+  "role required": {
+    "pt": "cargo obrigatório",
+    "fr": "rôle requis",
+    "es": "rol obligatorio"
+  },
+  "roles ignored": {
+    "pt": "cargos ignorados",
+    "fr": "rôles ignorés",
+    "es": "roles ignorados"
+  },
+  "scheduler": {
+    "pt": "scheduler",
+    "fr": "scheduler",
+    "es": "scheduler"
+  },
+  "send_messages": {
+    "pt": "send_messages",
+    "fr": "send_messages",
+    "es": "send_messages"
+  },
+  "space_grotesk": {
+    "pt": "space_grotesk",
+    "fr": "space_grotesk",
+    "es": "space_grotesk"
+  },
+  "system": {
+    "pt": "system",
+    "fr": "system",
+    "es": "system"
+  },
+  "view_audit_log": {
+    "pt": "view_audit_log",
+    "fr": "view_audit_log",
+    "es": "view_audit_log"
+  },
+  "view_channel": {
+    "pt": "view_channel",
+    "fr": "view_channel",
+    "es": "view_channel"
+  },
+  "voice_channels": {
+    "pt": "voice_channels",
+    "fr": "voice_channels",
+    "es": "voice_channels"
+  },
+  "voice_states": {
+    "pt": "voice_states",
+    "fr": "voice_states",
+    "es": "voice_states"
+  },
+  "your server": {
+    "pt": "o teu servidor",
+    "fr": "votre serveur",
+    "es": "tu servidor"
+  },
+  "{count} more members in /leaderboard.": {
+    "pt": "Mais {count} membros no /leaderboard.",
+    "fr": "{count} membres supplémentaires dans /leaderboard.",
+    "es": "{count} miembros más en /leaderboard."
+  }
+}

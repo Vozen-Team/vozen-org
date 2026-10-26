@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { api, type GuildContext } from './api';
-import { helperLocale } from './i18n';
+import { helperLocale, helperText } from './i18n';
 import { canCreateStarboard, moderatorRoles, validStarboardName } from './starboard-channel';
 import './starboard-channel.css';
 import { ResourceMultiSelect } from './resource-multi-select';
@@ -18,7 +18,7 @@ export function StarboardChannel({context, onCreated}: {
   const submitting = useRef(false);
   useEffect(() => { alive.current = true; return () => {alive.current = false;}; }, []);
   const pt = helperLocale() === 'pt';
-  const text = (en: string, translated: string) => pt ? translated : en;
+  const text = (en: string, translated: string) => pt ? translated : helperText(en);
   const roles = moderatorRoles(context);
   const allowed = canCreateStarboard(context);
   async function create() {
@@ -73,6 +73,6 @@ export function StarboardChannel({context, onCreated}: {
     </div>
     {!allowed && <p role="status">{text('Refresh Discord resources and check the Helper permissions, including Create Public/Private Threads and Send Messages in Threads. Administrator is not required.','Atualiza os recursos Discord e verifica as permissões do Helper, incluindo criar threads públicas/privadas e enviar mensagens em threads. Não precisa de Administrador.')}</p>}
     {error && <p className="starboard-channel__error" role="alert">{error}</p>}
-    {created && <p className="starboard-channel__success" role="status">{text(`#${created} is ready and selected. The configuration is saved automatically; check the saving status above.`, `#${created} está pronto e selecionado. A configuração é guardada automaticamente; verifica o estado da gravação acima.`)}</p>}
+    {created && <p className="starboard-channel__success" role="status">{(helperLocale() === 'pt' ? `#${created} está pronto e selecionado. A configuração é guardada automaticamente; verifica o estado da gravação acima.` : helperText("#{channel} is ready and selected. The configuration is saved automatically; check the saving status above.", { channel: created }))}</p>}
   </section>;
 }

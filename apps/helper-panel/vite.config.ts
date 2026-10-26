@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ command }) => ({
   // Production serves the Helper as an isolated application within vozen.org.
-  // Hash routing keeps deep links on this static document.
+  // Keep asset URLs stable while clean /panel/... entries serve the same application.
   base: command === 'serve' ? '/' : '/panel/helper-tracker/',
   plugins: [react()],
   build: {
