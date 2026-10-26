@@ -19,12 +19,16 @@ const origin=(process.env.HELPER_TEST_ORIGIN||'http://127.0.0.1:5179').replace(/
 const features=Object.keys(paths).map(key=>({key,label:dictionary.en[`helper.feature.${key}.label`]||key,description:'Manage the server with predictable, auditable controls.',category:key.split('.')[0],enabled:true,available:true,configurable:true,maturity:'operational'}));
 const browser=await chromium.launch();
 const errors=[];
-let writes=0,failWrites=false;
+let writes=0,failWrites=false,simulations=0;
 try {
   const context=await browser.newContext();
   await context.addInitScript(()=>localStorage.setItem('vozen.lang',localStorage.getItem('vozen.lang')||'en'));
   await context.route('**/api/**',async route=>{
     const request=route.request(),path=new URL(request.url()).pathname.replace(/^.*?(?=\/api\/)/,'');
+    if(path.endsWith('/simulate')) {
+      simulations++;
+      await route.fulfill({json:{ok:true,key:'management.invite_tracker',mode:'simulation',result:{key:'management.invite_tracker',would_apply:true,effects:[],issues:[]}}});return;
+    }
     if(path.endsWith('/preflight')) {
       assert.ok(failWrites,'viewing routes must not start a configuration preflight');
       assert.equal(request.postDataJSON().config.maxEntries,17);
@@ -87,6 +91,19 @@ try {
   console.log('PASS 47 direct feature routes with Portuguese titles');
   await page.goto(`${origin}/panel/invites/`);
   await page.getByRole('spinbutton').waitFor();
+  await page.getByRole('button',{name:expected('Simulate configuration','pt'),exact:true}).click();
+  await page.getByRole('dialog',{name:dictionary.pt['helper.feature.management.invite_tracker.label'],exact:true}).waitFor();
+  const other=await context.newPage();
+  await other.goto(`${origin}/panel/invites/`);
+  await other.evaluate(()=>localStorage.setItem('vozen.lang','fr'));
+  await page.getByRole('dialog',{name:dictionary.fr['helper.feature.management.invite_tracker.label'],exact:true}).waitFor();
+  await page.keyboard.press('Escape');
+  await other.close();
+  assert.equal(simulations,1,'language changes do not repeat the validation request');
+  assert.equal(writes,0);
+  await page.locator('.workspace-global-nav__language-button').click();
+  await page.locator('.lang__panel').getByRole('button',{name:'Português',exact:true}).click();
+  console.log('PASS open demonstration follows a cross-tab language change');
   failWrites=true;
   await page.getByRole('spinbutton').fill('17');
   await page.getByRole('alert').waitFor();
