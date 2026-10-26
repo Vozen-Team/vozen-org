@@ -14,7 +14,7 @@ it('creates a shop channel bound to the expected guild without arbitrary permiss
   expect(JSON.parse(options.body)).toEqual({name:'shop-orders'});
 });
 it('translates every shop channel control into all site languages',()=>{
-  for(const locale of ['en','pt','fr','es','de','tr','ar','zh','ru','ko']){
+  for(const locale of ['en','pt','fr','es','de','tr','ar','zh','ru','ko'] as const){
     for(const key of ['channelName','createChannel','createHelp','createError'] as const){
       expect(shopText(key,locale)).toBeTruthy();
       if(locale!=='en')expect(shopText(key,locale)).not.toBe(shopText(key,'en'));
