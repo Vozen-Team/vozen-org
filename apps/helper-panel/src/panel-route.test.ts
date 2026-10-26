@@ -16,7 +16,7 @@ describe('clean Helper routes', () => {
   it.each([['#/', '/panel/'], ['#/quick-setup','/panel/setup/'], ['#/features','/panel/features/'], ['#/activity','/panel/activity/'], ['#/servers','/panel/servers/'], ['#/rank-card','/panel/rank/']])('supports %s', (route,path) => expect(panelPath(route)).toBe(path));
   it('accepts legacy bookmarks and rejects arbitrary redirect targets', () => {
     expect(panelRoute({pathname:'/panel/helper-tracker/',search:'',hash:'#/config/management.invite_tracker'})).toBe('#/config/management.invite_tracker');
-    for (const target of ['https://evil.test','//evil.test','#/config/../../admin','#/config/unknown','#/servers?next=https://evil.test']) expect(panelPath(target)).toBeNull();
+    for (const target of ['https://evil.test','//evil.test','#/config/../../admin','#/config/unknown','#/config/__proto__','#/config/constructor','#/config/toString','#/servers?next=https://evil.test']) expect(panelPath(target)).toBeNull();
   });
   it('keeps private collection credentials out of the path and query', () => {
     const values = new Map<string,string>();

@@ -102,7 +102,7 @@ function dictionaryValue(dictionary: Record<string, string> | undefined, key: st
 
 // Call only for interface copy; names, messages and other user content stay untouched.
 export function helperText(source: string, variables?: Record<string, string | number>): string {
-  source = sourceAliases[source] ?? source;
+  source = Object.hasOwn(sourceAliases,source) ? sourceAliases[source] : source;
   const locale = readLocale();
   const dictionary = typeof window === 'undefined' ? {} : window.VOZEN_I18N ?? {};
   const translated = helperCopy[source]?.[locale];

@@ -153,6 +153,7 @@ describe('Helper interface text', () => {
     expect(i18n.helperText('Unknown {name}: {n}, {missing}', { name: '$& Alice', n: 0 }))
       .toBe('Unknown $& Alice: 0, {missing}');
     expect(i18n.helperText('{toString}')).toBe('{toString}');
+    for(const source of ['__proto__','constructor','toString']) expect(i18n.helperText(source)).toBe(source);
     expect(i18n.helperText('{toString}', {})).toBe('{toString}');
     expect(i18n.helperT('__proto__', 'Unknown')).toBe('Unknown');
     expect(i18n.helperT('missing.key', 'Features')).toBe('Funcionalidades');

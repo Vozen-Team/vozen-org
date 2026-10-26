@@ -25,7 +25,7 @@ export function panelPath(route: string): string | null {
   if (route === '#/rank-card') route = '#/config/studio.rank_card';
   if (Object.hasOwn(pages, route)) return `/panel/${pages[route]}${pages[route] ? '/' : ''}`;
   const feature = /^#\/config\/([a-z0-9._-]+)$/.exec(route)?.[1];
-  if (feature && featurePaths[feature]) return `/panel/${featurePaths[feature]}/`;
+  if (feature && Object.hasOwn(featurePaths,feature)) return `/panel/${featurePaths[feature]}/`;
   const collection = collectionPattern.exec(route);
   if (!collection) return null;
   const [, guild, token] = collection;
