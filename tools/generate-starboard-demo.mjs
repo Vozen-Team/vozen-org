@@ -10,7 +10,7 @@ const destination = path.join(root, 'apps/helper-panel/public/feature-demos');
 // Retain the original command; pass a feature name to generate only that storyboard
 // without replacing any existing Starboard assets.
 const feature = process.argv[2] ?? 'starboard';
-if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy', 'temp-channels', 'invites'].includes(feature)) throw new Error('Unknown feature demo');
+if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy', 'temp-channels', 'invites', 'reminders'].includes(feature)) throw new Error('Unknown feature demo');
 await fs.mkdir(destination, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -51,6 +51,7 @@ try {
         ctx.fillText(content, x, y);
       }
       function draw(time) {
+        if (feature === 'reminders') { drawReminders(time); return; }
         if (feature === 'invites') { drawInvites(time); return; }
         if (feature === 'temp-channels') { drawTempChannels(time); return; }
         if (feature === 'economy') { drawEconomy(time); return; }
@@ -90,6 +91,30 @@ try {
         label(text.sample, 42, 518, 14, '#a3b6d1');
         ctx.fillStyle = '#24354c'; ctx.fillRect(42, 531, 876, 3);
         ctx.fillStyle = '#8ee5d2'; ctx.fillRect(42, 531, 876 * Math.min(time / 10, 1), 3);
+      }
+      function drawReminders(time) {
+        const scheduled = time >= 3;
+        const delivered = time >= 6;
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / LEMBRETES' : 'VOZEN HELPER / REMINDERS', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Um aviso na altura certa.' : 'A reminder at the right time.', 42, 111, 30);
+        card(42, 139, 876, 73);
+        label(pt ? 'Lembretes' : 'Reminders', 65, 171, 23);
+        label(pt ? 'UTC · menções ativas · repetição opcional' : 'UTC · mentions enabled · optional repeats', 65, 198, 17, '#a3b6d1');
+        label(pt ? '● Ativo' : '● Enabled', 780, 174, 19, '#8ee5d2');
+        card(42, 232, 876, 91);
+        label(pt ? '#geral · Rexy' : '#general · Rexy', 65, 262, 17, '#a3b6d1');
+        label(pt ? '/remind time:10m text:Reunião da equipa' : '/remind time:10m text:Team meeting', 65, 299, 23, '#8ee5d2');
+        const reveal = delivered ? Math.min(1, (time - 6) / .35) : 1;
+        const y = 343 + (delivered ? 12 * (1 - reveal) ** 3 : 0);
+        card(42, y, 876, 108, delivered ? reveal : 1);
+        ctx.globalAlpha = delivered ? reveal : 1;
+        label(delivered ? 'Vozen Helper' : scheduled ? (pt ? 'Lembrete #12 agendado.' : 'Reminder #12 scheduled.') : (pt ? 'Escolhe quando e o que queres lembrar.' : 'Choose when and what to remember.'), 65, y + 33, 21, '#8ee5d2');
+        label(delivered ? (pt ? '@Rexy  ⏰  Reunião da equipa' : '@Rexy  ⏰  Team meeting') : scheduled ? (pt ? 'Daqui a 10 minutos · confirmação privada' : 'In 10 minutes · private confirmation') : (pt ? 'O aviso chega ao canal onde usaste /remind.' : 'The reminder arrives where you used /remind.'), 65, y + 76, 23);
+        ctx.globalAlpha = 1;
+        label(time < 3 ? (pt ? '1. Ativa os Lembretes no painel' : '1. Enable Reminders in the dashboard') : time < 6 ? (pt ? '2. Agenda com /remind' : '2. Schedule with /remind') : (pt ? '3. Recebe o aviso no mesmo canal' : '3. Get the reminder in the same channel'), 42, 490, 22);
+        label(pt ? 'Dados de exemplo · tempo acelerado · repetição só quando permitida' : 'Sample data · accelerated time · repeats only when allowed', 42, 522, 14, '#a3b6d1');
       }
       function drawInvites(time) {
         const joined = time >= 3;
@@ -533,10 +558,10 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Sem canal escolhido, o botão não aparece · exemplo ilustrativo' : 'Without a chosen channel, the button stays hidden · illustrative example', 42, 518, 14, '#a3b6d1');
       }
-      draw(feature === 'temp-channels' ? 6 : ['events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy', 'invites'].includes(feature) ? 8 : 0);
+      draw(feature === 'temp-channels' ? 6 : ['events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy', 'invites', 'reminders'].includes(feature) ? 8 : 0);
       const poster = canvas.toDataURL('image/png').split(',')[1];
       const stream = canvas.captureStream(24);
-      const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: ['temp-channels', 'invites'].includes(feature) ? 2_000_000 : 700_000 });
+      const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: ['temp-channels', 'invites', 'reminders'].includes(feature) ? 2_000_000 : 700_000 });
       const chunks = [];
       recorder.ondataavailable = event => chunks.push(event.data);
       const done = new Promise(resolve => { recorder.onstop = resolve; });

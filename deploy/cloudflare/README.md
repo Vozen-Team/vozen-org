@@ -6,8 +6,8 @@ database, binding or bot runtime is deployed by this configuration.
 
 Before enabling production:
 
-1. Wait for every required check on the migration revision to pass and obtain the
-   required independent review. Do not relax branch protections.
+1. Wait for every required check on the migration revision to pass. The owner
+   chose zero required third-party approvals; preserve all required CI checks.
 2. Download `vozen-static-<sha>` from the successful CI run. Install this directory's
    locked CLI with `npm ci --ignore-scripts`. Set the owner's account ID privately
    and authenticate with a token restricted to that account (Workers Scripts Edit)
@@ -20,7 +20,7 @@ Before enabling production:
 4. Inspect the existing `www` to apex redirect and preserve it at the zone layer.
    Store `CLOUDFLARE_API_TOKEN` in the `cloudflare-production` GitHub environment,
    set `CLOUDFLARE_ACCOUNT_ID` and, only after preview acceptance, set repository
-   variable `CLOUDFLARE_SITE_PUBLISH=true`. Run the workflow on the reviewed main revision.
+   variable `CLOUDFLARE_SITE_PUBLISH=true`. Run the workflow on the validated main revision.
 5. Verify both public hosts and real owner login at the original site origin.
    API hosts, tunnel, bot services, data and backups must remain untouched.
 

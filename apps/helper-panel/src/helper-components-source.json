@@ -221,5 +221,10 @@
   "Your session expired. Sign in again before creating a channel.",
   "Your session expired. Sign in again.",
   "selected",
-  "{channel} is ready and selected. Check automatic saving above."
+  "{channel} is ready and selected. Check automatic saving above.",
+  "How Reminders work · looping animation",
+  "Sample data and accelerated time. This animation sends no Discord messages.",
+  "1. Enable Reminders and choose the limits and time zone.",
+  "2. Use /remind with time:10m and text:Team meeting in the channel.",
+  "3. Helper posts the reminder in that channel. Mentions and daily or weekly repeats follow your settings."
 ]
