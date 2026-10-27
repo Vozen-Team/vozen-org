@@ -2,6 +2,18 @@ import { describe, expect, it } from 'vitest';
 import { featureDemo } from './feature-demo';
 
 describe('feature-specific demonstrations', () => {
+  it('shows reminder scheduling and same-channel delivery without real messages', () => {
+    const demo = featureDemo('utility.reminders','en');
+    expect(demo?.asset).toBe('reminders-en');
+    expect(demo?.example).toMatch(/accelerated time.*no Discord messages/);
+    for (const text of ['/remind','time:10m','that channel','daily or weekly']) expect(demo?.steps.join(' ')).toContain(text);
+    expect(featureDemo('utility.reminders','pt')?.asset).toBe('reminders-pt');
+    for (const locale of ['pt','fr','es','de','tr','ar','zh','ru','ko']) {
+      const translated = featureDemo('utility.reminders',locale);
+      expect(translated?.title).not.toBe(demo?.title);
+      expect(translated?.steps.every((step,index) => step !== demo?.steps[index])).toBe(true);
+    }
+  });
   it('shows staff invite usage and only unambiguous attribution with sample data', () => {
     const demo = featureDemo('management.invite_tracker', 'en');
     expect(demo?.asset).toBe('invites-en');

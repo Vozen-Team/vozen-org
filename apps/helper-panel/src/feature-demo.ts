@@ -3,6 +3,11 @@ import componentCopy from './helper-components-copy.json';
 
 type DemoCopy = { title: string; example: string; steps: [string, string, string] };
 const demos = new Map<string, { asset: string; en: DemoCopy; pt: DemoCopy }>([
+  ['utility.reminders', {
+    asset: 'reminders',
+    en: { title: 'How Reminders work · looping animation', example: 'Sample data and accelerated time. This animation sends no Discord messages.', steps: ['1. Enable Reminders and choose the limits and time zone.', '2. Use /remind with time:10m and text:Team meeting in the channel.', '3. Helper posts the reminder in that channel. Mentions and daily or weekly repeats follow your settings.'] },
+    pt: { title: 'Como funcionam os Lembretes · animação em loop', example: 'Dados de exemplo e tempo acelerado. Esta animação não envia mensagens no Discord.', steps: ['1. Ativa os Lembretes e escolhe os limites e o fuso horário.', '2. Usa /remind com time:10m e text:Reunião da equipa no canal.', '3. O Helper publica o aviso nesse canal. As menções e repetições diárias ou semanais seguem as tuas definições.'] },
+  }],
   ['management.invite_tracker', {
     asset: 'invites',
     en: { title: 'How Invite tracking works · looping animation', example: 'Sample data. No invites are created or Discord messages sent.', steps: ['1. Enable Invite tracking. Helper needs Manage Server to read invites.', '2. A member joins using an existing invite. Helper compares its usage count.', '3. Staff use /invites to see uses and optional inviter names. Joins are attributed only when the change is unambiguous.'] },
