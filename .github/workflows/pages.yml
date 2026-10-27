@@ -16,6 +16,7 @@ on:
       - 'package-lock.json'
       - '.eleventy.cjs'
       - 'apps/helper-panel/**'
+      - 'deploy/cloudflare/**'
       - 'tools/install-helper-panel.mjs'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
@@ -123,6 +124,14 @@ jobs:
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
           path: ./.pages-artifact
+      - name: Upload validated Cloudflare artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: vozen-static-${{ github.sha }}
+          path: ./.pages-artifact
+          include-hidden-files: true
+          retention-days: 3
+          if-no-files-found: error
 
   deploy:
     needs: validate
@@ -140,3 +149,29 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+
+  deploy-cloudflare:
+    needs: validate
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.CLOUDFLARE_SITE_PUBLISH == 'true'
+    runs-on: ubuntu-latest
+    environment: cloudflare-production
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          name: vozen-static-${{ github.sha }}
+          path: ./.pages-artifact
+      - name: Install pinned deployment CLI
+        run: npm ci --prefix deploy/cloudflare --ignore-scripts --no-audit --no-fund
+      - name: Publish the validated static artifact
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          cp deploy/cloudflare/_headers .pages-artifact/_headers
+          deploy/cloudflare/node_modules/.bin/wrangler deploy --config deploy/cloudflare/wrangler.jsonc
