@@ -5,7 +5,8 @@ for (const width of [390, 1024, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     let reference;
     for (const path of ['/commands/', '/', '/tts/', '/helper/', '/account/', '/docs/', '/docs/tts/', '/docs/helper/', '/guides/discord-without-a-mic/', '/pt/guides/discord-without-a-mic/', '/pt/tts/', '/privacy.html', '/terms.html', '/status.html', '/404.html']) {
-      await page.goto(path, { waitUntil: 'networkidle' });
+      await page.goto(path, { waitUntil: 'load' });
+      await expect(page.locator('header.vozen-global-nav')).toBeVisible();
       await page.evaluate(() => document.fonts.ready);
       const profile = await page.locator('header.vozen-global-nav').evaluate(header => {
         const rect = element => {
