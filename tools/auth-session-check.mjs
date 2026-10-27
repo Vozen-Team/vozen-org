@@ -49,3 +49,4 @@ assert.match(account, /main-v51\.js[^"']*auth-persist=1/);
 
 console.log('Shared auth and account loading contract passed.');
 await import('./helper-handoff-regression.mjs');
+await import('./music-handoff-regression.mjs');
