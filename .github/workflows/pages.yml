@@ -45,7 +45,14 @@ jobs:
       - name: Install site dependencies
         run: npm ci
       - name: Install browser runtime
-        run: npx playwright install --with-deps chromium
+        timeout-minutes: 10
+        run: |
+          # The runner's Azure HTTP mirror can stall before browser tests start.
+          if test -f /etc/apt/apt-mirrors.txt; then
+            sudo sed -i 's|http://azure.archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' /etc/apt/apt-mirrors.txt
+          fi
+          printf 'Acquire::Retries "2"; Acquire::http::Timeout "30"; Acquire::https::Timeout "30";\n' | sudo tee /etc/apt/apt.conf.d/99-vozen-ci-network >/dev/null
+          npx playwright install --with-deps chromium
       - name: Build and validate public site
         run: |
           npm run docs:build
