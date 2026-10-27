@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { mockPublicStatus } from './public-status.fixture.mjs';
 
 for (const width of [390, 1024, 1440]) {
   test(`shared header keeps the same visual profile across pages at ${width}px`, async ({ page }) => {
@@ -40,6 +41,7 @@ for (const width of [390, 1024, 1440]) {
 // Local, intercepted profile only: never use a real Discord token in visual QA.
 const user = { id: '123456789012345678', username: 'Rexy', avatar: 'testavatar', avatar_decoration_data: { asset: 'testdecoration' } };
 test.beforeEach(async ({ page }) => {
+  await mockPublicStatus(page);
   await page.addInitScript((user) => {
     sessionStorage.setItem('vozen.oauth.client', '1537738930722443364');
     sessionStorage.setItem('vozen.ecosystem.authrev', String(Date.now()));

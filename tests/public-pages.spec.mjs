@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { mockPublicStatus } from './public-status.fixture.mjs';
 
 test('entry pages do not load standalone navigation CSS already included in their bundles', async ({ page }) => {
   for (const route of ['/', '/tts/', '/helper/']) {
@@ -178,8 +179,9 @@ test('audio demo retries the real media request after a temporary server failure
 });
 
 test.beforeEach(async ({ page }) => {
+  await mockPublicStatus(page);
   // Keep browser QA deterministic when CI or a sandbox blocks the optional
-  // third-party analytics script. All first-party resources remain real.
+  // third-party analytics script. Static first-party resources remain real.
   await page.route('https://static.cloudflareinsights.com/**', (route) =>
     route.fulfill({ status: 200, contentType: 'text/javascript', body: '' }));
 });
