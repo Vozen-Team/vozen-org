@@ -16,7 +16,7 @@ for(const name of ['helper-app-pt-fr-es','helper-app-de-tr','helper-app-ar-zh','
 const locales={en:'English',pt:'Português',fr:'Français',es:'Español',de:'Deutsch',tr:'Türkçe',ar:'العربية',zh:'繁體中文',ru:'Русский',ko:'한국어'};
 const expected=(source,locale)=>locale==='en'?source:copy[source]?.[locale]??Object.entries(dictionary.en).map(([key,value])=>value===source?dictionary[locale]?.[key]:null).find(Boolean)??source;
 const origin=(process.env.HELPER_TEST_ORIGIN||'http://127.0.0.1:5179').replace(/\/$/,'');
-const features=Object.keys(paths).map(key=>({key,label:dictionary.en[`helper.feature.${key}.label`]||key,description:'Manage the server with predictable, auditable controls.',category:key.split('.')[0],enabled:true,available:true,configurable:true,maturity:'operational'}));
+const features=Object.keys(paths).map(key=>({key,label:dictionary.pt[`helper.feature.${key}.label`]||key,description:'Percebe quem trouxe novos membros para o servidor.',category:key.split('.')[0],enabled:true,available:true,configurable:true,maturity:'operational'}));
 const browser=await chromium.launch();
 const errors=[];
 let writes=0,failWrites=false,simulations=0;
@@ -65,6 +65,8 @@ try {
     await page.locator('.lang__panel').getByRole('button',{name,exact:true}).click();
     await page.waitForFunction(code=>document.documentElement.lang===code,locale);
     assert.equal(await page.locator('.lang__name').innerText(),name);
+    assert.equal(await page.locator('#route-heading').innerText(),dictionary[locale]['helper.feature.management.invite_tracker.label'],'API presentation language does not override the site selection');
+    await page.getByText(expected('See who brought new members to the server.',locale),{exact:true}).waitFor();
     assert.equal(await page.getByRole('spinbutton').inputValue(),'10');
     assert.equal(await page.getByRole('spinbutton').getAttribute('aria-label')||await page.getByRole('spinbutton').evaluate(node=>node.closest('label')?.querySelector('b')?.textContent),expected('Invites shown',locale));
     await page.getByText(expected('Invite overview',locale),{exact:true}).waitFor();

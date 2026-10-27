@@ -660,6 +660,8 @@ function unavailableFeatureCatalogue(): Feature[] {
 }
 
 const featureCopy: Record<string, Pick<Feature, 'label' | 'description'>> = {
+  ...Object.fromEntries(demoFeatures.concat(additionalFeatures).map(({ key, label, description }) =>
+    [key, { label, description }])),
   'protection.antispam': {
     label: 'Spam protection',
     description: 'Detects flooding, repeated messages, excessive mentions, links, and caps.',
@@ -671,7 +673,7 @@ const featureCopy: Record<string, Pick<Feature, 'label' | 'description'>> = {
 };
 function localizedFeature(feature: Feature): Feature {
   const source = featureCopy[feature.key] ?? feature;
-  return { ...feature, label: helperText(source.label), description: helperText(source.description) };
+  return { ...feature, label: helperT(`helper.feature.${feature.key}.label`, source.label), description: helperText(source.description) };
 }
 
 function normalizeFeatureSearchText(value: string): string {
