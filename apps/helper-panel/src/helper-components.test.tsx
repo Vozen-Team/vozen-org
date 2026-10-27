@@ -84,11 +84,11 @@ describe('component source translation delegation', () => {
   it('passes the full site locale to the simulation transcript', () => {
     translation.locale = 'ko';
     const html = renderToStaticMarkup(<FeatureSimulation draft={{ guildId: '111', key: 'community.birthdays',
-      label: 'Custom feature name', config: {}, enabled: false }} onClose={() => {}} />);
+      label: 'Birthdays', config: {}, enabled: false }} onClose={() => {}} />);
     expect(html).toContain('생일 작동 방식');
     expect(html).toContain('birthdays-en.gif');
-    expect(html).toContain('Custom feature name');
-    expect(translation.sources).not.toContain('Custom feature name');
+    expect(html).toContain('⟦ko:Birthdays⟧');
+    expect(translation.sources).toContain('Birthdays');
   });
 
   it('opens the clean collection route without a language query', () => {
