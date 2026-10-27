@@ -27,7 +27,8 @@ export async function minifyAsset(path, source) {
     case '.js':
     case '.mjs': {
       // Keep top-level globals and property names: other scripts may access them.
-      const result = await minifyJs(source, { compress: false, mangle: { toplevel: false }, format: { comments: /^!|@preserve|@license|copyright/i }, sourceMap: false });
+      const module = /(?:^|\/)panel\/helper-tracker\/assets\/[^/]+\.js$/.test(path.replaceAll('\\', '/')) || extname(path).toLowerCase() === '.mjs';
+      const result = await minifyJs(source, { module, compress: false, mangle: { toplevel: false }, format: { comments: /^!|@preserve|@license|copyright/i }, sourceMap: false });
       return result.code;
     }
     case '.css': {
