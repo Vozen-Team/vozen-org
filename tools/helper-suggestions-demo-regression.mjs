@@ -276,6 +276,23 @@ try {
         await channel.locator('..').screenshot({ path: `output/playwright/polls-channel-${scenario}.png` });
       }
     }
+    if (invites && ['en', 'pt', 'mobile'].includes(scenario)) {
+      const settings = page.locator('.invite-settings');
+      const number = settings.getByRole('spinbutton');
+      const toggle = settings.locator('.toggle-field');
+      await number.waitFor();
+      await page.evaluate(() => document.fonts.ready);
+      const inputBox = await number.boundingBox(), toggleBox = await toggle.boundingBox();
+      assert.ok(inputBox && toggleBox);
+      if (scenario === 'mobile') assert.ok(toggleBox.y >= inputBox.y + inputBox.height, 'mobile controls stack');
+      else {
+        assert.ok(Math.abs(inputBox.y - toggleBox.y) <= 1, `invite controls share their top edge: ${JSON.stringify({inputBox,toggleBox})}`);
+        assert.ok(Math.abs(inputBox.height - toggleBox.height) <= 1, 'invite controls have equal heights');
+      }
+      assert.equal(await settings.evaluate(el => el.scrollWidth <= el.clientWidth), true);
+      await mkdir('output/playwright', {recursive:true});
+      await settings.screenshot({path:`output/playwright/invites-settings-${scenario}.png`});
+    }
     const simulate = page.getByRole('button', { name: pt ? 'Simular configuração' : 'Simulate configuration', exact: true });
     await simulate.click();
     const dialog = page.getByRole('dialog', { name: localizedLabel, exact: true });

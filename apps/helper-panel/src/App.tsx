@@ -5498,7 +5498,7 @@ function ConfigSection({
     {title: helperText('Exclusions'), keys: ['ignoredChannels', 'ignoredRoles']},
   ] : null;
   return (
-    <section className={`config-section card${ticketGroups ? ' ticket-settings' : welcomeGroups ? ' welcome-settings' : ''}`}>
+    <section className={`config-section card${ticketGroups ? ' ticket-settings' : welcomeGroups ? ' welcome-settings' : section.fields.some(field => field.key === 'includeInviter') ? ' invite-settings' : ''}`}>
       <div className="section-heading">
         <div>
           {!ticketGroups && !welcomeGroups && <small className="eyebrow">{helperText('CONFIGURATION')}</small>}

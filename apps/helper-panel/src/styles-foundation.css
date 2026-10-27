@@ -215,6 +215,19 @@ textarea:focus-visible {
   font-size: 13px;
 }
 
+.panel-main .invite-settings .field-grid {
+  align-items: end;
+}
+
+.panel-main .invite-settings .toggle-field {
+  min-height: var(--panel-control-height);
+  padding-block: 8px;
+}
+
+.panel-main .invite-settings .toggle-field input {
+  margin: 0;
+}
+
 .panel-main .feature {
   min-height: 0;
 }
