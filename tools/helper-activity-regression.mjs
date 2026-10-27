@@ -68,9 +68,14 @@ try {
     await feed.locator('.activity-feed__details button').first().click();
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no horizontal overflow');
     if (locale === 'ru') {
-      const inner = await page.locator('.vozen-global-nav .nav__inner').boundingBox();
-      const actions = await page.locator('.vozen-global-nav .nav__actions').boundingBox();
-      assert.ok(actions.x + actions.width <= inner.x + inner.width + 1, 'translated navigation stays inside the shared header width');
+      await page.evaluate(() => document.fonts.ready);
+      for (const width of [1280, 1440]) {
+        await page.setViewportSize({ width, height: 900 });
+        const inner = await page.locator('.vozen-global-nav .nav__inner').boundingBox();
+        const actions = await page.locator('.vozen-global-nav .nav__actions').boundingBox();
+        assert.ok(actions.x + actions.width <= inner.x + inner.width + 1,
+          `translated navigation fits at ${width}px: ${JSON.stringify({ inner, actions })}`);
+      }
     }
     if(['en','pt','ar'].includes(locale)) {
       await mkdir('output/playwright',{recursive:true});
