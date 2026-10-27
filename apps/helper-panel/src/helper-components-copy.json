@@ -2506,5 +2506,60 @@
     "zh": "{channel} 已準備就緒並已被選擇。檢查上面的自動儲存。",
     "ru": "{channel} готов и выбран. Проверьте автоматическое сохранение выше.",
     "ko": "{channel}가 준비되었으며 선택되었습니다. 위에서 자동저장을 확인하세요."
+  },
+  "How Reminders work · looping animation": {
+    "pt": "Como funcionam os Lembretes · animação em loop",
+    "fr": "Comment fonctionnent les rappels · animation en boucle",
+    "es": "Cómo funcionan los recordatorios · animación en bucle",
+    "de": "Erinnerungen im Überblick · Endlosschleife",
+    "tr": "Hatırlatıcılar nasıl çalışır · döngü animasyonu",
+    "ar": "كيف تعمل التذكيرات · رسوم متحركة متكررة",
+    "zh": "提醒功能示範 · 循環動畫",
+    "ru": "Как работают напоминания · зацикленная анимация",
+    "ko": "알림 사용 방법 · 반복 애니메이션"
+  },
+  "Sample data and accelerated time. This animation sends no Discord messages.": {
+    "pt": "Dados de exemplo e tempo acelerado. Esta animação não envia mensagens no Discord.",
+    "fr": "Données fictives et temps accéléré. Cette animation ne publie aucun message sur Discord.",
+    "es": "Datos de ejemplo y tiempo acelerado. Esta animación no envía mensajes a Discord.",
+    "de": "Beispieldaten und beschleunigte Zeit. Diese Animation sendet keine Discord-Nachrichten.",
+    "tr": "Örnek veriler ve hızlandırılmış zaman. Bu animasyon Discord’a mesaj göndermez.",
+    "ar": "بيانات تجريبية ووقت متسارع. لا ترسل هذه الرسوم أي رسائل إلى Discord.",
+    "zh": "範例資料與加速時間。此動畫不會傳送 Discord 訊息。",
+    "ru": "Пример данных и ускоренное время. Эта анимация не отправляет сообщения в Discord.",
+    "ko": "예시 데이터이며 시간이 빠르게 진행됩니다. 이 애니메이션은 Discord 메시지를 보내지 않습니다."
+  },
+  "1. Enable Reminders and choose the limits and time zone.": {
+    "pt": "1. Ativa os Lembretes e escolhe os limites e o fuso horário.",
+    "fr": "1. Active les rappels et choisis les limites et le fuseau horaire.",
+    "es": "1. Activa los recordatorios y elige los límites y la zona horaria.",
+    "de": "1. Aktiviere Erinnerungen und wähle Grenzen und Zeitzone.",
+    "tr": "1. Hatırlatıcıları etkinleştir, sınırları ve saat dilimini seç.",
+    "ar": "1. فعّل التذكيرات واختر الحدود والمنطقة الزمنية.",
+    "zh": "1. 啟用提醒，設定限制與時區。",
+    "ru": "1. Включи напоминания, выбери ограничения и часовой пояс.",
+    "ko": "1. 알림을 켜고 제한과 시간대를 설정하세요."
+  },
+  "2. Use /remind with time:10m and text:Team meeting in the channel.": {
+    "pt": "2. Usa /remind com time:10m e text:Reunião da equipa no canal.",
+    "fr": "2. Utilise /remind avec time:10m et text:Réunion d’équipe dans le salon.",
+    "es": "2. Usa /remind con time:10m y text:Reunión del equipo en el canal.",
+    "de": "2. Verwende /remind mit time:10m und text:Teambesprechung im Kanal.",
+    "tr": "2. Kanalda /remind komutunu time:10m ve text:Ekip toplantısı ile kullan.",
+    "ar": "2. استخدم /remind مع time:10m وtext:اجتماع الفريق في القناة.",
+    "zh": "2. 在頻道使用 /remind，輸入 time:10m 和 text:團隊會議。",
+    "ru": "2. Используй /remind с time:10m и text:Встреча команды в канале.",
+    "ko": "2. 채널에서 /remind에 time:10m과 text:팀 회의를 입력하세요."
+  },
+  "3. Helper posts the reminder in that channel. Mentions and daily or weekly repeats follow your settings.": {
+    "pt": "3. O Helper publica o aviso nesse canal. As menções e repetições diárias ou semanais seguem as tuas definições.",
+    "fr": "3. Helper publie le rappel dans ce salon. Les mentions et répétitions quotidiennes ou hebdomadaires suivent tes paramètres.",
+    "es": "3. Helper publica el aviso en ese canal. Las menciones y repeticiones diarias o semanales siguen tus ajustes.",
+    "de": "3. Helper veröffentlicht die Erinnerung im selben Kanal. Erwähnungen und tägliche oder wöchentliche Wiederholungen richten sich nach deinen Einstellungen.",
+    "tr": "3. Helper hatırlatıcıyı aynı kanalda paylaşır. Bahsetmeler ve günlük veya haftalık tekrarlar ayarlarına göre uygulanır.",
+    "ar": "3. ينشر Helper التذكير في القناة نفسها. تتبع الإشارات والتكرارات اليومية أو الأسبوعية إعداداتك.",
+    "zh": "3. Helper 會在同一頻道發送提醒。提及成員及每日或每週重複提醒均依照你的設定。",
+    "ru": "3. Helper публикует напоминание в том же канале. Упоминания и ежедневные или еженедельные повторы зависят от настроек.",
+    "ko": "3. Helper가 같은 채널에 알림을 보냅니다. 멘션과 매일 또는 매주 반복은 설정을 따릅니다."
   }
 }
