@@ -2,6 +2,10 @@
 (function () {
   "use strict";
 
+  const tabTitle = document.createElement('script');
+  tabTitle.src = new URL('tab-title-v1.js', document.currentScript.src).href;
+  document.head.appendChild(tabTitle);
+
   const hosts = document.querySelectorAll("[data-vozen-nav]");
   // Entry-page bundles already contain this component's complete styles.
   if (hosts.length && ![...document.querySelectorAll('link[rel="stylesheet"]')].some(link => /\/css\/(?:global-nav-v1|home-(?:critical|full)-v1|(?:tts|helper)-page-v1)\.css(?:\?|$)/.test(link.href))) {

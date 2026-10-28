@@ -1,5 +1,6 @@
 import { StrictMode, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import '../../../site/js/tab-title-v1.js';
 import App from './App';
 import { AchievementsPage } from './achievements-page';
 import './styles.css';
