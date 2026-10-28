@@ -1,67 +1,735 @@
 <!DOCTYPE html><html lang="pt-PT" data-vozen-locale="pt" data-vozen-localized-route="tts" data-vozen-prerendered="true"><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#05060f">
-    <title>Vozen TTS em português para Discord</title>
-    <meta name="description" content="O Vozen lê mensagens do Discord em voz alta. Configura o TTS em português, escolhe uma voz e mantém a conversa mesmo sem microfone.">
-    <link rel="canonical" href="https://vozen.org/pt/tts/">
-    <link rel="alternate" hreflang="en" href="https://vozen.org/tts/">
-    <link rel="alternate" hreflang="pt-PT" href="https://vozen.org/pt/tts/">
-    <link rel="alternate" hreflang="fr" href="https://vozen.org/fr/tts/">
-    <link rel="alternate" hreflang="es" href="https://vozen.org/es/tts/">
-    <link rel="alternate" hreflang="de" href="https://vozen.org/de/tts/">
-    <link rel="alternate" hreflang="tr" href="https://vozen.org/tr/tts/">
-    <link rel="alternate" hreflang="ar" href="https://vozen.org/ar/tts/">
-    <link rel="alternate" hreflang="zh-Hant" href="https://vozen.org/zh/tts/">
-    <link rel="alternate" hreflang="ru" href="https://vozen.org/ru/tts/">
-    <link rel="alternate" hreflang="ko" href="https://vozen.org/ko/tts/">
-    <link rel="alternate" hreflang="x-default" href="https://vozen.org/tts/">
-    <meta property="og:site_name" content="Vozen"><meta property="og:type" content="website"><meta property="og:title" content="Vozen TTS em português para Discord"><meta property="og:description" content="Lê o chat do Discord em voz alta, em português e mais idiomas."><meta property="og:url" content="https://vozen.org/pt/tts/"><meta property="og:image" content="https://vozen.org/assets/og-image.png"><meta property="og:image:alt" content="Vozen TTS para Discord">
-    <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Vozen TTS em português para Discord"><meta name="twitter:description" content="Lê o chat do Discord em voz alta, em português e mais idiomas."><meta name="twitter:image" content="https://vozen.org/assets/og-image.png">
-    <link rel="icon" href="../../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../css/guides-v1.css?v=413bb9e94825">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"CommunicationApplication","operatingSystem":"Discord","description":"Ferramentas de texto para voz para canais Discord.","url":"https://vozen.org/pt/tts/","inLanguage":"pt-PT","publisher":{"@type":"Organization","name":"Vozen","url":"https://vozen.org/"}}</script>
-  <link rel="stylesheet" href="/css/global-nav-v1.css?v=79fa39ebfba5"></head>
-  <body class="vozen-guide-page" data-vozen-public-analytics="true">
-    <a class="guide-skip" href="#main">Saltar para o conteúdo</a>
-    <header class="nav vozen-global-nav docs-ecosystem-nav" data-vozen-standalone-nav="" data-vozen-nav="" data-nav-root="/" data-nav-product="Ecosystem" data-nav-surface="docs" data-nav-prerendered="true" data-prerender-fragment="navigation">
-        <div class="docs-ecosystem-nav__inner nav__inner">
-          <a class="docs-ecosystem-nav__brand brand" href="/" aria-label="Página inicial do ecossistema Vozen" data-i18n-aria-label="ecosystem.homeAria">
-            <span class="docs-ecosystem-nav__mark brand__mark" aria-hidden="true"><img class="brand__portal" src="/favicon.svg" alt="" width="40" height="40"></span>
-            <span class="docs-ecosystem-nav__word brand__word">Vozen</span>
-            <span class="docs-ecosystem-nav__product nav__product" data-i18n="ecosystem.label">Ecossistema</span>
-          </a>
-          <nav class="docs-ecosystem-nav__links nav__links" aria-label="Produtos Vozen" data-i18n-aria-label="ecosystem.productsAria" id="vozen-primary-links">
-            <a class="" href="/tts/" data-i18n="ecosystem.tts">Vozen TTS</a>
-            <a class="" href="/helper/" data-i18n="ecosystem.helper">Vozen Helper</a>
-            <a class="" href="/docs/" data-i18n="ecosystem.docs">Docs</a>
-            <a class="" href="/commands/" data-i18n="ecosystem.commands">Comandos</a>
-            <a class="" href="/status.html" data-i18n="ecosystem.status">Status</a>
-            <a class="" href="/premium#plans" data-i18n="nav.premium">Premium</a>
-          </nav>
-          <div class="docs-ecosystem-nav__actions nav__actions">
-            <a class="docs-ecosystem-nav__github nav__gh" href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener noreferrer" aria-label="Vozen no GitHub" data-i18n-aria-label="ecosystem.githubAria"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></a>
-            <div class="docs-ecosystem-nav__language lang" data-vozen-docs-language-menu="">
-              <button class="docs-ecosystem-nav__language-button lang__btn" type="button" data-vozen-docs-language-button="" aria-haspopup="listbox" aria-expanded="false" aria-label="Idioma do site">
-                <img class="docs-ecosystem-nav__language-flag" src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="docs-ecosystem-nav__language-name lang__name">Português</span>
-                <svg class="docs-ecosystem-nav__language-chevron lang__chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
-              </button>
-              <ul class="docs-ecosystem-nav__language-panel lang__panel" data-vozen-docs-language-panel="" role="listbox" tabindex="-1" aria-label="Escolher idioma"><li role="option" aria-selected="false"><a class="docs-ecosystem-nav__language-option lang__opt" href="/" data-language="en"><img class="docs-ecosystem-nav__language-flag" src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="docs-ecosystem-nav__language-option-name lang__optname">English</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li><li role="option" aria-selected="true"><a class="docs-ecosystem-nav__language-option lang__opt is-active" href="/pt/" data-language="pt"><img class="docs-ecosystem-nav__language-flag" src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="docs-ecosystem-nav__language-option-name lang__optname">Português</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li><li role="option" aria-selected="false"><a class="docs-ecosystem-nav__language-option lang__opt" href="/fr/" data-language="fr"><img class="docs-ecosystem-nav__language-flag" src="/assets/flags-v2/fr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="docs-ecosystem-nav__language-option-name lang__optname">Français</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li><li role="option" aria-selected="false"><a class="docs-ecosystem-nav__language-option lang__opt" href="/es/" data-language="es"><img class="docs-ecosystem-nav__language-flag" src="/assets/flags-v2/es.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="docs-ecosystem-nav__language-option-name lang__optname">Español</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li><li role="option" aria-selected="false"><a class="docs-ecosystem-nav__language-option lang__opt" href="/de/" data-language="de"><img class="docs-ecosystem-nav__language-flag" src="/assets/flags-v2/de.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="docs-ecosystem-nav__language-option-name lang__optname">Deutsch</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li><li role="option" aria-selected="false"><a class="docs-ecosystem-nav__language-option lang__opt" href="/tr/" data-language="tr"><img class="docs-ecosystem-nav__language-flag" src="/assets/flags-v2/tr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="docs-ecosystem-nav__language-option-name lang__optname">Türkçe</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li><li role="option" aria-selected="false"><a class="docs-ecosystem-nav__language-option lang__opt" href="/ar/" data-language="ar"><img class="docs-ecosystem-nav__language-flag" src="/assets/flags-v2/sa.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="docs-ecosystem-nav__language-option-name lang__optname">العربية</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li><li role="option" aria-selected="false"><a class="docs-ecosystem-nav__language-option lang__opt" href="/zh/" data-language="zh"><img class="docs-ecosystem-nav__language-flag" src="/assets/flags-v2/tw.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="docs-ecosystem-nav__language-option-name lang__optname">繁體中文</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li><li role="option" aria-selected="false"><a class="docs-ecosystem-nav__language-option lang__opt" href="/ru/" data-language="ru"><img class="docs-ecosystem-nav__language-flag" src="/assets/flags-v2/ru.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="docs-ecosystem-nav__language-option-name lang__optname">Русский</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li><li role="option" aria-selected="false"><a class="docs-ecosystem-nav__language-option lang__opt" href="/ko/" data-language="ko"><img class="docs-ecosystem-nav__language-flag" src="/assets/flags-v2/kr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="docs-ecosystem-nav__language-option-name lang__optname">한국어</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li></ul>
+    <!-- This route is served from /tts/. Keep the established site assets rooted at / so it does not depend on a runtime fetch. -->
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://static.cloudflareinsights.com https://js.stripe.com https://*.js.stripe.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https://cdn.discordapp.com https://*.stripe.com https://*.link.com; connect-src 'self' https://api.vozen.org https://cloudflareinsights.com https://api.stripe.com https://checkout.stripe.com https://r.stripe.com https://*.stripe.com https://link.com https://*.link.com; frame-src https://checkout.stripe.com https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com https://link.com https://*.link.com; media-src 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07070d">
+    <title data-i18n="tts.documentTitle">Vozen TTS — 35 línguas, 38 vozes</title>
+    <meta name="description" content="Texto em voz para as tuas chamadas no Discord.">
+
+    <!-- Social + canonical. URLs ABSOLUTAS do dominio proprio (vozen.org via GitHub
+         Pages). Se algum dia mudares de dominio, troca estas 4 URLs (canonical,
+         og:url, og:image, twitter:image). -->
+    <link rel="canonical" href="https://vozen.org/pt/tts/"><link rel="alternate" hreflang="en" href="https://vozen.org/tts/"><link rel="alternate" hreflang="pt-PT" href="https://vozen.org/pt/tts/"><link rel="alternate" hreflang="fr" href="https://vozen.org/fr/tts/"><link rel="alternate" hreflang="es" href="https://vozen.org/es/tts/"><link rel="alternate" hreflang="de" href="https://vozen.org/de/tts/"><link rel="alternate" hreflang="tr" href="https://vozen.org/tr/tts/"><link rel="alternate" hreflang="ar" href="https://vozen.org/ar/tts/"><link rel="alternate" hreflang="zh-Hant" href="https://vozen.org/zh/tts/"><link rel="alternate" hreflang="ru" href="https://vozen.org/ru/tts/"><link rel="alternate" hreflang="ko" href="https://vozen.org/ko/tts/"><link rel="alternate" hreflang="x-default" href="https://vozen.org/tts/">
+
+
+
+
+
+
+
+
+
+
+
+    <meta property="og:site_name" content="Vozen">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vozen.org/pt/tts/">
+    <meta property="og:title" content="Vozen TTS — 35 línguas, 38 vozes">
+    <meta property="og:description" content="Texto em voz para as tuas chamadas no Discord.">
+    <meta property="og:image" content="https://vozen.org/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Vozen — Discord TTS with 38 voices in 35 languages, core free forever">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Vozen TTS — 35 línguas, 38 vozes">
+    <meta name="twitter:description" content="Texto em voz para as tuas chamadas no Discord.">
+    <meta name="twitter:image" content="https://vozen.org/assets/og-image.png">
+
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preload" href="/assets/fonts/unbounded-critical-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/assets/fonts/outfit-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/tts-page-v1.css?v=6ae88b0eb00a">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/pt/tts/","description":"Texto em voz para as tuas chamadas no Discord.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"},"inLanguage":"pt-PT"}</script>
+
+    <!-- FAQ structured data (Google rich results). Mantém em sincronia com
+         window.VOZEN_FAQ (js/i18n.js) — o JSON-LD tem de ser ESTÁTICO porque os
+         crawlers não correm o JS que renderiza o FAQ. -->
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"pt-PT","mainEntity":[{"@type":"Question","name":"Posso usar o Vozen grátis?","acceptedAnswer":{"@type":"Answer","text":"Sim. Podes usar as vozes Piper, a leitura automática e os jogos gratuitos sem subscrição."}},{"@type":"Question","name":"Como começo a usar o Vozen?","acceptedAnswer":{"@type":"Answer","text":"Adiciona o Vozen a um servidor que geres. Usa /setup para escolher um canal de texto e ativar a leitura automática. Depois, entra num canal de voz e usa /join."}},{"@type":"Question","name":"Cada membro pode escolher a sua voz?","acceptedAnswer":{"@type":"Answer","text":"Usa /voice set para escolher a voz e o idioma. Cada membro pode guardar as suas próprias definições."}},{"@type":"Question","name":"Devo escolher Plus ou Premium?","acceptedAnswer":{"@type":"Answer","text":"O Plus dá vozes Kokoro e efeitos extra à tua conta Discord. O Premium acrescenta funcionalidades pagas aos servidores selecionados, no TTS e no Helper. Os pagamentos estão temporariamente suspensos."}},{"@type":"Question","name":"Porque não ouço nada?","acceptedAnswer":{"@type":"Answer","text":"Entra num canal de voz e usa /join. Confirma que o Vozen tem permissão para se ligar e falar, e que o /setup aponta para o canal de texto que estás a usar."}},{"@type":"Question","name":"Como paro a leitura?","acceptedAnswer":{"@type":"Answer","text":"Usa /shut-up para limpar a fila ou /leave para desligar o Vozen do canal de voz. Desativa a leitura automática em /config para deixar de ler novas mensagens."}}]}</script>
+  </head>
+  <body class="tts-page product-preview product-preview--expressive" data-i18n-document-title="tts.documentTitle" data-vozen-public-analytics="true">
+    <!-- grain overlay -->
+    <div class="grain" aria-hidden="true"></div>
+    <!-- atmospheric glow orbs -->
+    <div class="orbs" aria-hidden="true">
+      <span class="orb orb--blurple"></span>
+      <span class="orb orb--aqua"></span>
+    </div>
+
+    <a class="skip-link" href="https://vozen.org/pt/tts/#hero">Saltar para o conteúdo</a>
+
+    <!-- ─────────────── NAVBAR ─────────────── -->
+    <header class="nav vozen-global-nav is-stuck" id="nav" data-vozen-nav="" data-nav-product="TTS" data-nav-current="tts" data-nav-prerendered="true" data-nav-locale-root="pt/" data-prerender-fragment="navigation">
+      <div class="wrap nav__inner">
+        <a class="brand" href="pt/" aria-label="Página inicial do ecossistema Vozen" data-i18n-aria-label="ecosystem.homeAria">
+          <span class="brand__mark" aria-hidden="true"><img class="brand__portal" src="favicon.svg" alt="" width="40" height="40"></span>
+          <span class="brand__word">Vozen</span>
+          <span class="nav__product" data-i18n="ecosystem.label">Ecossistema</span>
+        </a>
+        <nav class="nav__links" aria-label="Produtos Vozen" data-i18n-aria-label="ecosystem.productsAria" id="vozen-primary-links">
+          <a class="is-current" href="pt/tts/" aria-current="page" data-i18n="ecosystem.tts">Vozen TTS</a>
+          <a class="" href="pt/helper/" data-i18n="ecosystem.helper">Vozen Helper</a>
+          <a class="" href="docs/" data-i18n="ecosystem.docs">Docs</a>
+          <a class="" href="commands/" data-i18n="ecosystem.commands">Comandos</a>
+          <a class="" href="status.html" data-i18n="ecosystem.status">Status</a>
+          <a class="" href="premium#plans" data-i18n="nav.premium">Premium</a>
+        </nav>
+        <div class="nav__actions">
+          <a class="nav__gh" href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener" aria-label="Vozen no GitHub (código aberto)" data-i18n-aria-label="common.githubLabel" title="Código aberto no GitHub" data-i18n-title="common.githubTitle"><svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.42 7.42 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg></a>
+          <div class="lang" id="langMenu">
+            <button class="lang__btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Idioma do site" data-i18n-aria-label="ecosystem.siteLanguage">
+              <span class="lang__flag" id="langBtnFlag"><img class="lang__flag" src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"></span><span class="lang__name" id="langBtnName">Português</span>
+              <svg class="lang__chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+            <ul class="lang__panel" id="langPanel" role="listbox" tabindex="-1" aria-label="Escolher idioma" data-i18n-aria-label="ecosystem.chooseLanguage"><li role="presentation"><a class="lang__opt" href="/tts/" role="option" data-lang="en" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">English</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt is-active" href="/pt/tts/" role="option" data-lang="pt" aria-selected="true" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Português</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/fr/tts/" role="option" data-lang="fr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/fr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Français</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/es/tts/" role="option" data-lang="es" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/es.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Español</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/de/tts/" role="option" data-lang="de" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/de.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/tr/tts/" role="option" data-lang="tr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Türkçe</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ar/tts/" role="option" data-lang="ar" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/sa.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">العربية</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/zh/tts/" role="option" data-lang="zh" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tw.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">繁體中文</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ru/tts/" role="option" data-lang="ru" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/ru.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Русский</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ko/tts/" role="option" data-lang="ko" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/kr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">한국어</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li></ul>
+          </div>
+          <a class="btn btn--primary btn--discord-cta btn--sm nav__login" id="navLogin" href="account/"><svg viewBox="0 0 24 18" width="20" height="15" aria-hidden="true" fill="currentColor"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4 2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Z"></path></svg><span data-i18n="nav.login">Entrar</span></a>
+          <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="vozen-primary-links"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ─────────────── HERO ─────────────── -->
+      <section class="hero" id="hero">
+        <canvas id="wave" class="hero__wave" aria-hidden="true"></canvas>
+        <div class="wrap hero__grid">
+          <div class="hero__copy">
+
+
+            <h1 class="hero__title reveal" data-r="2">
+              <span data-preview-i18n="hero.title1" data-preview-copy="Your chat.">O teu chat.</span>
+              <span class="grad" data-preview-i18n="hero.title2" data-preview-copy="Out loud.">Em voz alta.</span>
+            </h1>
+
+            <p class="hero__sub reveal" data-r="3" data-i18n="hero.sub">Texto em voz para as tuas chamadas no Discord.</p>
+
+            <div class="hero__cta reveal" data-r="4">
+              <a class="btn btn--primary btn--discord-cta js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+                  <path d="M20.3 4.4A19 19 0 0 0 15.6 3l-.24.48a17.6 17.6 0 0 1 4.16 1.3 15 15 0 0 0-11.06 0A17.6 17.6 0 0 1 12.63 3.5L12.4 3A19 19 0 0 0 7.7 4.4C4.8 8.7 4 13 4.2 17.2A19 19 0 0 0 9.9 20l.4-.6a12 12 0 0 1-1.9-.9c.16-.12.32-.24.47-.37a13.6 13.6 0 0 0 11.6 0c.15.13.3.25.47.37-.6.36-1.24.66-1.9.9l.4.6a19 19 0 0 0 5.7-2.8c.28-4.9-.76-9.16-3.36-12.8ZM9.7 14.7c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Zm4.6 0c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.88 2.3-2 2.3Z"></path>
+                </svg>
+                <span data-i18n="cta.add">Adicionar ao Discord</span>
+              </a>
+              <a class="btn btn--ghost js-support" href="https://discord.gg/4kYw2WUbNN" data-i18n="cta.support">Servidor de suporte</a>
             </div>
-            <a class="docs-ecosystem-nav__login nav__login" data-vozen-docs-login="" href="/account/"><svg viewBox="0 0 24 18" width="18" height="14" fill="currentColor" aria-hidden="true"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Z"></path></svg><span data-i18n="ecosystem.login">Entrar</span></a>
-            <button class="nav__burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="vozen-primary-links"><span></span><span></span><span></span></button>
+
+          </div>
+
+          <!-- animated Discord chat mock -->
+          <div class="hero__demo reveal" data-r="4"><div class="voice-field" aria-hidden="true"><span></span><span></span><span></span></div><div class="voice-spectrum" aria-hidden="true"><i style="--bar:12px;--delay:0.00s"></i><i style="--bar:31px;--delay:0.08s"></i><i style="--bar:45px;--delay:0.16s"></i><i style="--bar:48px;--delay:0.24s"></i><i style="--bar:39px;--delay:0.32s"></i><i style="--bar:22px;--delay:0.40s"></i><i style="--bar:22px;--delay:0.48s"></i><i style="--bar:39px;--delay:0.56s"></i><i style="--bar:48px;--delay:0.64s"></i><i style="--bar:45px;--delay:0.72s"></i><i style="--bar:32px;--delay:0.80s"></i><i style="--bar:12px;--delay:0.88s"></i><i style="--bar:31px;--delay:0.96s"></i><i style="--bar:45px;--delay:1.04s"></i><i style="--bar:48px;--delay:1.12s"></i><i style="--bar:40px;--delay:1.20s"></i><i style="--bar:23px;--delay:1.28s"></i><i style="--bar:21px;--delay:1.36s"></i><i style="--bar:39px;--delay:1.44s"></i><i style="--bar:48px;--delay:1.52s"></i><i style="--bar:45px;--delay:1.60s"></i><i style="--bar:32px;--delay:1.68s"></i><i style="--bar:13px;--delay:1.76s"></i><i style="--bar:31px;--delay:1.84s"></i><i style="--bar:44px;--delay:1.92s"></i><i style="--bar:48px;--delay:2.00s"></i><i style="--bar:40px;--delay:2.08s"></i><i style="--bar:23px;--delay:2.16s"></i><i style="--bar:21px;--delay:2.24s"></i><i style="--bar:38px;--delay:2.32s"></i><i style="--bar:47px;--delay:2.40s"></i><i style="--bar:45px;--delay:2.48s"></i></div>
+            <div class="discord">
+              <div class="discord__bar">
+                <span class="dot dot--r"></span><span class="dot dot--y"></span><span class="dot dot--g"></span>
+                <span class="discord__ch"># general</span>
+              </div>
+              <div class="discord__body" id="chat" data-prerender-fragment="chat"><div class="msg">
+      <div class="msg__av msg__av--u">K</div>
+      <div class="msg__b">
+        <div class="msg__name">Kai</div>
+        <div class="msg__text">what's the plan tonight?</div>
+
+      </div></div><div class="msg">
+      <div class="msg__av msg__av--v"><span class="eq" style="height:16px"><i></i><i></i><i></i><i></i><i></i></span></div>
+      <div class="msg__b">
+        <div class="msg__name"><b>Vozen</b><span class="tag">APP</span></div>
+        <div class="speaking"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span> reading it out loud…</div>
+      </div></div></div>
+            </div>
           </div>
         </div>
-      </header>
-    <main id="main" class="guide-shell guide-main">
-      <section class="guide-hero"><div><p class="guide-kicker">TTS PARA DISCORD</p><h1>Sem microfone? Continua na conversa.</h1><p class="guide-lede">O Vozen lê as tuas mensagens do Discord em voz alta com vozes naturais. Começa no canal certo, testa uma mensagem e ajusta o resto quando já estiver a funcionar.</p><div class="guide-actions"><a class="guide-button" href="../../dashboard.html?add=1" data-tts-install-source="tts-hero">Adicionar ao Discord</a><a class="guide-button guide-button--quiet" href="../../tts/#hear">Ouvir uma voz em português</a></div></div><aside class="guide-card"><div class="guide-stat"><strong>35</strong><span>idiomas indicados na página TTS</span></div><div class="guide-stat"><strong>38</strong><span>vozes indicadas na página TTS</span></div><div class="guide-stat"><strong>Grátis</strong><span>O essencial de TTS não exige pagamento.</span></div></aside></section>
-      <section class="guide-section" aria-labelledby="começar"><h2 id="começar">Começar em três passos</h2><div class="guide-grid"><article class="guide-step"><span class="guide-step__number">01</span><h3>Adiciona no servidor certo</h3><p>Escolhe um servidor onde tens a permissão de gerir o servidor. O Discord mostra as permissões antes de confirmares.</p></article><article class="guide-step"><span class="guide-step__number">02</span><h3>Executa <code>/setup</code></h3><p>Define o canal de texto e confirma as permissões de voz. Se algo estiver em falta, corrige a permissão indicada e repete.</p></article><article class="guide-step"><span class="guide-step__number">03</span><h3>Faz um teste curto</h3><p>Entra num canal de voz com <code>/join</code>, escreve uma mensagem curta e só depois personaliza a voz e o idioma.</p></article></div></section>
-      <section class="guide-section guide-copy" aria-labelledby="controlos"><h2 id="controlos">Controlo claro para a comunidade</h2><p>Cada pessoa pode escolher a voz e o idioma que prefere. Os administradores devem limitar a leitura automática ao canal de texto pretendido e manter as permissões do cargo Vozen mínimas e específicas.</p><ul class="guide-list"><li>Usa um canal dedicado quando houver muitas mensagens.</li><li>Não partilhes tokens, palavras-passe ou dados privados em mensagens lidas por voz.</li><li>Consulta a <a href="../../docs/tts/getting-started/install/">documentação de instalação</a> se o primeiro teste não resultar.</li></ul><aside class="guide-note">Os pagamentos estão temporariamente indisponíveis. A página não apresenta checkout como opção ativa; podes começar pelo núcleo gratuito.</aside></section>
+      </section>
+
+      <section class="hear" id="hear">
+        <div class="wrap hear__inner reveal">
+          <h2 class="hear__title" data-i18n="hear.title">Carrega em play. É mesmo a voz do Vozen</h2>
+
+
+
+
+          <div class="hear__stage" id="hearStage">
+            <button class="hear__btn" id="hearBtn" type="button" aria-label="Reproduzir amostra" data-i18n-aria-label="tts.playSample" aria-pressed="false">
+              <svg class="hear__ic hear__ic--play" viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg>
+              <svg class="hear__ic hear__ic--pause" viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg>
+            </button>
+            <div class="hear__meta">
+              <div class="hear__nowrow">
+                <span class="hear__flag" id="hearFlag"><img src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"></span>
+                <span class="hear__lang" id="hearLang">English</span>
+                <span class="hear__engtag" id="hearEngTag">Google</span>
+              </div>
+              <p class="hear__phrase" id="hearPhrase">Hey! Welcome to the server. Type anything and I'll read it out loud</p>
+            </div>
+            <div class="hear__sound" aria-hidden="true">
+              <canvas id="hearWave" width="640" height="96"></canvas>
+              <div class="hear__clock"><span id="hearElapsed">0:00</span><span id="hearDuration">—</span></div>
+            </div>
+          </div>
+
+
+          <div class="voice-options"><div class="hear__engines" id="hearEngines" role="group" aria-label="Motor de voz" data-i18n-aria-label="tts.engineAria">
+            <button class="hear__eng is-active" data-engine="google" type="button">Google</button>
+            <button class="hear__eng" data-engine="piper" type="button">Piper</button>
+            <button class="hear__eng" data-engine="kokoro" type="button" data-i18n="tts.premiumEngine">Kokoro · Premium</button>
+          </div><div class="hear__chips" id="hearChips" role="group" aria-label="Escolher uma amostra de língua" data-i18n-aria-label="tts.chooseSample">
+            <button class="hear__chip is-active" data-sample="en" type="button"><img src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"> <span class="hear__chip-name">English</span></button>
+            <button class="hear__chip" data-sample="pt" type="button"><img src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"> <span class="hear__chip-name">Português</span></button>
+            <button class="hear__chip" data-sample="es" type="button"><img src="/assets/flags-v2/es.svg" width="24" height="18" alt="" loading="lazy" decoding="async"> <span class="hear__chip-name">Español</span></button>
+            <button class="hear__chip" data-sample="fr" type="button"><img src="/assets/flags-v2/fr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"> <span class="hear__chip-name">Français</span></button>
+            <button class="hear__chip" data-sample="it" type="button"><img src="/assets/flags-v2/it.svg" width="24" height="18" alt="" loading="lazy" decoding="async"> <span class="hear__chip-name">Italiano</span></button>
+          </div><p class="hear__sub" data-i18n="hear.sub">Experimenta todos os motores. O Piper é grátis; o Kokoro desbloqueia com Vozen Plus ou Premium</p></div><audio id="hearAudio" preload="none"></audio>
+        </div>
+      </section>
+
+      <!-- ─────────────── STATS ─────────────── -->
+      <section class="stats">
+        <div class="wrap stats__grid">
+          <div class="stat"><b class="count" data-to="35">0</b><span data-i18n="stat.langs">línguas</span></div>
+          <div class="stat"><b class="count" data-to="38">0</b><span data-i18n="stat.voices">vozes neurais</span></div>
+          <div class="stat"><b class="count" data-to="16">0</b><span data-i18n="stat.games">minijogos</span></div>
+          <div class="stat"><b class="stat__inf">∞</b><span data-i18n="stat.free">essencial grátis p/ sempre</span></div>
+        </div>
+      </section>
+
+      <!-- ─────────────── FEATURES ─────────────── -->
+      <section class="section" id="features">
+        <div class="wrap">
+          <header class="head reveal">
+            <h2 data-i18n="feat.title">Tudo o que o teu servidor precisa</h2>
+            <p data-i18n="feat.sub">Um bot. Todas as funcionalidades de voz que querias no Discord — e o essencial é grátis para sempre</p>
+          </header>
+
+          <div class="feature-highlights">
+            <article class="card feature-card feature-card--read">
+              <div class="feature-scene feature-read" data-feature-scene="" aria-hidden="true">
+                <span class="feature-message">Hey!</span>
+                <span class="feature-sound"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+              </div>
+              <h3 data-i18n="feat.1.t">Canal de leitura automática</h3>
+              <p data-i18n="feat.1.d">Escolhe um canal e o Vozen lê cada mensagem em voz alta. Configura uma vez com <code>/setup</code></p>
+            </article>
+
+            <article class="card feature-card feature-card--languages">
+              <div class="feature-scene feature-languages" data-feature-scene="" aria-hidden="true">
+                <span class="feature-greeting">Hello!</span><span class="feature-greeting">Olá!</span><span class="feature-greeting">¡Hola!</span>
+              </div>
+              <h3 data-i18n="feat.2.t">A tua voz, a tua língua</h3>
+              <p data-i18n="feat.2.d">Cada membro escolhe a sua voz de 35 línguas — motor Google ou neural local</p>
+            </article>
+
+            <article class="card feature-card feature-card--games">
+              <div class="feature-scene feature-game" data-feature-scene="" aria-hidden="true">
+                <span>V</span><span>O</span><span>Z</span><span>E</span><span>N</span>
+              </div>
+              <h3 data-i18n="feat.4.t">16 minijogos de voz</h3>
+              <p data-i18n="feat.4.d">Adivinha a língua, ditados, Wordle, duelos de reflexos — com leaderboard do servidor</p>
+            </article>
+
+            <article class="card feature-card feature-card--effects">
+              <span class="card__badge" data-i18n="feat.new">NOVO</span>
+              <div class="feature-scene feature-echo" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 360 120" fill="none" stroke-width="4" stroke-linecap="round">
+                  <path class="feature-echo-trail" d="M38 60h12l10-20 12 40 15-64 18 88 18-66 12 22h28" transform="translate(150 0)"></path>
+                  <path class="feature-echo-trail" d="M38 60h12l10-20 12 40 15-64 18 88 18-66 12 22h28" transform="translate(75 0)"></path>
+                  <path class="feature-echo-source" d="M38 60h12l10-20 12 40 15-64 18 88 18-66 12 22h28"></path>
+                </svg>
+              </div>
+              <h3 data-i18n="feat.7.t">Efeitos de voz</h3>
+              <p data-i18n="feat.7.d">Robô, eco, grave, esquilo, rádio, demónio… as tuas mensagens, transformadas. Dois efeitos grátis, os oito com Premium</p>
+            </article>
+
+            <article class="card reveal">
+              <div class="feature-scene feature-emphasis" data-feature-scene="" aria-hidden="true">
+                <span class="feature-message">Hello<span class="feature-punctuation">!</span></span>
+              </div>
+              <h3 data-i18n="feat.3.t">Fala como um humano</h3>
+              <p data-i18n="feat.3.d">Usa a voz que escolheste por defeito. A deteção opcional por mensagem liga-se com /voice detection on; ! e MAIÚSCULAS dão ênfase</p>
+            </article>
+
+            <article class="card reveal">
+              <div class="feature-scene feature-welcome" data-feature-scene="" aria-hidden="true">
+                <span class="feature-message">Welcome!</span>
+                <svg viewBox="0 0 180 120" fill="none" stroke="currentColor" stroke-width="3"><path d="m15 28 7-12 7 12-7 12Z"></path><path d="M155 16v20m-10-10h20M154 91v16m-8-8h16"></path></svg>
+              </div>
+              <h3 data-i18n="feat.5.t">Personalidade incluída</h3>
+              <p data-i18n="feat.5.d">Cumprimenta quem entra — sem se repetir — dá os parabéns no teu dia, conta piadas, responde à bola 8 e mostra os tagarelas do servidor</p>
+            </article>
+
+            <article class="card reveal">
+              <div class="feature-scene feature-guard" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 160 130" fill="none" stroke-width="3" stroke-linejoin="round"><path class="feature-shield" d="m80 12 43 17v32c0 25-19 44-43 57-24-13-43-32-43-57V29Z"></path><path class="feature-shield-check" d="m58 64 15 15 29-31" pathLength="1"></path><circle class="feature-block-mark" cx="126" cy="26" r="18"></circle><path class="feature-block-mark" d="m113 13 26 26"></path></svg>
+              </div>
+              <h3 data-i18n="feat.6.t">Descanso para os admins</h3>
+              <p data-i18n="feat.6.d">Blocklists, limites de taxa, filtro anti-spam que silencia mensagens spamadas, restrição por role, opt-out e kill-switch. O controlo é teu</p>
+            </article>
+
+            <article class="card reveal">
+              <div class="feature-scene feature-premium" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 180 120" fill="none" stroke="#ffc95b" stroke-width="3" stroke-linejoin="round"><path class="feature-gem" d="M48 18h84l27 29-69 62-69-62Z"></path><path class="feature-gem-facet" d="m65 18 25 91 25-91M21 47h138M65 18l25 29 25-29"></path></svg>
+              </div>
+              <h3 data-i18n="feat.8.t">Premium justo</h3>
+              <p data-i18n="feat.8.d">€6,99/mês desbloqueia o Kokoro e os extras do servidor. O núcleo essencial com Piper continua grátis</p>
+            </article>
+
+            <article class="card card--accent reveal">
+              <span class="card__badge" data-i18n="feat.new">NOVO</span>
+              <div class="feature-scene feature-private" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 180 130" fill="none" stroke-width="3" stroke-linejoin="round"><path class="feature-file" d="M49 12h57l23 23v80H49Z"></path><path class="feature-file-fold" d="M106 12v23h23"></path><path class="feature-file-wave" d="M64 67h5l6-15 9 35 10-43 9 23h11"></path><rect class="feature-file-lock" x="113" y="78" width="43" height="36" rx="8"></rect><path class="feature-file-lock-bar" d="M123 78V67a12 12 0 0 1 24 0v11"></path></svg>
+              </div>
+              <h3 data-i18n="feat.10.t">Ferramentas privadas, em qualquer lugar</h3>
+              <p data-i18n="feat.10.d">Usa /tts-file e /translate text, ou clica com o botão direito numa mensagem para traduzir ou transcrever áudio suportado do Discord — em privado e sem entrares numa chamada</p>
+            </article>
+
+            <article class="card reveal">
+              <div class="feature-scene feature-profiles" data-feature-scene="" aria-hidden="true">
+                <span class="feature-channel"># general <b>EN</b></span>
+                <span class="feature-channel"># games <b>PT</b></span>
+              </div>
+              <h3 data-i18n="feat.11.t">Perfis de canal</h3>
+              <p data-i18n="feat.11.d">Dá a cada canal a sua voz, motor, língua, velocidade, limites e ligação ao canal de voz no painel seguro do servidor</p>
+            </article>
+
+            <article class="card reveal">
+              <div class="feature-scene feature-favourites" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 240 120" fill="none" stroke-width="2.5" stroke-linejoin="round"><path class="feature-star-side" d="m32 39 7 14 16 2-11 11 2 16-14-8-14 8 2-16L9 55l16-2Z"></path><path class="feature-star-main" d="m120 13 15 29 32 5-23 23 5 32-29-15-29 15 5-32-23-23 32-5Z"></path><path class="feature-star-side" d="m208 39 7 14 16 2-11 11 2 16-14-8-14 8 2-16-11-11 16-2Z"></path></svg>
+              </div>
+              <h3 data-i18n="feat.12.t">Vozes favoritas</h3>
+              <p data-i18n="feat.12.d">Guarda até 25 favoritas e volta às 10 vozes usadas mais recentemente sem pesquisar toda a biblioteca</p>
+            </article>
+
+            <a class="card card--link reveal" href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener">
+              <div class="feature-scene feature-code" data-feature-scene="" aria-hidden="true">
+                <span class="feature-code-mark">&lt;/&gt;</span>
+                <svg viewBox="0 0 80 100" fill="none" stroke="currentColor" stroke-width="3"><path class="feature-branch" d="M20 19v62M20 58c0-22 40-10 40-35" pathLength="1"></path><circle cx="20" cy="14" r="7"></circle><circle cx="20" cy="86" r="7"></circle><circle cx="60" cy="16" r="7"></circle></svg>
+              </div>
+              <h3 data-i18n="feat.9.t">Open source</h3>
+              <p data-i18n="feat.9.d">Todo o código do Vozen é público no GitHub. Audita-o, aprende com ele ou abre um PR — sem segredos, sem spyware</p>
+              <span class="card__arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── SHOWCASE A · LANGUAGES ─────────────── -->
+      <section class="section section--alt" id="languages">
+        <div class="wrap show">
+          <div class="show__copy reveal">
+            <h2 data-i18n="lang.title">Um servidor, todas as línguas</h2>
+            <p data-i18n="lang.sub">O Vozen fala mais de 35 línguas. Cada um escolhe a sua voz — português, inglês, japonês, árabe e muito mais — com os nomes na sua própria língua</p>
+            <ul class="ticks">
+              <li data-i18n="lang.t1">Mais de 35 línguas</li>
+              <li data-i18n="lang.t2">Uma voz nativa por língua</li>
+              <li data-i18n="lang.t3">Nomes das vozes na língua de cada um</li>
+            </ul>
+          </div>
+          <div class="show__visual reveal">
+            <div class="picker">
+              <div class="picker__head"><span class="mono">/voice set</span></div>
+              <div class="picker__row is-sel"><span>🇬🇧</span> English <b>— Amy</b></div>
+              <div class="picker__row"><span>🇵🇹</span> Portuguese <b>— Faber</b></div>
+              <div class="picker__row"><span>🇩🇪</span> German <b>— Thorsten</b></div>
+              <div class="picker__row"><span>🇪🇸</span> Spanish <b>— Davefx</b></div>
+              <div class="picker__row"><span>🇯🇵</span> Japanese <b>— Nanami</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee__track" id="marqueeTrack" data-prerender-fragment="marqueeTrack"><span class="chip">🇬🇧 English</span><span class="chip">🇵🇹 Português</span><span class="chip">🇪🇸 Español</span><span class="chip">🇫🇷 Français</span><span class="chip">🇩🇪 Deutsch</span><span class="chip">🇮🇹 Italiano</span><span class="chip">🇳🇱 Nederlands</span><span class="chip">🇵🇱 Polski</span><span class="chip">🇷🇺 Русский</span><span class="chip">🇺🇦 Українська</span><span class="chip">🇹🇷 Türkçe</span><span class="chip">🇸🇪 Svenska</span><span class="chip">🇯🇵 日本語</span><span class="chip">🇰🇷 한국어</span><span class="chip">🇨🇳 中文</span><span class="chip">🇸🇦 العربية</span><span class="chip">🇬🇷 Ελληνικά</span><span class="chip">🇨🇿 Čeština</span><span class="chip">🇩🇰 Dansk</span><span class="chip">🇫🇮 Suomi</span><span class="chip">🇷🇴 Română</span><span class="chip">🇭🇺 Magyar</span><span class="chip">🇻🇳 Tiếng Việt</span><span class="chip">🇮🇸 Íslenska</span><span class="chip">🇬🇪 ქართული</span><span class="chip">🇮🇷 فارسی</span><span class="chip">🇮🇳 हिन्दी</span><span class="chip">🇹🇭 ไทย</span><span class="chip">🇮🇩 Bahasa Indonesia</span><span class="chip">🇷🇸 Српски</span><span class="chip">🇸🇰 Slovenčina</span><span class="chip">🇸🇮 Slovenščina</span><span class="chip">🇱🇻 Latviešu</span><span class="chip">🇰🇿 Қазақ тілі</span><span class="chip">🇧🇬 Български</span><span class="chip">🇬🇧 English</span><span class="chip">🇵🇹 Português</span><span class="chip">🇪🇸 Español</span><span class="chip">🇫🇷 Français</span><span class="chip">🇩🇪 Deutsch</span><span class="chip">🇮🇹 Italiano</span><span class="chip">🇳🇱 Nederlands</span><span class="chip">🇵🇱 Polski</span><span class="chip">🇷🇺 Русский</span><span class="chip">🇺🇦 Українська</span><span class="chip">🇹🇷 Türkçe</span><span class="chip">🇸🇪 Svenska</span><span class="chip">🇯🇵 日本語</span><span class="chip">🇰🇷 한국어</span><span class="chip">🇨🇳 中文</span><span class="chip">🇸🇦 العربية</span><span class="chip">🇬🇷 Ελληνικά</span><span class="chip">🇨🇿 Čeština</span><span class="chip">🇩🇰 Dansk</span><span class="chip">🇫🇮 Suomi</span><span class="chip">🇷🇴 Română</span><span class="chip">🇭🇺 Magyar</span><span class="chip">🇻🇳 Tiếng Việt</span><span class="chip">🇮🇸 Íslenska</span><span class="chip">🇬🇪 ქართული</span><span class="chip">🇮🇷 فارسی</span><span class="chip">🇮🇳 हिन्दी</span><span class="chip">🇹🇭 ไทย</span><span class="chip">🇮🇩 Bahasa Indonesia</span><span class="chip">🇷🇸 Српски</span><span class="chip">🇸🇰 Slovenčina</span><span class="chip">🇸🇮 Slovenščina</span><span class="chip">🇱🇻 Latviešu</span><span class="chip">🇰🇿 Қазақ тілі</span><span class="chip">🇧🇬 Български</span></div>
+        </div>
+      </section>
+
+      <!-- ─────────────── SHOWCASE B · GAMES ─────────────── -->
+      <section class="section section--games" id="games">
+        <div class="wrap show show--rev">
+          <div class="show__visual reveal">
+            <div class="wordle">
+              <div class="wordle__rows" id="wordle" data-prerender-fragment="wordle"><div class="wrow"><span class="wtile g">V</span><span class="wtile g">O</span><span class="wtile x">I</span><span class="wtile x">C</span><span class="wtile y">E</span></div><div class="wrow"><span class="wtile x">T</span><span class="wtile g">O</span><span class="wtile x">K</span><span class="wtile g">E</span><span class="wtile g">N</span></div><div class="wrow"><span class="wtile g">V</span><span class="wtile g">O</span><span class="wtile g">Z</span><span class="wtile g">E</span><span class="wtile g">N</span></div></div>
+              <div class="game-pills">
+                <span>Guess the Language</span><span>Fast Talk</span><span>Reflexes</span>
+                <span>Spelling Bee</span><span>Wordle</span><span>Vozen Says</span>
+              </div>
+            </div>
+          </div>
+          <div class="show__copy reveal">
+            <h2 data-i18n="games.title">Joga em voz alta</h2>
+            <p data-i18n="games.sub">16 minijogos feitos para voz: uma cadeia de palavras por turnos na tua língua (o Vozen lê cada palavra em voz alta), adivinha a língua falada, decifra fala super-rápida, ditados, duelos de reflexos, e ainda Wordle, forca, galo e xadrez em tabuleiros gráficos. Cada servidor tem leaderboard</p>
+            <ul class="ticks ticks--amber">
+              <li data-i18n="games.t1">Jogos de voz + texto, 1º a acertar</li>
+              <li data-i18n="games.t2">Leaderboard do servidor e stats pessoais</li>
+              <li data-i18n="games.t3">O Vozen anuncia o vencedor em voz alta</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── SHOWCASE C · SETUP ─────────────── -->
+      <section class="section" id="setup">
+        <div class="wrap">
+          <header class="head reveal">
+            <h2>Start in 3 steps</h2>
+          </header>
+          <div class="steps">
+            <div class="step reveal">
+              <div class="setup-scene setup-scene--invite" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 300 120" fill="none">
+                  <path d="M102 60h75m-8-8 8 8-8 8" stroke="#8d96c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <g class="setup-bot"><rect x="27" y="24" width="72" height="72" rx="22" fill="#55ebd1"></rect><path d="M47 55v10m8-20v30m8-38v46m8-38v30m8-20v10" stroke="#071421" stroke-width="4" stroke-linecap="round"></path></g>
+                  <rect x="184" y="20" width="89" height="80" rx="16" fill="#303d67" transform="rotate(4 228 60)"></rect>
+                  <path d="m217 42-4 36m19-36-4 36m-23-25h39m-41 15h39" stroke="#b5b4ff" stroke-width="3" stroke-linecap="round"></path>
+                  <circle cx="266" cy="24" r="16" fill="#55ebd1"></circle><path class="setup-check" d="m259 24 5 5 9-10" stroke="#071421" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1"></path>
+                </svg>
+              </div>
+              <div class="setup-label"><span class="step__n">1</span><h3 data-i18n="setup.1.t">Convidar</h3></div>
+              <p data-i18n="setup.1.d">Adiciona o Vozen ao teu servidor com um clique</p>
+            </div>
+            <div class="step reveal">
+              <div class="setup-scene setup-scene--join" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 300 120" fill="none">
+                  <rect x="28" y="10" width="96" height="30" rx="8" fill="#303d67"></rect><text x="40" y="31" fill="#c4c3ff" class="setup-code">/setup</text>
+                  <path d="m56 65-4 29m18-29-4 29M45 75h33M43 85h33" stroke="#55ebd1" stroke-width="2.5" stroke-linecap="round"></path>
+                  <text x="90" y="85" fill="#edf3ff" class="setup-channel">chat</text>
+                  <g class="setup-member"><rect x="193" y="52" width="76" height="50" rx="14" fill="#55ebd1"></rect><path d="M211 73v8m7-16v24m7-29v34m7-29v24m7-16v8" stroke="#071421" stroke-width="3" stroke-linecap="round"></path><circle cx="261" cy="57" r="7" fill="#b5b4ff" stroke="#111b2f" stroke-width="3"></circle></g>
+                  <path class="setup-connection" d="M29 110h241" stroke="#55ebd1" stroke-width="2" stroke-linecap="round" pathLength="1"></path>
+                </svg>
+              </div>
+              <div class="setup-label"><span class="step__n">2</span><h3>/setup</h3></div>
+              <p>Choose a text channel and enable auto-read.</p>
+            </div>
+            <div class="step reveal">
+              <div class="setup-scene setup-scene--speak" data-feature-scene="" aria-hidden="true">
+                <svg viewBox="0 0 300 120" fill="none">
+                  <g class="setup-message"><path d="M29 25h116a13 13 0 0 1 13 13v37a13 13 0 0 1-13 13H49L29 100V38a13 13 0 0 1 13-13" fill="#aaa7ff"></path><text x="47" y="65" fill="#10192b" class="setup-message-text">Hello!</text></g>
+                  <path d="M173 60h23m-7-7 7 7-7 7" stroke="#8d96c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <g class="setup-sound" stroke="#55ebd1" stroke-width="5" stroke-linecap="round"><path d="M216 51v18m12-32v46m12-57v68m12-52v36m12-28v20"></path></g>
+                </svg>
+              </div>
+              <div class="setup-label"><span class="step__n">3</span><h3>Join &amp; type</h3></div>
+              <p>Enter a voice channel, run /join, then type in your configured text channel.</p>
+            </div>
+          </div>
+          <p class="setup-caption"><a href="docs/tts/text-to-speech/reading-messages/">Auto-read guide</a></p>
+        </div>
+      </section>
+
+      <!-- ─────────────── COMMANDS ─────────────── -->
+      <section class="section section--alt" id="commands">
+        <div class="wrap">
+          <header class="head reveal">
+            <h2 data-i18n="cmd.title">Comandos slash simples</h2>
+          </header>
+          <div class="command-preview-layout" data-command-preview="">
+          <div class="command-browser">
+            <div class="tabs reveal" id="cmdTabs" role="group" aria-label="Command categories">
+              <button type="button" class="is-active" data-tab="general" data-i18n="cmd.general" aria-pressed="true">Geral</button>
+              <button type="button" data-tab="voice" data-i18n="cmd.voice" aria-pressed="false">Voz</button>
+              <button type="button" data-tab="fun" data-i18n="cmd.fun" aria-pressed="false">Diversão</button>
+              <button type="button" data-tab="admin" data-i18n="cmd.admin" aria-pressed="false">Admin</button>
+            </div>
+          <div class="cmd-list reveal" id="cmdList" data-prerender-fragment="cmdList"><section aria-label="Geral"><div class="cmd"><code>/setup</code><span>Configuração guiada num passo</span></div><div class="cmd"><code>/join</code><span>Entra no teu canal de voz</span></div><div class="cmd"><code>/tts</code><span>Lê um texto em voz alta</span></div><div class="cmd"><code>/skip</code><span>Salta o áudio atual</span></div><div class="cmd"><code>/leave</code><span>Sai do canal de voz</span></div><div class="cmd"><code>/help</code><span>Mostra a lista de comandos</span></div></section><section aria-label="Voz"><div class="cmd"><code>/voice set</code><span>Escolhe a tua voz, língua e motor</span></div><div class="cmd"><code>/voice list</code><span>Vê todas as vozes</span></div><div class="cmd"><code>/voice favorites</code><span>Open your saved favourite voices</span></div><div class="cmd"><code>/voice recent</code><span>Open your recently used voices</span></div><div class="cmd"><code>/voice preview</code><span>Ouve uma amostra de voz</span></div><div class="cmd"><code>/voice effect</code><span>Robô, eco, demónio… efeitos de voz</span></div></section><section aria-label="Diversão"><div class="cmd"><code>/game play</code><span>Começa 1 dos 16 minijogos</span></div><div class="cmd"><code>/game leaderboard</code><span>Melhores jogadores do servidor</span></div><div class="cmd"><code>/game stats</code><span>Os teus pontos, vitórias e posição</span></div><div class="cmd"><code>/joke</code><span>Uma piada curta em qualquer língua</span></div><div class="cmd"><code>/laugh</code><span>O Vozen ri na tua voz</span></div><div class="cmd"><code>/8-ball</code><span>Pergunta à bola 8, em voz alta</span></div></section><section aria-label="Admin"><div class="cmd"><code>/config greet</code><span>Saudar quem entra na call</span></div><div class="cmd"><code>/config language</code><span>Define a língua da interface</span></div><div class="cmd"><code>/config default-voice</code><span>Define a voz padrão do servidor</span></div><div class="cmd"><code>/config auto-read</code><span>Liga/desliga a leitura automática</span></div><div class="cmd"><code>/config block-word</code><span>Gere a blocklist</span></div><div class="cmd"><code>/server-pronunciation</code><span>Pronúncias para todo o servidor (admin, 3 · 50 com Premium)</span></div></section></div>
+            <a class="command-catalogue-link" href="commands/">View all commands</a>
+          </div>
+          <figure class="command-example reveal">
+            <div class="command-example__request"><code>/tts <span>Hello!</span></code></div>
+            <div class="command-example__reply">
+              <svg class="command-example__avatar" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="12" fill="#55ebd1"></rect><path d="M12 18v4m4-9v14m4-18v22m4-17v12m4-8v4" stroke="#071019" stroke-width="2.5" stroke-linecap="round"></path></svg>
+              <div><strong>Vozen</strong><p>Hello!</p></div>
+              <span class="command-example__bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+            </div>
+          </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─────────────── PRICING ─────────────── -->
+      <section class="section plan-preview" id="premium">
+        <div class="wrap">
+          <header class="head reveal">
+            <h2>Your voice. Or your whole server.</h2>
+            <p>Plus follows you. Premium upgrades your communities — in both bots.</p>
+          </header>
+          <!-- O login/estado da conta vivem agora numa página dedicada (account.html),
+               acessível pelo botão "Log in" da navbar. -->
+          <div class="price-toolbar reveal">
+            <div class="bill-toggle" role="group" aria-label="Período de faturação" data-i18n-aria-label="price.billingPeriod">
+              <button type="button" class="bill-toggle__btn is-active" data-bill="month" data-i18n="price.billMonthly">Mensal</button>
+              <button type="button" class="bill-toggle__btn" data-bill="year">
+                <span data-i18n="price.billYearly">Anual</span>
+                <span class="bill-toggle__save">Annual billing</span>
+              </button>
+            </div>
+          </div>
+          <div class="bundle-ribbon" role="note" aria-label="Pacote Vozen" data-i18n-aria-label="price.bundleAria">
+            <div class="plan-bundle-art" aria-hidden="true"><span class="eco-product__icon eco-product__icon--tts"><svg class="eco-tts-icon" viewBox="0 0 64 64"><rect x="10" y="27" width="6" height="10" rx="3"></rect><rect x="20" y="22" width="6" height="20" rx="3"></rect><rect x="30" y="18" width="6" height="28" rx="3"></rect><rect x="40" y="23" width="6" height="18" rx="3"></rect><rect x="50" y="28" width="4" height="8" rx="2"></rect></svg></span><span class="eco-product__icon eco-product__icon--helper"><svg class="eco-helper-character eco-helper-character--classic" viewBox="0 0 64 64"><path d="M32 19v-7"></path><circle cx="32" cy="9" r="3" class="white"></circle><path d="m15 36-6-4m2 0-2 4M49 36l6-4m-2 0 2 4"></path><rect x="13" y="20" width="38" height="29" rx="13" class="white"></rect><rect x="18" y="26" width="28" height="18" rx="8" class="screen"></rect><circle cx="26" cy="35" r="2.4" class="white"></circle><circle cx="38" cy="35" r="2.4" class="white"></circle><path d="M27 39c3 2.5 7 2.5 10 0"></path></svg></span></div>
+            <div class="bundle-ribbon__copy">
+              <strong>Dois bots. Uma subscrição.</strong>
+              <span>TTS + Helper Premium for everyone in your selected servers.</span>
+            </div>
+            <span class="bundle-ribbon__value" data-i18n="price.bundleValue">TTS + HELPER</span>
+          </div>
+          <div class="pricing">
+            <article class="price-card price-card--free reveal">
+              <h3 data-i18n="price.free.name">Gratuito</h3>
+              <p class="price-card__pitch" data-i18n="price.free.pitch">Todo o essencial. Sem cartão, sem período experimental</p>
+              <div class="seat-toggle plan-scope plan-scope--free">
+                <span class="seat-toggle__btn is-active" data-i18n="price.free.per">para sempre</span>
+              </div>
+              <div class="price-card__price">
+                <span class="price-line"><b><span class="amt" data-i18n="price.free.price">€0</span></b></span>
+                <span class="per" data-i18n="price.free.per">para sempre</span>
+              </div>
+              <ul class="ticks price-card__highlights" aria-label="Destaques do plano grátis" data-i18n-aria-label="price.freeHighlights">
+                <li data-i18n="price.m.1">38 vozes Piper</li>
+                <li data-i18n="price.m.2">35 línguas</li>
+                <li data-i18n="price.m.3">Lê o teu canal em voz alta</li>
+                <li data-i18n="price.m.5">13 dos 16 jogos</li>
+                <li data-i18n="price.m.20">Streaks diários de conversa</li>
+              </ul>
+              <p class="price-card__note" data-i18n="price.free.per">para sempre</p>
+              <a class="price-card__buy price-card__buy--free btn--discord-cta js-invite" href="/dashboard.html?add=1" target="_blank" rel="noopener" data-tts-install-source="tts-pricing" data-i18n="cta.add">Adicionar ao Discord</a>
+              <p class="price-card__idnote">
+                <span data-i18n="price.free.pitch">Todo o essencial. Sem cartão, sem período experimental</span>
+              </p>
+            </article>
+
+            <div class="paid-plans">
+            <article class="price-card price-card--plus reveal">
+              <h3 data-i18n="price.plus.name">Vozen Plus</h3>
+              <p class="price-card__pitch">Your voice upgrades, wherever you chat.</p>
+              <div class="seat-toggle plan-scope">
+                <span class="seat-toggle__btn is-active" data-i18n="price.m.17">Vai contigo para qualquer servidor</span>
+              </div>
+              <div class="price-card__price">
+                <span class="price-line"><b><span class="amt amt--m">€3.99</span><span class="amt amt--y">€37.99</span></b><s class="was was--y">€47.88</s></span>
+                <span class="per per--m" data-i18n="price.plus.per">/ mês · por utilizador</span>
+                <span class="per per--y" data-i18n="price.plus.perYear">/ ano · por utilizador</span>
+              </div>
+              <ul class="ticks price-card__highlights">
+                <li>Tudo o que está no Free</li>
+                <li>Kokoro neural voices</li>
+                <li>All 8 voice effects</li>
+                <li>50 pronúncias pessoais</li>
+                <li>Wordle, Word Chain and Chess</li>
+                <li>Access to /rizz</li>
+                <li>Your perks follow your Discord account</li>
+              </ul>
+              <p class="price-card__note" data-i18n="price.digital">Subscrição digital · sem envio</p>
+              <a class="price-card__buy" href="/premium#plans">View Plus</a>
+              <p class="price-card__idnote">
+                <span data-i18n="premium.signInNote">Inicia sessão primeiro com o Discord. O Stripe trata dos dados de pagamento.</span>              </p>
+            </article>
+            <article class="price-card price-card--pro reveal">
+              <h3 data-i18n="price.pro.name">Vozen Premium</h3>
+              <p class="price-card__pitch">Premium voices and Helper extras for everyone.</p>
+              <!-- Toggle de licenças: a mesma tier muda o número de servidores e o preço. -->
+              <div class="seat-toggle" role="group" aria-label="Servidores por subscrição" data-i18n-aria-label="price.serversPerSubscription">
+                <button type="button" class="seat-toggle__btn is-active" data-seats="2" data-i18n="price.pro.seats2">2 servidores</button>
+                <button type="button" class="seat-toggle__btn" data-seats="5" data-i18n="price.pro.seats5">5 servidores</button>
+              </div>
+              <div class="price-card__price">
+                <span class="price-line"><b><span class="amt amt--m amt--s2">€6.99</span><span class="amt amt--m amt--s5">€14.99</span><span class="amt amt--y amt--s2">€66.99</span><span class="amt amt--y amt--s5">€133.99</span></b><s class="was was--y was--s2">€83.88</s><s class="was was--y was--s5">€179.88</s></span>
+                <span class="per per--m per--s2" data-i18n="price.pro.per">/ mês · 2 servidores</span>
+                <span class="per per--m per--s5" data-i18n="price.max.per">/ mês · 5 servidores</span>
+                <span class="per per--y per--s2" data-i18n="price.pro.perYear">/ ano · 2 servidores</span>
+                <span class="per per--y per--s5" data-i18n="price.max.perYear">/ ano · 5 servidores</span>
+              </div>
+              <ul class="ticks ticks--amber price-card__highlights">
+                <li>Tudo o que está no Free</li>
+                <li>Kokoro voices for everyone</li>
+                <li>All 8 voice effects</li>
+                <li>50 personal + 50 server pronunciations</li>
+                <li>Wordle, Word Chain, Chess and /rizz</li>
+                <li>Keep Vozen in the voice channel 24/7</li>
+                <li>Transcrição de voz em direto</li>
+                <li>Helper Premium in your selected servers</li>
+              </ul>
+              <p class="price-card__note note--s2" data-i18n="price.digital">Subscrição digital · sem envio</p>
+              <p class="price-card__note note--s5" data-i18n="price.digital">Subscrição digital · sem envio</p>
+              <a class="price-card__buy price-card__buy--pro" href="/premium#plans">View Premium</a>
+              <p class="price-card__idnote">
+                <span data-i18n="premium.signInNote">Inicia sessão primeiro com o Discord. O Stripe trata dos dados de pagamento.</span>              </p>
+            </article>
+            </div>
+
+          </div>
+            <details class="plan-full-comparison">
+              <summary>Compare all Free, Plus &amp; Premium features</summary>
+            <section class="plan-comparison reveal" aria-labelledby="planComparisonTitle">
+              <div class="plan-comparison__head">
+                <div>
+                  <span class="plan-kicker" data-i18n="price.eyebrow">Preços</span>
+                  <h3 id="planComparisonTitle" data-i18n="price.compare.title">Vê todas as diferenças</h3>
+                  <p data-i18n="price.compare.sub">A comparação completa dos planos, sem surpresas</p>
+                </div>
+                <span class="plan-comparison__checkout" data-i18n="price.checkout">Continuar para o pagamento</span>
+              </div>
+              <div class="plan-table-wrap" tabindex="0" aria-label="Tabela de comparação de planos" data-i18n-aria-label="price.compareTable">
+                <!-- role=* explícitos: em mobile o CSS usa display:grid nas linhas (blocos
+                     verticais + cabeçalho sticky) e isso pode apagar a semântica de tabela
+                     nativa; os roles repõem-na para leitores de ecrã. -->
+                <table class="plan-table" role="table">
+                  <thead>
+                    <tr role="row">
+                      <th scope="col" role="columnheader" data-i18n="nav.features">Funcionalidades</th>
+                      <th scope="col" role="columnheader" data-i18n="price.free.name">Gratuito</th>
+                      <th scope="col" role="columnheader" data-i18n="price.plus.name">Vozen Plus</th>
+                      <th scope="col" role="columnheader" data-i18n="price.pro.name">Vozen Premium</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Bloco A — base grátis: incluído nos três planos. -->
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.1">38 vozes Piper</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.2">35 línguas</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.3">Lê o teu canal em voz alta</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.4">Piadas e saudações</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.5">13 dos 16 jogos</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.6">Efeitos de voz Robot e Echo</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.7">Leaderboard semanal</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.20">Streaks diários de conversa</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.8">Kit de administração completo</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <!-- Bloco B — extras pagos: iguais no Plus e no Premium. -->
+                    <tr role="row" class="group-b"><th scope="row" role="rowheader" data-i18n="price.m.21">Motor neural Kokoro</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.9">Os 8 efeitos de voz (grave, demónio, rádio…)</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.11">Jogo Word Chain</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.12">Jogo Wordle</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.13">Jogo de xadrez</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.14">/rizz</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.15">50 pronúncias pessoais</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <!-- Bloco C — exclusivos: pessoal (Plus) vs servidor (Premium). -->
+                    <tr role="row" class="group-c"><th scope="row" role="rowheader" data-i18n="price.m.17">Vai contigo para qualquer servidor</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has-not">—</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.19">50 pronúncias do servidor</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.16">Na call 24/7</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.23">Transcrição de voz em direto</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.18">Funciona para todos no servidor</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            </details>
+        </div>
+      </section>
+
+      <!-- ─────────────── FAQ ─────────────── -->
+      <section class="section" id="faq">
+        <div class="wrap wrap--narrow">
+          <header class="head reveal">
+            <h2 data-i18n="faq.title">Perguntas, respondidas</h2>
+          </header>
+          <div class="faq" id="faq-list" data-prerender-fragment="faq-list">
+      <div class="qa">
+        <button class="qa__q" aria-expanded="false" aria-controls="qa-0">
+          <span>Posso usar o Vozen grátis?</span>
+        </button>
+        <div class="qa__a" id="qa-0" role="region"><p>Sim. Podes usar as vozes Piper, a leitura automática e os jogos gratuitos sem subscrição.</p></div>
+      </div>
+      <div class="qa">
+        <button class="qa__q" aria-expanded="false" aria-controls="qa-1">
+          <span>Como começo a usar o Vozen?</span>
+        </button>
+        <div class="qa__a" id="qa-1" role="region"><p>Adiciona o Vozen a um servidor que geres. Usa /setup para escolher um canal de texto e ativar a leitura automática. Depois, entra num canal de voz e usa /join.</p></div>
+      </div>
+      <div class="qa">
+        <button class="qa__q" aria-expanded="false" aria-controls="qa-2">
+          <span>Cada membro pode escolher a sua voz?</span>
+        </button>
+        <div class="qa__a" id="qa-2" role="region"><p>Usa /voice set para escolher a voz e o idioma. Cada membro pode guardar as suas próprias definições.</p></div>
+      </div>
+      <div class="qa">
+        <button class="qa__q" aria-expanded="false" aria-controls="qa-3">
+          <span>Devo escolher Plus ou Premium?</span>
+        </button>
+        <div class="qa__a" id="qa-3" role="region"><p>O Plus dá vozes Kokoro e efeitos extra à tua conta Discord. O Premium acrescenta funcionalidades pagas aos servidores selecionados, no TTS e no Helper. Os pagamentos estão temporariamente suspensos.</p></div>
+      </div>
+      <div class="qa">
+        <button class="qa__q" aria-expanded="false" aria-controls="qa-4">
+          <span>Porque não ouço nada?</span>
+        </button>
+        <div class="qa__a" id="qa-4" role="region"><p>Entra num canal de voz e usa /join. Confirma que o Vozen tem permissão para se ligar e falar, e que o /setup aponta para o canal de texto que estás a usar.</p></div>
+      </div>
+      <div class="qa">
+        <button class="qa__q" aria-expanded="false" aria-controls="qa-5">
+          <span>Como paro a leitura?</span>
+        </button>
+        <div class="qa__a" id="qa-5" role="region"><p>Usa /shut-up para limpar a fila ou /leave para desligar o Vozen do canal de voz. Desativa a leitura automática em /config para deixar de ler novas mensagens.</p></div>
+      </div></div>
+        </div>
+      </section>
+
+      <!-- ─────────────── FINAL CTA ─────────────── -->
+      <section class="finale">
+        <div class="wrap finale__inner reveal">
+          <h2 data-i18n="finale.title">Dá uma voz ao teu servidor</h2>
+          <a class="btn btn--primary btn--discord-cta btn--lg js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero">
+            <span data-i18n="cta.add">Adicionar ao Discord</span>
+          </a>
+          <p class="finale__note" data-i18n="finale.note">Essencial grátis para sempre · 35 línguas · Configura em 30 segundos</p>
+        </div>
+      </section>
     </main>
-    <footer class="guide-shell guide-footer">Vozen TTS para Discord.<nav aria-label="Rodapé"><a href="../guides/discord-without-a-mic/">Guia para usar sem microfone</a><a href="../../privacy.html">Privacidade</a><a href="../../terms.html">Termos</a></nav></footer>
-    <script defer="" src="../../js/analytics-config.js?v=f6b49da441d8"></script><script defer="" src="../../js/web-analytics-v1.js?v=e934b4dd1f34"></script><script defer="" src="../../js/install-config-v1.js?v=97c30a4aaef1"></script><script defer="" src="../../js/tts-install-v1.js?v=06da33493db0"></script>
+
+    <!-- ─────────────── FOOTER ─────────────── -->
+    <footer class="foot">
+      <div class="wrap foot__grid">
+        <div>
+          <a class="brand" href="https://vozen.org/pt/tts/" aria-label="Página inicial do ecossistema Vozen">
+            <span class="brand__mark"><img class="brand__portal" src="favicon.svg" alt="" width="40" height="40"></span>
+            <span class="brand__word">Vozen</span>
+          </a>
+          <p class="foot__tag" data-i18n="foot.tag">Escreve, ouve</p>
+        </div>
+        <div>
+          <h2 data-i18n="foot.product">Produto</h2>
+          <a href="https://vozen.org/pt/tts/#features" data-i18n="nav.features">Funcionalidades</a>
+          <a href="https://vozen.org/pt/tts/#games" data-i18n="nav.games">Jogos</a>
+          <a href="commands/" data-i18n="nav.commands">Comandos</a>
+          <a href="premium.html#plans" data-i18n="nav.premium">Premium</a>
+          <a href="https://vozen.org/pt/tts/#faq" data-i18n="nav.faq">FAQ</a>
+          <a href="https://vozen.org/pt/tts/" data-i18n="ecosystem.name">ecossistema Vozen</a>
+          <a href="pt/helper/">Vozen Helper</a>
+          <a href="/status" data-i18n="site.status">Estado</a>
+        </div>
+        <div>
+          <h2 data-i18n="foot.community">Comunidade</h2>
+          <a href="https://discord.gg/4kYw2WUbNN" class="js-support" data-i18n="foot.support">Servidor de suporte</a>
+          <a href="https://vozen.org/pt/tts/#" class="js-vote" data-i18n="foot.vote">Votar no top.gg</a>
+          <a href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener" data-i18n="site.github">GitHub</a>
+        </div>
+      </div>
+      <div class="wrap foot__base">
+        <span>© 2026 Vozen</span>
+        <span class="foot__legal">
+          <a href="/privacy" data-i18n="foot.privacy">Privacidade</a>
+          <a href="/terms" data-i18n="foot.terms">Termos</a>
+        </span>
+        <span data-i18n="foot.legal">Sem afiliação com o Discord</span>
+      </div>
+    </footer>
+
+    <script defer="" src="js/analytics-config.js?v=f6b49da441d8"></script>
+    <script defer="" src="js/web-analytics-v1.js?v=e934b4dd1f34"></script>
+    <script defer="" src="js/install-config-v1.js?v=97c30a4aaef1"></script>
+    <script defer="" src="js/tts-install-v1.js?v=06da33493db0"></script>
+    <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
+    <script defer="" src="js/global-nav-v1.js?v=c36e628c7056"></script>
+    <script defer="" src="js/i18n-public-loader-v1.js?v=2b404bb3d903"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=2decb7cc2c60"></script>
+    <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
+<script defer="" src="js/product-preview-v1.js?v=dd06ef7904bf"></script>
+<script defer="" src="js/tts-player-preview-v1.js?v=98f9725fcf83"></script>
+<script defer="" src="js/tts-features-preview-v1.js?v=50a88a38197c"></script>
 
 
-<script src="/js/i18n-v41.js?v=09e9c1d6b6ff"></script><script src="/js/i18n-v42.js?v=fa2d41bd9dd3"></script><script src="/js/oauth-config.js?v=15ffe1a765c9"></script><script src="/js/global-nav-v1.js?v=24adad31b169"></script>
+
+
+
+
+
+
+
+
 
 <noscript data-prerender-fallback=""><style>
 .reveal{opacity:1!important;transform:none!important}.qa__a{max-height:none!important}

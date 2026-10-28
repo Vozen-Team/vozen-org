@@ -44,6 +44,6 @@ test('navigation stylesheet fallback recognizes bundled entry-page styles', () =
     };
     vm.runInNewContext(setup, { document, URL });
     assert.equal(added.filter(node => node.rel === 'stylesheet').length, stylesheet === 'docs-shell.css' ? 1 : 0, stylesheet);
-    assert.equal(added.filter(node => node.src === 'https://vozen.org/js/tab-title-v1.js').length, 1);
+    assert.equal(added.filter(node => node.src === 'https://vozen.org/js/tab-title-v1.js?v=2').length, 1);
   }
 });

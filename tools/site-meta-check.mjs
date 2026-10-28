@@ -67,9 +67,7 @@ for (const file of walkHtml(root)) {
     if (/deferred-styles-v1\.js/i.test(html)) errors.push(`${relative}: interaction-deferred CSS loader must not ship`);
     if (!/progressive-styles-v1\.js/i.test(html)) errors.push(`${relative}: progressive CSS loader is missing`);
   }
-  const productRoute = relative === 'pt/tts/index.html'
-    ? undefined
-    : html.match(/data-vozen-localized-route=["'](tts|helper)["']/i)?.[1];
+  const productRoute = html.match(/data-vozen-localized-route=["'](tts|helper)["']/i)?.[1];
   if (productRoute && !new RegExp(`${productRoute}-page-v1\\.css`, 'i').test(html)) {
     errors.push(`${relative}: product-specific page CSS is missing`);
   }

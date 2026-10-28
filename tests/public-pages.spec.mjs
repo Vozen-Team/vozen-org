@@ -262,10 +262,10 @@ for (const path of entryPages) {
 test('localized entry routes expose their own language, title and translated copy', async ({ page }) => {
   const samples = [
     ['/fr/', 'fr', 'Un seul foyer.'],
-    ['/de/tts/', 'de', 'Kein Mikro?'],
-    ['/pt/helper/', 'pt-PT', 'Uma ajuda mais inteligente'],
-    ['/ar/helper/', 'ar', 'مساعدة أذكى'],
-    ['/zh/tts/', 'zh-Hant', '没有麦克风？'],
+    ['/de/tts/', 'de', 'Dein Chat.'],
+    ['/pt/helper/', 'pt-PT', 'O teu servidor.'],
+    ['/ar/helper/', 'ar', 'خادمك.'],
+    ['/zh/tts/', 'zh-Hant', '你的聊天。'],
   ];
   for (const [path, language, copy] of samples) {
     await page.goto(path, { waitUntil: 'networkidle' });
@@ -336,7 +336,7 @@ test('marketing and Docs language menus use all ten bundled SVG flags', async ({
 test('the localized Helper page exposes translated product copy and a real accessible FAQ', async ({ page }) => {
   await page.goto('/pt/helper/', { waitUntil: 'networkidle' });
 
-  await expect(page.locator('#helper-title')).toContainText('Uma ajuda mais inteligente');
+  await expect(page.locator('#helper-title')).toContainText('O teu servidor.');
   await expect(page.locator('[data-helper-cards]')).toBeVisible();
   const faq = page.locator('#helper-faq');
   await expect(faq.getByRole('heading', { name: 'Perguntas, respondidas' })).toBeVisible();
@@ -350,13 +350,13 @@ test('the localized Helper page exposes translated product copy and a real acces
   await expect(firstQuestion.locator('p')).toContainText('O Helper está disponível publicamente');
 });
 
-test('the language selector navigates to the matching canonical product route', async ({ page }) => {
+test('the language selector translates the current product page without navigating', async ({ page }) => {
   await page.goto('/tts/', { waitUntil: 'networkidle' });
   await page.locator('#langBtn').click();
   await page.locator('[data-lang="fr"]').click();
-  await page.waitForURL('**/fr/tts/');
+  await expect(page).toHaveURL(/\/tts\/$/);
   await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
-  await expect(page.locator('h1')).toContainText('Pas de micro ?');
+  await expect(page.locator('h1')).toContainText('Votre chat.');
 });
 
 test('mobile navigation opens without obscuring the page or losing keyboard focus', async ({ page }) => {
@@ -433,7 +433,7 @@ test('TTS does not show the removed Top.gg review section in any generated local
   }
 });
 
-test('the editorial Portuguese TTS page also omits the removed review section', async ({ page }) => {
+test('the Portuguese TTS product page also omits the removed review section', async ({ page }) => {
   await page.goto('/pt/tts/', { waitUntil: 'networkidle' });
 
   await expect(page.locator('#reviews, #reviews-title')).toHaveCount(0);

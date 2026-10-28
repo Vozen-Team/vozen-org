@@ -8,7 +8,7 @@
   var script = document.currentScript;
   var baseUrl = new URL("i18n-public/", script && script.src ? script.src : document.baseURI);
   var pending = {};
-  var bundleVersions = {"en":"aebafeb03033","pt":"cc64833b4431","fr":"988d4f82f3f2","es":"1f2974da1b67","de":"22fa0651cac4","tr":"a437def21a3e","ar":"bc59ec14a645","zh":"08c129328b73","ru":"55a24d301f80","ko":"e09ede5f47cc"};
+  var bundleVersions = {"en":"e752d1f30e88","pt":"8ed02f9574b5","fr":"5400f4cfd0b8","es":"b2572792beb9","de":"c6f5db9fc695","tr":"75cf73a3dd72","ar":"60688e055f6c","zh":"668e08a72346","ru":"0f51a7b8fda2","ko":"72fb93b71560"};
   window.VOZEN_I18N = window.VOZEN_I18N || {};
 
   function safeLocale(value) {
@@ -34,7 +34,8 @@
   }
 
   var localizedRoute = document.documentElement.getAttribute("data-vozen-localized-route");
-  var routeLocale = document.documentElement.getAttribute("data-vozen-locale");
+  var pathLocale = location.pathname.split('/')[1];
+  var routeLocale = supported.indexOf(pathLocale) >= 0 ? pathLocale : null;
   var selected = routeLocale ? safeLocale(routeLocale) : "en";
   if (!routeLocale) {
     try { selected = safeLocale(localStorage.getItem("vozen.lang") || "en"); } catch (_) {}
@@ -42,7 +43,7 @@
   window.vozenLocalizedUrl = localizedRoute ? function (locale) {
     locale = safeLocale(locale);
     var suffix = localizedRoute === "home" ? "" : localizedRoute + "/";
-    return "/" + (locale === "en" ? "" : locale + "/") + suffix;
+    return "/" + (locale === "en" ? "" : locale + "/") + suffix + location.search + location.hash;
   } : null;
   window.vozenLoadPublicLocale = load;
   window.vozenPublicI18nReady = load("en")

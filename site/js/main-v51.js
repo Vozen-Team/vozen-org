@@ -151,7 +151,7 @@
     return typeof value === "string" && Object.prototype.hasOwnProperty.call(LANG_META, value);
   }
   try {
-    const routeLanguage = document.documentElement.getAttribute("data-vozen-locale");
+    const routeLanguage = location.pathname.split('/')[1];
     const storedLanguage = localStorage.getItem(LS_KEY);
     if (isSupportedLanguage(routeLanguage)) {
       lang = routeLanguage;
@@ -178,11 +178,19 @@
   function applyLang(l) {
     lang = isSupportedLanguage(l) && DICT[l] ? l : DEFAULT_LANG;
     document.documentElement.lang = LANG_HTML[lang] || lang;
+    document.documentElement.dataset.vozenLocale = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     const d = DICT[lang];
-    $$("[data-i18n]").forEach((el) => {
-      const k = el.getAttribute("data-i18n");
-      if (d[k] != null && el.textContent !== d[k]) el.textContent = d[k];
+    $$("[data-i18n], [data-preview-i18n]").forEach((el) => {
+      const k = el.getAttribute("data-i18n") || el.getAttribute("data-preview-i18n");
+      if (d[k] != null && el.textContent !== d[k]) {
+        const code = el.querySelector(':scope > code');
+        const command = code?.textContent;
+        if (command && d[k].includes(command)) {
+          const index = d[k].indexOf(command);
+          el.replaceChildren(d[k].slice(0, index), code, d[k].slice(index + command.length));
+        } else el.textContent = d[k];
+      }
     });
     const translatedAttributes = [
       ["data-i18n-aria-label", "aria-label"],
@@ -222,26 +230,23 @@
     ).join("");
     const opts = $$(".lang__opt", panel);
     const isOpen = () => menu.classList.contains("is-open");
+    const focusOption = (option) => {
+      option.focus({ preventScroll: true });
+      panel.scrollTop = option.offsetTop - panel.clientHeight / 2;
+    };
     const open = () => {
       menu.classList.add("is-open");
       btn.setAttribute("aria-expanded", "true");
       const cur = panel.querySelector('[aria-selected="true"]') || opts[0];
-      if (cur) cur.focus();
+      if (cur) focusOption(cur);
     };
     const close = (focusBtn) => {
       menu.classList.remove("is-open");
       btn.setAttribute("aria-expanded", "false");
-      if (focusBtn) btn.focus();
+      if (focusBtn) btn.focus({ preventScroll: true });
     };
     const choose = async (code) => {
       localStorage.setItem(LS_KEY, code); // escolha explícita persiste
-      if (typeof window.vozenLocalizedUrl === "function") {
-        const target = window.vozenLocalizedUrl(code);
-        if (target && new URL(target, location.href).pathname !== location.pathname) {
-          location.assign(target);
-          return;
-        }
-      }
       if (typeof window.vozenLoadPublicLocale === "function") {
         try { await window.vozenLoadPublicLocale(code); } catch { code = DEFAULT_LANG; }
       }
@@ -268,16 +273,16 @@
           close(true);
         } else if (e.key === "ArrowDown") {
           e.preventDefault();
-          (opts[i + 1] || opts[0]).focus();
+          focusOption(opts[i + 1] || opts[0]);
         } else if (e.key === "ArrowUp") {
           e.preventDefault();
-          (opts[i - 1] || opts[opts.length - 1]).focus();
+          focusOption(opts[i - 1] || opts[opts.length - 1]);
         } else if (e.key === "Home") {
           e.preventDefault();
-          opts[0].focus();
+          focusOption(opts[0]);
         } else if (e.key === "End") {
           e.preventDefault();
-          opts[opts.length - 1].focus();
+          focusOption(opts[opts.length - 1]);
         } else if (e.key === "Escape") {
           e.preventDefault();
           close(true);
