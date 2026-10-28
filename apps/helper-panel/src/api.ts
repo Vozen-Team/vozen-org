@@ -1,3 +1,9 @@
+import { navigatePanel, panelRoute } from './panel-route';
+
+export type ShopProductInput = {name:string;price:number;delivery:'manual'|'role';roleId:string|null};
+export type ShopProduct = ShopProductInput & {id:number;version:number};
+export type ShopOrder = {id:number;userId:string;displayName:string;productName:string;price:number;delivery:'manual'|'role';roleId:string|null;status:'pending'|'delivered'|'refunded';createdAt:number};
+export type ShopPage = {guildId:string;products:ShopProduct[];orders:ShopOrder[];nextCursor:number|null;staffChannel:string;failedNotices:number};
 export type RankCardConfig = {
   font: string;
   primary_color: string;
@@ -375,7 +381,7 @@ function isSafePanelHash(value: string): boolean {
 }
 
 function rememberOAuthReturnHash(): void {
-  const hash = window.location.hash;
+  const hash = panelRoute();
   if (!isSafePanelHash(hash)) return;
   try {
     sessionStorage.setItem(OAUTH_RETURN_HASH_KEY, hash);
@@ -392,8 +398,8 @@ export function restoreOAuthReturnHash(): void {
   } catch {
     return;
   }
-  if (!saved || !isSafePanelHash(saved) || window.location.hash === saved) return;
-  window.location.hash = saved;
+  if (!saved || !isSafePanelHash(saved) || panelRoute() === saved) return;
+  navigatePanel(saved, true);
 }
 
 function persistSessionBearer(token: string | null): void {
@@ -565,6 +571,13 @@ async function meOrBootstrap(options?: ReadOptions): Promise<Me> {
 }
 
 export const api = {
+  createTempCategory: (guildId:string,name:string) => request<{guildId:string;channel:{id:string;name:string;type:number};reused:boolean;creatorChannel?:{id:string;name:string;type:number;parentId:string;guildId:string}|null;creatorError?:string}>('/api/temp-channels/category',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,guildId})}),
+  createShopChannel: (guildId:string,name:string) => request<{guildId:string;channel:{id:string;name:string;type:number};reused:boolean}>(`/api/economy/channel?guildId=${encodeURIComponent(guildId)}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name})}),
+  shopNotifications: (guildId:string,channelId:string) => request<{ok:boolean}>(`/api/economy/notifications?guildId=${encodeURIComponent(guildId)}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({channelId})}),
+  shop: (guildId:string,before?:number,signal?:AbortSignal) => request<ShopPage>(`/api/economy/shop?guildId=${encodeURIComponent(guildId)}${before ? `&before=${before}`:''}`,{signal}),
+  saveShopProduct: (guildId:string,product:ShopProductInput,existing?:ShopProduct) => request<{ok:boolean}>(`/api/economy/products${existing ? `/${existing.id}`:''}?guildId=${encodeURIComponent(guildId)}`,{method:existing?'PUT':'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(existing?{product,version:existing.version}:product)}),
+  removeShopProduct: (guildId:string,product:ShopProduct) => request<{ok:boolean}>(`/api/economy/products/${product.id}?guildId=${encodeURIComponent(guildId)}`,{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({version:product.version})}),
+  resolveShopOrder: (guildId:string,id:number,status:'delivered'|'refunded') => request<{ok:boolean}>(`/api/economy/orders/${id}?guildId=${encodeURIComponent(guildId)}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({status})}),
   createBirthdayChannel: (name: string) =>
     request<{guildId:string;channel:{id:string;name:string;type:number};reused:boolean}>('/api/birthdays/channel', {
       method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name}),

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { api, type GuildContext } from './api';
-import { helperLocale } from './i18n';
+import { helperLocale, helperText } from './i18n';
 import { canCreateStarboard, validStarboardName } from './starboard-channel';
 import { canCreateTicketCategory } from './ticket-category';
 import './starboard-channel.css';
@@ -17,7 +17,7 @@ export function TicketPanelChannel({context, onCreated, category = false}: {
   const alive = useRef(true);
   const submitting = useRef(false);
   useEffect(() => { alive.current = true; return () => { alive.current = false; }; }, []);
-  const text = (en: string, pt: string) => helperLocale() === 'pt' ? pt : en;
+  const text = (en: string, pt: string) => helperLocale() === 'pt' ? pt : helperText(en);
   const allowed = category ? canCreateTicketCategory(context) : canCreateStarboard(context);
   async function create() {
     if (!context || !allowed || !validStarboardName(name) || submitting.current) return;
@@ -79,6 +79,6 @@ export function TicketPanelChannel({context, onCreated, category = false}: {
     {!created && <p>{category ? text('Creates a private category. Each ticket keeps access for its author and support team.', 'Cria uma categoria privada. Cada ticket mantém o acesso do autor e da equipa.') : text('New channels are read-only for members. Helper and administrators can post.', 'Os novos canais são de leitura para membros. O Helper e os administradores podem publicar.')}</p>}
     {!allowed && <p role="status">{category ? text('Refresh Discord resources and check Helper channel, role and messaging permissions.', 'Atualiza os recursos Discord e verifica as permissões de canais, cargos e mensagens do Helper.') : text('Refresh Discord resources and check the Helper channel, role, messaging and thread permissions. Administrator is not required.', 'Atualiza os recursos Discord e verifica as permissões de canais, cargos, mensagens e threads do Helper. Não precisa de Administrador.')}</p>}
     {error && <p className="starboard-channel__error" role="alert">{error}</p>}
-    {created && <p className="starboard-channel__success" role="status">{category ? text(`${created} is ready and selected. Check automatic saving above.`, `${created} está pronta e selecionada. Verifica a gravação automática acima.`) : text(`#${created} is ready and selected. Check automatic saving above. Tickets must be enabled to publish the panel.`, `#${created} está pronto e selecionado. Verifica a gravação automática acima. Ativa Tickets para publicar o painel.`)}</p>}
+    {created && <p className="starboard-channel__success" role="status">{category ? (helperLocale() === 'pt' ? `${created} está pronta e selecionada. Verifica a gravação automática acima.` : helperText("{channel} is ready and selected. Check automatic saving above.", { channel: created })) : (helperLocale() === 'pt' ? `#${created} está pronto e selecionado. Verifica a gravação automática acima. Ativa Tickets para publicar o painel.` : helperText("#{channel} is ready and selected. Check automatic saving above. Tickets must be enabled to publish the panel.", { channel: created }))}</p>}
   </section>;
 }

@@ -2128,6 +2128,19 @@ body.page-account .ppanel__receiptbody > .ppanel__claimhint {
     rgba(255, 255, 255, 0.025);
 }
 
+.account-task--music {
+  border-color: rgba(130, 71, 255, 0.38);
+  background:
+    linear-gradient(110deg, rgba(130, 71, 255, 0.16), rgba(0, 206, 230, 0.06)),
+    rgba(255, 255, 255, 0.025);
+}
+
+.account-task--music .account-task__icon {
+  color: #c9afff;
+  border-color: rgba(130, 71, 255, 0.35);
+  background: rgba(130, 71, 255, 0.12);
+}
+
 .account-task--helper {
   border-color: rgba(46, 230, 200, 0.36);
   background:

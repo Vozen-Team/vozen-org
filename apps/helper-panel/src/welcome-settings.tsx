@@ -1,12 +1,13 @@
+import { helperText } from './i18n';
 // Presentation only: preserve the Welcome API keys, values and autosave flow.
 export function welcomeSettingsGroups(locale: string) {
   const pt = locale === 'pt';
   return [
-    { id:'public', title:pt ? 'Mensagem pública' : 'Public welcome', description:pt ? 'Escolhe onde aparece a saudação e o que diz.' : 'Choose where the greeting appears and what it says.', keys:['channel','message'] },
-    { id:'links', title:pt ? 'Atalhos para canais' : 'Channel shortcuts', description:pt ? 'Os botões abrem estes canais. Sem destino escolhido, o respetivo botão fica oculto.' : 'Buttons open these channels. A link stays hidden until you choose its destination.', keys:['guideEnabled','steps','rulesChannel','introductionsChannel','channelsChannel'] },
-    { id:'private', title:pt ? 'Mensagem privada' : 'Private welcome', description:pt ? 'Opcional. Só é enviada se ativares esta opção e o membro permitir mensagens privadas.' : 'Optional. Sent only when enabled and the member allows direct messages.', keys:['sendDm','dmMessage'] },
-    { id:'options', title:pt ? 'Cargo e envio' : 'Role and delivery', description:pt ? 'Opcional: atribui um cargo, ajusta o tempo ou usa um modelo guardado.' : 'Optional: assign a role, adjust the timing or use a saved template.', keys:['autoRole','delaySeconds','templateId'] },
-    { id:'farewell', title:pt ? 'Quando um membro sai' : 'When a member leaves', description:pt ? 'A mensagem de despedida e o canal onde aparece.' : 'The goodbye message and where it appears.', keys:['farewellChannel','farewellMessage'] },
+    { id:'public', title:pt ? 'Mensagem pública' : helperText('Public welcome'), description:pt ? 'Escolhe onde aparece a saudação e o que diz.' : helperText('Choose where the greeting appears and what it says.'), keys:['channel','message'] },
+    { id:'links', title:pt ? 'Atalhos para canais' : helperText('Channel shortcuts'), description:pt ? 'Os botões abrem estes canais. Sem destino escolhido, o respetivo botão fica oculto.' : helperText('Buttons open these channels. A link stays hidden until you choose its destination.'), keys:['guideEnabled','steps','rulesChannel','introductionsChannel','channelsChannel'] },
+    { id:'private', title:pt ? 'Mensagem privada' : helperText('Private welcome'), description:pt ? 'Opcional. Só é enviada se ativares esta opção e o membro permitir mensagens privadas.' : helperText('Optional. Sent only when enabled and the member allows direct messages.'), keys:['sendDm','dmMessage'] },
+    { id:'options', title:pt ? 'Cargo e envio' : helperText('Role and delivery'), description:pt ? 'Opcional: atribui um cargo, ajusta o tempo ou usa um modelo guardado.' : helperText('Optional: assign a role, adjust the timing or use a saved template.'), keys:['autoRole','delaySeconds','templateId'] },
+    { id:'farewell', title:pt ? 'Quando um membro sai' : helperText('When a member leaves'), description:pt ? 'A mensagem de despedida e o canal onde aparece.' : helperText('The goodbye message and where it appears.'), keys:['farewellChannel','farewellMessage'] },
   ];
 }
 
@@ -44,16 +45,16 @@ export function welcomeSettingCopy<T extends {key:string;label:string;help?:stri
     farewellMessage:['Goodbye message','Leave empty if you do not want to send a goodbye.'],
   };
   const value = copy[field.key];
-  return value ? {...field,label:value[0],help:value[1],...(value[2] ? {emptyLabel:value[2]} : {})} : field;
+  return value ? {...field,label:pt ? value[0] : helperText(value[0]),help:pt ? value[1] : helperText(value[1]),...(value[2] ? {emptyLabel:pt ? value[2] : helperText(value[2])} : {})} : field;
 }
 
 export function welcomeStepOptions(locale:string) {
   const pt = locale === 'pt';
   return [
-    {value:'rules',label:pt ? 'Regras' : 'Rules'},
-    {value:'introductions',label:pt ? 'Apresentações' : 'Introductions'},
-    {value:'channels',label:pt ? 'Explorar canais' : 'Explore channels'},
-    {value:'help',label:pt ? 'Ajuda com comandos' : 'Command help'},
+    {value:'rules',label:pt ? 'Regras' : helperText('Rules')},
+    {value:'introductions',label:pt ? 'Apresentações' : helperText('Introductions')},
+    {value:'channels',label:pt ? 'Explorar canais' : helperText('Explore channels')},
+    {value:'help',label:pt ? 'Ajuda com comandos' : helperText('Command help')},
   ];
 }
 
@@ -70,15 +71,15 @@ export function WelcomeGuideSteps({value,locale,onChange}:{value:unknown;locale:
     : typeof value === 'string' ? value.split(',').map(item => item.trim()).filter(Boolean)
     : value === undefined ? ['rules','introductions','channels'] : [];
   const other = selected.filter(step => !options.some(option => option.value === step));
-  const visibleOptions = [...options,...other.map(value => ({value,label:`${pt ? 'Opção guardada' : 'Saved option'}: ${value}`}))];
+  const visibleOptions = [...options,...other.map(value => ({value,label:`${pt ? 'Opção guardada' : helperText('Saved option')}: ${value}`}))];
   return <fieldset className="welcome-settings__steps">
-    <legend>{pt ? 'Botões a incluir' : 'Buttons to include'}</legend>
+    <legend>{pt ? 'Botões a incluir' : helperText('Buttons to include')}</legend>
     <div className="welcome-settings__choices">{visibleOptions.map(option => <label key={option.value}>
       <input type="checkbox" checked={selected.includes(option.value)}
         disabled={selected.length === 1 && selected[0] === option.value}
         onChange={event => onChange(changeWelcomeStep(selected,option.value,event.currentTarget.checked))} />
       <span>{option.label}</span>
     </label>)}</div>
-    {selected.length === 1 && <small>{pt ? 'Mantém pelo menos uma opção selecionada.' : 'Keep at least one option selected.'}</small>}
+    {selected.length === 1 && <small>{pt ? 'Mantém pelo menos uma opção selecionada.' : helperText('Keep at least one option selected.')}</small>}
   </fieldset>;
 }

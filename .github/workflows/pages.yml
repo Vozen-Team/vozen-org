@@ -1,6 +1,8 @@
 name: Deploy vozen.org
 
 on:
+  pull_request:
+    branches: [main]
   push:
     branches: [main]
     paths:
@@ -14,27 +16,23 @@ on:
       - 'package-lock.json'
       - '.eleventy.cjs'
       - 'apps/helper-panel/**'
+      - 'deploy/cloudflare/**'
       - 'tools/install-helper-panel.mjs'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: vozen-org-pages
+  group: vozen-org-pages-${{ github.event_name == 'pull_request' && github.event.pull_request.number || 'production' }}
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  validate:
     runs-on: ubuntu-latest
     env:
       PUPPETEER_SKIP_DOWNLOAD: 'true'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -47,7 +45,14 @@ jobs:
       - name: Install site dependencies
         run: npm ci
       - name: Install browser runtime
-        run: npx playwright install --with-deps chromium
+        timeout-minutes: 10
+        run: |
+          # The runner's Azure HTTP mirror can stall before browser tests start.
+          if test -f /etc/apt/apt-mirrors.txt; then
+            sudo sed -i 's|http://azure.archive.ubuntu.com/ubuntu|https://archive.ubuntu.com/ubuntu|g' /etc/apt/apt-mirrors.txt
+          fi
+          printf 'Acquire::Retries "2"; Acquire::http::Timeout "30"; Acquire::https::Timeout "30";\n' | sudo tee /etc/apt/apt.conf.d/99-vozen-ci-network >/dev/null
+          npx playwright install --with-deps chromium
       - name: Build and validate public site
         run: |
           npm run docs:build
@@ -61,18 +66,20 @@ jobs:
           npm run product-install:check
           npm run auth-session:check
           npm run test:unit
-          npm run test:ui
       - name: Build Helper panel
         run: |
           npm ci --prefix apps/helper-panel
           npm run build --prefix apps/helper-panel
           npm test --prefix apps/helper-panel
+          node tools/helper-locale-coverage.mjs
           node tools/install-helper-panel.mjs
+          node tools/helper-clean-routes-check.mjs
           node tools/release-artifact-check.mjs
           node tools/prerender-check.mjs
+          npm run test:ui
       - name: Check Helper session and server recovery
         run: |
-          node apps/helper-panel/node_modules/vite/bin/vite.js preview apps/helper-panel --host 127.0.0.1 --port 5179 --base /panel/helper-tracker/ &
+          node tools/serve-site.mjs 5179 &
           preview_pid=$!
           trap 'kill "$preview_pid"' EXIT
           for attempt in $(seq 1 30); do
@@ -83,6 +90,7 @@ jobs:
           node tools/helper-session-regression.mjs
           node tools/helper-activity-regression.mjs
           node tools/helper-overview-regression.mjs
+          node tools/helper-language-routing-regression.mjs
           node tools/helper-levels-settings-regression.mjs
           node tools/helper-suggestions-demo-regression.mjs
           node tools/helper-giveaways-demo-regression.mjs
@@ -95,24 +103,75 @@ jobs:
           node tools/helper-leaderboard-demo-regression.mjs
           node tools/helper-achievements-demo-regression.mjs
           node tools/helper-economy-demo-regression.mjs
+          node tools/helper-temp-channels-demo-regression.mjs
+          node tools/helper-invites-demo-regression.mjs
+          node tools/helper-reminders-demo-regression.mjs
           node tools/helper-achievements-page-regression.mjs
           node tools/helper-achievements-settings-regression.mjs
           node tools/helper-birthday-channel-regression.mjs
           node tools/helper-welcome-settings-regression.mjs
           node tools/helper-ticket-channel-regression.mjs
           node tools/helper-ticket-category-regression.mjs
+          node tools/helper-temp-category-regression.mjs
       - name: Minify and test the publication artifact
         run: |
           npm run test:artifact
           npm run build:artifact
           SITE_ROOT=.pages-artifact npm run test:ui
           SITE_ROOT=.pages-artifact npm run test:lighthouse
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
       - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
           path: ./.pages-artifact
+      - name: Upload validated Cloudflare artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: vozen-static-${{ github.sha }}
+          path: ./.pages-artifact
+          include-hidden-files: true
+          retention-days: 3
+          if-no-files-found: error
+
+  deploy:
+    needs: validate
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5.0.0
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+
+  deploy-cloudflare:
+    needs: validate
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && vars.CLOUDFLARE_SITE_PUBLISH == 'true'
+    runs-on: ubuntu-latest
+    environment: cloudflare-production
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          name: vozen-static-${{ github.sha }}
+          path: ./.pages-artifact
+      - name: Install pinned deployment CLI
+        run: npm ci --prefix deploy/cloudflare --ignore-scripts --no-audit --no-fund
+      - name: Publish the validated static artifact
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN"
+          test -n "$CLOUDFLARE_ACCOUNT_ID"
+          cp deploy/cloudflare/_headers .pages-artifact/_headers
+          deploy/cloudflare/node_modules/.bin/wrangler deploy --config deploy/cloudflare/wrangler.jsonc

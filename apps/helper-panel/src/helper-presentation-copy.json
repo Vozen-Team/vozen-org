@@ -1,0 +1,189 @@
+{
+  "Choose who handles requests and where private tickets go.": {
+    "pt": "Define quem atende e onde ficam os pedidos privados.",
+    "fr": "Choisissez qui traite les demandes et où sont créés les tickets privés.",
+    "es": "Elige quién atiende las solicitudes y dónde se crean los tickets privados.",
+    "de": "Wähle, wer Anfragen bearbeitet und wo private Tickets landen.",
+    "tr": "Talepleri kimin yöneteceğini ve özel taleplerin nereye gideceğini seçin.",
+    "ar": "اختر من يتولى الطلبات وأين تُنشأ التذاكر الخاصة.",
+    "zh": "選擇處理請求的人員與私人支援單的位置。",
+    "ru": "Выберите, кто обрабатывает запросы и где размещаются приватные обращения.",
+    "ko": "요청을 처리할 담당자와 비공개 티켓을 만들 위치를 선택합니다."
+  },
+  "Keep rewards from earlier levels": {
+    "pt": "Manter os cargos dos níveis anteriores",
+    "fr": "Conserver les récompenses des niveaux précédents",
+    "es": "Conservar las recompensas de niveles anteriores",
+    "de": "Belohnungen früherer Level behalten",
+    "tr": "Önceki seviyelerin ödüllerini koru",
+    "ar": "الاحتفاظ بمكافآت المستويات السابقة",
+    "zh": "保留先前等級的獎勵",
+    "ru": "Сохранять награды за предыдущие уровни",
+    "ko": "이전 레벨 보상 유지"
+  },
+  "Messages in these channels do not count towards a level.": {
+    "pt": "As mensagens nestes canais não contam para o nível.",
+    "fr": "Les messages de ces salons ne comptent pas pour monter de niveau.",
+    "es": "Los mensajes de estos canales no cuentan para subir de nivel.",
+    "de": "Nachrichten in diesen Kanälen zählen nicht für Level.",
+    "tr": "Bu kanallardaki mesajlar seviyeye katkı sağlamaz.",
+    "ar": "لا تُحتسب الرسائل في هذه القنوات ضمن تقدّم المستوى.",
+    "zh": "這些頻道的訊息不計入等級進度。",
+    "ru": "Сообщения в этих каналах не учитываются при повышении уровня.",
+    "ko": "이 채널의 메시지는 레벨 계산에 반영되지 않습니다."
+  },
+  "Messages sent during this wait do not earn more XP.": {
+    "pt": "Durante este intervalo, as mensagens seguintes não dão XP.",
+    "fr": "Les messages envoyés pendant ce délai ne rapportent pas d’XP supplémentaire.",
+    "es": "Los mensajes enviados durante esta espera no otorgan más XP.",
+    "de": "Nachrichten während dieser Wartezeit bringen keine weiteren XP.",
+    "tr": "Bu bekleme sırasında gönderilen mesajlar ek XP kazandırmaz.",
+    "ar": "لا تمنح الرسائل المرسلة خلال فترة الانتظار هذه XP إضافية.",
+    "zh": "在此等待期間傳送的訊息不會獲得額外 XP。",
+    "ru": "Сообщения, отправленные за это время ожидания, не дают дополнительный XP.",
+    "ko": "대기 시간 중 보낸 메시지에는 추가 XP가 지급되지 않습니다."
+  },
+  "New requests are created in this category.": {
+    "pt": "Os novos pedidos ficam nesta categoria.",
+    "fr": "Les nouvelles demandes sont créées dans cette catégorie.",
+    "es": "Las nuevas solicitudes se crean en esta categoría.",
+    "de": "Neue Anfragen werden in dieser Kategorie erstellt.",
+    "tr": "Yeni talepler bu kategoride oluşturulur.",
+    "ar": "تُنشأ الطلبات الجديدة في هذه الفئة.",
+    "zh": "新請求會建立於此類別。",
+    "ru": "Новые обращения создаются в этой категории.",
+    "ko": "새 요청이 이 카테고리에 생성됩니다."
+  },
+  "Notified when a ticket opens and can manage requests. Make the role mentionable or allow Helper to mention roles. Discord notification preferences still apply.": {
+    "pt": "Recebe avisos e pode gerir tickets. Permite mencionar o cargo ou dá essa permissão ao Helper. As preferências de notificação do Discord continuam a aplicar-se.",
+    "fr": "Reçoit une notification à l’ouverture d’un ticket et peut gérer les demandes. Rendez le rôle mentionnable ou autorisez Helper à mentionner des rôles. Les préférences de notification Discord continuent de s’appliquer.",
+    "es": "Recibe notificaciones cuando se abre un ticket y puede gestionar solicitudes. Permite mencionar el rol o autoriza a Helper a mencionar roles. Las preferencias de notificación de Discord siguen aplicándose.",
+    "de": "Wird beim Öffnen eines Tickets benachrichtigt und kann Anfragen verwalten. Mache die Rolle erwähnbar oder erlaube Helper, Rollen zu erwähnen. Die Discord-Benachrichtigungseinstellungen gelten weiterhin.",
+    "tr": "Bir talep açıldığında bildirim alır ve talepleri yönetebilir. Rolü etiketlenebilir yapın veya Helper'ın rolleri etiketlemesine izin verin. Discord bildirim tercihleri geçerliliğini korur.",
+    "ar": "تتلقى إشعارًا عند فتح تذكرة ويمكنها إدارة الطلبات. اجعل الرتبة قابلة للإشارة أو اسمح لـ Helper بالإشارة إلى الرتب. تبقى تفضيلات إشعارات Discord سارية.",
+    "zh": "開啟支援單時會收到通知，並可管理請求。請將身分組設為可提及，或允許 Helper 提及身分組。Discord 通知偏好設定仍適用。",
+    "ru": "Получает уведомление при открытии обращения и может управлять запросами. Разрешите упоминание роли или дайте Helper право упоминать роли. Настройки уведомлений Discord продолжают действовать.",
+    "ko": "티켓이 열리면 알림을 받고 요청을 관리할 수 있습니다. 역할을 멘션 가능하게 설정하거나 Helper에 역할 멘션 권한을 부여하세요. Discord 알림 설정은 계속 적용됩니다."
+  },
+  "Private ticket category": {
+    "pt": "Categoria dos tickets privados",
+    "fr": "Catégorie des tickets privés",
+    "es": "Categoría de tickets privados",
+    "de": "Kategorie für private Tickets",
+    "tr": "Özel talep kategorisi",
+    "ar": "فئة التذاكر الخاصة",
+    "zh": "私人支援單類別",
+    "ru": "Категория приватных обращений",
+    "ko": "비공개 티켓 카테고리"
+  },
+  "Receives the history of closed tickets.": {
+    "pt": "Recebe o histórico dos tickets fechados.",
+    "fr": "Reçoit l’historique des tickets fermés.",
+    "es": "Recibe el historial de los tickets cerrados.",
+    "de": "Empfängt den Verlauf geschlossener Tickets.",
+    "tr": "Kapatılan taleplerin geçmişini alır.",
+    "ar": "يستقبل سجل التذاكر المغلقة.",
+    "zh": "接收已關閉支援單的紀錄。",
+    "ru": "Получает историю закрытых обращений.",
+    "ko": "종료된 티켓의 기록을 받습니다."
+  },
+  "Records channel (optional)": {
+    "pt": "Canal dos registos (opcional)",
+    "fr": "Salon des journaux (facultatif)",
+    "es": "Canal de registros (opcional)",
+    "de": "Protokollkanal (optional)",
+    "tr": "Kayıt kanalı (isteğe bağlı)",
+    "ar": "قناة السجلات (اختياري)",
+    "zh": "紀錄頻道（選填）",
+    "ru": "Канал записей (необязательно)",
+    "ko": "기록 채널(선택 사항)"
+  },
+  "Sends a reminder if nobody claims the request in this time. It does not close the ticket.": {
+    "pt": "Envia um aviso se ninguém assumir o pedido neste prazo. Não fecha o ticket.",
+    "fr": "Envoie un rappel si personne ne prend la demande en charge dans ce délai. Ne ferme pas le ticket.",
+    "es": "Envía un recordatorio si nadie se hace cargo de la solicitud en este plazo. No cierra el ticket.",
+    "de": "Sendet eine Erinnerung, wenn in dieser Zeit niemand die Anfrage übernimmt. Das Ticket wird nicht geschlossen.",
+    "tr": "Bu sürede kimse talebi üstlenmezse hatırlatma gönderir. Talebi kapatmaz.",
+    "ar": "يرسل تذكيرًا إذا لم يتولَّ أحد الطلب خلال هذه المدة. لا يُغلق التذكرة.",
+    "zh": "若在此期間無人接手請求，會傳送提醒，但不會關閉支援單。",
+    "ru": "Отправляет напоминание, если за это время никто не принял обращение. Не закрывает обращение.",
+    "ko": "지정한 시간 내에 아무도 요청을 담당하지 않으면 알림을 보냅니다. 티켓을 종료하지는 않습니다."
+  },
+  "Support and records": {
+    "pt": "Atendimento e registos",
+    "fr": "Assistance et journaux",
+    "es": "Soporte y registros",
+    "de": "Support und Protokolle",
+    "tr": "Destek ve kayıtlar",
+    "ar": "الدعم والسجلات",
+    "zh": "支援與紀錄",
+    "ru": "Поддержка и записи",
+    "ko": "지원 및 기록"
+  },
+  "Support reminder (hours)": {
+    "pt": "Lembrete para a equipa (horas)",
+    "fr": "Rappel d’assistance (heures)",
+    "es": "Recordatorio de soporte (horas)",
+    "de": "Supporterinnerung (Stunden)",
+    "tr": "Destek hatırlatması (saat)",
+    "ar": "تذكير الدعم (ساعات)",
+    "zh": "支援提醒（小時）",
+    "ru": "Напоминание команде поддержки (часы)",
+    "ko": "지원 알림(시간)"
+  },
+  "Support team": {
+    "pt": "Equipa de suporte",
+    "fr": "Équipe d’assistance",
+    "es": "Equipo de soporte",
+    "de": "Supportteam",
+    "tr": "Destek ekibi",
+    "ar": "فريق الدعم",
+    "zh": "支援團隊",
+    "ru": "Команда поддержки",
+    "ko": "지원팀"
+  },
+  "The public channel with the Open ticket button.": {
+    "pt": "O canal público com o botão Open ticket.",
+    "fr": "Le salon public contenant le bouton Ouvrir un ticket.",
+    "es": "El canal público con el botón Abrir ticket.",
+    "de": "Der öffentliche Kanal mit der Schaltfläche „Ticket öffnen“.",
+    "tr": "Talep aç düğmesinin bulunduğu herkese açık kanal.",
+    "ar": "القناة العامة التي تحتوي على زر فتح تذكرة.",
+    "zh": "設有「開啟支援單」按鈕的公開頻道。",
+    "ru": "Общедоступный канал с кнопкой открытия обращения.",
+    "ko": "티켓 열기 버튼이 있는 공개 채널입니다."
+  },
+  "What members see before opening a ticket.": {
+    "pt": "O texto que os membros veem antes de abrir um ticket.",
+    "fr": "Ce que les membres voient avant d’ouvrir un ticket.",
+    "es": "Lo que ven los miembros antes de abrir un ticket.",
+    "de": "Was Mitglieder vor dem Öffnen eines Tickets sehen.",
+    "tr": "Üyelerin talep açmadan önce gördükleri.",
+    "ar": "ما يراه الأعضاء قبل فتح تذكرة.",
+    "zh": "成員開啟支援單前看到的內容。",
+    "ru": "Что участники видят перед открытием обращения.",
+    "ko": "멤버가 티켓을 열기 전에 보는 내용입니다."
+  },
+  "When off, Helper removes the other level rewards when assigning a new one.": {
+    "pt": "Se desligares, o Helper remove as outras recompensas de nível ao atribuir uma nova.",
+    "fr": "Lorsque cette option est désactivée, Helper retire les autres récompenses de niveau lorsqu’il en attribue une nouvelle.",
+    "es": "Cuando está desactivado, Helper elimina las recompensas de los otros niveles al asignar una nueva.",
+    "de": "Wenn aus, entfernt Helper bei einer neuen Levelbelohnung die bisherigen Belohnungen.",
+    "tr": "Kapalıyken Helper yeni bir seviye ödülü atadığında diğer seviye ödüllerini kaldırır.",
+    "ar": "عند التعطيل، يزيل Helper مكافآت المستويات الأخرى عند تعيين مكافأة جديدة.",
+    "zh": "關閉時，Helper 會在指派新等級獎勵時移除其他等級獎勵。",
+    "ru": "При отключении Helper удаляет другие награды за уровни при назначении новой.",
+    "ko": "끄면 새 레벨 보상을 부여할 때 Helper가 다른 레벨 보상을 제거합니다."
+  },
+  "Where members open tickets": {
+    "pt": "Onde abrir um ticket",
+    "fr": "Où les membres ouvrent leurs tickets",
+    "es": "Dónde abren tickets los miembros",
+    "de": "Wo Mitglieder Tickets öffnen",
+    "tr": "Üyelerin talep açtığı yer",
+    "ar": "مكان فتح الأعضاء للتذاكر",
+    "zh": "成員開啟支援單的位置",
+    "ru": "Где участники открывают обращения",
+    "ko": "멤버가 티켓을 여는 위치"
+  }
+}

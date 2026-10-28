@@ -9,7 +9,7 @@ export function AchievementSettings({guildId,onTest}:{guildId?:string;onTest:()=
   const locale=helperLocale();
   return <section className="achievement-settings" aria-label={achievementText(locale,'Achievements','Conquistas')}>
     <div className="achievement-settings__actions">
-      {guildId && <a className="primary" href={`#/achievements/${guildId}?lang=${locale}`}>{achievementText(locale,'All achievements','Todas as conquistas')}</a>}
+      {guildId && <a className="primary" href={`/panel/collection/?server=${guildId}`}>{achievementText(locale,'All achievements','Todas as conquistas')}</a>}
       <button type="button" className="secondary" onClick={onTest}>{helperT('helper.simulate','Simulate configuration')}</button>
     </div>
     <div className="achievement-settings__grid">{Object.entries(achievementCatalog).map(([id,copy])=><article key={id}>

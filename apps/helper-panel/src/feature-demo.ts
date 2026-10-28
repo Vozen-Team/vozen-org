@@ -1,5 +1,23 @@
+import { helperText } from './i18n';
+import componentCopy from './helper-components-copy.json';
+
 type DemoCopy = { title: string; example: string; steps: [string, string, string] };
 const demos = new Map<string, { asset: string; en: DemoCopy; pt: DemoCopy }>([
+  ['utility.reminders', {
+    asset: 'reminders',
+    en: { title: 'How Reminders work · looping animation', example: 'Sample data and accelerated time. This animation sends no Discord messages.', steps: ['1. Enable Reminders and choose the limits and time zone.', '2. Use /remind with time:10m and text:Team meeting in the channel.', '3. Helper posts the reminder in that channel. Mentions and daily or weekly repeats follow your settings.'] },
+    pt: { title: 'Como funcionam os Lembretes · animação em loop', example: 'Dados de exemplo e tempo acelerado. Esta animação não envia mensagens no Discord.', steps: ['1. Ativa os Lembretes e escolhe os limites e o fuso horário.', '2. Usa /remind com time:10m e text:Reunião da equipa no canal.', '3. O Helper publica o aviso nesse canal. As menções e repetições diárias ou semanais seguem as tuas definições.'] },
+  }],
+  ['management.invite_tracker', {
+    asset: 'invites',
+    en: { title: 'How Invite tracking works · looping animation', example: 'Sample data. No invites are created or Discord messages sent.', steps: ['1. Enable Invite tracking. Helper needs Manage Server to read invites.', '2. A member joins using an existing invite. Helper compares its usage count.', '3. Staff use /invites to see uses and optional inviter names. Joins are attributed only when the change is unambiguous.'] },
+    pt: { title: 'Como funciona o Rastreio de convites · animação em loop', example: 'Dados de exemplo. Não são criados convites nem enviadas mensagens no Discord.', steps: ['1. Ativa o Rastreio de convites. O Helper precisa de Gerir servidor para ler os convites.', '2. Um membro entra com um convite existente. O Helper compara o contador de usos.', '3. A staff usa /invites para ver os usos e, opcionalmente, quem criou o convite. Só são atribuídas entradas quando a alteração é inequívoca.'] },
+  }],
+  ['utility.temp_channels', {
+    asset: 'temp-channels',
+    en: { title: 'How Temporary channels work · looping animation', example: 'Illustrative example. No Discord channels are created or deleted by this animation.', steps: ['1. Enable Temporary channels. Creating a category in the dashboard also sets up Creator Channel; staff can still use /temp-channel.', '2. Join Creator Channel. Helper creates a room with your display name and moves you automatically.', '3. The room stays while anyone is inside. It is deleted when the last member leaves; Creator Channel stays.'] },
+    pt: { title: 'Como funcionam os Canais temporários · animação em loop', example: 'Exemplo ilustrativo. Esta animação não cria nem apaga canais no Discord.', steps: ['1. Ativa Canais temporários. Criar uma categoria no painel configura também o Creator Channel; a staff pode ainda usar /temp-channel.', '2. Entra no Creator Channel. O Helper cria uma sala com o teu nome e move-te automaticamente.', '3. A sala mantém-se enquanto tiver pessoas. É apagada quando a última pessoa sai; o Creator Channel fica.'] },
+  }],
   ['community.economy', {
     asset: 'economy',
     en: { title: 'How Economy works · looping animation', example: 'Sample data: daily +100, work +50 credits. This animation does not change balances or send Discord messages.', steps: ['1. Enable Economy and choose the currency and rewards.', '2. Use /daily once every 24 hours and /work after its configured cooldown.', '3. Check your balance with /balance and the top 10 with /economy-top.'] },
@@ -65,5 +83,14 @@ const demos = new Map<string, { asset: string; en: DemoCopy; pt: DemoCopy }>([
 export function featureDemo(key: string, locale: string): (DemoCopy & { asset: string }) | null {
   const demo = demos.get(key);
   const language = locale === 'pt' ? 'pt' : 'en';
-  return demo ? { ...demo[language], asset: `${demo.asset}-${language}` } : null;
+  if (!demo) return null;
+  const translations: Record<string, Partial<Record<string, string>>> = componentCopy;
+  const text = (source: string) => locale === 'en' ? source : translations[source]?.[locale] ?? helperText(source);
+  // Media retains its EN/PT transcript; the surrounding text uses the site locale.
+  return {
+    title: text(demo.en.title),
+    example: text(demo.en.example),
+    steps: demo.en.steps.map(text) as DemoCopy['steps'],
+    asset: `${demo.asset}-${language}`,
+  };
 }

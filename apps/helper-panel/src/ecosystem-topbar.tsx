@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { helperLocale, helperT, LOCALE_OPTIONS, setHelperLocale } from './i18n';
+import { helperT, LOCALE_OPTIONS, setHelperLocale, useHelperLocale } from './i18n';
 
 type EcosystemAccount = {
   id?: string;
@@ -83,7 +83,7 @@ export function EcosystemAccountAvatar({
 function EcosystemLanguageMenu() {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
-  const locale = helperLocale();
+  const locale = useHelperLocale();
   const localeOption = LOCALE_OPTIONS.find((option) => option.code === locale) ?? LOCALE_OPTIONS[0];
 
   useEffect(() => {
@@ -181,6 +181,7 @@ export function useEcosystemAccount() {
 }
 
 export function EcosystemTopbar() {
+  useHelperLocale();
   const [menuOpen, setMenuOpen] = useState(false);
   const [stuck, setStuck] = useState(false);
   const navRef = useRef<HTMLElement>(null);

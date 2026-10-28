@@ -20,13 +20,14 @@ export function FeatureSimulation({ draft, onClose }: {
   draft: SimulationDraft;
   onClose: () => void;
 }) {
+  const label = t(`helper.feature.${draft.key}.label`, draft.label);
   const dialog = useRef<HTMLDialogElement>(null);
   const backdropPress = useRef(false);
   const [attempt, setAttempt] = useState(0);
   const [result, setResult] = useState<Simulation | null>(null);
   const [failed, setFailed] = useState(false);
   const [animationFailed, setAnimationFailed] = useState(false);
-  const locale = helperLocale() === 'pt' ? 'pt' : 'en';
+  const locale = helperLocale();
   const demo = featureDemo(draft.key, locale);
   const media = demo ? `${import.meta.env.BASE_URL}feature-demos/${demo.asset}` : '';
 
@@ -78,7 +79,7 @@ export function FeatureSimulation({ draft, onClose }: {
     }}>
     <header className="feature-simulation__header">
       <div><small className="eyebrow">{t('helper.demoEyebrow', 'SAFE DEMONSTRATION')}</small>
-        <h2 id="simulation-title">{draft.label}</h2></div>
+        <h2 id="simulation-title">{label}</h2></div>
       <button type="button" className="secondary" autoFocus onClick={onClose}>{t('helper.demoClose', 'Close demonstration')}</button>
     </header>
     <p id="simulation-safety">{t('helper.demoSafety', 'This demonstration does not send messages or change your server. Editor changes are saved separately and automatically.')}</p>

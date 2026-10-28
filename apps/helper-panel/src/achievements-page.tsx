@@ -28,6 +28,7 @@ export function AchievementsPage({ hash }: { hash: string }) {
   useEffect(() => {
     const controller = new AbortController();
     setData(null); setError(''); setQuery(''); setFilter('all');
+    if (/^#\/achievements\/\d{15,22}\/expired$/.test(hash)) { setError('expired'); return; }
     if (!route) { setError('invalid'); return; }
     const base = (import.meta.env.VITE_HELPER_API_BASE as string | undefined)?.replace(/\/$/, '') || 'https://api.vozen.org/rust';
     fetch(`${base}/api/achievements/${route.guild}`, {
@@ -47,14 +48,6 @@ export function AchievementsPage({ hash }: { hash: string }) {
       const next = helperLocale();
       setLocale(next);
       syncHelperDocumentLocale();
-      if (route) {
-        const url = new URL(window.location.href);
-        const [path, search] = url.hash.split('?');
-        const params = new URLSearchParams(search);
-        params.set('lang', next);
-        url.hash = `${path}?${params}`;
-        window.history.replaceState(null, '', url);
-      }
     };
     window.addEventListener('vozen:languagechange', change);
     setHelperLocale(locale);
@@ -89,7 +82,7 @@ export function AchievementsPage({ hash }: { hash: string }) {
         </ul></details>
       </div>
       {!data.profile && <section className="achievement-rarest"><div><h2>{t('Rare finds', 'As mais raras')}</h2></div>{[...all].sort((a, b) => rarity(a) - rarity(b)).slice(0, 3).map(row => <a href={`#achievement-${row.id}`} key={row.id} onClick={event => { event.preventDefault(); document.getElementById(`achievement-${row.id}`)?.scrollIntoView({ behavior: 'auto', block: 'center' }); }}><Medal id={row.id} tier={4} earned /><span>{title(row)}<small><bdi dir="ltr">{rarity(row)} / {data.trackedMembers}</bdi> {t('members', 'membros')}</small></span></a>)}</section>}
-      <section className="achievement-collection"><div className="achievement-section-heading"><h2>{t('All achievements', 'Todas as conquistas')}</h2>{data.profile && <a href={`#/achievements/${route?.guild}?lang=${locale}`}>{t('Server achievements', 'Conquistas do servidor')}</a>}</div>
+      <section className="achievement-collection"><div className="achievement-section-heading"><h2>{t('All achievements', 'Todas as conquistas')}</h2>{data.profile && <a href={`/panel/collection/?server=${route?.guild}`}>{t('Server achievements', 'Conquistas do servidor')}</a>}</div>
         <div className="achievement-toolbar"><label><span className="sr-only">{t('Search achievements', 'Pesquisar conquistas')}</span><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder={t('Find an achievement…', 'Encontra uma conquista…')} /></label>{data.profile && <div className="achievement-filters" aria-label={t('Filter achievements', 'Filtrar conquistas')}>{[['all', t('All', 'Todas')], ['unlocked', t('Unlocked', 'Desbloqueadas')], ['locked', t('To complete', 'Por completar')]].map(([value, label]) => <button type="button" key={value} aria-pressed={filter === value} onClick={() => setFilter(value)}>{label}</button>)}</div>}<label className="achievement-sort">{t('Sort by', 'Ordenar por')}<select value={sort} onChange={event => setSort(event.target.value)}><option value="rarity">{t('Rarity', 'Raridade')}</option><option value="name">{t('Name', 'Nome')}</option>{data.profile && <option value="progress">{t('Progress', 'Progresso')}</option>}</select></label></div>
         <div className="achievement-grid">{visible.map(row => {
           const tier = row.unlocked.filter(Boolean).length;

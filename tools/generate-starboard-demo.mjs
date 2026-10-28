@@ -10,7 +10,7 @@ const destination = path.join(root, 'apps/helper-panel/public/feature-demos');
 // Retain the original command; pass a feature name to generate only that storyboard
 // without replacing any existing Starboard assets.
 const feature = process.argv[2] ?? 'starboard';
-if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy'].includes(feature)) throw new Error('Unknown feature demo');
+if (!['starboard', 'suggestions', 'giveaways', 'tickets', 'welcome', 'polls', 'events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy', 'temp-channels', 'invites', 'reminders'].includes(feature)) throw new Error('Unknown feature demo');
 await fs.mkdir(destination, { recursive: true });
 const browser = await chromium.launch();
 try {
@@ -51,6 +51,9 @@ try {
         ctx.fillText(content, x, y);
       }
       function draw(time) {
+        if (feature === 'reminders') { drawReminders(time); return; }
+        if (feature === 'invites') { drawInvites(time); return; }
+        if (feature === 'temp-channels') { drawTempChannels(time); return; }
         if (feature === 'economy') { drawEconomy(time); return; }
         if (feature === 'achievements') { drawAchievements(time); return; }
         if (feature === 'leaderboard') { drawLeaderboard(time); return; }
@@ -88,6 +91,84 @@ try {
         label(text.sample, 42, 518, 14, '#a3b6d1');
         ctx.fillStyle = '#24354c'; ctx.fillRect(42, 531, 876, 3);
         ctx.fillStyle = '#8ee5d2'; ctx.fillRect(42, 531, 876 * Math.min(time / 10, 1), 3);
+      }
+      function drawReminders(time) {
+        const scheduled = time >= 3;
+        const delivered = time >= 6;
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / LEMBRETES' : 'VOZEN HELPER / REMINDERS', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Um aviso na altura certa.' : 'A reminder at the right time.', 42, 111, 30);
+        card(42, 139, 876, 73);
+        label(pt ? 'Lembretes' : 'Reminders', 65, 171, 23);
+        label(pt ? 'UTC · menções ativas · repetição opcional' : 'UTC · mentions enabled · optional repeats', 65, 198, 17, '#a3b6d1');
+        label(pt ? '● Ativo' : '● Enabled', 780, 174, 19, '#8ee5d2');
+        card(42, 232, 876, 91);
+        label(pt ? '#geral · Rexy' : '#general · Rexy', 65, 262, 17, '#a3b6d1');
+        label(pt ? '/remind time:10m text:Reunião da equipa' : '/remind time:10m text:Team meeting', 65, 299, 23, '#8ee5d2');
+        const reveal = delivered ? Math.min(1, (time - 6) / .35) : 1;
+        const y = 343 + (delivered ? 12 * (1 - reveal) ** 3 : 0);
+        card(42, y, 876, 108, delivered ? reveal : 1);
+        ctx.globalAlpha = delivered ? reveal : 1;
+        label(delivered ? 'Vozen Helper' : scheduled ? (pt ? 'Lembrete #12 agendado.' : 'Reminder #12 scheduled.') : (pt ? 'Escolhe quando e o que queres lembrar.' : 'Choose when and what to remember.'), 65, y + 33, 21, '#8ee5d2');
+        label(delivered ? (pt ? '@Rexy  ⏰  Reunião da equipa' : '@Rexy  ⏰  Team meeting') : scheduled ? (pt ? 'Daqui a 10 minutos · confirmação privada' : 'In 10 minutes · private confirmation') : (pt ? 'O aviso chega ao canal onde usaste /remind.' : 'The reminder arrives where you used /remind.'), 65, y + 76, 23);
+        ctx.globalAlpha = 1;
+        label(time < 3 ? (pt ? '1. Ativa os Lembretes no painel' : '1. Enable Reminders in the dashboard') : time < 6 ? (pt ? '2. Agenda com /remind' : '2. Schedule with /remind') : (pt ? '3. Recebe o aviso no mesmo canal' : '3. Get the reminder in the same channel'), 42, 490, 22);
+        label(pt ? 'Dados de exemplo · tempo acelerado · repetição só quando permitida' : 'Sample data · accelerated time · repeats only when allowed', 42, 522, 14, '#a3b6d1');
+      }
+      function drawInvites(time) {
+        const joined = time >= 3;
+        const result = time >= 5.5;
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / RASTREIO DE CONVITES' : 'VOZEN HELPER / INVITE TRACKING', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Vê de onde chegam os membros.' : 'See where members come from.', 42, 111, 30);
+        card(42, 139, 876, 75);
+        label(pt ? 'Rastreio de convites' : 'Invite tracking', 65, 171, 23);
+        label(pt ? 'Gerir servidor · mostrar quem criou o convite' : 'Manage Server · show inviter names', 65, 199, 17, '#a3b6d1');
+        label(pt ? '● Ativo' : '● Enabled', 780, 174, 19, '#8ee5d2');
+        card(42, 233, 320, 216);
+        label(pt ? 'CONVITE DE EXEMPLO' : 'SAMPLE INVITE', 64, 265, 16, '#a3b6d1');
+        label('demo-rexy', 64, 308, 26, '#8ee5d2');
+        label(pt ? 'Criado por Rexy' : 'Created by Rexy', 64, 341, 19);
+        label(joined ? (pt ? 'Sam entrou no servidor' : 'Sam joined the server') : (pt ? '5 usos' : '5 uses'), 64, 390, 20);
+        if (joined) label(pt ? '5 → 6 usos' : '5 → 6 uses', 64, 423, 21, '#8ee5d2');
+        card(382, 233, 536, 216);
+        label('/invites', 405, 270, 25, '#8ee5d2');
+        label(pt ? 'Resposta privada para a staff' : 'Private response for staff', 405, 301, 16, '#a3b6d1');
+        if (result) {
+          label(pt ? 'demo-rexy — 6 usos — Rexy' : 'demo-rexy — 6 uses — Rexy', 405, 342, 21);
+          label(pt ? 'demo-sam — 2 usos — Sam' : 'demo-sam — 2 uses — Sam', 405, 377, 21);
+          label(pt ? 'Entradas atribuídas: demo-rexy — 1' : 'Tracked joins: demo-rexy — 1', 405, 424, 19, '#8ee5d2');
+        } else label(pt ? 'Consulta os usos de cada convite.' : 'Check how often each invite is used.', 405, 361, 21);
+        label(time < 3 ? (pt ? '1. Ativa o rastreio no painel' : '1. Enable tracking in the dashboard') : time < 5.5 ? (pt ? '2. Um membro usa um convite existente' : '2. A member uses an existing invite') : (pt ? '3. Consulta /invites' : '3. Check /invites'), 42, 490, 22);
+        label(pt ? 'Atribuição apenas quando a alteração é inequívoca · dados de exemplo' : 'Attribution only when the change is unambiguous · sample data', 42, 522, 14, '#a3b6d1');
+      }
+      function drawTempChannels(time) {
+        const joined = time >= 3 && time < 7.5;
+        const guestOnly = time >= 6 && time < 7.5;
+        const removed = time >= 7.5;
+        ctx.fillStyle = '#080f1c'; ctx.fillRect(0, 0, 960, 540);
+        label(pt ? 'VOZEN HELPER / CANAIS TEMPORÁRIOS' : 'VOZEN HELPER / TEMPORARY CHANNELS', 42, 42, 18, '#8ee5d2');
+        label(text.demo, 42, 70, 13, '#a3b6d1');
+        label(pt ? 'Entra. A tua sala está pronta.' : 'Join. Your room is ready.', 42, 111, 30);
+        card(42, 137, 876, 80);
+        label('/temp-channel', 66, 173, 25, '#8ee5d2');
+        label(pt ? 'A staff cria o Creator Channel uma vez.' : 'Staff creates Creator Channel once.', 66, 200, 18, '#a3b6d1');
+        card(42, 234, 360, 220);
+        label(pt ? 'VOZ DA COMUNIDADE' : 'COMMUNITY VOICE', 64, 267, 16, '#a3b6d1');
+        label('➕ Creator Channel', 64, 306, 23, '#8ee5d2');
+        if (joined) {
+          label("♪ Rexy's room", 64, 345, 23, '#8ee5d2');
+          if (!guestOnly) label('● Rexy', 88, 381, 20);
+          label('● Sam', 88, guestOnly ? 381 : 415, 20);
+        }
+        card(422, 234, 496, 220);
+        label(removed ? (pt ? 'Sala apagada' : 'Room deleted') : guestOnly ? (pt ? 'Ainda há alguém na sala' : 'Someone is still inside') : joined ? (pt ? 'Sala criada · entrada automática' : 'Room created · automatic move') : (pt ? 'Entra no Creator Channel' : 'Join Creator Channel'), 446, 280, 23, '#8ee5d2');
+        label(removed ? (pt ? 'Saiu a última pessoa.' : 'The last member left.') : guestOnly ? (pt ? 'Rexy saiu. Sam continua.' : 'Rexy left. Sam stays.') : joined ? (pt ? 'Rexy e Sam podem conversar.' : 'Rexy and Sam can talk.') : (pt ? 'Sem comandos para os membros.' : 'Members do not need commands.'), 446, 327, 21);
+        label(removed ? (pt ? 'O Creator Channel fica disponível.' : 'Creator Channel remains available.') : guestOnly ? (pt ? 'A sala mantém-se aberta.' : 'The room stays open.') : (pt ? 'Uma sala com o teu nome.' : 'A room with your display name.'), 446, 396, 18, '#a3b6d1');
+        label(time < 3 ? (pt ? '1. Entra no Creator Channel' : '1. Join Creator Channel') : time < 7.5 ? (pt ? '2. O Helper cria a sala e move-te para lá' : '2. Helper creates the room and moves you in') : (pt ? '3. Sala vazia → sala apagada' : '3. Empty room → room deleted'), 42, 490, 22);
+        label(pt ? 'Exemplo ilustrativo · categoria e limite configuráveis' : 'Illustrative example · configurable category and room limit', 42, 522, 14, '#a3b6d1');
       }
       function drawEconomy(time) {
         const daily = time >= 2;
@@ -477,10 +558,10 @@ try {
         label(step, 42, 484, 22);
         label(pt ? 'Sem canal escolhido, o botão não aparece · exemplo ilustrativo' : 'Without a chosen channel, the button stays hidden · illustrative example', 42, 518, 14, '#a3b6d1');
       }
-      draw(['events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy'].includes(feature) ? 8 : 0);
+      draw(feature === 'temp-channels' ? 6 : ['events', 'birthdays', 'levels', 'leaderboard', 'achievements', 'economy', 'invites', 'reminders'].includes(feature) ? 8 : 0);
       const poster = canvas.toDataURL('image/png').split(',')[1];
       const stream = canvas.captureStream(24);
-      const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: 700_000 });
+      const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp8', videoBitsPerSecond: ['temp-channels', 'invites', 'reminders'].includes(feature) ? 2_000_000 : 700_000 });
       const chunks = [];
       recorder.ondataavailable = event => chunks.push(event.data);
       const done = new Promise(resolve => { recorder.onstop = resolve; });

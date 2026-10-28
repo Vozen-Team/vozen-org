@@ -1,0 +1,9 @@
+{
+  "Canais ignorados": "Ignored channels",
+  "Cargos ignorados": "Ignored roles",
+  "Escolhe recursos reais do servidor para evitar falsos positivos e receber contexto.": "Choose real server resources to avoid false positives and receive context.",
+  "Mensagens no intervalo": "Messages in the time window",
+  "Quantas mensagens iguais acionam a regra.": "Number of identical messages that trigger the rule.",
+  "Timeout inicial (segundos)": "Initial timeout (seconds)",
+  "Usa 0 para apenas registar o incidente.": "Use 0 to only record the incident."
+}

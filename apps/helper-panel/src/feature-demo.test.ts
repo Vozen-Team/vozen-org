@@ -2,6 +2,38 @@ import { describe, expect, it } from 'vitest';
 import { featureDemo } from './feature-demo';
 
 describe('feature-specific demonstrations', () => {
+  it('shows reminder scheduling and same-channel delivery without real messages', () => {
+    const demo = featureDemo('utility.reminders','en');
+    expect(demo?.asset).toBe('reminders-en');
+    expect(demo?.example).toMatch(/accelerated time.*no Discord messages/);
+    for (const text of ['/remind','time:10m','that channel','daily or weekly']) expect(demo?.steps.join(' ')).toContain(text);
+    expect(featureDemo('utility.reminders','pt')?.asset).toBe('reminders-pt');
+    for (const locale of ['pt','fr','es','de','tr','ar','zh','ru','ko']) {
+      const translated = featureDemo('utility.reminders',locale);
+      expect(translated?.title).not.toBe(demo?.title);
+      expect(translated?.steps.every((step,index) => step !== demo?.steps[index])).toBe(true);
+    }
+  });
+  it('shows staff invite usage and only unambiguous attribution with sample data', () => {
+    const demo = featureDemo('management.invite_tracker', 'en');
+    expect(demo?.asset).toBe('invites-en');
+    expect(demo?.example).toMatch(/sample data/i);
+    expect(demo?.example).toMatch(/no invites are created/i);
+    expect(demo?.steps).toHaveLength(3);
+    for (const phrase of ['Manage Server', 'existing invite', '/invites', 'optional inviter names', 'unambiguous']) expect(demo?.steps.join(' ')).toContain(phrase);
+    expect(featureDemo('management.invite_tracker', 'pt')?.asset).toBe('invites-pt');
+    expect(featureDemo('management.invite_tracker', 'fr')?.asset).toBe('invites-en');
+  });
+  it('shows join-to-create, automatic moving and last-member cleanup for temporary rooms', () => {
+    const demo = featureDemo('utility.temp_channels', 'en');
+    expect(demo?.asset).toBe('temp-channels-en');
+    expect(demo?.steps[0]).toContain('Creating a category in the dashboard also sets up Creator Channel');
+    expect(demo?.example).toMatch(/illustrative/i);
+    expect(demo?.example).toMatch(/no Discord channels are created or deleted/i);
+    for (const phrase of ['/temp-channel', 'Creator Channel', 'moves you automatically', 'last member leaves', 'Creator Channel stays']) expect(demo?.steps.join(' ')).toContain(phrase);
+    expect(featureDemo('utility.temp_channels', 'pt')?.asset).toBe('temp-channels-pt');
+    expect(featureDemo('utility.temp_channels', 'fr')?.asset).toBe('temp-channels-en');
+  });
   it('explains economy commands and cooldowns without changing balances', () => {
     const demo = featureDemo('community.economy', 'en');
     expect(demo?.example).toMatch(/does not change balances/);

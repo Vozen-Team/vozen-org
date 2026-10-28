@@ -47,6 +47,14 @@ test('CSS retains custom properties and removes map references', async () => {
   assert.ok(!result.includes('sourceMappingURL'));
 });
 
+test('Helper module assets retain awaited language loading and module exports', async () => {
+  for(const path of ['panel/helper-tracker/assets/index-test.js','panel\\helper-tracker\\assets\\index-test.js','feature.mjs']) {
+    const result=await minifyAsset(path,'const language = await Promise.resolve("pt"); export { language };');
+    const module=await import(`data:text/javascript,${encodeURIComponent(result)}`);
+    assert.equal(module.language,'pt');
+  }
+});
+
 test('inline code is minified without removing license notices or structured data', async () => {
   const source = '<style>.title { color: red; }</style><script>/*! license */ function publicHandler(value) { return value; }</script><h1>Readable text</h1>';
   const result = await minifyAsset('index.html', source);

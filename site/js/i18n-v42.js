@@ -511,6 +511,23 @@
     extra[locale] = short[locale];
   });
 
+  var musicTasks = {
+    en: ["Manage Vozen Music", "Configure skip rules, voting and moderator roles."],
+    pt: ["Gerir Vozen Music", "Configura as regras de skip, as votações e os cargos de moderador."],
+    fr: ["Gérer Vozen Music", "Configurez les règles de saut, les votes et les rôles de modération."],
+    es: ["Gestionar Vozen Music", "Configura las reglas para saltar canciones, las votaciones y los roles de moderación."],
+    de: ["Vozen Music verwalten", "Konfiguriere das Überspringen, Abstimmungen und Moderatorenrollen."],
+    tr: ["Vozen Music’i yönet", "Atlama kurallarını, oylamayı ve moderatör rollerini yapılandır."],
+    ar: ["إدارة Vozen Music", "اضبط قواعد تخطي المقاطع والتصويت وأدوار المشرفين."],
+    zh: ["管理 Vozen Music", "設定跳過曲目規則、投票及管理員身分組。"],
+    ru: ["Управление Vozen Music", "Настройте пропуск треков, голосование и роли модераторов."],
+    ko: ["Vozen Music 관리", "곡 건너뛰기 규칙, 투표 및 관리자 역할을 설정합니다."]
+  };
+  Object.keys(musicTasks).forEach(function (locale) {
+    extra[locale]["account.manageMusic"] = musicTasks[locale][0];
+    extra[locale]["account.manageMusicDescription"] = musicTasks[locale][1];
+  });
+
   /* Strings used by the React workspace and by the native Helper language
      selector.  Keeping these additions beside the generated catalogue lets
      every supported locale receive the same key set without changing the

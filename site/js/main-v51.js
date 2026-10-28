@@ -8,7 +8,7 @@
      TTS_CLIENT_ID é público (está em qualquer link de convite).
      SUPPORT_URL é o convite do servidor de suporte do Vozen. */
   const TTS_CLIENT_ID = "1523826014935842997";
-  const INVITE_PERMISSIONS = "326420745216"; // Connect+Speak+ViewChannel+SendMessages+ReadMessageHistory+EmbedLinks + threads dos jogos (CreatePublicThreads+SendMessagesInThreads+ManageThreads)
+  const INVITE_PERMISSIONS = "326420745232"; // Connect+Speak+ViewChannel+SendMessages+ReadMessageHistory+EmbedLinks + threads dos jogos (CreatePublicThreads+SendMessagesInThreads+ManageThreads)
   const SUPPORT_URL = "https://discord.gg/4kYw2WUbNN"; // servidor de suporte do Vozen
   // Painel Premium: base HTTPS da API do bot (GET /api/me/premium). VAZIO => o painel fica
   // escondido (a feature ainda não está no ar). Preenche com o teu host quando tiveres o
@@ -856,6 +856,7 @@
           message.revision > 0 &&
           message.revision >= currentAuthRevision()
         ) {
+          clearMusicSession();
           writeSessionValue(TOK_KEY, null);
           writeSessionValue(NAV_USER_KEY, null);
           writeSessionValue(AUTH_EXP_KEY, null);
@@ -962,6 +963,7 @@
     void bootstrapHelperSession(token);
   }
   function clearAuthCache() {
+    clearMusicSession();
     const revision = nextAuthRevision();
     writeSessionValue(TOK_KEY, null);
     writeSessionValue(LEGACY_TOK_KEY, null);
@@ -971,6 +973,48 @@
     writeSessionValue(AUTH_REV_KEY, String(revision));
     clearPersistentAuth();
     publishAuth({ type: "logout", revision });
+  }
+
+  let musicBridgeController = null;
+  function clearMusicSession() {
+    musicBridgeController?.abort();
+    if (!PREMIUM_API_BASE) return;
+    void fetch(PREMIUM_API_BASE + "/music/auth/vozen/logout", {
+      method: "POST", cache: "no-store", credentials: "include", keepalive: true,
+      headers: { "Content-Type": "application/json" }, body: "{}",
+    }).catch(() => {});
+  }
+
+  function wireMusicSessionHandoff() {
+    let pending = false;
+    document.addEventListener("click", (event) => {
+      const target = event.target instanceof Element ? event.target.closest("a.account-task--music") : null;
+      if (!target || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const token = storedToken();
+      if (!token) return;
+      event.preventDefault();
+      if (pending) return;
+      pending = true;
+      target.setAttribute("aria-busy", "true");
+      const controller = new AbortController();
+      musicBridgeController = controller;
+      const timer = window.setTimeout(() => controller.abort(), 5000);
+      void fetch(PREMIUM_API_BASE + "/music/auth/vozen", {
+        method: "POST", cache: "no-store", credentials: "include",
+        headers: { "Content-Type": "application/json" }, body: JSON.stringify({ token }), signal: controller.signal,
+      }).then((response) => {
+        if (storedToken() !== token) return;
+        if (response.ok) window.location.assign(target.href);
+        else showHelperHandoffError(target);
+      }).catch(() => {
+        if (storedToken() === token) showHelperHandoffError(target);
+      }).finally(() => {
+        window.clearTimeout(timer);
+        if (musicBridgeController === controller) musicBridgeController = null;
+        pending = false;
+        target.removeAttribute("aria-busy");
+      });
+    }, { capture: true });
   }
 
   // The account page is the single sign-in surface for the Vozen ecosystem.
@@ -2861,5 +2905,6 @@
   initHear();
   initAuthChannel();
   wireHelperSessionHandoff();
+  wireMusicSessionHandoff();
   loadPanel();
 })();

@@ -1,0 +1,2686 @@
+{
+  "0 sends without waiting.": {
+    "ar": "استخدم 0 للإرسال دون انتظار.",
+    "zh": "設為 0 即可立即傳送。"
+  },
+  "AUTOMATIC SAVING": {
+    "ar": "الحفظ التلقائي",
+    "zh": "自動儲存"
+  },
+  "Account": {
+    "ar": "الحساب",
+    "zh": "帳號"
+  },
+  "Actions before containment": {
+    "ar": "الإجراءات قبل الاحتواء",
+    "zh": "啟動圍堵前的操作次數"
+  },
+  "Activity": {
+    "ar": "النشاط",
+    "zh": "活動"
+  },
+  "Alert only, without punishment": {
+    "ar": "تنبيه فقط، دون عقوبة",
+    "zh": "僅警示，不處罰"
+  },
+  "Alerts you when a new podcast episode is published.": {
+    "ar": "ينبّهك عند نشر حلقة بودكاست جديدة.",
+    "zh": "發布新的 Podcast 單集時通知你。"
+  },
+  "All settings for this server.": {
+    "ar": "جميع إعدادات هذا الخادم.",
+    "zh": "此伺服器的所有設定。"
+  },
+  "Allow authors to star their own message": {
+    "ar": "السماح للكاتب بوضع نجمة على رسالته",
+    "zh": "允許作者為自己的訊息加星"
+  },
+  "Announcement channel (optional)": {
+    "ar": "قناة الإعلانات (اختياري)",
+    "zh": "公告頻道（選填）"
+  },
+  "Announcement message": {
+    "ar": "رسالة الإعلان",
+    "zh": "公告訊息"
+  },
+  "Announcement timezone": {
+    "ar": "المنطقة الزمنية للإعلانات",
+    "zh": "公告時區"
+  },
+  "Append the dashboard URL for server managers.": {
+    "ar": "إضافة رابط لوحة التحكم لمديري الخادم.",
+    "zh": "附上供伺服器管理員使用的控制台網址。"
+  },
+  "Applies basic checks to new members.": {
+    "ar": "يطبّق فحوصات أساسية على الأعضاء الجدد.",
+    "zh": "對新成員進行基本檢查。"
+  },
+  "Apply consistent moderation actions with policy and hierarchy checks.": {
+    "ar": "طبّق إجراءات إشراف متسقة مع التحقق من السياسات وتسلسل الرتب.",
+    "zh": "套用一致的管理措施，並檢查政策與身分組階層。"
+  },
+  "Approved Kick developer application": {
+    "ar": "تطبيق مطوّر Kick معتمد",
+    "zh": "已核准的 Kick 開發者應用程式"
+  },
+  "Approved contract allow-list": {
+    "ar": "قائمة العقود المسموح بها والمعتمدة",
+    "zh": "已核准的合約允許清單"
+  },
+  "Arbitrum": {
+    "ar": "Arbitrum",
+    "zh": "Arbitrum"
+  },
+  "Ask a focused question and keep its result auditable.": {
+    "ar": "اطرح سؤالًا محددًا واجعل نتيجته قابلة للتدقيق.",
+    "zh": "提出明確問題，並保留可供稽核的結果。"
+  },
+  "Audit and permissions": {
+    "ar": "التدقيق والصلاحيات",
+    "zh": "稽核與權限"
+  },
+  "Audit log channel (optional)": {
+    "ar": "قناة سجل التدقيق (اختياري)",
+    "zh": "稽核紀錄頻道（選填）"
+  },
+  "Aurora Lake": {
+    "ar": "بحيرة الشفق",
+    "zh": "極光湖"
+  },
+  "Authorize only your public profile and video list. Helper cannot publish or change content.": {
+    "ar": "امنح الإذن لملفك العام وقائمة فيديوهاتك فقط. لا يستطيع Helper نشر المحتوى أو تعديله.",
+    "zh": "僅授權存取你的公開個人檔案與影片清單。Helper 無法發布或變更內容。"
+  },
+  "Automatic response": {
+    "ar": "رد تلقائي",
+    "zh": "自動回覆"
+  },
+  "Automatic role": {
+    "ar": "رتبة تلقائية",
+    "zh": "自動身分組"
+  },
+  "Avatar ring colour": {
+    "ar": "لون إطار الصورة الشخصية",
+    "zh": "頭像外框顏色"
+  },
+  "Avatar ring width": {
+    "ar": "عرض إطار الصورة الشخصية",
+    "zh": "頭像外框寬度"
+  },
+  "Avoid excessive selections.": {
+    "ar": "تجنّب تحديد خيارات كثيرة.",
+    "zh": "避免選取過多項目。"
+  },
+  "Award XP in voice channels": {
+    "ar": "منح XP في القنوات الصوتية",
+    "zh": "在語音頻道中給予 XP"
+  },
+  "Background & banners": {
+    "ar": "الخلفيات واللافتات",
+    "zh": "背景與橫幅"
+  },
+  "Background colour": {
+    "ar": "لون الخلفية",
+    "zh": "背景顏色"
+  },
+  "Behaviour": {
+    "ar": "السلوك",
+    "zh": "行為"
+  },
+  "Between 1 and 100 members in /leaderboard. The preview shows at most 10.": {
+    "ar": "من 1 إلى 100 عضو في /leaderboard. تعرض المعاينة 10 أعضاء كحد أقصى.",
+    "zh": "/leaderboard 可顯示 1 至 100 位成員。預覽最多顯示 10 位。"
+  },
+  "Birthday announcements": {
+    "ar": "إعلانات أعياد الميلاد",
+    "zh": "生日公告"
+  },
+  "Birthday role (optional)": {
+    "ar": "رتبة عيد الميلاد (اختياري)",
+    "zh": "生日身分組（選填）"
+  },
+  "Blocks suspicious links, invites, and phishing patterns.": {
+    "ar": "يحظر الروابط والدعوات المشبوهة وأنماط التصيد.",
+    "zh": "封鎖可疑連結、邀請與釣魚模式。"
+  },
+  "Bluesky handle": {
+    "ar": "معرّف Bluesky",
+    "zh": "Bluesky 帳號代碼"
+  },
+  "Bluesky public AppView API": {
+    "ar": "واجهة AppView API العامة من Bluesky",
+    "zh": "Bluesky 公開 AppView API"
+  },
+  "Bounded community rewards backed by an auditable balance ledger.": {
+    "ar": "مكافآت مجتمعية ضمن حدود، مدعومة بسجل أرصدة قابل للتدقيق.",
+    "zh": "提供有上限的社群獎勵，並以可稽核的餘額帳本記錄。"
+  },
+  "Bounded message automations keep your server responsive.": {
+    "ar": "أتمتة الرسائل بضوابط تحافظ على سرعة استجابة خادمك.",
+    "zh": "為訊息自動化設定限制，讓伺服器保持順暢。"
+  },
+  "Buttons open these channels. A link stays hidden until you choose its destination.": {
+    "ar": "تفتح الأزرار هذه القنوات. يبقى الرابط مخفيًا حتى تختار وجهته.",
+    "zh": "按鈕會開啟這些頻道。選好目的地後才會顯示連結。"
+  },
+  "Buttons to include": {
+    "ar": "الأزرار المراد تضمينها",
+    "zh": "要顯示的按鈕"
+  },
+  "Canais ignorados": {
+    "ar": "القنوات المستثناة",
+    "zh": "忽略的頻道"
+  },
+  "Cargos ignorados": {
+    "ar": "الرتب المستثناة",
+    "zh": "忽略的身分組"
+  },
+  "Category (optional)": {
+    "ar": "الفئة (اختياري)",
+    "zh": "類別（選填）"
+  },
+  "Celebrate members without requiring a birth year.": {
+    "ar": "احتفل بالأعضاء دون طلب سنة ميلادهم.",
+    "zh": "為成員慶生，無須提供出生年份。"
+  },
+  "Celebrates birthdays automatically, with configurable privacy.": {
+    "ar": "يحتفل بأعياد الميلاد تلقائيًا مع إعدادات خصوصية قابلة للتخصيص.",
+    "zh": "自動慶生，並提供可調整的隱私設定。"
+  },
+  "Centralizes server rules, alerts, and moderation actions.": {
+    "ar": "يجمع قواعد الخادم والتنبيهات وإجراءات الإشراف في مكان واحد.",
+    "zh": "集中管理伺服器規則、警示與管理措施。"
+  },
+  "Changes not saved": {
+    "ar": "تغييرات غير محفوظة",
+    "zh": "變更尚未儲存"
+  },
+  "Changes not saved.": {
+    "ar": "التغييرات غير محفوظة.",
+    "zh": "變更尚未儲存。"
+  },
+  "Channel shortcuts": {
+    "ar": "اختصارات القنوات",
+    "zh": "頻道捷徑"
+  },
+  "Channel where you use /poll": {
+    "ar": "القناة التي تستخدم فيها /poll",
+    "zh": "使用 /poll 的頻道"
+  },
+  "Channels guide (optional)": {
+    "ar": "دليل القنوات (اختياري)",
+    "zh": "頻道指南（選填）"
+  },
+  "Channels that do not award XP": {
+    "ar": "القنوات التي لا تمنح XP",
+    "zh": "不給予 XP 的頻道"
+  },
+  "Channels without XP": {
+    "ar": "قنوات دون XP",
+    "zh": "無 XP 的頻道"
+  },
+  "Check every (seconds)": {
+    "ar": "التحقق كل (ثوانٍ)",
+    "zh": "檢查頻率（秒）"
+  },
+  "Check interval (seconds)": {
+    "ar": "الفاصل بين عمليات التحقق (ثوانٍ)",
+    "zh": "檢查間隔（秒）"
+  },
+  "Check your connection and try again.": {
+    "ar": "تحقق من اتصالك وحاول مجددًا.",
+    "zh": "請檢查連線後再試一次。"
+  },
+  "Choose an existing channel or create one below.": {
+    "ar": "اختر قناة موجودة أو أنشئ واحدة أدناه.",
+    "zh": "選擇現有頻道，或在下方建立新頻道。"
+  },
+  "Choose curated backgrounds and colours for the XP card rendered by /rank.": {
+    "ar": "اختر خلفيات وألوانًا منتقاة لبطاقة XP التي يعرضها /rank.",
+    "zh": "為 /rank 顯示的 XP 卡片選擇精選背景與顏色。"
+  },
+  "Choose from rules, introductions, channels and help.": {
+    "ar": "اختر من القواعد والتعارف والقنوات والمساعدة.",
+    "zh": "從規則、自我介紹、頻道與說明中選擇。"
+  },
+  "Choose how Helper appears in this server's member list.": {
+    "ar": "اختر كيفية ظهور Helper في قائمة أعضاء هذا الخادم.",
+    "zh": "選擇 Helper 在此伺服器成員清單中的顯示方式。"
+  },
+  "Choose how Helper explains its modules.": {
+    "ar": "اختر كيف يشرح Helper وحداته.",
+    "zh": "選擇 Helper 說明各模組的方式。"
+  },
+  "Choose how many custom emojis the staff command lists.": {
+    "ar": "اختر عدد الرموز التعبيرية المخصصة التي يعرضها أمر الفريق.",
+    "zh": "選擇管理團隊指令列出的自訂表情符號數量。"
+  },
+  "Choose real server resources to reduce false positives.": {
+    "ar": "اختر موارد فعلية من الخادم لتقليل الإنذارات الكاذبة.",
+    "zh": "選擇伺服器中實際存在的資源，以減少誤判。"
+  },
+  "Choose the channel and reaction score required to feature a message.": {
+    "ar": "اختر القناة وعدد التفاعلات المطلوب لإبراز رسالة.",
+    "zh": "選擇精選訊息頻道與所需的反應分數。"
+  },
+  "Choose the display name the Helper uses in this server.": {
+    "ar": "اختر اسم العرض الذي يستخدمه Helper في هذا الخادم.",
+    "zh": "選擇 Helper 在此伺服器使用的顯示名稱。"
+  },
+  "Choose the links and module list shown by /help.": {
+    "ar": "اختر الروابط وقائمة الوحدات التي يعرضها /help.",
+    "zh": "選擇 /help 顯示的連結與模組清單。"
+  },
+  "Choose the real XP thresholds used by the achievements command.": {
+    "ar": "اختر حدود XP الفعلية المستخدمة في أمر الإنجازات.",
+    "zh": "選擇成就指令實際使用的 XP 門檻。"
+  },
+  "Choose the real category, support role, transcript channel and SLA used by ticket interactions.": {
+    "ar": "اختر الفئة الفعلية ورتبة الدعم وقناة السجلات وSLA المستخدمة في التذاكر.",
+    "zh": "選擇支援單互動實際使用的類別、支援身分組、對話紀錄頻道與 SLA。"
+  },
+  "Choose the verification level and where the team is notified.": {
+    "ar": "اختر مستوى التحقق ومكان إشعار الفريق.",
+    "zh": "選擇驗證等級與團隊通知位置。"
+  },
+  "Choose what your team can review.": {
+    "ar": "اختر ما يمكن لفريقك مراجعته.",
+    "zh": "選擇團隊可檢視的內容。"
+  },
+  "Choose when the message deserves to appear in the special channel.": {
+    "ar": "حدّد متى تستحق الرسالة الظهور في القناة المميزة.",
+    "zh": "設定訊息何時可列入精選頻道。"
+  },
+  "Choose where farewells are posted and reuse an approved template.": {
+    "ar": "اختر مكان نشر رسائل الوداع وأعد استخدام قالب معتمد.",
+    "zh": "選擇告別訊息的發布位置，並重複使用已核准的範本。"
+  },
+  "Choose where new members find essential information.": {
+    "ar": "اختر أين يجد الأعضاء الجدد المعلومات الأساسية.",
+    "zh": "選擇新成員取得重要資訊的位置。"
+  },
+  "Choose where the greeting appears and what it says.": {
+    "ar": "اختر مكان ظهور التحية ومحتواها.",
+    "zh": "選擇歡迎訊息的顯示位置與內容。"
+  },
+  "Choose which self-service privacy requests members can make.": {
+    "ar": "اختر طلبات الخصوصية التي يمكن للأعضاء تقديمها بأنفسهم.",
+    "zh": "選擇成員可自行提出的隱私請求。"
+  },
+  "Choose who handles requests and where private tickets go.": {
+    "ar": "اختر من يتولى الطلبات وأين تُنشأ التذاكر الخاصة.",
+    "zh": "選擇處理請求的人員與私人支援單的位置。"
+  },
+  "Clockwork Library": {
+    "ar": "مكتبة التروس",
+    "zh": "發條圖書館"
+  },
+  "Closed ticket transcripts are sent here.": {
+    "ar": "تُرسل سجلات محادثات التذاكر المغلقة إلى هنا.",
+    "zh": "已關閉支援單的對話紀錄會傳送到這裡。"
+  },
+  "CoinGecko public API": {
+    "ar": "واجهة CoinGecko API العامة",
+    "zh": "CoinGecko 公開 API"
+  },
+  "Collect ideas, votes and decisions in one visible flow.": {
+    "ar": "اجمع الأفكار والأصوات والقرارات في مسار واحد واضح.",
+    "zh": "將想法、投票與決策整合為清楚可見的流程。"
+  },
+  "Collects ideas and lets the community vote.": {
+    "ar": "يجمع الأفكار ويتيح للمجتمع التصويت.",
+    "zh": "收集想法，讓社群投票。"
+  },
+  "Colors": {
+    "ar": "الألوان",
+    "zh": "顏色"
+  },
+  "Comma-separated IDs such as bitcoin, ethereum or solana.": {
+    "ar": "معرّفات مفصولة بفواصل مثل bitcoin أو ethereum أو solana.",
+    "zh": "以逗號分隔的 ID，例如 bitcoin、ethereum 或 solana。"
+  },
+  "Command help": {
+    "ar": "مساعدة الأوامر",
+    "zh": "指令說明"
+  },
+  "Commands are not answered in these channels.": {
+    "ar": "لا تُجاب الأوامر في هذه القنوات.",
+    "zh": "不在這些頻道回應指令。"
+  },
+  "Commands can still override these defaults when needed.": {
+    "ar": "يمكن للأوامر تجاوز هذه الإعدادات الافتراضية عند الحاجة.",
+    "zh": "需要時仍可透過指令覆寫這些預設值。"
+  },
+  "Community economy": {
+    "ar": "اقتصاد المجتمع",
+    "zh": "社群經濟"
+  },
+  "Community pillar reward role": {
+    "ar": "رتبة مكافأة ركيزة المجتمع",
+    "zh": "社群支柱獎勵身分組"
+  },
+  "Community pillar threshold": {
+    "ar": "حد ركيزة المجتمع",
+    "zh": "社群支柱門檻"
+  },
+  "Complete onboarding for new members.": {
+    "ar": "أكمل تهيئة الأعضاء الجدد.",
+    "zh": "完成新成員引導設定。"
+  },
+  "Configure read-only verification; never enter a seed phrase or private key.": {
+    "ar": "أعدّ التحقق للقراءة فقط؛ لا تُدخل عبارة استرداد أو مفتاحًا خاصًا أبدًا.",
+    "zh": "設定唯讀驗證；切勿輸入助記詞或私鑰。"
+  },
+  "Configure the channel, message, optional DM and real auto-role used on member join.": {
+    "ar": "أعدّ القناة والرسالة والرسالة الخاصة الاختيارية والرتبة التلقائية الفعلية عند انضمام عضو.",
+    "zh": "設定成員加入時使用的頻道、訊息、選用私訊與實際自動指派的身分組。"
+  },
+  "Connect TikTok": {
+    "ar": "ربط TikTok",
+    "zh": "連結 TikTok"
+  },
+  "Connect a bounded trigger to an approved response without code.": {
+    "ar": "اربط مشغّلًا ذا حدود برد معتمد دون برمجة.",
+    "zh": "將有限制的觸發條件連結至已核准的回覆，無須寫程式。"
+  },
+  "Connect the account that publishes the videos": {
+    "ar": "اربط الحساب الذي ينشر الفيديوهات",
+    "zh": "連結發布影片的帳號"
+  },
+  "Connect verification to your community flow.": {
+    "ar": "ادمج التحقق في مسار مجتمعك.",
+    "zh": "將驗證整合至社群流程。"
+  },
+  "Connects a trigger to a response without code.": {
+    "ar": "يربط مشغّلًا برد دون برمجة.",
+    "zh": "將觸發條件連結至回覆，無須寫程式。"
+  },
+  "Containment duration (minutes)": {
+    "ar": "مدة الاحتواء (دقائق)",
+    "zh": "圍堵持續時間（分鐘）"
+  },
+  "Control how many members appear in the XP leaderboard.": {
+    "ar": "حدّد عدد الأعضاء الظاهرين في ترتيب XP.",
+    "zh": "設定 XP 排行榜顯示的成員人數。"
+  },
+  "Control submission frequency and give staff a private notification channel.": {
+    "ar": "اضبط وتيرة تقديم الطلبات وخصص للفريق قناة إشعارات خاصة.",
+    "zh": "控制提交頻率，並為管理團隊設定私人通知頻道。"
+  },
+  "Control the period, visibility and optional live counter channel for server statistics.": {
+    "ar": "اضبط الفترة وإمكانية العرض وقناة العداد المباشر الاختيارية لإحصاءات الخادم.",
+    "zh": "設定伺服器統計的期間、可見範圍及選用的即時計數頻道。"
+  },
+  "Control the reporting window and an optional live counter channel.": {
+    "ar": "اضبط فترة التقارير وقناة عداد مباشر اختيارية.",
+    "zh": "設定報表期間與選用的即時計數頻道。"
+  },
+  "Control the staff-facing invite list without scraping or storing invite tokens.": {
+    "ar": "اضبط قائمة الدعوات المعروضة للفريق دون استخراج رموز الدعوات أو تخزينها.",
+    "zh": "設定管理團隊看到的邀請清單，無須擷取或儲存邀請權杖。"
+  },
+  "Control where and who can use the responses.": {
+    "ar": "حدّد أين يمكن استخدام الردود ومن يمكنه استخدامها.",
+    "zh": "設定回覆可使用的位置與對象。"
+  },
+  "Controls access and roles based on verified collections.": {
+    "ar": "يتحكم في الوصول والرتب بناءً على مجموعات الأصول التي تم التحقق منها.",
+    "zh": "根據已驗證的資產系列控管存取權與身分組。"
+  },
+  "Controls how Helper responds to invites, domains, and suspicious phrases.": {
+    "ar": "يتحكم في استجابة Helper للدعوات والنطاقات والعبارات المشبوهة.",
+    "zh": "設定 Helper 如何處理邀請、網域與可疑語句。"
+  },
+  "Coral Cavern": {
+    "ar": "كهف المرجان",
+    "zh": "珊瑚洞窟"
+  },
+  "Cosmic Nebula": {
+    "ar": "سديم كوني",
+    "zh": "宇宙星雲"
+  },
+  "Could not check the TikTok connection.": {
+    "ar": "تعذّر التحقق من اتصال TikTok.",
+    "zh": "無法檢查 TikTok 連線。"
+  },
+  "Could not remove the TikTok connection.": {
+    "ar": "تعذّر إلغاء ربط TikTok.",
+    "zh": "無法解除 TikTok 連結。"
+  },
+  "Could not save. Your changes are still in this form.": {
+    "ar": "تعذّر الحفظ. لا تزال تغييراتك في هذا النموذج.",
+    "zh": "無法儲存。你的變更仍保留在此表單中。"
+  },
+  "Could not start TikTok authorization.": {
+    "ar": "تعذّر بدء تفويض TikTok.",
+    "zh": "無法開始 TikTok 授權。"
+  },
+  "Create bounded messages with a Discord-like preview.": {
+    "ar": "أنشئ رسائل ضمن حدود مع معاينة شبيهة بـ Discord.",
+    "zh": "建立有長度限制的訊息，並以類似 Discord 的方式預覽。"
+  },
+  "Create bounded rooms with a predictable name and optional category.": {
+    "ar": "أنشئ غرفًا بعدد محدود وأسماء متوقعة وفئة اختيارية.",
+    "zh": "建立數量受限、名稱可預期的房間，並可選擇類別。"
+  },
+  "Create events, registrations, and check-ins without leaving the dashboard.": {
+    "ar": "أنشئ فعاليات وتسجيلات وحضورًا دون مغادرة لوحة التحكم.",
+    "zh": "直接在控制台建立活動、報名與簽到。"
+  },
+  "Create goals and celebrate community milestones.": {
+    "ar": "ضع أهدافًا واحتفل بإنجازات المجتمع.",
+    "zh": "設定目標，慶祝社群里程碑。"
+  },
+  "Create reusable responses with safe variables and permissions.": {
+    "ar": "أنشئ ردودًا قابلة لإعادة الاستخدام بمتغيرات وصلاحيات آمنة.",
+    "zh": "使用安全的變數與權限建立可重複使用的回覆。"
+  },
+  "Create short responses for frequently asked questions.": {
+    "ar": "أنشئ ردودًا قصيرة للأسئلة الشائعة.",
+    "zh": "為常見問題建立簡短回覆。"
+  },
+  "Create the fair pace for active members.": {
+    "ar": "حدّد وتيرة عادلة للأعضاء النشطين.",
+    "zh": "為活躍成員設定公平的獎勵節奏。"
+  },
+  "Creates a virtual economy with rewards and progression.": {
+    "ar": "ينشئ اقتصادًا افتراضيًا بمكافآت وتقدّم.",
+    "zh": "建立具備獎勵與成長機制的虛擬經濟。"
+  },
+  "Creates giveaways with trackable entries.": {
+    "ar": "ينشئ سحوبات بمشاركات قابلة للتتبع.",
+    "zh": "建立可追蹤參加紀錄的抽獎。"
+  },
+  "Creates reusable answers for community questions and routines.": {
+    "ar": "ينشئ إجابات قابلة لإعادة الاستخدام لأسئلة المجتمع وإجراءاته المعتادة.",
+    "zh": "為社群問題與日常事務建立可重複使用的回答。"
+  },
+  "Creates rich messages for rules, announcements, and useful information.": {
+    "ar": "ينشئ رسائل منسّقة للقواعد والإعلانات والمعلومات المفيدة.",
+    "zh": "為規則、公告與實用資訊建立豐富格式訊息。"
+  },
+  "Creates voice channels that disappear when no longer used.": {
+    "ar": "ينشئ قنوات صوتية تُحذف عند انتهاء استخدامها.",
+    "zh": "建立無人使用時會自動刪除的語音頻道。"
+  },
+  "Creator OAuth grant": {
+    "ar": "تفويض OAuth من منشئ المحتوى",
+    "zh": "創作者 OAuth 授權"
+  },
+  "Creator name": {
+    "ar": "اسم منشئ المحتوى",
+    "zh": "創作者名稱"
+  },
+  "Creator username": {
+    "ar": "اسم مستخدم منشئ المحتوى",
+    "zh": "創作者使用者名稱"
+  },
+  "Crystal Cavern": {
+    "ar": "كهف البلور",
+    "zh": "水晶洞窟"
+  },
+  "Curated background": {
+    "ar": "خلفية منتقاة",
+    "zh": "精選背景"
+  },
+  "Currency name": {
+    "ar": "اسم العملة",
+    "zh": "貨幣名稱"
+  },
+  "Current plan": {
+    "ar": "الخطة الحالية",
+    "zh": "目前方案"
+  },
+  "Custom command behaviour": {
+    "ar": "سلوك الأوامر المخصصة",
+    "zh": "自訂指令行為"
+  },
+  "Customise announcements and roles without editing commands.": {
+    "ar": "خصّص الإعلانات والرتب دون تعديل الأوامر.",
+    "zh": "自訂公告與身分組，無須修改指令。"
+  },
+  "Customise the alert sent when the stream starts.": {
+    "ar": "خصّص التنبيه المُرسل عند بدء البث.",
+    "zh": "自訂開播時傳送的通知。"
+  },
+  "Customise the alert without exposing credentials.": {
+    "ar": "خصّص التنبيه دون كشف بيانات الاعتماد.",
+    "zh": "自訂通知，無須暴露憑證。"
+  },
+  "Customise the alert without exposing the API key.": {
+    "ar": "خصّص التنبيه دون كشف مفتاح API.",
+    "zh": "自訂通知，無須暴露 API 金鑰。"
+  },
+  "Customise the stream alert.": {
+    "ar": "خصّص تنبيه البث.",
+    "zh": "自訂開播通知。"
+  },
+  "Customize the card": {
+    "ar": "تخصيص البطاقة",
+    "zh": "自訂卡片"
+  },
+  "Daily reward": {
+    "ar": "المكافأة اليومية",
+    "zh": "每日獎勵"
+  },
+  "Default capacity (0 = unlimited)": {
+    "ar": "السعة الافتراضية (0 = بلا حد)",
+    "zh": "預設人數上限（0 = 不限）"
+  },
+  "Default channel (optional)": {
+    "ar": "القناة الافتراضية (اختياري)",
+    "zh": "預設頻道（選填）"
+  },
+  "Define how members submit and vote on suggestions.": {
+    "ar": "حدّد كيف يقدّم الأعضاء اقتراحاتهم ويصوّتون عليها.",
+    "zh": "設定成員提交建議與投票的方式。"
+  },
+  "Define the format of post alerts.": {
+    "ar": "حدّد تنسيق تنبيهات المنشورات.",
+    "zh": "設定貼文通知格式。"
+  },
+  "Define the format of video alerts.": {
+    "ar": "حدّد تنسيق تنبيهات الفيديو.",
+    "zh": "設定影片通知格式。"
+  },
+  "Defines how long optional data is retained.": {
+    "ar": "يحدّد مدة الاحتفاظ بالبيانات الاختيارية.",
+    "zh": "設定選用資料的保留時間。"
+  },
+  "Defines the support product; server payments remain unavailable until Stripe Connect legal setup is complete.": {
+    "ar": "يحدّد منتج الدعم؛ تبقى مدفوعات الخادم غير متاحة حتى اكتمال الإعداد القانوني لـ Stripe Connect.",
+    "zh": "設定支持方案；完成 Stripe Connect 法務設定前，伺服器付款功能仍無法使用。"
+  },
+  "Delay before sending (seconds)": {
+    "ar": "مهلة الإرسال (ثوانٍ)",
+    "zh": "傳送前延遲（秒）"
+  },
+  "Deliver verified Twitch EventSub notifications with deduplication.": {
+    "ar": "أرسل إشعارات Twitch EventSub متحققًا منها مع إزالة التكرار.",
+    "zh": "傳送通過驗證的 Twitch EventSub 通知，並排除重複項目。"
+  },
+  "Desert Ruins": {
+    "ar": "أطلال الصحراء",
+    "zh": "沙漠遺跡"
+  },
+  "Destructive action protection": {
+    "ar": "الحماية من الإجراءات التخريبية",
+    "zh": "破壞性操作防護"
+  },
+  "Detect invite scams, suspicious domains and common social-engineering phrases.": {
+    "ar": "اكتشف خدع الدعوات والنطاقات المشبوهة وعبارات الهندسة الاجتماعية الشائعة.",
+    "zh": "偵測邀請詐騙、可疑網域與常見社交工程語句。"
+  },
+  "Detection window (seconds)": {
+    "ar": "نافذة الكشف (ثوانٍ)",
+    "zh": "偵測時間範圍（秒）"
+  },
+  "Detects flooding, repeated messages, excessive mentions, links, and caps.": {
+    "ar": "يكتشف الإغراق والرسائل المتكررة والإشارات المفرطة والروابط والأحرف الكبيرة.",
+    "zh": "偵測洗版、重複訊息、過量提及、連結與大寫字母。"
+  },
+  "Detects flooding, repetition and mentions with safe limits.": {
+    "ar": "يكتشف الإغراق والتكرار والإشارات ضمن حدود آمنة.",
+    "zh": "在安全限制下偵測洗版、重複訊息與提及。"
+  },
+  "Direct message": {
+    "ar": "رسالة خاصة",
+    "zh": "私訊"
+  },
+  "Disconnect TikTok": {
+    "ar": "إلغاء ربط TikTok",
+    "zh": "解除 TikTok 連結"
+  },
+  "Disconnecting…": {
+    "ar": "جارٍ إلغاء الربط…",
+    "zh": "正在解除連結…"
+  },
+  "Discord allows up to 32 characters. Leave it empty when disabling to restore the default name.": {
+    "ar": "يسمح Discord بما يصل إلى 32 حرفًا. اتركه فارغًا عند التعطيل لاستعادة الاسم الافتراضي.",
+    "zh": "Discord 最多允許 32 個字元。停用時留空即可還原預設名稱。"
+  },
+  "Discord channel ID": {
+    "ar": "معرّف قناة Discord",
+    "zh": "Discord 頻道 ID"
+  },
+  "ERC-1155": {
+    "ar": "ERC-1155",
+    "zh": "ERC-1155"
+  },
+  "ERC-20": {
+    "ar": "ERC-20",
+    "zh": "ERC-20"
+  },
+  "ERC-721": {
+    "ar": "ERC-721",
+    "zh": "ERC-721"
+  },
+  "Emoji management": {
+    "ar": "إدارة الرموز التعبيرية",
+    "zh": "表情符號管理"
+  },
+  "Emojis listed by /emojis": {
+    "ar": "الرموز التعبيرية المعروضة في /emojis",
+    "zh": "/emojis 列出的表情符號"
+  },
+  "Empty, @here, @everyone, or the role mention.": {
+    "ar": "فارغ، أو @here، أو @everyone، أو إشارة إلى الرتبة.",
+    "zh": "留空、填入 @here、@everyone 或身分組提及。"
+  },
+  "Enable the gate when too many members arrive in a short window.": {
+    "ar": "فعّل بوابة الانضمام عند وصول أعضاء كثيرين خلال فترة قصيرة.",
+    "zh": "短時間內大量成員加入時，啟用加入管制。"
+  },
+  "Enchanted Forest": {
+    "ar": "الغابة المسحورة",
+    "zh": "魔法森林"
+  },
+  "Enter the Twitch channel name and validate it through the official API before publishing.": {
+    "ar": "أدخل اسم قناة Twitch وتحقق منه عبر API الرسمية قبل النشر.",
+    "zh": "輸入 Twitch 頻道名稱，並在發布前透過官方 API 驗證。"
+  },
+  "Enter the YouTube channel ID and validate it before saving.": {
+    "ar": "أدخل معرّف قناة YouTube وتحقق منه قبل الحفظ.",
+    "zh": "輸入 YouTube 頻道 ID，並在儲存前驗證。"
+  },
+  "Enter the channel slug, not a web URL.": {
+    "ar": "أدخل الاسم المختصر للقناة، لا رابط ويب.",
+    "zh": "請輸入頻道代稱，不要輸入網址。"
+  },
+  "Enter the public RSS or Atom feed and validate it before saving.": {
+    "ar": "أدخل موجز RSS أو Atom العام وتحقق منه قبل الحفظ.",
+    "zh": "輸入公開的 RSS 或 Atom 訂閱來源網址，並在儲存前驗證。"
+  },
+  "Escolhe recursos reais do servidor para evitar falsos positivos e receber contexto.": {
+    "ar": "اختر موارد فعلية من الخادم لتجنّب الإنذارات الكاذبة والحصول على السياق.",
+    "zh": "選擇伺服器中實際存在的資源，以避免誤判並取得相關脈絡。"
+  },
+  "Example: rexy40407 (without twitch.tv/).": {
+    "ar": "مثال: rexy40407 (دون twitch.tv/).",
+    "zh": "例如：rexy40407（不含 twitch.tv/）。"
+  },
+  "Exceptions and alerts": {
+    "ar": "الاستثناءات والتنبيهات",
+    "zh": "例外與警示"
+  },
+  "Exclusions": {
+    "ar": "الاستثناءات",
+    "zh": "排除項目"
+  },
+  "Explains modules and shows the next step for each team.": {
+    "ar": "يشرح الوحدات ويعرض الخطوة التالية لكل فريق.",
+    "zh": "說明各模組，並顯示每個團隊的下一步。"
+  },
+  "Explore channels": {
+    "ar": "استكشاف القنوات",
+    "zh": "探索頻道"
+  },
+  "Filter new accounts before granting full access.": {
+    "ar": "افحص الحسابات الجديدة قبل منحها الوصول الكامل.",
+    "zh": "授予完整存取權前先篩選新帳號。"
+  },
+  "Find the right command, module and next troubleshooting step.": {
+    "ar": "اعثر على الأمر والوحدة المناسبين والخطوة التالية لاستكشاف المشكلة.",
+    "zh": "找到合適的指令、模組與下一個疑難排解步驟。"
+  },
+  "First steps reward role": {
+    "ar": "رتبة مكافأة الخطوات الأولى",
+    "zh": "入門獎勵身分組"
+  },
+  "First steps threshold": {
+    "ar": "حد الخطوات الأولى",
+    "zh": "入門門檻"
+  },
+  "First-steps message": {
+    "ar": "رسالة الخطوات الأولى",
+    "zh": "入門訊息"
+  },
+  "Follow approved public Bluesky sources with cursor-aware delivery.": {
+    "ar": "تابع مصادر Bluesky العامة المعتمدة مع إرسال يتتبع مؤشر المتابعة.",
+    "zh": "追蹤已核准的 Bluesky 公開來源，並依游標進度傳送更新。"
+  },
+  "For example: vozen.org or @vozen.org.": {
+    "ar": "مثلًا: vozen.org أو @vozen.org.",
+    "zh": "例如：vozen.org 或 @vozen.org。"
+  },
+  "Frost Citadel": {
+    "ar": "قلعة الصقيع",
+    "zh": "冰霜城堡"
+  },
+  "Give new members a safer, explainable entry path.": {
+    "ar": "وفّر للأعضاء الجدد مسار دخول أكثر أمانًا وواضح الأسباب.",
+    "zh": "為新成員提供更安全、說明清楚的加入流程。"
+  },
+  "Give newcomers rules and first steps in a focused channel.": {
+    "ar": "عرّف الأعضاء الجدد بالقواعد والخطوات الأولى في قناة مخصصة.",
+    "zh": "在專用頻道向新成員介紹規則與入門步驟。"
+  },
+  "Give your team context and control over the flow.": {
+    "ar": "زوّد فريقك بالسياق والتحكم في المسار.",
+    "zh": "讓團隊掌握相關脈絡與流程控制權。"
+  },
+  "Giveaway defaults": {
+    "ar": "إعدادات السحب الافتراضية",
+    "zh": "抽獎預設值"
+  },
+  "Goodbye channel": {
+    "ar": "قناة الوداع",
+    "zh": "告別頻道"
+  },
+  "Goodbye message": {
+    "ar": "رسالة الوداع",
+    "zh": "告別訊息"
+  },
+  "Grant a Discord role after a one-time SIWE signature and read-only contract check.": {
+    "ar": "امنح رتبة Discord بعد توقيع SIWE لمرة واحدة وفحص العقد للقراءة فقط.",
+    "zh": "完成一次性 SIWE 簽署與唯讀合約檢查後，授予 Discord 身分組。"
+  },
+  "Greet new members with a message, optional DM and safe role assignment.": {
+    "ar": "رحّب بالأعضاء الجدد برسالة ورسالة خاصة اختيارية وتعيين آمن للرتب.",
+    "zh": "使用歡迎訊息、選用私訊與安全的身分組指派來迎接新成員。"
+  },
+  "Greeting": {
+    "ar": "التحية",
+    "zh": "問候"
+  },
+  "Guide message": {
+    "ar": "رسالة الدليل",
+    "zh": "引導訊息"
+  },
+  "Guided steps": {
+    "ar": "خطوات إرشادية",
+    "zh": "引導步驟"
+  },
+  "Guided welcome channel": {
+    "ar": "قناة الترحيب الإرشادي",
+    "zh": "歡迎引導頻道"
+  },
+  "HEALTH": {
+    "ar": "الحالة",
+    "zh": "運作狀態"
+  },
+  "Help and diagnostics": {
+    "ar": "المساعدة والتشخيص",
+    "zh": "說明與診斷"
+  },
+  "Help message": {
+    "ar": "رسالة المساعدة",
+    "zh": "說明訊息"
+  },
+  "Helper identity": {
+    "ar": "هوية Helper",
+    "zh": "Helper 身分設定"
+  },
+  "Helper posts the reason and decision mode here.": {
+    "ar": "ينشر Helper السبب ووضع اتخاذ القرار هنا.",
+    "zh": "Helper 會在這裡發布原因與決策模式。"
+  },
+  "Helps members avoid missing the start.": {
+    "ar": "يساعد الأعضاء على عدم تفويت البداية.",
+    "zh": "提醒成員準時參加。"
+  },
+  "Hide author in the public message": {
+    "ar": "إخفاء الكاتب في الرسالة العامة",
+    "zh": "在公開訊息中隱藏作者"
+  },
+  "Hide this link": {
+    "ar": "إخفاء هذا الرابط",
+    "zh": "隱藏此連結"
+  },
+  "High": {
+    "ar": "مرتفع",
+    "zh": "高"
+  },
+  "Highlight messages that the community values.": {
+    "ar": "أبرز الرسائل التي يقدّرها المجتمع.",
+    "zh": "精選社群重視的訊息。"
+  },
+  "Highlight rules": {
+    "ar": "قواعد إبراز الرسائل",
+    "zh": "精選規則"
+  },
+  "Highlights popular community messages.": {
+    "ar": "يبرز رسائل المجتمع الشائعة.",
+    "zh": "精選社群熱門訊息。"
+  },
+  "Hold accounts below the configured age behind a verification role.": {
+    "ar": "قيّد الحسابات الأحدث من العمر المحدد برتبة تحقق.",
+    "zh": "將帳號建立時間未達門檻的成員限制在驗證身分組中。"
+  },
+  "Holder role": {
+    "ar": "رتبة حامل الأصل",
+    "zh": "持有者身分組"
+  },
+  "Hours before start": {
+    "ar": "الساعات قبل البدء",
+    "zh": "開始前幾小時"
+  },
+  "How many requests one person can have at a time.": {
+    "ar": "عدد الطلبات التي يمكن للشخص فتحها في الوقت نفسه.",
+    "zh": "每人可同時提出的請求數量。"
+  },
+  "ISO 4217 lowercase code, for example eur.": {
+    "ar": "رمز ISO 4217 بأحرف صغيرة، مثل eur.",
+    "zh": "ISO 4217 小寫代碼，例如 eur。"
+  },
+  "Identical repetitions": {
+    "ar": "التكرارات المتطابقة",
+    "zh": "相同訊息重複次數"
+  },
+  "Identify suspicious links and phishing patterns without pretending to be an antivirus.": {
+    "ar": "تعرّف على الروابط المشبوهة وأنماط التصيد دون الادعاء بأنه مضاد فيروسات.",
+    "zh": "辨識可疑連結與釣魚模式，不宣稱具備防毒功能。"
+  },
+  "Ignored channels": {
+    "ar": "القنوات المستثناة",
+    "zh": "忽略的頻道"
+  },
+  "Ignored member roles": {
+    "ar": "رتب الأعضاء المستثناة",
+    "zh": "忽略的成員身分組"
+  },
+  "Ignored roles": {
+    "ar": "الرتب المستثناة",
+    "zh": "忽略的身分組"
+  },
+  "Include image attachments": {
+    "ar": "تضمين مرفقات الصور",
+    "zh": "包含圖片附件"
+  },
+  "Include the enabled module summary in the response.": {
+    "ar": "تضمين ملخص الوحدات المفعّلة في الرد.",
+    "zh": "在回覆中包含已啟用模組的摘要。"
+  },
+  "Inter": {
+    "ar": "Inter",
+    "zh": "Inter"
+  },
+  "Interval (seconds)": {
+    "ar": "الفاصل الزمني (ثوانٍ)",
+    "zh": "間隔（秒）"
+  },
+  "Introductions": {
+    "ar": "التعارف",
+    "zh": "自我介紹"
+  },
+  "Introductions channel (optional)": {
+    "ar": "قناة التعارف (اختياري)",
+    "zh": "自我介紹頻道（選填）"
+  },
+  "Invite overview": {
+    "ar": "نظرة عامة على الدعوات",
+    "zh": "邀請總覽"
+  },
+  "Invites shown": {
+    "ar": "عدد الدعوات المعروضة",
+    "zh": "顯示的邀請數"
+  },
+  "Join Creator Channel to get a personal voice room. Empty rooms are deleted automatically.": {
+    "ar": "انضم إلى Creator Channel للحصول على غرفة صوتية شخصية. تُحذف الغرف الفارغة تلقائيًا.",
+    "zh": "加入 Creator Channel 即可建立個人語音房間。空房間會自動刪除。"
+  },
+  "Join burst protection": {
+    "ar": "الحماية من تدفق الانضمام",
+    "zh": "大量加入防護"
+  },
+  "Join gate": {
+    "ar": "بوابة الانضمام",
+    "zh": "加入管制"
+  },
+  "Join verification": {
+    "ar": "التحقق عند الانضمام",
+    "zh": "加入驗證"
+  },
+  "Joins before containment": {
+    "ar": "عدد الانضمامات قبل الاحتواء",
+    "zh": "啟動圍堵前的加入人數"
+  },
+  "KYC, tax and refund policy": {
+    "ar": "سياسة KYC والضرائب والاسترداد",
+    "zh": "KYC、稅務與退款政策"
+  },
+  "Keep at least one option selected.": {
+    "ar": "أبقِ خيارًا واحدًا محددًا على الأقل.",
+    "zh": "請至少保留一個選項。"
+  },
+  "Keep counters useful, fresh and clearly labelled.": {
+    "ar": "حافظ على عدادات مفيدة ومحدّثة وبأسماء واضحة.",
+    "zh": "讓計數器保持實用、即時且標示清楚。"
+  },
+  "Keep highlights relevant and safe.": {
+    "ar": "حافظ على صلة الرسائل المميزة وسلامتها.",
+    "zh": "讓精選訊息保持切題與安全。"
+  },
+  "Keep previous level roles": {
+    "ar": "الاحتفاظ برتب المستويات السابقة",
+    "zh": "保留先前等級的身分組"
+  },
+  "Keep reminders useful and bounded for every member.": {
+    "ar": "أبقِ التذكيرات مفيدة وضمن حدود لكل عضو.",
+    "zh": "讓每位成員的提醒保持實用且有上限。"
+  },
+  "Keep rewards from earlier levels": {
+    "ar": "الاحتفاظ بمكافآت المستويات السابقة",
+    "zh": "保留先前等級的獎勵"
+  },
+  "Keep the public result concise and predictable.": {
+    "ar": "اجعل النتيجة العامة موجزة ومتوقعة.",
+    "zh": "讓公開結果簡潔且符合預期。"
+  },
+  "Keeps detection and auditing enabled without applying a timeout.": {
+    "ar": "يبقي الكشف والتدقيق مفعّلين دون فرض تقييد مؤقت.",
+    "zh": "持續啟用偵測與稽核，但不執行暫時禁言。"
+  },
+  "Keeps privacy requests clear.": {
+    "ar": "يبقي طلبات الخصوصية واضحة.",
+    "zh": "讓隱私請求清楚易懂。"
+  },
+  "Keeps support requests in one place.": {
+    "ar": "يجمع طلبات الدعم في مكان واحد.",
+    "zh": "集中管理支援請求。"
+  },
+  "Kick channel": {
+    "ar": "قناة Kick",
+    "zh": "Kick 頻道"
+  },
+  "Kick handle": {
+    "ar": "معرّف Kick",
+    "zh": "Kick 帳號代碼"
+  },
+  "Lavender Storm": {
+    "ar": "عاصفة الخزامى",
+    "zh": "薰衣草風暴"
+  },
+  "Leaderboard settings": {
+    "ar": "إعدادات الترتيب",
+    "zh": "排行榜設定"
+  },
+  "Leave empty if you do not want to send a goodbye.": {
+    "ar": "اتركه فارغًا إذا كنت لا تريد إرسال وداع.",
+    "zh": "若不想傳送告別訊息，請留空。"
+  },
+  "Leave empty to announce in the channel where the member earned XP.": {
+    "ar": "اتركه فارغًا للإعلان في القناة التي اكتسب فيها العضو XP.",
+    "zh": "留空即可在成員獲得 XP 的頻道發布公告。"
+  },
+  "Leave empty to post each poll in the channel where you use /poll. Choose a channel to send all polls there.": {
+    "ar": "اتركه فارغًا لنشر كل استطلاع في القناة التي تستخدم فيها /poll. اختر قناة لإرسال جميع الاستطلاعات إليها.",
+    "zh": "留空即可在使用 /poll 的頻道發布各次投票。指定頻道後，所有投票都會傳送到該處。"
+  },
+  "Let members choose approved roles through buttons or menus.": {
+    "ar": "دع الأعضاء يختارون الرتب المعتمدة عبر الأزرار أو القوائم.",
+    "zh": "讓成員透過按鈕或選單選擇已核准的身分組。"
+  },
+  "Let members choose roles through simple panels.": {
+    "ar": "دع الأعضاء يختارون الرتب عبر لوحات بسيطة.",
+    "zh": "讓成員透過簡易面板選擇身分組。"
+  },
+  "Level role rewards (level=role ID)": {
+    "ar": "مكافآت رتب المستويات (level=role ID)",
+    "zh": "等級身分組獎勵（level=role ID）"
+  },
+  "Level-up channel": {
+    "ar": "قناة الارتقاء بالمستوى",
+    "zh": "升級頻道"
+  },
+  "Levels and XP": {
+    "ar": "المستويات وXP",
+    "zh": "等級與 XP"
+  },
+  "Lexend": {
+    "ar": "Lexend",
+    "zh": "Lexend"
+  },
+  "Limit the number of simultaneous tickets one member can open.": {
+    "ar": "حدّد عدد التذاكر التي يمكن لعضو فتحها في الوقت نفسه.",
+    "zh": "限制每位成員可同時開啟的支援單數量。"
+  },
+  "Limited availability": {
+    "ar": "إتاحة محدودة",
+    "zh": "有限開放"
+  },
+  "Limits how many responses this server can save.": {
+    "ar": "يحدّد عدد الردود التي يمكن لهذا الخادم حفظها.",
+    "zh": "限制此伺服器可儲存的回覆數量。"
+  },
+  "Limits how many times a recurring reminder is re-created.": {
+    "ar": "يحدّد مرات إعادة إنشاء التذكير المتكرر.",
+    "zh": "限制重複提醒重新建立的次數。"
+  },
+  "List custom emojis safely, with optional staff-only rename and delete controls.": {
+    "ar": "اعرض الرموز التعبيرية المخصصة بأمان، مع أدوات اختيارية لإعادة التسمية والحذف خاصة بالفريق.",
+    "zh": "安全地列出自訂表情符號，並可選擇提供管理團隊專用的重新命名與刪除功能。"
+  },
+  "Live counter channel (optional)": {
+    "ar": "قناة العداد المباشر (اختياري)",
+    "zh": "即時計數頻道（選填）"
+  },
+  "Longer generated replies are rejected before they can be sent.": {
+    "ar": "تُرفض الردود المولّدة الأطول قبل إرسالها.",
+    "zh": "超過長度限制的產生回覆會在傳送前被拒絕。"
+  },
+  "Longer text is rejected before a job is created.": {
+    "ar": "يُرفض النص الأطول قبل إنشاء المهمة.",
+    "zh": "超過長度限制的文字會在建立工作前被拒絕。"
+  },
+  "Manage Roles": {
+    "ar": "إدارة الرتب",
+    "zh": "管理身分組"
+  },
+  "Manage an auditable points economy with bounded rewards.": {
+    "ar": "أدر اقتصاد نقاط قابلًا للتدقيق بمكافآت ضمن حدود.",
+    "zh": "管理可稽核、獎勵有上限的點數經濟。"
+  },
+  "Maximum XP per message": {
+    "ar": "الحد الأقصى لـ XP لكل رسالة",
+    "zh": "每則訊息的 XP 上限"
+  },
+  "Maximum members in /leaderboard": {
+    "ar": "الحد الأقصى للأعضاء في /leaderboard",
+    "zh": "/leaderboard 的成員人數上限"
+  },
+  "Maximum roles": {
+    "ar": "الحد الأقصى للرتب",
+    "zh": "身分組數量上限"
+  },
+  "Medium": {
+    "ar": "متوسط",
+    "zh": "中"
+  },
+  "Member data controls": {
+    "ar": "التحكم في بيانات الأعضاء",
+    "zh": "成員資料控制"
+  },
+  "Members can choose a bounded daily or weekly reminder.": {
+    "ar": "يمكن للأعضاء اختيار تذكير يومي أو أسبوعي ضمن حدود.",
+    "zh": "成員可選擇有次數限制的每日或每週提醒。"
+  },
+  "Members can choose one role": {
+    "ar": "يمكن للأعضاء اختيار رتبة واحدة",
+    "zh": "成員可選擇一個身分組"
+  },
+  "Members can choose several roles": {
+    "ar": "يمكن للأعضاء اختيار عدة رتب",
+    "zh": "成員可選擇多個身分組"
+  },
+  "Members can request their own JSON export through /privacy data.": {
+    "ar": "يمكن للأعضاء طلب تصدير بياناتهم بصيغة JSON عبر /privacy data.",
+    "zh": "成員可透過 /privacy data 要求匯出自己的 JSON 資料。"
+  },
+  "Members shown": {
+    "ar": "عدد الأعضاء المعروضين",
+    "zh": "顯示的成員人數"
+  },
+  "Members with any of these roles are excluded from evaluation.": {
+    "ar": "يُستثنى من التقييم الأعضاء الذين يحملون أيًا من هذه الرتب.",
+    "zh": "擁有其中任一身分組的成員不列入評估。"
+  },
+  "Mensagens no intervalo": {
+    "ar": "الرسائل خلال الفترة",
+    "zh": "期間內的訊息數"
+  },
+  "Mention limit per message": {
+    "ar": "حد الإشارات لكل رسالة",
+    "zh": "每則訊息的提及上限"
+  },
+  "Message and embed builder": {
+    "ar": "منشئ الرسائل والرسائل المضمّنة",
+    "zh": "訊息與嵌入訊息編輯器"
+  },
+  "Messages in these channels are excluded from evaluation.": {
+    "ar": "تُستثنى الرسائل في هذه القنوات من التقييم.",
+    "zh": "這些頻道的訊息不列入評估。"
+  },
+  "Messages in these channels do not count towards a level.": {
+    "ar": "لا تُحتسب الرسائل في هذه القنوات ضمن تقدّم المستوى.",
+    "zh": "這些頻道的訊息不計入等級進度。"
+  },
+  "Messages sent during this wait do not earn more XP.": {
+    "ar": "لا تمنح الرسائل المرسلة خلال فترة الانتظار هذه XP إضافية.",
+    "zh": "在此等待期間傳送的訊息不會獲得額外 XP。"
+  },
+  "Meta App Review and deletion callbacks": {
+    "ar": "مراجعة تطبيق Meta واستدعاءات الحذف",
+    "zh": "Meta 應用程式審查與刪除回呼"
+  },
+  "Meta Instagram API app": {
+    "ar": "تطبيق Meta Instagram API",
+    "zh": "Meta Instagram API 應用程式"
+  },
+  "Minimum XP per message": {
+    "ar": "الحد الأدنى لـ XP لكل رسالة",
+    "zh": "每則訊息的 XP 下限"
+  },
+  "Monitor only": {
+    "ar": "مراقبة فقط",
+    "zh": "僅監控"
+  },
+  "Monitoring {account}. Tokens are encrypted on the server.": {
+    "ar": "تجري مراقبة {account}. تُشفّر الرموز على الخادم.",
+    "zh": "正在監控 {account}。權杖已在伺服器上加密。"
+  },
+  "Monthly price (cents)": {
+    "ar": "السعر الشهري (سنتات)",
+    "zh": "每月價格（分）"
+  },
+  "Moonlit Village": {
+    "ar": "قرية ضوء القمر",
+    "zh": "月光村莊"
+  },
+  "Neon Rain": {
+    "ar": "مطر النيون",
+    "zh": "霓虹雨"
+  },
+  "New requests are created in this category.": {
+    "ar": "تُنشأ الطلبات الجديدة في هذه الفئة.",
+    "zh": "新請求會建立於此類別。"
+  },
+  "New rooms are created inside this category when selected.": {
+    "ar": "تُنشأ الغرف الجديدة داخل هذه الفئة عند اختيارها.",
+    "zh": "選取此類別後，新房間會建立於其中。"
+  },
+  "New ticket channels are created inside this category.": {
+    "ar": "تُنشأ قنوات التذاكر الجديدة داخل هذه الفئة.",
+    "zh": "新的支援單頻道會建立於此類別。"
+  },
+  "Next banners": {
+    "ar": "اللافتات التالية",
+    "zh": "下一組橫幅"
+  },
+  "No automatic role": {
+    "ar": "بلا رتبة تلقائية",
+    "zh": "不自動指派身分組"
+  },
+  "Notified when a ticket opens and can manage requests. Make the role mentionable or allow Helper to mention roles. Discord notification preferences still apply.": {
+    "ar": "تتلقى إشعارًا عند فتح تذكرة ويمكنها إدارة الطلبات. اجعل الرتبة قابلة للإشارة أو اسمح لـ Helper بالإشارة إلى الرتب. تبقى تفضيلات إشعارات Discord سارية.",
+    "zh": "開啟支援單時會收到通知，並可管理請求。請將身分組設為可提及，或允許 Helper 提及身分組。Discord 通知偏好設定仍適用。"
+  },
+  "Notifies the server about new videos.": {
+    "ar": "يُشعر الخادم بالفيديوهات الجديدة.",
+    "zh": "通知伺服器有新影片。"
+  },
+  "Notifies the server when a creator starts streaming.": {
+    "ar": "يُشعر الخادم عند بدء منشئ محتوى بثه.",
+    "zh": "創作者開播時通知伺服器。"
+  },
+  "Notifies the server when a new video is published.": {
+    "ar": "يُشعر الخادم عند نشر فيديو جديد.",
+    "zh": "發布新影片時通知伺服器。"
+  },
+  "Notify a Discord channel about posts from a professional Instagram account authorised through Meta OAuth.": {
+    "ar": "أشعر قناة Discord بمنشورات حساب Instagram احترافي مفوّض عبر Meta OAuth.",
+    "zh": "將透過 Meta OAuth 授權的 Instagram 專業帳號貼文通知傳送至 Discord 頻道。"
+  },
+  "Notify a Discord channel about streams through an approved Kick API application.": {
+    "ar": "أشعر قناة Discord بالبثوث عبر تطبيق Kick API معتمد.",
+    "zh": "透過已核准的 Kick API 應用程式，向 Discord 頻道傳送開播通知。"
+  },
+  "Notify a Discord channel about videos from a creator who authorises the Display API scopes.": {
+    "ar": "أشعر قناة Discord بفيديوهات منشئ محتوى يمنح صلاحيات Display API.",
+    "zh": "將已授予 Display API 權限範圍的創作者影片通知傳送至 Discord 頻道。"
+  },
+  "Notify a Discord channel when an approved YouTube source changes.": {
+    "ar": "أشعر قناة Discord عند تغيّر مصدر YouTube معتمد.",
+    "zh": "已核准的 YouTube 來源有變動時，通知 Discord 頻道。"
+  },
+  "Number of custom emojis listed by /emojis. This does not limit emoji usage.": {
+    "ar": "عدد الرموز التعبيرية المخصصة التي يعرضها /emojis. لا يحدّ هذا من استخدامها.",
+    "zh": "/emojis 列出的自訂表情符號數量。此設定不限制表情符號的使用。"
+  },
+  "Number of messages from the same member before flagging.": {
+    "ar": "عدد رسائل العضو نفسه قبل رصد مخالفة.",
+    "zh": "同一位成員傳送多少則訊息後標記。"
+  },
+  "Number of recent daily snapshots included.": {
+    "ar": "عدد اللقطات اليومية الحديثة المضمّنة.",
+    "zh": "包含的近期每日快照數量。"
+  },
+  "Off by default. Discord may not provide content for every edit/delete event.": {
+    "ar": "معطّل افتراضيًا. قد لا يوفّر Discord محتوى كل حدث تعديل أو حذف.",
+    "zh": "預設關閉。Discord 不一定會提供每次編輯或刪除事件的內容。"
+  },
+  "Offer a server subscription through Stripe Connect. Production requires legal, tax and support approval.": {
+    "ar": "قدّم اشتراكًا للخادم عبر Stripe Connect. يتطلب التشغيل الفعلي موافقات قانونية وضريبية ودعمًا معتمدًا.",
+    "zh": "透過 Stripe Connect 提供伺服器訂閱。正式上線須取得法務、稅務與客服核准。"
+  },
+  "Official Kick API/webhook access": {
+    "ar": "الوصول الرسمي إلى Kick API وwebhook",
+    "zh": "官方 Kick API／webhook 存取權"
+  },
+  "Older messages automatically leave this window.": {
+    "ar": "تخرج الرسائل الأقدم تلقائيًا من هذه النافذة.",
+    "zh": "較舊的訊息會自動移出此時間範圍。"
+  },
+  "On: everyone in the channel can see the response. Off: only the person using the command can see it.": {
+    "ar": "عند التفعيل: يرى الجميع في القناة الرد. عند التعطيل: يراه مستخدم الأمر فقط.",
+    "zh": "開啟：頻道內所有人都能看到回覆。關閉：僅使用指令的人能看到。"
+  },
+  "Only an approved contract is accepted; never enter a private key.": {
+    "ar": "لا يُقبل إلا عقد معتمد؛ لا تُدخل مفتاحًا خاصًا أبدًا.",
+    "zh": "僅接受已核准的合約；切勿輸入私鑰。"
+  },
+  "Only members with Manage Server or Administrator can invoke saved commands.": {
+    "ar": "لا يمكن استدعاء الأوامر المحفوظة إلا للأعضاء بصلاحية إدارة الخادم أو المسؤول.",
+    "zh": "只有具備「管理伺服器」或「管理員」權限的成員能執行已儲存的指令。"
+  },
+  "Open a feature to configure all settings and review a safe simulation.": {
+    "ar": "افتح ميزة لضبط جميع إعداداتها ومراجعة محاكاة آمنة.",
+    "zh": "開啟功能以調整所有設定，並檢視安全模擬。"
+  },
+  "Opening TikTok…": {
+    "ar": "جارٍ فتح TikTok…",
+    "zh": "正在開啟 TikTok…"
+  },
+  "Operator-approved HTTPS RPC": {
+    "ar": "نقطة HTTPS RPC معتمدة من المشغّل",
+    "zh": "營運者核准的 HTTPS RPC"
+  },
+  "Operator-approved RPC endpoint": {
+    "ar": "نقطة اتصال RPC معتمدة من المشغّل",
+    "zh": "營運者核准的 RPC 端點"
+  },
+  "Optional. Sent only when enabled and the member allows direct messages.": {
+    "ar": "اختياري. تُرسل فقط عند التفعيل وسماح العضو بالرسائل الخاصة.",
+    "zh": "選填。僅在啟用且成員允許私訊時傳送。"
+  },
+  "Optional. Use a template from your message templates.": {
+    "ar": "اختياري. استخدم قالبًا من قوالب رسائلك.",
+    "zh": "選填。使用訊息範本中的範本。"
+  },
+  "Optional: assign a role, adjust the timing or use a saved template.": {
+    "ar": "اختياري: عيّن رتبة أو اضبط التوقيت أو استخدم قالبًا محفوظًا.",
+    "zh": "選用：指派身分組、調整時間或使用已儲存的範本。"
+  },
+  "Optional: choose a template created in Templates and import.": {
+    "ar": "اختياري: اختر قالبًا أُنشئ في قسم القوالب واستورده.",
+    "zh": "選用：選擇在「範本」中建立的範本並匯入。"
+  },
+  "Organizes and improves custom emoji usage.": {
+    "ar": "ينظّم استخدام الرموز التعبيرية المخصصة ويحسّنه.",
+    "zh": "整理並改善自訂表情符號的使用。"
+  },
+  "Panel channel (optional)": {
+    "ar": "قناة اللوحة (اختياري)",
+    "zh": "面板頻道（選填）"
+  },
+  "Panel defaults": {
+    "ar": "إعدادات اللوحة الافتراضية",
+    "zh": "面板預設值"
+  },
+  "Panel message": {
+    "ar": "رسالة اللوحة",
+    "zh": "面板訊息"
+  },
+  "Panel roles": {
+    "ar": "رتب اللوحة",
+    "zh": "面板身分組"
+  },
+  "Pause invite entry during an incident": {
+    "ar": "إيقاف الانضمام عبر الدعوات أثناء الحوادث",
+    "zh": "事件發生時暫停透過邀請加入"
+  },
+  "Personalise the XP card with curated backgrounds, colours and typography.": {
+    "ar": "خصّص بطاقة XP بخلفيات منتقاة وألوان وخطوط.",
+    "zh": "使用精選背景、顏色與字型自訂 XP 卡片。"
+  },
+  "Personalizes the level card shown in Discord.": {
+    "ar": "يخصّص بطاقة المستوى المعروضة في Discord.",
+    "zh": "自訂 Discord 中顯示的等級卡片。"
+  },
+  "Plan events, registrations and reminders from one workflow.": {
+    "ar": "خطّط للفعاليات والتسجيلات والتذكيرات في مسار واحد.",
+    "zh": "透過單一流程規劃活動、報名與提醒。"
+  },
+  "Plan limits": {
+    "ar": "حدود الخطة",
+    "zh": "方案限制"
+  },
+  "Planned bounded crypto lookups with rate-limit awareness.": {
+    "ar": "مخطط: استعلامات عملات مشفرة ضمن حدود تراعي قيود معدّل الطلبات.",
+    "zh": "規劃中：限制加密貨幣查詢範圍，並遵守請求速率限制。"
+  },
+  "Planned multi-network gas readings with cache and failover.": {
+    "ar": "مخطط: قراءات رسوم الغاز لشبكات متعددة مع التخزين المؤقت والتحويل عند الفشل.",
+    "zh": "規劃中：讀取多條網路的 Gas 費用，支援快取與故障切換。"
+  },
+  "Planned server payments and entitlement delivery with compliance controls.": {
+    "ar": "مخطط: مدفوعات الخادم ومنح الاستحقاقات مع ضوابط امتثال.",
+    "zh": "規劃中：提供具備合規控管的伺服器付款與權益發放。"
+  },
+  "Planned signature-only wallet checks; the Helper will never request a seed phrase.": {
+    "ar": "مخطط: التحقق من المحافظ بالتوقيع فقط؛ لن يطلب Helper عبارة استرداد أبدًا.",
+    "zh": "規劃中：僅透過簽署驗證錢包；Helper 絕不會要求提供助記詞。"
+  },
+  "Planned support for authorised professional Instagram accounts.": {
+    "ar": "مخطط: دعم حسابات Instagram الاحترافية المفوّضة.",
+    "zh": "規劃中：支援已授權的 Instagram 專業帳號。"
+  },
+  "Planned support for creators who authorise the official Display API.": {
+    "ar": "مخطط: دعم منشئي المحتوى الذين يفوّضون Display API الرسمية.",
+    "zh": "規劃中：支援已授權官方 Display API 的創作者。"
+  },
+  "Planned support through an approved Kick integration.": {
+    "ar": "مخطط: دعم عبر تكامل Kick معتمد.",
+    "zh": "規劃中：透過已核准的 Kick 整合提供支援。"
+  },
+  "Podcast alerts": {
+    "ar": "تنبيهات البودكاست",
+    "zh": "Podcast 通知"
+  },
+  "Poll a public profile through the official Bluesky AppView API and post new updates in Discord.": {
+    "ar": "تحقق دوريًا من ملف عام عبر Bluesky AppView API الرسمية وانشر التحديثات الجديدة في Discord.",
+    "zh": "透過官方 Bluesky AppView API 定期檢查公開個人檔案，並將新動態發布至 Discord。"
+  },
+  "Poll a public profile through the official Bluesky AppView API.": {
+    "ar": "تحقق دوريًا من ملف عام عبر Bluesky AppView API الرسمية.",
+    "zh": "透過官方 Bluesky AppView API 定期檢查公開個人檔案。"
+  },
+  "Poll channel (optional)": {
+    "ar": "قناة الاستطلاعات (اختياري)",
+    "zh": "投票頻道（選填）"
+  },
+  "Poll defaults": {
+    "ar": "إعدادات الاستطلاعات الافتراضية",
+    "zh": "投票預設值"
+  },
+  "Polls a public podcast RSS or Atom feed with the same SSRF protection and deduplication as RSS alerts.": {
+    "ar": "يفحص دوريًا موجز بودكاست RSS أو Atom عامًا بنفس حماية SSRF وإزالة التكرار المستخدمة في تنبيهات RSS.",
+    "zh": "定期檢查 Podcast 的公開 RSS 或 Atom 訂閱來源，採用與 RSS 通知相同的 SSRF 防護及去重機制。"
+  },
+  "Polls the official YouTube Data API and delivers deduplicated new-video alerts.": {
+    "ar": "يفحص YouTube Data API الرسمية دوريًا ويرسل تنبيهات فيديوهات جديدة دون تكرار.",
+    "zh": "定期查詢官方 YouTube Data API，並傳送不重複的新影片通知。"
+  },
+  "Polls validated RSS and Atom feeds with SSRF protection and deduplication.": {
+    "ar": "يفحص دوريًا موجزات RSS وAtom المتحقق منها مع حماية SSRF وإزالة التكرار.",
+    "zh": "定期檢查已驗證的 RSS 與 Atom 訂閱來源，並具備 SSRF 防護及去重機制。"
+  },
+  "Poppins": {
+    "ar": "Poppins",
+    "zh": "Poppins"
+  },
+  "Portable templates": {
+    "ar": "قوالب قابلة للنقل",
+    "zh": "可攜式範本"
+  },
+  "Post one reminder before each new event in the announcement channel.": {
+    "ar": "انشر تذكيرًا واحدًا قبل كل فعالية جديدة في قناة الإعلانات.",
+    "zh": "在公告頻道於每場新活動開始前發布一次提醒。"
+  },
+  "Post the first steps and server rules when a new member arrives.": {
+    "ar": "انشر الخطوات الأولى وقواعد الخادم عند وصول عضو جديد.",
+    "zh": "新成員加入時發布入門步驟與伺服器規則。"
+  },
+  "Posts an alert when a channel starts streaming.": {
+    "ar": "ينشر تنبيهًا عند بدء قناة بثها.",
+    "zh": "頻道開播時發布通知。"
+  },
+  "Prepare consistent reminders for the community.": {
+    "ar": "أعدّ تذكيرات متسقة للمجتمع.",
+    "zh": "為社群準備一致的提醒。"
+  },
+  "Prepare the message where members choose roles.": {
+    "ar": "أعدّ الرسالة التي يختار الأعضاء فيها الرتب.",
+    "zh": "準備供成員選擇身分組的訊息。"
+  },
+  "Prepare the space for your team to answer members.": {
+    "ar": "جهّز مساحة لفريقك للرد على الأعضاء.",
+    "zh": "準備供團隊回覆成員的空間。"
+  },
+  "Prepares benefits and roles to support the server.": {
+    "ar": "يجهّز مزايا ورتبًا لدعم الخادم.",
+    "zh": "設定支持伺服器的福利與身分組。"
+  },
+  "Prevents responses that are too long for Discord.": {
+    "ar": "يمنع الردود التي تتجاوز حد طول Discord.",
+    "zh": "阻擋超過 Discord 長度限制的回覆。"
+  },
+  "Previous banners": {
+    "ar": "اللافتات السابقة",
+    "zh": "上一組橫幅"
+  },
+  "Primary colour": {
+    "ar": "اللون الأساسي",
+    "zh": "主要顏色"
+  },
+  "Privacy and data": {
+    "ar": "الخصوصية والبيانات",
+    "zh": "隱私與資料"
+  },
+  "Private ticket category": {
+    "ar": "فئة التذاكر الخاصة",
+    "zh": "私人支援單類別"
+  },
+  "Private welcome": {
+    "ar": "ترحيب خاص",
+    "zh": "私人歡迎訊息"
+  },
+  "Professional account": {
+    "ar": "حساب احترافي",
+    "zh": "專業帳號"
+  },
+  "Professional account OAuth grant": {
+    "ar": "تفويض OAuth لحساب احترافي",
+    "zh": "專業帳號 OAuth 授權"
+  },
+  "Protects DMs and storage from oversized exports.": {
+    "ar": "يحمي الرسائل الخاصة والتخزين من ملفات التصدير الضخمة.",
+    "zh": "避免過大的匯出檔案影響私訊與儲存空間。"
+  },
+  "Public channel": {
+    "ar": "قناة عامة",
+    "zh": "公開頻道"
+  },
+  "Public feed URL": {
+    "ar": "رابط الموجز العام",
+    "zh": "公開訂閱來源網址"
+  },
+  "Public welcome": {
+    "ar": "ترحيب عام",
+    "zh": "公開歡迎訊息"
+  },
+  "Publish a bounded embed from a slash command; mentions are disabled by default.": {
+    "ar": "انشر رسالة مضمّنة ضمن حدود عبر أمر الشرطة المائلة؛ الإشارات معطّلة افتراضيًا.",
+    "zh": "透過斜線指令發布有限制的嵌入訊息；預設停用提及。"
+  },
+  "Publish bounded CoinGecko price updates to a Discord channel.": {
+    "ar": "انشر تحديثات أسعار CoinGecko ضمن حدود في قناة Discord.",
+    "zh": "將有限制的 CoinGecko 價格更新發布至 Discord 頻道。"
+  },
+  "Publish bounded embeds with mentions disabled by default.": {
+    "ar": "انشر رسائل مضمّنة ضمن حدود مع تعطيل الإشارات افتراضيًا.",
+    "zh": "發布有限制的嵌入訊息，預設停用提及。"
+  },
+  "Publish read-only gas prices from an approved HTTPS RPC.": {
+    "ar": "انشر أسعار الغاز للقراءة فقط من HTTPS RPC معتمد.",
+    "zh": "從已核准的 HTTPS RPC 發布唯讀 Gas 費用。"
+  },
+  "Publish read-only gas prices from an operator-approved RPC endpoint.": {
+    "ar": "انشر أسعار الغاز للقراءة فقط من نقطة اتصال RPC معتمدة من المشغّل.",
+    "zh": "從營運者核准的 RPC 端點發布唯讀 Gas 費用。"
+  },
+  "Publishes simple polls for quick decisions.": {
+    "ar": "ينشر استطلاعات بسيطة لاتخاذ قرارات سريعة.",
+    "zh": "發布簡易投票，協助快速決策。"
+  },
+  "Quantas mensagens iguais acionam a regra.": {
+    "ar": "عدد الرسائل المتطابقة اللازمة لتفعيل القاعدة.",
+    "zh": "多少則相同訊息會觸發規則。"
+  },
+  "Quarantine": {
+    "ar": "العزل",
+    "zh": "隔離"
+  },
+  "Quarantine role": {
+    "ar": "رتبة العزل",
+    "zh": "隔離身分組"
+  },
+  "Queries cryptocurrency information inside the server.": {
+    "ar": "يستعلم عن معلومات العملات المشفرة داخل الخادم.",
+    "zh": "在伺服器內查詢加密貨幣資訊。"
+  },
+  "Query read-only CoinGecko prices from an application command.": {
+    "ar": "استعلم عن أسعار CoinGecko للقراءة فقط عبر أمر تطبيق.",
+    "zh": "透過應用程式指令唯讀查詢 CoinGecko 價格。"
+  },
+  "RSS alerts": {
+    "ar": "تنبيهات RSS",
+    "zh": "RSS 通知"
+  },
+  "Raid protection": {
+    "ar": "الحماية من الغارات",
+    "zh": "突襲防護"
+  },
+  "Reaction emoji": {
+    "ar": "رمز التفاعل التعبيري",
+    "zh": "反應表情符號"
+  },
+  "Read-only market data with timestamps and provider health.": {
+    "ar": "بيانات سوق للقراءة فقط مع الطوابع الزمنية وحالة المزوّد.",
+    "zh": "提供唯讀市場資料，包含時間戳記與供應商運作狀態。"
+  },
+  "Receives the history of closed tickets.": {
+    "ar": "يستقبل سجل التذاكر المغلقة.",
+    "zh": "接收已關閉支援單的紀錄。"
+  },
+  "Recheck interval (seconds)": {
+    "ar": "الفاصل بين إعادة التحقق (ثوانٍ)",
+    "zh": "重新檢查間隔（秒）"
+  },
+  "Record and alert without automatic containment.": {
+    "ar": "سجّل ونبّه دون احتواء تلقائي.",
+    "zh": "僅記錄並發出警示，不自動圍堵。"
+  },
+  "Record audit events and contain repeated destructive changes.": {
+    "ar": "سجّل أحداث التدقيق واحتوِ التغييرات التخريبية المتكررة.",
+    "zh": "記錄稽核事件，並圍堵重複的破壞性變更。"
+  },
+  "Records channel (optional)": {
+    "ar": "قناة السجلات (اختياري)",
+    "zh": "紀錄頻道（選填）"
+  },
+  "Regular reward role": {
+    "ar": "رتبة مكافأة العضو المنتظم",
+    "zh": "常客獎勵身分組"
+  },
+  "Regular threshold": {
+    "ar": "حد العضو المنتظم",
+    "zh": "常客門檻"
+  },
+  "Reject destructive actions without a useful reason.": {
+    "ar": "ارفض الإجراءات التخريبية التي لا تستند إلى سبب وجيه.",
+    "zh": "拒絕未提供合理原因的破壞性操作。"
+  },
+  "Reminder limits": {
+    "ar": "حدود التذكيرات",
+    "zh": "提醒限制"
+  },
+  "Remove the role when toggled off": {
+    "ar": "إزالة الرتبة عند التعطيل",
+    "zh": "關閉時移除身分組"
+  },
+  "Rename one existing voice or text channel with the latest message count.": {
+    "ar": "أعد تسمية قناة صوتية أو نصية موجودة بعدد الرسائل الأحدث.",
+    "zh": "使用最新訊息數重新命名一個現有語音或文字頻道。"
+  },
+  "Require a profile avatar": {
+    "ar": "اشتراط صورة شخصية",
+    "zh": "要求設定頭像"
+  },
+  "Required role (optional)": {
+    "ar": "الرتبة المطلوبة (اختياري)",
+    "zh": "必要身分組（選填）"
+  },
+  "Respond to unusual join bursts while keeping operators in control.": {
+    "ar": "استجب لتدفق الانضمامات غير المعتاد مع إبقاء التحكم بيد المشغّلين.",
+    "zh": "因應異常的大量加入，同時讓營運者保有控制權。"
+  },
+  "Responds to unusual joins and protects the server.": {
+    "ar": "يستجيب للانضمامات غير المعتادة ويحمي الخادم.",
+    "zh": "處理異常加入，保護伺服器。"
+  },
+  "Responses longer than this are rejected before they can be sent.": {
+    "ar": "تُرفض الردود الأطول من هذا الحد قبل إرسالها.",
+    "zh": "超過此長度的回覆會在傳送前被拒絕。"
+  },
+  "Results per search": {
+    "ar": "النتائج لكل بحث",
+    "zh": "每次搜尋的結果數"
+  },
+  "Reusable guide template": {
+    "ar": "قالب دليل قابل لإعادة الاستخدام",
+    "zh": "可重複使用的指南範本"
+  },
+  "Reusable message template": {
+    "ar": "قالب رسالة قابل لإعادة الاستخدام",
+    "zh": "可重複使用的訊息範本"
+  },
+  "Reuse configurations with a visible diff and resource mapping.": {
+    "ar": "أعد استخدام الإعدادات مع عرض الفروقات وربط الموارد.",
+    "zh": "重複使用設定，並顯示差異與資源對應。"
+  },
+  "Reuse feed delivery for new podcast episodes and metadata.": {
+    "ar": "أعد استخدام آلية إرسال الموجز لحلقات البودكاست الجديدة وبياناتها الوصفية.",
+    "zh": "沿用訂閱來源傳送機制，發布新的 Podcast 單集與中繼資料。"
+  },
+  "Review and manage server emojis within Discord limits.": {
+    "ar": "راجع الرموز التعبيرية للخادم وأدرها ضمن حدود Discord.",
+    "zh": "在 Discord 限制內檢視並管理伺服器表情符號。"
+  },
+  "Review, export and remove server data safely.": {
+    "ar": "راجع بيانات الخادم وصدّرها واحذفها بأمان.",
+    "zh": "安全地檢視、匯出與移除伺服器資料。"
+  },
+  "Reward healthy participation with a progression system you can tune.": {
+    "ar": "كافئ المشاركة الإيجابية بنظام تقدّم قابل للضبط.",
+    "zh": "透過可調整的成長系統獎勵良好參與。"
+  },
+  "Rewards": {
+    "ar": "المكافآت",
+    "zh": "獎勵"
+  },
+  "Rewards healthy conversation with XP and levels.": {
+    "ar": "يكافئ الحوار الإيجابي بـ XP ومستويات.",
+    "zh": "以 XP 與等級獎勵良好交流。"
+  },
+  "Roboto": {
+    "ar": "Roboto",
+    "zh": "Roboto"
+  },
+  "Role and delivery": {
+    "ar": "الرتبة والإرسال",
+    "zh": "身分組與傳送"
+  },
+  "Role for verified members": {
+    "ar": "رتبة الأعضاء المتحقق منهم",
+    "zh": "已驗證成員的身分組"
+  },
+  "Role on arrival": {
+    "ar": "الرتبة عند الانضمام",
+    "zh": "加入時的身分組"
+  },
+  "Room name template": {
+    "ar": "قالب اسم الغرفة",
+    "zh": "房間名稱範本"
+  },
+  "Rules": {
+    "ar": "القواعد",
+    "zh": "規則"
+  },
+  "Rules channel (optional)": {
+    "ar": "قناة القواعد (اختياري)",
+    "zh": "規則頻道（選填）"
+  },
+  "Run bounded, auditable giveaways with safe entry rules.": {
+    "ar": "نظّم سحوبات ضمن حدود وقابلة للتدقيق بقواعد مشاركة آمنة.",
+    "zh": "舉辦有限制且可稽核的抽獎，並採用安全的參加規則。"
+  },
+  "Rust API": {
+    "ar": "واجهة Rust API",
+    "zh": "Rust API"
+  },
+  "SIWE domain and session secret": {
+    "ar": "نطاق SIWE وسر الجلسة",
+    "zh": "SIWE 網域與工作階段密鑰"
+  },
+  "SLA reminder (hours)": {
+    "ar": "تذكير SLA (ساعات)",
+    "zh": "SLA 提醒（小時）"
+  },
+  "Safe search": {
+    "ar": "البحث الآمن",
+    "zh": "安全搜尋"
+  },
+  "Sakura Shrine": {
+    "ar": "مزار الساكورا",
+    "zh": "櫻花神社"
+  },
+  "Same channel as the message": {
+    "ar": "القناة نفسها التي تحتوي على الرسالة",
+    "zh": "與訊息相同的頻道"
+  },
+  "Save and transfer validated server configuration without copying secrets.": {
+    "ar": "احفظ إعدادات الخادم المتحقق منها وانقلها دون نسخ الأسرار.",
+    "zh": "儲存並轉移已驗證的伺服器設定，無須複製機密資料。"
+  },
+  "Save the configuration and reuse it on another server.": {
+    "ar": "احفظ الإعدادات وأعد استخدامها في خادم آخر.",
+    "zh": "儲存設定，並在其他伺服器重複使用。"
+  },
+  "Saved automatically": {
+    "ar": "حُفظ تلقائيًا",
+    "zh": "已自動儲存"
+  },
+  "Saved message template": {
+    "ar": "قالب رسالة محفوظ",
+    "zh": "已儲存的訊息範本"
+  },
+  "Saved option": {
+    "ar": "الخيار المحفوظ",
+    "zh": "已儲存的選項"
+  },
+  "Saved option: {value}": {
+    "ar": "الخيار المحفوظ: {value}",
+    "zh": "已儲存的選項：{value}"
+  },
+  "Saved responses are deliberately bounded and never execute code.": {
+    "ar": "للردود المحفوظة حدود مقصودة ولا تنفّذ أي شيفرة برمجية.",
+    "zh": "已儲存的回覆有明確限制，且不會執行程式碼。"
+  },
+  "Schedule one-off or recurring reminders with an explicit timezone.": {
+    "ar": "جدوِل تذكيرات لمرة واحدة أو متكررة بمنطقة زمنية محددة.",
+    "zh": "指定時區，排定單次或重複提醒。"
+  },
+  "Schedule reminders for messages, tasks, and events.": {
+    "ar": "جدوِل تذكيرات للرسائل والمهام والفعاليات.",
+    "zh": "排定訊息、工作與活動提醒。"
+  },
+  "Search content, videos, and references without leaving the app.": {
+    "ar": "ابحث عن محتوى وفيديوهات ومراجع دون مغادرة التطبيق.",
+    "zh": "直接在應用程式內搜尋內容、影片與參考資料。"
+  },
+  "Search is limited to documented providers; arbitrary URLs are never fetched.": {
+    "ar": "يقتصر البحث على مزوّدين موثّقين؛ لا تُجلب روابط عشوائية أبدًا.",
+    "zh": "搜尋僅限具備說明文件的供應商，絕不擷取任意網址。"
+  },
+  "Search is limited to providers with documented APIs; arbitrary URLs are never fetched.": {
+    "ar": "يقتصر البحث على مزوّدين بواجهات API موثّقة؛ لا تُجلب روابط عشوائية أبدًا.",
+    "zh": "搜尋僅限 API 具備說明文件的供應商，絕不擷取任意網址。"
+  },
+  "Search only approved providers instead of fetching arbitrary websites.": {
+    "ar": "ابحث لدى المزوّدين المعتمدين فقط بدلًا من جلب مواقع عشوائية.",
+    "zh": "僅搜尋已核准的供應商，不擷取任意網站。"
+  },
+  "See who brought new members to the server.": {
+    "ar": "اعرف من جلب أعضاء جددًا إلى الخادم.",
+    "zh": "查看是誰邀請新成員加入伺服器。"
+  },
+  "Send Messages": {
+    "ar": "إرسال الرسائل",
+    "zh": "傳送訊息"
+  },
+  "Send a direct message": {
+    "ar": "إرسال رسالة خاصة",
+    "zh": "傳送私訊"
+  },
+  "Send a private welcome": {
+    "ar": "إرسال ترحيب خاص",
+    "zh": "傳送私人歡迎訊息"
+  },
+  "Send start reminders": {
+    "ar": "إرسال تذكيرات البدء",
+    "zh": "傳送開始提醒"
+  },
+  "Sends a reminder if nobody claims the request in this time. It does not close the ticket.": {
+    "ar": "يرسل تذكيرًا إذا لم يتولَّ أحد الطلب خلال هذه المدة. لا يُغلق التذكرة.",
+    "zh": "若在此期間無人接手請求，會傳送提醒，但不會關閉支援單。"
+  },
+  "Server monetization": {
+    "ar": "تحقيق دخل من الخادم",
+    "zh": "伺服器營利"
+  },
+  "Server nickname": {
+    "ar": "الاسم المستعار في الخادم",
+    "zh": "伺服器暱稱"
+  },
+  "Set defaults for creating events with fewer steps.": {
+    "ar": "اضبط الإعدادات الافتراضية لإنشاء الفعاليات بخطوات أقل.",
+    "zh": "設定預設值，減少建立活動的步驟。"
+  },
+  "Set defaults for quick polls.": {
+    "ar": "اضبط الإعدادات الافتراضية للاستطلاعات السريعة.",
+    "zh": "設定快速投票的預設值。"
+  },
+  "Set guardrails used by manual moderation commands.": {
+    "ar": "ضع ضوابط لأوامر الإشراف اليدوية.",
+    "zh": "設定手動管理指令使用的防護規則。"
+  },
+  "Set the name the Helper displays in this server.": {
+    "ar": "حدّد الاسم الذي يعرضه Helper في هذا الخادم.",
+    "zh": "設定 Helper 在此伺服器顯示的名稱。"
+  },
+  "Set when the sequence of joins is considered the raid.": {
+    "ar": "حدّد متى تُعدّ سلسلة الانضمامات غارة.",
+    "zh": "設定連續加入何時視為突襲。"
+  },
+  "Sets the name the Helper displays in this server.": {
+    "ar": "يحدّد الاسم الذي يعرضه Helper في هذا الخادم.",
+    "zh": "設定 Helper 在此伺服器顯示的名稱。"
+  },
+  "Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.": {
+    "ar": "حُفظت الإعدادات، لكن تعذّر تحديث المنشور في Discord. تحقق من القناة وصلاحيات Helper قبل إصلاح المنشور.",
+    "zh": "設定已儲存，但無法更新 Discord 貼文。請先檢查頻道與 Helper 權限，再修復貼文。"
+  },
+  "Shortcuts": {
+    "ar": "الاختصارات",
+    "zh": "捷徑"
+  },
+  "Show channel shortcuts": {
+    "ar": "إظهار اختصارات القنوات",
+    "zh": "顯示頻道捷徑"
+  },
+  "Show community progress with privacy-aware controls.": {
+    "ar": "اعرض تقدّم المجتمع بضوابط تراعي الخصوصية.",
+    "zh": "透過兼顧隱私的控制項顯示社群進度。"
+  },
+  "Show inviter names": {
+    "ar": "إظهار أسماء الداعين",
+    "zh": "顯示邀請者名稱"
+  },
+  "Show the /leaderboard response to everyone in the channel": {
+    "ar": "إظهار رد /leaderboard للجميع في القناة",
+    "zh": "向頻道內所有人顯示 /leaderboard 回覆"
+  },
+  "Show the leaderboard publicly": {
+    "ar": "عرض الترتيب علنًا",
+    "zh": "公開顯示排行榜"
+  },
+  "Shows community progress with configurable privacy.": {
+    "ar": "يعرض تقدّم المجتمع بخصوصية قابلة للضبط.",
+    "zh": "顯示社群進度，並提供可調整的隱私設定。"
+  },
+  "Shows current network fees for the community.": {
+    "ar": "يعرض رسوم الشبكة الحالية للمجتمع.",
+    "zh": "向社群顯示目前的網路手續費。"
+  },
+  "Signed Stripe webhooks": {
+    "ar": "إشعارات webhook موقّعة من Stripe",
+    "zh": "經簽署的 Stripe webhook"
+  },
+  "Sky Islands": {
+    "ar": "جزر السماء",
+    "zh": "天空群島"
+  },
+  "Space Grotesk": {
+    "ar": "Space Grotesk",
+    "zh": "Space Grotesk"
+  },
+  "Speed up giveaway creation in Discord.": {
+    "ar": "سرّع إنشاء السحوبات في Discord.",
+    "zh": "加快在 Discord 建立抽獎的流程。"
+  },
+  "Staff notification channel (optional)": {
+    "ar": "قناة إشعارات الفريق (اختياري)",
+    "zh": "管理團隊通知頻道（選填）"
+  },
+  "Staff-only commands": {
+    "ar": "أوامر خاصة بالفريق",
+    "zh": "管理團隊專用指令"
+  },
+  "Starboard channel": {
+    "ar": "قناة الرسائل المميزة",
+    "zh": "精選訊息頻道"
+  },
+  "Stars required": {
+    "ar": "النجوم المطلوبة",
+    "zh": "所需星星數"
+  },
+  "Starship Hangar": {
+    "ar": "حظيرة المركبات الفضائية",
+    "zh": "星艦機庫"
+  },
+  "Start reminder": {
+    "ar": "تذكير البدء",
+    "zh": "開始提醒"
+  },
+  "Statistics channels": {
+    "ar": "قنوات الإحصاءات",
+    "zh": "統計頻道"
+  },
+  "Statistics message": {
+    "ar": "رسالة الإحصاءات",
+    "zh": "統計訊息"
+  },
+  "Stop repeated messages and disruptive bursts with a clear, reviewable policy.": {
+    "ar": "أوقف الرسائل المتكررة والتدفقات المزعجة بسياسة واضحة قابلة للمراجعة.",
+    "zh": "以清楚且可檢視的政策阻擋重複訊息與干擾性洗版。"
+  },
+  "Store only day and month and announce birthdays once per year.": {
+    "ar": "خزّن اليوم والشهر فقط وأعلن عيد الميلاد مرة في السنة.",
+    "zh": "僅儲存日期與月份，每年發布一次生日公告。"
+  },
+  "Stripe Connect account": {
+    "ar": "حساب Stripe Connect",
+    "zh": "Stripe Connect 帳號"
+  },
+  "Subscriber role": {
+    "ar": "رتبة المشترك",
+    "zh": "訂閱者身分組"
+  },
+  "Suggestion channel": {
+    "ar": "قناة الاقتراح",
+    "zh": "建議頻道"
+  },
+  "Suggestion intake": {
+    "ar": "استقبال الاقتراحات",
+    "zh": "建議收件設定"
+  },
+  "Suggestions channel": {
+    "ar": "قناة الاقتراحات",
+    "zh": "建議頻道"
+  },
+  "Support / against": {
+    "ar": "تأييد / ضد",
+    "zh": "支持／反對"
+  },
+  "Support / oppose": {
+    "ar": "تأييد / معارضة",
+    "zh": "支持／反對"
+  },
+  "Support and chargeback process": {
+    "ar": "إجراءات الدعم والاعتراض على المدفوعات",
+    "zh": "客服與付款爭議處理流程"
+  },
+  "Support and records": {
+    "ar": "الدعم والسجلات",
+    "zh": "支援與紀錄"
+  },
+  "Support only": {
+    "ar": "دعم فقط",
+    "zh": "僅提供支持"
+  },
+  "Support reminder (hours)": {
+    "ar": "تذكير الدعم (ساعات)",
+    "zh": "支援提醒（小時）"
+  },
+  "Support team": {
+    "ar": "فريق الدعم",
+    "zh": "支援團隊"
+  },
+  "Support team role": {
+    "ar": "رتبة فريق الدعم",
+    "zh": "支援團隊身分組"
+  },
+  "Support tickets": {
+    "ar": "تذاكر الدعم",
+    "zh": "支援單"
+  },
+  "Support workflow": {
+    "ar": "مسار الدعم",
+    "zh": "支援流程"
+  },
+  "System": {
+    "ar": "النظام",
+    "zh": "系統"
+  },
+  "TIKTOK ACCOUNT": {
+    "ar": "حساب TikTok",
+    "zh": "TikTok 帳號"
+  },
+  "TWITCH_CLIENT_ID": {
+    "ar": "TWITCH_CLIENT_ID",
+    "zh": "TWITCH_CLIENT_ID"
+  },
+  "TWITCH_CLIENT_SECRET": {
+    "ar": "TWITCH_CLIENT_SECRET",
+    "zh": "TWITCH_CLIENT_SECRET"
+  },
+  "TWITCH_EVENTSUB_SECRET": {
+    "ar": "TWITCH_EVENTSUB_SECRET",
+    "zh": "TWITCH_EVENTSUB_SECRET"
+  },
+  "Templates and import": {
+    "ar": "القوالب والاستيراد",
+    "zh": "範本與匯入"
+  },
+  "Temporarily give this role to the member when their birthday is announced.": {
+    "ar": "امنح العضو هذه الرتبة مؤقتًا عند إعلان عيد ميلاده.",
+    "zh": "發布成員生日公告時，暫時授予此身分組。"
+  },
+  "Text": {
+    "ar": "النص",
+    "zh": "文字"
+  },
+  "Text colour": {
+    "ar": "لون النص",
+    "zh": "文字顏色"
+  },
+  "The Helper records an overdue ticket job after this period.": {
+    "ar": "يسجّل Helper مهمة لتذكرة متأخرة بعد هذه المدة.",
+    "zh": "超過此期間後，Helper 會記錄一項支援單逾時工作。"
+  },
+  "The account must explicitly authorise Vozen through Meta OAuth.": {
+    "ar": "يجب أن يفوّض الحساب Vozen صراحةً عبر Meta OAuth.",
+    "zh": "帳號必須透過 Meta OAuth 明確授權 Vozen。"
+  },
+  "The channel where the alert will be posted.": {
+    "ar": "القناة التي سيُنشر فيها التنبيه.",
+    "zh": "發布通知的頻道。"
+  },
+  "The channel where the publication will be sent.": {
+    "ar": "القناة التي سيُرسل إليها المنشور.",
+    "zh": "傳送貼文的頻道。"
+  },
+  "The character(s) members type before a saved command, for example !rules.": {
+    "ar": "الحرف أو الأحرف التي يكتبها الأعضاء قبل أمر محفوظ، مثل !rules.",
+    "zh": "成員在已儲存指令前輸入的字元，例如 !rules。"
+  },
+  "The command uses these values when no override is provided.": {
+    "ar": "يستخدم الأمر هذه القيم ما لم تُحدّد قيم بديلة.",
+    "zh": "未指定覆寫值時，指令會使用這些值。"
+  },
+  "The configuration changed in another session. Reload before editing again; your draft is still here.": {
+    "ar": "تغيّرت الإعدادات في جلسة أخرى. أعد التحميل قبل التعديل مجددًا؛ لا تزال مسودتك هنا.",
+    "zh": "設定已在另一個工作階段變更。請重新載入後再編輯；你的草稿仍保留在這裡。"
+  },
+  "The creator must authorise the Vozen application.": {
+    "ar": "يجب على منشئ المحتوى تفويض تطبيق Vozen.",
+    "zh": "創作者必須授權 Vozen 應用程式。"
+  },
+  "The first message should clearly explain the next step.": {
+    "ar": "ينبغي أن تشرح الرسالة الأولى الخطوة التالية بوضوح.",
+    "zh": "第一則訊息應清楚說明下一步。"
+  },
+  "The goodbye message and where it appears.": {
+    "ar": "رسالة الوداع ومكان ظهورها.",
+    "zh": "告別訊息及其顯示位置。"
+  },
+  "The local day used to decide when a birthday announcement is sent.": {
+    "ar": "اليوم بالتوقيت المحلي المستخدم لتحديد موعد إرسال إعلان عيد الميلاد.",
+    "zh": "用來決定何時傳送生日公告的當地日期。"
+  },
+  "The longest time a member can schedule a reminder.": {
+    "ar": "أبعد موعد يمكن للعضو جدولة تذكير له.",
+    "zh": "成員可預先排定提醒的最長時間。"
+  },
+  "The maximum number of active and paused workflows stored for this server.": {
+    "ar": "الحد الأقصى لمسارات العمل النشطة والمتوقفة مؤقتًا المحفوظة لهذا الخادم.",
+    "zh": "此伺服器可儲存的啟用與暫停中工作流程數量上限。"
+  },
+  "The maximum number of saved responses this server can keep.": {
+    "ar": "الحد الأقصى للردود المحفوظة التي يمكن لهذا الخادم الاحتفاظ بها.",
+    "zh": "此伺服器可保留的已儲存回覆數量上限。"
+  },
+  "The public channel with the Open ticket button.": {
+    "ar": "القناة العامة التي تحتوي على زر فتح تذكرة.",
+    "zh": "設有「開啟支援單」按鈕的公開頻道。"
+  },
+  "The role panel command applies these values to newly published panels.": {
+    "ar": "يطبّق أمر لوحة الرتب هذه القيم على اللوحات المنشورة حديثًا.",
+    "zh": "身分組面板指令會將這些值套用至新發布的面板。"
+  },
+  "These options are applied to every new suggestion.": {
+    "ar": "تُطبّق هذه الخيارات على كل اقتراح جديد.",
+    "zh": "這些選項會套用至每個新建議。"
+  },
+  "These values are applied to new events created with the Helper.": {
+    "ar": "تُطبّق هذه القيم على الفعاليات الجديدة المنشأة باستخدام Helper.",
+    "zh": "這些值會套用至透過 Helper 建立的新活動。"
+  },
+  "This role can claim, close and reopen tickets.": {
+    "ar": "يمكن لهذه الرتبة تولّي التذاكر وإغلاقها وإعادة فتحها.",
+    "zh": "此身分組可接手、關閉與重新開啟支援單。"
+  },
+  "Three to ten lowercase letters, for example usd or eur.": {
+    "ar": "من ثلاثة إلى عشرة أحرف صغيرة، مثل usd أو eur.",
+    "zh": "3 至 10 個小寫字母，例如 usd 或 eur。"
+  },
+  "Ticket category": {
+    "ar": "فئة التذاكر",
+    "zh": "支援單類別"
+  },
+  "Ticket setup": {
+    "ar": "إعداد التذاكر",
+    "zh": "支援單設定"
+  },
+  "TikTok App Review": {
+    "ar": "مراجعة تطبيق TikTok",
+    "zh": "TikTok 應用程式審查"
+  },
+  "TikTok Display API app": {
+    "ar": "تطبيق TikTok Display API",
+    "zh": "TikTok Display API 應用程式"
+  },
+  "TikTok connected": {
+    "ar": "تم ربط TikTok",
+    "zh": "已連結 TikTok"
+  },
+  "Time between XP gains (seconds)": {
+    "ar": "الفاصل بين اكتساب XP (ثوانٍ)",
+    "zh": "獲得 XP 的間隔（秒）"
+  },
+  "Timeout inicial (segundos)": {
+    "ar": "مدة التقييد الأولية (ثوانٍ)",
+    "zh": "初始暫時禁言時間（秒）"
+  },
+  "Title": {
+    "ar": "العنوان",
+    "zh": "標題"
+  },
+  "Token ID (ERC-1155)": {
+    "ar": "معرّف الرمز (ERC-1155)",
+    "zh": "代幣 ID（ERC-1155）"
+  },
+  "Token standard": {
+    "ar": "معيار الرمز",
+    "zh": "代幣標準"
+  },
+  "Track posts from a professional account authorised by Meta.": {
+    "ar": "تابع منشورات حساب احترافي مفوّض من Meta.",
+    "zh": "追蹤已透過 Meta 授權的專業帳號貼文。"
+  },
+  "Track streams through the official Kick API when available.": {
+    "ar": "تابع البثوث عبر Kick API الرسمية عند توفرها.",
+    "zh": "官方 Kick API 可用時，透過它追蹤直播。"
+  },
+  "Track videos from a creator who authorised Vozen through the Display API.": {
+    "ar": "تابع فيديوهات منشئ محتوى فوّض Vozen عبر Display API.",
+    "zh": "追蹤已透過 Display API 授權 Vozen 的創作者影片。"
+  },
+  "Tracks digital currency indicators.": {
+    "ar": "يتابع مؤشرات العملات الرقمية.",
+    "zh": "追蹤數位貨幣指標。"
+  },
+  "Tracks important changes and keeps your team aligned.": {
+    "ar": "يتابع التغييرات المهمة ويبقي فريقك على اطّلاع.",
+    "zh": "追蹤重要變更，讓團隊掌握一致資訊。"
+  },
+  "Tracks new posts from selected accounts.": {
+    "ar": "يتابع المنشورات الجديدة من الحسابات المحددة.",
+    "zh": "追蹤所選帳號的新貼文。"
+  },
+  "Tracks new posts from selected profiles.": {
+    "ar": "يتابع المنشورات الجديدة من الملفات المحددة.",
+    "zh": "追蹤所選個人檔案的新貼文。"
+  },
+  "Tracks server activity and trends.": {
+    "ar": "يتابع نشاط الخادم واتجاهاته.",
+    "zh": "追蹤伺服器活動與趨勢。"
+  },
+  "Trial days": {
+    "ar": "أيام الفترة التجريبية",
+    "zh": "試用天數"
+  },
+  "Tropical Lagoon": {
+    "ar": "بحيرة ساحلية استوائية",
+    "zh": "熱帶潟湖"
+  },
+  "Tune message XP and level-up announcements.": {
+    "ar": "اضبط XP الرسائل وإعلانات الارتقاء بالمستوى.",
+    "zh": "調整訊息 XP 與升級公告。"
+  },
+  "Turn meaningful participation into milestones and rewards.": {
+    "ar": "حوّل المشاركة الهادفة إلى إنجازات ومكافآت.",
+    "zh": "將有意義的參與轉化為里程碑與獎勵。"
+  },
+  "Turn member requests into private, trackable support conversations.": {
+    "ar": "حوّل طلبات الأعضاء إلى محادثات دعم خاصة قابلة للتتبع.",
+    "zh": "將成員請求轉為可追蹤的私人支援對話。"
+  },
+  "Turn off to post a quiet reminder without a mention.": {
+    "ar": "عطّل الخيار لنشر تذكير هادئ دون إشارة.",
+    "zh": "關閉後會發布不含提及的靜默提醒。"
+  },
+  "Turns any RSS feed into an automatic update.": {
+    "ar": "يحوّل أي موجز RSS إلى تحديث تلقائي.",
+    "zh": "將任何 RSS 訂閱來源轉為自動更新。"
+  },
+  "Twitch channel login": {
+    "ar": "اسم تسجيل دخول قناة Twitch",
+    "zh": "Twitch 頻道登入名稱"
+  },
+  "UTC": {
+    "ar": "UTC",
+    "zh": "UTC"
+  },
+  "UTC+01:00": {
+    "ar": "UTC+01:00",
+    "zh": "UTC+01:00"
+  },
+  "UTC+02:00": {
+    "ar": "UTC+02:00",
+    "zh": "UTC+02:00"
+  },
+  "UTC+05:30": {
+    "ar": "UTC+05:30",
+    "zh": "UTC+05:30"
+  },
+  "UTC+08:00": {
+    "ar": "UTC+08:00",
+    "zh": "UTC+08:00"
+  },
+  "UTC-05:00": {
+    "ar": "UTC-05:00",
+    "zh": "UTC-05:00"
+  },
+  "Unable to load your servers": {
+    "ar": "تعذّر تحميل خوادمك",
+    "zh": "無法載入你的伺服器"
+  },
+  "Understand important changes and why an action was allowed or blocked.": {
+    "ar": "افهم التغييرات المهمة وسبب السماح بإجراء أو حظره.",
+    "zh": "瞭解重要變更，以及操作獲准或遭封鎖的原因。"
+  },
+  "Understand which invite campaigns bring members to your server.": {
+    "ar": "اعرف حملات الدعوات التي تجلب أعضاء إلى خادمك.",
+    "zh": "瞭解哪些邀請活動為伺服器帶來新成員。"
+  },
+  "Up to 32 characters. Leave empty to remove the custom name.": {
+    "ar": "حتى 32 حرفًا. اتركه فارغًا لإزالة الاسم المخصص.",
+    "zh": "最多 32 個字元。留空即可移除自訂名稱。"
+  },
+  "Update interval (seconds)": {
+    "ar": "الفاصل بين التحديثات (ثوانٍ)",
+    "zh": "更新間隔（秒）"
+  },
+  "Upper bound for one purge command.": {
+    "ar": "الحد الأقصى لأمر حذف جماعي واحد.",
+    "zh": "單次大量刪除指令的數量上限。"
+  },
+  "Usa 0 para apenas registar o incidente.": {
+    "ar": "استخدم 0 لتسجيل الحادثة فقط.",
+    "zh": "設為 0 即僅記錄事件。"
+  },
+  "Use Application Commands": {
+    "ar": "استخدام أوامر التطبيقات",
+    "zh": "使用應用程式指令"
+  },
+  "Use an HTTPS URL for the public feed.": {
+    "ar": "استخدم رابط HTTPS للموجز العام.",
+    "zh": "請為公開訂閱來源使用 HTTPS 網址。"
+  },
+  "Use server system channel": {
+    "ar": "استخدام قناة النظام في الخادم",
+    "zh": "使用伺服器系統頻道"
+  },
+  "Use the ID that usually starts with UC…": {
+    "ar": "استخدم المعرّف الذي يبدأ عادةً بـ UC…",
+    "zh": "請使用通常以 UC… 開頭的 ID。"
+  },
+  "Use the channel ID, not a watch URL.": {
+    "ar": "استخدم معرّف القناة، لا رابط مشاهدة.",
+    "zh": "請使用頻道 ID，不要使用觀看網址。"
+  },
+  "Use the channel login, without a URL or @ prefix.": {
+    "ar": "استخدم اسم تسجيل دخول القناة دون رابط أو بادئة @.",
+    "zh": "請使用頻道登入名稱，不含網址或 @ 前綴。"
+  },
+  "Use the official CoinGecko read-only API with bounded symbols and results.": {
+    "ar": "استخدم CoinGecko API الرسمية للقراءة فقط مع حدود للرموز والنتائج.",
+    "zh": "使用官方唯讀 CoinGecko API，並限制幣種與結果數量。"
+  },
+  "Use {member} and {server} as placeholders.": {
+    "ar": "استخدم {member} و{server} كمتغيرات.",
+    "zh": "使用 {member} 與 {server} 作為預留位置。"
+  },
+  "Use {member} for the member and {server} for the server name.": {
+    "ar": "استخدم {member} للعضو و{server} لاسم الخادم.",
+    "zh": "使用 {member} 代表成員，{server} 代表伺服器名稱。"
+  },
+  "Use {member} to mention the member and {level} for the new level.": {
+    "ar": "استخدم {member} للإشارة إلى العضو و{level} للمستوى الجديد.",
+    "zh": "使用 {member} 提及成員，{level} 代表新等級。"
+  },
+  "Use {messages}, {joins}, {leaves} and {days}.": {
+    "ar": "استخدم {messages} و{joins} و{leaves} و{days}.",
+    "zh": "使用 {messages}、{joins}、{leaves} 與 {days}。"
+  },
+  "Use {user} for the member display name.": {
+    "ar": "استخدم {user} لاسم عرض العضو.",
+    "zh": "使用 {user} 代表成員的顯示名稱。"
+  },
+  "Use {user} for the member mention.": {
+    "ar": "استخدم {user} للإشارة إلى العضو.",
+    "zh": "使用 {user} 提及成員。"
+  },
+  "Used when a reminder time is written as HH:MM, such as 09:30.": {
+    "ar": "يُستخدم عند كتابة وقت التذكير بصيغة HH:MM، مثل 09:30.",
+    "zh": "提醒時間以 HH:MM 格式填寫時使用，例如 09:30。"
+  },
+  "Uses the join gate temporarily and restores it when containment expires.": {
+    "ar": "يستخدم بوابة الانضمام مؤقتًا ويعيدها إلى حالتها السابقة عند انتهاء الاحتواء.",
+    "zh": "暫時啟用加入管制，並在圍堵結束後還原。"
+  },
+  "Uses the official Helix/EventSub API with signed webhook verification and deduplication.": {
+    "ar": "يستخدم Helix/EventSub API الرسمية مع التحقق من توقيع webhook وإزالة التكرار.",
+    "zh": "使用官方 Helix/EventSub API，並驗證 webhook 簽章及排除重複項目。"
+  },
+  "Variables: {broadcaster}, {login}, {url}, {stream_id}, {started_at}.": {
+    "ar": "المتغيرات: {broadcaster}، {login}، {url}، {stream_id}، {started_at}.",
+    "zh": "變數：{broadcaster}、{login}、{url}、{stream_id}、{started_at}。"
+  },
+  "Variables: {feed}, {title}, {url}, {published_at}.": {
+    "ar": "المتغيرات: {feed}، {title}، {url}، {published_at}.",
+    "zh": "變數：{feed}、{title}、{url}、{published_at}。"
+  },
+  "Variables: {member} and {server}.": {
+    "ar": "المتغيرات: {member} و{server}.",
+    "zh": "變數：{member} 與 {server}。"
+  },
+  "Variables: {member}, {level}, {server}.": {
+    "ar": "المتغيرات: {member}، {level}، {server}.",
+    "zh": "變數：{member}、{level}、{server}。"
+  },
+  "Variables: {member}, {server}, {count}.": {
+    "ar": "المتغيرات: {member}، {server}، {count}.",
+    "zh": "變數：{member}、{server}、{count}。"
+  },
+  "Variables: {title}, {url}, {channel}, {published_at}.": {
+    "ar": "المتغيرات: {title}، {url}، {channel}، {published_at}.",
+    "zh": "變數：{title}、{url}、{channel}、{published_at}。"
+  },
+  "Verification interval (seconds)": {
+    "ar": "الفاصل بين عمليات التحقق (ثوانٍ)",
+    "zh": "驗證間隔（秒）"
+  },
+  "Very high": {
+    "ar": "مرتفع جدًا",
+    "zh": "非常高"
+  },
+  "View, export, and safely delete your server data.": {
+    "ar": "اعرض بيانات خادمك وصدّرها واحذفها بأمان.",
+    "zh": "安全地檢視、匯出與刪除伺服器資料。"
+  },
+  "Voice XP per minute": {
+    "ar": "XP الصوتية لكل دقيقة",
+    "zh": "每分鐘語音 XP"
+  },
+  "Volcanic Forge": {
+    "ar": "المسبك البركاني",
+    "zh": "火山鍛造場"
+  },
+  "Voluntary profile data is erased; moderation audit records stay retained.": {
+    "ar": "تُمحى بيانات الملف المقدّمة طوعًا؛ وتبقى سجلات تدقيق الإشراف محفوظة.",
+    "zh": "將清除自願提供的個人檔案資料；管理稽核紀錄仍會保留。"
+  },
+  "Wait before sending (seconds)": {
+    "ar": "الانتظار قبل الإرسال (ثوانٍ)",
+    "zh": "傳送前等待時間（秒）"
+  },
+  "Wallet access": {
+    "ar": "الوصول عبر المحفظة",
+    "zh": "錢包存取"
+  },
+  "Wallet gating": {
+    "ar": "بوابة المحفظة",
+    "zh": "錢包驗證門檻"
+  },
+  "Watch a validated RSS or Atom feed with safe polling.": {
+    "ar": "تابع موجز RSS أو Atom متحققًا منه باستعلام دوري آمن.",
+    "zh": "以安全的定期檢查追蹤已驗證的 RSS 或 Atom 訂閱來源。"
+  },
+  "Welcome members without editing code.": {
+    "ar": "رحّب بالأعضاء دون تعديل الشيفرة.",
+    "zh": "無須修改程式碼即可歡迎成員。"
+  },
+  "Welcome messages": {
+    "ar": "رسائل الترحيب",
+    "zh": "歡迎訊息"
+  },
+  "Welcome messages, optional orientation buttons, direct messages and automatic roles.": {
+    "ar": "رسائل ترحيب وأزرار إرشاد اختيارية ورسائل خاصة ورتب تلقائية.",
+    "zh": "歡迎訊息、選用的引導按鈕、私訊與自動身分組。"
+  },
+  "Welcome setup": {
+    "ar": "إعداد الترحيب",
+    "zh": "歡迎設定"
+  },
+  "What members see before opening a ticket.": {
+    "ar": "ما يراه الأعضاء قبل فتح تذكرة.",
+    "zh": "成員開啟支援單前看到的內容。"
+  },
+  "When a member leaves": {
+    "ar": "عند مغادرة عضو",
+    "zh": "成員離開時"
+  },
+  "When disabled, everyone/here mentions are neutralised.": {
+    "ar": "عند التعطيل، تُبطل إشارات everyone/here.",
+    "zh": "停用時，everyone/here 提及不會生效。"
+  },
+  "When disabled, only the requesting member sees the result.": {
+    "ar": "عند التعطيل، يرى النتيجة العضو مقدّم الطلب فقط.",
+    "zh": "停用時，僅提出請求的成員能看到結果。"
+  },
+  "When disabled, only the requesting member sees the summary.": {
+    "ar": "عند التعطيل، يرى الملخص العضو مقدّم الطلب فقط.",
+    "zh": "停用時，僅提出請求的成員能看到摘要。"
+  },
+  "When off, Helper removes the other level rewards when assigning a new one.": {
+    "ar": "عند التعطيل، يزيل Helper مكافآت المستويات الأخرى عند تعيين مكافأة جديدة.",
+    "zh": "關閉時，Helper 會在指派新等級獎勵時移除其他等級獎勵。"
+  },
+  "Where members open tickets": {
+    "ar": "مكان فتح الأعضاء للتذاكر",
+    "zh": "成員開啟支援單的位置"
+  },
+  "Window (seconds)": {
+    "ar": "النافذة الزمنية (ثوانٍ)",
+    "zh": "時間範圍（秒）"
+  },
+  "Work cooldown (minutes)": {
+    "ar": "مهلة العمل (دقائق)",
+    "zh": "工作冷卻時間（分鐘）"
+  },
+  "Work reward": {
+    "ar": "مكافأة العمل",
+    "zh": "工作獎勵"
+  },
+  "XP card appearance": {
+    "ar": "مظهر بطاقة XP",
+    "zh": "XP 卡片外觀"
+  },
+  "XP cooldown (seconds)": {
+    "ar": "مهلة XP (ثوانٍ)",
+    "zh": "XP 冷卻時間（秒）"
+  },
+  "XP milestones": {
+    "ar": "إنجازات XP",
+    "zh": "XP 里程碑"
+  },
+  "XP progression": {
+    "ar": "التقدّم في XP",
+    "zh": "XP 成長"
+  },
+  "YOUTUBE_API_KEY": {
+    "ar": "YOUTUBE_API_KEY",
+    "zh": "YOUTUBE_API_KEY"
+  },
+  "Your session expired. Sign in again.": {
+    "ar": "انتهت جلستك. سجّل الدخول مجددًا.",
+    "zh": "你的工作階段已過期。請重新登入。"
+  },
+  "add_reactions": {
+    "ar": "add_reactions",
+    "zh": "add_reactions"
+  },
+  "alert channel": {
+    "ar": "قناة التنبيهات",
+    "zh": "通知頻道"
+  },
+  "arbitrum": {
+    "ar": "arbitrum",
+    "zh": "arbitrum"
+  },
+  "attach_files": {
+    "ar": "attach_files",
+    "zh": "attach_files"
+  },
+  "base": {
+    "ar": "base",
+    "zh": "base"
+  },
+  "change_nickname": {
+    "ar": "change_nickname",
+    "zh": "change_nickname"
+  },
+  "channels ignored": {
+    "ar": "القنوات المستثناة",
+    "zh": "忽略的頻道"
+  },
+  "channels without XP": {
+    "ar": "قنوات دون XP",
+    "zh": "無 XP 的頻道"
+  },
+  "direct_messages": {
+    "ar": "direct_messages",
+    "zh": "direct_messages"
+  },
+  "embed_links": {
+    "ar": "embed_links",
+    "zh": "embed_links"
+  },
+  "erc1155": {
+    "ar": "erc1155",
+    "zh": "erc1155"
+  },
+  "erc20": {
+    "ar": "erc20",
+    "zh": "erc20"
+  },
+  "erc721": {
+    "ar": "erc721",
+    "zh": "erc721"
+  },
+  "ethereum": {
+    "ar": "ethereum",
+    "zh": "ethereum"
+  },
+  "example: vozen (without @).": {
+    "ar": "مثال: vozen (دون @).",
+    "zh": "例如：vozen（不含 @）。"
+  },
+  "guild_invites": {
+    "ar": "guild_invites",
+    "zh": "guild_invites"
+  },
+  "guild_members": {
+    "ar": "guild_members",
+    "zh": "guild_members"
+  },
+  "guild_members_intent": {
+    "ar": "guild_members_intent",
+    "zh": "guild_members_intent"
+  },
+  "inter": {
+    "ar": "inter",
+    "zh": "inter"
+  },
+  "interactions": {
+    "ar": "التفاعلات",
+    "zh": "互動"
+  },
+  "join channel": {
+    "ar": "قناة الانضمام",
+    "zh": "加入頻道"
+  },
+  "leave and templates": {
+    "ar": "المغادرة والقوالب",
+    "zh": "離開與範本"
+  },
+  "levels": {
+    "ar": "المستويات",
+    "zh": "等級"
+  },
+  "lexend": {
+    "ar": "lexend",
+    "zh": "lexend"
+  },
+  "limited availability": {
+    "ar": "إتاحة محدودة",
+    "zh": "有限開放"
+  },
+  "manage_channels": {
+    "ar": "manage_channels",
+    "zh": "manage_channels"
+  },
+  "manage_events": {
+    "ar": "manage_events",
+    "zh": "manage_events"
+  },
+  "manage_expressions": {
+    "ar": "manage_expressions",
+    "zh": "manage_expressions"
+  },
+  "manage_guild": {
+    "ar": "manage_guild",
+    "zh": "manage_guild"
+  },
+  "manage_messages": {
+    "ar": "manage_messages",
+    "zh": "manage_messages"
+  },
+  "manage_nicknames": {
+    "ar": "manage_nicknames",
+    "zh": "manage_nicknames"
+  },
+  "manage_roles": {
+    "ar": "manage_roles",
+    "zh": "manage_roles"
+  },
+  "manager_session": {
+    "ar": "manager_session",
+    "zh": "manager_session"
+  },
+  "medium": {
+    "ar": "متوسط",
+    "zh": "中"
+  },
+  "message": {
+    "ar": "رسالة",
+    "zh": "訊息"
+  },
+  "message_content": {
+    "ar": "message_content",
+    "zh": "message_content"
+  },
+  "message_content_intent": {
+    "ar": "message_content_intent",
+    "zh": "message_content_intent"
+  },
+  "message_events": {
+    "ar": "message_events",
+    "zh": "message_events"
+  },
+  "messages and rewards": {
+    "ar": "الرسائل والمكافآت",
+    "zh": "訊息與獎勵"
+  },
+  "moderate_members": {
+    "ar": "moderate_members",
+    "zh": "moderate_members"
+  },
+  "moderation": {
+    "ar": "الإشراف",
+    "zh": "管理"
+  },
+  "move_members": {
+    "ar": "move_members",
+    "zh": "move_members"
+  },
+  "outbound_https": {
+    "ar": "outbound_https",
+    "zh": "outbound_https"
+  },
+  "panel channel": {
+    "ar": "قناة اللوحة",
+    "zh": "面板頻道"
+  },
+  "polygon": {
+    "ar": "polygon",
+    "zh": "polygon"
+  },
+  "poppins": {
+    "ar": "poppins",
+    "zh": "poppins"
+  },
+  "read_message_history": {
+    "ar": "read_message_history",
+    "zh": "read_message_history"
+  },
+  "rewards by level": {
+    "ar": "المكافآت حسب المستوى",
+    "zh": "各等級獎勵"
+  },
+  "roboto": {
+    "ar": "roboto",
+    "zh": "roboto"
+  },
+  "role required": {
+    "ar": "الرتبة المطلوبة",
+    "zh": "必要身分組"
+  },
+  "roles ignored": {
+    "ar": "الرتب المستثناة",
+    "zh": "忽略的身分組"
+  },
+  "scheduler": {
+    "ar": "المجدول",
+    "zh": "排程器"
+  },
+  "send_messages": {
+    "ar": "send_messages",
+    "zh": "send_messages"
+  },
+  "space_grotesk": {
+    "ar": "space_grotesk",
+    "zh": "space_grotesk"
+  },
+  "system": {
+    "ar": "النظام",
+    "zh": "系統"
+  },
+  "view_audit_log": {
+    "ar": "view_audit_log",
+    "zh": "view_audit_log"
+  },
+  "view_channel": {
+    "ar": "view_channel",
+    "zh": "view_channel"
+  },
+  "voice_channels": {
+    "ar": "voice_channels",
+    "zh": "voice_channels"
+  },
+  "voice_states": {
+    "ar": "voice_states",
+    "zh": "voice_states"
+  },
+  "your server": {
+    "ar": "خادمك",
+    "zh": "你的伺服器"
+  },
+  "{count} more members in /leaderboard.": {
+    "ar": "أعضاء إضافيون في /leaderboard: {count}.",
+    "zh": "/leaderboard 中還有 {count} 位成員。"
+  }
+}

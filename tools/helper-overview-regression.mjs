@@ -51,12 +51,12 @@ try {
       await page.screenshot({path:`output/playwright/overview-${locale}.png`,fullPage:true});
     }
     if(locale==='en') {
-      for(const [index,path] of [[0,'#/config/protection.antispam'],[1,'#/config/support.welcome'],[3,'#/features'],[4,'#/activity'],[5,'#/rank-card']]) {
+      for(const [index,path] of [[0,'/panel/antispam/'],[1,'/panel/welcome/'],[3,'/panel/features/'],[4,'/panel/activity/'],[5,'/panel/rank/']]) {
         await overview.locator('.vozen-overview__row').nth(index).click();
-        await page.waitForURL(url=>url.hash===path);
+        await page.waitForURL(url=>url.pathname===path&&!url.hash);
         await page.goto(base+'#/');await overview.waitFor();
       }
-      await overview.locator('header button').click();await page.waitForURL(url=>url.hash==='#/quick-setup');
+      await overview.locator('header button').click();await page.waitForURL(url=>url.pathname==='/panel/setup/'&&!url.hash);
       await page.goto(base+'#/');await overview.waitFor();
       await page.locator('select[aria-label="Current server"]').selectOption('b');
       await overview.locator('header p').filter({hasText:'Beta'}).waitFor();

@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
-import {mkdir} from 'node:fs/promises';
+import {mkdir,readFile} from 'node:fs/promises';
+const savedCopy={en:'Saved automatically'};
+for(const group of ['pt-fr-es','de-tr','ar-zh','ru-ko']) Object.assign(savedCopy,JSON.parse(await readFile(new URL(`../apps/helper-panel/src/helper-app-${group}.json`,import.meta.url),'utf8'))['Saved automatically']);
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright');
 const browser=await chromium.launch();
 const base=process.env.HELPER_TEST_URL||'http://127.0.0.1:5179/panel/helper-tracker/';
@@ -41,12 +43,12 @@ try {
     assert.equal(await page.getByRole('spinbutton').count(),0);
     assert.equal(await page.locator('.detail-aside').count(),0);
     assert.equal(await panel.locator('.achievement-medal').count(),7);
-    assert.equal(await panel.locator('a').getAttribute('href'),`#/achievements/${guild}?lang=${lang}`);
+    assert.equal(await panel.locator('a').getAttribute('href'),`/panel/collection/?server=${guild}`);
     assert.equal(writes.length,0,'viewing the collection must not save defaults');
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
     if(['en','pt','pt-mobile','ar-mobile'].includes(locale)) {await mkdir('output/playwright',{recursive:true});await page.screenshot({path:`output/playwright/achievements-settings-${locale}.png`,fullPage:true});}
     await Promise.all([page.waitForResponse(response=>response.request().method()==='PUT'),page.locator('.detail-intro input[type=checkbox]').uncheck()]);
-    await page.locator('.header-state').filter({hasText:/Saved automatically|Guardado automaticamente/}).waitFor();
+    await page.locator('.header-state').filter({hasText:savedCopy[lang]}).waitFor();
     assert.equal(writes.length,1);assert.equal(enabled,false);
     assert.equal(await panel.locator('article').count(),7,'the catalog remains visible while disabled');
     assert.equal(await panel.locator('a').count(),0,'disabled public collection is not linked');

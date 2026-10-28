@@ -11,9 +11,17 @@
     <meta name="description" content="Sign in with Discord to configure Vozen Helper for your server, review activity and manage available modules." />
     <link rel="canonical" href="https://vozen.org/panel/helper-tracker/" />
     <meta name="robots" content="noindex,follow" />
+    <style>
+      html{background:#070b12}body{margin:0}
+      .helper-boot{min-height:100svh;display:grid;place-items:center}
+      .helper-boot span{width:28px;height:28px;border:2px solid #26334a;border-top-color:#8ee5d2;border-radius:50%;animation:helper-boot-spin .8s linear infinite}
+      @keyframes helper-boot-spin{to{transform:rotate(360deg)}}
+      @media(prefers-reduced-motion:reduce){.helper-boot span{animation:none}}
+    </style>
   </head>
   <body>
-    <div id="root"><main><h1>Vozen Helper panel</h1><p>Sign in with Discord to manage your server. JavaScript is required to authenticate and load your private configuration.</p><a href="/account/">Open your Vozen account</a><p><a href="/helper/">About Vozen Helper</a> · <a href="/docs/helper/">Helper documentation</a></p></main></div>
+    <div id="root"><div class="helper-boot" role="status" aria-label="Vozen Helper" aria-busy="true"><span aria-hidden="true"></span></div></div>
+    <noscript><style>.helper-boot{display:none}</style><main><h1>Vozen Helper panel</h1><p>Sign in with Discord to manage your server. JavaScript is required to authenticate and load your private configuration.</p><a href="/account/">Open your Vozen account</a><p><a href="/helper/">About Vozen Helper</a> · <a href="/docs/helper/">Helper documentation</a></p></main></noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

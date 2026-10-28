@@ -64,7 +64,7 @@ assert.match(
 );
 assert.match(
   app,
-  /if \(parseRoute\(window\.location\.hash\)\.page === 'servers'\) return;/,
+  /if \(parseRoute\(panelRoute\(\)\)\.page === 'servers'\) return;/,
   'the server picker must become ready before loading dashboard-only data',
 );
 assert.doesNotMatch(

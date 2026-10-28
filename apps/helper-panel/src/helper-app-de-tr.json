@@ -1,0 +1,2686 @@
+{
+  "0 sends without waiting.": {
+    "de": "0 sendet ohne Wartezeit.",
+    "tr": "0, beklemeden gönderir."
+  },
+  "AUTOMATIC SAVING": {
+    "de": "AUTOMATISCHES SPEICHERN",
+    "tr": "OTOMATİK KAYIT"
+  },
+  "Account": {
+    "de": "Konto",
+    "tr": "Hesap"
+  },
+  "Actions before containment": {
+    "de": "Aktionen vor der Eindämmung",
+    "tr": "Sınırlama öncesi işlem sayısı"
+  },
+  "Activity": {
+    "de": "Aktivität",
+    "tr": "Etkinlik"
+  },
+  "Alert only, without punishment": {
+    "de": "Nur warnen, ohne Sanktion",
+    "tr": "Yalnızca uyar, ceza verme"
+  },
+  "Alerts you when a new podcast episode is published.": {
+    "de": "Benachrichtigt dich, wenn eine neue Podcast-Folge erscheint.",
+    "tr": "Yeni bir podcast bölümü yayımlandığında sizi bilgilendirir."
+  },
+  "All settings for this server.": {
+    "de": "Alle Einstellungen für diesen Server.",
+    "tr": "Bu sunucunun tüm ayarları."
+  },
+  "Allow authors to star their own message": {
+    "de": "Autoren dürfen ihre eigenen Nachrichten mit einem Stern markieren",
+    "tr": "Yazarlar kendi mesajlarına yıldız verebilsin"
+  },
+  "Announcement channel (optional)": {
+    "de": "Ankündigungskanal (optional)",
+    "tr": "Duyuru kanalı (isteğe bağlı)"
+  },
+  "Announcement message": {
+    "de": "Ankündigungsnachricht",
+    "tr": "Duyuru mesajı"
+  },
+  "Announcement timezone": {
+    "de": "Zeitzone für Ankündigungen",
+    "tr": "Duyuru saat dilimi"
+  },
+  "Append the dashboard URL for server managers.": {
+    "de": "Dashboard-URL für die Serververwaltung anhängen.",
+    "tr": "Sunucu yöneticileri için panel URL'sini ekleyin."
+  },
+  "Applies basic checks to new members.": {
+    "de": "Führt grundlegende Prüfungen bei neuen Mitgliedern durch.",
+    "tr": "Yeni üyelere temel kontroller uygular."
+  },
+  "Apply consistent moderation actions with policy and hierarchy checks.": {
+    "de": "Moderiere einheitlich mit Prüfungen der Richtlinien und Rollenhierarchie.",
+    "tr": "Politika ve rol hiyerarşisi kontrolleriyle tutarlı moderasyon işlemleri uygulayın."
+  },
+  "Approved Kick developer application": {
+    "de": "Genehmigte Kick-Entwickleranwendung",
+    "tr": "Onaylı Kick geliştirici uygulaması"
+  },
+  "Approved contract allow-list": {
+    "de": "Freigabeliste genehmigter Smart Contracts",
+    "tr": "Onaylı akıllı sözleşme izin listesi"
+  },
+  "Arbitrum": {
+    "de": "Arbitrum",
+    "tr": "Arbitrum"
+  },
+  "Ask a focused question and keep its result auditable.": {
+    "de": "Stelle eine gezielte Frage und halte das Ergebnis nachvollziehbar.",
+    "tr": "Odaklı bir soru sorun ve sonucunu denetlenebilir tutun."
+  },
+  "Audit and permissions": {
+    "de": "Prüfprotokoll und Berechtigungen",
+    "tr": "Denetim ve izinler"
+  },
+  "Audit log channel (optional)": {
+    "de": "Kanal für das Prüfprotokoll (optional)",
+    "tr": "Denetim kaydı kanalı (isteğe bağlı)"
+  },
+  "Aurora Lake": {
+    "de": "Polarlichtsee",
+    "tr": "Kutup Işığı Gölü"
+  },
+  "Authorize only your public profile and video list. Helper cannot publish or change content.": {
+    "de": "Gib nur dein öffentliches Profil und deine Videoliste frei. Helper kann keine Inhalte veröffentlichen oder ändern.",
+    "tr": "Yalnızca herkese açık profilinize ve video listenize izin verin. Helper içerik yayımlayamaz veya değiştiremez."
+  },
+  "Automatic response": {
+    "de": "Automatische Antwort",
+    "tr": "Otomatik yanıt"
+  },
+  "Automatic role": {
+    "de": "Automatische Rolle",
+    "tr": "Otomatik rol"
+  },
+  "Avatar ring colour": {
+    "de": "Farbe des Avatarrahmens",
+    "tr": "Avatar halkası rengi"
+  },
+  "Avatar ring width": {
+    "de": "Breite des Avatarrahmens",
+    "tr": "Avatar halkası kalınlığı"
+  },
+  "Avoid excessive selections.": {
+    "de": "Wähle nicht zu viele Optionen aus.",
+    "tr": "Çok fazla seçenek seçmeyin."
+  },
+  "Award XP in voice channels": {
+    "de": "XP in Sprachkanälen vergeben",
+    "tr": "Ses kanallarında XP ver"
+  },
+  "Background & banners": {
+    "de": "Hintergrund und Banner",
+    "tr": "Arka plan ve afişler"
+  },
+  "Background colour": {
+    "de": "Hintergrundfarbe",
+    "tr": "Arka plan rengi"
+  },
+  "Behaviour": {
+    "de": "Verhalten",
+    "tr": "Davranış"
+  },
+  "Between 1 and 100 members in /leaderboard. The preview shows at most 10.": {
+    "de": "Zwischen 1 und 100 Mitglieder in /leaderboard. Die Vorschau zeigt höchstens 10.",
+    "tr": "/leaderboard içinde 1 ile 100 arasında üye gösterilir. Önizleme en fazla 10 üye gösterir."
+  },
+  "Birthday announcements": {
+    "de": "Geburtstagsankündigungen",
+    "tr": "Doğum günü duyuruları"
+  },
+  "Birthday role (optional)": {
+    "de": "Geburtstagsrolle (optional)",
+    "tr": "Doğum günü rolü (isteğe bağlı)"
+  },
+  "Blocks suspicious links, invites, and phishing patterns.": {
+    "de": "Blockiert verdächtige Links, Einladungen und Phishing-Muster.",
+    "tr": "Şüpheli bağlantıları, davetleri ve kimlik avı kalıplarını engeller."
+  },
+  "Bluesky handle": {
+    "de": "Bluesky-Nutzername",
+    "tr": "Bluesky kullanıcı adı"
+  },
+  "Bluesky public AppView API": {
+    "de": "Öffentliche AppView-API von Bluesky",
+    "tr": "Bluesky herkese açık AppView API'si"
+  },
+  "Bounded community rewards backed by an auditable balance ledger.": {
+    "de": "Begrenzte Community-Belohnungen mit nachvollziehbarem Kontobuch.",
+    "tr": "Denetlenebilir bakiye defterine dayanan sınırlı topluluk ödülleri."
+  },
+  "Bounded message automations keep your server responsive.": {
+    "de": "Begrenzte Nachrichtenautomatisierungen halten deinen Server reaktionsfähig.",
+    "tr": "Sınırlı mesaj otomasyonları sunucunuzun hızlı yanıt vermesini sağlar."
+  },
+  "Buttons open these channels. A link stays hidden until you choose its destination.": {
+    "de": "Die Schaltflächen öffnen diese Kanäle. Ein Link bleibt verborgen, bis du sein Ziel auswählst.",
+    "tr": "Düğmeler bu kanalları açar. Hedefini seçene kadar bağlantı gizli kalır."
+  },
+  "Buttons to include": {
+    "de": "Einzubindende Schaltflächen",
+    "tr": "Eklenecek düğmeler"
+  },
+  "Canais ignorados": {
+    "de": "Ignorierte Kanäle",
+    "tr": "Yok sayılan kanallar"
+  },
+  "Cargos ignorados": {
+    "de": "Ignorierte Rollen",
+    "tr": "Yok sayılan roller"
+  },
+  "Category (optional)": {
+    "de": "Kategorie (optional)",
+    "tr": "Kategori (isteğe bağlı)"
+  },
+  "Celebrate members without requiring a birth year.": {
+    "de": "Feiere Mitglieder, ohne ihr Geburtsjahr abzufragen.",
+    "tr": "Doğum yılı istemeden üyeleri kutlayın."
+  },
+  "Celebrates birthdays automatically, with configurable privacy.": {
+    "de": "Feiert Geburtstage automatisch mit anpassbarem Datenschutz.",
+    "tr": "Ayarlanabilir gizlilikle doğum günlerini otomatik kutlar."
+  },
+  "Centralizes server rules, alerts, and moderation actions.": {
+    "de": "Bündelt Serverregeln, Warnungen und Moderationsaktionen.",
+    "tr": "Sunucu kurallarını, uyarıları ve moderasyon işlemlerini bir araya getirir."
+  },
+  "Changes not saved": {
+    "de": "Änderungen nicht gespeichert",
+    "tr": "Değişiklikler kaydedilmedi"
+  },
+  "Changes not saved.": {
+    "de": "Änderungen nicht gespeichert.",
+    "tr": "Değişiklikler kaydedilmedi."
+  },
+  "Channel shortcuts": {
+    "de": "Kanalverknüpfungen",
+    "tr": "Kanal kısayolları"
+  },
+  "Channel where you use /poll": {
+    "de": "Kanal, in dem du /poll verwendest",
+    "tr": "/poll kullandığınız kanal"
+  },
+  "Channels guide (optional)": {
+    "de": "Kanalübersicht (optional)",
+    "tr": "Kanal rehberi (isteğe bağlı)"
+  },
+  "Channels that do not award XP": {
+    "de": "Kanäle ohne XP-Vergabe",
+    "tr": "XP vermeyen kanallar"
+  },
+  "Channels without XP": {
+    "de": "Kanäle ohne XP",
+    "tr": "XP olmayan kanallar"
+  },
+  "Check every (seconds)": {
+    "de": "Prüfen alle (Sekunden)",
+    "tr": "Kontrol sıklığı (saniye)"
+  },
+  "Check interval (seconds)": {
+    "de": "Prüfintervall (Sekunden)",
+    "tr": "Kontrol aralığı (saniye)"
+  },
+  "Check your connection and try again.": {
+    "de": "Prüfe deine Verbindung und versuche es erneut.",
+    "tr": "Bağlantınızı kontrol edip tekrar deneyin."
+  },
+  "Choose an existing channel or create one below.": {
+    "de": "Wähle einen vorhandenen Kanal oder erstelle unten einen neuen.",
+    "tr": "Mevcut bir kanal seçin veya aşağıdan yeni bir kanal oluşturun."
+  },
+  "Choose curated backgrounds and colours for the XP card rendered by /rank.": {
+    "de": "Wähle kuratierte Hintergründe und Farben für die XP-Karte von /rank.",
+    "tr": "/rank ile oluşturulan XP kartı için seçilmiş arka planlar ve renkler belirleyin."
+  },
+  "Choose from rules, introductions, channels and help.": {
+    "de": "Wähle aus Regeln, Vorstellungen, Kanälen und Hilfe.",
+    "tr": "Kurallar, tanışma, kanallar ve yardım arasından seçim yapın."
+  },
+  "Choose how Helper appears in this server's member list.": {
+    "de": "Lege fest, wie Helper in der Mitgliederliste dieses Servers erscheint.",
+    "tr": "Helper'ın bu sunucunun üye listesinde nasıl görüneceğini seçin."
+  },
+  "Choose how Helper explains its modules.": {
+    "de": "Lege fest, wie Helper seine Module erklärt.",
+    "tr": "Helper'ın modüllerini nasıl açıklayacağını seçin."
+  },
+  "Choose how many custom emojis the staff command lists.": {
+    "de": "Wähle, wie viele eigene Emojis der Teambefehl auflistet.",
+    "tr": "Ekip komutunun kaç özel emoji listeleyeceğini seçin."
+  },
+  "Choose real server resources to reduce false positives.": {
+    "de": "Wähle tatsächlich vorhandene Serverressourcen, um Fehlalarme zu reduzieren.",
+    "tr": "Yanlış alarmları azaltmak için sunucuda mevcut kaynakları seçin."
+  },
+  "Choose the channel and reaction score required to feature a message.": {
+    "de": "Wähle den Kanal und die nötige Reaktionszahl zum Hervorheben einer Nachricht.",
+    "tr": "Bir mesajı öne çıkarmak için gereken kanalı ve tepki sayısını seçin."
+  },
+  "Choose the display name the Helper uses in this server.": {
+    "de": "Wähle den Anzeigenamen von Helper auf diesem Server.",
+    "tr": "Helper'ın bu sunucuda kullanacağı görünen adı seçin."
+  },
+  "Choose the links and module list shown by /help.": {
+    "de": "Wähle die Links und die Modulliste für /help.",
+    "tr": "/help ile gösterilecek bağlantıları ve modül listesini seçin."
+  },
+  "Choose the real XP thresholds used by the achievements command.": {
+    "de": "Wähle die tatsächlichen XP-Schwellen für den Erfolgsbefehl.",
+    "tr": "Başarım komutunun kullanacağı gerçek XP eşiklerini seçin."
+  },
+  "Choose the real category, support role, transcript channel and SLA used by ticket interactions.": {
+    "de": "Wähle die vorhandene Kategorie, Supportrolle, den Protokollkanal und das SLA für Ticketaktionen.",
+    "tr": "Talep işlemlerinde kullanılacak mevcut kategoriyi, destek rolünü, döküm kanalını ve SLA'yı seçin."
+  },
+  "Choose the verification level and where the team is notified.": {
+    "de": "Wähle die Verifizierungsstufe und den Benachrichtigungsort für das Team.",
+    "tr": "Doğrulama düzeyini ve ekibin nerede bilgilendirileceğini seçin."
+  },
+  "Choose what your team can review.": {
+    "de": "Wähle, was dein Team prüfen kann.",
+    "tr": "Ekibinizin neleri inceleyebileceğini seçin."
+  },
+  "Choose when the message deserves to appear in the special channel.": {
+    "de": "Lege fest, wann eine Nachricht im Sonderkanal erscheinen soll.",
+    "tr": "Mesajın özel kanalda ne zaman gösterilmeye değer olduğunu seçin."
+  },
+  "Choose where farewells are posted and reuse an approved template.": {
+    "de": "Wähle den Kanal für Abschiede und nutze eine genehmigte Vorlage.",
+    "tr": "Vedaların yayımlanacağı yeri seçin ve onaylı bir şablonu yeniden kullanın."
+  },
+  "Choose where new members find essential information.": {
+    "de": "Wähle, wo neue Mitglieder wichtige Informationen finden.",
+    "tr": "Yeni üyelerin temel bilgileri nerede bulacağını seçin."
+  },
+  "Choose where the greeting appears and what it says.": {
+    "de": "Wähle, wo die Begrüßung erscheint und was sie sagt.",
+    "tr": "Karşılamanın nerede görüneceğini ve ne söyleyeceğini seçin."
+  },
+  "Choose which self-service privacy requests members can make.": {
+    "de": "Wähle, welche Datenschutzanfragen Mitglieder selbst stellen können.",
+    "tr": "Üyelerin kendi başlarına hangi gizlilik taleplerini iletebileceğini seçin."
+  },
+  "Choose who handles requests and where private tickets go.": {
+    "de": "Wähle, wer Anfragen bearbeitet und wo private Tickets landen.",
+    "tr": "Talepleri kimin yöneteceğini ve özel taleplerin nereye gideceğini seçin."
+  },
+  "Clockwork Library": {
+    "de": "Uhrwerkbibliothek",
+    "tr": "Saat Mekanizmalı Kütüphane"
+  },
+  "Closed ticket transcripts are sent here.": {
+    "de": "Protokolle geschlossener Tickets werden hierhin gesendet.",
+    "tr": "Kapatılan taleplerin dökümleri buraya gönderilir."
+  },
+  "CoinGecko public API": {
+    "de": "Öffentliche CoinGecko-API",
+    "tr": "CoinGecko herkese açık API'si"
+  },
+  "Collect ideas, votes and decisions in one visible flow.": {
+    "de": "Sammle Ideen, Stimmen und Entscheidungen in einem übersichtlichen Ablauf.",
+    "tr": "Fikirleri, oyları ve kararları görünür tek bir akışta toplayın."
+  },
+  "Collects ideas and lets the community vote.": {
+    "de": "Sammelt Ideen und lässt die Community abstimmen.",
+    "tr": "Fikirleri toplar ve topluluğun oy vermesini sağlar."
+  },
+  "Colors": {
+    "de": "Farben",
+    "tr": "Renkler"
+  },
+  "Comma-separated IDs such as bitcoin, ethereum or solana.": {
+    "de": "Kommagetrennte IDs wie bitcoin, ethereum oder solana.",
+    "tr": "bitcoin, ethereum veya solana gibi virgülle ayrılmış kimlikler."
+  },
+  "Command help": {
+    "de": "Befehlshilfe",
+    "tr": "Komut yardımı"
+  },
+  "Commands are not answered in these channels.": {
+    "de": "In diesen Kanälen werden Befehle nicht beantwortet.",
+    "tr": "Bu kanallarda komutlara yanıt verilmez."
+  },
+  "Commands can still override these defaults when needed.": {
+    "de": "Befehle können diese Vorgaben bei Bedarf weiterhin überschreiben.",
+    "tr": "Komutlar gerektiğinde bu varsayılanları geçersiz kılabilir."
+  },
+  "Community economy": {
+    "de": "Community-Wirtschaft",
+    "tr": "Topluluk ekonomisi"
+  },
+  "Community pillar reward role": {
+    "de": "Belohnungsrolle für Community-Stützen",
+    "tr": "Topluluk direği ödül rolü"
+  },
+  "Community pillar threshold": {
+    "de": "Schwelle für Community-Stützen",
+    "tr": "Topluluk direği eşiği"
+  },
+  "Complete onboarding for new members.": {
+    "de": "Begleite neue Mitglieder durch den gesamten Einstieg.",
+    "tr": "Yeni üyeler için katılım sürecini tamamlayın."
+  },
+  "Configure read-only verification; never enter a seed phrase or private key.": {
+    "de": "Richte eine schreibgeschützte Prüfung ein; gib niemals eine Wiederherstellungsphrase oder einen privaten Schlüssel ein.",
+    "tr": "Salt okunur doğrulamayı yapılandırın; asla kurtarma ifadesi veya özel anahtar girmeyin."
+  },
+  "Configure the channel, message, optional DM and real auto-role used on member join.": {
+    "de": "Richte Kanal, Nachricht, optionale DM und die tatsächliche automatische Rolle beim Beitritt ein.",
+    "tr": "Üye katıldığında kullanılacak kanalı, mesajı, isteğe bağlı özel mesajı ve mevcut otomatik rolü yapılandırın."
+  },
+  "Connect TikTok": {
+    "de": "TikTok verbinden",
+    "tr": "TikTok'u bağla"
+  },
+  "Connect a bounded trigger to an approved response without code.": {
+    "de": "Verknüpfe ohne Code einen begrenzten Auslöser mit einer genehmigten Antwort.",
+    "tr": "Kod yazmadan sınırlı bir tetikleyiciyi onaylı bir yanıta bağlayın."
+  },
+  "Connect the account that publishes the videos": {
+    "de": "Konto verbinden, das die Videos veröffentlicht",
+    "tr": "Videoları yayımlayan hesabı bağlayın"
+  },
+  "Connect verification to your community flow.": {
+    "de": "Binde die Verifizierung in deinen Community-Ablauf ein.",
+    "tr": "Doğrulamayı topluluğunuzun işleyişine bağlayın."
+  },
+  "Connects a trigger to a response without code.": {
+    "de": "Verknüpft einen Auslöser ohne Code mit einer Antwort.",
+    "tr": "Kod yazmadan bir tetikleyiciyi bir yanıta bağlar."
+  },
+  "Containment duration (minutes)": {
+    "de": "Eindämmungsdauer (Minuten)",
+    "tr": "Sınırlama süresi (dakika)"
+  },
+  "Control how many members appear in the XP leaderboard.": {
+    "de": "Lege fest, wie viele Mitglieder in der XP-Rangliste erscheinen.",
+    "tr": "XP sıralamasında kaç üyenin görüneceğini belirleyin."
+  },
+  "Control submission frequency and give staff a private notification channel.": {
+    "de": "Begrenze die Häufigkeit von Einsendungen und gib dem Team einen privaten Benachrichtigungskanal.",
+    "tr": "Gönderim sıklığını belirleyin ve ekibe özel bir bildirim kanalı sağlayın."
+  },
+  "Control the period, visibility and optional live counter channel for server statistics.": {
+    "de": "Lege Zeitraum, Sichtbarkeit und optionalen Live-Zählerkanal der Serverstatistik fest.",
+    "tr": "Sunucu istatistiklerinin dönemini, görünürlüğünü ve isteğe bağlı canlı sayaç kanalını belirleyin."
+  },
+  "Control the reporting window and an optional live counter channel.": {
+    "de": "Lege den Berichtszeitraum und einen optionalen Live-Zählerkanal fest.",
+    "tr": "Raporlama dönemini ve isteğe bağlı canlı sayaç kanalını belirleyin."
+  },
+  "Control the staff-facing invite list without scraping or storing invite tokens.": {
+    "de": "Verwalte die Einladungsliste für das Team, ohne Einladungstoken auszulesen oder zu speichern.",
+    "tr": "Davet belirteçlerini kazımadan veya saklamadan ekibe gösterilen davet listesini yönetin."
+  },
+  "Control where and who can use the responses.": {
+    "de": "Lege fest, wer die Antworten wo verwenden darf.",
+    "tr": "Yanıtları kimlerin, nerede kullanabileceğini belirleyin."
+  },
+  "Controls access and roles based on verified collections.": {
+    "de": "Steuert Zugriff und Rollen anhand verifizierter Sammlungen.",
+    "tr": "Doğrulanmış koleksiyonlara göre erişimi ve rolleri yönetir."
+  },
+  "Controls how Helper responds to invites, domains, and suspicious phrases.": {
+    "de": "Steuert, wie Helper auf Einladungen, Domains und verdächtige Formulierungen reagiert.",
+    "tr": "Helper'ın davetlere, alan adlarına ve şüpheli ifadelere nasıl yanıt vereceğini belirler."
+  },
+  "Coral Cavern": {
+    "de": "Korallenhöhle",
+    "tr": "Mercan Mağarası"
+  },
+  "Cosmic Nebula": {
+    "de": "Kosmischer Nebel",
+    "tr": "Kozmik Bulutsu"
+  },
+  "Could not check the TikTok connection.": {
+    "de": "Die TikTok-Verbindung konnte nicht geprüft werden.",
+    "tr": "TikTok bağlantısı kontrol edilemedi."
+  },
+  "Could not remove the TikTok connection.": {
+    "de": "Die TikTok-Verbindung konnte nicht entfernt werden.",
+    "tr": "TikTok bağlantısı kaldırılamadı."
+  },
+  "Could not save. Your changes are still in this form.": {
+    "de": "Speichern fehlgeschlagen. Deine Änderungen stehen weiterhin in diesem Formular.",
+    "tr": "Kaydedilemedi. Değişiklikleriniz hâlâ bu formda duruyor."
+  },
+  "Could not start TikTok authorization.": {
+    "de": "Die TikTok-Autorisierung konnte nicht gestartet werden.",
+    "tr": "TikTok yetkilendirmesi başlatılamadı."
+  },
+  "Create bounded messages with a Discord-like preview.": {
+    "de": "Erstelle begrenzte Nachrichten mit einer Vorschau im Discord-Stil.",
+    "tr": "Discord benzeri önizlemeyle sınırlı mesajlar oluşturun."
+  },
+  "Create bounded rooms with a predictable name and optional category.": {
+    "de": "Erstelle begrenzte Räume mit vorhersehbarem Namen und optionaler Kategorie.",
+    "tr": "Öngörülebilir adları ve isteğe bağlı kategorisi olan sınırlı odalar oluşturun."
+  },
+  "Create events, registrations, and check-ins without leaving the dashboard.": {
+    "de": "Erstelle Veranstaltungen, Anmeldungen und Anwesenheitsbestätigungen direkt im Dashboard.",
+    "tr": "Panelden ayrılmadan etkinlikler, kayıtlar ve katılım onayları oluşturun."
+  },
+  "Create goals and celebrate community milestones.": {
+    "de": "Setze Ziele und feiere Meilensteine der Community.",
+    "tr": "Hedefler oluşturun ve topluluğun dönüm noktalarını kutlayın."
+  },
+  "Create reusable responses with safe variables and permissions.": {
+    "de": "Erstelle wiederverwendbare Antworten mit sicheren Variablen und Berechtigungen.",
+    "tr": "Güvenli değişkenler ve izinlerle yeniden kullanılabilir yanıtlar oluşturun."
+  },
+  "Create short responses for frequently asked questions.": {
+    "de": "Erstelle kurze Antworten auf häufige Fragen.",
+    "tr": "Sık sorulan sorular için kısa yanıtlar oluşturun."
+  },
+  "Create the fair pace for active members.": {
+    "de": "Lege ein faires Tempo für aktive Mitglieder fest.",
+    "tr": "Aktif üyeler için adil bir tempo belirleyin."
+  },
+  "Creates a virtual economy with rewards and progression.": {
+    "de": "Erstellt eine virtuelle Wirtschaft mit Belohnungen und Fortschritt.",
+    "tr": "Ödüller ve ilerleme içeren sanal bir ekonomi oluşturur."
+  },
+  "Creates giveaways with trackable entries.": {
+    "de": "Erstellt Gewinnspiele mit nachverfolgbaren Teilnahmen.",
+    "tr": "Katılımları izlenebilen çekilişler oluşturur."
+  },
+  "Creates reusable answers for community questions and routines.": {
+    "de": "Erstellt wiederverwendbare Antworten auf Community-Fragen und wiederkehrende Abläufe.",
+    "tr": "Topluluk soruları ve rutinleri için yeniden kullanılabilir yanıtlar oluşturur."
+  },
+  "Creates rich messages for rules, announcements, and useful information.": {
+    "de": "Erstellt formatierte Nachrichten für Regeln, Ankündigungen und nützliche Informationen.",
+    "tr": "Kurallar, duyurular ve yararlı bilgiler için zengin içerikli mesajlar oluşturur."
+  },
+  "Creates voice channels that disappear when no longer used.": {
+    "de": "Erstellt Sprachkanäle, die bei Nichtbenutzung verschwinden.",
+    "tr": "Artık kullanılmadığında kaybolan ses kanalları oluşturur."
+  },
+  "Creator OAuth grant": {
+    "de": "OAuth-Freigabe des Creators",
+    "tr": "İçerik üreticisinin OAuth izni"
+  },
+  "Creator name": {
+    "de": "Name des Creators",
+    "tr": "İçerik üreticisinin adı"
+  },
+  "Creator username": {
+    "de": "Nutzername des Creators",
+    "tr": "İçerik üreticisinin kullanıcı adı"
+  },
+  "Crystal Cavern": {
+    "de": "Kristallhöhle",
+    "tr": "Kristal Mağarası"
+  },
+  "Curated background": {
+    "de": "Kuratierter Hintergrund",
+    "tr": "Seçilmiş arka plan"
+  },
+  "Currency name": {
+    "de": "Währungsname",
+    "tr": "Para birimi adı"
+  },
+  "Current plan": {
+    "de": "Aktueller Tarif",
+    "tr": "Mevcut plan"
+  },
+  "Custom command behaviour": {
+    "de": "Verhalten eigener Befehle",
+    "tr": "Özel komut davranışı"
+  },
+  "Customise announcements and roles without editing commands.": {
+    "de": "Passe Ankündigungen und Rollen an, ohne Befehle zu bearbeiten.",
+    "tr": "Komutları düzenlemeden duyuruları ve rolleri özelleştirin."
+  },
+  "Customise the alert sent when the stream starts.": {
+    "de": "Passe die Benachrichtigung zum Streamstart an.",
+    "tr": "Yayın başladığında gönderilen uyarıyı özelleştirin."
+  },
+  "Customise the alert without exposing credentials.": {
+    "de": "Passe die Benachrichtigung an, ohne Zugangsdaten offenzulegen.",
+    "tr": "Kimlik bilgilerini açığa çıkarmadan uyarıyı özelleştirin."
+  },
+  "Customise the alert without exposing the API key.": {
+    "de": "Passe die Benachrichtigung an, ohne den API-Schlüssel offenzulegen.",
+    "tr": "API anahtarını açığa çıkarmadan uyarıyı özelleştirin."
+  },
+  "Customise the stream alert.": {
+    "de": "Passe die Stream-Benachrichtigung an.",
+    "tr": "Yayın uyarısını özelleştirin."
+  },
+  "Customize the card": {
+    "de": "Karte anpassen",
+    "tr": "Kartı özelleştir"
+  },
+  "Daily reward": {
+    "de": "Tägliche Belohnung",
+    "tr": "Günlük ödül"
+  },
+  "Default capacity (0 = unlimited)": {
+    "de": "Standardkapazität (0 = unbegrenzt)",
+    "tr": "Varsayılan kapasite (0 = sınırsız)"
+  },
+  "Default channel (optional)": {
+    "de": "Standardkanal (optional)",
+    "tr": "Varsayılan kanal (isteğe bağlı)"
+  },
+  "Define how members submit and vote on suggestions.": {
+    "de": "Lege fest, wie Mitglieder Vorschläge einreichen und darüber abstimmen.",
+    "tr": "Üyelerin önerileri nasıl göndereceğini ve oylayacağını belirleyin."
+  },
+  "Define the format of post alerts.": {
+    "de": "Lege das Format für Beitragsbenachrichtigungen fest.",
+    "tr": "Gönderi uyarılarının biçimini belirleyin."
+  },
+  "Define the format of video alerts.": {
+    "de": "Lege das Format für Videobenachrichtigungen fest.",
+    "tr": "Video uyarılarının biçimini belirleyin."
+  },
+  "Defines how long optional data is retained.": {
+    "de": "Legt fest, wie lange optionale Daten gespeichert bleiben.",
+    "tr": "İsteğe bağlı verilerin ne kadar saklanacağını belirler."
+  },
+  "Defines the support product; server payments remain unavailable until Stripe Connect legal setup is complete.": {
+    "de": "Definiert das Unterstützungsangebot; Serverzahlungen bleiben bis zum Abschluss der rechtlichen Einrichtung von Stripe Connect gesperrt.",
+    "tr": "Destek ürününü tanımlar; Stripe Connect'in yasal kurulumu tamamlanana kadar sunucu ödemeleri kullanılamaz."
+  },
+  "Delay before sending (seconds)": {
+    "de": "Verzögerung vor dem Senden (Sekunden)",
+    "tr": "Gönderme gecikmesi (saniye)"
+  },
+  "Deliver verified Twitch EventSub notifications with deduplication.": {
+    "de": "Übermittle geprüfte Twitch-EventSub-Benachrichtigungen ohne Duplikate.",
+    "tr": "Doğrulanmış Twitch EventSub bildirimlerini yinelenenleri ayıklayarak iletin."
+  },
+  "Desert Ruins": {
+    "de": "Wüstenruinen",
+    "tr": "Çöl Harabeleri"
+  },
+  "Destructive action protection": {
+    "de": "Schutz vor destruktiven Aktionen",
+    "tr": "Yıkıcı işlemlere karşı koruma"
+  },
+  "Detect invite scams, suspicious domains and common social-engineering phrases.": {
+    "de": "Erkenne Einladungsbetrug, verdächtige Domains und typische Social-Engineering-Formulierungen.",
+    "tr": "Davet dolandırıcılıklarını, şüpheli alan adlarını ve yaygın sosyal mühendislik ifadelerini tespit edin."
+  },
+  "Detection window (seconds)": {
+    "de": "Erkennungszeitraum (Sekunden)",
+    "tr": "Tespit aralığı (saniye)"
+  },
+  "Detects flooding, repeated messages, excessive mentions, links, and caps.": {
+    "de": "Erkennt Nachrichtenfluten, Wiederholungen, übermäßige Erwähnungen, Links und Großschreibung.",
+    "tr": "Mesaj yağmurunu, tekrarları, aşırı etiketlemeyi, bağlantıları ve büyük harf kullanımını tespit eder."
+  },
+  "Detects flooding, repetition and mentions with safe limits.": {
+    "de": "Erkennt Nachrichtenfluten, Wiederholungen und Erwähnungen mit sicheren Grenzwerten.",
+    "tr": "Mesaj yağmurunu, tekrarları ve etiketlemeleri güvenli sınırlarla tespit eder."
+  },
+  "Direct message": {
+    "de": "Direktnachricht",
+    "tr": "Özel mesaj"
+  },
+  "Disconnect TikTok": {
+    "de": "TikTok trennen",
+    "tr": "TikTok bağlantısını kes"
+  },
+  "Disconnecting…": {
+    "de": "Verbindung wird getrennt…",
+    "tr": "Bağlantı kesiliyor…"
+  },
+  "Discord allows up to 32 characters. Leave it empty when disabling to restore the default name.": {
+    "de": "Discord erlaubt bis zu 32 Zeichen. Beim Deaktivieren leer lassen, um den Standardnamen wiederherzustellen.",
+    "tr": "Discord en fazla 32 karaktere izin verir. Devre dışı bırakırken varsayılan adı geri yüklemek için boş bırakın."
+  },
+  "Discord channel ID": {
+    "de": "Discord-Kanal-ID",
+    "tr": "Discord kanal kimliği"
+  },
+  "ERC-1155": {
+    "de": "ERC-1155",
+    "tr": "ERC-1155"
+  },
+  "ERC-20": {
+    "de": "ERC-20",
+    "tr": "ERC-20"
+  },
+  "ERC-721": {
+    "de": "ERC-721",
+    "tr": "ERC-721"
+  },
+  "Emoji management": {
+    "de": "Emoji-Verwaltung",
+    "tr": "Emoji yönetimi"
+  },
+  "Emojis listed by /emojis": {
+    "de": "Von /emojis aufgelistete Emojis",
+    "tr": "/emojis ile listelenen emojiler"
+  },
+  "Empty, @here, @everyone, or the role mention.": {
+    "de": "Leer, @here, @everyone oder die Rollenerwähnung.",
+    "tr": "Boş, @here, @everyone veya rol etiketi."
+  },
+  "Enable the gate when too many members arrive in a short window.": {
+    "de": "Aktiviere die Zugangssperre, wenn in kurzer Zeit zu viele Mitglieder beitreten.",
+    "tr": "Kısa sürede çok fazla üye katıldığında giriş kontrolünü etkinleştirin."
+  },
+  "Enchanted Forest": {
+    "de": "Zauberwald",
+    "tr": "Büyülü Orman"
+  },
+  "Enter the Twitch channel name and validate it through the official API before publishing.": {
+    "de": "Gib den Twitch-Kanalnamen ein und prüfe ihn vor der Veröffentlichung über die offizielle API.",
+    "tr": "Twitch kanal adını girin ve yayımlamadan önce resmî API üzerinden doğrulayın."
+  },
+  "Enter the YouTube channel ID and validate it before saving.": {
+    "de": "Gib die YouTube-Kanal-ID ein und prüfe sie vor dem Speichern.",
+    "tr": "YouTube kanal kimliğini girin ve kaydetmeden önce doğrulayın."
+  },
+  "Enter the channel slug, not a web URL.": {
+    "de": "Gib den Kanal-Slug ein, keine Web-URL.",
+    "tr": "Web URL'si yerine kanalın kısa adını girin."
+  },
+  "Enter the public RSS or Atom feed and validate it before saving.": {
+    "de": "Gib den öffentlichen RSS- oder Atom-Feed ein und prüfe ihn vor dem Speichern.",
+    "tr": "Herkese açık RSS veya Atom akışını girin ve kaydetmeden önce doğrulayın."
+  },
+  "Escolhe recursos reais do servidor para evitar falsos positivos e receber contexto.": {
+    "de": "Wähle vorhandene Serverressourcen, um Fehlalarme zu vermeiden und Kontext zu erhalten.",
+    "tr": "Yanlış alarmları önlemek ve bağlam edinmek için sunucuda mevcut kaynakları seçin."
+  },
+  "Example: rexy40407 (without twitch.tv/).": {
+    "de": "Beispiel: rexy40407 (ohne twitch.tv/).",
+    "tr": "Örnek: rexy40407 (twitch.tv/ olmadan)."
+  },
+  "Exceptions and alerts": {
+    "de": "Ausnahmen und Warnungen",
+    "tr": "İstisnalar ve uyarılar"
+  },
+  "Exclusions": {
+    "de": "Ausnahmen",
+    "tr": "Hariç tutulanlar"
+  },
+  "Explains modules and shows the next step for each team.": {
+    "de": "Erklärt Module und zeigt jedem Team den nächsten Schritt.",
+    "tr": "Modülleri açıklar ve her ekibe sonraki adımı gösterir."
+  },
+  "Explore channels": {
+    "de": "Kanäle erkunden",
+    "tr": "Kanalları keşfet"
+  },
+  "Filter new accounts before granting full access.": {
+    "de": "Prüfe neue Konten, bevor du vollen Zugriff gewährst.",
+    "tr": "Tam erişim vermeden önce yeni hesapları filtreleyin."
+  },
+  "Find the right command, module and next troubleshooting step.": {
+    "de": "Finde den passenden Befehl, das richtige Modul und den nächsten Schritt zur Fehlerbehebung.",
+    "tr": "Doğru komutu, modülü ve sonraki sorun giderme adımını bulun."
+  },
+  "First steps reward role": {
+    "de": "Belohnungsrolle für erste Schritte",
+    "tr": "İlk adımlar ödül rolü"
+  },
+  "First steps threshold": {
+    "de": "Schwelle für erste Schritte",
+    "tr": "İlk adımlar eşiği"
+  },
+  "First-steps message": {
+    "de": "Nachricht zu den ersten Schritten",
+    "tr": "İlk adımlar mesajı"
+  },
+  "Follow approved public Bluesky sources with cursor-aware delivery.": {
+    "de": "Verfolge genehmigte öffentliche Bluesky-Quellen mit cursorbasierter Zustellung.",
+    "tr": "Onaylı herkese açık Bluesky kaynaklarını imleç destekli iletimle takip edin."
+  },
+  "For example: vozen.org or @vozen.org.": {
+    "de": "Zum Beispiel: vozen.org oder @vozen.org.",
+    "tr": "Örneğin: vozen.org veya @vozen.org."
+  },
+  "Frost Citadel": {
+    "de": "Frostzitadelle",
+    "tr": "Buz Hisarı"
+  },
+  "Give new members a safer, explainable entry path.": {
+    "de": "Biete neuen Mitgliedern einen sichereren, verständlichen Einstieg.",
+    "tr": "Yeni üyelere daha güvenli ve anlaşılır bir giriş süreci sunun."
+  },
+  "Give newcomers rules and first steps in a focused channel.": {
+    "de": "Zeige Neulingen Regeln und erste Schritte in einem eigenen Kanal.",
+    "tr": "Yeni gelenlere kuralları ve ilk adımları özel bir kanalda sunun."
+  },
+  "Give your team context and control over the flow.": {
+    "de": "Gib deinem Team Kontext und Kontrolle über den Ablauf.",
+    "tr": "Ekibinize bağlam ve akış üzerinde kontrol sağlayın."
+  },
+  "Giveaway defaults": {
+    "de": "Gewinnspielvorgaben",
+    "tr": "Çekiliş varsayılanları"
+  },
+  "Goodbye channel": {
+    "de": "Abschiedskanal",
+    "tr": "Veda kanalı"
+  },
+  "Goodbye message": {
+    "de": "Abschiedsnachricht",
+    "tr": "Veda mesajı"
+  },
+  "Grant a Discord role after a one-time SIWE signature and read-only contract check.": {
+    "de": "Vergib nach einer einmaligen SIWE-Signatur und einer schreibgeschützten Contract-Prüfung eine Discord-Rolle.",
+    "tr": "Tek seferlik SIWE imzası ve salt okunur sözleşme kontrolünden sonra bir Discord rolü verin."
+  },
+  "Greet new members with a message, optional DM and safe role assignment.": {
+    "de": "Begrüße neue Mitglieder mit einer Nachricht, optionaler DM und sicherer Rollenzuweisung.",
+    "tr": "Yeni üyeleri bir mesaj, isteğe bağlı özel mesaj ve güvenli rol atamasıyla karşılayın."
+  },
+  "Greeting": {
+    "de": "Begrüßung",
+    "tr": "Karşılama"
+  },
+  "Guide message": {
+    "de": "Orientierungsnachricht",
+    "tr": "Rehber mesajı"
+  },
+  "Guided steps": {
+    "de": "Geführte Schritte",
+    "tr": "Yönlendirmeli adımlar"
+  },
+  "Guided welcome channel": {
+    "de": "Kanal für geführte Begrüßung",
+    "tr": "Yönlendirmeli karşılama kanalı"
+  },
+  "HEALTH": {
+    "de": "SYSTEMZUSTAND",
+    "tr": "SİSTEM DURUMU"
+  },
+  "Help and diagnostics": {
+    "de": "Hilfe und Diagnose",
+    "tr": "Yardım ve tanılama"
+  },
+  "Help message": {
+    "de": "Hilfenachricht",
+    "tr": "Yardım mesajı"
+  },
+  "Helper identity": {
+    "de": "Helper-Identität",
+    "tr": "Helper kimliği"
+  },
+  "Helper posts the reason and decision mode here.": {
+    "de": "Helper veröffentlicht hier die Begründung und den Entscheidungsmodus.",
+    "tr": "Helper, gerekçeyi ve karar modunu burada paylaşır."
+  },
+  "Helps members avoid missing the start.": {
+    "de": "Hilft Mitgliedern, den Start nicht zu verpassen.",
+    "tr": "Üyelerin başlangıcı kaçırmamasına yardımcı olur."
+  },
+  "Hide author in the public message": {
+    "de": "Autor in der öffentlichen Nachricht ausblenden",
+    "tr": "Herkese açık mesajda yazarı gizle"
+  },
+  "Hide this link": {
+    "de": "Diesen Link ausblenden",
+    "tr": "Bu bağlantıyı gizle"
+  },
+  "High": {
+    "de": "Hoch",
+    "tr": "Yüksek"
+  },
+  "Highlight messages that the community values.": {
+    "de": "Hebe Nachrichten hervor, die die Community schätzt.",
+    "tr": "Topluluğun değer verdiği mesajları öne çıkarın."
+  },
+  "Highlight rules": {
+    "de": "Regeln hervorheben",
+    "tr": "Kuralları öne çıkar"
+  },
+  "Highlights popular community messages.": {
+    "de": "Hebt beliebte Community-Nachrichten hervor.",
+    "tr": "Toplulukta sevilen mesajları öne çıkarır."
+  },
+  "Hold accounts below the configured age behind a verification role.": {
+    "de": "Beschränke Konten unter dem festgelegten Mindestalter mit einer Verifizierungsrolle.",
+    "tr": "Belirlenen yaştan küçük hesapların erişimini doğrulama rolüyle kısıtlayın."
+  },
+  "Holder role": {
+    "de": "Inhaberrolle",
+    "tr": "Varlık sahibi rolü"
+  },
+  "Hours before start": {
+    "de": "Stunden vor Beginn",
+    "tr": "Başlangıçtan kaç saat önce"
+  },
+  "How many requests one person can have at a time.": {
+    "de": "Wie viele Anfragen eine Person gleichzeitig haben darf.",
+    "tr": "Bir kişinin aynı anda sahip olabileceği talep sayısı."
+  },
+  "ISO 4217 lowercase code, for example eur.": {
+    "de": "ISO 4217-Code in Kleinbuchstaben, zum Beispiel eur.",
+    "tr": "Küçük harfli ISO 4217 kodu, örneğin eur."
+  },
+  "Identical repetitions": {
+    "de": "Identische Wiederholungen",
+    "tr": "Aynı içerikli tekrarlar"
+  },
+  "Identify suspicious links and phishing patterns without pretending to be an antivirus.": {
+    "de": "Erkenne verdächtige Links und Phishing-Muster, ohne einen Virenschutz vorzutäuschen.",
+    "tr": "Antivirüs olduğunu iddia etmeden şüpheli bağlantıları ve kimlik avı kalıplarını tespit edin."
+  },
+  "Ignored channels": {
+    "de": "Ignorierte Kanäle",
+    "tr": "Yok sayılan kanallar"
+  },
+  "Ignored member roles": {
+    "de": "Ignorierte Mitgliederrollen",
+    "tr": "Yok sayılan üye rolleri"
+  },
+  "Ignored roles": {
+    "de": "Ignorierte Rollen",
+    "tr": "Yok sayılan roller"
+  },
+  "Include image attachments": {
+    "de": "Bildanhänge einbeziehen",
+    "tr": "Görsel eklerini dahil et"
+  },
+  "Include the enabled module summary in the response.": {
+    "de": "Füge der Antwort eine Übersicht der aktivierten Module hinzu.",
+    "tr": "Yanıta etkin modüllerin özetini ekleyin."
+  },
+  "Inter": {
+    "de": "Inter",
+    "tr": "Inter"
+  },
+  "Interval (seconds)": {
+    "de": "Intervall (Sekunden)",
+    "tr": "Aralık (saniye)"
+  },
+  "Introductions": {
+    "de": "Vorstellungen",
+    "tr": "Tanışma"
+  },
+  "Introductions channel (optional)": {
+    "de": "Vorstellungskanal (optional)",
+    "tr": "Tanışma kanalı (isteğe bağlı)"
+  },
+  "Invite overview": {
+    "de": "Einladungsübersicht",
+    "tr": "Davet özeti"
+  },
+  "Invites shown": {
+    "de": "Angezeigte Einladungen",
+    "tr": "Gösterilen davetler"
+  },
+  "Join Creator Channel to get a personal voice room. Empty rooms are deleted automatically.": {
+    "de": "Tritt Creator Channel bei, um einen eigenen Sprachraum zu erhalten. Leere Räume werden automatisch gelöscht.",
+    "tr": "Kişisel ses odası almak için Creator Channel'a katılın. Boş odalar otomatik silinir."
+  },
+  "Join burst protection": {
+    "de": "Schutz vor Beitrittswellen",
+    "tr": "Ani katılım koruması"
+  },
+  "Join gate": {
+    "de": "Beitrittssperre",
+    "tr": "Giriş kontrolü"
+  },
+  "Join verification": {
+    "de": "Beitrittsverifizierung",
+    "tr": "Katılım doğrulaması"
+  },
+  "Joins before containment": {
+    "de": "Beitritte vor der Eindämmung",
+    "tr": "Sınırlama öncesi katılım sayısı"
+  },
+  "KYC, tax and refund policy": {
+    "de": "KYC-, Steuer- und Erstattungsrichtlinie",
+    "tr": "KYC, vergi ve iade politikası"
+  },
+  "Keep at least one option selected.": {
+    "de": "Lass mindestens eine Option ausgewählt.",
+    "tr": "En az bir seçeneği seçili tutun."
+  },
+  "Keep counters useful, fresh and clearly labelled.": {
+    "de": "Halte Zähler nützlich, aktuell und klar beschriftet.",
+    "tr": "Sayaçları yararlı, güncel ve açıkça etiketlenmiş tutun."
+  },
+  "Keep highlights relevant and safe.": {
+    "de": "Halte hervorgehobene Inhalte relevant und sicher.",
+    "tr": "Öne çıkan içerikleri ilgili ve güvenli tutun."
+  },
+  "Keep previous level roles": {
+    "de": "Bisherige Levelrollen behalten",
+    "tr": "Önceki seviye rollerini koru"
+  },
+  "Keep reminders useful and bounded for every member.": {
+    "de": "Halte Erinnerungen für alle Mitglieder nützlich und begrenzt.",
+    "tr": "Hatırlatmaları her üye için yararlı ve sınırlı tutun."
+  },
+  "Keep rewards from earlier levels": {
+    "de": "Belohnungen früherer Level behalten",
+    "tr": "Önceki seviyelerin ödüllerini koru"
+  },
+  "Keep the public result concise and predictable.": {
+    "de": "Halte das öffentliche Ergebnis kurz und vorhersehbar.",
+    "tr": "Herkese açık sonucu kısa ve öngörülebilir tutun."
+  },
+  "Keeps detection and auditing enabled without applying a timeout.": {
+    "de": "Lässt Erkennung und Protokollierung aktiv, ohne eine Auszeit zu verhängen.",
+    "tr": "Zaman aşımı cezası uygulamadan tespiti ve denetimi etkin tutar."
+  },
+  "Keeps privacy requests clear.": {
+    "de": "Hält Datenschutzanfragen verständlich.",
+    "tr": "Gizlilik taleplerini anlaşılır tutar."
+  },
+  "Keeps support requests in one place.": {
+    "de": "Bündelt Supportanfragen an einem Ort.",
+    "tr": "Destek taleplerini tek yerde toplar."
+  },
+  "Kick channel": {
+    "de": "Kick-Kanal",
+    "tr": "Kick kanalı"
+  },
+  "Kick handle": {
+    "de": "Kick-Nutzername",
+    "tr": "Kick kullanıcı adı"
+  },
+  "Lavender Storm": {
+    "de": "Lavendelsturm",
+    "tr": "Lavanta Fırtınası"
+  },
+  "Leaderboard settings": {
+    "de": "Ranglisteneinstellungen",
+    "tr": "Sıralama ayarları"
+  },
+  "Leave empty if you do not want to send a goodbye.": {
+    "de": "Leer lassen, wenn du keinen Abschied senden möchtest.",
+    "tr": "Veda göndermek istemiyorsanız boş bırakın."
+  },
+  "Leave empty to announce in the channel where the member earned XP.": {
+    "de": "Leer lassen, um im Kanal des XP-Gewinns zu benachrichtigen.",
+    "tr": "Üyenin XP kazandığı kanalda duyurmak için boş bırakın."
+  },
+  "Leave empty to post each poll in the channel where you use /poll. Choose a channel to send all polls there.": {
+    "de": "Leer lassen, um Umfragen im jeweiligen /poll-Kanal zu veröffentlichen. Wähle einen Kanal, um alle Umfragen dorthin zu senden.",
+    "tr": "Her anketi /poll kullandığınız kanalda yayımlamak için boş bırakın. Tüm anketleri aynı yere göndermek için bir kanal seçin."
+  },
+  "Let members choose approved roles through buttons or menus.": {
+    "de": "Lass Mitglieder genehmigte Rollen über Schaltflächen oder Menüs wählen.",
+    "tr": "Üyelerin onaylı rolleri düğmeler veya menülerle seçmesini sağlayın."
+  },
+  "Let members choose roles through simple panels.": {
+    "de": "Lass Mitglieder Rollen über einfache Panels wählen.",
+    "tr": "Üyelerin basit panellerden rol seçmesini sağlayın."
+  },
+  "Level role rewards (level=role ID)": {
+    "de": "Rollenbelohnungen je Level (level=role ID)",
+    "tr": "Seviye rol ödülleri (level=role ID)"
+  },
+  "Level-up channel": {
+    "de": "Kanal für Levelaufstiege",
+    "tr": "Seviye atlama kanalı"
+  },
+  "Levels and XP": {
+    "de": "Level und XP",
+    "tr": "Seviyeler ve XP"
+  },
+  "Lexend": {
+    "de": "Lexend",
+    "tr": "Lexend"
+  },
+  "Limit the number of simultaneous tickets one member can open.": {
+    "de": "Begrenze, wie viele Tickets ein Mitglied gleichzeitig öffnen kann.",
+    "tr": "Bir üyenin aynı anda açabileceği talep sayısını sınırlayın."
+  },
+  "Limited availability": {
+    "de": "Eingeschränkt verfügbar",
+    "tr": "Sınırlı kullanılabilirlik"
+  },
+  "Limits how many responses this server can save.": {
+    "de": "Begrenzt die Anzahl gespeicherter Antworten dieses Servers.",
+    "tr": "Bu sunucunun kaydedebileceği yanıt sayısını sınırlar."
+  },
+  "Limits how many times a recurring reminder is re-created.": {
+    "de": "Begrenzt, wie oft eine wiederkehrende Erinnerung neu angelegt wird.",
+    "tr": "Tekrarlanan bir hatırlatmanın kaç kez yeniden oluşturulacağını sınırlar."
+  },
+  "List custom emojis safely, with optional staff-only rename and delete controls.": {
+    "de": "Liste eigene Emojis sicher auf; optional darf nur das Team sie umbenennen oder löschen.",
+    "tr": "Özel emojileri güvenle listeleyin; isteğe bağlı olarak yalnızca ekibe yeniden adlandırma ve silme denetimleri sunun."
+  },
+  "Live counter channel (optional)": {
+    "de": "Live-Zählerkanal (optional)",
+    "tr": "Canlı sayaç kanalı (isteğe bağlı)"
+  },
+  "Longer generated replies are rejected before they can be sent.": {
+    "de": "Längere generierte Antworten werden vor dem Senden abgelehnt.",
+    "tr": "Daha uzun üretilmiş yanıtlar gönderilmeden önce reddedilir."
+  },
+  "Longer text is rejected before a job is created.": {
+    "de": "Längere Texte werden vor dem Anlegen eines Auftrags abgelehnt.",
+    "tr": "Daha uzun metinler görev oluşturulmadan önce reddedilir."
+  },
+  "Manage Roles": {
+    "de": "Rollen verwalten",
+    "tr": "Rolleri Yönet"
+  },
+  "Manage an auditable points economy with bounded rewards.": {
+    "de": "Verwalte eine nachvollziehbare Punktewirtschaft mit begrenzten Belohnungen.",
+    "tr": "Sınırlı ödüllerle denetlenebilir bir puan ekonomisi yönetin."
+  },
+  "Maximum XP per message": {
+    "de": "Maximale XP pro Nachricht",
+    "tr": "Mesaj başına en fazla XP"
+  },
+  "Maximum members in /leaderboard": {
+    "de": "Maximale Mitgliederzahl in /leaderboard",
+    "tr": "/leaderboard içinde en fazla üye sayısı"
+  },
+  "Maximum roles": {
+    "de": "Maximale Rollenanzahl",
+    "tr": "En fazla rol sayısı"
+  },
+  "Medium": {
+    "de": "Mittel",
+    "tr": "Orta"
+  },
+  "Member data controls": {
+    "de": "Mitgliederdaten verwalten",
+    "tr": "Üye verisi denetimleri"
+  },
+  "Members can choose a bounded daily or weekly reminder.": {
+    "de": "Mitglieder können eine begrenzte tägliche oder wöchentliche Erinnerung wählen.",
+    "tr": "Üyeler sınırlı günlük veya haftalık hatırlatma seçebilir."
+  },
+  "Members can choose one role": {
+    "de": "Mitglieder können eine Rolle wählen",
+    "tr": "Üyeler bir rol seçebilir"
+  },
+  "Members can choose several roles": {
+    "de": "Mitglieder können mehrere Rollen wählen",
+    "tr": "Üyeler birden fazla rol seçebilir"
+  },
+  "Members can request their own JSON export through /privacy data.": {
+    "de": "Mitglieder können ihren eigenen JSON-Export über /privacy data anfordern.",
+    "tr": "Üyeler /privacy data üzerinden kendi JSON dışa aktarımlarını isteyebilir."
+  },
+  "Members shown": {
+    "de": "Angezeigte Mitglieder",
+    "tr": "Gösterilen üyeler"
+  },
+  "Members with any of these roles are excluded from evaluation.": {
+    "de": "Mitglieder mit einer dieser Rollen werden nicht ausgewertet.",
+    "tr": "Bu rollerden herhangi birine sahip üyeler değerlendirme dışında tutulur."
+  },
+  "Mensagens no intervalo": {
+    "de": "Nachrichten im Zeitraum",
+    "tr": "Aralıktaki mesajlar"
+  },
+  "Mention limit per message": {
+    "de": "Erwähnungslimit pro Nachricht",
+    "tr": "Mesaj başına etiketleme sınırı"
+  },
+  "Message and embed builder": {
+    "de": "Nachrichten- und Embed-Editor",
+    "tr": "Mesaj ve gömülü içerik oluşturucu"
+  },
+  "Messages in these channels are excluded from evaluation.": {
+    "de": "Nachrichten in diesen Kanälen werden nicht ausgewertet.",
+    "tr": "Bu kanallardaki mesajlar değerlendirme dışında tutulur."
+  },
+  "Messages in these channels do not count towards a level.": {
+    "de": "Nachrichten in diesen Kanälen zählen nicht für Level.",
+    "tr": "Bu kanallardaki mesajlar seviyeye katkı sağlamaz."
+  },
+  "Messages sent during this wait do not earn more XP.": {
+    "de": "Nachrichten während dieser Wartezeit bringen keine weiteren XP.",
+    "tr": "Bu bekleme sırasında gönderilen mesajlar ek XP kazandırmaz."
+  },
+  "Meta App Review and deletion callbacks": {
+    "de": "Meta-App-Prüfung und Lösch-Callbacks",
+    "tr": "Meta uygulama incelemesi ve silme geri çağrıları"
+  },
+  "Meta Instagram API app": {
+    "de": "Meta-Instagram-API-Anwendung",
+    "tr": "Meta Instagram API uygulaması"
+  },
+  "Minimum XP per message": {
+    "de": "Minimale XP pro Nachricht",
+    "tr": "Mesaj başına en az XP"
+  },
+  "Monitor only": {
+    "de": "Nur überwachen",
+    "tr": "Yalnızca izle"
+  },
+  "Monitoring {account}. Tokens are encrypted on the server.": {
+    "de": "{account} wird überwacht. Token werden auf dem Server verschlüsselt.",
+    "tr": "{account} izleniyor. Belirteçler sunucuda şifrelenir."
+  },
+  "Monthly price (cents)": {
+    "de": "Monatspreis (Cent)",
+    "tr": "Aylık fiyat (sent)"
+  },
+  "Moonlit Village": {
+    "de": "Dorf im Mondschein",
+    "tr": "Ay Işığındaki Köy"
+  },
+  "Neon Rain": {
+    "de": "Neonregen",
+    "tr": "Neon Yağmuru"
+  },
+  "New requests are created in this category.": {
+    "de": "Neue Anfragen werden in dieser Kategorie erstellt.",
+    "tr": "Yeni talepler bu kategoride oluşturulur."
+  },
+  "New rooms are created inside this category when selected.": {
+    "de": "Wenn ausgewählt, werden neue Räume in dieser Kategorie erstellt.",
+    "tr": "Seçildiğinde yeni odalar bu kategoride oluşturulur."
+  },
+  "New ticket channels are created inside this category.": {
+    "de": "Neue Ticketkanäle werden in dieser Kategorie erstellt.",
+    "tr": "Yeni talep kanalları bu kategoride oluşturulur."
+  },
+  "Next banners": {
+    "de": "Nächste Banner",
+    "tr": "Sonraki afişler"
+  },
+  "No automatic role": {
+    "de": "Keine automatische Rolle",
+    "tr": "Otomatik rol yok"
+  },
+  "Notified when a ticket opens and can manage requests. Make the role mentionable or allow Helper to mention roles. Discord notification preferences still apply.": {
+    "de": "Wird beim Öffnen eines Tickets benachrichtigt und kann Anfragen verwalten. Mache die Rolle erwähnbar oder erlaube Helper, Rollen zu erwähnen. Die Discord-Benachrichtigungseinstellungen gelten weiterhin.",
+    "tr": "Bir talep açıldığında bildirim alır ve talepleri yönetebilir. Rolü etiketlenebilir yapın veya Helper'ın rolleri etiketlemesine izin verin. Discord bildirim tercihleri geçerliliğini korur."
+  },
+  "Notifies the server about new videos.": {
+    "de": "Benachrichtigt den Server über neue Videos.",
+    "tr": "Sunucuyu yeni videolardan haberdar eder."
+  },
+  "Notifies the server when a creator starts streaming.": {
+    "de": "Benachrichtigt den Server, wenn ein Creator einen Stream startet.",
+    "tr": "Bir içerik üreticisi yayına başladığında sunucuyu bilgilendirir."
+  },
+  "Notifies the server when a new video is published.": {
+    "de": "Benachrichtigt den Server, wenn ein neues Video veröffentlicht wird.",
+    "tr": "Yeni bir video yayımlandığında sunucuyu bilgilendirir."
+  },
+  "Notify a Discord channel about posts from a professional Instagram account authorised through Meta OAuth.": {
+    "de": "Benachrichtige einen Discord-Kanal über Beiträge eines per Meta OAuth autorisierten professionellen Instagram-Kontos.",
+    "tr": "Meta OAuth ile yetkilendirilmiş profesyonel Instagram hesabının gönderilerini bir Discord kanalına bildirin."
+  },
+  "Notify a Discord channel about streams through an approved Kick API application.": {
+    "de": "Benachrichtige einen Discord-Kanal über Streams einer genehmigten Kick-API-Anwendung.",
+    "tr": "Onaylı bir Kick API uygulaması üzerinden yayınları bir Discord kanalına bildirin."
+  },
+  "Notify a Discord channel about videos from a creator who authorises the Display API scopes.": {
+    "de": "Benachrichtige einen Discord-Kanal über Videos eines Creators, der die Display-API-Berechtigungen erteilt.",
+    "tr": "Display API kapsamlarına izin veren bir içerik üreticisinin videolarını bir Discord kanalına bildirin."
+  },
+  "Notify a Discord channel when an approved YouTube source changes.": {
+    "de": "Benachrichtige einen Discord-Kanal, wenn sich eine genehmigte YouTube-Quelle ändert.",
+    "tr": "Onaylı bir YouTube kaynağı değiştiğinde bir Discord kanalına bildirin."
+  },
+  "Number of custom emojis listed by /emojis. This does not limit emoji usage.": {
+    "de": "Anzahl eigener Emojis in der Liste von /emojis. Die Emoji-Nutzung wird dadurch nicht begrenzt.",
+    "tr": "/emojis ile listelenen özel emoji sayısı. Emoji kullanımını sınırlamaz."
+  },
+  "Number of messages from the same member before flagging.": {
+    "de": "Anzahl der Nachrichten desselben Mitglieds vor einer Markierung.",
+    "tr": "İşaretlenmeden önce aynı üyenin gönderebileceği mesaj sayısı."
+  },
+  "Number of recent daily snapshots included.": {
+    "de": "Anzahl der einbezogenen aktuellen Tagesaufnahmen.",
+    "tr": "Dahil edilen son günlük anlık görüntü sayısı."
+  },
+  "Off by default. Discord may not provide content for every edit/delete event.": {
+    "de": "Standardmäßig aus. Discord liefert möglicherweise nicht bei jedem Bearbeitungs- oder Löschereignis den Inhalt.",
+    "tr": "Varsayılan olarak kapalıdır. Discord her düzenleme veya silme olayında içeriği sağlamayabilir."
+  },
+  "Offer a server subscription through Stripe Connect. Production requires legal, tax and support approval.": {
+    "de": "Biete ein Serverabonnement über Stripe Connect an. Der Produktivbetrieb erfordert rechtliche, steuerliche und Supportfreigaben.",
+    "tr": "Stripe Connect ile sunucu aboneliği sunun. Canlı kullanım için hukuk, vergi ve destek onayı gerekir."
+  },
+  "Official Kick API/webhook access": {
+    "de": "Offizieller Kick-API-/Webhook-Zugriff",
+    "tr": "Resmî Kick API/webhook erişimi"
+  },
+  "Older messages automatically leave this window.": {
+    "de": "Ältere Nachrichten fallen automatisch aus diesem Zeitraum.",
+    "tr": "Eski mesajlar otomatik olarak bu aralığın dışında kalır."
+  },
+  "On: everyone in the channel can see the response. Off: only the person using the command can see it.": {
+    "de": "An: Alle im Kanal sehen die Antwort. Aus: Nur die Person, die den Befehl nutzt, sieht sie.",
+    "tr": "Açık: Kanaldaki herkes yanıtı görür. Kapalı: Yalnızca komutu kullanan kişi görür."
+  },
+  "Only an approved contract is accepted; never enter a private key.": {
+    "de": "Nur ein genehmigter Smart Contract wird akzeptiert; gib niemals einen privaten Schlüssel ein.",
+    "tr": "Yalnızca onaylı bir akıllı sözleşme kabul edilir; asla özel anahtar girmeyin."
+  },
+  "Only members with Manage Server or Administrator can invoke saved commands.": {
+    "de": "Nur Mitglieder mit „Server verwalten“ oder „Administrator“ dürfen gespeicherte Befehle aufrufen.",
+    "tr": "Yalnızca Sunucuyu Yönet veya Yönetici izni olan üyeler kayıtlı komutları çalıştırabilir."
+  },
+  "Open a feature to configure all settings and review a safe simulation.": {
+    "de": "Öffne eine Funktion, um alle Einstellungen anzupassen und eine sichere Simulation zu prüfen.",
+    "tr": "Tüm ayarları yapılandırmak ve güvenli bir simülasyonu incelemek için bir özelliği açın."
+  },
+  "Opening TikTok…": {
+    "de": "TikTok wird geöffnet…",
+    "tr": "TikTok açılıyor…"
+  },
+  "Operator-approved HTTPS RPC": {
+    "de": "Vom Betreiber genehmigter HTTPS-RPC",
+    "tr": "İşletici onaylı HTTPS RPC"
+  },
+  "Operator-approved RPC endpoint": {
+    "de": "Vom Betreiber genehmigter RPC-Endpunkt",
+    "tr": "İşletici onaylı RPC uç noktası"
+  },
+  "Optional. Sent only when enabled and the member allows direct messages.": {
+    "de": "Optional. Wird nur gesendet, wenn aktiviert und das Mitglied Direktnachrichten zulässt.",
+    "tr": "İsteğe bağlı. Yalnızca etkinse ve üye özel mesajlara izin veriyorsa gönderilir."
+  },
+  "Optional. Use a template from your message templates.": {
+    "de": "Optional. Nutze eine deiner Nachrichtenvorlagen.",
+    "tr": "İsteğe bağlı. Mesaj şablonlarınızdan birini kullanın."
+  },
+  "Optional: assign a role, adjust the timing or use a saved template.": {
+    "de": "Optional: Weise eine Rolle zu, passe den Zeitpunkt an oder nutze eine gespeicherte Vorlage.",
+    "tr": "İsteğe bağlı: Rol atayın, zamanlamayı ayarlayın veya kayıtlı bir şablon kullanın."
+  },
+  "Optional: choose a template created in Templates and import.": {
+    "de": "Optional: Wähle eine unter „Vorlagen“ erstellte Vorlage und importiere sie.",
+    "tr": "İsteğe bağlı: Şablonlar bölümünde oluşturulmuş bir şablon seçip içe aktarın."
+  },
+  "Organizes and improves custom emoji usage.": {
+    "de": "Organisiert und verbessert die Nutzung eigener Emojis.",
+    "tr": "Özel emoji kullanımını düzenler ve iyileştirir."
+  },
+  "Panel channel (optional)": {
+    "de": "Panelkanal (optional)",
+    "tr": "Panel kanalı (isteğe bağlı)"
+  },
+  "Panel defaults": {
+    "de": "Panelvorgaben",
+    "tr": "Panel varsayılanları"
+  },
+  "Panel message": {
+    "de": "Panelnachricht",
+    "tr": "Panel mesajı"
+  },
+  "Panel roles": {
+    "de": "Panelrollen",
+    "tr": "Panel rolleri"
+  },
+  "Pause invite entry during an incident": {
+    "de": "Beitritt per Einladung während eines Vorfalls pausieren",
+    "tr": "Olay sırasında davetle katılımı duraklat"
+  },
+  "Personalise the XP card with curated backgrounds, colours and typography.": {
+    "de": "Gestalte die XP-Karte mit kuratierten Hintergründen, Farben und Schriftarten.",
+    "tr": "XP kartını seçilmiş arka planlar, renkler ve yazı tipleriyle kişiselleştirin."
+  },
+  "Personalizes the level card shown in Discord.": {
+    "de": "Passt die in Discord angezeigte Levelkarte an.",
+    "tr": "Discord'da gösterilen seviye kartını kişiselleştirir."
+  },
+  "Plan events, registrations and reminders from one workflow.": {
+    "de": "Plane Veranstaltungen, Anmeldungen und Erinnerungen in einem Ablauf.",
+    "tr": "Etkinlikleri, kayıtları ve hatırlatmaları tek bir iş akışından planlayın."
+  },
+  "Plan limits": {
+    "de": "Tariflimits",
+    "tr": "Plan sınırları"
+  },
+  "Planned bounded crypto lookups with rate-limit awareness.": {
+    "de": "Geplant: begrenzte Kryptoabfragen unter Beachtung der Anfragelimits.",
+    "tr": "Planlanan: istek sınırlarını gözeten sınırlı kripto sorguları."
+  },
+  "Planned multi-network gas readings with cache and failover.": {
+    "de": "Geplant: Gaspreisabfragen über mehrere Netzwerke mit Cache und Ausfallsicherung.",
+    "tr": "Planlanan: önbellek ve yedek bağlantıyla birden fazla ağdan gas verisi okuma."
+  },
+  "Planned server payments and entitlement delivery with compliance controls.": {
+    "de": "Geplant: Serverzahlungen und Zugangsfreigaben mit Compliance-Prüfungen.",
+    "tr": "Planlanan: mevzuata uygunluk denetimleriyle sunucu ödemeleri ve erişim haklarının sağlanması."
+  },
+  "Planned signature-only wallet checks; the Helper will never request a seed phrase.": {
+    "de": "Geplant: Wallet-Prüfungen nur per Signatur; Helper fragt niemals nach einer Wiederherstellungsphrase.",
+    "tr": "Planlanan: yalnızca imzayla cüzdan kontrolleri; Helper asla kurtarma ifadesi istemez."
+  },
+  "Planned support for authorised professional Instagram accounts.": {
+    "de": "Geplant: Unterstützung für autorisierte professionelle Instagram-Konten.",
+    "tr": "Planlanan: yetkilendirilmiş profesyonel Instagram hesapları desteği."
+  },
+  "Planned support for creators who authorise the official Display API.": {
+    "de": "Geplant: Unterstützung für Creator mit Freigabe der offiziellen Display API.",
+    "tr": "Planlanan: resmî Display API'ye izin veren içerik üreticileri için destek."
+  },
+  "Planned support through an approved Kick integration.": {
+    "de": "Geplant: Unterstützung über eine genehmigte Kick-Integration.",
+    "tr": "Planlanan: onaylı bir Kick entegrasyonu üzerinden destek."
+  },
+  "Podcast alerts": {
+    "de": "Podcast-Benachrichtigungen",
+    "tr": "Podcast uyarıları"
+  },
+  "Poll a public profile through the official Bluesky AppView API and post new updates in Discord.": {
+    "de": "Frage ein öffentliches Profil über die offizielle Bluesky AppView API ab und veröffentliche neue Beiträge in Discord.",
+    "tr": "Resmî Bluesky AppView API üzerinden herkese açık bir profili sorgulayın ve yeni gönderileri Discord'da paylaşın."
+  },
+  "Poll a public profile through the official Bluesky AppView API.": {
+    "de": "Frage ein öffentliches Profil über die offizielle Bluesky AppView API ab.",
+    "tr": "Resmî Bluesky AppView API üzerinden herkese açık bir profili sorgulayın."
+  },
+  "Poll channel (optional)": {
+    "de": "Umfragekanal (optional)",
+    "tr": "Anket kanalı (isteğe bağlı)"
+  },
+  "Poll defaults": {
+    "de": "Umfragevorgaben",
+    "tr": "Anket varsayılanları"
+  },
+  "Polls a public podcast RSS or Atom feed with the same SSRF protection and deduplication as RSS alerts.": {
+    "de": "Fragt einen öffentlichen Podcast-RSS- oder Atom-Feed mit demselben SSRF-Schutz und derselben Duplikaterkennung wie RSS-Benachrichtigungen ab.",
+    "tr": "Herkese açık podcast RSS veya Atom akışını RSS uyarılarıyla aynı SSRF koruması ve yinelenen kayıtları ayıklama yöntemiyle sorgular."
+  },
+  "Polls the official YouTube Data API and delivers deduplicated new-video alerts.": {
+    "de": "Fragt die offizielle YouTube Data API ab und sendet Benachrichtigungen über neue Videos ohne Duplikate.",
+    "tr": "Resmî YouTube Data API'yi sorgular ve yeni video uyarılarını yinelemeden iletir."
+  },
+  "Polls validated RSS and Atom feeds with SSRF protection and deduplication.": {
+    "de": "Fragt geprüfte RSS- und Atom-Feeds mit SSRF-Schutz und Duplikaterkennung ab.",
+    "tr": "Doğrulanmış RSS ve Atom akışlarını SSRF korumasıyla ve yinelenenleri ayıklayarak sorgular."
+  },
+  "Poppins": {
+    "de": "Poppins",
+    "tr": "Poppins"
+  },
+  "Portable templates": {
+    "de": "Übertragbare Vorlagen",
+    "tr": "Taşınabilir şablonlar"
+  },
+  "Post one reminder before each new event in the announcement channel.": {
+    "de": "Sende vor jeder neuen Veranstaltung eine Erinnerung im Ankündigungskanal.",
+    "tr": "Her yeni etkinlikten önce duyuru kanalına bir hatırlatma gönderin."
+  },
+  "Post the first steps and server rules when a new member arrives.": {
+    "de": "Veröffentliche erste Schritte und Serverregeln, wenn ein neues Mitglied beitritt.",
+    "tr": "Yeni bir üye katıldığında ilk adımları ve sunucu kurallarını paylaşın."
+  },
+  "Posts an alert when a channel starts streaming.": {
+    "de": "Sendet eine Benachrichtigung, wenn ein Kanal einen Stream startet.",
+    "tr": "Bir kanal yayına başladığında uyarı gönderir."
+  },
+  "Prepare consistent reminders for the community.": {
+    "de": "Bereite einheitliche Erinnerungen für die Community vor.",
+    "tr": "Topluluk için tutarlı hatırlatmalar hazırlayın."
+  },
+  "Prepare the message where members choose roles.": {
+    "de": "Bereite die Nachricht vor, über die Mitglieder Rollen wählen.",
+    "tr": "Üyelerin rol seçeceği mesajı hazırlayın."
+  },
+  "Prepare the space for your team to answer members.": {
+    "de": "Richte den Bereich ein, in dem dein Team Mitgliedern antwortet.",
+    "tr": "Ekibinizin üyelere yanıt vereceği alanı hazırlayın."
+  },
+  "Prepares benefits and roles to support the server.": {
+    "de": "Bereitet Vorteile und Rollen zur Unterstützung des Servers vor.",
+    "tr": "Sunucuyu desteklemek için avantajlar ve roller hazırlar."
+  },
+  "Prevents responses that are too long for Discord.": {
+    "de": "Verhindert Antworten, die für Discord zu lang sind.",
+    "tr": "Discord için fazla uzun yanıtları engeller."
+  },
+  "Previous banners": {
+    "de": "Vorherige Banner",
+    "tr": "Önceki afişler"
+  },
+  "Primary colour": {
+    "de": "Primärfarbe",
+    "tr": "Birincil renk"
+  },
+  "Privacy and data": {
+    "de": "Datenschutz und Daten",
+    "tr": "Gizlilik ve veriler"
+  },
+  "Private ticket category": {
+    "de": "Kategorie für private Tickets",
+    "tr": "Özel talep kategorisi"
+  },
+  "Private welcome": {
+    "de": "Private Begrüßung",
+    "tr": "Özel karşılama"
+  },
+  "Professional account": {
+    "de": "Professionelles Konto",
+    "tr": "Profesyonel hesap"
+  },
+  "Professional account OAuth grant": {
+    "de": "OAuth-Freigabe des professionellen Kontos",
+    "tr": "Profesyonel hesabın OAuth izni"
+  },
+  "Protects DMs and storage from oversized exports.": {
+    "de": "Schützt DMs und Speicher vor übergroßen Exporten.",
+    "tr": "Özel mesajları ve depolamayı aşırı büyük dışa aktarımlardan korur."
+  },
+  "Public channel": {
+    "de": "Öffentlicher Kanal",
+    "tr": "Herkese açık kanal"
+  },
+  "Public feed URL": {
+    "de": "Öffentliche Feed-URL",
+    "tr": "Herkese açık akış URL'si"
+  },
+  "Public welcome": {
+    "de": "Öffentliche Begrüßung",
+    "tr": "Herkese açık karşılama"
+  },
+  "Publish a bounded embed from a slash command; mentions are disabled by default.": {
+    "de": "Veröffentliche ein begrenztes Embed per Slash-Befehl; Erwähnungen sind standardmäßig deaktiviert.",
+    "tr": "Eğik çizgi komutuyla sınırlı gömülü içerik yayımlayın; etiketlemeler varsayılan olarak kapalıdır."
+  },
+  "Publish bounded CoinGecko price updates to a Discord channel.": {
+    "de": "Veröffentliche begrenzte CoinGecko-Preisaktualisierungen in einem Discord-Kanal.",
+    "tr": "Bir Discord kanalında sınırlı CoinGecko fiyat güncellemeleri yayımlayın."
+  },
+  "Publish bounded embeds with mentions disabled by default.": {
+    "de": "Veröffentliche begrenzte Embeds mit standardmäßig deaktivierten Erwähnungen.",
+    "tr": "Etiketlemeleri varsayılan olarak kapalı, sınırlı gömülü içerikler yayımlayın."
+  },
+  "Publish read-only gas prices from an approved HTTPS RPC.": {
+    "de": "Veröffentliche schreibgeschützte Gaspreise über einen genehmigten HTTPS-RPC.",
+    "tr": "Onaylı bir HTTPS RPC üzerinden salt okunur gas fiyatları yayımlayın."
+  },
+  "Publish read-only gas prices from an operator-approved RPC endpoint.": {
+    "de": "Veröffentliche schreibgeschützte Gaspreise über einen vom Betreiber genehmigten RPC-Endpunkt.",
+    "tr": "İşletici onaylı bir RPC uç noktasından salt okunur gas fiyatları yayımlayın."
+  },
+  "Publishes simple polls for quick decisions.": {
+    "de": "Veröffentlicht einfache Umfragen für schnelle Entscheidungen.",
+    "tr": "Hızlı kararlar için basit anketler yayımlar."
+  },
+  "Quantas mensagens iguais acionam a regra.": {
+    "de": "Anzahl identischer Nachrichten, die die Regel auslösen.",
+    "tr": "Kuralı tetikleyecek aynı mesaj sayısı."
+  },
+  "Quarantine": {
+    "de": "Quarantäne",
+    "tr": "Karantina"
+  },
+  "Quarantine role": {
+    "de": "Quarantänerolle",
+    "tr": "Karantina rolü"
+  },
+  "Queries cryptocurrency information inside the server.": {
+    "de": "Fragt Informationen zu Kryptowährungen direkt im Server ab.",
+    "tr": "Sunucu içinde kripto para bilgilerini sorgular."
+  },
+  "Query read-only CoinGecko prices from an application command.": {
+    "de": "Frage schreibgeschützte CoinGecko-Preise über einen Anwendungsbefehl ab.",
+    "tr": "Uygulama komutuyla salt okunur CoinGecko fiyatlarını sorgulayın."
+  },
+  "RSS alerts": {
+    "de": "RSS-Benachrichtigungen",
+    "tr": "RSS uyarıları"
+  },
+  "Raid protection": {
+    "de": "Raid-Schutz",
+    "tr": "Toplu baskın koruması"
+  },
+  "Reaction emoji": {
+    "de": "Reaktions-Emoji",
+    "tr": "Tepki emojisi"
+  },
+  "Read-only market data with timestamps and provider health.": {
+    "de": "Schreibgeschützte Marktdaten mit Zeitstempeln und Anbieterstatus.",
+    "tr": "Zaman damgaları ve sağlayıcı durumuyla salt okunur piyasa verileri."
+  },
+  "Receives the history of closed tickets.": {
+    "de": "Empfängt den Verlauf geschlossener Tickets.",
+    "tr": "Kapatılan taleplerin geçmişini alır."
+  },
+  "Recheck interval (seconds)": {
+    "de": "Erneutes Prüfintervall (Sekunden)",
+    "tr": "Yeniden kontrol aralığı (saniye)"
+  },
+  "Record and alert without automatic containment.": {
+    "de": "Protokollieren und warnen, ohne automatische Eindämmung.",
+    "tr": "Otomatik sınırlama uygulamadan kaydedin ve uyarın."
+  },
+  "Record audit events and contain repeated destructive changes.": {
+    "de": "Protokolliere Prüfereignisse und dämme wiederholte destruktive Änderungen ein.",
+    "tr": "Denetim olaylarını kaydedin ve tekrarlanan yıkıcı değişiklikleri sınırlayın."
+  },
+  "Records channel (optional)": {
+    "de": "Protokollkanal (optional)",
+    "tr": "Kayıt kanalı (isteğe bağlı)"
+  },
+  "Regular reward role": {
+    "de": "Belohnungsrolle für Stammmitglieder",
+    "tr": "Düzenli üye ödül rolü"
+  },
+  "Regular threshold": {
+    "de": "Schwelle für Stammmitglieder",
+    "tr": "Düzenli üye eşiği"
+  },
+  "Reject destructive actions without a useful reason.": {
+    "de": "Lehne destruktive Aktionen ohne sinnvolle Begründung ab.",
+    "tr": "Anlamlı bir gerekçesi olmayan yıkıcı işlemleri reddedin."
+  },
+  "Reminder limits": {
+    "de": "Erinnerungslimits",
+    "tr": "Hatırlatma sınırları"
+  },
+  "Remove the role when toggled off": {
+    "de": "Rolle beim Ausschalten entfernen",
+    "tr": "Kapatıldığında rolü kaldır"
+  },
+  "Rename one existing voice or text channel with the latest message count.": {
+    "de": "Benenne einen vorhandenen Sprach- oder Textkanal mit der aktuellen Nachrichtenanzahl um.",
+    "tr": "Mevcut bir ses veya metin kanalını güncel mesaj sayısıyla yeniden adlandırın."
+  },
+  "Require a profile avatar": {
+    "de": "Profilbild voraussetzen",
+    "tr": "Profil avatarını zorunlu kıl"
+  },
+  "Required role (optional)": {
+    "de": "Erforderliche Rolle (optional)",
+    "tr": "Gerekli rol (isteğe bağlı)"
+  },
+  "Respond to unusual join bursts while keeping operators in control.": {
+    "de": "Reagiere auf ungewöhnliche Beitrittswellen und belasse die Kontrolle beim Betriebsteam.",
+    "tr": "Kontrolü işleticilerde tutarak olağan dışı ani katılımlara müdahale edin."
+  },
+  "Responds to unusual joins and protects the server.": {
+    "de": "Reagiert auf ungewöhnliche Beitritte und schützt den Server.",
+    "tr": "Olağan dışı katılımlara müdahale eder ve sunucuyu korur."
+  },
+  "Responses longer than this are rejected before they can be sent.": {
+    "de": "Längere Antworten werden vor dem Senden abgelehnt.",
+    "tr": "Bu sınırdan uzun yanıtlar gönderilmeden önce reddedilir."
+  },
+  "Results per search": {
+    "de": "Ergebnisse pro Suche",
+    "tr": "Arama başına sonuç sayısı"
+  },
+  "Reusable guide template": {
+    "de": "Wiederverwendbare Orientierungsvorlage",
+    "tr": "Yeniden kullanılabilir rehber şablonu"
+  },
+  "Reusable message template": {
+    "de": "Wiederverwendbare Nachrichtenvorlage",
+    "tr": "Yeniden kullanılabilir mesaj şablonu"
+  },
+  "Reuse configurations with a visible diff and resource mapping.": {
+    "de": "Nutze Konfigurationen erneut, mit sichtbarem Vergleich und Ressourcenzuordnung.",
+    "tr": "Görünür farklar ve kaynak eşleştirmesiyle yapılandırmaları yeniden kullanın."
+  },
+  "Reuse feed delivery for new podcast episodes and metadata.": {
+    "de": "Nutze die Feed-Zustellung für neue Podcast-Folgen und Metadaten erneut.",
+    "tr": "Yeni podcast bölümleri ve meta verileri için akış iletimini yeniden kullanın."
+  },
+  "Review and manage server emojis within Discord limits.": {
+    "de": "Prüfe und verwalte Server-Emojis innerhalb der Discord-Grenzen.",
+    "tr": "Sunucu emojilerini Discord sınırları içinde inceleyin ve yönetin."
+  },
+  "Review, export and remove server data safely.": {
+    "de": "Prüfe, exportiere und entferne Serverdaten sicher.",
+    "tr": "Sunucu verilerini güvenle inceleyin, dışa aktarın ve kaldırın."
+  },
+  "Reward healthy participation with a progression system you can tune.": {
+    "de": "Belohne gesunde Beteiligung mit einem anpassbaren Fortschrittssystem.",
+    "tr": "Olumlu katılımı ayarlayabileceğiniz bir ilerleme sistemiyle ödüllendirin."
+  },
+  "Rewards": {
+    "de": "Belohnungen",
+    "tr": "Ödüller"
+  },
+  "Rewards healthy conversation with XP and levels.": {
+    "de": "Belohnt gesunde Gespräche mit XP und Leveln.",
+    "tr": "Olumlu sohbetleri XP ve seviyelerle ödüllendirir."
+  },
+  "Roboto": {
+    "de": "Roboto",
+    "tr": "Roboto"
+  },
+  "Role and delivery": {
+    "de": "Rolle und Zustellung",
+    "tr": "Rol ve iletim"
+  },
+  "Role for verified members": {
+    "de": "Rolle für verifizierte Mitglieder",
+    "tr": "Doğrulanmış üyelerin rolü"
+  },
+  "Role on arrival": {
+    "de": "Rolle beim Beitritt",
+    "tr": "Katılımda verilen rol"
+  },
+  "Room name template": {
+    "de": "Vorlage für Raumnamen",
+    "tr": "Oda adı şablonu"
+  },
+  "Rules": {
+    "de": "Regeln",
+    "tr": "Kurallar"
+  },
+  "Rules channel (optional)": {
+    "de": "Regelkanal (optional)",
+    "tr": "Kurallar kanalı (isteğe bağlı)"
+  },
+  "Run bounded, auditable giveaways with safe entry rules.": {
+    "de": "Führe begrenzte, nachvollziehbare Gewinnspiele mit sicheren Teilnahmeregeln durch.",
+    "tr": "Güvenli katılım kurallarıyla sınırlı ve denetlenebilir çekilişler düzenleyin."
+  },
+  "Rust API": {
+    "de": "Rust-API",
+    "tr": "Rust API"
+  },
+  "SIWE domain and session secret": {
+    "de": "SIWE-Domain und Sitzungsgeheimnis",
+    "tr": "SIWE alan adı ve oturum sırrı"
+  },
+  "SLA reminder (hours)": {
+    "de": "SLA-Erinnerung (Stunden)",
+    "tr": "SLA hatırlatması (saat)"
+  },
+  "Safe search": {
+    "de": "Sichere Suche",
+    "tr": "Güvenli arama"
+  },
+  "Sakura Shrine": {
+    "de": "Sakura-Schrein",
+    "tr": "Sakura Tapınağı"
+  },
+  "Same channel as the message": {
+    "de": "Im selben Kanal wie die Nachricht",
+    "tr": "Mesajla aynı kanal"
+  },
+  "Save and transfer validated server configuration without copying secrets.": {
+    "de": "Speichere und übertrage geprüfte Serverkonfigurationen, ohne Geheimnisse zu kopieren.",
+    "tr": "Gizli bilgileri kopyalamadan doğrulanmış sunucu yapılandırmasını kaydedin ve aktarın."
+  },
+  "Save the configuration and reuse it on another server.": {
+    "de": "Speichere die Konfiguration und nutze sie auf einem anderen Server.",
+    "tr": "Yapılandırmayı kaydedin ve başka bir sunucuda yeniden kullanın."
+  },
+  "Saved automatically": {
+    "de": "Automatisch gespeichert",
+    "tr": "Otomatik kaydedildi"
+  },
+  "Saved message template": {
+    "de": "Gespeicherte Nachrichtenvorlage",
+    "tr": "Kayıtlı mesaj şablonu"
+  },
+  "Saved option": {
+    "de": "Gespeicherte Option",
+    "tr": "Kayıtlı seçenek"
+  },
+  "Saved option: {value}": {
+    "de": "Gespeicherte Option: {value}",
+    "tr": "Kayıtlı seçenek: {value}"
+  },
+  "Saved responses are deliberately bounded and never execute code.": {
+    "de": "Gespeicherte Antworten sind bewusst begrenzt und führen niemals Code aus.",
+    "tr": "Kayıtlı yanıtlar bilinçli olarak sınırlıdır ve asla kod çalıştırmaz."
+  },
+  "Schedule one-off or recurring reminders with an explicit timezone.": {
+    "de": "Plane einmalige oder wiederkehrende Erinnerungen mit festgelegter Zeitzone.",
+    "tr": "Belirli bir saat dilimiyle tek seferlik veya tekrarlanan hatırlatmalar planlayın."
+  },
+  "Schedule reminders for messages, tasks, and events.": {
+    "de": "Plane Erinnerungen für Nachrichten, Aufgaben und Veranstaltungen.",
+    "tr": "Mesajlar, görevler ve etkinlikler için hatırlatmalar planlayın."
+  },
+  "Search content, videos, and references without leaving the app.": {
+    "de": "Suche Inhalte, Videos und Referenzen direkt in der App.",
+    "tr": "Uygulamadan ayrılmadan içerik, video ve kaynak arayın."
+  },
+  "Search is limited to documented providers; arbitrary URLs are never fetched.": {
+    "de": "Die Suche ist auf dokumentierte Anbieter beschränkt; beliebige URLs werden niemals abgerufen.",
+    "tr": "Arama, belgelenmiş sağlayıcılarla sınırlıdır; rastgele URL'ler asla alınmaz."
+  },
+  "Search is limited to providers with documented APIs; arbitrary URLs are never fetched.": {
+    "de": "Die Suche ist auf Anbieter mit dokumentierten APIs beschränkt; beliebige URLs werden niemals abgerufen.",
+    "tr": "Arama, belgelenmiş API'leri olan sağlayıcılarla sınırlıdır; rastgele URL'ler asla alınmaz."
+  },
+  "Search only approved providers instead of fetching arbitrary websites.": {
+    "de": "Durchsuche nur genehmigte Anbieter, statt beliebige Websites abzurufen.",
+    "tr": "Rastgele web sitelerini almak yerine yalnızca onaylı sağlayıcılarda arama yapın."
+  },
+  "See who brought new members to the server.": {
+    "de": "Sieh, wer neue Mitglieder auf den Server gebracht hat.",
+    "tr": "Sunucuya yeni üyeleri kimin getirdiğini görün."
+  },
+  "Send Messages": {
+    "de": "Nachrichten senden",
+    "tr": "Mesaj Gönder"
+  },
+  "Send a direct message": {
+    "de": "Eine Direktnachricht senden",
+    "tr": "Özel mesaj gönder"
+  },
+  "Send a private welcome": {
+    "de": "Eine private Begrüßung senden",
+    "tr": "Özel karşılama gönder"
+  },
+  "Send start reminders": {
+    "de": "Starterinnerungen senden",
+    "tr": "Başlangıç hatırlatmaları gönder"
+  },
+  "Sends a reminder if nobody claims the request in this time. It does not close the ticket.": {
+    "de": "Sendet eine Erinnerung, wenn in dieser Zeit niemand die Anfrage übernimmt. Das Ticket wird nicht geschlossen.",
+    "tr": "Bu sürede kimse talebi üstlenmezse hatırlatma gönderir. Talebi kapatmaz."
+  },
+  "Server monetization": {
+    "de": "Server monetarisieren",
+    "tr": "Sunucudan gelir elde etme"
+  },
+  "Server nickname": {
+    "de": "Server-Spitzname",
+    "tr": "Sunucu takma adı"
+  },
+  "Set defaults for creating events with fewer steps.": {
+    "de": "Lege Vorgaben fest, um Veranstaltungen mit weniger Schritten zu erstellen.",
+    "tr": "Daha az adımla etkinlik oluşturmak için varsayılanları belirleyin."
+  },
+  "Set defaults for quick polls.": {
+    "de": "Lege Vorgaben für schnelle Umfragen fest.",
+    "tr": "Hızlı anketler için varsayılanları belirleyin."
+  },
+  "Set guardrails used by manual moderation commands.": {
+    "de": "Lege Schutzvorgaben für manuelle Moderationsbefehle fest.",
+    "tr": "Manuel moderasyon komutlarının kullanacağı koruyucu sınırları belirleyin."
+  },
+  "Set the name the Helper displays in this server.": {
+    "de": "Lege den Namen fest, den Helper auf diesem Server anzeigt.",
+    "tr": "Helper'ın bu sunucuda göstereceği adı belirleyin."
+  },
+  "Set when the sequence of joins is considered the raid.": {
+    "de": "Lege fest, ab wann eine Folge von Beitritten als Raid gilt.",
+    "tr": "Ardışık katılımların ne zaman toplu baskın sayılacağını belirleyin."
+  },
+  "Sets the name the Helper displays in this server.": {
+    "de": "Legt den Namen fest, den Helper auf diesem Server anzeigt.",
+    "tr": "Helper'ın bu sunucuda göstereceği adı belirler."
+  },
+  "Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.": {
+    "de": "Einstellungen gespeichert, aber der Discord-Beitrag konnte nicht aktualisiert werden. Prüfe Kanal und Helper-Berechtigungen, bevor du den Beitrag reparierst.",
+    "tr": "Ayarlar kaydedildi ancak Discord paylaşımı güncellenemedi. Paylaşımı onarmadan önce kanalı ve Helper izinlerini kontrol edin."
+  },
+  "Shortcuts": {
+    "de": "Verknüpfungen",
+    "tr": "Kısayollar"
+  },
+  "Show channel shortcuts": {
+    "de": "Kanalverknüpfungen anzeigen",
+    "tr": "Kanal kısayollarını göster"
+  },
+  "Show community progress with privacy-aware controls.": {
+    "de": "Zeige den Community-Fortschritt mit datenschutzbewussten Einstellungen.",
+    "tr": "Topluluk ilerlemesini gizliliği gözeten denetimlerle gösterin."
+  },
+  "Show inviter names": {
+    "de": "Namen der Einladenden anzeigen",
+    "tr": "Davet edenlerin adlarını göster"
+  },
+  "Show the /leaderboard response to everyone in the channel": {
+    "de": "Antwort von /leaderboard allen im Kanal anzeigen",
+    "tr": "/leaderboard yanıtını kanaldaki herkese göster"
+  },
+  "Show the leaderboard publicly": {
+    "de": "Rangliste öffentlich anzeigen",
+    "tr": "Sıralamayı herkese göster"
+  },
+  "Shows community progress with configurable privacy.": {
+    "de": "Zeigt den Community-Fortschritt mit anpassbarem Datenschutz.",
+    "tr": "Topluluk ilerlemesini ayarlanabilir gizlilikle gösterir."
+  },
+  "Shows current network fees for the community.": {
+    "de": "Zeigt der Community aktuelle Netzwerkgebühren.",
+    "tr": "Topluluğa güncel ağ ücretlerini gösterir."
+  },
+  "Signed Stripe webhooks": {
+    "de": "Signierte Stripe-Webhooks",
+    "tr": "İmzalı Stripe webhook'ları"
+  },
+  "Sky Islands": {
+    "de": "Himmelsinseln",
+    "tr": "Gökyüzü Adaları"
+  },
+  "Space Grotesk": {
+    "de": "Space Grotesk",
+    "tr": "Space Grotesk"
+  },
+  "Speed up giveaway creation in Discord.": {
+    "de": "Beschleunige die Erstellung von Gewinnspielen in Discord.",
+    "tr": "Discord'da çekiliş oluşturmayı hızlandırın."
+  },
+  "Staff notification channel (optional)": {
+    "de": "Benachrichtigungskanal für das Team (optional)",
+    "tr": "Ekip bildirim kanalı (isteğe bağlı)"
+  },
+  "Staff-only commands": {
+    "de": "Befehle nur für das Team",
+    "tr": "Yalnızca ekibe özel komutlar"
+  },
+  "Starboard channel": {
+    "de": "Starboard-Kanal",
+    "tr": "Yıldız panosu kanalı"
+  },
+  "Stars required": {
+    "de": "Erforderliche Sterne",
+    "tr": "Gerekli yıldız sayısı"
+  },
+  "Starship Hangar": {
+    "de": "Raumschiffhangar",
+    "tr": "Uzay Gemisi Hangarı"
+  },
+  "Start reminder": {
+    "de": "Starterinnerung",
+    "tr": "Başlangıç hatırlatması"
+  },
+  "Statistics channels": {
+    "de": "Statistikkanäle",
+    "tr": "İstatistik kanalları"
+  },
+  "Statistics message": {
+    "de": "Statistiknachricht",
+    "tr": "İstatistik mesajı"
+  },
+  "Stop repeated messages and disruptive bursts with a clear, reviewable policy.": {
+    "de": "Stoppe Nachrichtenwiederholungen und störende Fluten mit einer klaren, überprüfbaren Richtlinie.",
+    "tr": "Açık ve incelenebilir bir politikayla tekrarlanan mesajları ve rahatsız edici ani yoğunlukları durdurun."
+  },
+  "Store only day and month and announce birthdays once per year.": {
+    "de": "Speichere nur Tag und Monat und kündige Geburtstage einmal jährlich an.",
+    "tr": "Yalnızca gün ve ayı saklayın, doğum günlerini yılda bir kez duyurun."
+  },
+  "Stripe Connect account": {
+    "de": "Stripe-Connect-Konto",
+    "tr": "Stripe Connect hesabı"
+  },
+  "Subscriber role": {
+    "de": "Abonnentenrolle",
+    "tr": "Abone rolü"
+  },
+  "Suggestion channel": {
+    "de": "Vorschlagskanal",
+    "tr": "Öneri kanalı"
+  },
+  "Suggestion intake": {
+    "de": "Vorschlagseingang",
+    "tr": "Öneri alımı"
+  },
+  "Suggestions channel": {
+    "de": "Kanal für Vorschläge",
+    "tr": "Öneriler kanalı"
+  },
+  "Support / against": {
+    "de": "Dafür / dagegen",
+    "tr": "Destek / karşı"
+  },
+  "Support / oppose": {
+    "de": "Zustimmen / ablehnen",
+    "tr": "Destekle / karşı çık"
+  },
+  "Support and chargeback process": {
+    "de": "Support- und Rückbuchungsverfahren",
+    "tr": "Destek ve ters ibraz süreci"
+  },
+  "Support and records": {
+    "de": "Support und Protokolle",
+    "tr": "Destek ve kayıtlar"
+  },
+  "Support only": {
+    "de": "Nur Support",
+    "tr": "Yalnızca destek"
+  },
+  "Support reminder (hours)": {
+    "de": "Supporterinnerung (Stunden)",
+    "tr": "Destek hatırlatması (saat)"
+  },
+  "Support team": {
+    "de": "Supportteam",
+    "tr": "Destek ekibi"
+  },
+  "Support team role": {
+    "de": "Supportteam-Rolle",
+    "tr": "Destek ekibi rolü"
+  },
+  "Support tickets": {
+    "de": "Supporttickets",
+    "tr": "Destek talepleri"
+  },
+  "Support workflow": {
+    "de": "Supportablauf",
+    "tr": "Destek iş akışı"
+  },
+  "System": {
+    "de": "System",
+    "tr": "Sistem"
+  },
+  "TIKTOK ACCOUNT": {
+    "de": "TIKTOK-KONTO",
+    "tr": "TIKTOK HESABI"
+  },
+  "TWITCH_CLIENT_ID": {
+    "de": "TWITCH_CLIENT_ID",
+    "tr": "TWITCH_CLIENT_ID"
+  },
+  "TWITCH_CLIENT_SECRET": {
+    "de": "TWITCH_CLIENT_SECRET",
+    "tr": "TWITCH_CLIENT_SECRET"
+  },
+  "TWITCH_EVENTSUB_SECRET": {
+    "de": "TWITCH_EVENTSUB_SECRET",
+    "tr": "TWITCH_EVENTSUB_SECRET"
+  },
+  "Templates and import": {
+    "de": "Vorlagen und Import",
+    "tr": "Şablonlar ve içe aktarma"
+  },
+  "Temporarily give this role to the member when their birthday is announced.": {
+    "de": "Weise dem Mitglied diese Rolle vorübergehend zu, wenn sein Geburtstag angekündigt wird.",
+    "tr": "Doğum günü duyurulduğunda üyeye geçici olarak bu rolü verin."
+  },
+  "Text": {
+    "de": "Text",
+    "tr": "Metin"
+  },
+  "Text colour": {
+    "de": "Textfarbe",
+    "tr": "Metin rengi"
+  },
+  "The Helper records an overdue ticket job after this period.": {
+    "de": "Helper protokolliert nach diesem Zeitraum einen Auftrag für ein überfälliges Ticket.",
+    "tr": "Helper bu sürenin ardından gecikmiş talep için bir görev kaydeder."
+  },
+  "The account must explicitly authorise Vozen through Meta OAuth.": {
+    "de": "Das Konto muss Vozen ausdrücklich über Meta OAuth autorisieren.",
+    "tr": "Hesap, Meta OAuth üzerinden Vozen'i açıkça yetkilendirmelidir."
+  },
+  "The channel where the alert will be posted.": {
+    "de": "Der Kanal, in dem die Benachrichtigung veröffentlicht wird.",
+    "tr": "Uyarının paylaşılacağı kanal."
+  },
+  "The channel where the publication will be sent.": {
+    "de": "Der Kanal, an den der Beitrag gesendet wird.",
+    "tr": "Paylaşımın gönderileceği kanal."
+  },
+  "The character(s) members type before a saved command, for example !rules.": {
+    "de": "Zeichen, die Mitglieder vor einem gespeicherten Befehl eingeben, zum Beispiel !rules.",
+    "tr": "Üyelerin kayıtlı bir komutun önüne yazdığı karakterler, örneğin !rules."
+  },
+  "The command uses these values when no override is provided.": {
+    "de": "Der Befehl verwendet diese Werte, sofern keine abweichenden Werte angegeben werden.",
+    "tr": "Başka değerler belirtilmediğinde komut bu değerleri kullanır."
+  },
+  "The configuration changed in another session. Reload before editing again; your draft is still here.": {
+    "de": "Die Konfiguration wurde in einer anderen Sitzung geändert. Lade sie vor weiteren Änderungen neu; dein Entwurf ist noch vorhanden.",
+    "tr": "Yapılandırma başka bir oturumda değişti. Yeniden düzenlemeden önce sayfayı yenileyin; taslağınız hâlâ burada."
+  },
+  "The creator must authorise the Vozen application.": {
+    "de": "Der Creator muss die Vozen-Anwendung autorisieren.",
+    "tr": "İçerik üreticisi Vozen uygulamasını yetkilendirmelidir."
+  },
+  "The first message should clearly explain the next step.": {
+    "de": "Die erste Nachricht sollte den nächsten Schritt klar erklären.",
+    "tr": "İlk mesaj sonraki adımı açıkça anlatmalıdır."
+  },
+  "The goodbye message and where it appears.": {
+    "de": "Die Abschiedsnachricht und ihr Anzeigeort.",
+    "tr": "Veda mesajı ve görüneceği yer."
+  },
+  "The local day used to decide when a birthday announcement is sent.": {
+    "de": "Der lokale Kalendertag, der den Versand der Geburtstagsankündigung bestimmt.",
+    "tr": "Doğum günü duyurusunun ne zaman gönderileceğini belirleyen yerel takvim günü."
+  },
+  "The longest time a member can schedule a reminder.": {
+    "de": "Der längste Zeitraum, für den ein Mitglied eine Erinnerung planen kann.",
+    "tr": "Bir üyenin hatırlatma planlayabileceği en uzun süre."
+  },
+  "The maximum number of active and paused workflows stored for this server.": {
+    "de": "Die maximale Anzahl aktiver und pausierter Abläufe, die für diesen Server gespeichert werden.",
+    "tr": "Bu sunucu için saklanan etkin ve duraklatılmış iş akışlarının en fazla sayısı."
+  },
+  "The maximum number of saved responses this server can keep.": {
+    "de": "Die maximale Anzahl gespeicherter Antworten dieses Servers.",
+    "tr": "Bu sunucunun saklayabileceği kayıtlı yanıtların en fazla sayısı."
+  },
+  "The public channel with the Open ticket button.": {
+    "de": "Der öffentliche Kanal mit der Schaltfläche „Ticket öffnen“.",
+    "tr": "Talep aç düğmesinin bulunduğu herkese açık kanal."
+  },
+  "The role panel command applies these values to newly published panels.": {
+    "de": "Der Rollenpanel-Befehl verwendet diese Werte für neu veröffentlichte Panels.",
+    "tr": "Rol paneli komutu bu değerleri yeni yayımlanan panellere uygular."
+  },
+  "These options are applied to every new suggestion.": {
+    "de": "Diese Optionen gelten für jeden neuen Vorschlag.",
+    "tr": "Bu seçenekler her yeni öneriye uygulanır."
+  },
+  "These values are applied to new events created with the Helper.": {
+    "de": "Diese Werte gelten für neue Veranstaltungen, die mit Helper erstellt werden.",
+    "tr": "Bu değerler Helper ile oluşturulan yeni etkinliklere uygulanır."
+  },
+  "This role can claim, close and reopen tickets.": {
+    "de": "Diese Rolle kann Tickets übernehmen, schließen und wieder öffnen.",
+    "tr": "Bu rol talepleri üstlenebilir, kapatabilir ve yeniden açabilir."
+  },
+  "Three to ten lowercase letters, for example usd or eur.": {
+    "de": "Drei bis zehn Kleinbuchstaben, zum Beispiel usd oder eur.",
+    "tr": "Üç ile on küçük harf, örneğin usd veya eur."
+  },
+  "Ticket category": {
+    "de": "Ticketkategorie",
+    "tr": "Talep kategorisi"
+  },
+  "Ticket setup": {
+    "de": "Ticketeinrichtung",
+    "tr": "Talep kurulumu"
+  },
+  "TikTok App Review": {
+    "de": "TikTok-App-Prüfung",
+    "tr": "TikTok uygulama incelemesi"
+  },
+  "TikTok Display API app": {
+    "de": "TikTok-Display-API-Anwendung",
+    "tr": "TikTok Display API uygulaması"
+  },
+  "TikTok connected": {
+    "de": "TikTok verbunden",
+    "tr": "TikTok bağlı"
+  },
+  "Time between XP gains (seconds)": {
+    "de": "Zeit zwischen XP-Vergaben (Sekunden)",
+    "tr": "XP kazanımları arasındaki süre (saniye)"
+  },
+  "Timeout inicial (segundos)": {
+    "de": "Anfängliche Auszeit (Sekunden)",
+    "tr": "İlk zaman aşımı cezası (saniye)"
+  },
+  "Title": {
+    "de": "Titel",
+    "tr": "Başlık"
+  },
+  "Token ID (ERC-1155)": {
+    "de": "Token-ID (ERC-1155)",
+    "tr": "Token kimliği (ERC-1155)"
+  },
+  "Token standard": {
+    "de": "Tokenstandard",
+    "tr": "Token standardı"
+  },
+  "Track posts from a professional account authorised by Meta.": {
+    "de": "Verfolge Beiträge eines von Meta autorisierten professionellen Kontos.",
+    "tr": "Meta tarafından yetkilendirilmiş profesyonel bir hesabın gönderilerini takip edin."
+  },
+  "Track streams through the official Kick API when available.": {
+    "de": "Verfolge Streams über die offizielle Kick API, sobald verfügbar.",
+    "tr": "Kullanıma sunulduğunda resmî Kick API üzerinden yayınları takip edin."
+  },
+  "Track videos from a creator who authorised Vozen through the Display API.": {
+    "de": "Verfolge Videos eines Creators, der Vozen über die Display API autorisiert hat.",
+    "tr": "Display API üzerinden Vozen'i yetkilendiren bir içerik üreticisinin videolarını takip edin."
+  },
+  "Tracks digital currency indicators.": {
+    "de": "Verfolgt Kennzahlen digitaler Währungen.",
+    "tr": "Dijital para göstergelerini takip eder."
+  },
+  "Tracks important changes and keeps your team aligned.": {
+    "de": "Verfolgt wichtige Änderungen und hält dein Team auf dem Laufenden.",
+    "tr": "Önemli değişiklikleri takip eder ve ekibinizi bilgilendirir."
+  },
+  "Tracks new posts from selected accounts.": {
+    "de": "Verfolgt neue Beiträge ausgewählter Konten.",
+    "tr": "Seçilen hesapların yeni gönderilerini takip eder."
+  },
+  "Tracks new posts from selected profiles.": {
+    "de": "Verfolgt neue Beiträge ausgewählter Profile.",
+    "tr": "Seçilen profillerin yeni gönderilerini takip eder."
+  },
+  "Tracks server activity and trends.": {
+    "de": "Verfolgt Serveraktivität und Trends.",
+    "tr": "Sunucu etkinliğini ve eğilimlerini takip eder."
+  },
+  "Trial days": {
+    "de": "Testtage",
+    "tr": "Deneme günleri"
+  },
+  "Tropical Lagoon": {
+    "de": "Tropische Lagune",
+    "tr": "Tropik Lagün"
+  },
+  "Tune message XP and level-up announcements.": {
+    "de": "Passe Nachrichten-XP und Ankündigungen bei Levelaufstiegen an.",
+    "tr": "Mesaj XP'sini ve seviye atlama duyurularını ayarlayın."
+  },
+  "Turn meaningful participation into milestones and rewards.": {
+    "de": "Mache sinnvolle Beteiligung zu Meilensteinen und Belohnungen.",
+    "tr": "Anlamlı katılımı dönüm noktalarına ve ödüllere dönüştürün."
+  },
+  "Turn member requests into private, trackable support conversations.": {
+    "de": "Mache Mitgliederanfragen zu privaten, nachverfolgbaren Supportgesprächen.",
+    "tr": "Üye taleplerini özel ve izlenebilir destek görüşmelerine dönüştürün."
+  },
+  "Turn off to post a quiet reminder without a mention.": {
+    "de": "Ausschalten, um eine unaufdringliche Erinnerung ohne Erwähnung zu senden.",
+    "tr": "Etiketleme olmadan sessiz bir hatırlatma göndermek için kapatın."
+  },
+  "Turns any RSS feed into an automatic update.": {
+    "de": "Macht jeden RSS-Feed zur automatischen Aktualisierung.",
+    "tr": "Her RSS akışını otomatik güncellemeye dönüştürür."
+  },
+  "Twitch channel login": {
+    "de": "Twitch-Kanallogin",
+    "tr": "Twitch kanal kullanıcı adı"
+  },
+  "UTC": {
+    "de": "UTC",
+    "tr": "UTC"
+  },
+  "UTC+01:00": {
+    "de": "UTC+01:00",
+    "tr": "UTC+01:00"
+  },
+  "UTC+02:00": {
+    "de": "UTC+02:00",
+    "tr": "UTC+02:00"
+  },
+  "UTC+05:30": {
+    "de": "UTC+05:30",
+    "tr": "UTC+05:30"
+  },
+  "UTC+08:00": {
+    "de": "UTC+08:00",
+    "tr": "UTC+08:00"
+  },
+  "UTC-05:00": {
+    "de": "UTC-05:00",
+    "tr": "UTC-05:00"
+  },
+  "Unable to load your servers": {
+    "de": "Deine Server konnten nicht geladen werden",
+    "tr": "Sunucularınız yüklenemedi"
+  },
+  "Understand important changes and why an action was allowed or blocked.": {
+    "de": "Verstehe wichtige Änderungen und warum eine Aktion erlaubt oder blockiert wurde.",
+    "tr": "Önemli değişiklikleri ve bir işleme neden izin verildiğini veya işlemin neden engellendiğini anlayın."
+  },
+  "Understand which invite campaigns bring members to your server.": {
+    "de": "Erkenne, welche Einladungskampagnen Mitglieder auf deinen Server bringen.",
+    "tr": "Hangi davet kampanyalarının sunucunuza üye getirdiğini anlayın."
+  },
+  "Up to 32 characters. Leave empty to remove the custom name.": {
+    "de": "Bis zu 32 Zeichen. Leer lassen, um den eigenen Namen zu entfernen.",
+    "tr": "En fazla 32 karakter. Özel adı kaldırmak için boş bırakın."
+  },
+  "Update interval (seconds)": {
+    "de": "Aktualisierungsintervall (Sekunden)",
+    "tr": "Güncelleme aralığı (saniye)"
+  },
+  "Upper bound for one purge command.": {
+    "de": "Obergrenze für einen Löschbefehl.",
+    "tr": "Tek bir toplu silme komutu için üst sınır."
+  },
+  "Usa 0 para apenas registar o incidente.": {
+    "de": "Mit 0 wird der Vorfall nur protokolliert.",
+    "tr": "Yalnızca olayı kaydetmek için 0 kullanın."
+  },
+  "Use Application Commands": {
+    "de": "Anwendungsbefehle verwenden",
+    "tr": "Uygulama Komutlarını Kullan"
+  },
+  "Use an HTTPS URL for the public feed.": {
+    "de": "Verwende eine HTTPS-URL für den öffentlichen Feed.",
+    "tr": "Herkese açık akış için HTTPS URL'si kullanın."
+  },
+  "Use server system channel": {
+    "de": "Systemkanal des Servers verwenden",
+    "tr": "Sunucunun sistem kanalını kullan"
+  },
+  "Use the ID that usually starts with UC…": {
+    "de": "Verwende die ID, die üblicherweise mit UC… beginnt.",
+    "tr": "Genellikle UC… ile başlayan kimliği kullanın."
+  },
+  "Use the channel ID, not a watch URL.": {
+    "de": "Verwende die Kanal-ID, keine Video-URL.",
+    "tr": "Video izleme URL'si yerine kanal kimliğini kullanın."
+  },
+  "Use the channel login, without a URL or @ prefix.": {
+    "de": "Verwende den Kanallogin ohne URL oder @-Präfix.",
+    "tr": "URL veya @ öneki olmadan kanal kullanıcı adını kullanın."
+  },
+  "Use the official CoinGecko read-only API with bounded symbols and results.": {
+    "de": "Nutze die offizielle schreibgeschützte CoinGecko-API mit begrenzten Symbolen und Ergebnissen.",
+    "tr": "Sınırlı sembol ve sonuçlarla resmî salt okunur CoinGecko API'sini kullanın."
+  },
+  "Use {member} and {server} as placeholders.": {
+    "de": "Verwende {member} und {server} als Platzhalter.",
+    "tr": "Yer tutucu olarak {member} ve {server} kullanın."
+  },
+  "Use {member} for the member and {server} for the server name.": {
+    "de": "Verwende {member} für das Mitglied und {server} für den Servernamen.",
+    "tr": "Üye için {member}, sunucu adı için {server} kullanın."
+  },
+  "Use {member} to mention the member and {level} for the new level.": {
+    "de": "Verwende {member} für die Erwähnung des Mitglieds und {level} für das neue Level.",
+    "tr": "Üyeyi etiketlemek için {member}, yeni seviye için {level} kullanın."
+  },
+  "Use {messages}, {joins}, {leaves} and {days}.": {
+    "de": "Verwende {messages}, {joins}, {leaves} und {days}.",
+    "tr": "{messages}, {joins}, {leaves} ve {days} kullanın."
+  },
+  "Use {user} for the member display name.": {
+    "de": "Verwende {user} für den Anzeigenamen des Mitglieds.",
+    "tr": "Üyenin görünen adı için {user} kullanın."
+  },
+  "Use {user} for the member mention.": {
+    "de": "Verwende {user} für die Erwähnung des Mitglieds.",
+    "tr": "Üyeyi etiketlemek için {user} kullanın."
+  },
+  "Used when a reminder time is written as HH:MM, such as 09:30.": {
+    "de": "Wird verwendet, wenn eine Erinnerungszeit als HH:MM eingegeben wird, etwa 09:30.",
+    "tr": "Hatırlatma saati 09:30 gibi HH:MM biçiminde yazıldığında kullanılır."
+  },
+  "Uses the join gate temporarily and restores it when containment expires.": {
+    "de": "Nutzt die Beitrittssperre vorübergehend und stellt sie nach Ablauf der Eindämmung wieder her.",
+    "tr": "Giriş kontrolünü geçici olarak kullanır ve sınırlama süresi bitince önceki durumuna döndürür."
+  },
+  "Uses the official Helix/EventSub API with signed webhook verification and deduplication.": {
+    "de": "Nutzt die offizielle Helix/EventSub API mit Signaturprüfung für Webhooks und Duplikaterkennung.",
+    "tr": "Resmî Helix/EventSub API'yi imzalı webhook doğrulaması ve yinelenenleri ayıklamayla kullanır."
+  },
+  "Variables: {broadcaster}, {login}, {url}, {stream_id}, {started_at}.": {
+    "de": "Variablen: {broadcaster}, {login}, {url}, {stream_id}, {started_at}.",
+    "tr": "Değişkenler: {broadcaster}, {login}, {url}, {stream_id}, {started_at}."
+  },
+  "Variables: {feed}, {title}, {url}, {published_at}.": {
+    "de": "Variablen: {feed}, {title}, {url}, {published_at}.",
+    "tr": "Değişkenler: {feed}, {title}, {url}, {published_at}."
+  },
+  "Variables: {member} and {server}.": {
+    "de": "Variablen: {member} und {server}.",
+    "tr": "Değişkenler: {member} ve {server}."
+  },
+  "Variables: {member}, {level}, {server}.": {
+    "de": "Variablen: {member}, {level}, {server}.",
+    "tr": "Değişkenler: {member}, {level}, {server}."
+  },
+  "Variables: {member}, {server}, {count}.": {
+    "de": "Variablen: {member}, {server}, {count}.",
+    "tr": "Değişkenler: {member}, {server}, {count}."
+  },
+  "Variables: {title}, {url}, {channel}, {published_at}.": {
+    "de": "Variablen: {title}, {url}, {channel}, {published_at}.",
+    "tr": "Değişkenler: {title}, {url}, {channel}, {published_at}."
+  },
+  "Verification interval (seconds)": {
+    "de": "Verifizierungsintervall (Sekunden)",
+    "tr": "Doğrulama aralığı (saniye)"
+  },
+  "Very high": {
+    "de": "Sehr hoch",
+    "tr": "Çok yüksek"
+  },
+  "View, export, and safely delete your server data.": {
+    "de": "Zeige deine Serverdaten an, exportiere und lösche sie sicher.",
+    "tr": "Sunucu verilerinizi görüntüleyin, dışa aktarın ve güvenle silin."
+  },
+  "Voice XP per minute": {
+    "de": "Sprach-XP pro Minute",
+    "tr": "Dakika başına ses XP'si"
+  },
+  "Volcanic Forge": {
+    "de": "Vulkanschmiede",
+    "tr": "Volkanik Demirhane"
+  },
+  "Voluntary profile data is erased; moderation audit records stay retained.": {
+    "de": "Freiwillige Profildaten werden gelöscht; Moderationsprotokolle bleiben erhalten.",
+    "tr": "İsteğe bağlı profil verileri silinir; moderasyon denetim kayıtları saklanır."
+  },
+  "Wait before sending (seconds)": {
+    "de": "Wartezeit vor dem Senden (Sekunden)",
+    "tr": "Göndermeden önce bekleme (saniye)"
+  },
+  "Wallet access": {
+    "de": "Wallet-Zugriff",
+    "tr": "Cüzdan erişimi"
+  },
+  "Wallet gating": {
+    "de": "Wallet-basierte Zugangskontrolle",
+    "tr": "Cüzdan tabanlı erişim kontrolü"
+  },
+  "Watch a validated RSS or Atom feed with safe polling.": {
+    "de": "Überwache einen geprüften RSS- oder Atom-Feed mit sicheren Abfragen.",
+    "tr": "Doğrulanmış bir RSS veya Atom akışını güvenli sorgulamayla izleyin."
+  },
+  "Welcome members without editing code.": {
+    "de": "Begrüße Mitglieder, ohne Code zu bearbeiten.",
+    "tr": "Kod düzenlemeden üyeleri karşılayın."
+  },
+  "Welcome messages": {
+    "de": "Begrüßungsnachrichten",
+    "tr": "Karşılama mesajları"
+  },
+  "Welcome messages, optional orientation buttons, direct messages and automatic roles.": {
+    "de": "Begrüßungsnachrichten, optionale Orientierungsschaltflächen, Direktnachrichten und automatische Rollen.",
+    "tr": "Karşılama mesajları, isteğe bağlı yönlendirme düğmeleri, özel mesajlar ve otomatik roller."
+  },
+  "Welcome setup": {
+    "de": "Begrüßung einrichten",
+    "tr": "Karşılama kurulumu"
+  },
+  "What members see before opening a ticket.": {
+    "de": "Was Mitglieder vor dem Öffnen eines Tickets sehen.",
+    "tr": "Üyelerin talep açmadan önce gördükleri."
+  },
+  "When a member leaves": {
+    "de": "Wenn ein Mitglied geht",
+    "tr": "Bir üye ayrıldığında"
+  },
+  "When disabled, everyone/here mentions are neutralised.": {
+    "de": "Wenn deaktiviert, werden everyone/here-Erwähnungen neutralisiert.",
+    "tr": "Devre dışıyken everyone/here etiketlemeleri etkisizleştirilir."
+  },
+  "When disabled, only the requesting member sees the result.": {
+    "de": "Wenn deaktiviert, sieht nur das anfragende Mitglied das Ergebnis.",
+    "tr": "Devre dışıyken sonucu yalnızca istekte bulunan üye görür."
+  },
+  "When disabled, only the requesting member sees the summary.": {
+    "de": "Wenn deaktiviert, sieht nur das anfragende Mitglied die Übersicht.",
+    "tr": "Devre dışıyken özeti yalnızca istekte bulunan üye görür."
+  },
+  "When off, Helper removes the other level rewards when assigning a new one.": {
+    "de": "Wenn aus, entfernt Helper bei einer neuen Levelbelohnung die bisherigen Belohnungen.",
+    "tr": "Kapalıyken Helper yeni bir seviye ödülü atadığında diğer seviye ödüllerini kaldırır."
+  },
+  "Where members open tickets": {
+    "de": "Wo Mitglieder Tickets öffnen",
+    "tr": "Üyelerin talep açtığı yer"
+  },
+  "Window (seconds)": {
+    "de": "Zeitraum (Sekunden)",
+    "tr": "Zaman aralığı (saniye)"
+  },
+  "Work cooldown (minutes)": {
+    "de": "Arbeitssperrzeit (Minuten)",
+    "tr": "Çalışma bekleme süresi (dakika)"
+  },
+  "Work reward": {
+    "de": "Arbeitsbelohnung",
+    "tr": "Çalışma ödülü"
+  },
+  "XP card appearance": {
+    "de": "Aussehen der XP-Karte",
+    "tr": "XP kartı görünümü"
+  },
+  "XP cooldown (seconds)": {
+    "de": "XP-Sperrzeit (Sekunden)",
+    "tr": "XP bekleme süresi (saniye)"
+  },
+  "XP milestones": {
+    "de": "XP-Meilensteine",
+    "tr": "XP dönüm noktaları"
+  },
+  "XP progression": {
+    "de": "XP-Fortschritt",
+    "tr": "XP ilerlemesi"
+  },
+  "YOUTUBE_API_KEY": {
+    "de": "YOUTUBE_API_KEY",
+    "tr": "YOUTUBE_API_KEY"
+  },
+  "Your session expired. Sign in again.": {
+    "de": "Deine Sitzung ist abgelaufen. Melde dich erneut an.",
+    "tr": "Oturumunuzun süresi doldu. Yeniden giriş yapın."
+  },
+  "add_reactions": {
+    "de": "add_reactions",
+    "tr": "add_reactions"
+  },
+  "alert channel": {
+    "de": "Benachrichtigungskanal",
+    "tr": "uyarı kanalı"
+  },
+  "arbitrum": {
+    "de": "arbitrum",
+    "tr": "arbitrum"
+  },
+  "attach_files": {
+    "de": "attach_files",
+    "tr": "attach_files"
+  },
+  "base": {
+    "de": "base",
+    "tr": "base"
+  },
+  "change_nickname": {
+    "de": "change_nickname",
+    "tr": "change_nickname"
+  },
+  "channels ignored": {
+    "de": "ignorierte Kanäle",
+    "tr": "yok sayılan kanallar"
+  },
+  "channels without XP": {
+    "de": "Kanäle ohne XP",
+    "tr": "XP olmayan kanallar"
+  },
+  "direct_messages": {
+    "de": "direct_messages",
+    "tr": "direct_messages"
+  },
+  "embed_links": {
+    "de": "embed_links",
+    "tr": "embed_links"
+  },
+  "erc1155": {
+    "de": "erc1155",
+    "tr": "erc1155"
+  },
+  "erc20": {
+    "de": "erc20",
+    "tr": "erc20"
+  },
+  "erc721": {
+    "de": "erc721",
+    "tr": "erc721"
+  },
+  "ethereum": {
+    "de": "ethereum",
+    "tr": "ethereum"
+  },
+  "example: vozen (without @).": {
+    "de": "Beispiel: vozen (ohne @).",
+    "tr": "örnek: vozen (@ olmadan)."
+  },
+  "guild_invites": {
+    "de": "guild_invites",
+    "tr": "guild_invites"
+  },
+  "guild_members": {
+    "de": "guild_members",
+    "tr": "guild_members"
+  },
+  "guild_members_intent": {
+    "de": "guild_members_intent",
+    "tr": "guild_members_intent"
+  },
+  "inter": {
+    "de": "inter",
+    "tr": "inter"
+  },
+  "interactions": {
+    "de": "Interaktionen",
+    "tr": "etkileşimler"
+  },
+  "join channel": {
+    "de": "Beitrittskanal",
+    "tr": "katılım kanalı"
+  },
+  "leave and templates": {
+    "de": "Abschied und Vorlagen",
+    "tr": "ayrılma ve şablonlar"
+  },
+  "levels": {
+    "de": "Level",
+    "tr": "seviyeler"
+  },
+  "lexend": {
+    "de": "lexend",
+    "tr": "lexend"
+  },
+  "limited availability": {
+    "de": "eingeschränkt verfügbar",
+    "tr": "sınırlı kullanılabilirlik"
+  },
+  "manage_channels": {
+    "de": "manage_channels",
+    "tr": "manage_channels"
+  },
+  "manage_events": {
+    "de": "manage_events",
+    "tr": "manage_events"
+  },
+  "manage_expressions": {
+    "de": "manage_expressions",
+    "tr": "manage_expressions"
+  },
+  "manage_guild": {
+    "de": "manage_guild",
+    "tr": "manage_guild"
+  },
+  "manage_messages": {
+    "de": "manage_messages",
+    "tr": "manage_messages"
+  },
+  "manage_nicknames": {
+    "de": "manage_nicknames",
+    "tr": "manage_nicknames"
+  },
+  "manage_roles": {
+    "de": "manage_roles",
+    "tr": "manage_roles"
+  },
+  "manager_session": {
+    "de": "manager_session",
+    "tr": "manager_session"
+  },
+  "medium": {
+    "de": "mittel",
+    "tr": "orta"
+  },
+  "message": {
+    "de": "Nachricht",
+    "tr": "mesaj"
+  },
+  "message_content": {
+    "de": "message_content",
+    "tr": "message_content"
+  },
+  "message_content_intent": {
+    "de": "message_content_intent",
+    "tr": "message_content_intent"
+  },
+  "message_events": {
+    "de": "message_events",
+    "tr": "message_events"
+  },
+  "messages and rewards": {
+    "de": "Nachrichten und Belohnungen",
+    "tr": "mesajlar ve ödüller"
+  },
+  "moderate_members": {
+    "de": "moderate_members",
+    "tr": "moderate_members"
+  },
+  "moderation": {
+    "de": "Moderation",
+    "tr": "moderasyon"
+  },
+  "move_members": {
+    "de": "move_members",
+    "tr": "move_members"
+  },
+  "outbound_https": {
+    "de": "outbound_https",
+    "tr": "outbound_https"
+  },
+  "panel channel": {
+    "de": "Panelkanal",
+    "tr": "panel kanalı"
+  },
+  "polygon": {
+    "de": "polygon",
+    "tr": "polygon"
+  },
+  "poppins": {
+    "de": "poppins",
+    "tr": "poppins"
+  },
+  "read_message_history": {
+    "de": "read_message_history",
+    "tr": "read_message_history"
+  },
+  "rewards by level": {
+    "de": "Belohnungen je Level",
+    "tr": "seviyeye göre ödüller"
+  },
+  "roboto": {
+    "de": "roboto",
+    "tr": "roboto"
+  },
+  "role required": {
+    "de": "Rolle erforderlich",
+    "tr": "rol gerekli"
+  },
+  "roles ignored": {
+    "de": "ignorierte Rollen",
+    "tr": "yok sayılan roller"
+  },
+  "scheduler": {
+    "de": "Zeitplaner",
+    "tr": "zamanlayıcı"
+  },
+  "send_messages": {
+    "de": "send_messages",
+    "tr": "send_messages"
+  },
+  "space_grotesk": {
+    "de": "space_grotesk",
+    "tr": "space_grotesk"
+  },
+  "system": {
+    "de": "System",
+    "tr": "sistem"
+  },
+  "view_audit_log": {
+    "de": "view_audit_log",
+    "tr": "view_audit_log"
+  },
+  "view_channel": {
+    "de": "view_channel",
+    "tr": "view_channel"
+  },
+  "voice_channels": {
+    "de": "voice_channels",
+    "tr": "voice_channels"
+  },
+  "voice_states": {
+    "de": "voice_states",
+    "tr": "voice_states"
+  },
+  "your server": {
+    "de": "dein Server",
+    "tr": "sunucunuz"
+  },
+  "{count} more members in /leaderboard.": {
+    "de": "{count} weitere Mitglieder in /leaderboard.",
+    "tr": "/leaderboard içinde {count} üye daha."
+  }
+}

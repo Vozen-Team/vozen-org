@@ -1,0 +1,2686 @@
+{
+  "0 sends without waiting.": {
+    "ru": "0 — отправка без ожидания.",
+    "ko": "0이면 기다리지 않고 보냅니다."
+  },
+  "AUTOMATIC SAVING": {
+    "ru": "АВТОМАТИЧЕСКОЕ СОХРАНЕНИЕ",
+    "ko": "자동 저장"
+  },
+  "Account": {
+    "ru": "Аккаунт",
+    "ko": "계정"
+  },
+  "Actions before containment": {
+    "ru": "Действий до сдерживания",
+    "ko": "제한 조치 전 작업 수"
+  },
+  "Activity": {
+    "ru": "Активность",
+    "ko": "활동"
+  },
+  "Alert only, without punishment": {
+    "ru": "Только оповещать, без наказания",
+    "ko": "알림만 보내고 제재하지 않기"
+  },
+  "Alerts you when a new podcast episode is published.": {
+    "ru": "Оповещает о выходе нового эпизода подкаста.",
+    "ko": "새 팟캐스트 에피소드가 게시되면 알려 줍니다."
+  },
+  "All settings for this server.": {
+    "ru": "Все настройки для этого сервера.",
+    "ko": "이 서버의 모든 설정입니다."
+  },
+  "Allow authors to star their own message": {
+    "ru": "Разрешить авторам отмечать свои сообщения звездой",
+    "ko": "작성자가 자신의 메시지에 별표를 추가하도록 허용"
+  },
+  "Announcement channel (optional)": {
+    "ru": "Канал объявлений (необязательно)",
+    "ko": "공지 채널(선택 사항)"
+  },
+  "Announcement message": {
+    "ru": "Сообщение объявления",
+    "ko": "공지 메시지"
+  },
+  "Announcement timezone": {
+    "ru": "Часовой пояс объявлений",
+    "ko": "공지 시간대"
+  },
+  "Append the dashboard URL for server managers.": {
+    "ru": "Добавлять ссылку на панель для управляющих сервером.",
+    "ko": "서버 관리자를 위한 대시보드 URL을 추가합니다."
+  },
+  "Applies basic checks to new members.": {
+    "ru": "Выполняет базовые проверки новых участников.",
+    "ko": "새 멤버에 대한 기본 검사를 수행합니다."
+  },
+  "Apply consistent moderation actions with policy and hierarchy checks.": {
+    "ru": "Применяйте единообразные меры модерации с проверкой правил и иерархии.",
+    "ko": "정책과 역할 계층을 확인하여 일관된 관리 조치를 적용합니다."
+  },
+  "Approved Kick developer application": {
+    "ru": "Одобренное приложение разработчика Kick",
+    "ko": "승인된 Kick 개발자 애플리케이션"
+  },
+  "Approved contract allow-list": {
+    "ru": "Список разрешённых одобренных контрактов",
+    "ko": "승인된 컨트랙트 허용 목록"
+  },
+  "Arbitrum": {
+    "ru": "Arbitrum",
+    "ko": "Arbitrum"
+  },
+  "Ask a focused question and keep its result auditable.": {
+    "ru": "Задайте конкретный вопрос и сохраните результат для проверки.",
+    "ko": "구체적인 질문을 하고 결과를 검토할 수 있도록 보관합니다."
+  },
+  "Audit and permissions": {
+    "ru": "Аудит и разрешения",
+    "ko": "감사 및 권한"
+  },
+  "Audit log channel (optional)": {
+    "ru": "Канал журнала аудита (необязательно)",
+    "ko": "감사 로그 채널(선택 사항)"
+  },
+  "Aurora Lake": {
+    "ru": "Озеро северного сияния",
+    "ko": "오로라 호수"
+  },
+  "Authorize only your public profile and video list. Helper cannot publish or change content.": {
+    "ru": "Разрешите доступ только к открытому профилю и списку видео. Helper не может публиковать или изменять контент.",
+    "ko": "공개 프로필과 동영상 목록에 대한 접근만 허용합니다. Helper는 콘텐츠를 게시하거나 변경할 수 없습니다."
+  },
+  "Automatic response": {
+    "ru": "Автоматический ответ",
+    "ko": "자동 응답"
+  },
+  "Automatic role": {
+    "ru": "Автоматическая роль",
+    "ko": "자동 역할"
+  },
+  "Avatar ring colour": {
+    "ru": "Цвет рамки аватара",
+    "ko": "아바타 테두리 색상"
+  },
+  "Avatar ring width": {
+    "ru": "Ширина рамки аватара",
+    "ko": "아바타 테두리 너비"
+  },
+  "Avoid excessive selections.": {
+    "ru": "Избегайте избыточного выбора.",
+    "ko": "너무 많은 항목을 선택하지 않도록 합니다."
+  },
+  "Award XP in voice channels": {
+    "ru": "Начислять XP в голосовых каналах",
+    "ko": "음성 채널에서 XP 지급"
+  },
+  "Background & banners": {
+    "ru": "Фон и баннеры",
+    "ko": "배경 및 배너"
+  },
+  "Background colour": {
+    "ru": "Цвет фона",
+    "ko": "배경 색상"
+  },
+  "Behaviour": {
+    "ru": "Поведение",
+    "ko": "동작"
+  },
+  "Between 1 and 100 members in /leaderboard. The preview shows at most 10.": {
+    "ru": "От 1 до 100 участников в /leaderboard. В предпросмотре отображается не более 10.",
+    "ko": "/leaderboard에 1~100명의 멤버를 표시합니다. 미리보기에는 최대 10명까지 표시됩니다."
+  },
+  "Birthday announcements": {
+    "ru": "Объявления о днях рождения",
+    "ko": "생일 공지"
+  },
+  "Birthday role (optional)": {
+    "ru": "Роль именинника (необязательно)",
+    "ko": "생일 역할(선택 사항)"
+  },
+  "Blocks suspicious links, invites, and phishing patterns.": {
+    "ru": "Блокирует подозрительные ссылки, приглашения и фишинговые схемы.",
+    "ko": "의심스러운 링크, 초대 및 피싱 패턴을 차단합니다."
+  },
+  "Bluesky handle": {
+    "ru": "Имя пользователя Bluesky",
+    "ko": "Bluesky 핸들"
+  },
+  "Bluesky public AppView API": {
+    "ru": "Открытый API AppView Bluesky",
+    "ko": "Bluesky 공개 AppView API"
+  },
+  "Bounded community rewards backed by an auditable balance ledger.": {
+    "ru": "Награды сообщества с ограничениями и проверяемым журналом баланса.",
+    "ko": "검토 가능한 잔액 원장을 기반으로 한 제한된 커뮤니티 보상입니다."
+  },
+  "Bounded message automations keep your server responsive.": {
+    "ru": "Ограничения автоматических сообщений помогают серверу сохранять отзывчивость.",
+    "ko": "메시지 자동화에 제한을 두어 서버의 응답성을 유지합니다."
+  },
+  "Buttons open these channels. A link stays hidden until you choose its destination.": {
+    "ru": "Кнопки открывают эти каналы. Ссылка скрыта, пока вы не выберете её назначение.",
+    "ko": "버튼을 누르면 해당 채널이 열립니다. 대상 채널을 선택할 때까지 링크가 숨겨집니다."
+  },
+  "Buttons to include": {
+    "ru": "Кнопки для добавления",
+    "ko": "포함할 버튼"
+  },
+  "Canais ignorados": {
+    "ru": "Игнорируемые каналы",
+    "ko": "제외할 채널"
+  },
+  "Cargos ignorados": {
+    "ru": "Игнорируемые роли",
+    "ko": "제외할 역할"
+  },
+  "Category (optional)": {
+    "ru": "Категория (необязательно)",
+    "ko": "카테고리(선택 사항)"
+  },
+  "Celebrate members without requiring a birth year.": {
+    "ru": "Поздравляйте участников без указания года рождения.",
+    "ko": "출생 연도를 요구하지 않고 멤버의 생일을 축하합니다."
+  },
+  "Celebrates birthdays automatically, with configurable privacy.": {
+    "ru": "Автоматически поздравляет с днём рождения с настраиваемой приватностью.",
+    "ko": "개인정보 보호 설정에 따라 생일을 자동으로 축하합니다."
+  },
+  "Centralizes server rules, alerts, and moderation actions.": {
+    "ru": "Объединяет правила сервера, оповещения и меры модерации.",
+    "ko": "서버 규칙, 알림 및 관리 조치를 한곳에서 관리합니다."
+  },
+  "Changes not saved": {
+    "ru": "Изменения не сохранены",
+    "ko": "변경 사항이 저장되지 않음"
+  },
+  "Changes not saved.": {
+    "ru": "Изменения не сохранены.",
+    "ko": "변경 사항이 저장되지 않았습니다."
+  },
+  "Channel shortcuts": {
+    "ru": "Ссылки на каналы",
+    "ko": "채널 바로가기"
+  },
+  "Channel where you use /poll": {
+    "ru": "Канал, в котором вы используете /poll",
+    "ko": "/poll을 사용하는 채널"
+  },
+  "Channels guide (optional)": {
+    "ru": "Путеводитель по каналам (необязательно)",
+    "ko": "채널 안내(선택 사항)"
+  },
+  "Channels that do not award XP": {
+    "ru": "Каналы без начисления XP",
+    "ko": "XP를 지급하지 않는 채널"
+  },
+  "Channels without XP": {
+    "ru": "Каналы без XP",
+    "ko": "XP 제외 채널"
+  },
+  "Check every (seconds)": {
+    "ru": "Проверять каждые (секунд)",
+    "ko": "확인 주기(초)"
+  },
+  "Check interval (seconds)": {
+    "ru": "Интервал проверки (секунды)",
+    "ko": "확인 간격(초)"
+  },
+  "Check your connection and try again.": {
+    "ru": "Проверьте подключение и повторите попытку.",
+    "ko": "연결을 확인한 후 다시 시도하세요."
+  },
+  "Choose an existing channel or create one below.": {
+    "ru": "Выберите существующий канал или создайте новый ниже.",
+    "ko": "기존 채널을 선택하거나 아래에서 새 채널을 만드세요."
+  },
+  "Choose curated backgrounds and colours for the XP card rendered by /rank.": {
+    "ru": "Выберите готовые фоны и цвета для карточки XP, создаваемой командой /rank.",
+    "ko": "/rank로 생성되는 XP 카드에 사용할 배경과 색상을 선택합니다."
+  },
+  "Choose from rules, introductions, channels and help.": {
+    "ru": "Выберите правила, представления, каналы и справку.",
+    "ko": "규칙, 자기소개, 채널, 도움말 중에서 선택하세요."
+  },
+  "Choose how Helper appears in this server's member list.": {
+    "ru": "Выберите, как Helper отображается в списке участников этого сервера.",
+    "ko": "이 서버의 멤버 목록에 Helper가 표시되는 방식을 선택합니다."
+  },
+  "Choose how Helper explains its modules.": {
+    "ru": "Выберите, как Helper объясняет работу своих модулей.",
+    "ko": "Helper가 모듈을 설명하는 방식을 선택합니다."
+  },
+  "Choose how many custom emojis the staff command lists.": {
+    "ru": "Выберите, сколько пользовательских эмодзи показывает команда для модераторов.",
+    "ko": "운영진용 명령어에 표시할 사용자 지정 이모지 수를 선택합니다."
+  },
+  "Choose real server resources to reduce false positives.": {
+    "ru": "Выберите реальные ресурсы сервера, чтобы уменьшить число ложных срабатываний.",
+    "ko": "오탐을 줄이기 위해 실제 서버 리소스를 선택합니다."
+  },
+  "Choose the channel and reaction score required to feature a message.": {
+    "ru": "Выберите канал и число реакций для выделения сообщения.",
+    "ko": "메시지를 하이라이트할 채널과 필요한 반응 수를 선택합니다."
+  },
+  "Choose the display name the Helper uses in this server.": {
+    "ru": "Выберите отображаемое имя Helper на этом сервере.",
+    "ko": "이 서버에서 Helper가 사용할 표시 이름을 선택합니다."
+  },
+  "Choose the links and module list shown by /help.": {
+    "ru": "Выберите ссылки и список модулей для /help.",
+    "ko": "/help에 표시할 링크와 모듈 목록을 선택합니다."
+  },
+  "Choose the real XP thresholds used by the achievements command.": {
+    "ru": "Выберите фактические пороги XP для команды достижений.",
+    "ko": "업적 명령어에 사용할 실제 XP 기준을 선택합니다."
+  },
+  "Choose the real category, support role, transcript channel and SLA used by ticket interactions.": {
+    "ru": "Выберите фактическую категорию, роль поддержки, канал расшифровок и SLA для работы с обращениями.",
+    "ko": "티켓 처리에 사용할 실제 카테고리, 지원 역할, 대화 기록 채널 및 SLA를 선택합니다."
+  },
+  "Choose the verification level and where the team is notified.": {
+    "ru": "Выберите уровень проверки и место оповещения команды.",
+    "ko": "인증 수준과 운영진에게 알림을 보낼 위치를 선택합니다."
+  },
+  "Choose what your team can review.": {
+    "ru": "Выберите, что может просматривать ваша команда.",
+    "ko": "운영진이 검토할 수 있는 항목을 선택합니다."
+  },
+  "Choose when the message deserves to appear in the special channel.": {
+    "ru": "Выберите, когда сообщение должно появляться в специальном канале.",
+    "ko": "메시지를 전용 채널에 표시할 조건을 선택합니다."
+  },
+  "Choose where farewells are posted and reuse an approved template.": {
+    "ru": "Выберите канал прощаний и используйте одобренный шаблон повторно.",
+    "ko": "작별 메시지를 게시할 위치를 선택하고 승인된 템플릿을 재사용합니다."
+  },
+  "Choose where new members find essential information.": {
+    "ru": "Выберите, где новые участники найдут основную информацию.",
+    "ko": "새 멤버가 필수 정보를 확인할 위치를 선택합니다."
+  },
+  "Choose where the greeting appears and what it says.": {
+    "ru": "Выберите место и текст приветствия.",
+    "ko": "환영 메시지가 표시될 위치와 내용을 선택합니다."
+  },
+  "Choose which self-service privacy requests members can make.": {
+    "ru": "Выберите, какие запросы о конфиденциальности участники могут отправлять самостоятельно.",
+    "ko": "멤버가 직접 요청할 수 있는 개인정보 관련 항목을 선택합니다."
+  },
+  "Choose who handles requests and where private tickets go.": {
+    "ru": "Выберите, кто обрабатывает запросы и где размещаются приватные обращения.",
+    "ko": "요청을 처리할 담당자와 비공개 티켓을 만들 위치를 선택합니다."
+  },
+  "Clockwork Library": {
+    "ru": "Библиотека часовых механизмов",
+    "ko": "시계장치 도서관"
+  },
+  "Closed ticket transcripts are sent here.": {
+    "ru": "Сюда отправляются расшифровки закрытых обращений.",
+    "ko": "종료된 티켓의 대화 기록이 이곳으로 전송됩니다."
+  },
+  "CoinGecko public API": {
+    "ru": "Открытый API CoinGecko",
+    "ko": "CoinGecko 공개 API"
+  },
+  "Collect ideas, votes and decisions in one visible flow.": {
+    "ru": "Объедините идеи, голоса и решения в одном наглядном процессе.",
+    "ko": "아이디어, 투표 및 결정을 하나의 흐름에서 확인합니다."
+  },
+  "Collects ideas and lets the community vote.": {
+    "ru": "Собирает идеи и позволяет сообществу голосовать.",
+    "ko": "아이디어를 수집하고 커뮤니티가 투표할 수 있게 합니다."
+  },
+  "Colors": {
+    "ru": "Цвета",
+    "ko": "색상"
+  },
+  "Comma-separated IDs such as bitcoin, ethereum or solana.": {
+    "ru": "ID через запятую, например bitcoin, ethereum или solana.",
+    "ko": "bitcoin, ethereum, solana 등 쉼표로 구분된 ID입니다."
+  },
+  "Command help": {
+    "ru": "Справка по командам",
+    "ko": "명령어 도움말"
+  },
+  "Commands are not answered in these channels.": {
+    "ru": "В этих каналах команды остаются без ответа.",
+    "ko": "이 채널에서는 명령어에 응답하지 않습니다."
+  },
+  "Commands can still override these defaults when needed.": {
+    "ru": "При необходимости команды могут переопределять эти значения по умолчанию.",
+    "ko": "필요한 경우 명령어에서 이 기본값을 변경할 수 있습니다."
+  },
+  "Community economy": {
+    "ru": "Экономика сообщества",
+    "ko": "커뮤니티 경제"
+  },
+  "Community pillar reward role": {
+    "ru": "Роль награды «Опора сообщества»",
+    "ko": "커뮤니티 기둥 보상 역할"
+  },
+  "Community pillar threshold": {
+    "ru": "Порог «Опора сообщества»",
+    "ko": "커뮤니티 기둥 기준"
+  },
+  "Complete onboarding for new members.": {
+    "ru": "Завершите знакомство новых участников с сервером.",
+    "ko": "새 멤버의 온보딩을 마무리합니다."
+  },
+  "Configure read-only verification; never enter a seed phrase or private key.": {
+    "ru": "Настройте проверку только для чтения; никогда не вводите сид-фразу или закрытый ключ.",
+    "ko": "읽기 전용 인증을 설정합니다. 시드 문구나 개인 키는 절대 입력하지 마세요."
+  },
+  "Configure the channel, message, optional DM and real auto-role used on member join.": {
+    "ru": "Настройте канал, сообщение, необязательное личное сообщение и роль, фактически назначаемую при входе участника.",
+    "ko": "멤버 입장 시 사용할 채널, 메시지, 선택적 DM 및 실제 자동 부여 역할을 설정합니다."
+  },
+  "Connect TikTok": {
+    "ru": "Подключить TikTok",
+    "ko": "TikTok 연결"
+  },
+  "Connect a bounded trigger to an approved response without code.": {
+    "ru": "Свяжите ограниченный триггер с одобренным ответом без кода.",
+    "ko": "코드 없이 제한된 트리거를 승인된 응답에 연결합니다."
+  },
+  "Connect the account that publishes the videos": {
+    "ru": "Подключите аккаунт, публикующий видео",
+    "ko": "동영상을 게시하는 계정 연결"
+  },
+  "Connect verification to your community flow.": {
+    "ru": "Свяжите проверку с процессами вашего сообщества.",
+    "ko": "인증을 커뮤니티 흐름에 연결합니다."
+  },
+  "Connects a trigger to a response without code.": {
+    "ru": "Связывает триггер с ответом без кода.",
+    "ko": "코드 없이 트리거를 응답에 연결합니다."
+  },
+  "Containment duration (minutes)": {
+    "ru": "Длительность сдерживания (минуты)",
+    "ko": "제한 조치 지속 시간(분)"
+  },
+  "Control how many members appear in the XP leaderboard.": {
+    "ru": "Управляйте числом участников в таблице XP.",
+    "ko": "XP 순위표에 표시할 멤버 수를 설정합니다."
+  },
+  "Control submission frequency and give staff a private notification channel.": {
+    "ru": "Управляйте частотой предложений и настройте приватный канал уведомлений для команды.",
+    "ko": "제안 제출 빈도를 설정하고 운영진을 위한 비공개 알림 채널을 지정합니다."
+  },
+  "Control the period, visibility and optional live counter channel for server statistics.": {
+    "ru": "Управляйте периодом, видимостью и необязательным каналом счётчика в статистике сервера.",
+    "ko": "서버 통계의 기간, 공개 여부 및 선택적 실시간 카운터 채널을 설정합니다."
+  },
+  "Control the reporting window and an optional live counter channel.": {
+    "ru": "Управляйте отчётным периодом и необязательным каналом счётчика.",
+    "ko": "보고 기간과 선택적 실시간 카운터 채널을 설정합니다."
+  },
+  "Control the staff-facing invite list without scraping or storing invite tokens.": {
+    "ru": "Управляйте списком приглашений для команды без сбора и хранения токенов приглашений.",
+    "ko": "초대 토큰을 수집하거나 저장하지 않고 운영진용 초대 목록을 관리합니다."
+  },
+  "Control where and who can use the responses.": {
+    "ru": "Управляйте тем, где и кто может использовать ответы.",
+    "ko": "응답을 사용할 수 있는 위치와 사용자를 설정합니다."
+  },
+  "Controls access and roles based on verified collections.": {
+    "ru": "Управляет доступом и ролями на основе проверенных коллекций.",
+    "ko": "인증된 컬렉션을 기준으로 접근 권한과 역할을 관리합니다."
+  },
+  "Controls how Helper responds to invites, domains, and suspicious phrases.": {
+    "ru": "Управляет реакцией Helper на приглашения, домены и подозрительные фразы.",
+    "ko": "초대, 도메인 및 의심스러운 문구에 대한 Helper의 대응을 설정합니다."
+  },
+  "Coral Cavern": {
+    "ru": "Коралловая пещера",
+    "ko": "산호 동굴"
+  },
+  "Cosmic Nebula": {
+    "ru": "Космическая туманность",
+    "ko": "우주 성운"
+  },
+  "Could not check the TikTok connection.": {
+    "ru": "Не удалось проверить подключение TikTok.",
+    "ko": "TikTok 연결을 확인할 수 없습니다."
+  },
+  "Could not remove the TikTok connection.": {
+    "ru": "Не удалось удалить подключение TikTok.",
+    "ko": "TikTok 연결을 해제할 수 없습니다."
+  },
+  "Could not save. Your changes are still in this form.": {
+    "ru": "Не удалось сохранить. Изменения остались в этой форме.",
+    "ko": "저장할 수 없습니다. 변경 사항은 이 양식에 그대로 남아 있습니다."
+  },
+  "Could not start TikTok authorization.": {
+    "ru": "Не удалось начать авторизацию TikTok.",
+    "ko": "TikTok 인증을 시작할 수 없습니다."
+  },
+  "Create bounded messages with a Discord-like preview.": {
+    "ru": "Создавайте сообщения с ограничениями и предпросмотром в стиле Discord.",
+    "ko": "Discord와 유사한 미리보기로 제한 범위 내에서 메시지를 만듭니다."
+  },
+  "Create bounded rooms with a predictable name and optional category.": {
+    "ru": "Создавайте ограниченное число комнат с предсказуемым именем и необязательной категорией.",
+    "ko": "예측 가능한 이름과 선택적 카테고리로 제한된 수의 방을 만듭니다."
+  },
+  "Create events, registrations, and check-ins without leaving the dashboard.": {
+    "ru": "Создавайте события, регистрации и отметки участия прямо в панели.",
+    "ko": "대시보드에서 나가지 않고 이벤트, 등록 및 체크인을 만듭니다."
+  },
+  "Create goals and celebrate community milestones.": {
+    "ru": "Создавайте цели и отмечайте достижения сообщества.",
+    "ko": "목표를 만들고 커뮤니티의 주요 성과를 축하합니다."
+  },
+  "Create reusable responses with safe variables and permissions.": {
+    "ru": "Создавайте повторно используемые ответы с безопасными переменными и разрешениями.",
+    "ko": "안전한 변수와 권한을 적용한 재사용 가능한 응답을 만듭니다."
+  },
+  "Create short responses for frequently asked questions.": {
+    "ru": "Создавайте короткие ответы на частые вопросы.",
+    "ko": "자주 묻는 질문에 대한 짧은 응답을 만듭니다."
+  },
+  "Create the fair pace for active members.": {
+    "ru": "Задайте справедливый темп для активных участников.",
+    "ko": "활동적인 멤버에게 공정한 성장 속도를 설정합니다."
+  },
+  "Creates a virtual economy with rewards and progression.": {
+    "ru": "Создаёт виртуальную экономику с наградами и развитием.",
+    "ko": "보상과 성장이 있는 가상 경제를 만듭니다."
+  },
+  "Creates giveaways with trackable entries.": {
+    "ru": "Создаёт розыгрыши с отслеживаемыми заявками.",
+    "ko": "참가 내역을 추적할 수 있는 경품 행사를 만듭니다."
+  },
+  "Creates reusable answers for community questions and routines.": {
+    "ru": "Создаёт повторно используемые ответы на вопросы и повседневные задачи сообщества.",
+    "ko": "커뮤니티 질문과 일상 업무에 재사용할 수 있는 답변을 만듭니다."
+  },
+  "Creates rich messages for rules, announcements, and useful information.": {
+    "ru": "Создаёт оформленные сообщения с правилами, объявлениями и полезной информацией.",
+    "ko": "규칙, 공지 및 유용한 정보를 담은 서식 있는 메시지를 만듭니다."
+  },
+  "Creates voice channels that disappear when no longer used.": {
+    "ru": "Создаёт голосовые каналы, исчезающие после использования.",
+    "ko": "더 이상 사용하지 않으면 사라지는 음성 채널을 만듭니다."
+  },
+  "Creator OAuth grant": {
+    "ru": "OAuth-разрешение автора",
+    "ko": "크리에이터 OAuth 승인"
+  },
+  "Creator name": {
+    "ru": "Имя автора",
+    "ko": "크리에이터 이름"
+  },
+  "Creator username": {
+    "ru": "Имя пользователя автора",
+    "ko": "크리에이터 사용자 이름"
+  },
+  "Crystal Cavern": {
+    "ru": "Хрустальная пещера",
+    "ko": "수정 동굴"
+  },
+  "Curated background": {
+    "ru": "Подобранный фон",
+    "ko": "추천 배경"
+  },
+  "Currency name": {
+    "ru": "Название валюты",
+    "ko": "화폐 이름"
+  },
+  "Current plan": {
+    "ru": "Текущий тариф",
+    "ko": "현재 요금제"
+  },
+  "Custom command behaviour": {
+    "ru": "Поведение пользовательских команд",
+    "ko": "사용자 지정 명령어 동작"
+  },
+  "Customise announcements and roles without editing commands.": {
+    "ru": "Настраивайте объявления и роли без редактирования команд.",
+    "ko": "명령어를 수정하지 않고 공지와 역할을 설정합니다."
+  },
+  "Customise the alert sent when the stream starts.": {
+    "ru": "Настройте оповещение о начале трансляции.",
+    "ko": "방송 시작 시 보낼 알림을 설정합니다."
+  },
+  "Customise the alert without exposing credentials.": {
+    "ru": "Настройте оповещение без раскрытия учётных данных.",
+    "ko": "인증 정보를 노출하지 않고 알림을 설정합니다."
+  },
+  "Customise the alert without exposing the API key.": {
+    "ru": "Настройте оповещение без раскрытия ключа API.",
+    "ko": "API 키를 노출하지 않고 알림을 설정합니다."
+  },
+  "Customise the stream alert.": {
+    "ru": "Настройте оповещение о трансляции.",
+    "ko": "방송 알림을 설정합니다."
+  },
+  "Customize the card": {
+    "ru": "Настроить карточку",
+    "ko": "카드 꾸미기"
+  },
+  "Daily reward": {
+    "ru": "Ежедневная награда",
+    "ko": "일일 보상"
+  },
+  "Default capacity (0 = unlimited)": {
+    "ru": "Вместимость по умолчанию (0 = без ограничений)",
+    "ko": "기본 정원(0 = 무제한)"
+  },
+  "Default channel (optional)": {
+    "ru": "Канал по умолчанию (необязательно)",
+    "ko": "기본 채널(선택 사항)"
+  },
+  "Define how members submit and vote on suggestions.": {
+    "ru": "Определите, как участники отправляют предложения и голосуют за них.",
+    "ko": "멤버가 제안을 제출하고 투표하는 방식을 설정합니다."
+  },
+  "Define the format of post alerts.": {
+    "ru": "Задайте формат оповещений о публикациях.",
+    "ko": "게시물 알림 형식을 설정합니다."
+  },
+  "Define the format of video alerts.": {
+    "ru": "Задайте формат оповещений о видео.",
+    "ko": "동영상 알림 형식을 설정합니다."
+  },
+  "Defines how long optional data is retained.": {
+    "ru": "Определяет срок хранения необязательных данных.",
+    "ko": "선택적 데이터의 보관 기간을 설정합니다."
+  },
+  "Defines the support product; server payments remain unavailable until Stripe Connect legal setup is complete.": {
+    "ru": "Определяет продукт поддержки; платежи на сервере недоступны до завершения юридической настройки Stripe Connect.",
+    "ko": "후원 상품을 설정합니다. Stripe Connect의 법적 설정이 완료될 때까지 서버 결제는 사용할 수 없습니다."
+  },
+  "Delay before sending (seconds)": {
+    "ru": "Задержка перед отправкой (секунды)",
+    "ko": "전송 전 지연 시간(초)"
+  },
+  "Deliver verified Twitch EventSub notifications with deduplication.": {
+    "ru": "Доставляйте проверенные уведомления Twitch EventSub без дубликатов.",
+    "ko": "중복을 제거한 검증된 Twitch EventSub 알림을 전송합니다."
+  },
+  "Desert Ruins": {
+    "ru": "Руины в пустыне",
+    "ko": "사막 유적"
+  },
+  "Destructive action protection": {
+    "ru": "Защита от разрушительных действий",
+    "ko": "파괴적 작업 방지"
+  },
+  "Detect invite scams, suspicious domains and common social-engineering phrases.": {
+    "ru": "Выявляйте мошеннические приглашения, подозрительные домены и распространённые приёмы социальной инженерии.",
+    "ko": "초대 사기, 의심스러운 도메인 및 일반적인 사회 공학 수법을 감지합니다."
+  },
+  "Detection window (seconds)": {
+    "ru": "Окно обнаружения (секунды)",
+    "ko": "감지 시간 범위(초)"
+  },
+  "Detects flooding, repeated messages, excessive mentions, links, and caps.": {
+    "ru": "Выявляет флуд, повторяющиеся сообщения, массовые упоминания, ссылки и текст заглавными буквами.",
+    "ko": "도배, 반복 메시지, 과도한 멘션, 링크 및 대문자 남용을 감지합니다."
+  },
+  "Detects flooding, repetition and mentions with safe limits.": {
+    "ru": "Выявляет флуд, повторения и упоминания с безопасными ограничениями.",
+    "ko": "안전한 제한값으로 도배, 반복 및 멘션을 감지합니다."
+  },
+  "Direct message": {
+    "ru": "Личное сообщение",
+    "ko": "다이렉트 메시지"
+  },
+  "Disconnect TikTok": {
+    "ru": "Отключить TikTok",
+    "ko": "TikTok 연결 해제"
+  },
+  "Disconnecting…": {
+    "ru": "Отключение…",
+    "ko": "연결 해제 중…"
+  },
+  "Discord allows up to 32 characters. Leave it empty when disabling to restore the default name.": {
+    "ru": "Discord допускает до 32 символов. Оставьте поле пустым при отключении, чтобы восстановить имя по умолчанию.",
+    "ko": "Discord에서는 최대 32자까지 허용됩니다. 비활성화할 때 기본 이름으로 복원하려면 비워 두세요."
+  },
+  "Discord channel ID": {
+    "ru": "ID канала Discord",
+    "ko": "Discord 채널 ID"
+  },
+  "ERC-1155": {
+    "ru": "ERC-1155",
+    "ko": "ERC-1155"
+  },
+  "ERC-20": {
+    "ru": "ERC-20",
+    "ko": "ERC-20"
+  },
+  "ERC-721": {
+    "ru": "ERC-721",
+    "ko": "ERC-721"
+  },
+  "Emoji management": {
+    "ru": "Управление эмодзи",
+    "ko": "이모지 관리"
+  },
+  "Emojis listed by /emojis": {
+    "ru": "Эмодзи, перечисляемые командой /emojis",
+    "ko": "/emojis에 표시할 이모지"
+  },
+  "Empty, @here, @everyone, or the role mention.": {
+    "ru": "Пусто, @here, @everyone или упоминание роли.",
+    "ko": "비워 두거나 @here, @everyone 또는 역할 멘션을 입력하세요."
+  },
+  "Enable the gate when too many members arrive in a short window.": {
+    "ru": "Включать входной фильтр при слишком большом числе входов за короткое время.",
+    "ko": "짧은 시간에 너무 많은 멤버가 입장하면 입장 제한을 활성화합니다."
+  },
+  "Enchanted Forest": {
+    "ru": "Зачарованный лес",
+    "ko": "마법의 숲"
+  },
+  "Enter the Twitch channel name and validate it through the official API before publishing.": {
+    "ru": "Введите имя канала Twitch и проверьте его через официальный API перед публикацией.",
+    "ko": "게시하기 전에 Twitch 채널 이름을 입력하고 공식 API로 확인합니다."
+  },
+  "Enter the YouTube channel ID and validate it before saving.": {
+    "ru": "Введите ID канала YouTube и проверьте его перед сохранением.",
+    "ko": "YouTube 채널 ID를 입력하고 저장하기 전에 확인합니다."
+  },
+  "Enter the channel slug, not a web URL.": {
+    "ru": "Введите короткое имя канала, а не веб-адрес.",
+    "ko": "웹 URL이 아닌 채널 슬러그를 입력하세요."
+  },
+  "Enter the public RSS or Atom feed and validate it before saving.": {
+    "ru": "Введите адрес открытой RSS- или Atom-ленты и проверьте его перед сохранением.",
+    "ko": "공개 RSS 또는 Atom 피드 주소를 입력하고 저장하기 전에 확인합니다."
+  },
+  "Escolhe recursos reais do servidor para evitar falsos positivos e receber contexto.": {
+    "ru": "Выберите реальные ресурсы сервера, чтобы избежать ложных срабатываний и получать контекст.",
+    "ko": "오탐을 줄이고 관련 정보를 받으려면 실제 서버 리소스를 선택하세요."
+  },
+  "Example: rexy40407 (without twitch.tv/).": {
+    "ru": "Пример: rexy40407 (без twitch.tv/).",
+    "ko": "예: rexy40407(twitch.tv/ 제외)."
+  },
+  "Exceptions and alerts": {
+    "ru": "Исключения и оповещения",
+    "ko": "예외 및 알림"
+  },
+  "Exclusions": {
+    "ru": "Исключения",
+    "ko": "제외 항목"
+  },
+  "Explains modules and shows the next step for each team.": {
+    "ru": "Объясняет модули и показывает следующий шаг для каждой команды.",
+    "ko": "모듈을 설명하고 각 운영팀에 다음 단계를 안내합니다."
+  },
+  "Explore channels": {
+    "ru": "Просмотр каналов",
+    "ko": "채널 둘러보기"
+  },
+  "Filter new accounts before granting full access.": {
+    "ru": "Проверяйте новые аккаунты перед предоставлением полного доступа.",
+    "ko": "전체 접근 권한을 부여하기 전에 새 계정을 검사합니다."
+  },
+  "Find the right command, module and next troubleshooting step.": {
+    "ru": "Найдите нужную команду, модуль и следующий шаг устранения неполадок.",
+    "ko": "필요한 명령어, 모듈 및 다음 문제 해결 단계를 찾습니다."
+  },
+  "First steps reward role": {
+    "ru": "Роль награды за первые шаги",
+    "ko": "첫걸음 보상 역할"
+  },
+  "First steps threshold": {
+    "ru": "Порог первых шагов",
+    "ko": "첫걸음 기준"
+  },
+  "First-steps message": {
+    "ru": "Сообщение с первыми шагами",
+    "ko": "첫 단계 안내 메시지"
+  },
+  "Follow approved public Bluesky sources with cursor-aware delivery.": {
+    "ru": "Отслеживайте одобренные открытые источники Bluesky с учётом позиции доставки.",
+    "ko": "전송 위치를 추적하여 승인된 공개 Bluesky 소식을 구독합니다."
+  },
+  "For example: vozen.org or @vozen.org.": {
+    "ru": "Например: vozen.org или @vozen.org.",
+    "ko": "예: vozen.org 또는 @vozen.org."
+  },
+  "Frost Citadel": {
+    "ru": "Ледяная цитадель",
+    "ko": "서리 성채"
+  },
+  "Give new members a safer, explainable entry path.": {
+    "ru": "Предложите новым участникам более безопасный и понятный путь входа.",
+    "ko": "새 멤버에게 더 안전하고 이해하기 쉬운 입장 절차를 제공합니다."
+  },
+  "Give newcomers rules and first steps in a focused channel.": {
+    "ru": "Покажите новичкам правила и первые шаги в отдельном канале.",
+    "ko": "전용 채널에서 새 멤버에게 규칙과 첫 단계를 안내합니다."
+  },
+  "Give your team context and control over the flow.": {
+    "ru": "Дайте команде контекст и контроль над процессом.",
+    "ko": "운영진에게 관련 정보와 흐름을 관리할 수단을 제공합니다."
+  },
+  "Giveaway defaults": {
+    "ru": "Настройки розыгрышей по умолчанию",
+    "ko": "경품 행사 기본 설정"
+  },
+  "Goodbye channel": {
+    "ru": "Канал прощаний",
+    "ko": "작별 채널"
+  },
+  "Goodbye message": {
+    "ru": "Прощальное сообщение",
+    "ko": "작별 메시지"
+  },
+  "Grant a Discord role after a one-time SIWE signature and read-only contract check.": {
+    "ru": "Назначайте роль Discord после разовой подписи SIWE и проверки контракта только для чтения.",
+    "ko": "일회성 SIWE 서명과 읽기 전용 컨트랙트 확인 후 Discord 역할을 부여합니다."
+  },
+  "Greet new members with a message, optional DM and safe role assignment.": {
+    "ru": "Приветствуйте новичков сообщением, необязательным ЛС и безопасным назначением роли.",
+    "ko": "메시지, 선택적 DM 및 안전한 역할 부여로 새 멤버를 환영합니다."
+  },
+  "Greeting": {
+    "ru": "Приветствие",
+    "ko": "인사말"
+  },
+  "Guide message": {
+    "ru": "Сообщение-путеводитель",
+    "ko": "안내 메시지"
+  },
+  "Guided steps": {
+    "ru": "Шаги знакомства",
+    "ko": "안내 단계"
+  },
+  "Guided welcome channel": {
+    "ru": "Канал приветствия с путеводителем",
+    "ko": "단계별 환영 안내 채널"
+  },
+  "HEALTH": {
+    "ru": "СОСТОЯНИЕ",
+    "ko": "상태"
+  },
+  "Help and diagnostics": {
+    "ru": "Справка и диагностика",
+    "ko": "도움말 및 진단"
+  },
+  "Help message": {
+    "ru": "Справочное сообщение",
+    "ko": "도움말 메시지"
+  },
+  "Helper identity": {
+    "ru": "Оформление Helper",
+    "ko": "Helper 표시 설정"
+  },
+  "Helper posts the reason and decision mode here.": {
+    "ru": "Helper публикует здесь причину и режим решения.",
+    "ko": "Helper가 이곳에 사유와 결정 모드를 게시합니다."
+  },
+  "Helps members avoid missing the start.": {
+    "ru": "Помогает участникам не пропустить начало.",
+    "ko": "멤버가 시작 시간을 놓치지 않도록 도와줍니다."
+  },
+  "Hide author in the public message": {
+    "ru": "Скрывать автора в общедоступном сообщении",
+    "ko": "공개 메시지에서 작성자 숨기기"
+  },
+  "Hide this link": {
+    "ru": "Скрыть эту ссылку",
+    "ko": "이 링크 숨기기"
+  },
+  "High": {
+    "ru": "Высокий",
+    "ko": "높음"
+  },
+  "Highlight messages that the community values.": {
+    "ru": "Выделяйте сообщения, которые ценит сообщество.",
+    "ko": "커뮤니티가 높이 평가한 메시지를 하이라이트합니다."
+  },
+  "Highlight rules": {
+    "ru": "Правила выделения",
+    "ko": "하이라이트 규칙"
+  },
+  "Highlights popular community messages.": {
+    "ru": "Выделяет популярные сообщения сообщества.",
+    "ko": "커뮤니티의 인기 메시지를 하이라이트합니다."
+  },
+  "Hold accounts below the configured age behind a verification role.": {
+    "ru": "Ограничивайте доступ аккаунтов младше заданного возраста с помощью роли проверки.",
+    "ko": "지정한 계정 생성 기간을 충족하지 못한 계정은 인증 역할로 접근을 제한합니다."
+  },
+  "Holder role": {
+    "ru": "Роль владельца актива",
+    "ko": "자산 보유자 역할"
+  },
+  "Hours before start": {
+    "ru": "Часов до начала",
+    "ko": "시작 전 시간"
+  },
+  "How many requests one person can have at a time.": {
+    "ru": "Сколько обращений один человек может иметь одновременно.",
+    "ko": "한 사람이 동시에 열 수 있는 요청 수입니다."
+  },
+  "ISO 4217 lowercase code, for example eur.": {
+    "ru": "Код ISO 4217 в нижнем регистре, например eur.",
+    "ko": "eur 등 소문자 ISO 4217 코드입니다."
+  },
+  "Identical repetitions": {
+    "ru": "Одинаковые повторы",
+    "ko": "동일 메시지 반복"
+  },
+  "Identify suspicious links and phishing patterns without pretending to be an antivirus.": {
+    "ru": "Выявляйте подозрительные ссылки и фишинг, не выдавая систему за антивирус.",
+    "ko": "백신 프로그램으로 오인시키지 않고 의심스러운 링크와 피싱 패턴을 식별합니다."
+  },
+  "Ignored channels": {
+    "ru": "Игнорируемые каналы",
+    "ko": "제외할 채널"
+  },
+  "Ignored member roles": {
+    "ru": "Игнорируемые роли участников",
+    "ko": "제외할 멤버 역할"
+  },
+  "Ignored roles": {
+    "ru": "Игнорируемые роли",
+    "ko": "제외할 역할"
+  },
+  "Include image attachments": {
+    "ru": "Включать прикреплённые изображения",
+    "ko": "첨부 이미지 포함"
+  },
+  "Include the enabled module summary in the response.": {
+    "ru": "Включать в ответ сводку включённых модулей.",
+    "ko": "응답에 활성화된 모듈 요약을 포함합니다."
+  },
+  "Inter": {
+    "ru": "Inter",
+    "ko": "Inter"
+  },
+  "Interval (seconds)": {
+    "ru": "Интервал (секунды)",
+    "ko": "간격(초)"
+  },
+  "Introductions": {
+    "ru": "Знакомства",
+    "ko": "자기소개"
+  },
+  "Introductions channel (optional)": {
+    "ru": "Канал знакомств (необязательно)",
+    "ko": "자기소개 채널(선택 사항)"
+  },
+  "Invite overview": {
+    "ru": "Обзор приглашений",
+    "ko": "초대 개요"
+  },
+  "Invites shown": {
+    "ru": "Отображаемые приглашения",
+    "ko": "표시할 초대 수"
+  },
+  "Join Creator Channel to get a personal voice room. Empty rooms are deleted automatically.": {
+    "ru": "Зайдите в канал создания комнат, чтобы получить личную голосовую комнату. Пустые комнаты удаляются автоматически.",
+    "ko": "방 생성 채널에 입장하면 개인 음성 채널이 만들어집니다. 빈 방은 자동으로 삭제됩니다."
+  },
+  "Join burst protection": {
+    "ru": "Защита от массового входа",
+    "ko": "대량 입장 방지"
+  },
+  "Join gate": {
+    "ru": "Фильтр входа",
+    "ko": "입장 제한"
+  },
+  "Join verification": {
+    "ru": "Проверка при входе",
+    "ko": "입장 인증"
+  },
+  "Joins before containment": {
+    "ru": "Входов до сдерживания",
+    "ko": "제한 조치 전 입장 수"
+  },
+  "KYC, tax and refund policy": {
+    "ru": "Правила KYC, налогов и возвратов",
+    "ko": "KYC, 세금 및 환불 정책"
+  },
+  "Keep at least one option selected.": {
+    "ru": "Оставьте хотя бы один вариант выбранным.",
+    "ko": "최소 한 가지 옵션은 선택해야 합니다."
+  },
+  "Keep counters useful, fresh and clearly labelled.": {
+    "ru": "Поддерживайте актуальность, пользу и понятность счётчиков.",
+    "ko": "카운터를 유용하고 최신 상태로 유지하며 명확하게 표시합니다."
+  },
+  "Keep highlights relevant and safe.": {
+    "ru": "Сохраняйте актуальность и безопасность выделенных сообщений.",
+    "ko": "하이라이트 메시지를 적절하고 안전하게 유지합니다."
+  },
+  "Keep previous level roles": {
+    "ru": "Сохранять роли предыдущих уровней",
+    "ko": "이전 레벨 역할 유지"
+  },
+  "Keep reminders useful and bounded for every member.": {
+    "ru": "Сохраняйте напоминания полезными и ограниченными для каждого участника.",
+    "ko": "모든 멤버의 알림에 적절한 제한을 두어 유용하게 유지합니다."
+  },
+  "Keep rewards from earlier levels": {
+    "ru": "Сохранять награды за предыдущие уровни",
+    "ko": "이전 레벨 보상 유지"
+  },
+  "Keep the public result concise and predictable.": {
+    "ru": "Сохраняйте общедоступный результат кратким и предсказуемым.",
+    "ko": "공개 결과를 간결하고 예측 가능하게 유지합니다."
+  },
+  "Keeps detection and auditing enabled without applying a timeout.": {
+    "ru": "Сохраняет обнаружение и аудит без применения тайм-аута.",
+    "ko": "감지와 감사를 유지하되 타임아웃은 적용하지 않습니다."
+  },
+  "Keeps privacy requests clear.": {
+    "ru": "Делает запросы о конфиденциальности понятными.",
+    "ko": "개인정보 관련 요청을 명확하게 관리합니다."
+  },
+  "Keeps support requests in one place.": {
+    "ru": "Объединяет обращения в поддержку в одном месте.",
+    "ko": "지원 요청을 한곳에서 관리합니다."
+  },
+  "Kick channel": {
+    "ru": "Канал Kick",
+    "ko": "Kick 채널"
+  },
+  "Kick handle": {
+    "ru": "Имя пользователя Kick",
+    "ko": "Kick 핸들"
+  },
+  "Lavender Storm": {
+    "ru": "Лавандовая буря",
+    "ko": "라벤더 폭풍"
+  },
+  "Leaderboard settings": {
+    "ru": "Настройки таблицы лидеров",
+    "ko": "순위표 설정"
+  },
+  "Leave empty if you do not want to send a goodbye.": {
+    "ru": "Оставьте пустым, если не хотите отправлять прощание.",
+    "ko": "작별 메시지를 보내지 않으려면 비워 두세요."
+  },
+  "Leave empty to announce in the channel where the member earned XP.": {
+    "ru": "Оставьте пустым для объявления в канале, где участник получил XP.",
+    "ko": "멤버가 XP를 획득한 채널에 알리려면 비워 두세요."
+  },
+  "Leave empty to post each poll in the channel where you use /poll. Choose a channel to send all polls there.": {
+    "ru": "Оставьте пустым, чтобы публиковать опрос в канале использования /poll. Выберите канал для публикации всех опросов в нём.",
+    "ko": "각 설문을 /poll을 사용한 채널에 게시하려면 비워 두세요. 모든 설문을 특정 채널에 게시하려면 채널을 선택하세요."
+  },
+  "Let members choose approved roles through buttons or menus.": {
+    "ru": "Разрешите участникам выбирать одобренные роли кнопками или меню.",
+    "ko": "멤버가 버튼이나 메뉴를 통해 승인된 역할을 선택하도록 합니다."
+  },
+  "Let members choose roles through simple panels.": {
+    "ru": "Разрешите участникам выбирать роли через простые панели.",
+    "ko": "멤버가 간단한 패널에서 역할을 선택하도록 합니다."
+  },
+  "Level role rewards (level=role ID)": {
+    "ru": "Наградные роли за уровни (level=role ID)",
+    "ko": "레벨 보상 역할(level=role ID)"
+  },
+  "Level-up channel": {
+    "ru": "Канал повышения уровня",
+    "ko": "레벨 상승 알림 채널"
+  },
+  "Levels and XP": {
+    "ru": "Уровни и XP",
+    "ko": "레벨 및 XP"
+  },
+  "Lexend": {
+    "ru": "Lexend",
+    "ko": "Lexend"
+  },
+  "Limit the number of simultaneous tickets one member can open.": {
+    "ru": "Ограничьте число обращений, которые один участник может открыть одновременно.",
+    "ko": "한 멤버가 동시에 열 수 있는 티켓 수를 제한합니다."
+  },
+  "Limited availability": {
+    "ru": "Ограниченная доступность",
+    "ko": "제한적 제공"
+  },
+  "Limits how many responses this server can save.": {
+    "ru": "Ограничивает число ответов, сохраняемых на сервере.",
+    "ko": "서버에서 저장할 수 있는 응답 수를 제한합니다."
+  },
+  "Limits how many times a recurring reminder is re-created.": {
+    "ru": "Ограничивает число повторных созданий регулярного напоминания.",
+    "ko": "반복 알림이 다시 생성되는 횟수를 제한합니다."
+  },
+  "List custom emojis safely, with optional staff-only rename and delete controls.": {
+    "ru": "Безопасно выводите пользовательские эмодзи с необязательными функциями переименования и удаления только для команды.",
+    "ko": "사용자 지정 이모지를 안전하게 나열하고 필요하면 운영진 전용 이름 변경 및 삭제 기능을 제공합니다."
+  },
+  "Live counter channel (optional)": {
+    "ru": "Канал счётчика (необязательно)",
+    "ko": "실시간 카운터 채널(선택 사항)"
+  },
+  "Longer generated replies are rejected before they can be sent.": {
+    "ru": "Слишком длинные сгенерированные ответы отклоняются до отправки.",
+    "ko": "너무 긴 생성 응답은 전송 전에 거부됩니다."
+  },
+  "Longer text is rejected before a job is created.": {
+    "ru": "Слишком длинный текст отклоняется до создания задания.",
+    "ko": "너무 긴 텍스트는 작업 생성 전에 거부됩니다."
+  },
+  "Manage Roles": {
+    "ru": "Управление ролями",
+    "ko": "역할 관리"
+  },
+  "Manage an auditable points economy with bounded rewards.": {
+    "ru": "Управляйте проверяемой экономикой баллов с ограниченными наградами.",
+    "ko": "제한된 보상과 검토 가능한 포인트 경제를 관리합니다."
+  },
+  "Maximum XP per message": {
+    "ru": "Максимум XP за сообщение",
+    "ko": "메시지당 최대 XP"
+  },
+  "Maximum members in /leaderboard": {
+    "ru": "Максимум участников в /leaderboard",
+    "ko": "/leaderboard에 표시할 최대 멤버 수"
+  },
+  "Maximum roles": {
+    "ru": "Максимум ролей",
+    "ko": "최대 역할 수"
+  },
+  "Medium": {
+    "ru": "Средний",
+    "ko": "보통"
+  },
+  "Member data controls": {
+    "ru": "Управление данными участников",
+    "ko": "멤버 데이터 관리"
+  },
+  "Members can choose a bounded daily or weekly reminder.": {
+    "ru": "Участники могут выбрать ежедневное или еженедельное напоминание с ограничениями.",
+    "ko": "멤버가 제한 범위 내에서 매일 또는 매주 알림을 선택할 수 있습니다."
+  },
+  "Members can choose one role": {
+    "ru": "Участники могут выбрать одну роль",
+    "ko": "멤버가 역할 하나를 선택할 수 있음"
+  },
+  "Members can choose several roles": {
+    "ru": "Участники могут выбрать несколько ролей",
+    "ko": "멤버가 여러 역할을 선택할 수 있음"
+  },
+  "Members can request their own JSON export through /privacy data.": {
+    "ru": "Участники могут запросить экспорт своих данных в JSON через /privacy data.",
+    "ko": "멤버는 /privacy data로 자신의 데이터를 JSON으로 내보내도록 요청할 수 있습니다."
+  },
+  "Members shown": {
+    "ru": "Отображаемые участники",
+    "ko": "표시할 멤버 수"
+  },
+  "Members with any of these roles are excluded from evaluation.": {
+    "ru": "Участники с любой из этих ролей исключены из проверки.",
+    "ko": "이 역할 중 하나라도 가진 멤버는 검사에서 제외됩니다."
+  },
+  "Mensagens no intervalo": {
+    "ru": "Сообщений за интервал",
+    "ko": "시간 범위 내 메시지 수"
+  },
+  "Mention limit per message": {
+    "ru": "Лимит упоминаний в сообщении",
+    "ko": "메시지당 멘션 제한"
+  },
+  "Message and embed builder": {
+    "ru": "Конструктор сообщений и встраиваемых блоков",
+    "ko": "메시지 및 임베드 작성 도구"
+  },
+  "Messages in these channels are excluded from evaluation.": {
+    "ru": "Сообщения в этих каналах исключены из проверки.",
+    "ko": "이 채널의 메시지는 검사에서 제외됩니다."
+  },
+  "Messages in these channels do not count towards a level.": {
+    "ru": "Сообщения в этих каналах не учитываются при повышении уровня.",
+    "ko": "이 채널의 메시지는 레벨 계산에 반영되지 않습니다."
+  },
+  "Messages sent during this wait do not earn more XP.": {
+    "ru": "Сообщения, отправленные за это время ожидания, не дают дополнительный XP.",
+    "ko": "대기 시간 중 보낸 메시지에는 추가 XP가 지급되지 않습니다."
+  },
+  "Meta App Review and deletion callbacks": {
+    "ru": "Проверка приложения Meta и обратные вызовы удаления",
+    "ko": "Meta 앱 검수 및 삭제 콜백"
+  },
+  "Meta Instagram API app": {
+    "ru": "Приложение Meta Instagram API",
+    "ko": "Meta Instagram API 앱"
+  },
+  "Minimum XP per message": {
+    "ru": "Минимум XP за сообщение",
+    "ko": "메시지당 최소 XP"
+  },
+  "Monitor only": {
+    "ru": "Только наблюдение",
+    "ko": "모니터링만"
+  },
+  "Monitoring {account}. Tokens are encrypted on the server.": {
+    "ru": "Отслеживается {account}. Токены зашифрованы на сервере.",
+    "ko": "{account} 계정을 모니터링합니다. 토큰은 서버에서 암호화됩니다."
+  },
+  "Monthly price (cents)": {
+    "ru": "Ежемесячная цена (центы)",
+    "ko": "월 가격(센트)"
+  },
+  "Moonlit Village": {
+    "ru": "Деревня в лунном свете",
+    "ko": "달빛 마을"
+  },
+  "Neon Rain": {
+    "ru": "Неоновый дождь",
+    "ko": "네온 빗줄기"
+  },
+  "New requests are created in this category.": {
+    "ru": "Новые обращения создаются в этой категории.",
+    "ko": "새 요청이 이 카테고리에 생성됩니다."
+  },
+  "New rooms are created inside this category when selected.": {
+    "ru": "При выборе новые комнаты создаются в этой категории.",
+    "ko": "선택하면 새 방이 이 카테고리에 생성됩니다."
+  },
+  "New ticket channels are created inside this category.": {
+    "ru": "Новые каналы обращений создаются в этой категории.",
+    "ko": "새 티켓 채널이 이 카테고리에 생성됩니다."
+  },
+  "Next banners": {
+    "ru": "Следующие баннеры",
+    "ko": "다음 배너"
+  },
+  "No automatic role": {
+    "ru": "Без автоматической роли",
+    "ko": "자동 역할 없음"
+  },
+  "Notified when a ticket opens and can manage requests. Make the role mentionable or allow Helper to mention roles. Discord notification preferences still apply.": {
+    "ru": "Получает уведомление при открытии обращения и может управлять запросами. Разрешите упоминание роли или дайте Helper право упоминать роли. Настройки уведомлений Discord продолжают действовать.",
+    "ko": "티켓이 열리면 알림을 받고 요청을 관리할 수 있습니다. 역할을 멘션 가능하게 설정하거나 Helper에 역할 멘션 권한을 부여하세요. Discord 알림 설정은 계속 적용됩니다."
+  },
+  "Notifies the server about new videos.": {
+    "ru": "Оповещает сервер о новых видео.",
+    "ko": "새 동영상을 서버에 알립니다."
+  },
+  "Notifies the server when a creator starts streaming.": {
+    "ru": "Оповещает сервер о начале трансляции автора.",
+    "ko": "크리에이터가 방송을 시작하면 서버에 알립니다."
+  },
+  "Notifies the server when a new video is published.": {
+    "ru": "Оповещает сервер о публикации нового видео.",
+    "ko": "새 동영상이 게시되면 서버에 알립니다."
+  },
+  "Notify a Discord channel about posts from a professional Instagram account authorised through Meta OAuth.": {
+    "ru": "Оповещайте канал Discord о публикациях профессионального аккаунта Instagram, авторизованного через Meta OAuth.",
+    "ko": "Meta OAuth로 승인된 Instagram 프로페셔널 계정의 게시물을 Discord 채널에 알립니다."
+  },
+  "Notify a Discord channel about streams through an approved Kick API application.": {
+    "ru": "Оповещайте канал Discord о трансляциях через одобренное приложение Kick API.",
+    "ko": "승인된 Kick API 애플리케이션을 통해 방송 소식을 Discord 채널에 알립니다."
+  },
+  "Notify a Discord channel about videos from a creator who authorises the Display API scopes.": {
+    "ru": "Оповещайте канал Discord о видео автора, разрешившего доступ к Display API.",
+    "ko": "Display API 접근을 승인한 크리에이터의 동영상을 Discord 채널에 알립니다."
+  },
+  "Notify a Discord channel when an approved YouTube source changes.": {
+    "ru": "Оповещайте канал Discord об изменениях в одобренном источнике YouTube.",
+    "ko": "승인된 YouTube 소스에 변경 사항이 있으면 Discord 채널에 알립니다."
+  },
+  "Number of custom emojis listed by /emojis. This does not limit emoji usage.": {
+    "ru": "Количество пользовательских эмодзи в списке /emojis. Не ограничивает использование эмодзи.",
+    "ko": "/emojis에 표시되는 사용자 지정 이모지 수입니다. 이모지 사용을 제한하지는 않습니다."
+  },
+  "Number of messages from the same member before flagging.": {
+    "ru": "Число сообщений одного участника до срабатывания.",
+    "ko": "플래그를 표시하기 전 같은 멤버가 보낸 메시지 수입니다."
+  },
+  "Number of recent daily snapshots included.": {
+    "ru": "Число последних ежедневных снимков.",
+    "ko": "포함할 최근 일별 스냅샷 수입니다."
+  },
+  "Off by default. Discord may not provide content for every edit/delete event.": {
+    "ru": "По умолчанию выключено. Discord может не передавать содержимое для каждого события изменения или удаления.",
+    "ko": "기본적으로 꺼져 있습니다. Discord가 모든 수정/삭제 이벤트의 콘텐츠를 제공하지 않을 수 있습니다."
+  },
+  "Offer a server subscription through Stripe Connect. Production requires legal, tax and support approval.": {
+    "ru": "Предложите подписку сервера через Stripe Connect. Для запуска требуется одобрение юридических, налоговых вопросов и поддержки.",
+    "ko": "Stripe Connect를 통해 서버 구독을 제공합니다. 실제 운영에는 법률, 세금 및 지원 관련 승인이 필요합니다."
+  },
+  "Official Kick API/webhook access": {
+    "ru": "Доступ к официальному API/вебхукам Kick",
+    "ko": "공식 Kick API/웹훅 접근"
+  },
+  "Older messages automatically leave this window.": {
+    "ru": "Старые сообщения автоматически выходят из этого временного окна.",
+    "ko": "오래된 메시지는 이 시간 범위에서 자동으로 제외됩니다."
+  },
+  "On: everyone in the channel can see the response. Off: only the person using the command can see it.": {
+    "ru": "Включено: ответ видят все в канале. Выключено: ответ видит только вызвавший команду.",
+    "ko": "켜짐: 채널의 모든 사람이 응답을 볼 수 있습니다. 꺼짐: 명령어를 사용한 사람만 응답을 볼 수 있습니다."
+  },
+  "Only an approved contract is accepted; never enter a private key.": {
+    "ru": "Допускается только одобренный контракт; никогда не вводите закрытый ключ.",
+    "ko": "승인된 컨트랙트만 허용됩니다. 개인 키는 절대 입력하지 마세요."
+  },
+  "Only members with Manage Server or Administrator can invoke saved commands.": {
+    "ru": "Сохранённые команды могут вызывать только участники с правом «Управление сервером» или «Администратор».",
+    "ko": "서버 관리 또는 관리자 권한이 있는 멤버만 저장된 명령어를 실행할 수 있습니다."
+  },
+  "Open a feature to configure all settings and review a safe simulation.": {
+    "ru": "Откройте функцию, чтобы настроить все параметры и посмотреть безопасную симуляцию.",
+    "ko": "기능을 열어 모든 설정을 구성하고 안전한 시뮬레이션을 확인합니다."
+  },
+  "Opening TikTok…": {
+    "ru": "Открытие TikTok…",
+    "ko": "TikTok 여는 중…"
+  },
+  "Operator-approved HTTPS RPC": {
+    "ru": "Одобренный оператором HTTPS RPC",
+    "ko": "운영자가 승인한 HTTPS RPC"
+  },
+  "Operator-approved RPC endpoint": {
+    "ru": "Одобренная оператором конечная точка RPC",
+    "ko": "운영자가 승인한 RPC 엔드포인트"
+  },
+  "Optional. Sent only when enabled and the member allows direct messages.": {
+    "ru": "Необязательно. Отправляется только при включённой опции и разрешённых личных сообщениях участника.",
+    "ko": "선택 사항입니다. 활성화되어 있고 멤버가 DM을 허용한 경우에만 전송됩니다."
+  },
+  "Optional. Use a template from your message templates.": {
+    "ru": "Необязательно. Используйте шаблон из ваших шаблонов сообщений.",
+    "ko": "선택 사항입니다. 메시지 템플릿에 있는 템플릿을 사용하세요."
+  },
+  "Optional: assign a role, adjust the timing or use a saved template.": {
+    "ru": "Необязательно: назначьте роль, измените время или используйте сохранённый шаблон.",
+    "ko": "선택 사항: 역할을 부여하거나 시간을 조정하거나 저장된 템플릿을 사용합니다."
+  },
+  "Optional: choose a template created in Templates and import.": {
+    "ru": "Необязательно: выберите шаблон, созданный в разделе шаблонов и импорта.",
+    "ko": "선택 사항: 템플릿 및 가져오기 영역에서 만든 템플릿을 선택합니다."
+  },
+  "Organizes and improves custom emoji usage.": {
+    "ru": "Упорядочивает и улучшает использование пользовательских эмодзи.",
+    "ko": "사용자 지정 이모지 사용을 정리하고 개선합니다."
+  },
+  "Panel channel (optional)": {
+    "ru": "Канал панели (необязательно)",
+    "ko": "패널 채널(선택 사항)"
+  },
+  "Panel defaults": {
+    "ru": "Настройки панели по умолчанию",
+    "ko": "패널 기본 설정"
+  },
+  "Panel message": {
+    "ru": "Сообщение панели",
+    "ko": "패널 메시지"
+  },
+  "Panel roles": {
+    "ru": "Роли панели",
+    "ko": "패널 역할"
+  },
+  "Pause invite entry during an incident": {
+    "ru": "Приостанавливать вход по приглашениям во время инцидента",
+    "ko": "사고 발생 시 초대를 통한 입장 일시 중지"
+  },
+  "Personalise the XP card with curated backgrounds, colours and typography.": {
+    "ru": "Настройте карточку XP с готовыми фонами, цветами и шрифтами.",
+    "ko": "추천 배경, 색상 및 글꼴로 XP 카드를 꾸밉니다."
+  },
+  "Personalizes the level card shown in Discord.": {
+    "ru": "Настраивает карточку уровня, отображаемую в Discord.",
+    "ko": "Discord에 표시되는 레벨 카드를 꾸밉니다."
+  },
+  "Plan events, registrations and reminders from one workflow.": {
+    "ru": "Планируйте события, регистрации и напоминания в одном процессе.",
+    "ko": "하나의 워크플로에서 이벤트, 등록 및 알림을 계획합니다."
+  },
+  "Plan limits": {
+    "ru": "Ограничения тарифа",
+    "ko": "요금제 한도"
+  },
+  "Planned bounded crypto lookups with rate-limit awareness.": {
+    "ru": "Запланированы криптозапросы с ограничениями и учётом лимитов частоты.",
+    "ko": "호출 빈도를 고려한 제한적 암호화폐 조회가 예정되어 있습니다."
+  },
+  "Planned multi-network gas readings with cache and failover.": {
+    "ru": "Запланированы показания комиссий разных сетей с кэшированием и переключением при сбоях.",
+    "ko": "캐시와 장애 대응 기능을 갖춘 다중 네트워크 가스 조회가 예정되어 있습니다."
+  },
+  "Planned server payments and entitlement delivery with compliance controls.": {
+    "ru": "Запланированы платежи сервера и предоставление прав с контролем соответствия требованиям.",
+    "ko": "규정 준수 통제를 갖춘 서버 결제와 이용 권한 제공이 예정되어 있습니다."
+  },
+  "Planned signature-only wallet checks; the Helper will never request a seed phrase.": {
+    "ru": "Запланированы проверки кошельков только по подписи; Helper никогда не запрашивает сид-фразу.",
+    "ko": "서명만 사용하는 지갑 확인이 예정되어 있으며 Helper는 시드 문구를 요청하지 않습니다."
+  },
+  "Planned support for authorised professional Instagram accounts.": {
+    "ru": "Запланирована поддержка авторизованных профессиональных аккаунтов Instagram.",
+    "ko": "승인된 Instagram 프로페셔널 계정 지원이 예정되어 있습니다."
+  },
+  "Planned support for creators who authorise the official Display API.": {
+    "ru": "Запланирована поддержка авторов, разрешивших доступ через официальный Display API.",
+    "ko": "공식 Display API 접근을 승인한 크리에이터 지원이 예정되어 있습니다."
+  },
+  "Planned support through an approved Kick integration.": {
+    "ru": "Запланирована поддержка через одобренную интеграцию Kick.",
+    "ko": "승인된 Kick 연동을 통한 지원이 예정되어 있습니다."
+  },
+  "Podcast alerts": {
+    "ru": "Оповещения о подкастах",
+    "ko": "팟캐스트 알림"
+  },
+  "Poll a public profile through the official Bluesky AppView API and post new updates in Discord.": {
+    "ru": "Проверяйте открытый профиль через официальный Bluesky AppView API и публикуйте обновления в Discord.",
+    "ko": "공식 Bluesky AppView API로 공개 프로필을 확인하고 새 소식을 Discord에 게시합니다."
+  },
+  "Poll a public profile through the official Bluesky AppView API.": {
+    "ru": "Проверяйте открытый профиль через официальный Bluesky AppView API.",
+    "ko": "공식 Bluesky AppView API로 공개 프로필을 확인합니다."
+  },
+  "Poll channel (optional)": {
+    "ru": "Канал опросов (необязательно)",
+    "ko": "설문 채널(선택 사항)"
+  },
+  "Poll defaults": {
+    "ru": "Настройки опросов по умолчанию",
+    "ko": "설문 기본 설정"
+  },
+  "Polls a public podcast RSS or Atom feed with the same SSRF protection and deduplication as RSS alerts.": {
+    "ru": "Проверяет открытую RSS- или Atom-ленту подкаста с той же защитой от SSRF и дубликатов, что и RSS-оповещения.",
+    "ko": "RSS 알림과 동일한 SSRF 방지 및 중복 제거 기능으로 공개 팟캐스트 RSS 또는 Atom 피드를 확인합니다."
+  },
+  "Polls the official YouTube Data API and delivers deduplicated new-video alerts.": {
+    "ru": "Проверяет официальный YouTube Data API и отправляет оповещения о новых видео без дубликатов.",
+    "ko": "공식 YouTube Data API를 확인하고 중복을 제거한 새 동영상 알림을 전송합니다."
+  },
+  "Polls validated RSS and Atom feeds with SSRF protection and deduplication.": {
+    "ru": "Проверяет подтверждённые RSS- и Atom-ленты с защитой от SSRF и дубликатов.",
+    "ko": "SSRF 방지 및 중복 제거 기능으로 검증된 RSS 및 Atom 피드를 확인합니다."
+  },
+  "Poppins": {
+    "ru": "Poppins",
+    "ko": "Poppins"
+  },
+  "Portable templates": {
+    "ru": "Переносимые шаблоны",
+    "ko": "이동 가능한 템플릿"
+  },
+  "Post one reminder before each new event in the announcement channel.": {
+    "ru": "Публиковать одно напоминание перед каждым новым событием в канале объявлений.",
+    "ko": "새 이벤트가 시작되기 전에 공지 채널에 알림을 한 번 게시합니다."
+  },
+  "Post the first steps and server rules when a new member arrives.": {
+    "ru": "Публикуйте первые шаги и правила сервера при входе нового участника.",
+    "ko": "새 멤버가 입장하면 첫 단계와 서버 규칙을 게시합니다."
+  },
+  "Posts an alert when a channel starts streaming.": {
+    "ru": "Публикует оповещение о начале трансляции канала.",
+    "ko": "채널에서 방송을 시작하면 알림을 게시합니다."
+  },
+  "Prepare consistent reminders for the community.": {
+    "ru": "Настройте единообразные напоминания для сообщества.",
+    "ko": "커뮤니티에 사용할 일관된 알림을 준비합니다."
+  },
+  "Prepare the message where members choose roles.": {
+    "ru": "Подготовьте сообщение для выбора ролей участниками.",
+    "ko": "멤버가 역할을 선택할 메시지를 준비합니다."
+  },
+  "Prepare the space for your team to answer members.": {
+    "ru": "Подготовьте пространство, где команда сможет отвечать участникам.",
+    "ko": "운영진이 멤버에게 응답할 공간을 준비합니다."
+  },
+  "Prepares benefits and roles to support the server.": {
+    "ru": "Подготавливает преимущества и роли для поддержки сервера.",
+    "ko": "서버 후원을 위한 혜택과 역할을 준비합니다."
+  },
+  "Prevents responses that are too long for Discord.": {
+    "ru": "Не допускает ответов, слишком длинных для Discord.",
+    "ko": "Discord에 너무 긴 응답을 제한합니다."
+  },
+  "Previous banners": {
+    "ru": "Предыдущие баннеры",
+    "ko": "이전 배너"
+  },
+  "Primary colour": {
+    "ru": "Основной цвет",
+    "ko": "기본 색상"
+  },
+  "Privacy and data": {
+    "ru": "Конфиденциальность и данные",
+    "ko": "개인정보 보호 및 데이터"
+  },
+  "Private ticket category": {
+    "ru": "Категория приватных обращений",
+    "ko": "비공개 티켓 카테고리"
+  },
+  "Private welcome": {
+    "ru": "Личное приветствие",
+    "ko": "비공개 환영 메시지"
+  },
+  "Professional account": {
+    "ru": "Профессиональный аккаунт",
+    "ko": "프로페셔널 계정"
+  },
+  "Professional account OAuth grant": {
+    "ru": "OAuth-разрешение профессионального аккаунта",
+    "ko": "프로페셔널 계정 OAuth 승인"
+  },
+  "Protects DMs and storage from oversized exports.": {
+    "ru": "Защищает личные сообщения и хранилище от слишком больших экспортов.",
+    "ko": "지나치게 큰 내보내기로부터 DM과 저장 공간을 보호합니다."
+  },
+  "Public channel": {
+    "ru": "Общедоступный канал",
+    "ko": "공개 채널"
+  },
+  "Public feed URL": {
+    "ru": "URL открытой ленты",
+    "ko": "공개 피드 URL"
+  },
+  "Public welcome": {
+    "ru": "Общедоступное приветствие",
+    "ko": "공개 환영 메시지"
+  },
+  "Publish a bounded embed from a slash command; mentions are disabled by default.": {
+    "ru": "Публикуйте встраиваемый блок с ограничениями из слеш-команды; упоминания по умолчанию выключены.",
+    "ko": "슬래시 명령어로 제한 범위 내에서 임베드를 게시합니다. 멘션은 기본적으로 비활성화됩니다."
+  },
+  "Publish bounded CoinGecko price updates to a Discord channel.": {
+    "ru": "Публикуйте обновления цен CoinGecko с ограничениями в канале Discord.",
+    "ko": "제한 범위 내에서 CoinGecko 가격 업데이트를 Discord 채널에 게시합니다."
+  },
+  "Publish bounded embeds with mentions disabled by default.": {
+    "ru": "Публикуйте встраиваемые блоки с ограничениями и выключенными по умолчанию упоминаниями.",
+    "ko": "멘션이 기본적으로 비활성화된 제한적 임베드를 게시합니다."
+  },
+  "Publish read-only gas prices from an approved HTTPS RPC.": {
+    "ru": "Публикуйте цены газа только для чтения через одобренный HTTPS RPC.",
+    "ko": "승인된 HTTPS RPC에서 읽기 전용 가스 가격을 게시합니다."
+  },
+  "Publish read-only gas prices from an operator-approved RPC endpoint.": {
+    "ru": "Публикуйте цены газа только для чтения через одобренную оператором конечную точку RPC.",
+    "ko": "운영자가 승인한 RPC 엔드포인트에서 읽기 전용 가스 가격을 게시합니다."
+  },
+  "Publishes simple polls for quick decisions.": {
+    "ru": "Публикует простые опросы для быстрых решений.",
+    "ko": "빠른 결정을 위한 간단한 설문을 게시합니다."
+  },
+  "Quantas mensagens iguais acionam a regra.": {
+    "ru": "Сколько одинаковых сообщений запускают правило.",
+    "ko": "규칙을 발동하는 동일 메시지 수입니다."
+  },
+  "Quarantine": {
+    "ru": "Карантин",
+    "ko": "격리"
+  },
+  "Quarantine role": {
+    "ru": "Карантинная роль",
+    "ko": "격리 역할"
+  },
+  "Queries cryptocurrency information inside the server.": {
+    "ru": "Запрашивает информацию о криптовалютах внутри сервера.",
+    "ko": "서버 내에서 암호화폐 정보를 조회합니다."
+  },
+  "Query read-only CoinGecko prices from an application command.": {
+    "ru": "Запрашивайте цены CoinGecko только для чтения через команду приложения.",
+    "ko": "애플리케이션 명령어로 CoinGecko 가격을 읽기 전용으로 조회합니다."
+  },
+  "RSS alerts": {
+    "ru": "RSS-оповещения",
+    "ko": "RSS 알림"
+  },
+  "Raid protection": {
+    "ru": "Защита от рейдов",
+    "ko": "레이드 방지"
+  },
+  "Reaction emoji": {
+    "ru": "Эмодзи реакции",
+    "ko": "반응 이모지"
+  },
+  "Read-only market data with timestamps and provider health.": {
+    "ru": "Рыночные данные только для чтения с отметками времени и состоянием поставщика.",
+    "ko": "시간 표시와 제공자 상태가 포함된 읽기 전용 시장 데이터입니다."
+  },
+  "Receives the history of closed tickets.": {
+    "ru": "Получает историю закрытых обращений.",
+    "ko": "종료된 티켓의 기록을 받습니다."
+  },
+  "Recheck interval (seconds)": {
+    "ru": "Интервал повторной проверки (секунды)",
+    "ko": "재확인 간격(초)"
+  },
+  "Record and alert without automatic containment.": {
+    "ru": "Записывать события и оповещать без автоматического сдерживания.",
+    "ko": "자동 제한 조치 없이 기록하고 알립니다."
+  },
+  "Record audit events and contain repeated destructive changes.": {
+    "ru": "Записывайте события аудита и сдерживайте повторяющиеся разрушительные изменения.",
+    "ko": "감사 이벤트를 기록하고 반복적인 파괴적 변경을 제한합니다."
+  },
+  "Records channel (optional)": {
+    "ru": "Канал записей (необязательно)",
+    "ko": "기록 채널(선택 사항)"
+  },
+  "Regular reward role": {
+    "ru": "Роль награды постоянного участника",
+    "ko": "단골 멤버 보상 역할"
+  },
+  "Regular threshold": {
+    "ru": "Порог постоянного участника",
+    "ko": "단골 멤버 기준"
+  },
+  "Reject destructive actions without a useful reason.": {
+    "ru": "Отклоняйте разрушительные действия без содержательной причины.",
+    "ko": "유효한 사유가 없는 파괴적 작업을 거부합니다."
+  },
+  "Reminder limits": {
+    "ru": "Ограничения напоминаний",
+    "ko": "알림 제한"
+  },
+  "Remove the role when toggled off": {
+    "ru": "Удалять роль при отключении",
+    "ko": "해제 시 역할 제거"
+  },
+  "Rename one existing voice or text channel with the latest message count.": {
+    "ru": "Переименовывайте существующий голосовой или текстовый канал, добавляя актуальное число сообщений.",
+    "ko": "기존 음성 또는 텍스트 채널의 이름에 최신 메시지 수를 반영합니다."
+  },
+  "Require a profile avatar": {
+    "ru": "Требовать аватар профиля",
+    "ko": "프로필 아바타 필수"
+  },
+  "Required role (optional)": {
+    "ru": "Обязательная роль (необязательно)",
+    "ko": "필수 역할(선택 사항)"
+  },
+  "Respond to unusual join bursts while keeping operators in control.": {
+    "ru": "Реагируйте на необычные всплески входов, сохраняя контроль у операторов.",
+    "ko": "운영자의 통제하에 비정상적인 대량 입장에 대응합니다."
+  },
+  "Responds to unusual joins and protects the server.": {
+    "ru": "Реагирует на необычные входы и защищает сервер.",
+    "ko": "비정상적인 입장에 대응하고 서버를 보호합니다."
+  },
+  "Responses longer than this are rejected before they can be sent.": {
+    "ru": "Слишком длинные ответы отклоняются до отправки.",
+    "ko": "이 길이를 초과하는 응답은 전송 전에 거부됩니다."
+  },
+  "Results per search": {
+    "ru": "Результатов на поиск",
+    "ko": "검색당 결과 수"
+  },
+  "Reusable guide template": {
+    "ru": "Повторно используемый шаблон путеводителя",
+    "ko": "재사용 가능한 안내 템플릿"
+  },
+  "Reusable message template": {
+    "ru": "Повторно используемый шаблон сообщения",
+    "ko": "재사용 가능한 메시지 템플릿"
+  },
+  "Reuse configurations with a visible diff and resource mapping.": {
+    "ru": "Повторно используйте настройки с наглядным сравнением изменений и сопоставлением ресурсов.",
+    "ko": "변경 사항 비교와 리소스 매핑을 확인하며 설정을 재사용합니다."
+  },
+  "Reuse feed delivery for new podcast episodes and metadata.": {
+    "ru": "Используйте доставку ленты для новых эпизодов подкастов и метаданных.",
+    "ko": "피드 전송 기능으로 새 팟캐스트 에피소드와 메타데이터를 전달합니다."
+  },
+  "Review and manage server emojis within Discord limits.": {
+    "ru": "Просматривайте и управляйте эмодзи сервера в пределах ограничений Discord.",
+    "ko": "Discord 제한 내에서 서버 이모지를 검토하고 관리합니다."
+  },
+  "Review, export and remove server data safely.": {
+    "ru": "Безопасно просматривайте, экспортируйте и удаляйте данные сервера.",
+    "ko": "서버 데이터를 안전하게 검토하고 내보내거나 제거합니다."
+  },
+  "Reward healthy participation with a progression system you can tune.": {
+    "ru": "Вознаграждайте полезное участие настраиваемой системой развития.",
+    "ko": "조정 가능한 성장 시스템으로 건전한 참여를 보상합니다."
+  },
+  "Rewards": {
+    "ru": "Награды",
+    "ko": "보상"
+  },
+  "Rewards healthy conversation with XP and levels.": {
+    "ru": "Вознаграждает полезное общение опытом XP и уровнями.",
+    "ko": "건전한 대화에 XP와 레벨로 보상합니다."
+  },
+  "Roboto": {
+    "ru": "Roboto",
+    "ko": "Roboto"
+  },
+  "Role and delivery": {
+    "ru": "Роль и доставка",
+    "ko": "역할 및 전송"
+  },
+  "Role for verified members": {
+    "ru": "Роль проверенных участников",
+    "ko": "인증된 멤버 역할"
+  },
+  "Role on arrival": {
+    "ru": "Роль при входе",
+    "ko": "입장 시 역할"
+  },
+  "Room name template": {
+    "ru": "Шаблон имени комнаты",
+    "ko": "방 이름 템플릿"
+  },
+  "Rules": {
+    "ru": "Правила",
+    "ko": "규칙"
+  },
+  "Rules channel (optional)": {
+    "ru": "Канал правил (необязательно)",
+    "ko": "규칙 채널(선택 사항)"
+  },
+  "Run bounded, auditable giveaways with safe entry rules.": {
+    "ru": "Проводите проверяемые розыгрыши с ограничениями и безопасными правилами участия.",
+    "ko": "안전한 참가 규칙과 제한을 적용하여 검토 가능한 경품 행사를 진행합니다."
+  },
+  "Rust API": {
+    "ru": "Rust API",
+    "ko": "Rust API"
+  },
+  "SIWE domain and session secret": {
+    "ru": "Домен SIWE и секрет сессии",
+    "ko": "SIWE 도메인 및 세션 시크릿"
+  },
+  "SLA reminder (hours)": {
+    "ru": "Напоминание SLA (часы)",
+    "ko": "SLA 알림(시간)"
+  },
+  "Safe search": {
+    "ru": "Безопасный поиск",
+    "ko": "안전 검색"
+  },
+  "Sakura Shrine": {
+    "ru": "Святилище сакуры",
+    "ko": "벚꽃 신사"
+  },
+  "Same channel as the message": {
+    "ru": "Тот же канал, что и у сообщения",
+    "ko": "메시지와 같은 채널"
+  },
+  "Save and transfer validated server configuration without copying secrets.": {
+    "ru": "Сохраняйте и переносите проверенные настройки сервера без копирования секретов.",
+    "ko": "시크릿을 복사하지 않고 검증된 서버 설정을 저장하고 이전합니다."
+  },
+  "Save the configuration and reuse it on another server.": {
+    "ru": "Сохраните настройки и используйте их на другом сервере.",
+    "ko": "설정을 저장하고 다른 서버에서 재사용합니다."
+  },
+  "Saved automatically": {
+    "ru": "Сохранено автоматически",
+    "ko": "자동으로 저장됨"
+  },
+  "Saved message template": {
+    "ru": "Сохранённый шаблон сообщения",
+    "ko": "저장된 메시지 템플릿"
+  },
+  "Saved option": {
+    "ru": "Сохранённый вариант",
+    "ko": "저장된 옵션"
+  },
+  "Saved option: {value}": {
+    "ru": "Сохранённый вариант: {value}",
+    "ko": "저장된 옵션: {value}"
+  },
+  "Saved responses are deliberately bounded and never execute code.": {
+    "ru": "Сохранённые ответы намеренно ограничены и никогда не выполняют код.",
+    "ko": "저장된 응답에는 의도적인 제한이 있으며 코드를 실행하지 않습니다."
+  },
+  "Schedule one-off or recurring reminders with an explicit timezone.": {
+    "ru": "Планируйте разовые или регулярные напоминания с явно указанным часовым поясом.",
+    "ko": "시간대를 명시하여 일회성 또는 반복 알림을 예약합니다."
+  },
+  "Schedule reminders for messages, tasks, and events.": {
+    "ru": "Планируйте напоминания о сообщениях, задачах и событиях.",
+    "ko": "메시지, 작업 및 이벤트에 대한 알림을 예약합니다."
+  },
+  "Search content, videos, and references without leaving the app.": {
+    "ru": "Ищите материалы, видео и справочную информацию, не выходя из приложения.",
+    "ko": "앱을 나가지 않고 콘텐츠, 동영상 및 참고 자료를 검색합니다."
+  },
+  "Search is limited to documented providers; arbitrary URLs are never fetched.": {
+    "ru": "Поиск ограничен документированными поставщиками; произвольные URL не запрашиваются.",
+    "ko": "검색은 문서화된 제공자로 제한되며 임의의 URL에 접근하지 않습니다."
+  },
+  "Search is limited to providers with documented APIs; arbitrary URLs are never fetched.": {
+    "ru": "Поиск ограничен поставщиками с документированными API; произвольные URL не запрашиваются.",
+    "ko": "검색은 문서화된 API를 제공하는 서비스로 제한되며 임의의 URL에 접근하지 않습니다."
+  },
+  "Search only approved providers instead of fetching arbitrary websites.": {
+    "ru": "Ищите только у одобренных поставщиков вместо загрузки произвольных сайтов.",
+    "ko": "임의의 웹사이트에 접근하지 않고 승인된 제공자만 검색합니다."
+  },
+  "See who brought new members to the server.": {
+    "ru": "Узнайте, кто привёл новых участников на сервер.",
+    "ko": "누가 새 멤버를 서버로 초대했는지 확인합니다."
+  },
+  "Send Messages": {
+    "ru": "Отправка сообщений",
+    "ko": "메시지 보내기"
+  },
+  "Send a direct message": {
+    "ru": "Отправить личное сообщение",
+    "ko": "DM 보내기"
+  },
+  "Send a private welcome": {
+    "ru": "Отправлять личное приветствие",
+    "ko": "비공개 환영 메시지 보내기"
+  },
+  "Send start reminders": {
+    "ru": "Отправлять напоминания о начале",
+    "ko": "시작 알림 보내기"
+  },
+  "Sends a reminder if nobody claims the request in this time. It does not close the ticket.": {
+    "ru": "Отправляет напоминание, если за это время никто не принял обращение. Не закрывает обращение.",
+    "ko": "지정한 시간 내에 아무도 요청을 담당하지 않으면 알림을 보냅니다. 티켓을 종료하지는 않습니다."
+  },
+  "Server monetization": {
+    "ru": "Монетизация сервера",
+    "ko": "서버 수익화"
+  },
+  "Server nickname": {
+    "ru": "Никнейм сервера",
+    "ko": "서버 닉네임"
+  },
+  "Set defaults for creating events with fewer steps.": {
+    "ru": "Задайте значения по умолчанию для создания событий за меньшее число шагов.",
+    "ko": "이벤트를 더 간단하게 만들 수 있도록 기본값을 설정합니다."
+  },
+  "Set defaults for quick polls.": {
+    "ru": "Задайте значения по умолчанию для быстрых опросов.",
+    "ko": "빠른 설문을 위한 기본값을 설정합니다."
+  },
+  "Set guardrails used by manual moderation commands.": {
+    "ru": "Задайте ограничения для ручных команд модерации.",
+    "ko": "수동 관리 명령어에 사용할 제한을 설정합니다."
+  },
+  "Set the name the Helper displays in this server.": {
+    "ru": "Задайте имя Helper на этом сервере.",
+    "ko": "이 서버에 표시될 Helper의 이름을 설정합니다."
+  },
+  "Set when the sequence of joins is considered the raid.": {
+    "ru": "Задайте условия, при которых серия входов считается рейдом.",
+    "ko": "연속 입장을 레이드로 판단할 조건을 설정합니다."
+  },
+  "Sets the name the Helper displays in this server.": {
+    "ru": "Задаёт имя Helper на этом сервере.",
+    "ko": "이 서버에 표시되는 Helper의 이름을 설정합니다."
+  },
+  "Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.": {
+    "ru": "Настройки сохранены, но публикацию в Discord обновить не удалось. Проверьте канал и разрешения Helper перед восстановлением публикации.",
+    "ko": "설정은 저장되었지만 Discord 게시물을 업데이트할 수 없습니다. 게시물을 복구하기 전에 채널과 Helper 권한을 확인하세요."
+  },
+  "Shortcuts": {
+    "ru": "Быстрые действия",
+    "ko": "바로가기"
+  },
+  "Show channel shortcuts": {
+    "ru": "Показывать ссылки на каналы",
+    "ko": "채널 바로가기 표시"
+  },
+  "Show community progress with privacy-aware controls.": {
+    "ru": "Показывайте прогресс сообщества с учётом конфиденциальности.",
+    "ko": "개인정보 보호 설정을 고려하여 커뮤니티의 성장을 표시합니다."
+  },
+  "Show inviter names": {
+    "ru": "Показывать имена пригласивших",
+    "ko": "초대한 사람 이름 표시"
+  },
+  "Show the /leaderboard response to everyone in the channel": {
+    "ru": "Показывать ответ /leaderboard всем в канале",
+    "ko": "채널의 모든 사람에게 /leaderboard 응답 표시"
+  },
+  "Show the leaderboard publicly": {
+    "ru": "Показывать таблицу лидеров всем",
+    "ko": "순위표 공개"
+  },
+  "Shows community progress with configurable privacy.": {
+    "ru": "Показывает прогресс сообщества с настраиваемой приватностью.",
+    "ko": "개인정보 보호 설정에 따라 커뮤니티의 성장을 표시합니다."
+  },
+  "Shows current network fees for the community.": {
+    "ru": "Показывает сообществу текущие комиссии сети.",
+    "ko": "커뮤니티에 현재 네트워크 수수료를 표시합니다."
+  },
+  "Signed Stripe webhooks": {
+    "ru": "Подписанные вебхуки Stripe",
+    "ko": "서명된 Stripe 웹훅"
+  },
+  "Sky Islands": {
+    "ru": "Небесные острова",
+    "ko": "하늘 섬"
+  },
+  "Space Grotesk": {
+    "ru": "Space Grotesk",
+    "ko": "Space Grotesk"
+  },
+  "Speed up giveaway creation in Discord.": {
+    "ru": "Ускорьте создание розыгрышей в Discord.",
+    "ko": "Discord에서 경품 행사를 더 빠르게 만듭니다."
+  },
+  "Staff notification channel (optional)": {
+    "ru": "Канал уведомлений команды (необязательно)",
+    "ko": "운영진 알림 채널(선택 사항)"
+  },
+  "Staff-only commands": {
+    "ru": "Команды только для модераторов",
+    "ko": "운영진 전용 명령어"
+  },
+  "Starboard channel": {
+    "ru": "Канал избранных сообщений",
+    "ko": "스타보드 채널"
+  },
+  "Stars required": {
+    "ru": "Необходимое число звёзд",
+    "ko": "필요한 별 수"
+  },
+  "Starship Hangar": {
+    "ru": "Ангар звездолёта",
+    "ko": "우주선 격납고"
+  },
+  "Start reminder": {
+    "ru": "Напоминание о начале",
+    "ko": "시작 알림"
+  },
+  "Statistics channels": {
+    "ru": "Каналы статистики",
+    "ko": "통계 채널"
+  },
+  "Statistics message": {
+    "ru": "Сообщение статистики",
+    "ko": "통계 메시지"
+  },
+  "Stop repeated messages and disruptive bursts with a clear, reviewable policy.": {
+    "ru": "Останавливайте повторы сообщений и мешающие всплески активности с понятными, проверяемыми правилами.",
+    "ko": "명확하고 검토 가능한 정책으로 반복 메시지와 방해성 도배를 차단합니다."
+  },
+  "Store only day and month and announce birthdays once per year.": {
+    "ru": "Храните только день и месяц и объявляйте дни рождения раз в год.",
+    "ko": "날짜와 월만 저장하고 생일을 1년에 한 번 알립니다."
+  },
+  "Stripe Connect account": {
+    "ru": "Аккаунт Stripe Connect",
+    "ko": "Stripe Connect 계정"
+  },
+  "Subscriber role": {
+    "ru": "Роль подписчика",
+    "ko": "구독자 역할"
+  },
+  "Suggestion channel": {
+    "ru": "Канал предложений",
+    "ko": "제안 채널"
+  },
+  "Suggestion intake": {
+    "ru": "Приём предложений",
+    "ko": "제안 접수"
+  },
+  "Suggestions channel": {
+    "ru": "Канал предложений",
+    "ko": "제안 채널"
+  },
+  "Support / against": {
+    "ru": "За / против",
+    "ko": "찬성 / 반대"
+  },
+  "Support / oppose": {
+    "ru": "Поддержать / возразить",
+    "ko": "찬성 / 반대"
+  },
+  "Support and chargeback process": {
+    "ru": "Процесс поддержки и оспаривания платежей",
+    "ko": "지원 및 지불 거절 처리 절차"
+  },
+  "Support and records": {
+    "ru": "Поддержка и записи",
+    "ko": "지원 및 기록"
+  },
+  "Support only": {
+    "ru": "Только поддержка",
+    "ko": "찬성만"
+  },
+  "Support reminder (hours)": {
+    "ru": "Напоминание команде поддержки (часы)",
+    "ko": "지원 알림(시간)"
+  },
+  "Support team": {
+    "ru": "Команда поддержки",
+    "ko": "지원팀"
+  },
+  "Support team role": {
+    "ru": "Роль команды поддержки",
+    "ko": "지원팀 역할"
+  },
+  "Support tickets": {
+    "ru": "Обращения в поддержку",
+    "ko": "지원 티켓"
+  },
+  "Support workflow": {
+    "ru": "Процесс поддержки",
+    "ko": "지원 워크플로"
+  },
+  "System": {
+    "ru": "Системный",
+    "ko": "시스템"
+  },
+  "TIKTOK ACCOUNT": {
+    "ru": "АККАУНТ TIKTOK",
+    "ko": "TIKTOK 계정"
+  },
+  "TWITCH_CLIENT_ID": {
+    "ru": "TWITCH_CLIENT_ID",
+    "ko": "TWITCH_CLIENT_ID"
+  },
+  "TWITCH_CLIENT_SECRET": {
+    "ru": "TWITCH_CLIENT_SECRET",
+    "ko": "TWITCH_CLIENT_SECRET"
+  },
+  "TWITCH_EVENTSUB_SECRET": {
+    "ru": "TWITCH_EVENTSUB_SECRET",
+    "ko": "TWITCH_EVENTSUB_SECRET"
+  },
+  "Templates and import": {
+    "ru": "Шаблоны и импорт",
+    "ko": "템플릿 및 가져오기"
+  },
+  "Temporarily give this role to the member when their birthday is announced.": {
+    "ru": "Временно назначать эту роль участнику при объявлении его дня рождения.",
+    "ko": "멤버의 생일을 알릴 때 이 역할을 임시로 부여합니다."
+  },
+  "Text": {
+    "ru": "Текст",
+    "ko": "텍스트"
+  },
+  "Text colour": {
+    "ru": "Цвет текста",
+    "ko": "텍스트 색상"
+  },
+  "The Helper records an overdue ticket job after this period.": {
+    "ru": "По истечении этого периода Helper регистрирует просроченное задание обращения.",
+    "ko": "이 시간이 지나면 Helper가 기한이 지난 티켓 작업을 기록합니다."
+  },
+  "The account must explicitly authorise Vozen through Meta OAuth.": {
+    "ru": "Аккаунт должен явно разрешить доступ Vozen через Meta OAuth.",
+    "ko": "계정에서 Meta OAuth를 통해 Vozen에 명시적으로 접근을 허용해야 합니다."
+  },
+  "The channel where the alert will be posted.": {
+    "ru": "Канал, в котором будет опубликовано оповещение.",
+    "ko": "알림을 게시할 채널입니다."
+  },
+  "The channel where the publication will be sent.": {
+    "ru": "Канал, в который будет отправлена публикация.",
+    "ko": "게시물을 전송할 채널입니다."
+  },
+  "The character(s) members type before a saved command, for example !rules.": {
+    "ru": "Символы, которые участники вводят перед сохранённой командой, например !rules.",
+    "ko": "!rules처럼 저장된 명령어 앞에 멤버가 입력하는 문자입니다."
+  },
+  "The command uses these values when no override is provided.": {
+    "ru": "Команда использует эти значения, если они не переопределены.",
+    "ko": "별도로 지정하지 않으면 명령어에서 이 값을 사용합니다."
+  },
+  "The configuration changed in another session. Reload before editing again; your draft is still here.": {
+    "ru": "Настройки были изменены в другой сессии. Обновите страницу перед дальнейшим редактированием; ваш черновик остался здесь.",
+    "ko": "다른 세션에서 설정이 변경되었습니다. 다시 편집하기 전에 페이지를 새로고침하세요. 초안은 여기에 그대로 남아 있습니다."
+  },
+  "The creator must authorise the Vozen application.": {
+    "ru": "Автор должен разрешить доступ приложению Vozen.",
+    "ko": "크리에이터가 Vozen 애플리케이션에 접근을 허용해야 합니다."
+  },
+  "The first message should clearly explain the next step.": {
+    "ru": "Первое сообщение должно ясно объяснять следующий шаг.",
+    "ko": "첫 메시지에는 다음 단계를 명확히 안내해야 합니다."
+  },
+  "The goodbye message and where it appears.": {
+    "ru": "Прощальное сообщение и место его публикации.",
+    "ko": "작별 메시지와 표시할 위치입니다."
+  },
+  "The local day used to decide when a birthday announcement is sent.": {
+    "ru": "Местная дата, по которой определяется день отправки поздравления.",
+    "ko": "생일 공지를 보낼 날짜를 결정하는 현지 날짜입니다."
+  },
+  "The longest time a member can schedule a reminder.": {
+    "ru": "Максимальный срок, на который участник может запланировать напоминание.",
+    "ko": "멤버가 알림을 예약할 수 있는 최대 기간입니다."
+  },
+  "The maximum number of active and paused workflows stored for this server.": {
+    "ru": "Максимальное число активных и приостановленных процессов, хранимых на этом сервере.",
+    "ko": "이 서버에 저장할 수 있는 활성 및 일시 중지된 워크플로의 최대 개수입니다."
+  },
+  "The maximum number of saved responses this server can keep.": {
+    "ru": "Максимальное число сохранённых ответов на этом сервере.",
+    "ko": "이 서버에 보관할 수 있는 저장된 응답의 최대 개수입니다."
+  },
+  "The public channel with the Open ticket button.": {
+    "ru": "Общедоступный канал с кнопкой открытия обращения.",
+    "ko": "티켓 열기 버튼이 있는 공개 채널입니다."
+  },
+  "The role panel command applies these values to newly published panels.": {
+    "ru": "Команда панели ролей применяет эти значения к новым опубликованным панелям.",
+    "ko": "역할 패널 명령어가 새로 게시하는 패널에 이 값을 적용합니다."
+  },
+  "These options are applied to every new suggestion.": {
+    "ru": "Эти параметры применяются к каждому новому предложению.",
+    "ko": "이 옵션은 모든 새 제안에 적용됩니다."
+  },
+  "These values are applied to new events created with the Helper.": {
+    "ru": "Эти значения применяются к новым событиям, созданным с помощью Helper.",
+    "ko": "이 값은 Helper로 만든 새 이벤트에 적용됩니다."
+  },
+  "This role can claim, close and reopen tickets.": {
+    "ru": "Эта роль может принимать, закрывать и повторно открывать обращения.",
+    "ko": "이 역할은 티켓을 담당하고 종료하거나 다시 열 수 있습니다."
+  },
+  "Three to ten lowercase letters, for example usd or eur.": {
+    "ru": "От трёх до десяти строчных букв, например usd или eur.",
+    "ko": "usd 또는 eur 등 소문자 3~10자입니다."
+  },
+  "Ticket category": {
+    "ru": "Категория обращений",
+    "ko": "티켓 카테고리"
+  },
+  "Ticket setup": {
+    "ru": "Настройка обращений",
+    "ko": "티켓 설정"
+  },
+  "TikTok App Review": {
+    "ru": "Проверка приложения TikTok",
+    "ko": "TikTok 앱 검수"
+  },
+  "TikTok Display API app": {
+    "ru": "Приложение TikTok Display API",
+    "ko": "TikTok Display API 앱"
+  },
+  "TikTok connected": {
+    "ru": "TikTok подключён",
+    "ko": "TikTok 연결됨"
+  },
+  "Time between XP gains (seconds)": {
+    "ru": "Интервал между начислениями XP (секунды)",
+    "ko": "XP 획득 간격(초)"
+  },
+  "Timeout inicial (segundos)": {
+    "ru": "Начальный тайм-аут (секунды)",
+    "ko": "초기 타임아웃(초)"
+  },
+  "Title": {
+    "ru": "Заголовок",
+    "ko": "제목"
+  },
+  "Token ID (ERC-1155)": {
+    "ru": "ID токена (ERC-1155)",
+    "ko": "토큰 ID(ERC-1155)"
+  },
+  "Token standard": {
+    "ru": "Стандарт токена",
+    "ko": "토큰 표준"
+  },
+  "Track posts from a professional account authorised by Meta.": {
+    "ru": "Отслеживайте публикации профессионального аккаунта, авторизованного Meta.",
+    "ko": "Meta에서 승인한 프로페셔널 계정의 게시물을 추적합니다."
+  },
+  "Track streams through the official Kick API when available.": {
+    "ru": "Отслеживайте трансляции через официальный API Kick, когда он доступен.",
+    "ko": "사용 가능한 경우 공식 Kick API로 방송을 추적합니다."
+  },
+  "Track videos from a creator who authorised Vozen through the Display API.": {
+    "ru": "Отслеживайте видео автора, разрешившего Vozen доступ через Display API.",
+    "ko": "Display API를 통해 Vozen에 접근을 허용한 크리에이터의 동영상을 추적합니다."
+  },
+  "Tracks digital currency indicators.": {
+    "ru": "Отслеживает показатели цифровых валют.",
+    "ko": "디지털 화폐 지표를 추적합니다."
+  },
+  "Tracks important changes and keeps your team aligned.": {
+    "ru": "Отслеживает важные изменения и информирует команду.",
+    "ko": "주요 변경 사항을 추적하여 운영진이 공유하도록 합니다."
+  },
+  "Tracks new posts from selected accounts.": {
+    "ru": "Отслеживает новые публикации выбранных аккаунтов.",
+    "ko": "선택한 계정의 새 게시물을 추적합니다."
+  },
+  "Tracks new posts from selected profiles.": {
+    "ru": "Отслеживает новые публикации выбранных профилей.",
+    "ko": "선택한 프로필의 새 게시물을 추적합니다."
+  },
+  "Tracks server activity and trends.": {
+    "ru": "Отслеживает активность и тенденции сервера.",
+    "ko": "서버 활동과 추세를 추적합니다."
+  },
+  "Trial days": {
+    "ru": "Дней пробного периода",
+    "ko": "체험 기간(일)"
+  },
+  "Tropical Lagoon": {
+    "ru": "Тропическая лагуна",
+    "ko": "열대 석호"
+  },
+  "Tune message XP and level-up announcements.": {
+    "ru": "Настройте XP за сообщения и объявления о повышении уровня.",
+    "ko": "메시지 XP와 레벨 상승 공지를 설정합니다."
+  },
+  "Turn meaningful participation into milestones and rewards.": {
+    "ru": "Превращайте полезное участие в достижения и награды.",
+    "ko": "의미 있는 참여를 성과와 보상으로 연결합니다."
+  },
+  "Turn member requests into private, trackable support conversations.": {
+    "ru": "Превращайте запросы участников в приватные, отслеживаемые обращения в поддержку.",
+    "ko": "멤버의 요청을 추적 가능한 비공개 지원 대화로 전환합니다."
+  },
+  "Turn off to post a quiet reminder without a mention.": {
+    "ru": "Выключите, чтобы отправлять тихое напоминание без упоминания.",
+    "ko": "멘션 없는 조용한 알림을 보내려면 끄세요."
+  },
+  "Turns any RSS feed into an automatic update.": {
+    "ru": "Превращает любую RSS-ленту в автоматические обновления.",
+    "ko": "RSS 피드를 자동 업데이트로 전환합니다."
+  },
+  "Twitch channel login": {
+    "ru": "Имя входа канала Twitch",
+    "ko": "Twitch 채널 로그인 이름"
+  },
+  "UTC": {
+    "ru": "UTC",
+    "ko": "UTC"
+  },
+  "UTC+01:00": {
+    "ru": "UTC+01:00",
+    "ko": "UTC+01:00"
+  },
+  "UTC+02:00": {
+    "ru": "UTC+02:00",
+    "ko": "UTC+02:00"
+  },
+  "UTC+05:30": {
+    "ru": "UTC+05:30",
+    "ko": "UTC+05:30"
+  },
+  "UTC+08:00": {
+    "ru": "UTC+08:00",
+    "ko": "UTC+08:00"
+  },
+  "UTC-05:00": {
+    "ru": "UTC-05:00",
+    "ko": "UTC-05:00"
+  },
+  "Unable to load your servers": {
+    "ru": "Не удалось загрузить ваши серверы",
+    "ko": "서버를 불러올 수 없습니다"
+  },
+  "Understand important changes and why an action was allowed or blocked.": {
+    "ru": "Разбирайтесь в важных изменениях и причинах разрешения или блокировки действий.",
+    "ko": "주요 변경 사항과 작업이 허용되거나 차단된 이유를 확인합니다."
+  },
+  "Understand which invite campaigns bring members to your server.": {
+    "ru": "Узнайте, какие кампании приглашений приводят участников на сервер.",
+    "ko": "어떤 초대 캠페인으로 멤버가 서버에 참여하는지 확인합니다."
+  },
+  "Up to 32 characters. Leave empty to remove the custom name.": {
+    "ru": "До 32 символов. Оставьте пустым, чтобы удалить заданное имя.",
+    "ko": "최대 32자입니다. 사용자 지정 이름을 제거하려면 비워 두세요."
+  },
+  "Update interval (seconds)": {
+    "ru": "Интервал обновления (секунды)",
+    "ko": "업데이트 간격(초)"
+  },
+  "Upper bound for one purge command.": {
+    "ru": "Верхний предел для одной команды очистки.",
+    "ko": "한 번의 메시지 정리 명령어에 적용할 상한입니다."
+  },
+  "Usa 0 para apenas registar o incidente.": {
+    "ru": "Используйте 0, чтобы только записывать инцидент.",
+    "ko": "사고를 기록만 하려면 0을 사용하세요."
+  },
+  "Use Application Commands": {
+    "ru": "Использование команд приложения",
+    "ko": "애플리케이션 명령어 사용"
+  },
+  "Use an HTTPS URL for the public feed.": {
+    "ru": "Используйте HTTPS-адрес открытой ленты.",
+    "ko": "공개 피드의 HTTPS URL을 사용하세요."
+  },
+  "Use server system channel": {
+    "ru": "Использовать системный канал сервера",
+    "ko": "서버 시스템 채널 사용"
+  },
+  "Use the ID that usually starts with UC…": {
+    "ru": "Используйте ID, обычно начинающийся с UC…",
+    "ko": "일반적으로 UC…로 시작하는 ID를 사용하세요."
+  },
+  "Use the channel ID, not a watch URL.": {
+    "ru": "Используйте ID канала, а не ссылку просмотра видео.",
+    "ko": "동영상 시청 URL이 아닌 채널 ID를 사용하세요."
+  },
+  "Use the channel login, without a URL or @ prefix.": {
+    "ru": "Используйте имя входа канала без URL и префикса @.",
+    "ko": "URL이나 @ 접두사 없이 채널 로그인 이름을 사용하세요."
+  },
+  "Use the official CoinGecko read-only API with bounded symbols and results.": {
+    "ru": "Используйте официальный API CoinGecko только для чтения с ограниченным набором символов и результатов.",
+    "ko": "종목과 결과 수에 제한을 두어 공식 CoinGecko API를 읽기 전용으로 사용합니다."
+  },
+  "Use {member} and {server} as placeholders.": {
+    "ru": "Используйте {member} и {server} как подстановки.",
+    "ko": "{member}와 {server}를 자리표시자로 사용하세요."
+  },
+  "Use {member} for the member and {server} for the server name.": {
+    "ru": "Используйте {member} для участника и {server} для имени сервера.",
+    "ko": "멤버에는 {member}, 서버 이름에는 {server}를 사용하세요."
+  },
+  "Use {member} to mention the member and {level} for the new level.": {
+    "ru": "Используйте {member} для упоминания участника и {level} для нового уровня.",
+    "ko": "멤버 멘션에는 {member}, 새 레벨에는 {level}을 사용하세요."
+  },
+  "Use {messages}, {joins}, {leaves} and {days}.": {
+    "ru": "Используйте {messages}, {joins}, {leaves} и {days}.",
+    "ko": "{messages}, {joins}, {leaves}, {days}를 사용하세요."
+  },
+  "Use {user} for the member display name.": {
+    "ru": "Используйте {user} для отображаемого имени участника.",
+    "ko": "멤버의 표시 이름에는 {user}를 사용하세요."
+  },
+  "Use {user} for the member mention.": {
+    "ru": "Используйте {user} для упоминания участника.",
+    "ko": "멤버 멘션에는 {user}를 사용하세요."
+  },
+  "Used when a reminder time is written as HH:MM, such as 09:30.": {
+    "ru": "Используется, когда время напоминания записано в формате HH:MM, например 09:30.",
+    "ko": "09:30처럼 알림 시간을 HH:MM 형식으로 입력할 때 사용됩니다."
+  },
+  "Uses the join gate temporarily and restores it when containment expires.": {
+    "ru": "Временно включает фильтр входа и восстанавливает его после окончания сдерживания.",
+    "ko": "입장 제한을 일시적으로 사용하고 제한 조치가 끝나면 원래 상태로 복원합니다."
+  },
+  "Uses the official Helix/EventSub API with signed webhook verification and deduplication.": {
+    "ru": "Использует официальный Helix/EventSub API с проверкой подписанных вебхуков и удалением дубликатов.",
+    "ko": "서명된 웹훅 검증 및 중복 제거 기능으로 공식 Helix/EventSub API를 사용합니다."
+  },
+  "Variables: {broadcaster}, {login}, {url}, {stream_id}, {started_at}.": {
+    "ru": "Переменные: {broadcaster}, {login}, {url}, {stream_id}, {started_at}.",
+    "ko": "변수: {broadcaster}, {login}, {url}, {stream_id}, {started_at}."
+  },
+  "Variables: {feed}, {title}, {url}, {published_at}.": {
+    "ru": "Переменные: {feed}, {title}, {url}, {published_at}.",
+    "ko": "변수: {feed}, {title}, {url}, {published_at}."
+  },
+  "Variables: {member} and {server}.": {
+    "ru": "Переменные: {member} и {server}.",
+    "ko": "변수: {member}, {server}."
+  },
+  "Variables: {member}, {level}, {server}.": {
+    "ru": "Переменные: {member}, {level}, {server}.",
+    "ko": "변수: {member}, {level}, {server}."
+  },
+  "Variables: {member}, {server}, {count}.": {
+    "ru": "Переменные: {member}, {server}, {count}.",
+    "ko": "변수: {member}, {server}, {count}."
+  },
+  "Variables: {title}, {url}, {channel}, {published_at}.": {
+    "ru": "Переменные: {title}, {url}, {channel}, {published_at}.",
+    "ko": "변수: {title}, {url}, {channel}, {published_at}."
+  },
+  "Verification interval (seconds)": {
+    "ru": "Интервал проверки (секунды)",
+    "ko": "인증 확인 간격(초)"
+  },
+  "Very high": {
+    "ru": "Очень высокий",
+    "ko": "매우 높음"
+  },
+  "View, export, and safely delete your server data.": {
+    "ru": "Просматривайте, экспортируйте и безопасно удаляйте данные сервера.",
+    "ko": "서버 데이터를 확인하고 내보내거나 안전하게 삭제합니다."
+  },
+  "Voice XP per minute": {
+    "ru": "XP за минуту в голосовом канале",
+    "ko": "음성 채널 분당 XP"
+  },
+  "Volcanic Forge": {
+    "ru": "Вулканическая кузница",
+    "ko": "화산 대장간"
+  },
+  "Voluntary profile data is erased; moderation audit records stay retained.": {
+    "ru": "Добровольно предоставленные данные профиля удаляются; записи аудита модерации сохраняются.",
+    "ko": "선택적으로 제공한 프로필 데이터는 삭제되며 관리 감사 기록은 보관됩니다."
+  },
+  "Wait before sending (seconds)": {
+    "ru": "Ожидание перед отправкой (секунды)",
+    "ko": "전송 전 대기 시간(초)"
+  },
+  "Wallet access": {
+    "ru": "Доступ по кошельку",
+    "ko": "지갑 인증 접근"
+  },
+  "Wallet gating": {
+    "ru": "Ограничение доступа по кошельку",
+    "ko": "지갑 기반 접근 제한"
+  },
+  "Watch a validated RSS or Atom feed with safe polling.": {
+    "ru": "Отслеживайте проверенную RSS- или Atom-ленту с безопасным опросом.",
+    "ko": "안전한 주기적 확인으로 검증된 RSS 또는 Atom 피드를 구독합니다."
+  },
+  "Welcome members without editing code.": {
+    "ru": "Приветствуйте участников без редактирования кода.",
+    "ko": "코드를 수정하지 않고 멤버를 환영합니다."
+  },
+  "Welcome messages": {
+    "ru": "Приветственные сообщения",
+    "ko": "환영 메시지"
+  },
+  "Welcome messages, optional orientation buttons, direct messages and automatic roles.": {
+    "ru": "Приветственные сообщения, необязательные кнопки навигации, личные сообщения и автоматические роли.",
+    "ko": "환영 메시지, 선택적 안내 버튼, DM 및 자동 역할입니다."
+  },
+  "Welcome setup": {
+    "ru": "Настройка приветствия",
+    "ko": "환영 설정"
+  },
+  "What members see before opening a ticket.": {
+    "ru": "Что участники видят перед открытием обращения.",
+    "ko": "멤버가 티켓을 열기 전에 보는 내용입니다."
+  },
+  "When a member leaves": {
+    "ru": "Когда участник уходит",
+    "ko": "멤버가 떠날 때"
+  },
+  "When disabled, everyone/here mentions are neutralised.": {
+    "ru": "При отключении упоминания everyone/here нейтрализуются.",
+    "ko": "비활성화하면 everyone/here 멘션이 무력화됩니다."
+  },
+  "When disabled, only the requesting member sees the result.": {
+    "ru": "При отключении результат видит только запросивший участник.",
+    "ko": "비활성화하면 요청한 멤버만 결과를 볼 수 있습니다."
+  },
+  "When disabled, only the requesting member sees the summary.": {
+    "ru": "При отключении сводку видит только запросивший участник.",
+    "ko": "비활성화하면 요청한 멤버만 요약을 볼 수 있습니다."
+  },
+  "When off, Helper removes the other level rewards when assigning a new one.": {
+    "ru": "При отключении Helper удаляет другие награды за уровни при назначении новой.",
+    "ko": "끄면 새 레벨 보상을 부여할 때 Helper가 다른 레벨 보상을 제거합니다."
+  },
+  "Where members open tickets": {
+    "ru": "Где участники открывают обращения",
+    "ko": "멤버가 티켓을 여는 위치"
+  },
+  "Window (seconds)": {
+    "ru": "Окно (секунды)",
+    "ko": "시간 범위(초)"
+  },
+  "Work cooldown (minutes)": {
+    "ru": "Интервал между работами (минуты)",
+    "ko": "작업 재사용 대기 시간(분)"
+  },
+  "Work reward": {
+    "ru": "Награда за работу",
+    "ko": "작업 보상"
+  },
+  "XP card appearance": {
+    "ru": "Внешний вид карточки XP",
+    "ko": "XP 카드 디자인"
+  },
+  "XP cooldown (seconds)": {
+    "ru": "Интервал начисления XP (секунды)",
+    "ko": "XP 재획득 대기 시간(초)"
+  },
+  "XP milestones": {
+    "ru": "Достижения XP",
+    "ko": "XP 주요 성과"
+  },
+  "XP progression": {
+    "ru": "Развитие XP",
+    "ko": "XP 성장"
+  },
+  "YOUTUBE_API_KEY": {
+    "ru": "YOUTUBE_API_KEY",
+    "ko": "YOUTUBE_API_KEY"
+  },
+  "Your session expired. Sign in again.": {
+    "ru": "Ваша сессия истекла. Войдите снова.",
+    "ko": "세션이 만료되었습니다. 다시 로그인하세요."
+  },
+  "add_reactions": {
+    "ru": "add_reactions",
+    "ko": "add_reactions"
+  },
+  "alert channel": {
+    "ru": "канал оповещений",
+    "ko": "알림 채널"
+  },
+  "arbitrum": {
+    "ru": "arbitrum",
+    "ko": "arbitrum"
+  },
+  "attach_files": {
+    "ru": "attach_files",
+    "ko": "attach_files"
+  },
+  "base": {
+    "ru": "base",
+    "ko": "base"
+  },
+  "change_nickname": {
+    "ru": "change_nickname",
+    "ko": "change_nickname"
+  },
+  "channels ignored": {
+    "ru": "игнорируемые каналы",
+    "ko": "제외할 채널"
+  },
+  "channels without XP": {
+    "ru": "каналы без XP",
+    "ko": "XP 제외 채널"
+  },
+  "direct_messages": {
+    "ru": "direct_messages",
+    "ko": "direct_messages"
+  },
+  "embed_links": {
+    "ru": "embed_links",
+    "ko": "embed_links"
+  },
+  "erc1155": {
+    "ru": "erc1155",
+    "ko": "erc1155"
+  },
+  "erc20": {
+    "ru": "erc20",
+    "ko": "erc20"
+  },
+  "erc721": {
+    "ru": "erc721",
+    "ko": "erc721"
+  },
+  "ethereum": {
+    "ru": "ethereum",
+    "ko": "ethereum"
+  },
+  "example: vozen (without @).": {
+    "ru": "Пример: vozen (без @).",
+    "ko": "예: vozen(@ 제외)."
+  },
+  "guild_invites": {
+    "ru": "guild_invites",
+    "ko": "guild_invites"
+  },
+  "guild_members": {
+    "ru": "guild_members",
+    "ko": "guild_members"
+  },
+  "guild_members_intent": {
+    "ru": "guild_members_intent",
+    "ko": "guild_members_intent"
+  },
+  "inter": {
+    "ru": "inter",
+    "ko": "inter"
+  },
+  "interactions": {
+    "ru": "interactions",
+    "ko": "interactions"
+  },
+  "join channel": {
+    "ru": "канал входа",
+    "ko": "입장 채널"
+  },
+  "leave and templates": {
+    "ru": "прощания и шаблоны",
+    "ko": "작별 및 템플릿"
+  },
+  "levels": {
+    "ru": "levels",
+    "ko": "levels"
+  },
+  "lexend": {
+    "ru": "lexend",
+    "ko": "lexend"
+  },
+  "limited availability": {
+    "ru": "ограниченная доступность",
+    "ko": "제한적 제공"
+  },
+  "manage_channels": {
+    "ru": "manage_channels",
+    "ko": "manage_channels"
+  },
+  "manage_events": {
+    "ru": "manage_events",
+    "ko": "manage_events"
+  },
+  "manage_expressions": {
+    "ru": "manage_expressions",
+    "ko": "manage_expressions"
+  },
+  "manage_guild": {
+    "ru": "manage_guild",
+    "ko": "manage_guild"
+  },
+  "manage_messages": {
+    "ru": "manage_messages",
+    "ko": "manage_messages"
+  },
+  "manage_nicknames": {
+    "ru": "manage_nicknames",
+    "ko": "manage_nicknames"
+  },
+  "manage_roles": {
+    "ru": "manage_roles",
+    "ko": "manage_roles"
+  },
+  "manager_session": {
+    "ru": "manager_session",
+    "ko": "manager_session"
+  },
+  "medium": {
+    "ru": "средний",
+    "ko": "보통"
+  },
+  "message": {
+    "ru": "сообщение",
+    "ko": "메시지"
+  },
+  "message_content": {
+    "ru": "message_content",
+    "ko": "message_content"
+  },
+  "message_content_intent": {
+    "ru": "message_content_intent",
+    "ko": "message_content_intent"
+  },
+  "message_events": {
+    "ru": "message_events",
+    "ko": "message_events"
+  },
+  "messages and rewards": {
+    "ru": "сообщения и награды",
+    "ko": "메시지 및 보상"
+  },
+  "moderate_members": {
+    "ru": "moderate_members",
+    "ko": "moderate_members"
+  },
+  "moderation": {
+    "ru": "модерация",
+    "ko": "관리"
+  },
+  "move_members": {
+    "ru": "move_members",
+    "ko": "move_members"
+  },
+  "outbound_https": {
+    "ru": "outbound_https",
+    "ko": "outbound_https"
+  },
+  "panel channel": {
+    "ru": "канал панели",
+    "ko": "패널 채널"
+  },
+  "polygon": {
+    "ru": "polygon",
+    "ko": "polygon"
+  },
+  "poppins": {
+    "ru": "poppins",
+    "ko": "poppins"
+  },
+  "read_message_history": {
+    "ru": "read_message_history",
+    "ko": "read_message_history"
+  },
+  "rewards by level": {
+    "ru": "награды за уровни",
+    "ko": "레벨별 보상"
+  },
+  "roboto": {
+    "ru": "roboto",
+    "ko": "roboto"
+  },
+  "role required": {
+    "ru": "обязательная роль",
+    "ko": "필수 역할"
+  },
+  "roles ignored": {
+    "ru": "игнорируемые роли",
+    "ko": "제외할 역할"
+  },
+  "scheduler": {
+    "ru": "scheduler",
+    "ko": "scheduler"
+  },
+  "send_messages": {
+    "ru": "send_messages",
+    "ko": "send_messages"
+  },
+  "space_grotesk": {
+    "ru": "space_grotesk",
+    "ko": "space_grotesk"
+  },
+  "system": {
+    "ru": "system",
+    "ko": "system"
+  },
+  "view_audit_log": {
+    "ru": "view_audit_log",
+    "ko": "view_audit_log"
+  },
+  "view_channel": {
+    "ru": "view_channel",
+    "ko": "view_channel"
+  },
+  "voice_channels": {
+    "ru": "voice_channels",
+    "ko": "voice_channels"
+  },
+  "voice_states": {
+    "ru": "voice_states",
+    "ko": "voice_states"
+  },
+  "your server": {
+    "ru": "ваш сервер",
+    "ko": "내 서버"
+  },
+  "{count} more members in /leaderboard.": {
+    "ru": "Ещё {count} участников в /leaderboard.",
+    "ko": "/leaderboard에 멤버 {count}명 더 있음."
+  }
+}
