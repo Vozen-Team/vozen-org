@@ -20,4 +20,6 @@
     });
   };
   Promise.resolve(window.vozenPublicI18nReady).then(refreshExample);
+  window.addEventListener('vozen:languagechange', refreshExample);
+  window.addEventListener('vozen:i18nready', refreshExample);
 })();

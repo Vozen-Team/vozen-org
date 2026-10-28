@@ -1,7 +1,6 @@
 /* Generate indexable locale routes for the three public product entry pages.
- * English remains the authored HTML source. Portuguese TTS keeps its reviewed,
- * purpose-built page; the other routes use the shared product templates and
- * the isolated locale catalogues.
+ * Every locale uses the English page's structure, styles and interactions.
+ * Only copy, metadata and locale links come from the isolated catalogues.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -60,6 +59,17 @@ const allByClass = (document, name) => elements(document, (node) => hasClass(nod
 const byId = (document, id) => first(document, (node) => attr(node, 'id') === id);
 const setText = (node, value) => {
   if (!node) return;
+  const code = node.childNodes?.find(child => child.tagName === 'code');
+  const command = code?.childNodes?.map(child => child.value || '').join('');
+  if (command && value.includes(command)) {
+    const index = value.indexOf(command);
+    node.childNodes = [
+      { nodeName: '#text', value: value.slice(0, index), parentNode: node },
+      code,
+      { nodeName: '#text', value: value.slice(index + command.length), parentNode: node },
+    ];
+    return;
+  }
   node.childNodes = [{ nodeName: '#text', value, parentNode: node }];
 };
 const setOwnText = (node, value) => {
@@ -312,7 +322,6 @@ export function buildLocalizedPages({ onlyCheck = checkOnly } = {}) {
   for (const locale of locales.slice(1)) {
     const source = JSON.parse(fs.readFileSync(path.resolve('tools', 'i18n-marketing-src', `${locale.code}.json`), 'utf8'));
     for (const page of pages) {
-      if (locale.code === 'pt' && page.route === 'tts') continue;
       const sourceHtml = fs.readFileSync(path.join(root, ...page.source.split('/')), 'utf8');
       const output = path.join(root, locale.code, ...page.slug.split('/').filter(Boolean), 'index.html');
       desiredFiles.push([output, localize(sourceHtml, locale, page, source)]);

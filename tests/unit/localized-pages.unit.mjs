@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
+import { parse } from 'parse5';
 
 import {
   buildLocalizedPages,
@@ -14,6 +15,29 @@ import {
 const readCatalogue = (locale) => JSON.parse(
   fs.readFileSync(path.resolve('tools', 'i18n-marketing-src', `${locale}.json`), 'utf8'),
 );
+
+test('all 27 translated entry pages retain the English layout elements and classes', () => {
+  const layout = html => {
+    const nodes = [];
+    const visit = node => {
+      if (node.tagName) {
+        nodes.push([node.tagName, node.attrs?.find(attr => attr.name === 'class')?.value || '']);
+        if (node.attrs?.some(attr => attr.name === 'data-prerender-fragment')) return;
+      }
+      for (const child of node.childNodes || []) visit(child);
+    };
+    const document = parse(html);
+    const body = document.childNodes.find(node => node.tagName === 'html').childNodes.find(node => node.tagName === 'body');
+    visit(body);
+    return nodes;
+  };
+  for (const route of ['', 'tts/', 'helper/']) {
+    const expected = layout(fs.readFileSync(`site/${route}index.html`, 'utf8'));
+    for (const locale of ['pt', 'fr', 'es', 'de', 'tr', 'ar', 'zh', 'ru', 'ko']) {
+      assert.deepEqual(layout(fs.readFileSync(`site/${locale}/${route}index.html`, 'utf8')), expected, `${locale}/${route}`);
+    }
+  }
+});
 
 test('localized source checks ignore rendered fragments but still detect authored copy changes', () => {
   const source = '<html><body><h1>Original</h1><div data-prerender-fragment="faq">English FAQ</div></body></html>';
@@ -55,7 +79,7 @@ test('Helper localization is static, indexable, complete, and aligned with its s
 
   assert.match(html, /<html[^>]+lang="pt-PT"/);
   assert.match(html, /<link rel="canonical" href="https:\/\/vozen\.org\/pt\/helper\/">/);
-  assert.match(html, /Uma ajuda mais inteligente/);
+  assert.match(html, /O teu servidor\./);
   assert.match(html, /data-helper-cards/);
   assert.match(html, /O Vozen Helper já está disponível\?/);
   assert.doesNotMatch(html, /The work around your server, made lighter\./);
@@ -84,6 +108,6 @@ test('the checked build covers every generated locale route', () => {
   assert.deepEqual(buildLocalizedPages({ onlyCheck: true }), {
     localeCount: 10,
     pageCount: 3,
-    generatedCount: 26,
+    generatedCount: 27,
   });
 });

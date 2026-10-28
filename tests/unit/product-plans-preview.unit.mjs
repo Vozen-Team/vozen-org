@@ -78,7 +78,7 @@ test('plan selection exposes the same pressed state as the existing controls',as
   let selected=0;const handlers=[];const states=[];
   const buttons=[0,1].map(index=>({classList:{contains:()=>selected===index},setAttribute:(key,value)=>states[index]=[key,value],addEventListener:(_,handler)=>handlers[index]=handler}));
   vm.runInNewContext(readFileSync('site/js/product-preview-v1.js','utf8'),{
-    window:{},document:{documentElement:{dataset:{}},querySelectorAll:selector=>selector==='.plan-preview [role="group"]'?[{querySelectorAll:()=>buttons}]:[]},
+    window:{addEventListener() {}},document:{documentElement:{dataset:{}},querySelectorAll:selector=>selector==='.plan-preview [role="group"]'?[{querySelectorAll:()=>buttons}]:[]},
   });
   assert.deepEqual(states,[['aria-pressed','true'],['aria-pressed','false']]);
   selected=1;handlers[1]();

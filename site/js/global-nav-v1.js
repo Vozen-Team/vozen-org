@@ -3,7 +3,7 @@
   "use strict";
 
   const tabTitle = document.createElement('script');
-  tabTitle.src = new URL('tab-title-v1.js', document.currentScript.src).href;
+  tabTitle.src = new URL('tab-title-v1.js?v=2', document.currentScript.src).href;
   document.head.appendChild(tabTitle);
 
   const hosts = document.querySelectorAll("[data-vozen-nav]");
@@ -53,6 +53,7 @@
     const locale = NAV_LANGUAGES.some(([code]) => code === value) ? value : "en";
     try { localStorage.setItem("vozen.lang", locale); } catch (_) {}
     document.documentElement.lang = HTML_LANGUAGES[locale] || locale;
+    document.documentElement.dataset.vozenLocale = locale;
     document.documentElement.dir = locale === "ar" ? "rtl" : "ltr";
     window.dispatchEvent(new CustomEvent("vozen:languagechange", { detail: { language: locale } }));
     if (typeof window.vozenLoadPublicLocale === 'function') {
@@ -62,7 +63,7 @@
     }
   };
   const renderDocsLanguageOptions = () => NAV_LANGUAGES.map(([code, flag, name]) =>
-    `<li role="option" aria-selected="false"><a class="docs-ecosystem-nav__language-option lang__opt" href="/${code === 'en' ? '' : code + '/'}" data-language="${code}">${flagMarkup(flag)}<span class="docs-ecosystem-nav__language-option-name lang__optname">${escapeHtml(name)}</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li>`).join("");
+    `<li role="option" aria-selected="false"><a class="docs-ecosystem-nav__language-option lang__opt" href="${escapeHtml(location.pathname + location.search + location.hash)}" data-language="${code}">${flagMarkup(flag)}<span class="docs-ecosystem-nav__language-option-name lang__optname">${escapeHtml(name)}</span><span class="docs-ecosystem-nav__language-check lang__check" aria-hidden="true">✓</span></a></li>`).join("");
   const syncDocsLanguageMenus = () => {
     const current = navLocale();
     const selected = NAV_LANGUAGES.find(([code]) => code === current) || NAV_LANGUAGES[0];
@@ -83,19 +84,19 @@
     });
   };
   const applyNavTranslations = () => {
-    document.querySelectorAll("[data-i18n]").forEach((element) => {
+    document.querySelectorAll("header.vozen-global-nav [data-i18n]").forEach((element) => {
       const key = element.getAttribute("data-i18n");
       if (!key) return;
       const value = navText(key, element.textContent);
       if (element.textContent !== value) element.textContent = value;
     });
-    document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+    document.querySelectorAll("header.vozen-global-nav [data-i18n-aria-label]").forEach((element) => {
       const key = element.getAttribute("data-i18n-aria-label");
       if (!key) return;
       const value = navText(key, element.getAttribute("aria-label"));
       if (element.getAttribute("aria-label") !== value) element.setAttribute("aria-label", value);
     });
-    document.querySelectorAll("[data-i18n-title]").forEach((element) => {
+    document.querySelectorAll("header.vozen-global-nav [data-i18n-title]").forEach((element) => {
       const key = element.getAttribute("data-i18n-title");
       if (!key) return;
       const value = navText(key, element.getAttribute("title"));
@@ -359,13 +360,11 @@
     panel?.addEventListener("click", (event) => {
       const option = event.target.closest("[data-language]");
       if (!option) return;
-      // Editorial guides have separate locale URLs, not in-place translations.
-      if (document.body.classList.contains('vozen-guide-page') || location.pathname === '/pt/tts/') return;
       if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
       setNavLocale(option.getAttribute("data-language"));
       close();
-      button?.focus();
+      button?.focus({ preventScroll: true });
     });
     document.addEventListener("pointerdown", (event) => {
       if (!menu.contains(event.target)) close();

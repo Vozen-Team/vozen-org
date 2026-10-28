@@ -10,6 +10,7 @@ async function runExample(text) {
   vm.runInNewContext(source, {
     Node: { TEXT_NODE: 3 },
     window: {
+      addEventListener() {},
       vozenPublicI18nReady: Promise.resolve(),
       VOZEN_I18N: { pt: { 'tts.reading': 'a ler em voz alta…' } },
     },
@@ -34,7 +35,7 @@ test('local proposal copy is applied after the translation catalogue is ready', 
   const element = { dataset: { previewCopy: 'Your server.' }, textContent: 'Previous heading' };
   vm.runInNewContext(source, {
     Node: { TEXT_NODE: 3 },
-    window: { vozenPublicI18nReady: Promise.resolve() },
+    window: { vozenPublicI18nReady: Promise.resolve(), addEventListener() {} },
     document: {
       documentElement: { dataset: {} },
       querySelectorAll: selector => selector === '[data-preview-copy]' ? [element] : [],
@@ -53,7 +54,7 @@ test('authored headline copy is not repainted after initialization', async () =>
   };
   vm.runInNewContext(source, {
     Node: {TEXT_NODE: 3},
-    window: {vozenPublicI18nReady: Promise.resolve()},
+    window: {vozenPublicI18nReady: Promise.resolve(), addEventListener() {}},
     document: {documentElement: {dataset: {}},
       querySelectorAll: selector => selector === '[data-preview-copy]' ? [element] : []},
   });

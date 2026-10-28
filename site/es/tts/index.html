@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#07070d">
     <title data-i18n="tts.documentTitle">Vozen TTS — 35 idiomas, 38 voces</title>
-    <meta name="description" content="Vozen lee tu chat de Discord en voz alta con voces neuronales naturales — en 35 idiomas, con juegos, risas y un núcleo que es gratis para siempre">
+    <meta name="description" content="Texto a voz para tus llamadas de Discord.">
 
     <!-- Social + canonical. URLs ABSOLUTAS do dominio proprio (vozen.org via GitHub
          Pages). Se algum dia mudares de dominio, troca estas 4 URLs (canonical,
@@ -28,22 +28,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vozen.org/es/tts/">
     <meta property="og:title" content="Vozen TTS — 35 idiomas, 38 voces">
-    <meta property="og:description" content="Vozen lee tu chat de Discord en voz alta con voces neuronales naturales — en 35 idiomas, con juegos, risas y un núcleo que es gratis para siempre">
+    <meta property="og:description" content="Texto a voz para tus llamadas de Discord.">
     <meta property="og:image" content="https://vozen.org/assets/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Vozen — Discord TTS with 38 voices in 35 languages, core free forever">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Vozen TTS — 35 idiomas, 38 voces">
-    <meta name="twitter:description" content="Vozen lee tu chat de Discord en voz alta con voces neuronales naturales — en 35 idiomas, con juegos, risas y un núcleo que es gratis para siempre">
+    <meta name="twitter:description" content="Texto a voz para tus llamadas de Discord.">
     <meta name="twitter:image" content="https://vozen.org/assets/og-image.png">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <link rel="preload" href="/assets/fonts/unbounded-critical-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="/assets/fonts/outfit-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/tts-page-v1.css?v=61b3f9ac56a2">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/es/tts/","description":"Vozen lee tu chat de Discord en voz alta con voces neuronales naturales — en 35 idiomas, con juegos, risas y un núcleo que es gratis para siempre","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"},"inLanguage":"es"}</script>
+    <link rel="stylesheet" href="css/tts-page-v1.css?v=6ae88b0eb00a">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/es/tts/","description":"Texto a voz para tus llamadas de Discord.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"},"inLanguage":"es"}</script>
 
     <!-- FAQ structured data (Google rich results). Mantém em sincronia com
          window.VOZEN_FAQ (js/i18n.js) — o JSON-LD tem de ser ESTÁTICO porque os
@@ -101,11 +101,11 @@
 
 
             <h1 class="hero__title reveal" data-r="2">
-              <span data-preview-i18n="hero.title1" data-preview-copy="Your chat.">¿Sin micrófono?</span>
-              <span class="grad" data-preview-i18n="hero.title2" data-preview-copy="Out loud.">Sigue en la conversación.</span>
+              <span data-preview-i18n="hero.title1" data-preview-copy="Your chat.">Tu chat.</span>
+              <span class="grad" data-preview-i18n="hero.title2" data-preview-copy="Out loud.">En voz alta.</span>
             </h1>
 
-            <p class="hero__sub reveal" data-r="3">Text-to-speech for your Discord calls.</p>
+            <p class="hero__sub reveal" data-r="3" data-i18n="hero.sub">Texto a voz para tus llamadas de Discord.</p>
 
             <div class="hero__cta reveal" data-r="4">
               <a class="btn btn--primary btn--discord-cta js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero">
@@ -136,7 +136,7 @@
       <div class="msg__av msg__av--v"><span class="eq" style="height:16px"><i></i><i></i><i></i><i></i><i></i></span></div>
       <div class="msg__b">
         <div class="msg__name"><b>Vozen</b><span class="tag">APP</span></div>
-        <div class="speaking"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span> leyéndolo en voz alta…</div>
+        <div class="speaking"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span> reading it out loud…</div>
       </div></div></div>
             </div>
           </div>
@@ -209,7 +209,7 @@
                 <span class="feature-sound"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
               </div>
               <h3 data-i18n="feat.1.t">Canal de lectura automática</h3>
-              <p data-i18n="feat.1.d">Elige un canal y Vozen lee cada mensaje en voz alta. Configúralo una vez con /setup</p>
+              <p data-i18n="feat.1.d">Elige un canal y Vozen lee cada mensaje en voz alta. Configúralo una vez con <code>/setup</code></p>
             </article>
 
             <article class="card feature-card feature-card--languages">
@@ -713,13 +713,14 @@
     <script defer="" src="js/install-config-v1.js?v=97c30a4aaef1"></script>
     <script defer="" src="js/tts-install-v1.js?v=06da33493db0"></script>
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer="" src="js/global-nav-v1.js?v=24adad31b169"></script>
-    <script defer="" src="js/i18n-public-loader-v1.js?v=e998362111e0"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=3e5ee2a2a1c7"></script>
+    <script defer="" src="js/global-nav-v1.js?v=c36e628c7056"></script>
+    <script defer="" src="js/i18n-public-loader-v1.js?v=2b404bb3d903"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=2decb7cc2c60"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
-<script defer="" src="js/product-preview-v1.js?v=8765318a48b5"></script>
+<script defer="" src="js/product-preview-v1.js?v=dd06ef7904bf"></script>
 <script defer="" src="js/tts-player-preview-v1.js?v=98f9725fcf83"></script>
 <script defer="" src="js/tts-features-preview-v1.js?v=50a88a38197c"></script>
+
 
 
 

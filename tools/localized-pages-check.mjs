@@ -46,9 +46,7 @@ for (const [locale, htmlLang] of locales) {
     for (const hreflang of hrefLanguages) {
       assert.match(html, new RegExp(`hreflang=["']${hreflang}["']`, 'i'), `${relative} misses ${hreflang}`);
     }
-    if (!(locale === 'pt' && page === 'tts')) {
-      assert.match(html, /i18n-public-loader-v1\.js/, `${relative} does not load its isolated locale`);
-    }
+    assert.match(html, /i18n-public-loader-v1\.js/, `${relative} does not load its isolated locale`);
     if (locale === 'ar') assert.match(html, /<html\b[^>]*\bdir=["']rtl["']/i, `${relative} is not RTL`);
     assert.ok(sitemap.includes(`<loc>${canonical}</loc>`), `${relative} is missing from sitemap.xml`);
 
@@ -79,7 +77,7 @@ for (const [locale, htmlLang] of locales) {
       assert.ok(html.includes(translation.helperFaq[0][1]), `${relative} does not show its Helper FAQ answer`);
     }
 
-    if (page === 'tts' && !(locale === 'pt')) {
+    if (page === 'tts') {
       const translation = catalog(locale);
       const faq = structuredData(html, 'FAQPage');
       assert.ok(faq, `${relative} is missing FAQPage structured data`);
