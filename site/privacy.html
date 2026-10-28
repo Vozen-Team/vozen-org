@@ -74,15 +74,15 @@
     <main class="legal">
       <a class="back" href="/" data-i18n="legal.back">← Back to Vozen</a>
       <h1 data-i18n="legal.privacyTitle">Privacy Policy — Vozen</h1>
-      <p class="updated"><span data-i18n="legal.lastUpdated">Last updated:</span> 7 October 2026</p>
+      <p class="updated"><span data-i18n="legal.lastUpdated">Last updated:</span> 28 October 2026</p>
 
       <p>
         Vozen is a text-to-speech (TTS) bot for Discord. This page explains exactly what
         data the official Vozen service (<b>vozen.org</b>) collects, why, the legal basis for
         it, how long we keep it, and the rights you have under the EU General Data Protection
-        Regulation (GDPR) and similar laws. In plain language: Vozen keeps the settings it
-        needs to work, and nothing else. It does <b>not</b> keep a log of your messages, sets
-        <b>no cookies</b>, uses no advertising tracker, and never asks you to type your Discord
+        Regulation (GDPR) and similar laws. In plain language: Vozen keeps the settings and limited
+        service records described below. It does <b>not</b> keep a log of your messages, uses essential sign-in sessions
+        rather than advertising trackers, and never asks you to type your Discord
         email, phone number, or password. Eligible public pages use cookie-free Cloudflare Web
         Analytics for aggregate traffic and Core Web Vitals, as explained in §8. With your Discord
         OAuth permission, instant activation can read the verified email on your Discord account
@@ -105,8 +105,9 @@
 
       <h2>2. What we store</h2>
       <p>
-        Everything below is keyed to your Discord <b>user ID</b> and/or <b>server ID</b>
-        (the numeric identifiers Discord already shares with every bot). We never store
+        The settings and service records below use your Discord <b>user ID</b> and/or
+        <b>server ID</b> (the numeric identifiers Discord already shares with every bot).
+        Some limited-purpose counters instead use a keyed pseudonymous identifier, as explained below. We never store
         your real name — only the display name you already show in the server, and only at
         the moment it is spoken.
       </p>
@@ -116,6 +117,7 @@
         <li><b>Opt-out list</b> — if you ask Vozen not to read your messages, we store that choice.</li>
         <li><b>Fun stats</b> — minigame scores (points and wins) and "top speaker" counts (how many of your messages were read aloud, plus daily streaks). These power the <code>/topspeakers</code> and <code>/game</code> leaderboards.</li>
         <li><b>Aggregate TTS usage</b> — the <code>talk_usage</code> table keeps counters by server, user, detected/selected language, and resolved TTS engine. It stores counts only, never message text. These aggregates let the private operator console show a top talker's dominant language and engine. They are deleted for that user by <code>/privacy erase</code> and for that server by the server-data purge.</li>
+        <li id="google-hd-quota"><b>Google HD monthly quota</b> — character counts keep the paid Google HD voice within its user, active-pass, server and service limits. User and active-pass counters use a keyed HMAC derived from the quota scope, UTC month and Discord ID. These are <b>pseudonymous, not anonymous</b> records: they can still be associated with the account when its ID and the server-held key are available. The counters store no message text or audio. The current-month user/pass count remains after <code>/privacy erase</code> solely to enforce the monthly limit; see §11 and §12.</li>
         <li><b>Birthday</b> — only the <b>month and day</b> you optionally set, never the year. Used so Vozen can wish you a happy birthday in the voice channel.</li>
         <li><b>Optional Vozen notices</b> — Top.gg reward and support-server cards are off by default and can be enabled by an admin with <code>/config vote-reminders active:true</code>. They alternate in the configured setup channel: at most one card in any rolling 24 hours, and each kind at most once per 48 hours, so both can never appear on the same day. A server ID, timestamp, and last-card kind persist this rotation across restarts; every card explains how to disable it. When you vote, top.gg separately sends your Discord user ID in a signed webhook. Each eligible vote grants <b>24 hours of Plus</b>, up to four grants in a rolling 30-day window and never more than 48 hours ahead. The raw ID is kept only while the entitlement is active. A keyed one-way HMAC entry is retained for 30 days solely to apply that rolling limit.</li>
         <li><b>Server growth lifecycle</b> — to understand whether installation and setup work, Vozen stores the server ID, product, first and latest join, setup completion, first successful value, last activity, departure and an allowed installation source. Individual server rows are deleted 30 days after departure; only non-identifying daily totals remain.</li>
@@ -127,7 +129,7 @@
       <ul>
         <li><b>To provide the service you asked for</b> (GDPR Art. 6(1)(b)/(f)) — your voice/engine/speed preferences, server settings, opt-out choice, pronunciation overrides, and existing entitlement status.</li>
         <li><b>Your consent</b> (Art. 6(1)(a)) — your optional birthday and voice transcription (see §6). You can withdraw consent at any time; it does not affect processing already done.</li>
-        <li><b>Our legitimate interests</b> (Art. 6(1)(f)) — keeping the bot working and fair: rate limits, the blocklist, anti-spam, operational/security logs, the short-lived pseudonymous vote ledger needed to enforce the rolling reward limit, service-improvement totals, and the minigame and "top speaker" leaderboards. You can object at any time (see §12).</li>
+        <li><b>Our legitimate interests</b> (Art. 6(1)(f)) — keeping the bot working and fair: rate limits, the blocklist, anti-spam, operational/security logs, the short-lived pseudonymous vote ledger needed to enforce the rolling reward limit, monthly Google HD quota counts for cost control, service-improvement totals, and the minigame and "top speaker" leaderboards. You can object at any time (see §12).</li>
       </ul>
 
       <h2>4. What we do NOT store</h2>
@@ -136,7 +138,7 @@
         <li>We do <b>not</b> store, cache, or log the verified Discord email used for instant activation or the transient hash computed from it. Both exist only in memory for that activation request and are then discarded.</li>
         <li>To speed up repeated phrases, recently synthesized audio may be cached on the server. It is keyed by a content hash rather than your user ID and expires seven days after its last write; reading it does not extend that deadline. Cached audio can still reveal the spoken content to someone with server-file access.</li>
         <li>Outside of a transcription session you consented to, the bot stays deafened and does not listen to or store voice-channel audio.</li>
-        <li>We do <b>not</b> keep web access logs that tie your IP address to your activity. Our API (<code>api.vozen.org</code>) uses your IP only <b>momentarily</b>, in memory, for rate-limiting and security — it is never written to our logs. (This website is served by GitHub Pages, whose standard host logs are outside our control; see §9.)</li>
+        <li>We do <b>not</b> keep web access logs that tie your IP address to your activity. Our API (<code>api.vozen.org</code>) uses your IP only <b>momentarily</b>, in memory, for rate-limiting and security — it is never written to our logs. (Cloudflare delivers this website and processes request metadata for hosting and security; see §9.)</li>
         <li>Stripe may process billing details and payment-method information as an independent payment processor. Vozen receives only the identifiers and subscription state needed to provide the digital service.</li>
       </ul>
 
@@ -169,28 +171,46 @@
 
       <h2>7. Signing in on vozen.org</h2>
       <p>
-        When you log in with Discord to view your account or the server dashboard, we use Discord
-        OAuth2 and request your basic profile (<b>identify</b>) and, for the dashboard, your
-        <b>server list</b> (<b>guilds</b>). No payment email or checkout credential is requested.
-        Basic profile and server-list data may be cached in memory for at most ~60 seconds and
-        are not written to our database. Your access token stays in <b>your browser</b> and is
-        sent only to Vozen's own API over HTTPS.
+        Discord OAuth2 lets Vozen show your account and check which servers you may manage.
+        The account sign-in requests your basic profile (<b>identify</b>), verified email
+        (<b>email</b>, for the instant-activation flow described above), and server list
+        (<b>guilds</b>). Vozen does not ask you to type a Discord password or payment credential.
+        The account API may keep basic identity and server-list data in memory for about
+        60 seconds to answer requests. The verified email and its transient activation hash
+        are not included in that cache.
+      </p>
+      <p>
+        Sign-in transport depends on the surface. The public account and TTS dashboard support
+        browser-held OAuth credentials; the account can exchange that credential with Vozen's
+        API to establish a Helper session cookie. The Helper also supports a server-side OAuth
+        authorization-code flow: its API exchanges the Discord code and sets the first-party
+        session cookie. This is separate from asking the browser to store Discord credentials.
+        Helper session and managed-server authorization records are used to check access.
       </p>
 
       <h2>8. Cookies &amp; local storage</h2>
       <p>
-        vozen.org sets <b>no cookies</b>. When the optional Cloudflare Web Analytics beacon is
-        enabled, it runs only on public marketing, documentation and legal pages to produce
-        cookie-free, aggregate page, referrer, device and web-vitals measurements; account,
-        dashboard, OAuth callback and private operator pages are excluded. It does not provide
-        custom product events or advertising profiles. Fonts are served from our own server. The
-        site uses your browser's storage only for strictly necessary
-        functions: your Discord access token (<code>sessionStorage</code>, cleared when you log
-        out or close the tab), a one-shot activation intent containing no email (also
-        <code>sessionStorage</code>, removed on use and expiring after five minutes), and your
-        chosen interface language (<code>localStorage</code>). Because these are strictly
-        necessary to provide what you asked for, and the optional analytics beacon is cookie-free,
-        no consent banner is required.
+        Essential login cookies are used for cookie-backed sessions, including the Helper
+        session and OAuth state. These Helper cookies are marked <b>Secure</b> and <b>HttpOnly</b>,
+        so they are sent over HTTPS and are not readable by page JavaScript. OAuth state and
+        session cookies have their own expiry; signing out clears the site's sign-in state
+        and requests server-side logout for the linked sessions.
+      </p>
+      <p>
+        Browser-based and compatibility sign-in flows may also store a credential and profile
+        display cache in <code>sessionStorage</code>, and an expiry-bounded login record in
+        <code>localStorage</code> so sign-in can survive a browser restart. Closing a tab alone
+        may therefore leave a remembered login. Signing out clears those records. A one-shot
+        activation intent containing no email may remain in <code>sessionStorage</code> until
+        use or its five-minute expiry. The chosen interface language is kept in
+        <code>localStorage</code>.
+      </p>
+      <p>
+        When the optional Cloudflare Web Analytics beacon is enabled, it runs only on public
+        marketing, documentation and legal pages to produce cookie-free, aggregate page,
+        referrer, device and web-vitals measurements; account, dashboard, OAuth callback and
+        private operator pages are excluded. It does not provide custom product events or
+        advertising profiles. Fonts are served from our own server.
       </p>
 
       <h2>9. Who we share data with</h2>
@@ -201,14 +221,14 @@
         <li><b>top.gg</b> — we publish the bot's <b>server count</b>. If you vote, top.gg sends your Discord user ID to our signed webhook so Vozen can apply the advertised 24-hour Plus reward; no message content is sent.</li>
         <li><b>Cloudflare Web Analytics</b> — when enabled on an eligible public page, Cloudflare receives the information required for its cookie-free aggregate traffic and Core Web Vitals reporting. Its access credentials stay on the server and are never exposed in this website or the operator panel.</li>
         <li><b>Operator admin console</b> — the operator has a private console (gated by the operator's own Discord login — only the owner's account may enter) to manage Premium and to see <b>aggregate usage per server</b>: the server's name and icon, how many messages Vozen read there, top talkers, and each global top talker's dominant language and TTS engine from <code>talk_usage</code>. These are counters, never message content. User-scoped <code>talk_stats</code> and <code>talk_usage</code> are removed by <code>/privacy erase</code>; server-scoped rows are removed by the server-data purge.</li>
-        <li><b>GitHub Pages</b> — hosts this website; like any web host it processes standard request logs (including IP addresses).</li>
+        <li><b>Cloudflare</b> — delivers this website and processes request metadata, including IP addresses, for hosting and security.</li>
         <li><b>OVHcloud</b> — hosts the bot's server and database in Gravelines, France.</li>
       </ul>
 
       <h2>10. Where your data is processed (international transfers)</h2>
       <ul>
         <li><b>The bot's database and processing</b> run on an OVHcloud server in <b>Gravelines, France (EU)</b>.</li>
-        <li><b>This website</b> is hosted by <b>GitHub Pages</b>, whose infrastructure may process requests outside the EEA. Transfers rely on an applicable adequacy decision where available and otherwise on appropriate safeguards such as Standard Contractual Clauses.</li>
+        <li><b>This website</b> is delivered through <b>Cloudflare</b>, whose infrastructure may process requests outside the EEA. Transfers rely on an applicable adequacy decision where available and otherwise on appropriate safeguards such as Standard Contractual Clauses.</li>
         <li><b>Google voices</b>: text read with a Google voice may be processed outside the EEA. Transfers rely on the provider's applicable transfer mechanism, such as an adequacy framework where certified or Standard Contractual Clauses.</li>
       </ul>
 
@@ -219,9 +239,9 @@
         <li><b>Server growth lifecycle</b> — the identifiable server lifecycle row is deleted 30 days after the bot leaves that server. Daily aggregate counts do not contain server or user IDs.</li>
         <li><b>Server data</b> — automatically deleted <b>30 days</b> after Vozen is removed from a server, unless it is re-invited within that window.</li>
         <li><b>Audio cache</b> — generated speech expires <b>seven days after its last write</b>, with a cleanup sweep at startup and every hour even without traffic. Expired audio is deleted instead of reused; repeated reads do not renew its age. In normal operation, an idle file can remain until the next hourly sweep (up to seven days plus one hour). The cache also has a count limit of about 500 completed files per engine. Expired synthesis temporary files and abandoned workspaces are cleaned as well. Cleanup failures are logged and retried; startup is refused if its initial cleanup fails. The hosting provider's single daily infrastructure snapshot may preserve a pre-deletion copy of the encrypted data volume for up to a further 24 hours. The cache is not indexed by your user ID, so contact support for a cache-deletion request.</li>
-        <li><b>HD-voice usage counter</b> — auto-purged after about 3 months.</li>
+        <li id="google-hd-quota-retention"><b>HD-voice usage counters</b> — user and active-pass HMAC counters are retained for the <b>current UTC calendar month</b> and deleted by the <b>first daily cleanup after that month ends</b>. They contain a pseudonymous marker and character total, not message text or audio. On <code>/privacy erase</code>, any current-month raw-ID user/pass count is preserved under that HMAC marker and all of that user's legacy raw-ID user/pass rows are deleted. Existing raw-ID records are not bulk-converted at startup. Server and service pools, and legacy raw-ID rows not covered by an erasure request, retain the existing approximately three-month cleanup period.</li>
         <li><b>Premium entitlement records</b> — kept while needed for an active entitlement and afterwards only for entitlement history, fraud prevention, disputes, and legal obligations; deleted or anonymized when no longer necessary.</li>
-        <li><b>Website login</b> — your token lives only in your browser session; basic identity data may use a ~60-second server-side cache. The activation email and transient hash are never cached and are discarded as soon as that request finishes.</li>
+        <li><b>Website login</b> — cookie-backed sessions and browser-held credentials expire according to their session or OAuth validity. A remembered browser login can survive a tab or browser restart until expiry or logout. Basic account identity data may use a ~60-second in-memory cache; Helper authorization uses session records. The activation email and transient hash are never cached and are discarded as soon as that request finishes.</li>
       </ul>
 
       <h2>12. Your rights</h2>
@@ -230,7 +250,7 @@
       <ul>
         <li><b>Access</b> — ask what data is tied to your ID.</li>
         <li><b>Rectification</b> — most of your data is settings you can change yourself with the bot's commands.</li>
-        <li><b>Erasure</b> — <code>/privacy erase</code> deletes your erasable personal settings, preferences, consent, scores, <code>talk_stats</code>, <code>talk_usage</code>, and an active free vote entitlement across all servers. A pseudonymous vote-limit entry may remain for at most 30 days to prevent replay and enforce the published rolling limit. It also does not silently revoke paid rights or destroy minimum financial and activation records retained for accounting, fraud prevention, disputes, and legal obligations. Individual commands remove single items (<code>/voice reset</code>, <code>/voice nickname</code> with no name, <code>/voice opt-in</code>, <code>/config reset</code>, and so on).</li>
+        <li><b>Erasure</b> — <code>/privacy erase</code> deletes your erasable personal settings, preferences, consent, scores, <code>talk_stats</code>, <code>talk_usage</code>, and an active free vote entitlement across all servers. The current UTC month's pseudonymous Google HD user/pass quota count is retained solely for monthly cost control, even after erasure, and is deleted by the first daily cleanup after month end. Any legacy raw-ID user/pass counter rows for that user are deleted. A pseudonymous vote-limit entry may remain for at most 30 days to prevent replay and enforce the published rolling limit. It also does not silently revoke paid rights or destroy minimum financial and activation records retained for accounting, fraud prevention, disputes, and legal obligations. Individual commands remove single items (<code>/voice reset</code>, <code>/voice nickname</code> with no name, <code>/voice opt-in</code>, <code>/config reset</code>, and so on).</li>
         <li><b>Restriction &amp; objection</b> — stop being read aloud with <code>/voice opt-out</code>, or ask us to restrict processing.</li>
         <li><b>Portability</b> — request a copy of your data.</li>
         <li><b>Withdraw consent</b> — e.g. <code>/transcribe revoke</code> or removing your birthday — at any time, without affecting past processing.</li>
