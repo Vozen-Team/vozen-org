@@ -63,3 +63,14 @@ test('an explicit language choice persists between the standard product URLs', a
     await expect(page.locator('html')).toHaveAttribute('lang', 'pt-PT');
   }
 });
+
+test('the Portuguese homepage headline stays compact at narrow and wide widths', async ({ page }) => {
+  for (const width of [320, 375, 638, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/pt/', { waitUntil: 'networkidle' });
+    await expect(page.locator('#eco-title')).toContainText('Para o teu servidor.');
+    const lines = await page.locator('#eco-title').evaluate(element =>
+      element.getBoundingClientRect().height / parseFloat(getComputedStyle(element).lineHeight));
+    expect(lines, `${width}px: ${lines} lines`).toBeLessThanOrEqual(3.1);
+  }
+});
