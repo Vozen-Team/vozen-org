@@ -3057,7 +3057,9 @@ function App() {
             ? helperText('See what happened and stay in control.')
             : route.page === 'rank-card'
               ? helperText('Create the level card with your server identity.')
-              : helperText('All settings for this server.');
+              : route.page === 'detail' && currentFeature
+                ? localizedFeature(currentFeature).description
+                : helperText('All settings for this server.');
   return (
     <div className="workspace-app workspace-app--helper">
       <EcosystemTopbar />
