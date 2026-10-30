@@ -123,6 +123,14 @@ try {
     });
     await page.goto(`${base}#/config/${feature.key}`);
     if (scenario.startsWith('settings-layout')) {
+      await page.getByLabel('Product',{exact:true}).waitFor();
+      await page.evaluate(()=>document.fonts.ready);
+      for(const control of await page.locator('.workspace-sidebar select').all()){
+        assert.equal(await control.evaluate(el=>getComputedStyle(el).alignItems),'center');
+        assert.equal(await control.evaluate(el=>getComputedStyle(el).whiteSpace),'nowrap');
+        assert.equal(await control.evaluate(el=>getComputedStyle(el).paddingRight),'12px');
+      }
+      assert.ok(await page.getByLabel('Product',{exact:true}).evaluate(el=>{const s=getComputedStyle(el),c=document.createElement('canvas').getContext('2d');c.font=s.fontWeight+' '+s.fontSize+' '+s.fontFamily;return c.measureText(el.selectedOptions[0].text).width+parseFloat(s.paddingLeft)+parseFloat(s.paddingRight)+24<=el.clientWidth;}),'Helper product label fits on one line');
       const activation=page.locator('.settings-activation');await activation.getByRole('checkbox').waitFor();
       assert.equal(await page.locator('.detail-intro').count(),0);
       assert.equal(await activation.locator('input[type=checkbox]').isChecked(),true);
