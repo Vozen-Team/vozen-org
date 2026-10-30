@@ -8,6 +8,7 @@ import './styles-foundation.css';
 import '../../../site/css/workspace-v1.css';
 import './ecosystem-nav.css';
 import './helper-modern.css';
+import '../../../site/css/settings-v2.css';
 import { normalizePanelRoute, panelRoute, PANEL_ROUTE_EVENT } from './panel-route';
 import { isSupportedLocale, setHelperLocale } from './i18n';
 

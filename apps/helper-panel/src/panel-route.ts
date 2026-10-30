@@ -55,8 +55,13 @@ export function panelRoute(location: Location = window.location): string {
 }
 
 export function navigatePanel(route: string, replace = false): boolean {
-  const path = panelPath(route);
+  let path = panelPath(route);
   if (!path) return false;
+  if (!path.startsWith('/panel/collection/')) {
+    const currentFilters = new URLSearchParams(window.location.search), filters = new URLSearchParams();
+    for (const key of ['category', 'q']) if (currentFilters.has(key)) filters.set(key, currentFilters.get(key)!);
+    if (filters.size) path += '?' + filters.toString();
+  }
   const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
   if (path === current) return true;
   window.history[replace ? 'replaceState' : 'pushState'](null, '', path);

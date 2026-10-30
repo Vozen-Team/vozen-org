@@ -32,6 +32,12 @@ describe('clean Helper routes', () => {
     expect(panelPath('#/achievements/invalid')).toBe('/panel/collection/');
     expect(panelRoute({pathname:'/panel/collection/',search:'',hash:''})).toBe('#/achievements/invalid');
   });
+  it('preserves only catalogue filters across feature navigation', () => {
+    const pushState = vi.fn();
+    vi.stubGlobal('window', {location:{pathname:'/panel/features/',search:'?category=community&q=star&token=private',hash:''},history:{pushState},dispatchEvent:vi.fn()});
+    expect(navigatePanel('#/config/community.starboard')).toBe(true);
+    expect(pushState).toHaveBeenCalledWith(null,'','/panel/starboard/?category=community&q=star');
+  });
   it('uses history with a navigation event, never a page reload', () => {
     const pushState=vi.fn(),replaceState=vi.fn(),dispatchEvent=vi.fn();
     vi.stubGlobal('window',{location:{pathname:'/panel/',search:'',hash:''},history:{pushState,replaceState},dispatchEvent});

@@ -4,7 +4,7 @@ import { mkdir } from 'node:fs/promises';
 const browser = await chromium.launch();
 const base = process.env.HELPER_TEST_URL || 'http://127.0.0.1:5179/panel/helper-tracker/';
 try {
-  for (const scenario of ['delayed-session', 'remember-server', 'legacy-bearer', 'retry-detail', 'missing-schema', 'stale-detail', 'uncertain-switch', 'free-card', 'retry-resources', 'wrong-guild-resources', 'stale-resources', 'simulation-video', 'simulation-pt', 'simulation-failure', 'simulation-invalid', 'simulation-mismatch', 'simulation-close', 'simulation-media-error', 'simulation-route-change', 'simulation-timeout', 'channel-create', 'channel-error', 'channel-wrong-guild', 'channel-switch', 'channel-no-permissions', 'channel-mobile', 'channel-pt', 'channel-one-click', 'multiple-resources', 'multiple-mobile', 'multiple-keyboard', 'fields-visible', 'channel-permission-error', 'autosave-suggestions', 'autosave-rapid', 'autosave-failure', 'autosave-conflict', 'autosave-navigation', 'autosave-guild', 'autosave-validation']) {
+  for (const scenario of ['settings-layout-desktop','settings-layout-mobile','delayed-session', 'remember-server', 'legacy-bearer', 'retry-detail', 'missing-schema', 'stale-detail', 'uncertain-switch', 'free-card', 'retry-resources', 'wrong-guild-resources', 'stale-resources', 'simulation-video', 'simulation-pt', 'simulation-failure', 'simulation-invalid', 'simulation-mismatch', 'simulation-close', 'simulation-media-error', 'simulation-route-change', 'simulation-timeout', 'channel-create', 'channel-error', 'channel-wrong-guild', 'channel-switch', 'channel-no-permissions', 'channel-mobile', 'channel-pt', 'channel-one-click', 'multiple-resources', 'multiple-mobile', 'multiple-keyboard', 'fields-visible', 'channel-permission-error', 'autosave-suggestions', 'autosave-rapid', 'autosave-failure', 'autosave-conflict', 'autosave-navigation', 'autosave-guild', 'autosave-validation']) {
     if (process.env.HELPER_SCENARIO && !scenario.startsWith(process.env.HELPER_SCENARIO)) continue;
     const page = await browser.newPage();
     let ready = false, guild = 'a', earlyReads = 0, detailReads = 0, switches = 0;
@@ -21,11 +21,11 @@ try {
     const multipleScenario = scenario.startsWith('multiple-');
     const resourceScenario = scenario.endsWith('resources');
     const simulationScenario = scenario.startsWith('simulation-');
-    const starboard = resourceScenario || simulationScenario || channelScenario || multipleScenario;
+    const starboard = scenario.startsWith('settings-layout') || resourceScenario || simulationScenario || channelScenario || multipleScenario;
     const feature = {key:autosaveScenario ? 'community.suggestions' : starboard ? 'community.starboard' : 'community.levels',label:autosaveScenario ? 'Suggestions' : starboard ? 'Starboard' : 'Levels & XP',category:'community',available:true,enabled:true};
     if (scenario === 'simulation-pt' || scenario === 'channel-pt' || (scenario === 'free-card' && process.env.HELPER_CARD_LOCALE === 'pt')) await page.addInitScript(() => localStorage.setItem('vozen.lang','pt'));
     if (scenario === 'free-card' && process.env.HELPER_CARD_MOBILE) await page.setViewportSize({width:390,height:844});
-    if (scenario === 'channel-mobile' || scenario === 'multiple-mobile') await page.setViewportSize({width:390,height:844});
+    if (scenario === 'settings-layout-mobile' || scenario === 'channel-mobile' || scenario === 'multiple-mobile') await page.setViewportSize({width:390,height:844});
     if (scenario === 'simulation-video') await page.emulateMedia({reducedMotion:'reduce'});
     if (scenario === 'simulation-timeout') await page.addInitScript(() => {
       const original = window.setTimeout;
@@ -96,6 +96,7 @@ try {
         value = {...feature,guildId:guild,enabled:savedEnabled,config:savedConfig ?? {bannerEnabled:false,xpMin:(guild === 'b' || (scenario === 'stale-detail' && number > 1)) ? 42 : 15},defaults:{},schema:{sections:[{title:'XP progression',fields:[{key:'xpMin',label:'Minimum XP',kind:'number'}]}]},revision};
         if (starboard) value = {...feature,guildId:guild,enabled:savedEnabled,config:savedConfig ?? {channel:'a-starboard',threshold:3,emoji:'⭐'},defaults:{},schema:{sections:[{title:'Starboard',fields:[{key:'channel',label:'Default channel',kind:'channel'},{key:'threshold',label:'Required reactions',kind:'number',min:1,max:100},{key:'emoji',label:'Highlight emoji',kind:'text'}]}]},revision};
         if (autosaveScenario) value = {...feature,guildId:guild,enabled:savedEnabled,config:savedConfig ?? {channel:'a-starboard',voteMode:'up_down',anonymous:false,cooldownHours:24,requiredRole:'',staffChannel:''},schema:{sections:[{title:'Suggestion intake',fields:[{key:'channel',label:'Suggestion channel',kind:'channel'},{key:'voteMode',label:'Voting mode',kind:'select',options:[['up_down','Support / against'],['up_only','Support only']]},{key:'anonymous',label:'Hide author in the public message',kind:'toggle'}]},{title:'Moderation',fields:[{key:'cooldownHours',label:'Cooldown per member (hours)',kind:'number',min:0,max:720,advanced:true},{key:'requiredRole',label:'Required role (optional)',kind:'role',advanced:true},{key:'staffChannel',label:'Staff notification channel (optional)',kind:'channel',advanced:true}]}]},revision};
+        if (scenario.startsWith('settings-layout'))value.defaults={channel:'a-starboard',threshold:1,emoji:'⭐'};
         if (multipleScenario) {
           value.config = savedConfig ?? {...value.config,ignoredChannels:[],ignoredRoles:[]};
           value.schema.sections[0].fields.push({key:'allowSelfStar',label:'Allow the author reaction',kind:'toggle',advanced:true},{key:'includeImages',label:'Include images',kind:'toggle',advanced:true},{key:'ignoredChannels',label:'Channels ignored',kind:'channels',advanced:true},{key:'ignoredRoles',label:'Roles ignored',kind:'roles',advanced:true},{key:'autoRole',label:'Initial role',kind:'role',advanced:true});
@@ -121,6 +122,20 @@ try {
       await route.fulfill({json:value});
     });
     await page.goto(`${base}#/config/${feature.key}`);
+    if (scenario.startsWith('settings-layout')) {
+      const activation=page.locator('.settings-activation');await activation.getByRole('checkbox').waitFor();
+      assert.equal(await page.locator('.detail-intro').count(),0);
+      assert.equal(await activation.locator('input[type=checkbox]').isChecked(),true);
+      assert.equal(writes.length,0);
+      if(scenario.endsWith('mobile')){await page.getByRole('button',{name:'Sections',exact:true}).click();await page.keyboard.press('Escape');assert.equal(await page.getByRole('button',{name:'Sections',exact:true}).getAttribute('aria-expanded'),'false');}
+      if(scenario.endsWith('mobile'))assert.ok((await page.locator('.panel-main').boundingBox()).y<=240,'compact mobile navigation');
+      page.once('dialog',dialog=>dialog.accept());await page.getByRole('button',{name:'Restore defaults',exact:true}).click();
+      await page.waitForFunction(()=>[...document.querySelectorAll('.header-state')].some(e=>e.textContent.includes('Saved automatically')));
+      assert.equal(savedConfig.threshold,1);assert.equal(savedEnabled,true);
+      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+      await mkdir('output/playwright',{recursive:true});await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:`output/playwright/${scenario}.png`,fullPage:true});
+      console.log(`PASS ${scenario}`);await page.close();continue;
+    }
     if (autosaveScenario) {
       const cooldown = page.getByRole('spinbutton',{name:/Cooldown per member/});
       await cooldown.waitFor();
@@ -134,7 +149,7 @@ try {
         await page.getByRole('checkbox',{name:'Hide author in the public message',exact:true}).click();
         await saved();
         assert.equal(savedConfig.anonymous,true);
-        const active = page.locator('.detail-intro input[type=checkbox]');
+        const active = page.locator('.settings-activation input[type=checkbox]');
         await active.uncheck(); await saved(); assert.equal(savedEnabled,false);
         await page.reload();
         await cooldown.waitFor();
