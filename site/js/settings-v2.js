@@ -14,6 +14,7 @@
  }
  function setup(){
   const intro=document.querySelector('#dashRoot .workspace-quick-intro');const form=intro?.closest('.dash-form');if(!form||form.dataset.settingsSetup)return;form.dataset.settingsSetup='true';
+  intro.querySelector('h1')?.setAttribute('hidden','');intro.querySelector('.workspace-heading__eyebrow')?.setAttribute('hidden','');
   const confirmed=form.querySelector('.dash-status--ok');if(confirmed?.textContent){const result=document.createElement('p');result.className='settings-setup-result';result.setAttribute('role','status');result.textContent=confirmed.textContent;intro.append(result);}
   const keys=[['ttsChannelId','autoread'],['defaultVoice','locale','xsaid','autojoin','greetOnJoin','stayInCall'],['readBots','textInVoice','antispam','translationEnabled','maxChars','ratePerMin','priorityRoleId','blockedRoleId','streakAnnounce','soundboard','votePromos']];
   const titles=['Reading channel','Voice and language','Reading rules','Review & Save'],panels=[],all=[];const savebar=form.querySelector('.dash-savebar');if(!savebar)return;
