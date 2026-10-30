@@ -916,7 +916,7 @@
       "</select></label>" +
       '<label class="dash-profile-field">' + esc(t("dashboard.f_autoread")) + triStateHtml("autoRead") + "</label>" +
       '<label class="dash-profile-field">' +
-      triStateHtml("translationEnabled") +
+      esc(fieldCopy("translationEnabled", false)) + triStateHtml("translationEnabled") +
       "</label>" +
       '<label class="dash-profile-field">' + esc(t("dashboard.f_readBots")) + triStateHtml("readBots") + "</label>" +
       '<label class="dash-profile-field">' + esc(t("dashboard.f_defaultVoice")) + '<select class="dash-sel" data-p="defaultVoice">' +

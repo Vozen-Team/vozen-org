@@ -3057,9 +3057,7 @@ function App() {
             ? helperText('See what happened and stay in control.')
             : route.page === 'rank-card'
               ? helperText('Create the level card with your server identity.')
-              : route.page === 'detail' && currentFeature
-                ? localizedFeature(currentFeature).description
-                : helperText('All settings for this server.');
+              : helperText('All settings for this server.');
   return (
     <div className="workspace-app workspace-app--helper">
       <EcosystemTopbar />
@@ -4456,7 +4454,7 @@ function FeatureDetail({
 
         </div>
         {feature?.key !== 'community.achievements' && <aside className="detail-aside card">
-          <section className="settings-activation"><h3>{translatedFeature?.label}</h3>        <label className="switch-row">
+          <section className="settings-activation"><h3>{translatedFeature?.label}</h3><p>{translatedFeature?.description}</p>        <label className="switch-row">
           <span>
             <b>{enabled ? helperText('Active') : helperText('Disabled')}</b>
             {feature?.key !== 'community.achievements' && <small>{helperText('The Helper applies this configuration on the server.')}</small>}
