@@ -2273,6 +2273,7 @@ function App() {
     setDetailLoading(true);
     setDetailError(false);
     setDetailSchema(null);
+    setDetailDefaults(null);
     // The Rust adapter remains the source of truth for live values and
     // publishing. A versioned bundled contract keeps Anti-raid editable when
     // the detail endpoint is temporarily unavailable or omits its schema.
@@ -2281,7 +2282,6 @@ function App() {
     if (localPreviewMode) {
       setDetailSchema(null);
       setDetailConfig({ ...fallback });
-      setDetailDefaults(null);
       setSavedDetailConfig({ ...fallback });
       setDetailEnabled(features.find((item) => item.key === featureKey)?.enabled ?? false);
       setDetailLoading(false);

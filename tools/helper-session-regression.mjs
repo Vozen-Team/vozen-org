@@ -4,7 +4,7 @@ import { mkdir } from 'node:fs/promises';
 const browser = await chromium.launch();
 const base = process.env.HELPER_TEST_URL || 'http://127.0.0.1:5179/panel/helper-tracker/';
 try {
-  for (const scenario of ['settings-layout-desktop','settings-layout-mobile','delayed-session', 'remember-server', 'legacy-bearer', 'retry-detail', 'missing-schema', 'stale-detail', 'uncertain-switch', 'free-card', 'retry-resources', 'wrong-guild-resources', 'stale-resources', 'simulation-video', 'simulation-pt', 'simulation-failure', 'simulation-invalid', 'simulation-mismatch', 'simulation-close', 'simulation-media-error', 'simulation-route-change', 'simulation-timeout', 'channel-create', 'channel-error', 'channel-wrong-guild', 'channel-switch', 'channel-no-permissions', 'channel-mobile', 'channel-pt', 'channel-one-click', 'multiple-resources', 'multiple-mobile', 'multiple-keyboard', 'fields-visible', 'channel-permission-error', 'autosave-suggestions', 'autosave-rapid', 'autosave-failure', 'autosave-conflict', 'autosave-navigation', 'autosave-guild', 'autosave-validation']) {
+  for (const scenario of ['settings-layout-unavailable-defaults','settings-layout-desktop','settings-layout-mobile','delayed-session', 'remember-server', 'legacy-bearer', 'retry-detail', 'missing-schema', 'stale-detail', 'uncertain-switch', 'free-card', 'retry-resources', 'wrong-guild-resources', 'stale-resources', 'simulation-video', 'simulation-pt', 'simulation-failure', 'simulation-invalid', 'simulation-mismatch', 'simulation-close', 'simulation-media-error', 'simulation-route-change', 'simulation-timeout', 'channel-create', 'channel-error', 'channel-wrong-guild', 'channel-switch', 'channel-no-permissions', 'channel-mobile', 'channel-pt', 'channel-one-click', 'multiple-resources', 'multiple-mobile', 'multiple-keyboard', 'fields-visible', 'channel-permission-error', 'autosave-suggestions', 'autosave-rapid', 'autosave-failure', 'autosave-conflict', 'autosave-navigation', 'autosave-guild', 'autosave-validation']) {
     if (process.env.HELPER_SCENARIO && !scenario.startsWith(process.env.HELPER_SCENARIO)) continue;
     const page = await browser.newPage();
     let ready = false, guild = 'a', earlyReads = 0, detailReads = 0, switches = 0;
@@ -76,7 +76,7 @@ try {
         switches++; guild = route.request().postDataJSON().guild_id;
         if (scenario === 'uncertain-switch') { await route.fulfill({status:503,json:{code:'lost_response'}}); return; }
         value = {ok:true,guildId:guild};
-      } else if (path === '/api/config/features') value = {guildId:guild,features:[feature,...(scenario === 'free-card' && process.env.HELPER_CARD_PREMIUM ? [{key:'studio.rank_card',premium_unlocked:true}] : [])]};
+      } else if (path === '/api/config/features') value = {guildId:guild,features:[feature,...(scenario === 'settings-layout-unavailable-defaults'?[{key:'protection.anti_raid',label:'Anti-raid',category:'protection',available:true,enabled:true}]:[]),...(scenario === 'free-card' && process.env.HELPER_CARD_PREMIUM ? [{key:'studio.rank_card',premium_unlocked:true}] : [])]};
       else if (path === `/api/config/features/${feature.key}`) {
         if (route.request().method() === 'PUT') {
           const body = route.request().postDataJSON();
@@ -127,6 +127,14 @@ try {
       assert.equal(await page.locator('.detail-intro').count(),0);
       assert.equal(await activation.locator('input[type=checkbox]').isChecked(),true);
       assert.equal(writes.length,0);
+      if(scenario === 'settings-layout-unavailable-defaults') {
+        assert.equal(await page.getByRole('button',{name:'Restore defaults',exact:true}).isEnabled(),true);
+        await page.getByRole('button',{name:'← Back to features',exact:true}).click();
+        await page.locator('.feature-card').filter({has:page.getByRole('heading',{name:'Anti-raid',exact:true})}).getByRole('button',{name:'Configure',exact:true}).click();
+        await page.locator('.settings-activation').waitFor();
+        assert.equal(await page.getByRole('button',{name:'Restore defaults',exact:true}).isEnabled(),false,'unavailable defaults never reuse the previous feature defaults');
+        assert.equal(writes.length,0);console.log(`PASS ${scenario}`);await page.close();continue;
+      }
       if(scenario.endsWith('mobile')){await page.getByRole('button',{name:'Sections',exact:true}).click();await page.keyboard.press('Escape');assert.equal(await page.getByRole('button',{name:'Sections',exact:true}).getAttribute('aria-expanded'),'false');}
       if(scenario.endsWith('mobile'))assert.ok((await page.locator('.panel-main').boundingBox()).y<=240,'compact mobile navigation');
       page.once('dialog',dialog=>dialog.accept());await page.getByRole('button',{name:'Restore defaults',exact:true}).click();
