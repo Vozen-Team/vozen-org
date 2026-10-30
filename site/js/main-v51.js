@@ -1020,6 +1020,9 @@
         target.removeAttribute("aria-busy");
       });
     }, { capture: true });
+    if (new URLSearchParams(window.location.search).get("music") === "1" && storedToken()) {
+      document.querySelector("a.account-task--music")?.click();
+    }
   }
 
   // The account page is the single sign-in surface for the Vozen ecosystem.

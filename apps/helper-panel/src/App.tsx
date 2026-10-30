@@ -3073,7 +3073,7 @@ function App() {
             decoding="async"
           />
           <div>
-            <select className="settings-product-switch" aria-label="Product" value="helper" onChange={event => { const target=event.target.value==='tts'?'/dashboard.html':'https://api.vozen.org/music/dashboard'; void (async()=>{if(autosaveRef.current && !(await autosaveRef.current.flush()))return;window.location.assign(target);})(); }}><option value="tts">Vozen TTS</option><option value="helper">Vozen Helper</option><option value="music">Vozen Music</option></select>
+            <select className="settings-product-switch" aria-label="Product" value="helper" onChange={event => { const target=event.target.value==='tts'?'/dashboard.html':'/account/?music=1'; void (async()=>{if(autosaveRef.current && !(await autosaveRef.current.flush()))return;window.location.assign(target);})(); }}><option value="tts">Vozen TTS</option><option value="helper">Vozen Helper</option><option value="music">Vozen Music</option></select>
             <small>{helperText('SERVER TOOLKIT')}</small>
           </div>
         </div>
