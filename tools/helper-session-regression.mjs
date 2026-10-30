@@ -128,11 +128,12 @@ try {
       assert.equal(await activation.locator('input[type=checkbox]').isChecked(),true);
       assert.equal(writes.length,0);
       if(scenario.endsWith('mobile')){await page.getByRole('button',{name:'Sections',exact:true}).click();await page.keyboard.press('Escape');assert.equal(await page.getByRole('button',{name:'Sections',exact:true}).getAttribute('aria-expanded'),'false');}
+      if(scenario.endsWith('mobile'))assert.ok((await page.locator('.panel-main').boundingBox()).y<=240,'compact mobile navigation');
       page.once('dialog',dialog=>dialog.accept());await page.getByRole('button',{name:'Restore defaults',exact:true}).click();
       await page.waitForFunction(()=>[...document.querySelectorAll('.header-state')].some(e=>e.textContent.includes('Saved automatically')));
       assert.equal(savedConfig.threshold,1);assert.equal(savedEnabled,true);
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
-      await mkdir('output/playwright',{recursive:true});await page.screenshot({path:`output/playwright/${scenario}.png`,fullPage:true});
+      await mkdir('output/playwright',{recursive:true});await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:`output/playwright/${scenario}.png`,fullPage:true});
       console.log(`PASS ${scenario}`);await page.close();continue;
     }
     if (autosaveScenario) {
