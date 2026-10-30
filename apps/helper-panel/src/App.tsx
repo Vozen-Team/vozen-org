@@ -1972,6 +1972,7 @@ function App() {
   const [rankConfig, setRankConfig] = useState(defaultRankCard);
   const [savedRankConfig, setSavedRankConfig] = useState(defaultRankCard);
   const [detailConfig, setDetailConfig] = useState<FeatureConfig>({});
+  const [detailDefaults, setDetailDefaults] = useState<FeatureConfig | null>(null);
   const [savedDetailConfig, setSavedDetailConfig] = useState<FeatureConfig>({});
   const [detailSchema, setDetailSchema] = useState<FeatureSchema | null>(null);
   const [detailEnabled, setDetailEnabled] = useState(false);
@@ -1992,8 +1993,12 @@ function App() {
   const [message, setMessage] = useState<HelperMessage>('');
   const [simulation, setSimulation] = useState<SimulationDraft | null>(null);
   useEffect(() => { setSimulation(null); }, [route.page, route.key, me?.guildId]);
-  const [search, setSearch] = useState('');
-  const [filter, setFilter] = useState<Category>('all');
+  const [sectionsOpen, setSectionsOpen] = useState(false);
+  const sectionsTrigger = useRef<HTMLButtonElement>(null);
+  useEffect(() => { const close = (event: KeyboardEvent) => { if(event.key === 'Escape' && sectionsOpen) { setSectionsOpen(false); sectionsTrigger.current?.focus(); } }; window.addEventListener('keydown', close); return () => window.removeEventListener('keydown', close); }, [sectionsOpen]);
+  const [search, setSearch] = useState(() => new URLSearchParams(location.search).get('q') || '');
+  const [filter, setFilter] = useState<Category>(() => { const value=new URLSearchParams(location.search).get('category'); return categories.find(item=>item.id===value)?.id || 'all'; });
+  useEffect(()=>{const url=new URL(location.href); if(search)url.searchParams.set('q',search);else url.searchParams.delete('q');if(filter!=='all'||url.searchParams.has('category'))url.searchParams.set('category',filter);history.replaceState(history.state,'',url);},[search,filter]);
   const [detailLoading, setDetailLoading] = useState(true);
   const [detailError, setDetailError] = useState(false);
   const [detailRetry, setDetailRetry] = useState(0);
@@ -2006,6 +2011,7 @@ function App() {
   }, [locale]);
 
   const navigate = (path: string) => {
+    setSectionsOpen(false);
     void (async () => {
       if (autosaveRef.current && !(await autosaveRef.current.flush())) return;
       const next = parseRoute(path);
@@ -2275,6 +2281,7 @@ function App() {
     if (localPreviewMode) {
       setDetailSchema(null);
       setDetailConfig({ ...fallback });
+      setDetailDefaults(null);
       setSavedDetailConfig({ ...fallback });
       setDetailEnabled(features.find((item) => item.key === featureKey)?.enabled ?? false);
       setDetailLoading(false);
@@ -2289,6 +2296,7 @@ function App() {
         if (!resolvedSchema) throw new Error('feature_contract_unavailable');
         setDetailSchema(resolvedSchema);
         const apiDefaults = result.defaults ?? {};
+        setDetailDefaults(result.defaults ?? null);
         // Prefer the live adapter contract. The bundled contract is limited to
         // Anti-raid and mirrors the adapter version; it never replaces the API
         // for reads, writes or entitlement checks.
@@ -3054,18 +3062,18 @@ function App() {
     <div className="workspace-app workspace-app--helper">
       <EcosystemTopbar />
       <div className="shell panel-shell workspace-shell workspace-shell--helper">
-      <aside className="sidebar panel-sidebar workspace-sidebar">
+      <aside className={`sidebar panel-sidebar workspace-sidebar${sectionsOpen ? ' settings-sections-open' : ''}`}>
         <div className="logo panel-logo workspace-sidebar__product">
           <img
             className="workspace-sidebar__product-mark workspace-sidebar__product-mark--avatar"
-            src="https://cdn.discordapp.com/app-icons/1526211106081734666/72971b27343d2f9a82a90e645bda38a8.png?size=128"
+            src="/assets/settings-helper.png"
             width={44}
             height={44}
             alt=""
             decoding="async"
           />
           <div>
-            <strong>{helperText('Vozen Helper')}</strong>
+            <select className="settings-product-switch" aria-label="Product" value="helper" onChange={event => { const target=event.target.value==='tts'?'/dashboard.html':'https://api.vozen.org/music/dashboard'; void (async()=>{if(autosaveRef.current && !(await autosaveRef.current.flush()))return;window.location.assign(target);})(); }}><option value="tts">Vozen TTS</option><option value="helper">Vozen Helper</option><option value="music">Vozen Music</option></select>
             <small>{helperText('SERVER TOOLKIT')}</small>
           </div>
         </div>
@@ -3116,6 +3124,7 @@ function App() {
               </div>
             </button>
           ))}
+          <button ref={sectionsTrigger} type="button" className="settings-sections-button" aria-expanded={sectionsOpen} aria-label="Sections" onClick={()=>setSectionsOpen(!sectionsOpen)}>Sections ▾</button>
         </nav>
         <div className="workspace-sidebar__footer">
           <a className="panel-account-link workspace-exit" href="/account/">
@@ -3215,8 +3224,9 @@ function App() {
         {route.page === 'features' && (
           <FeatureCatalogue
             features={filteredFeatures}
+            catalogue={features}
             filter={filter}
-            setFilter={setFilter}
+            setFilter={value=>{const url=new URL(location.href);url.searchParams.set('category',value);history.replaceState(history.state,'',url);setFilter(value);}}
             search={search}
             setSearch={setSearch}
             onOpen={(key) =>
@@ -3253,6 +3263,7 @@ function App() {
               onFlush={() => void autosaveRef.current?.flush()}
               onRepair={() => void repairDetail()}
               onTest={() => void testDetail()}
+              onRestore={detailDefaults ? () => { if(window.confirm('Restore default settings for this feature?'))editSettings({config:{...detailDefaults}}); } : undefined}
               templates={studioTemplates}
               onTemplatesChange={setStudioTemplates}
               providerHealth={providerHealth}
@@ -3997,6 +4008,7 @@ function Quota({ label, used, limit }: { label: string; used: number; limit: num
 }
 function FeatureCatalogue({
   features,
+  catalogue,
   filter,
   setFilter,
   search,
@@ -4004,12 +4016,14 @@ function FeatureCatalogue({
   onOpen,
 }: {
   features: Feature[];
+  catalogue: Feature[];
   filter: Category;
   setFilter: (value: Category) => void;
   search: string;
   setSearch: (value: string) => void;
   onOpen: (key: string) => void;
 }) {
+  const [categoryChosen, setCategoryChosen] = useState(Boolean(search) || new URLSearchParams(location.search).has('category'));
   const uniqueFeatures = Array.from(new Map(visibleWelcomeFeatures(features).filter(item => item.key !== 'studio.rank_card').map((item) => [item.key, item])).values());
   const maturityCounts = uniqueFeatures.reduce(
     (counts, feature) => {
@@ -4033,7 +4047,7 @@ function FeatureCatalogue({
     (feature) => feature.configurable !== false,
   ).length;
   return (
-    <section>
+    <section className={!categoryChosen && !search ? 'catalog-select-category' : ''}>
       <div className="catalog-toolbar">
         <div>
           <small className="eyebrow">{helperText('HELPER CATALOG')}</small>
@@ -4077,9 +4091,9 @@ function FeatureCatalogue({
             type="button"
             className={filter === category.id ? 'filter active' : 'filter'}
             aria-pressed={filter === category.id}
-            onClick={() => setFilter(category.id)}
+            onClick={() => {setCategoryChosen(true);setFilter(category.id);}}
           >
-            {helperText(category.label)}
+            {category.id==='all'?'All features':helperText(category.label)} · {visibleWelcomeFeatures(catalogue).filter(feature=>category.id==='all'||feature.category===category.id).length}
           </button>
         ))}
       </div>
@@ -4213,6 +4227,7 @@ function FeatureDetail({
   onFlush,
   onRepair,
   onTest,
+  onRestore,
   templates,
   onTemplatesChange,
   providerHealth,
@@ -4235,6 +4250,7 @@ function FeatureDetail({
   onFlush: () => void;
   onRepair: () => void;
   onTest: () => void;
+  onRestore?: () => void;
   templates: StudioTemplate[];
   onTemplatesChange: (templates: StudioTemplate[]) => void;
   providerHealth: ProviderSubscriptionHealth | null;
@@ -4354,20 +4370,7 @@ function FeatureDetail({
       <button type="button" className="back-link" onClick={onBack}>
         {helperText('← Back to features')}
       </button>
-      <div className={`detail-intro card${feature?.key === 'community.achievements' ? ' achievement-settings__controls' : ''}`}>
-        {feature?.key !== 'community.achievements' && <div>
-          <small className="eyebrow">
-            {helperText('CONFIGURATION')} ·{' '}
-            {feature?.category === 'protection'
-              ? helperText('Protection')
-              : feature?.category === 'community'
-                ? helperText('Community')
-                : helperText('Management')}
-          </small>
-          <h2>{translatedFeature?.label ?? helperText('Feature')}</h2>
-          <p>{translatedFeature?.description ?? helperText('Adjust this feature for your server.')}</p>
-        </div>}
-        <label className="switch-row">
+      {feature?.key === 'community.achievements' && <section className="settings-activation card">        <label className="switch-row">
           <span>
             <b>{enabled ? helperText('Active') : helperText('Disabled')}</b>
             {feature?.key !== 'community.achievements' && <small>{helperText('The Helper applies this configuration on the server.')}</small>}
@@ -4378,12 +4381,7 @@ function FeatureDetail({
             onChange={(event) => onEnabled(event.target.checked)}
           />
         </label>
-        {docsUrl && (
-          <a className="link-button" href={docsUrl} target="_blank" rel="noopener noreferrer">
-            {helperText('Learn how this works')}
-          </a>
-        )}
-      </div>
+</section>}
       <div className={`detail-layout${feature?.key === 'community.achievements' ? ' detail-layout--achievements' : ''}`}>
         <div className="detail-sections">
           {feature?.key === 'community.levels' && (
@@ -4456,6 +4454,19 @@ function FeatureDetail({
 
         </div>
         {feature?.key !== 'community.achievements' && <aside className="detail-aside card">
+          <section className="settings-activation"><h3>{translatedFeature?.label}</h3>        <label className="switch-row">
+          <span>
+            <b>{enabled ? helperText('Active') : helperText('Disabled')}</b>
+            {feature?.key !== 'community.achievements' && <small>{helperText('The Helper applies this configuration on the server.')}</small>}
+          </span>
+          <input
+            type="checkbox"
+            checked={enabled}
+            onChange={(event) => onEnabled(event.target.checked)}
+          />
+        </label>
+{docsUrl && <a className="link-button" href={docsUrl} target="_blank" rel="noopener noreferrer">{helperText('Learn how this works')}</a>}</section>
+          <section className="settings-review">
           <div>
             <small className="eyebrow">{helperText('AUTOMATIC SAVING')}</small>
             <h3>{helperText('Review safely')}</h3>
@@ -4471,6 +4482,7 @@ function FeatureDetail({
               ? helperText('Send a test to Discord')
               : helperText('Simulate configuration')}
           </button>
+          <button type="button" className="secondary full" disabled={!onRestore || saving} onClick={onRestore}>Restore defaults</button>
           {providerHealth && <ProviderHealthPanel health={providerHealth} />}
           {!localPreviewMode &&
             feature?.health?.status &&
@@ -4489,6 +4501,7 @@ function FeatureDetail({
               {helperText('Rollback instructions')}
             </a>
           </div>
+          </section>
         </aside>}
       </div>
     </section>

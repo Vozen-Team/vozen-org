@@ -47,13 +47,13 @@ try {
     assert.equal(writes.length,0,'viewing the collection must not save defaults');
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
     if(['en','pt','pt-mobile','ar-mobile'].includes(locale)) {await mkdir('output/playwright',{recursive:true});await page.screenshot({path:`output/playwright/achievements-settings-${locale}.png`,fullPage:true});}
-    await Promise.all([page.waitForResponse(response=>response.request().method()==='PUT'),page.locator('.detail-intro input[type=checkbox]').uncheck()]);
+    await Promise.all([page.waitForResponse(response=>response.request().method()==='PUT'),page.locator('.settings-activation input[type=checkbox]').uncheck()]);
     await page.locator('.header-state').filter({hasText:savedCopy[lang]}).waitFor();
     assert.equal(writes.length,1);assert.equal(enabled,false);
     assert.equal(await panel.locator('article').count(),7,'the catalog remains visible while disabled');
     assert.equal(await panel.locator('a').count(),0,'disabled public collection is not linked');
     await page.reload();await panel.waitFor();
-    assert.equal(await page.locator('.detail-intro input[type=checkbox]').isChecked(),false);
+    assert.equal(await page.locator('.settings-activation input[type=checkbox]').isChecked(),false);
     assert.equal(writes.length,1,'reload must not rewrite saved configuration');
     console.log(`PASS achievements-settings ${locale}`);await page.close();
   }

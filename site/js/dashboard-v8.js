@@ -814,12 +814,14 @@
     var art = url
       ? '<img class="dash-head__ic" src="' + esc(url) + '" alt="">'
       : '<span class="dash-head__ph" aria-hidden="true">' + esc(guildInitials(guild.name)) + "</span>";
+    var titles = { quick: "quickSetup", reading: "readingVoice", community: "community", profiles: "channelProfiles", limits: "accessLimits" };
+    var title = titles[workspaceState.view] ? t("dashboard." + titles[workspaceState.view]) : guild.name;
     return (
       '<div class="dash-head">' +
       art +
-      '<h2 class="dash-head__name">' +
-      esc(guild.name) +
-      '</h2><button type="button" id="dashBack" class="btn btn--ghost btn--sm dash-back">' +
+      '<h1 class="dash-head__name">' +
+      esc(title) +
+      '</h1><button type="button" id="dashBack" class="btn btn--ghost btn--sm dash-back">' +
       esc(t("dashboard.back")) +
       "</button></div>"
     );
@@ -1048,6 +1050,7 @@
     setTtsView(workspaceState.view === "overview" ? "quick" : workspaceState.view, false);
     var allSections = sectionsFor(meta);
     var sectionIdsByView = {
+      profiles: [],
       reading: ["reading", "voice"],
       community: ["community"],
       limits: ["limits"],
