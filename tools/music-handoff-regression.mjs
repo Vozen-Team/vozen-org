@@ -7,7 +7,7 @@ const start = main.indexOf('  let musicBridgeController = null;');
 const end = main.indexOf('  // The account page is the single sign-in surface', start);
 assert.ok(start >= 0 && end > start);
 
-async function scenario({ ok = true, logout = false, tokenPresent = true } = {}) {
+async function scenario({ ok = true, logout = false, tokenPresent = true, resume = false } = {}) {
   let token = tokenPresent ? 'fixture-account-token-not-a-real-secret' : null;
   let resolveBridge, handler;
   const calls = [], navigations = [], messages = [];
@@ -19,11 +19,11 @@ async function scenario({ ok = true, logout = false, tokenPresent = true } = {})
     removeAttribute() {}
   }
   const context = vm.createContext({
-    Element, AbortController, PREMIUM_API_BASE: 'https://api.vozen.org',
+    Element, AbortController, URLSearchParams, PREMIUM_API_BASE: 'https://api.vozen.org',
     storedToken: () => token, showHelperHandoffError: () => messages.push('error'),
     fetch: (url, options) => { calls.push({ url, options }); return url.endsWith('/logout') ? Promise.resolve({ ok: true }) : bridge; },
-    document: { addEventListener: (_name, fn) => { handler = fn; } },
-    window: { setTimeout, clearTimeout, location: { assign: href => navigations.push(href) } },
+    document: { addEventListener: (_name, fn) => { handler = fn; }, querySelector: () => ({click: () => handler({target: new Element(), button: 0, defaultPrevented: false, preventDefault() {}})}) },
+    window: { setTimeout, clearTimeout, location: { search: resume ? '?music=1' : '', assign: href => navigations.push(href) } },
   });
   vm.runInContext(`${main.slice(start, end)}\nwireMusicSessionHandoff();`, context);
   const target = new Element();
@@ -52,3 +52,16 @@ const anonymous = await scenario({ tokenPresent: false });
 assert.equal(anonymous.prevented, 0);
 assert.equal(anonymous.calls.length, 0);
 console.log('Music handoff passed: one navigation, failure, logout race and anonymous fallback.');
+
+const resumed = await scenario({resume: true});
+assert.equal(resumed.calls.length, 1);
+assert.equal(resumed.navigations.length, 1);
+const anonymousResume = await scenario({resume: true, tokenPresent: false});
+assert.equal(anonymousResume.calls.length, 0);
+assert.equal(anonymousResume.navigations.length, 0);
+for (const file of ['site/js/settings-v2.js','apps/helper-panel/src/App.tsx']) {
+  const source = fs.readFileSync(new URL('../'+file, import.meta.url), 'utf8');
+  assert.ok(source.includes('/account/?music=1'), file);
+  assert.ok(!source.includes('https://api.vozen.org/music/dashboard'), file);
+}
+console.log('Music recovery passed: account resume, anonymous stop and both product selectors.');
