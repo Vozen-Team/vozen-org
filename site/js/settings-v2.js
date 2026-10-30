@@ -14,6 +14,7 @@
  }
  function setup(){
   const intro=document.querySelector('#dashRoot .workspace-quick-intro');const form=intro?.closest('.dash-form');if(!form||form.dataset.settingsSetup)return;form.dataset.settingsSetup='true';
+  const confirmed=form.querySelector('.dash-status--ok');if(confirmed?.textContent){const result=document.createElement('p');result.className='settings-setup-result';result.setAttribute('role','status');result.textContent=confirmed.textContent;intro.append(result);}
   const keys=[['ttsChannelId','autoread'],['defaultVoice','locale','xsaid','autojoin','greetOnJoin','stayInCall'],['readBots','textInVoice','antispam','translationEnabled','maxChars','ratePerMin','priorityRoleId','blockedRoleId','streakAnnounce','soundboard','votePromos']];
   const titles=['Reading channel','Voice and language','Reading rules','Review & Save'],panels=[],all=[];const savebar=form.querySelector('.dash-savebar');if(!savebar)return;
   for(let i=0;i<keys.length;i++){const panel=document.createElement('section');panel.className='dash-sec settings-setup-panel';const title=document.createElement('h2');title.textContent=titles[i];panel.append(title);for(const key of keys[i]){const input=form.querySelector('[data-k="'+key+'"]');const row=input?.closest('.dash-row');if(row){panel.append(row);all.push({key,input,row});}}form.insertBefore(panel,savebar);panels.push(panel);}
