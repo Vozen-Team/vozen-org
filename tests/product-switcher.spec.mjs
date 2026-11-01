@@ -22,7 +22,7 @@ for (const [name, file, className] of sheets) {
           order: getComputedStyle(element, '::checkmark').order,
         }));
         expect(style.icon).toContain('data:image/png;base64,');
-        expect(style.size).toBe('22px');
+        expect(style.size).toBe('30px');
         expect(style.order).toBe('1');
         images.push(style.icon);
       }
