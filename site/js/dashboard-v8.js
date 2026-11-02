@@ -21,6 +21,7 @@
   var pickerRoot = document.getElementById("dashPickerRoot");
   var pickerPage = document.getElementById("ttsPickerPage");
   var ttsWorkspace = document.getElementById("ttsWorkspace");
+  var pickerSkeletonMarkup = pickerRoot ? pickerRoot.innerHTML : "";
   var root = workspaceRoot;
   var authChannel = null;
   if (!root || !pickerRoot || !pickerPage || !ttsWorkspace) {
@@ -574,30 +575,18 @@
   function renderSkeleton(kind) {
     var picker = kind === "picker";
     var label = picker ? t("dashboard.loadingAvailable") : t("dashboard.loadingSettings");
+    if (picker) {
+      view(pickerSkeletonMarkup);
+      root.querySelector('[role="status"]').setAttribute('aria-label', label);
+      root.querySelector('[data-vp-loading-status]').textContent = label;
+      root.querySelector('.vp-loading-title').textContent = t('dashboard.yourServers') + '.';
+      onLang = function () { renderSkeleton(kind); };
+      return;
+    }
     var pulse = function (extra) {
       return '<span class="dash-skeleton__pulse' + (extra ? " " + extra : "") + '" aria-hidden="true"></span>';
     };
-    var html = picker
-      ? '<div class="dash-skeleton dash-skeleton--picker" role="status" aria-live="polite" aria-busy="true" aria-label="' +
-        esc(label) +
-        '"><span class="dash-skeleton__sr">' +
-        esc(label) +
-        '</span><div class="dash-skeleton__picker-title">' +
-        pulse("dash-skeleton__pulse--title") +
-        pulse("dash-skeleton__pulse--copy") +
-        '</div><div class="dash-skeleton__picker-list">' +
-        [0, 1, 2, 3].map(function () {
-          return '<div class="dash-skeleton__server">' +
-            pulse("dash-skeleton__pulse--avatar") +
-            pulse("dash-skeleton__pulse--server-name") +
-            pulse("dash-skeleton__pulse--arrow") +
-            '</div>';
-        }).join("") +
-        '</div><div class="dash-skeleton__picker-action">' +
-        pulse("dash-skeleton__pulse--action-copy") +
-        pulse("dash-skeleton__pulse--action-button") +
-        '</div></div>'
-      : '<div class="dash-skeleton dash-skeleton--workspace" role="status" aria-live="polite" aria-busy="true" aria-label="' +
+    var html = '<div class="dash-skeleton dash-skeleton--workspace" role="status" aria-live="polite" aria-busy="true" aria-label="' +
         esc(label) +
         '"><span class="dash-skeleton__sr">' +
         esc(label) +

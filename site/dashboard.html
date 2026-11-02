@@ -38,10 +38,10 @@
       <meta name="twitter:image" content="https://vozen.org/assets/og-image.png">
       <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Server dashboard — Vozen","description":"Configure Vozen on your server from the browser — no slash commands needed.","url":"https://vozen.org/dashboard.html","isPartOf":{"@type":"WebSite","name":"Vozen","url":"https://vozen.org/"},"publisher":{"@type":"Organization","name":"Vozen","url":"https://vozen.org/"}}</script>
   <link rel="stylesheet" href="/css/settings-v2.css?v=908eab4b04e8">
-    <link rel="stylesheet" href="/css/server-picker-v1.css?v=8f6a263f3b13">
+    <link rel="stylesheet" href="/css/server-picker-v1.css?v=7fb788cd2c77">
     <script defer src="/js/settings-v2.js?v=17c0dfef8166"></script>
   </head>
-  <body class="page-dashboard workspace-page workspace-page--tts" data-i18n-document-title="dashboard.documentTitle">
+  <body class="page-dashboard workspace-page workspace-page--tts tts-picker-mode" data-i18n-document-title="dashboard.documentTitle">
     <!-- grain overlay -->
     <div class="grain" aria-hidden="true"></div>
     <!-- atmospheric glow orbs -->
@@ -132,23 +132,18 @@
 
           <div class="tts-picker-page" id="ttsPickerPage">
             <div class="dash-root" id="dashPickerRoot" aria-live="polite">
-              <div class="tts-boot-fallback dash-skeleton dash-skeleton--picker" id="ttsBootFallback" role="status" aria-live="polite" aria-busy="true" aria-label="Loading available servers" data-i18n-aria-label="dashboard.loadingAvailable">
-                <span class="dash-skeleton__sr" data-i18n="dashboard.loadingAvailable">Loading available servers</span>
-                <div class="dash-skeleton__picker-title" aria-hidden="true">
-                  <span class="dash-skeleton__pulse dash-skeleton__pulse--eyebrow"></span>
-                  <span class="dash-skeleton__pulse dash-skeleton__pulse--heading"></span>
-                  <span class="dash-skeleton__pulse dash-skeleton__pulse--copy"></span>
-                </div>
-                <div class="dash-skeleton__picker-list" aria-hidden="true">
-                  <span class="dash-skeleton__server"><span class="dash-skeleton__pulse dash-skeleton__pulse--avatar"></span><span class="dash-skeleton__pulse dash-skeleton__pulse--server-name"></span><span class="dash-skeleton__pulse dash-skeleton__pulse--arrow"></span></span>
-                  <span class="dash-skeleton__server"><span class="dash-skeleton__pulse dash-skeleton__pulse--avatar"></span><span class="dash-skeleton__pulse dash-skeleton__pulse--server-name"></span><span class="dash-skeleton__pulse dash-skeleton__pulse--arrow"></span></span>
-                  <span class="dash-skeleton__server"><span class="dash-skeleton__pulse dash-skeleton__pulse--avatar"></span><span class="dash-skeleton__pulse dash-skeleton__pulse--server-name"></span><span class="dash-skeleton__pulse dash-skeleton__pulse--arrow"></span></span>
-                  <span class="dash-skeleton__server"><span class="dash-skeleton__pulse dash-skeleton__pulse--avatar"></span><span class="dash-skeleton__pulse dash-skeleton__pulse--server-name"></span><span class="dash-skeleton__pulse dash-skeleton__pulse--arrow"></span></span>
-                </div>
-                <div class="dash-skeleton__picker-action" aria-hidden="true">
-                  <span class="dash-skeleton__pulse dash-skeleton__pulse--action-copy"></span>
-                  <span class="dash-skeleton__pulse dash-skeleton__pulse--action-button"></span>
-                </div>
+              <div id="ttsBootFallback">
+                <section id="vp-picker" class="vozen-server-picker vp-loading" role="status" aria-live="polite" aria-busy="true" aria-label="Loading available servers">
+                  <span class="vp-sr" data-vp-loading-status>Loading available servers</span>
+                  <div class="vp-intro" aria-hidden="true"><div><div class="vp-product"><span class="vp-pulse vp-loading-mark"></span><span class="vp-pulse vp-loading-product"></span></div><div class="vp-title vp-loading-title vp-pulse">Your servers.</div></div><div class="vp-symbol"><i class="vp-pulse vp-loading-orb"></i><span></span><span></span></div></div>
+                  <div class="vp-list" aria-hidden="true">
+                    <div class="vp-server"><span class="vp-avatar vp-pulse"></span><span class="vp-pulse vp-loading-name"></span><span class="vp-arrow vp-pulse"></span></div>
+                    <div class="vp-server"><span class="vp-avatar vp-pulse"></span><span class="vp-pulse vp-loading-name"></span><span class="vp-arrow vp-pulse"></span></div>
+                    <div class="vp-server"><span class="vp-avatar vp-pulse"></span><span class="vp-pulse vp-loading-name"></span><span class="vp-arrow vp-pulse"></span></div>
+                    <div class="vp-server"><span class="vp-avatar vp-pulse"></span><span class="vp-pulse vp-loading-name"></span><span class="vp-arrow vp-pulse"></span></div>
+                  </div>
+                  <div class="vp-add" aria-hidden="true"><span class="vp-pulse vp-loading-add"></span></div>
+                </section>
               </div>
             </div>
           </div>
@@ -228,6 +223,6 @@
     <script defer src="js/i18n-v42.js?v=c4265790d886"></script>
     <script defer src="js/main-v51.js?oauth=ecosystem-v5&auth-tabs=1&account-fast=1&auth-race=4&auth-persist=1&v=aeb8f262b486"></script>
     <script defer src="js/motion-v1.js?v=e61ca8f4a378"></script>
-    <script defer src="js/dashboard-v8.js?v=fd0416f8e432"></script>
+    <script defer src="js/dashboard-v8.js?v=de49c3c98ef8"></script>
   </body>
 </html>
