@@ -3852,36 +3852,29 @@ function ServerPicker({
   return (
     <div className="workspace-standalone workspace-app workspace-standalone--helper workspace-standalone--helper-picker">
       <EcosystemTopbar />
-      <main className="helper-server-picker workspace-standalone__content" aria-labelledby="server-picker-title">
-        <div className="tts-picker-page__back">
-          <a className="dash-exit" href="/account/">
-            {helperText('← Back to account')}
-          </a>
+      <main id="vp-picker" className="helper-server-picker workspace-standalone__content vozen-server-picker" aria-labelledby="server-picker-title">
+        <div className="vp-intro">
+          <div><p className="vp-product"><img src="/assets/settings-helper.png" alt="" />Vozen Helper</p>
+            <h1 className="vp-title" id="server-picker-title" data-route-heading tabIndex={-1}>{helperText('Your servers')}<span>.</span></h1>
+          </div>
+          <div className="vp-symbol" aria-hidden="true"><img src="/favicon.svg" alt="" /><span /><span /></div>
         </div>
-        <div className="helper-server-picker__heading-block">
-          <small className="eyebrow">{helperText('DASHBOARD')}</small>
-          <h1 id="server-picker-title" data-route-heading tabIndex={-1}>
-            {helperText('Server settings')}
-          </h1>
-          <p>{helperText('Configure Vozen Helper on your servers — no slash commands needed')}</p>
-        </div>
-        <section className="dash-picker">
-          <h2>{helperText('Pick a server')}</h2>
-          <p className="helper-server-picker__hint">
+        <section>
+          <p className="vp-sr">
             {helperText("Servers where you're an admin and Vozen Helper is added")}
           </p>
           {manageableGuilds.length ? (
-            <div className="dash-picker__list">
+            <div className="dash-picker__list vp-list">
               {manageableGuilds.map((guild) => (
                 <button
-                  className={`dash-server${guild.id === selectedGuildId ? ' is-current' : ''}`}
+                  className={`dash-server vp-server${guild.id === selectedGuildId ? ' is-current' : ''}`}
                   key={guild.id}
                   type="button"
                   onClick={() => onSelect(guild.id)}
                 >
                   <HelperGuildAvatar guild={guild} />
-                  <span className="dash-server__name">{guild.name}</span>
-                  <span className="dash-server__arrow" aria-hidden="true">›</span>
+                  <span className="dash-server__name vp-name">{guild.name}</span>
+                  <span className="dash-server__arrow vp-arrow" aria-hidden="true">›</span>
                 </button>
               ))}
             </div>
@@ -3892,15 +3885,9 @@ function ServerPicker({
               <a href="/account/">{helperText('Return to account')}</a>
             </section>
           )}
-          <div className="dash-picker__actions">
-            <div className="dash-picker__actions-copy">
-              <strong>{helperText('Add Vozen Helper to another server')}</strong>
-              <small>{helperText('Invite the bot, then come back here to configure it.')}</small>
-            </div>
-            <a className="dash-picker__add" href={HELPER_INVITE_HREF}>
+            <a className="vp-add" href={HELPER_INVITE_HREF}>
               {helperText('Add a server')}
             </a>
-          </div>
         </section>
       </main>
     </div>

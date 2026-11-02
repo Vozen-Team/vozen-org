@@ -1,0 +1,43 @@
+/* Shared selection surface; API permissions and navigation stay product-owned. */
+@font-face{font-family:VozenPickerDisplay;src:url('../assets/fonts/unbounded-500-latin.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:VozenPickerDisplay;src:url('../assets/fonts/unbounded-500-latin-ext.woff2') format('woff2');font-weight:500;font-display:swap;unicode-range:U+0100-02FF}
+body:has(:is(#vp-picker,#server-picker).vozen-server-picker:not([hidden])){height:auto;min-height:100dvh;overflow-x:clip;overflow-y:visible;background:radial-gradient(ellipse at 8% -20%,#25274599,transparent 48%),#080c16}
+body:has(:is(#vp-picker,#server-picker).vozen-server-picker:not([hidden])) .grain,body:has(:is(#vp-picker,#server-picker).vozen-server-picker:not([hidden])) .orbs{display:none}
+body :is(#vp-picker,#server-picker).vozen-server-picker{box-sizing:border-box;width:min(1120px,calc(100% - 48px));max-width:none;min-height:0;margin:66px auto 80px;padding:0;display:block;color:#f3f5ff;font:400 16px/1.5 Outfit,'Vozen Outfit',sans-serif;background:transparent;border:0;border-radius:0;box-shadow:none}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-intro{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:34px}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-product{display:flex;align-items:center;gap:10px;color:#f3f5ff;font-size:14px;margin:0 0 12px}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-product img{width:30px;height:30px;border-radius:8px;object-fit:contain}
+:is(#vp-picker,#server-picker).vozen-server-picker h1.vp-title{font:500 clamp(29px,3.4vw,48px)/1.25 VozenPickerDisplay,Unbounded,'Vozen Outfit',sans-serif;letter-spacing:-1.8px;margin:0;text-wrap:balance;color:#f3f5ff}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-title>span{color:#48dfc9}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-symbol{position:relative;width:92px;height:92px;display:grid;place-items:center;flex:none}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-symbol img{width:44px;height:44px;border-radius:12px;transform:rotate(-8deg)}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-symbol span{position:absolute;inset:0;border:1px solid #43507680;border-radius:50%;transform:rotate(-26deg) scaleY(.65);pointer-events:none}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-symbol span:last-child{transform:rotate(42deg) scaleY(.65);border-color:#48dfc94d}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-list{display:grid;gap:8px;margin:0}
+body :is(#vp-picker,#server-picker).vozen-server-picker .vp-server{box-sizing:border-box;width:100%;min-height:0;display:flex;align-items:center;justify-content:flex-start;gap:16px;padding:16px 20px;border:1px solid #273448;border-radius:12px;background:linear-gradient(110deg,#142033,#101826 60%);box-shadow:none;color:#f3f5ff;font:inherit;text-align:start;cursor:pointer;animation:vp-arrive .32s ease both;transition:border-color .2s,background .2s,transform .2s}
+body :is(#vp-picker,#server-picker).vozen-server-picker .vp-server:hover{border-color:#48dfc97a;background:#13272e;transform:translateX(3px)}
+body :is(#vp-picker,#server-picker).vozen-server-picker .vp-server:active{transform:translateY(1px)}
+body :is(#vp-picker,#server-picker).vozen-server-picker :is(.vp-avatar,.dash-server__img,.dash-server__ph){display:grid;place-items:center;position:relative;width:50px;height:50px;flex:none;overflow:hidden;border:0;border-radius:13px;object-fit:cover;background:#3a3459;color:#d3ceff;font:500 22px VozenPickerDisplay,sans-serif}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-server:nth-child(2n) :is(.vp-avatar,.dash-server__ph){background:#1c4945;color:#99f2df}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-server:nth-child(3n) :is(.vp-avatar,.dash-server__ph){background:#263e63;color:#bad9ff}
+body :is(#vp-picker,#server-picker).vozen-server-picker .vp-name{min-width:0;font-size:17px;font-weight:600;white-space:normal;overflow-wrap:anywhere;line-height:1.4;color:#f3f5ff}
+body :is(#vp-picker,#server-picker).vozen-server-picker .vp-arrow{display:block;flex:none;margin-inline-start:auto;width:22px;height:22px;border:0;background:none;color:#a2b0c8;font:400 28px/18px Outfit,sans-serif;text-align:center}
+body :is(#vp-picker,#server-picker).vozen-server-picker .vp-add{box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:flex-start;gap:15px;margin:18px 0 0;padding:19px 20px;border:1px dashed #344558;border-radius:12px;background:#101c2466;color:#f3f5ff;font:inherit;text-align:start;text-decoration:none;cursor:pointer}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-add::before{content:'+';width:44px;height:44px;display:grid;place-items:center;flex:none;border:1px solid #344d55;border-radius:11px;color:#48dfc9;font-size:27px}
+:is(#vp-picker,#server-picker).vozen-server-picker .vp-add::after{content:'↗';margin-inline-start:auto;color:#48dfc9;font-size:20px}
+body :is(#vp-picker,#server-picker).vozen-server-picker .vp-add:hover{border-color:#48dfc980;background:#14282b}
+:is(#vp-picker,#server-picker).vozen-server-picker :is(button,a):focus-visible{outline:2px solid #48dfc9;outline-offset:5px}
+.vp-sr{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%)}
+/* The TTS shell is retained for loading, errors, drafts and selected-server views. */
+body.tts-picker-mode:has(:is(#vp-picker,#server-picker).vozen-server-picker) #dash{height:auto;min-height:0;padding:0!important}
+body.page-dashboard.workspace-page--tts.tts-picker-mode:has(:is(#vp-picker,#server-picker).vozen-server-picker) .account-shell{width:100%;max-width:none}
+body.tts-picker-mode:has(:is(#vp-picker,#server-picker).vozen-server-picker) :is(.account-hero,.dashboard-account-bar){display:none}
+body.tts-picker-mode:has(:is(#vp-picker,#server-picker).vozen-server-picker) .tts-picker-page{padding:0;background:transparent}
+.workspace-standalone--helper-picker:has(:is(#vp-picker,#server-picker).vozen-server-picker){background:transparent;min-height:100dvh}
+body .helper-server-picker.workspace-standalone__content:is(#vp-picker,#server-picker).vozen-server-picker{width:min(1120px,calc(100% - 48px));padding:0;margin:66px auto 80px;zoom:1}
+body.music-dashboard:has(#server-picker:not([hidden])) :is(.shell,#main){display:block;width:100%;max-width:none;min-height:0;margin:0;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
+@media(min-width:1101px){body:has(:is(#vp-picker,#server-picker).vozen-server-picker:not([hidden])){zoom:1.1}body:has(:is(#vp-picker,#server-picker).vozen-server-picker:not([hidden])) header.vozen-global-nav{zoom:.9090909091}}
+@media(max-width:700px){body :is(#vp-picker,#server-picker).vozen-server-picker,body .helper-server-picker.workspace-standalone__content:is(#vp-picker,#server-picker).vozen-server-picker{width:calc(100% - 36px);margin-top:36px}:is(#vp-picker,#server-picker).vozen-server-picker .vp-intro{margin-bottom:26px}:is(#vp-picker,#server-picker).vozen-server-picker .vp-symbol{display:none}:is(#vp-picker,#server-picker).vozen-server-picker h1.vp-title{letter-spacing:-1.3px}body :is(#vp-picker,#server-picker).vozen-server-picker .vp-server{padding:14px 12px;gap:12px}body :is(#vp-picker,#server-picker).vozen-server-picker :is(.vp-avatar,.dash-server__img,.dash-server__ph){width:44px;height:44px;border-radius:11px;font-size:20px}body :is(#vp-picker,#server-picker).vozen-server-picker .vp-name{font-size:15px}body :is(#vp-picker,#server-picker).vozen-server-picker .vp-add{padding:16px;gap:12px}:is(#vp-picker,#server-picker).vozen-server-picker .vp-add::before{width:36px;height:36px}}
+@keyframes vp-arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){:is(#vp-picker,#server-picker).vozen-server-picker .vp-server{animation:none!important;transition:none!important}}

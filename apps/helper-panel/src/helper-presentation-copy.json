@@ -1,4 +1,5 @@
 {
+  "Your servers": {"pt":"Os teus servidores","fr":"Vos serveurs","es":"Tus servidores","de":"Deine Server","tr":"Sunucuların","ar":"خوادمك","zh":"你的伺服器","ru":"Ваши серверы","ko":"내 서버"},
   "Choose who handles requests and where private tickets go.": {
     "pt": "Define quem atende e onde ficam os pedidos privados.",
     "fr": "Choisissez qui traite les demandes et où sont créés les tickets privés.",

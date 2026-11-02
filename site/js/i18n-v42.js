@@ -1693,6 +1693,10 @@
     "helper.premiumActivateError": "Não foi possível confirmar o Premium. Verifica novamente antes de repetir; se o servidor já estiver ativo, não será gasta outra vaga."
   });
   var dictionary = window.VOZEN_I18N || {};
+  var pickerTitles = {en:'Your servers',pt:'Os teus servidores',fr:'Vos serveurs',es:'Tus servidores',de:'Deine Server',tr:'Sunucuların',ar:'خوادمك',zh:'你的伺服器',ru:'Ваши серверы',ko:'내 서버'};
+  Object.keys(pickerTitles).forEach(function (locale) {
+    extra[locale] = Object.assign({}, extra[locale], {'dashboard.yourServers':pickerTitles[locale]});
+  });
   Object.keys(extra).forEach(function (locale) {
     dictionary[locale] = Object.assign({}, dictionary[locale] || {}, extra[locale]);
   });
