@@ -64,6 +64,8 @@
   }
 
   function showWorkspaceShell() {
+    var serverPicker = pickerRoot.querySelector('.vozen-server-picker');
+    if (serverPicker) serverPicker.hidden = true;
     root = workspaceRoot;
     pickerPage.hidden = true;
     ttsWorkspace.hidden = false;
@@ -667,27 +669,21 @@
             esc(guildInitials(g.name)) +
             "</span>";
         return (
-          '<button type="button" class="dash-server" data-i="' +
+          '<button type="button" class="dash-server vp-server" data-i="' +
           i +
           '">' +
           art +
-          '<span class="dash-server__name">' +
+          '<span class="dash-server__name vp-name">' +
           esc(g.name) +
-          '</span><span class="dash-server__arrow" aria-hidden="true">›</span></button>'
+          '</span><span class="dash-server__arrow vp-arrow" aria-hidden="true">›</span></button>'
         );
       })
       .join("");
     view(
-      '<div class="tts-picker-page__back"><a class="dash-exit" href="/account/">' + esc(t("dashboard.backAccount")) + '</a></div>' +
-      '<div class="dash-picker"><h2 style="margin:0 0 6px;font-size:1.25rem">' +
-        esc(t("dashboard.pick")) +
-        '</h2><p style="' +
-        MUTED +
-        ';margin:0">' +
-        esc(t("dashboard.pickHint")) +
-        '</p><div class="dash-picker__list">' +
+      '<section id="vp-picker" class="vozen-server-picker" aria-labelledby="vp-title"><div class="vp-intro"><div><p class="vp-product"><img src="/assets/settings-tts.png" alt="">Vozen TTS</p><h1 id="vp-title" class="vp-title">' + esc(t("dashboard.yourServers")) + '<span>.</span></h1></div><div class="vp-symbol" aria-hidden="true"><img src="/favicon.svg" alt=""><span></span><span></span></div></div>' +
+        '<p class="vp-sr">' + esc(t("dashboard.pickHint")) + '</p><div class="dash-picker__list vp-list">' +
         cards +
-        '</div><div class="dash-picker__actions"><div class="dash-picker__actions-copy"><strong>' + esc(t("dashboard.addAnotherServer")) + '</strong><span>' + esc(t("dashboard.installAndReturn")) + '</span></div><button type="button" class="dash-picker__add" id="dashAddServer">' + esc(t("dashboard.addServerButton")) + '</button></div></div>',
+        '</div><button type="button" class="vp-add" id="dashAddServer">' + esc(t("dashboard.addServerButton")) + '</button></section>',
     );
     var btns = root.querySelectorAll(".dash-server");
     function onPick(ev) {
