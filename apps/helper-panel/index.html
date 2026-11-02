@@ -11,16 +11,14 @@
     <meta name="description" content="Sign in with Discord to configure Vozen Helper for your server, review activity and manage available modules." />
     <link rel="canonical" href="https://vozen.org/panel/helper-tracker/" />
     <meta name="robots" content="noindex,follow" />
+    <link rel="stylesheet" href="/css/server-picker-v1.css" />
     <style>
       html{background:#070b12}body{margin:0}
-      .helper-boot{min-height:100svh;display:grid;place-items:center}
-      .helper-boot span{width:28px;height:28px;border:2px solid #26334a;border-top-color:#8ee5d2;border-radius:50%;animation:helper-boot-spin .8s linear infinite}
-      @keyframes helper-boot-spin{to{transform:rotate(360deg)}}
-      @media(prefers-reduced-motion:reduce){.helper-boot span{animation:none}}
+      .helper-boot{min-height:100svh}
     </style>
   </head>
   <body>
-    <div id="root"><div class="helper-boot" role="status" aria-label="Vozen Helper" aria-busy="true"><span aria-hidden="true"></span></div></div>
+    <div id="root"><div class="helper-boot"><div class="vp-boot-nav" aria-hidden="true"></div><main id="vp-picker" class="vozen-server-picker vp-loading" role="status" aria-label="Loading available servers" aria-busy="true"><span class="vp-sr">Loading available servers</span><div class="vp-intro" aria-hidden="true"><div><div class="vp-product"><span class="vp-pulse vp-loading-mark"></span><span class="vp-pulse vp-loading-product"></span></div><div class="vp-title vp-loading-title vp-pulse">Your servers.</div></div><div class="vp-symbol"><i class="vp-pulse vp-loading-orb"></i><span></span><span></span></div></div><div class="vp-list" aria-hidden="true"><div class="vp-server"><span class="vp-avatar vp-pulse"></span><span class="vp-pulse vp-loading-name"></span><span class="vp-arrow vp-pulse"></span></div><div class="vp-server"><span class="vp-avatar vp-pulse"></span><span class="vp-pulse vp-loading-name"></span><span class="vp-arrow vp-pulse"></span></div><div class="vp-server"><span class="vp-avatar vp-pulse"></span><span class="vp-pulse vp-loading-name"></span><span class="vp-arrow vp-pulse"></span></div><div class="vp-server"><span class="vp-avatar vp-pulse"></span><span class="vp-pulse vp-loading-name"></span><span class="vp-arrow vp-pulse"></span></div></div><div class="vp-add" aria-hidden="true"><span class="vp-pulse vp-loading-add"></span></div></main></div></div>
     <noscript><style>.helper-boot{display:none}</style><main><h1>Vozen Helper panel</h1><p>Sign in with Discord to manage your server. JavaScript is required to authenticate and load your private configuration.</p><a href="/account/">Open your Vozen account</a><p><a href="/helper/">About Vozen Helper</a> · <a href="/docs/helper/">Helper documentation</a></p></main></noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>

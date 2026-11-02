@@ -1877,8 +1877,19 @@ function quickSetupDraft(
   };
 }
 
-function WorkspaceSkeleton() {
+function WorkspaceSkeleton({picker = true}: {picker?: boolean}) {
   const pulse = (className: string) => <span className={`helper-skeleton__pulse ${className}`} aria-hidden="true" />;
+  if (picker) return (
+    <div className="workspace-standalone workspace-app workspace-standalone--helper workspace-standalone--helper-picker">
+      <EcosystemTopbar />
+      <main id="vp-picker" className="vozen-server-picker vp-loading" role="status" aria-live="polite" aria-busy="true">
+        <span className="vp-sr">{helperText('Preparing your workspace. Checking your session and server access.')}</span>
+        <div className="vp-intro" aria-hidden="true"><div><div className="vp-product"><span className="vp-pulse vp-loading-mark" /><span className="vp-pulse vp-loading-product" /></div><div className="vp-title vp-loading-title vp-pulse">{helperText('Your servers')}.</div></div><div className="vp-symbol"><i className="vp-pulse vp-loading-orb" /><span /><span /></div></div>
+        <div className="vp-list" aria-hidden="true">{[0,1,2,3].map(index=><div className="vp-server" key={index}><span className="vp-avatar vp-pulse" /><span className="vp-pulse vp-loading-name" /><span className="vp-arrow vp-pulse" /></div>)}</div>
+        <div className="vp-add" aria-hidden="true"><span className="vp-pulse vp-loading-add" /></div>
+      </main>
+    </div>
+  );
   return (
     <div className="workspace-standalone workspace-app workspace-standalone--helper workspace-loading">
       <EcosystemTopbar />
@@ -3010,7 +3021,7 @@ function App() {
       setMessage(() => () => (helperText('Guided setup remains available in the sidebar.')));
     }
   }
-  if (status === 'loading') return <WorkspaceSkeleton />;
+  if (status === 'loading') return <WorkspaceSkeleton picker={!me || route.page === 'servers'} />;
   if (workspaceError && !me)
     return (
       <div className="workspace-standalone workspace-app workspace-standalone--helper">

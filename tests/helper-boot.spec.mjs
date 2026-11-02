@@ -1,11 +1,13 @@
 import {test,expect} from '@playwright/test';
 
 for(const route of ['#/config/community.economy','#/activity','#/achievements/1524199248248176751']){
-  test(`Helper first paint stays quiet before scripts and styles: ${route}`,async({page})=>{
+  test(`Helper first paint uses the server picker skeleton before application assets: ${route}`,async({page})=>{
     await page.route('**/panel/helper-tracker/assets/*',request=>request.abort());
     await page.goto(`/panel/helper-tracker/${route}`);
     await expect(page.locator('.helper-boot')).toBeVisible();
-    await expect(page.locator('body')).toHaveText('');
+    await expect(page.locator('.helper-boot .vp-loading')).toBeVisible();
+    await expect(page.locator('.helper-boot .vp-server')).toHaveCount(4);
+    await expect(page.locator('.helper-boot button,.helper-boot a')).toHaveCount(0);
     await expect(page.locator('html')).toHaveCSS('background-color','rgb(7, 11, 18)');
   });
 }
@@ -13,7 +15,7 @@ test('Helper boot indicator respects reduced motion',async({page})=>{
   await page.emulateMedia({reducedMotion:'reduce'});
   await page.route('**/panel/helper-tracker/assets/*',request=>request.abort());
   await page.goto('/panel/helper-tracker/');
-  await expect(page.locator('.helper-boot span')).toHaveCSS('animation-name','none');
+  expect(await page.locator('.helper-boot .vp-pulse').first().evaluate(el=>getComputedStyle(el,'::after').animationName)).toBe('none');
 });
 test('Helper replaces its boot indicator when React starts',async({page})=>{
   await page.route('**/api/**',route=>route.fulfill({status:401,json:{}}));

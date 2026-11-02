@@ -41,3 +41,41 @@ for(const product of ['tts','helper']) for(const width of [320,768,1440,1910]) t
   await expect(picker).toHaveCount(0);
   expect(errors).toEqual([]);
 });
+
+for(const product of ['tts','helper']) for(const width of [320,768,1440,1910]) test(`${product} picker skeleton matches its loaded rows at ${width}px`,async({page})=>{
+  await page.setViewportSize({width,height:1000});
+  let release;const pending=new Promise(resolve=>{release=resolve;});
+  await page.addInitScript(()=>{sessionStorage.setItem('vozen.ecosystem.dtoken','fixture-token');sessionStorage.setItem('vozen.ecosystem.authexp',String(Date.now()+3600000));});
+  await page.route('https://api.vozen.org/**',async route=>{
+    const path=new URL(route.request().url()).pathname;
+    if(path.endsWith('/api/dashboard/guilds')||path.endsWith('/api/guilds')){
+      await pending;return route.fulfill({json:{guilds:[{id:'999',name:'Community',permissions:'32',canManage:true},{id:'998',name:'Another server',permissions:'32',canManage:true}]}});
+    }
+    return route.fulfill({json:path.endsWith('/api/me')?{id:'owner',guildId:'999',expiresAt:'2099-01-01T00:00:00Z',dbOk:true}:{user:{id:'owner',username:'Fixture'},plus:{active:false},pass:{active:false,servers:[]}}});
+  });
+  try{
+    await page.goto(product==='tts'?'/dashboard.html':'/panel/helper-tracker/#/servers');
+    const loading=page.locator('.vp-loading:visible');await expect(loading).toBeVisible();
+    await expect(loading).toHaveAttribute('aria-busy','true');
+    await expect(loading.locator('.vp-server')).toHaveCount(4);
+    await expect(loading.locator('button,a,input')).toHaveCount(0);
+    await expect(page.locator('.helper-skeleton,.dash-skeleton--picker')).toHaveCount(0);
+    await page.evaluate(()=>document.fonts.ready);
+    const before=await loading.locator('.vp-server').first().boundingBox();
+    await page.screenshot({path:`test-results/skeleton-${product}-${width}.png`,fullPage:true});
+    release();await expect(page.locator('.vp-loading')).toHaveCount(0);
+    const row=page.locator('.vozen-server-picker .vp-server').first();await expect(row).toBeVisible();
+    await row.evaluate(el=>Promise.all(el.getAnimations().map(animation=>animation.finished)));
+    const after=await row.boundingBox();
+    expect(after.x).toBeCloseTo(before.x,0);expect(after.y).toBeCloseTo(before.y,0);expect(after.width).toBeCloseTo(before.width,0);expect(after.height).toBeCloseTo(before.height,0);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);
+  }finally{release();}
+});
+
+test('TTS first paint uses the picker skeleton before dashboard JavaScript',async({page})=>{
+  await page.route('**/js/dashboard-v8.js*',route=>route.abort());
+  await page.goto('/dashboard.html');
+  await expect(page.locator('#ttsBootFallback .vp-loading')).toBeVisible();
+  await expect(page.locator('#ttsBootFallback .vp-server')).toHaveCount(4);
+  await expect(page.locator('.account-hero')).toBeHidden();
+});
