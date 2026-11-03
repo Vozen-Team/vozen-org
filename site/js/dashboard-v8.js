@@ -137,7 +137,7 @@
         option.selected = !!workspaceState.guild && String(workspaceState.guild.id) === option.value;
         select.appendChild(option);
       }
-      select.add(new Option(t("dashboard.back").replace(/^←\s*/, "+ "), "__choose_server__"));
+      select.add(new Option(t("dashboard.back").replace(/^←\s*/, ""), "__choose_server__"));
       select.disabled = false;
     }
     if (add && add.getAttribute("data-bound") !== "true") {

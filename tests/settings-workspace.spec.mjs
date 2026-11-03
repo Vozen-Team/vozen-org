@@ -18,7 +18,7 @@ for(const width of [320,390,768,900,1440])test(`TTS settings workspace preserves
  if(width<=900){await page.locator('.settings-sections-button').click();await page.keyboard.press('Escape');await expect(page.locator('.settings-sections-button')).toHaveAttribute('aria-expanded','false');await page.locator('.settings-sections-button').click();}await page.locator('[data-tts-view=profiles]').click();await expect(page.locator('#dashProfileChannel')).toBeVisible();await expect(page.locator('[data-p]')).toHaveCount(10);await expect(page.locator('[data-p=translationEnabled]')).toHaveAccessibleName('Automatic translation');await expect(page.locator('#dashRoot [data-k]')).toHaveCount(0);await page.evaluate(()=>scrollTo(0,0));
  await expect(page.locator('#ttsServerSelect')).toHaveValue('999');await page.evaluate(()=>document.fonts.ready);expect(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth)).toBe(false);for(const control of await page.locator('.workspace-sidebar select').all()){await expect(control).toHaveCSS('align-items','center');await expect(control).toHaveCSS('white-space','nowrap');await expect(control).toHaveCSS('padding-right','12px');}await page.screenshot({path:`test-results/tts-settings-${width}.png`,fullPage:width<900});
  await expect(page.locator('#dashBack')).toHaveCount(0);
- await expect(page.locator('#ttsServerSelect option').last()).toHaveText('+ Choose another server');
+ await expect(page.locator('#ttsServerSelect option').last()).toHaveText('Choose another server');
  await page.locator('#ttsServerSelect').selectOption('__choose_server__');
  await expect(page.locator('.dash-server')).toBeVisible();
  expect(writes).toHaveLength(1);
