@@ -3104,7 +3104,7 @@ function App() {
                 {guild.name}
               </option>
             ))}
-            <option value="__choose_server__">{helperText('← Choose another server').replace(/^←\s*/, '+ ')}</option>
+            <option value="__choose_server__">{helperText('← Choose another server').replace(/^←\s*/, '')}</option>
           </select>
           <a
             className="helper-sidebar-add"
