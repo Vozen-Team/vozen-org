@@ -3094,13 +3094,17 @@ function App() {
             aria-label={helperText('Current server')}
             value={currentGuild?.id ?? ''}
             disabled={status === 'saving'}
-            onChange={(event) => void switchGuild(event.target.value)}
+            onChange={(event) => {
+              if (event.target.value === '__choose_server__') navigate('#/servers');
+              else void switchGuild(event.target.value);
+            }}
           >
             {guilds.map((guild) => (
               <option value={guild.id} key={guild.id}>
                 {guild.name}
               </option>
             ))}
+            <option value="__choose_server__">{helperText('← Choose another server').replace(/^←\s*/, '+ ')}</option>
           </select>
           <a
             className="helper-sidebar-add"

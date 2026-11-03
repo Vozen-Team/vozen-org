@@ -137,6 +137,7 @@
         option.selected = !!workspaceState.guild && String(workspaceState.guild.id) === option.value;
         select.appendChild(option);
       }
+      select.add(new Option(t("dashboard.back").replace(/^←\s*/, "+ "), "__choose_server__"));
       select.disabled = false;
     }
     if (add && add.getAttribute("data-bound") !== "true") {
@@ -151,6 +152,13 @@
       select.setAttribute("data-bound", "true");
       select.addEventListener("change", function (event) {
         var targetId = String(event.currentTarget.value || "");
+        if (targetId === "__choose_server__") {
+          event.currentTarget.value = String(workspaceState.guild?.id || "");
+          if (!confirmTtsDiscard()) return;
+          workspaceState.dirty = false;
+          renderPicker(workspaceState.guilds);
+          return;
+        }
         var target = workspaceState.guilds.filter(function (guild) {
           return guild && String(guild.id) === targetId;
         })[0];
@@ -453,7 +461,6 @@
     ".dash-head__ic{object-fit:cover;background:var(--bg-0,#0a0a12)}",
     ".dash-head__ph{display:flex;align-items:center;justify-content:center;background:var(--bg-0,#0a0a12);border:1px solid var(--line-2,#23233a);font-weight:700;color:var(--aqua,#38e0c8)}",
     ".dash-head__name{margin:0;font-size:1.2rem;font-family:var(--f-display,inherit);flex:1;min-width:120px;overflow-wrap:anywhere}",
-    ".dash-back{margin-left:auto}",
     ".dash-sec{margin-top:22px}",
     ".dash-sec__t{font-family:var(--f-mono,inherit);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--aqua,#38e0c8);margin:0 0 2px}",
     ".dash-row{display:flex;align-items:center;gap:16px;padding:13px 10px;margin:0 -10px;border-radius:10px;border-bottom:1px solid var(--line-2,#23233a);cursor:pointer}",
@@ -806,9 +813,7 @@
       art +
       '<h1 class="dash-head__name">' +
       esc(title) +
-      '</h1><button type="button" id="dashBack" class="btn btn--ghost btn--sm dash-back">' +
-      esc(t("dashboard.back")) +
-      "</button></div>"
+      "</h1></div>"
     );
   }
 
@@ -1136,11 +1141,6 @@
       if (n > 0) setStatus(""); // limpa "Guardado ✓" assim que se volta a mexer
     }
 
-    document.getElementById("dashBack").addEventListener("click", function () {
-      if (!confirmTtsDiscard()) return;
-      workspaceState.dirty = false;
-      renderPicker(guilds);
-    });
     discardBtn.addEventListener("click", function () {
       if (!workspaceState.dirty) return;
       workspaceState.dirty = false;
@@ -1248,8 +1248,7 @@
           ctrl.value = currentValue === null ? "" : String(currentValue);
         }
       });
-      var back = document.getElementById("dashBack");
-      if (back) back.textContent = t("dashboard.back");
+      renderTtsServerPicker();
       refresh(); // recomputa o rótulo do Guardar (usa a baseline/contagem do closure)
     };
   }
