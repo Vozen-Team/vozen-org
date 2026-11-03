@@ -58,11 +58,13 @@ body.page-dashboard.workspace-page--tts .tts-workspace__main{padding:36px 40px 9
   :is(.settings-product-switch, #product-switcher) option::checkmark { order: 1; margin-inline-start: auto; }
 }
 
-/* Share the leading slot between the selected server and the picker action. */
+/* Server avatars lead the row; the native checkmark sits at the end. */
 @supports (appearance: base-select) {
   select:has(> option[value="__choose_server__"]) > option { display: flex; align-items: center; gap: 8px; }
-  select:has(> option[value="__choose_server__"]) > option::checkmark { display: none; }
-  select:has(> option[value="__choose_server__"]) > option::before { content: ""; flex: 0 0 1em; text-align: center; }
-  select:has(> option[value="__choose_server__"]) > option:checked::before { content: "✓"; }
-  select:has(> option[value="__choose_server__"]) > option[value="__choose_server__"]::before { content: "+"; }
+  select:has(> option[value="__choose_server__"]) > option::checkmark { order: 1; margin-inline-start: auto; }
+  option[value="__choose_server__"]::before { content: "+"; flex: 0 0 20px; text-align: center; }
+  option .server-option-icon { display: grid; place-items: center; flex: 0 0 20px; inline-size: 20px; block-size: 20px; border-radius: 6px; overflow: hidden; background: #263c53; color: #e5f2ff; font: 600 10px/1 system-ui; }
+  option .server-option-icon::before { content: attr(data-initials); }
+  option :is(img.server-option-icon, .server-option-icon img) { inline-size: 20px; block-size: 20px; object-fit: cover; }
+  option .server-option-icon:has(img)::before { content: none; }
 }

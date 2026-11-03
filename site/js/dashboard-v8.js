@@ -134,6 +134,19 @@
         var option = document.createElement("option");
         option.value = String(guild.id || "");
         option.textContent = String(guild.name || "Unnamed server");
+        var avatar = document.createElement("span");
+        avatar.className = "server-option-icon";
+        avatar.setAttribute("aria-hidden", "true");
+        avatar.dataset.initials = guildInitials(option.textContent);
+        var iconUrl = guildIconUrl(guild);
+        if (iconUrl) {
+          var icon = document.createElement("img");
+          icon.alt = "";
+          icon.addEventListener("error", function (event) { event.currentTarget.remove(); });
+          icon.src = iconUrl;
+          avatar.appendChild(icon);
+        }
+        option.prepend(avatar);
         option.selected = !!workspaceState.guild && String(workspaceState.guild.id) === option.value;
         select.appendChild(option);
       }

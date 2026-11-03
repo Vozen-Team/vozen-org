@@ -3101,6 +3101,7 @@ function App() {
           >
             {guilds.map((guild) => (
               <option value={guild.id} key={guild.id}>
+                <HelperGuildAvatar guild={guild} compact />
                 {guild.name}
               </option>
             ))}
@@ -3829,21 +3830,23 @@ function helperGuildInitials(name: string): string {
   return parts.map((part) => part.charAt(0)).join('').toUpperCase() || '?';
 }
 
-function HelperGuildAvatar({ guild }: { guild: Guild }) {
+function HelperGuildAvatar({ guild, compact = false }: { guild: Guild; compact?: boolean }) {
   const [failed, setFailed] = useState(false);
   const iconUrl = typeof guild.iconUrl === 'string' && guild.iconUrl ? guild.iconUrl : null;
 
   if (!iconUrl || failed) {
+    const initials = helperGuildInitials(guild.name);
+    if (compact) return <span className="server-option-icon" aria-hidden="true" data-initials={initials} />;
     return (
       <span className="dash-server__ph" aria-hidden="true">
-        {helperGuildInitials(guild.name)}
+        {initials}
       </span>
     );
   }
 
   return (
     <img
-      className="dash-server__img"
+      className={compact ? 'server-option-icon' : 'dash-server__img'}
       src={iconUrl}
       alt=""
       loading="lazy"
