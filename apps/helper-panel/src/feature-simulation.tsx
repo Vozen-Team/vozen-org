@@ -4,7 +4,7 @@ import { helperLocale, helperT as t } from './i18n';
 import './feature-simulation.css';
 import { featureDemo } from './feature-demo';
 import { isOutsideDialog } from './dialog-dismiss';
-import { AntiSpamSimulation, spamSimulationText } from './antispam-simulation';
+import { ProtectionChatDemo, scamSimulationText, spamSimulationText } from './antispam-simulation';
 
 type Simulation = Awaited<ReturnType<typeof api.testFeature>>;
 export type SimulationDraft = {
@@ -13,6 +13,7 @@ export type SimulationDraft = {
   label: string;
   config: FeatureConfig;
   enabled: boolean;
+  visualDemo?: boolean;
 };
 
 // Mount only for the current guild/feature. Closing or navigating unmounts this
@@ -30,8 +31,10 @@ export function FeatureSimulation({ draft, onClose }: {
   const [animationFailed, setAnimationFailed] = useState(false);
   const locale = helperLocale();
   const spam = draft.key === 'protection.antispam';
+  const scam = draft.key === 'protection.antiscam' && draft.visualDemo === true;
+  const protectionDemo = spam || scam;
   const copy = spamSimulationText();
-  const demo = spam ? null : featureDemo(draft.key, locale);
+  const demo = protectionDemo ? null : featureDemo(draft.key, locale);
   const media = demo ? `${import.meta.env.BASE_URL}feature-demos/${demo.asset}` : '';
 
   useEffect(() => {
@@ -43,7 +46,7 @@ export function FeatureSimulation({ draft, onClose }: {
   }, []);
 
   useEffect(() => {
-    if (spam) return;
+    if (protectionDemo) return;
     const controller = new AbortController();
     let active = true;
     setResult(null);
@@ -61,10 +64,10 @@ export function FeatureSimulation({ draft, onClose }: {
       if (active && !controller.signal.aborted) setFailed(true);
     }).finally(() => window.clearTimeout(timeout));
     return () => { active = false; window.clearTimeout(timeout); controller.abort(); };
-  }, [draft, attempt, spam]);
+  }, [draft, attempt, protectionDemo]);
 
   const errors = result?.result.issues.filter(issue => issue.severity === 'error') ?? [];
-  return <dialog ref={dialog} className={spam ? 'feature-simulation spam-simulation' : 'feature-simulation'} aria-labelledby="simulation-title"
+  return <dialog ref={dialog} className={protectionDemo ? 'feature-simulation spam-simulation' : 'feature-simulation'} aria-labelledby="simulation-title"
     aria-describedby="simulation-safety" onCancel={event => { event.preventDefault(); onClose(); }}
     onPointerDown={event => {
       // Native dialog backdrop events target the dialog itself, as do clicks
@@ -82,12 +85,12 @@ export function FeatureSimulation({ draft, onClose }: {
         && isOutsideDialog(event.currentTarget.getBoundingClientRect(), event)) onClose();
     }}>
     <header className="feature-simulation__header">
-      <div>{!spam && <small className="eyebrow">{t('helper.demoEyebrow', 'SAFE DEMONSTRATION')}</small>}
+      <div>{!protectionDemo && <small className="eyebrow">{t('helper.demoEyebrow', 'SAFE DEMONSTRATION')}</small>}
         <h2 id="simulation-title">{spam ? copy.title : label}</h2></div>
-      <button type="button" className="secondary" autoFocus onClick={onClose}>{spam ? copy.close : t('helper.demoClose', 'Close demonstration')}</button>
+      <button type="button" className="secondary" autoFocus onClick={onClose}>{protectionDemo ? copy.close : t('helper.demoClose', 'Close demonstration')}</button>
     </header>
-    <p id="simulation-safety">{spam ? copy.safety : t('helper.demoSafety', 'This demonstration does not send messages or change your server. Editor changes are saved separately and automatically.')}</p>
-    {spam ? <AntiSpamSimulation /> : <>
+    <p id="simulation-safety">{scam ? scamSimulationText().safety : spam ? copy.safety : t('helper.demoSafety', 'This demonstration does not send messages or change your server. Editor changes are saved separately and automatically.')}</p>
+    {protectionDemo ? <ProtectionChatDemo scam={scam} /> : <>
     {demo && <section className="feature-simulation__example" aria-labelledby="simulation-example">
       <h3 id="simulation-example">{demo.title}</h3>
       <p>{demo.example}</p>

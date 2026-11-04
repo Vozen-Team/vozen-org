@@ -1,0 +1,12 @@
+{
+  "en": { "safety": "Example with a blocked domain and moderation enabled.", "message": "Claim your Nitro here!", "detected": "Blocked domain detected", "removed": "Message removed", "timeout": "Mia is in timeout for 5 minutes", "log": "moderation" },
+  "pt": { "safety": "Exemplo com um domínio bloqueado e moderação ativa.", "message": "Reclama aqui o teu Nitro!", "detected": "Domínio bloqueado detetado", "removed": "Mensagem removida", "timeout": "Mia está em timeout durante 5 minutos", "log": "moderação" },
+  "fr": { "safety": "Exemple avec un domaine bloqué et la modération activée.", "message": "Récupère ton Nitro ici !", "detected": "Domaine bloqué détecté", "removed": "Message supprimé", "timeout": "Mia est exclue temporairement pendant 5 minutes", "log": "modération" },
+  "es": { "safety": "Ejemplo con un dominio bloqueado y la moderación activa.", "message": "¡Reclama tu Nitro aquí!", "detected": "Dominio bloqueado detectado", "removed": "Mensaje eliminado", "timeout": "Mia tiene un aislamiento de 5 minutos", "log": "moderación" },
+  "de": { "safety": "Beispiel mit einer gesperrten Domain und aktiver Moderation.", "message": "Hol dir hier dein Nitro!", "detected": "Gesperrte Domain erkannt", "removed": "Nachricht gelöscht", "timeout": "Mia erhält eine Auszeit von 5 Minuten", "log": "moderation" },
+  "tr": { "safety": "Engellenen bir alan adı ve etkin moderasyon örneği.", "message": "Nitro’nu buradan al!", "detected": "Engellenen alan adı algılandı", "removed": "Mesaj silindi", "timeout": "Mia 5 dakika boyunca susturuldu", "log": "moderasyon" },
+  "ar": { "safety": "مثال على نطاق محظور مع تفعيل الإشراف.", "message": "احصل على نيترو من هنا!", "detected": "تم رصد نطاق محظور", "removed": "حُذفت الرسالة", "timeout": "تم تقييد Mia لمدة 5 دقائق", "log": "الإشراف" },
+  "zh": { "safety": "已启用管理措施的域名拦截示例。", "message": "点这里领取 Nitro！", "detected": "检测到被封锁的域名", "removed": "消息已删除", "timeout": "Mia 已被禁言 5 分钟", "log": "管理日志" },
+  "ru": { "safety": "Пример с заблокированным доменом и включённой модерацией.", "message": "Забери свой Nitro здесь!", "detected": "Обнаружен заблокированный домен", "removed": "Сообщение удалено", "timeout": "Миа получила тайм-аут на 5 минут", "log": "модерация" },
+  "ko": { "safety": "차단된 도메인과 활성화된 관리 조치의 예시입니다.", "message": "여기에서 Nitro를 받으세요!", "detected": "차단된 도메인 감지", "removed": "메시지 삭제됨", "timeout": "Mia에게 5분 타임아웃이 적용됨", "log": "관리 로그" }
+}

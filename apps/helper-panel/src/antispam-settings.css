@@ -124,7 +124,7 @@
 .panel-main .spam-group .spam-warning-field { border: 0; padding: 0; margin: 0; min-width: 0; }
 .panel-main .spam-group .spam-warning-field:disabled { opacity: .55; }
 .panel-main .spam-mode-note { margin: 16px 0 0; color: #edd39b; max-width: 70ch; font-size: .875rem; }
-.panel-main .spam-footer { display: flex; justify-content: flex-end; padding: 4px 0; }
+.panel-main .spam-footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; padding: 4px 0; }
 .panel-main .spam-footer button { white-space: nowrap; }
 .panel-main :is(.spam-settings, .spam-toolbar) :focus-visible { outline: 2px solid #9ce9de; outline-offset: 4px; }
 .panel-main .spam-placeholder-link { width: min(100%, 8rem); height: 14px; margin-block: 15px; }
