@@ -153,7 +153,7 @@
   "Destructive action protection",
   "Detect invite scams, suspicious domains and common social-engineering phrases.",
   "Detection window (seconds)",
-  "Detects flooding, repeated messages, excessive mentions, links, and caps.",
+  "Detects flooding, repeated messages, and excessive mentions or links.",
   "Detects flooding, repetition and mentions with safe limits.",
   "Direct message",
   "Disconnect TikTok",

@@ -615,9 +615,9 @@
     "ar": "نافذة الكشف (ثوانٍ)",
     "zh": "偵測時間範圍（秒）"
   },
-  "Detects flooding, repeated messages, excessive mentions, links, and caps.": {
-    "ar": "يكتشف الإغراق والرسائل المتكررة والإشارات المفرطة والروابط والأحرف الكبيرة.",
-    "zh": "偵測洗版、重複訊息、過量提及、連結與大寫字母。"
+  "Detects flooding, repeated messages, and excessive mentions or links.": {
+    "ar": "يكتشف الإغراق والرسائل المتكررة والإفراط في الإشارات أو الروابط.",
+    "zh": "偵測洗版、重複訊息、過量提及或連結。"
   },
   "Detects flooding, repetition and mentions with safe limits.": {
     "ar": "يكتشف الإغراق والتكرار والإشارات ضمن حدود آمنة.",

@@ -769,10 +769,10 @@
     "fr": "Fenêtre de détection (secondes)",
     "es": "Ventana de detección (segundos)"
   },
-  "Detects flooding, repeated messages, excessive mentions, links, and caps.": {
-    "pt": "Deteta mensagens em massa, mensagens repetidas, menções excessivas, ligações e uso excessivo de maiúsculas.",
-    "fr": "Détecte les envois massifs, les messages répétés, les mentions excessives, les liens et l’abus de majuscules.",
-    "es": "Detecta mensajes masivos, mensajes repetidos, menciones excesivas, enlaces y uso excesivo de mayúsculas."
+  "Detects flooding, repeated messages, and excessive mentions or links.": {
+    "pt": "Deteta mensagens em massa, mensagens repetidas, excesso de menções ou ligações.",
+    "fr": "Détecte les envois massifs, les messages répétés et les excès de mentions ou de liens.",
+    "es": "Detecta mensajes masivos, mensajes repetidos y exceso de menciones o enlaces."
   },
   "Detects flooding, repetition and mentions with safe limits.": {
     "pt": "Deteta mensagens em massa, repetições e menções com limites seguros.",
