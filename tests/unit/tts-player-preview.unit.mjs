@@ -16,6 +16,8 @@ function fixture({ reduced = false, supported = true, broken = false } = {}) {
     elements[id] = { addEventListener: (event, callback) => { listeners[id + ':' + event] = callback; } };
   }
   Object.assign(elements.hearAudio, { paused: true, ended: false, error: null, currentTime: 0, duration: NaN });
+  const timing = new Map();
+  elements.hearDuration.parentElement = { toggleAttribute: (name, value) => timing.set(name, value) };
   Object.assign(elements.hearWave, { width: 640, height: 96, getContext: () => ({ clearRect: () => bars.length = 0, fillRect: (...rect) => bars.push(rect) }) });
   const preference = { matches: reduced, addEventListener: (_, callback) => listeners.preference = callback };
   const document = { hidden: false, querySelector: selector => elements[selector.slice(1)], addEventListener: (event, callback) => listeners[event] = callback };
@@ -32,7 +34,7 @@ function fixture({ reduced = false, supported = true, broken = false } = {}) {
     cancelAnimationFrame: id => frames.delete(id),
     IntersectionObserver: class { constructor(callback) { observer = callback; } observe() {} },
   });
-  return { elements, listeners, frames, bars, document, preference,
+  return { elements, listeners, frames, bars, document, preference, timing,
     click: () => listeners['hear:click']({ target: { closest: () => true } }),
     visibility: value => observer([{ isIntersecting: value }]),
     get created() { return created; }, get routed() { return routed; },
@@ -43,8 +45,8 @@ test('visualizer is dormant before a gesture and reuses one audio graph', async 
   const f = fixture();
   assert.equal(f.created, 0);
   assert.equal(f.frames.size, 0);
-  assert.equal(f.bars.length, 40);
-  assert.ok(f.bars.every(rect => rect[3] === 4));
+  assert.deepEqual(f.bars, [[0, 46, 640, 4]]);
+  assert.equal(f.timing.get('data-timed'), false);
   f.click();
   f.elements.hearAudio.paused = false;
   await tick();
@@ -58,7 +60,7 @@ test('visualizer is dormant before a gesture and reuses one audio graph', async 
   f.elements.hearAudio.paused = true;
   f.listeners['hearAudio:pause']();
   assert.equal(f.frames.size, 0);
-  assert.ok(f.bars.every(rect => rect[3] === 4));
+  assert.deepEqual(f.bars, [[0, 46, 640, 4]]);
 });
 
 test('real media timing resets on source changes and analysis stops offscreen or hidden', async () => {
@@ -68,6 +70,7 @@ test('real media timing resets on source changes and analysis stops offscreen or
   f.listeners['hearAudio:timeupdate']();
   assert.equal(f.elements.hearElapsed.textContent, '0:03');
   assert.equal(f.elements.hearDuration.textContent, '1:05');
+  assert.equal(f.timing.get('data-timed'), true);
   f.visibility(false);
   assert.equal(f.frames.size, 0);
   f.visibility(true); await tick();
@@ -79,6 +82,7 @@ test('real media timing resets on source changes and analysis stops offscreen or
   f.listeners['hearAudio:emptied']();
   assert.equal(f.elements.hearElapsed.textContent, '0:00');
   assert.equal(f.elements.hearDuration.textContent, '—');
+  assert.equal(f.timing.get('data-timed'), false);
 });
 
 test('reduced motion, missing Web Audio and failed analysis leave the normal player alone', async () => {
@@ -89,5 +93,8 @@ test('reduced motion, missing Web Audio and failed analysis leave the normal pla
     assert.equal(f.routed, 0);
     assert.equal(f.frames.size, 0);
     assert.equal(f.elements.hearAudio.paused, false);
+    Object.assign(f.elements.hearAudio, { currentTime: 3, duration: 6 });
+    f.listeners['hearAudio:timeupdate']();
+    assert.deepEqual(f.bars, [[0, 46, 640, 4], [0, 46, 320, 4]]);
   }
 });

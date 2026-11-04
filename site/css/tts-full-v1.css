@@ -3005,9 +3005,9 @@ body.product-preview .hear__chip { min-height: 44px; padding: 6px 8px; font-size
 body.product-preview .hear__sub { margin-top: 14px; color: #aebfdd; font-size: 12px; }
 /* The sample message feeds the real-audio waveform, not a decorative loop. */
 body.product-preview.tts-page .hear__inner { grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr); column-gap: 56px; padding: 32px; }
-body.product-preview.tts-page .hear__title { max-width: 32ch; margin-bottom: 24px; font: 600 22px/1.35 'Outfit',sans-serif; }
-body.product-preview.tts-page .hear__stage { display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 20px; text-align: left; }
-body.product-preview.tts-page .hear__btn { width: 64px; height: 64px; align-self: center; transition: background-color 180ms ease, transform 180ms ease; }
+body.product-preview.tts-page .hear__title { max-width: none; margin-bottom: 16px; font: 600 22px/1.35 'Outfit',sans-serif; }
+body.product-preview.tts-page .hear__stage { display: grid; grid-template-columns: 56px minmax(0,1fr); gap: 4px 16px; text-align: start; box-shadow: none; }
+body.product-preview.tts-page .hear__btn { width: 56px; height: 56px; align-self: center; transition: background-color 180ms ease, transform 180ms ease; }
 body.product-preview.tts-page .hear__btn:hover { background: #8ff5e3; transform: scale(1.04); }
 body.product-preview.tts-page .hear__btn:active { transform: scale(.97); }
 body.product-preview.tts-page .hear__btn[aria-busy="true"] { background: #a8aeff; }
@@ -3016,13 +3016,12 @@ body.product-preview.tts-page .hear__nowrow { justify-content: flex-start; margi
 body.product-preview.tts-page .hear__phrase { position: relative; margin: 0; padding: 18px 20px; border-radius: 16px 16px 16px 4px; background: #1d304c; color: #edf3ff; font: 500 17px/1.5 'Outfit',sans-serif; transition: background-color 180ms ease; }
 body.product-preview.tts-page .hear__phrase::after { content: ''; position: absolute; left: 20px; bottom: -5px; width: 10px; height: 10px; transform: rotate(45deg); background: inherit; }
 body.product-preview.tts-page .hear__stage.is-playing .hear__phrase { background: #20434e; }
-body.product-preview.tts-page .hear__status { margin: 10px 0 0; min-height: 0; font-size: 12px; }
-body.product-preview.tts-page .hear__status:empty { display: none; }
-.hear__sound { position: relative; grid-column: 1 / -1; padding-left: 84px; }
-.hear__sound::before { content: ''; position: absolute; left: 108px; top: -14px; height: 26px; width: 1px; background: #7588b0; transition: background-color 180ms ease; }
-.hear__stage.is-playing .hear__sound::before { background: #55ebd1; }
-#hearWave { display: block; width: 100%; height: 76px; }
-.hear__clock { display: flex; justify-content: space-between; color: #b2bfd9; font: 450 11px/1.4 'Outfit',sans-serif; font-variant-numeric: tabular-nums; }
+body.product-preview.tts-page .hear__status { margin: 0; min-height: 1.5em; font-size: 12px; }
+body.product-preview.tts-page .hear__status[data-i18n="hear.loading"] { clip-path: inset(50%); }
+.hear__sound { grid-column: 2; min-width: 0; }
+.hear__sound canvas { display: block; width: 100%; height: 36px; }
+.hear__clock { display: flex; justify-content: space-between; min-height: 1.4em; color: #b2bfd9; font: 450 11px/1.4 'Outfit',sans-serif; font-variant-numeric: tabular-nums; direction: ltr; visibility: hidden; }
+.hear__clock[data-timed] { visibility: visible; }
 body.product-preview.tts-page .voice-options { align-self: center; }
 @media (max-width: 800px) {
   body.product-preview.tts-page .hear__inner { grid-template-columns: minmax(0,1fr); padding: 24px; }
@@ -3030,12 +3029,10 @@ body.product-preview.tts-page .voice-options { align-self: center; }
 @media (max-width: 480px) {
   body.product-preview.tts-page .hear__inner { padding: 20px 18px; }
   body.product-preview.tts-page .hear__title { font-size: 20px; margin-bottom: 20px; }
-  body.product-preview.tts-page .hear__stage { grid-template-columns: 48px minmax(0,1fr); gap: 16px 12px; }
+  body.product-preview.tts-page .hear__stage { grid-template-columns: 48px minmax(0,1fr); column-gap: 12px; }
   body.product-preview.tts-page .hear__btn { width: 48px; height: 48px; }
   body.product-preview.tts-page .hear__phrase { padding: 14px; font-size: 15px; }
-  .hear__sound { padding-left: 60px; }
-  .hear__sound::before { left: 84px; }
-  #hearWave { height: 64px; }
+  .hear__sound canvas { height: 30px; }
 }
 body.product-preview .stats { padding-block: 30px; }
 body.product-preview .section { padding-block: 80px; }
