@@ -3,7 +3,7 @@ import {test,expect} from '@playwright/test';
 for(const product of ['tts','helper']) for(const width of [320,768,1440,1910]) test(`${product} real server picker preserves scale and selection at ${width}px`,async({page})=>{
   await page.setViewportSize({width,height:1000});
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
-  const guilds=[{id:'999',name:'Community <safe>',permissions:'32',canManage:true},{id:'998',name:'A long server name that must wrap without overflowing the viewport',permissions:'32',canManage:true}];
+  const guilds=[{id:'999',name:'Community <safe>',permissions:'32',canManage:true,icon:'fixture',iconUrl:'https://cdn.discordapp.com/icons/999/fixture.png'},{id:'998',name:'A long server name that must wrap without overflowing the viewport',permissions:'32',canManage:true}];
   await page.addInitScript(()=>{sessionStorage.setItem('vozen.ecosystem.dtoken','fixture-token');sessionStorage.setItem('vozen.ecosystem.authexp',String(Date.now()+3600000));});
   await page.route('https://api.vozen.org/**',async route=>{
     const path=new URL(route.request().url()).pathname;let json={};
@@ -23,6 +23,8 @@ for(const product of ['tts','helper']) for(const width of [320,768,1440,1910]) t
     await route.fulfill({json});
   });
   await page.route('https://static.cloudflareinsights.com/**',r=>r.fulfill({body:''}));
+  await page.route('https://cdn.discordapp.com/icons/999/**',route=>
+    width===320 ? route.abort() : route.fulfill({path:'site/assets/settings-tts.png'}));
   await page.goto(product==='tts'?'/dashboard.html':'/panel/helper-tracker/#/servers');
   const picker=page.locator('.vozen-server-picker:visible');
   await expect(picker.locator('.vp-server')).toHaveCount(2);
@@ -39,6 +41,24 @@ for(const product of ['tts','helper']) for(const width of [320,768,1440,1910]) t
   await page.screenshot({path:`test-results/picker-${product}-${width}.png`,fullPage:true});
   await picker.locator('.vp-server').first().click();
   await expect(picker).toHaveCount(0);
+  const server = page.locator('.workspace-server-picker select');
+  const avatar = page.locator('.workspace-server-avatar');
+  await expect(server).toHaveValue('999');
+  await expect(avatar).toBeVisible();
+  if (width===320) {
+    await expect(avatar.locator('img')).toHaveCount(0);
+    await expect(page.locator('.workspace-server-avatar[data-initials], .workspace-server-avatar [data-initials]')).toHaveAttribute('data-initials','C<');
+  } else {
+    await expect.poll(()=>avatar.locator('img').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
+  }
+  const productPicker = page.getByRole('combobox',{name:'Product'});
+  expect(await productPicker.locator('option').evaluateAll(options=>options.map(option=>option.value))).toEqual(['tts','music','helper']);
+  expect(await productPicker.evaluate(select=>select.offsetHeight)).toBe(44);
+  expect(await server.evaluate(select=>select.offsetHeight)).toBe(width<=900?44:47);
+  await expect(server).toHaveCSS('padding-inline-start',width<=900?'35px':'40px');
+  await expect(server.locator('option').last()).toHaveAttribute('value','__choose_server__');
+  await server.selectOption('__choose_server__');
+  await expect(picker.locator('.vp-server')).toHaveCount(2);
   expect(errors).toEqual([]);
 });
 

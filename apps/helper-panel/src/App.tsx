@@ -3079,30 +3079,37 @@ function App() {
             decoding="async"
           />
           <div>
-            <select className="settings-product-switch" aria-label="Product" value="helper" onChange={event => { const target=event.target.value==='tts'?'/dashboard.html':'/account/?music=1'; void (async()=>{if(autosaveRef.current && !(await autosaveRef.current.flush()))return;window.location.assign(target);})(); }}><option value="tts">Vozen TTS</option><option value="helper">Vozen Helper</option><option value="music">Vozen Music</option></select>
+            <select className="settings-product-switch" aria-label="Product" value="helper" onChange={event => { const target=event.target.value==='tts'?'/dashboard.html':'/account/?music=1'; void (async()=>{if(autosaveRef.current && !(await autosaveRef.current.flush()))return;window.location.assign(target);})(); }}><option value="tts">Vozen TTS</option><option value="music">Vozen Music</option><option value="helper">Vozen Helper</option></select>
             <small>{helperText('SERVER TOOLKIT')}</small>
           </div>
         </div>
         <div className="workspace panel-workspace workspace-sidebar__section">
             <small className="workspace-sidebar__label">{helperText('Current server')}</small>
-            <select
-            aria-label={helperText('Current server')}
-            value={currentGuild?.id ?? ''}
-            disabled={status === 'saving'}
-            onChange={(event) => {
-              if (event.target.value === '__choose_server__') navigate('#/servers');
-              else void switchGuild(event.target.value);
-            }}
-          >
-            <button type="button">{createElement('selectedcontent')}</button>
-            {guilds.map((guild) => (
-              <option value={guild.id} key={guild.id}>
-                <HelperGuildAvatar guild={guild} compact />
-                <span className="helper-server-option-name">{guild.name}</span>
-              </option>
-            ))}
-            <option value="__choose_server__">{helperText('← Choose another server').replace(/^←\s*/, '')}</option>
-          </select>
+            <div className="workspace-server-picker">
+              {currentGuild && (
+                <span className="workspace-server-avatar" aria-hidden="true">
+                  <HelperGuildAvatar key={currentGuild.id} guild={currentGuild} compact />
+                </span>
+              )}
+              <select
+                aria-label={helperText('Current server')}
+                value={currentGuild?.id ?? ''}
+                disabled={status === 'saving'}
+                onChange={(event) => {
+                  if (event.target.value === '__choose_server__') navigate('#/servers');
+                  else void switchGuild(event.target.value);
+                }}
+              >
+                <button type="button">{createElement('selectedcontent')}</button>
+                {guilds.map((guild) => (
+                  <option value={guild.id} key={guild.id}>
+                    <HelperGuildAvatar guild={guild} compact />
+                    <span className="helper-server-option-name">{guild.name}</span>
+                  </option>
+                ))}
+                <option value="__choose_server__">{helperText('← Choose another server').replace(/^←\s*/, '')}</option>
+              </select>
+            </div>
           <a
             className="helper-sidebar-add"
             href={HELPER_INVITE_HREF}
