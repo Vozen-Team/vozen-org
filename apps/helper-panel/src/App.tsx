@@ -17,6 +17,7 @@ import { ticketSettingsGroups, ticketSettingCopy } from './ticket-settings';
 import './ticket-settings.css';
 import { welcomeSettingsGroups, welcomeSettingCopy, welcomeStepOptions, changeWelcomeStep } from './welcome-settings';
 import './welcome-settings.css';
+import { AntiSpamSettings } from './antispam-settings';
 import { LevelsSettings } from './levels-settings-panel';
 import { levelSettingCopy } from './levels-settings';
 import { guildStorage, preferredGuild, rememberGuild } from './last-guild';
@@ -200,7 +201,7 @@ const demoFeatures: Feature[] = [
   {
     key: 'protection.antispam',
     label: 'Spam protection',
-    description: 'Detects flooding, repeated messages, excessive mentions, links, and caps.',
+    description: 'Detects flooding, repeated messages, and excessive mentions or links.',
     category: 'protection',
     capability: 'security',
     available: true,
@@ -664,7 +665,7 @@ const featureCopy: Record<string, Pick<Feature, 'label' | 'description'>> = {
     [key, { label, description }])),
   'protection.antispam': {
     label: 'Spam protection',
-    description: 'Detects flooding, repeated messages, excessive mentions, links, and caps.',
+    description: 'Detects flooding, repeated messages, and excessive mentions or links.',
   },
   'protection.antiscam': {
     label: 'Scam protection',
@@ -2837,8 +2838,6 @@ function App() {
               windowSeconds: 10,
               duplicateLimit: 4,
               maxLinks: 8,
-              capsPercent: 90,
-              capsMinLetters: 12,
               deleteMessage: false,
               timeoutSeconds: 0,
               mentionLimit: 8,
@@ -2865,8 +2864,6 @@ function App() {
               windowSeconds: 10,
               duplicateLimit: 3,
               maxLinks: 5,
-              capsPercent: 80,
-              capsMinLetters: 8,
               deleteMessage: false,
               timeoutSeconds: 60,
               mentionLimit: 5,
@@ -2893,8 +2890,6 @@ function App() {
               windowSeconds: 10,
               duplicateLimit: 2,
               maxLinks: 3,
-              capsPercent: 75,
-              capsMinLetters: 8,
               deleteMessage: true,
               timeoutSeconds: 300,
               mentionLimit: 4,
@@ -3156,8 +3151,11 @@ function App() {
           <header className="panel-header">
             <div>
               <small className="eyebrow">{currentGuild?.name ?? helperText('WORKSPACE')} · HELPER</small>
-              <h1 id="route-heading" data-route-heading tabIndex={-1}>{title}</h1>
-              {route.page !== 'activity' && currentFeature?.key !== 'community.achievements' && <p className="subtitle">{subtitle}</p>}
+              <h1 id="route-heading" data-route-heading tabIndex={-1}
+                className={route.page === 'detail' && currentFeature?.key === 'protection.antispam' ? 'antispam-title' : undefined}>
+                {title}
+              </h1>
+              {route.page !== 'activity' && !['community.achievements','protection.antispam'].includes(currentFeature?.key ?? '') && <p className="subtitle">{subtitle}</p>}
             </div>
             {route.page !== 'activity' && <div className="header-state" role="status" aria-live="polite">
               <span className="status-dot" />{' '}
@@ -4370,6 +4368,28 @@ function FeatureDetail({
         </div>
       </section>
     );
+  if (feature?.key === 'protection.antispam') return (
+    <section className="detail-page antispam-page" onBlur={onFlush}>
+      <div className="spam-navigation">
+        <button type="button" className="back-link" onClick={onBack}>{helperText('← Back to features')}</button>
+        {docsUrl && <a className="spam-help" href={docsUrl} target="_blank" rel="noopener noreferrer">
+          {helperText('Learn how this works')}
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+            <circle cx="8" cy="8" r="6.5" />
+            <path d="M8 7.5v3.5" strokeLinecap="round" />
+            <circle cx="8" cy="5" r=".65" fill="currentColor" stroke="none" />
+          </svg>
+        </a>}
+      </div>
+      <AntiSpamSettings key={premiumGuildId} keys={sections.flatMap(section => section.fields.map(field => field.key))}
+        enabled={enabled} onEnabled={onEnabled} onTest={onTest}
+        alertOnly={config.alertOnly === true} saving={saving} onRestore={onRestore}
+        renderField={(key, copy, inline) => {
+          const field = sections.flatMap(section => section.fields).find(field => field.key === key);
+          return field ? <FieldControl field={{ ...field, ...copy }} value={config[key]} context={resourceContext} onChange={onChange} inline={inline} /> : null;
+        }} />
+    </section>
+  );
   return (
     <section className="detail-page" onBlur={onFlush}>
       <button type="button" className="back-link" onClick={onBack}>
@@ -5568,11 +5588,13 @@ function FieldControl({
   value,
   context,
   onChange,
+  inline = false,
 }: {
   field: FieldSpec;
   value: unknown;
   context: GuildContext | null;
   onChange: (key: string, value: unknown) => void;
+  inline?: boolean;
 }) {
   const normalized = value ?? (field.kind === 'toggle' ? false : field.kind === 'tags' || field.kind === 'channels' || field.kind === 'roles' ? [] : '');
   const resourceOptions = field.kind === 'category'
@@ -5716,26 +5738,25 @@ function FieldControl({
         </select>
       </label>
     );
-  return (
+  const input = <input
+    aria-label={inline ? field.label : undefined}
+    type={field.kind}
+    min={field.min}
+    max={field.max}
+    maxLength={field.maxLength}
+    step={field.step ?? 1}
+    value={field.kind === 'number' ? Number(normalized) : String(normalized)}
+    onChange={(event) =>
+      onChange(field.key, field.kind === 'number' ? Number(event.target.value) : event.target.value)
+    }
+  />;
+  return inline ? input : (
     <label className="field">
       <span>
         <b>{field.label}</b>
         {field.help && <small>{field.help}</small>}
       </span>
-      <input
-        type={field.kind}
-        min={field.min}
-        max={field.max}
-        maxLength={field.maxLength}
-        step={field.step ?? 1}
-        value={field.kind === 'number' ? Number(normalized) : String(normalized)}
-        onChange={(event) =>
-          onChange(
-            field.key,
-            field.kind === 'number' ? Number(event.target.value) : event.target.value,
-          )
-        }
-      />
+      {input}
     </label>
   );
 }

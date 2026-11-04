@@ -357,6 +357,9 @@ body:has(.workspace-standalone--helper-picker) #root,
 }
 
 .workspace-shell--helper .panel-header .header-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   flex: 0 0 auto;
   margin-top: 7px;
   border: 1px solid var(--helper-border);
@@ -365,6 +368,11 @@ body:has(.workspace-standalone--helper-picker) #root,
   background: rgba(16, 27, 44, .75);
   font-size: 13px;
   font-weight: 700;
+}
+
+.workspace-shell--helper .panel-header .header-state .status-dot {
+  flex: none;
+  margin: 0;
 }
 
 .helper-server-picker.workspace-standalone__content {
@@ -1126,7 +1134,7 @@ body:has(.workspace-standalone--helper-picker) #root,
   .workspace-shell--helper .workspace-sync { margin: 0; }
   .workspace-shell--helper .workspace-main { width: 100%; padding: 28px 18px 70px; }
   .workspace-shell--helper .panel-header { display: block; margin-bottom: 26px; }
-  .workspace-shell--helper .panel-header .header-state { display: inline-flex; margin-top: 17px; }
+  .workspace-shell--helper .panel-header .header-state { margin-top: 17px; }
   .workspace-shell--helper .quick-setup-hero,
   .workspace-shell--helper .quick-setup-form,
   .workspace-shell--helper .quick-setup-aside,
@@ -1186,4 +1194,25 @@ body:has(.workspace-standalone--helper-picker) #root,
 
 .resource-status > button {
   flex: 0 1 auto;
+}
+
+.workspace-app--helper .workspace-shell.workspace-shell--helper .panel-workspace select {
+  appearance: auto;
+  color-scheme: dark;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 900px) {
+  .workspace-shell--helper .panel-nav > button {
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 420px) {
+  .workspace-shell--helper .panel-nav > .nav > span { display: none; }
 }

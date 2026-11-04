@@ -1,0 +1,192 @@
+{
+  "en": {
+    "title": "Spam protection in action",
+    "close": "Close",
+    "safety": "Example with 6 messages in 10 seconds.",
+    "channel": "general",
+    "sample": "Example",
+    "detected": "Spam detected",
+    "warning": "Slow down, Mia. You sent too many messages in a row.",
+    "timeout": "Mia is in timeout for 60 seconds",
+    "replay": "Replay",
+    "messages": [
+      "Hey!",
+      "Anyone here?",
+      "Look at this",
+      "Quick question",
+      "Are you there?",
+      "Hellooo?"
+    ]
+  },
+  "pt": {
+    "title": "Proteção contra spam em ação",
+    "close": "Fechar",
+    "safety": "Exemplo com 6 mensagens em 10 segundos.",
+    "channel": "geral",
+    "sample": "Exemplo",
+    "detected": "Spam detetado",
+    "warning": "Abranda, Mia. Enviaste demasiadas mensagens seguidas.",
+    "timeout": "Mia está em timeout durante 60 segundos",
+    "replay": "Rever",
+    "messages": [
+      "Olá!",
+      "Está aí alguém?",
+      "Vejam isto",
+      "Uma pergunta rápida",
+      "Estão aí?",
+      "Olááá?"
+    ]
+  },
+  "fr": {
+    "title": "La protection antispam en action",
+    "close": "Fermer",
+    "safety": "Exemple avec 6 messages en 10 secondes.",
+    "channel": "général",
+    "sample": "Exemple",
+    "detected": "Spam détecté",
+    "warning": "Ralentis, Mia. Tu as envoyé trop de messages d’affilée.",
+    "timeout": "Mia est exclue temporairement pendant 60 secondes",
+    "replay": "Revoir",
+    "messages": [
+      "Salut !",
+      "Il y a quelqu’un ?",
+      "Regardez ça",
+      "Petite question",
+      "Vous êtes là ?",
+      "Coucou ?"
+    ]
+  },
+  "es": {
+    "title": "Protección antispam en acción",
+    "close": "Cerrar",
+    "safety": "Ejemplo con 6 mensajes en 10 segundos.",
+    "channel": "general",
+    "sample": "Ejemplo",
+    "detected": "Spam detectado",
+    "warning": "Ve más despacio, Mia. Enviaste demasiados mensajes seguidos.",
+    "timeout": "Mia está en aislamiento durante 60 segundos",
+    "replay": "Volver a ver",
+    "messages": [
+      "¡Hola!",
+      "¿Hay alguien?",
+      "Miren esto",
+      "Una pregunta rápida",
+      "¿Están ahí?",
+      "¿Holaaa?"
+    ]
+  },
+  "de": {
+    "title": "Spamschutz in Aktion",
+    "close": "Schließen",
+    "safety": "Beispiel mit 6 Nachrichten in 10 Sekunden.",
+    "channel": "allgemein",
+    "sample": "Beispiel",
+    "detected": "Spam erkannt",
+    "warning": "Langsamer, Mia. Du hast zu viele Nachrichten hintereinander gesendet.",
+    "timeout": "Mia hat 60 Sekunden Timeout",
+    "replay": "Erneut ansehen",
+    "messages": [
+      "Hey!",
+      "Ist jemand da?",
+      "Schaut mal",
+      "Kurze Frage",
+      "Seid ihr da?",
+      "Hallooo?"
+    ]
+  },
+  "tr": {
+    "title": "Spam koruması iş başında",
+    "close": "Kapat",
+    "safety": "10 saniyede 6 mesaj içeren örnek.",
+    "channel": "genel",
+    "sample": "Örnek",
+    "detected": "Spam algılandı",
+    "warning": "Yavaşla, Mia. Art arda çok fazla mesaj gönderdin.",
+    "timeout": "Mia 60 saniye boyunca zaman aşımında",
+    "replay": "Tekrar izle",
+    "messages": [
+      "Selam!",
+      "Kimse var mı?",
+      "Şuna bakın",
+      "Kısa bir soru",
+      "Orada mısınız?",
+      "Alooo?"
+    ]
+  },
+  "ar": {
+    "title": "الحماية من الرسائل المزعجة أثناء العمل",
+    "close": "إغلاق",
+    "safety": "مثال على 6 رسائل خلال 10 ثوانٍ.",
+    "channel": "عام",
+    "sample": "مثال",
+    "detected": "تم رصد رسائل مزعجة",
+    "warning": "تمهلي يا ميا. أرسلتِ رسائل كثيرة متتالية.",
+    "timeout": "ميا مقيّدة لمدة 60 ثانية",
+    "replay": "إعادة العرض",
+    "messages": [
+      "مرحبًا!",
+      "هل من أحد هنا؟",
+      "انظروا إلى هذا",
+      "سؤال سريع",
+      "هل أنتم هنا؟",
+      "ألو؟"
+    ]
+  },
+  "zh": {
+    "title": "垃圾訊息防護示範",
+    "close": "關閉",
+    "safety": "範例為 10 秒內傳送 6 則訊息。",
+    "channel": "一般",
+    "sample": "範例",
+    "detected": "偵測到垃圾訊息",
+    "warning": "Mia，請放慢速度。你連續傳送了太多訊息。",
+    "timeout": "Mia 被暫時禁言 60 秒",
+    "replay": "重播",
+    "messages": [
+      "嗨！",
+      "有人在嗎？",
+      "看看這個",
+      "問個問題",
+      "你們在嗎？",
+      "哈囉？"
+    ]
+  },
+  "ru": {
+    "title": "Защита от спама в действии",
+    "close": "Закрыть",
+    "safety": "Пример с 6 сообщениями за 10 секунд.",
+    "channel": "общий",
+    "sample": "Пример",
+    "detected": "Обнаружен спам",
+    "warning": "Помедленнее, Миа. Ты отправила слишком много сообщений подряд.",
+    "timeout": "Миа получила тайм-аут на 60 секунд",
+    "replay": "Повторить",
+    "messages": [
+      "Привет!",
+      "Есть кто-нибудь?",
+      "Посмотрите сюда",
+      "Быстрый вопрос",
+      "Вы тут?",
+      "Алло?"
+    ]
+  },
+  "ko": {
+    "title": "스팸 방지 작동 예시",
+    "close": "닫기",
+    "safety": "10초 안에 메시지 6개를 보낸 예시입니다.",
+    "channel": "일반",
+    "sample": "예시",
+    "detected": "스팸 감지됨",
+    "warning": "Mia, 천천히 보내세요. 메시지를 너무 많이 연속해서 보냈어요.",
+    "timeout": "Mia에게 60초 타임아웃이 적용됐습니다",
+    "replay": "다시 보기",
+    "messages": [
+      "안녕!",
+      "누구 있어요?",
+      "이것 좀 보세요",
+      "잠깐 질문이요",
+      "다들 있어요?",
+      "저기요?"
+    ]
+  }
+}

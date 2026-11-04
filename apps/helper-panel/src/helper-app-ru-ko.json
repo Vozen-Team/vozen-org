@@ -615,9 +615,9 @@
     "ru": "Окно обнаружения (секунды)",
     "ko": "감지 시간 범위(초)"
   },
-  "Detects flooding, repeated messages, excessive mentions, links, and caps.": {
-    "ru": "Выявляет флуд, повторяющиеся сообщения, массовые упоминания, ссылки и текст заглавными буквами.",
-    "ko": "도배, 반복 메시지, 과도한 멘션, 링크 및 대문자 남용을 감지합니다."
+  "Detects flooding, repeated messages, and excessive mentions or links.": {
+    "ru": "Выявляет флуд, повторяющиеся сообщения, избыток упоминаний или ссылок.",
+    "ko": "도배, 반복 메시지, 과도한 멘션이나 링크을 감지합니다."
   },
   "Detects flooding, repetition and mentions with safe limits.": {
     "ru": "Выявляет флуд, повторения и упоминания с безопасными ограничениями.",

@@ -615,9 +615,9 @@
     "de": "Erkennungszeitraum (Sekunden)",
     "tr": "Tespit aralığı (saniye)"
   },
-  "Detects flooding, repeated messages, excessive mentions, links, and caps.": {
-    "de": "Erkennt Nachrichtenfluten, Wiederholungen, übermäßige Erwähnungen, Links und Großschreibung.",
-    "tr": "Mesaj yağmurunu, tekrarları, aşırı etiketlemeyi, bağlantıları ve büyük harf kullanımını tespit eder."
+  "Detects flooding, repeated messages, and excessive mentions or links.": {
+    "de": "Erkennt Nachrichtenfluten, Wiederholungen, zu viele Erwähnungen oder Links.",
+    "tr": "Mesaj yağmurunu, tekrarları, aşırı etiketlemeyi ve bağlantı paylaşımını tespit eder."
   },
   "Detects flooding, repetition and mentions with safe limits.": {
     "de": "Erkennt Nachrichtenfluten, Wiederholungen und Erwähnungen mit sicheren Grenzwerten.",

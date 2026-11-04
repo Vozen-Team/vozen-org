@@ -25,8 +25,93 @@
 .feature-simulation li { margin-block: 8px; overflow-wrap: anywhere; font-size: 13px; }
 .feature-simulation [role="alert"] { color: #ffc6d5; }
 .feature-simulation button { flex-shrink: 0; }
+.spam-simulation { width: min(620px, calc(100vw - 24px)); }
+.spam-simulation h2 { font-size: 1.35rem; }
+.spam-simulation header { margin: 0; }
+.spam-simulation button { min-height: 44px; }
+.spam-simulation :focus-visible { outline: 2px solid #9ce9de; outline-offset: 3px; }
+.spam-demo-chat {
+  margin-block-start: 16px;
+  border: 1px solid #304158;
+  border-radius: 12px;
+  background: #0b1421;
+  overflow-wrap: anywhere;
+}
+.spam-demo-channel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  border-block-end: 1px solid #304158;
+}
+.spam-demo-channel small { color: #b9c9df; }
+.spam-demo-feed { padding: 14px 16px; }
+.spam-demo-member { display: flex; align-items: start; gap: 10px; }
+.spam-demo-avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #3b4d70;
+  color: #f4f7fb;
+  font-size: .8rem;
+}
+.spam-demo-messages { padding: 0; margin: 0; list-style: none; }
+.spam-simulation .spam-demo-messages li {
+  margin: 0;
+  color: #d6e0ef;
+  line-height: 1.65;
+  animation: spam-demo-arrive 200ms ease-out both;
+}
+.spam-simulation .spam-demo-messages li:last-child { color: #ffbbc9; }
+.spam-demo-response { margin-block-start: 12px; animation: spam-demo-arrive 240ms ease-out 2000ms both; }
+.spam-demo-warning {
+  border: 1px solid #563849;
+  border-radius: 6px;
+  padding: 10px 12px;
+  background: #221b2a;
+  font-size: .85rem;
+}
+.spam-demo-bot { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-block-end: 3px; }
+.spam-demo-bot span { border-radius: 4px; background: #414976; padding-inline: 4px; font-size: .65rem; }
+.spam-demo-warning b { color: #ffc6d5; }
+.spam-simulation .spam-demo-warning p { margin: 2px 0 0; }
+.spam-demo-timeout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-block-start: 10px;
+  color: #edd39b;
+  font-size: .82rem;
+}
+.spam-demo-timeout svg { flex-shrink: 0; }
+.spam-demo-footer { display: flex; justify-content: flex-end; margin-block-start: 12px; }
+@keyframes spam-demo-arrive {
+  from { visibility: hidden; opacity: 0; transform: translateY(4px); }
+  to { visibility: visible; opacity: 1; transform: translateY(0); }
+}
 @media (max-width: 600px) {
   .feature-simulation { padding: 18px; }
   .feature-simulation__header { align-items: start; flex-direction: column; gap: 10px; }
   .feature-simulation__header button { width: 100%; }
+  .spam-simulation .feature-simulation__header { align-items: center; flex-direction: row; }
+  .spam-simulation .feature-simulation__header button { width: auto; }
+}
+@media (max-width: 480px), (max-height: 600px) {
+  .spam-simulation { padding: 14px; }
+  .spam-simulation .feature-simulation__header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 1;
+    background: inherit;
+    gap: 8px;
+  }
+  .spam-simulation h2 { font-size: 1.125rem; overflow-wrap: anywhere; }
+  .spam-demo-channel, .spam-demo-feed { padding-inline: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spam-simulation .spam-demo-messages li, .spam-demo-response { animation: none; }
+  .spam-demo-footer { display: none; }
 }
