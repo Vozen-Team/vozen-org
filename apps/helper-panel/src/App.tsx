@@ -5,7 +5,7 @@ import { overviewText } from './overview-i18n';
 import './overview.css';
 import { ActivityFeed } from './activity-feed';
 import { EcosystemTopbar, EcosystemAccountAvatar, useEcosystemAccount, discordAvatarUrl } from './ecosystem-topbar';
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import { createElement, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { canonicalWelcomeKey, visibleWelcomeFeatures } from './welcome';
 import { PremiumBannerSwitch } from './premium-banner-switch';
 import { FeatureSimulation, type SimulationDraft } from './feature-simulation';
@@ -3094,10 +3094,11 @@ function App() {
               else void switchGuild(event.target.value);
             }}
           >
+            <button type="button">{createElement('selectedcontent')}</button>
             {guilds.map((guild) => (
               <option value={guild.id} key={guild.id}>
                 <HelperGuildAvatar guild={guild} compact />
-                {guild.name}
+                <span className="helper-server-option-name">{guild.name}</span>
               </option>
             ))}
             <option value="__choose_server__">{helperText('← Choose another server').replace(/^←\s*/, '')}</option>

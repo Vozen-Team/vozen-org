@@ -1197,12 +1197,29 @@ body:has(.workspace-standalone--helper-picker) #root,
 }
 
 .workspace-app--helper .workspace-shell.workspace-shell--helper .panel-workspace select {
-  appearance: auto;
-  color-scheme: dark;
   min-inline-size: 0;
   max-inline-size: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.panel-workspace .helper-server-option-name {
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@supports (appearance: base-select) {
+  .panel-workspace select > button,
+  .panel-workspace select selectedcontent {
+    display: flex;
+    align-items: center;
+    min-inline-size: 0;
+  }
+
+  .panel-workspace select > button { flex: 1; }
+  .panel-workspace select selectedcontent .server-option-icon { display: none; }
 }
 
 @media (max-width: 900px) {
