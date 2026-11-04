@@ -66,6 +66,12 @@
   animation: spam-demo-arrive 200ms ease-out both;
 }
 .spam-simulation .spam-demo-messages li:last-child { color: #ffbbc9; }
+.scam-demo-message { animation: scam-demo-removed 220ms ease-out 2000ms forwards; }
+@keyframes scam-demo-removed {
+  to { opacity: .66; text-decoration: line-through; }
+}
+.spam-simulation .scam-demo-outcome { color: #9ce9de; font-weight: 650; }
+.scam-demo-log { display: block; margin-block-end: 6px; color: #b9c9df; }
 .spam-demo-response { margin-block-start: 12px; animation: spam-demo-arrive 240ms ease-out 2000ms both; }
 .spam-demo-warning {
   border: 1px solid #563849;
@@ -112,6 +118,7 @@
   .spam-demo-channel, .spam-demo-feed { padding-inline: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .spam-simulation .spam-demo-messages li, .spam-demo-response { animation: none; }
+  .spam-simulation .spam-demo-messages li, .spam-demo-response, .scam-demo-message { animation: none; }
+  .scam-demo-message { text-decoration: line-through; }
   .spam-demo-footer { display: none; }
 }

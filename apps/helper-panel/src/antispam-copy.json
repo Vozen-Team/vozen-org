@@ -23,7 +23,8 @@
     "Removes only the message that triggered the rule.",
     "Where the member receives the warning.",
     "Where staff can see detected incidents.",
-    "{floodCount} messages within {windowSeconds} seconds"
+    "{floodCount} messages within {windowSeconds} seconds",
+    "Restore this feature’s default settings?"
   ],
   "pt": [
     "Deteção",
@@ -49,7 +50,8 @@
     "Apaga apenas a mensagem que acionou a regra.",
     "Onde o membro recebe o aviso.",
     "Onde a equipa consulta os incidentes detetados.",
-    "{floodCount} mensagens em {windowSeconds} segundos"
+    "{floodCount} mensagens em {windowSeconds} segundos",
+    "Repor as predefinições desta funcionalidade?"
   ],
   "fr": [
     "Détection",
@@ -75,7 +77,8 @@
     "Supprime uniquement le message ayant déclenché la règle.",
     "Où le membre reçoit l’avertissement.",
     "Où l’équipe consulte les incidents détectés.",
-    "{floodCount} messages en {windowSeconds} secondes"
+    "{floodCount} messages en {windowSeconds} secondes",
+    "Rétablir les paramètres par défaut de cette fonctionnalité ?"
   ],
   "es": [
     "Detección",
@@ -101,7 +104,8 @@
     "Borra solo el mensaje que activó la regla.",
     "Dónde recibe el miembro el aviso.",
     "Dónde consulta el equipo los incidentes detectados.",
-    "{floodCount} mensajes en {windowSeconds} segundos"
+    "{floodCount} mensajes en {windowSeconds} segundos",
+    "¿Restablecer los ajustes predeterminados de esta función?"
   ],
   "de": [
     "Erkennung",
@@ -127,7 +131,8 @@
     "Löscht nur die Nachricht, die die Regel ausgelöst hat.",
     "Wo das Mitglied die Warnung erhält.",
     "Wo das Team erkannte Vorfälle nachlesen kann.",
-    "{floodCount} Nachrichten innerhalb von {windowSeconds} Sekunden"
+    "{floodCount} Nachrichten innerhalb von {windowSeconds} Sekunden",
+    "Die Standardeinstellungen dieser Funktion wiederherstellen?"
   ],
   "tr": [
     "Algılama",
@@ -153,7 +158,8 @@
     "Yalnızca kuralı tetikleyen mesajı siler.",
     "Üyenin uyarıyı alacağı yer.",
     "Ekibin algılanan olayları görebileceği yer.",
-    "{windowSeconds} saniye içinde {floodCount} mesaj"
+    "{windowSeconds} saniye içinde {floodCount} mesaj",
+    "Bu özelliğin varsayılan ayarları geri yüklensin mi?"
   ],
   "ar": [
     "الكشف",
@@ -179,7 +185,8 @@
     "يحذف فقط الرسالة التي فعّلت القاعدة.",
     "مكان وصول التحذير إلى العضو.",
     "مكان اطلاع فريق الإشراف على الحوادث المكتشفة.",
-    "{floodCount} رسائل خلال {windowSeconds} ثانية"
+    "{floodCount} رسائل خلال {windowSeconds} ثانية",
+    "هل تريد استعادة الإعدادات الافتراضية لهذه الميزة؟"
   ],
   "zh": [
     "偵測",
@@ -205,7 +212,8 @@
     "只刪除觸發規則的訊息。",
     "成員接收警告的位置。",
     "管理團隊查看偵測事件的位置。",
-    "在 {windowSeconds} 秒內傳送 {floodCount} 則訊息"
+    "在 {windowSeconds} 秒內傳送 {floodCount} 則訊息",
+    "要還原此功能的預設設定嗎？"
   ],
   "ru": [
     "Обнаружение",
@@ -231,7 +239,8 @@
     "Удаляет только сообщение, вызвавшее срабатывание правила.",
     "Где участник получает предупреждение.",
     "Где команда просматривает обнаруженные события.",
-    "{floodCount} сообщений за {windowSeconds} секунд"
+    "{floodCount} сообщений за {windowSeconds} секунд",
+    "Восстановить настройки этой функции по умолчанию?"
   ],
   "ko": [
     "감지",
@@ -257,6 +266,7 @@
     "규칙을 위반한 메시지만 삭제합니다.",
     "멤버가 경고를 받을 위치입니다.",
     "운영진이 감지된 사건을 확인할 위치입니다.",
-    "{windowSeconds}초 안에 메시지 {floodCount}개"
+    "{windowSeconds}초 안에 메시지 {floodCount}개",
+    "이 기능의 기본 설정을 복원할까요?"
   ]
 }

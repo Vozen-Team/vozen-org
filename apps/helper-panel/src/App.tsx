@@ -17,7 +17,7 @@ import { ticketSettingsGroups, ticketSettingCopy } from './ticket-settings';
 import './ticket-settings.css';
 import { welcomeSettingsGroups, welcomeSettingCopy, welcomeStepOptions, changeWelcomeStep } from './welcome-settings';
 import './welcome-settings.css';
-import { AntiSpamSettings, AntiSpamSettingsSkeleton } from './antispam-settings';
+import { ProtectionSettings, ProtectionSettingsSkeleton, protectionRestorePrompt } from './antispam-settings';
 import { LevelsSettings } from './levels-settings-panel';
 import { levelSettingCopy } from './levels-settings';
 import { guildStorage, preferredGuild, rememberGuild } from './last-guild';
@@ -2512,7 +2512,8 @@ function App() {
   const premiumGuildRef = useRef(me?.guildId);
   premiumGuildRef.current = me?.guildId;
   const currentFeature = features.find((item) => item.key === route.key);
-  const isAntiSpamDetail = route.page === 'detail' && route.key === 'protection.antispam';
+  const isProtectionDetail = route.page === 'detail' &&
+    (route.key === 'protection.antispam' || route.key === 'protection.antiscam');
   const detailDirty = JSON.stringify(detailConfig) !== JSON.stringify(savedDetailConfig);
   const rankDirty = JSON.stringify(rankConfig) !== JSON.stringify(savedRankConfig);
   const dirty =
@@ -2699,7 +2700,7 @@ function App() {
       repairingDetail.current = false;
     }
   }
-  async function testDetail() {
+  async function testDetail(visualDemo = false) {
     if (!route.key) return;
     try {
       if (route.key === 'social.youtube') {
@@ -2806,7 +2807,7 @@ function App() {
         const feature = features.find(item => item.key === route.key);
         setSimulation({ guildId: me.guildId, key: route.key,
           get label() { return feature ? localizedFeature(feature).label : helperText('Feature'); },
-          config: structuredClone(detailConfig), enabled: detailEnabled });
+          config: structuredClone(detailConfig), enabled: detailEnabled, visualDemo });
       }
     } catch {
       setMessage(
@@ -3161,10 +3162,10 @@ function App() {
             <div>
               <small className="eyebrow">{currentGuild?.name ?? helperText('WORKSPACE')} · HELPER</small>
               <h1 id="route-heading" data-route-heading tabIndex={-1}
-                className={isAntiSpamDetail ? 'antispam-title' : undefined}>
+                className={isProtectionDetail ? 'antispam-title' : undefined}>
                 {title}
               </h1>
-              {route.page !== 'activity' && !['community.achievements','protection.antispam'].includes(currentFeature?.key ?? '') && <p className="subtitle">{subtitle}</p>}
+              {route.page !== 'activity' && !isProtectionDetail && currentFeature?.key !== 'community.achievements' && <p className="subtitle">{subtitle}</p>}
             </div>
             {route.page !== 'activity' && <div className="header-state" role="status" aria-live="polite">
               <span className="status-dot" />{' '}
@@ -3205,7 +3206,7 @@ function App() {
           </div>
         )}
         {!localPreviewMode && needsGuildContext &&
-          (guildContextLoading ? !isAntiSpamDetail : guildContextError || guildContext?.stale) && (
+          (guildContextLoading ? !isProtectionDetail : guildContextError || guildContext?.stale) && (
           <div className="card resource-status" role="status">
             <span>
             {guildContextLoading
@@ -3262,7 +3263,7 @@ function App() {
         )}
         {route.page === 'activity' && <ActivityFeed key={me?.guildId} guildId={me?.guildId || ''} preview={localPreviewMode} />}
         {route.page === 'detail' &&
-          (detailLoading ? isAntiSpamDetail ? <AntiSpamSettingsSkeleton /> : (
+          (detailLoading ? isProtectionDetail ? <ProtectionSettingsSkeleton /> : (
             <div className="loading-card card">
               <div className="loader" />
               <span>{helperText('Loading configuration…')}</span>
@@ -3286,8 +3287,11 @@ function App() {
               onChange={editField}
               onFlush={() => void autosaveRef.current?.flush()}
               onRepair={() => void repairDetail()}
-              onTest={() => void testDetail()}
-              onRestore={detailDefaults ? () => { if(window.confirm('Restore default settings for this feature?'))editSettings({config:{...detailDefaults}}); } : undefined}
+              onTest={visualDemo => void testDetail(visualDemo)}
+              onRestore={detailDefaults ? () => {
+                const prompt = isProtectionDetail ? protectionRestorePrompt() : 'Restore default settings for this feature?';
+                if (window.confirm(prompt)) editSettings({ config: { ...detailDefaults } });
+              } : undefined}
               templates={studioTemplates}
               onTemplatesChange={setStudioTemplates}
               providerHealth={providerHealth}
@@ -4262,7 +4266,7 @@ function FeatureDetail({
   onChange: (key: string, value: unknown) => void;
   onFlush: () => void;
   onRepair: () => void;
-  onTest: () => void;
+  onTest: (visualDemo?: boolean) => void;
   onRestore?: () => void;
   templates: StudioTemplate[];
   onTemplatesChange: (templates: StudioTemplate[]) => void;
@@ -4378,28 +4382,35 @@ function FeatureDetail({
         </div>
       </section>
     );
-  if (feature?.key === 'protection.antispam') return (
-    <section className="detail-page antispam-page" onBlur={onFlush}>
-      <div className="spam-navigation">
-        <button type="button" className="back-link" onClick={onBack}>{helperText('← Back to features')}</button>
-        {docsUrl && <a className="spam-help" href={docsUrl} target="_blank" rel="noopener noreferrer">
-          {helperText('Learn how this works')}
-          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
-            <circle cx="8" cy="8" r="6.5" />
-            <path d="M8 7.5v3.5" strokeLinecap="round" />
-            <circle cx="8" cy="5" r=".65" fill="currentColor" stroke="none" />
-          </svg>
-        </a>}
-      </div>
-      <AntiSpamSettings key={premiumGuildId} keys={sections.flatMap(section => section.fields.map(field => field.key))}
-        enabled={enabled} onEnabled={onEnabled} onTest={onTest}
-        alertOnly={config.alertOnly === true} saving={saving} onRestore={onRestore}
-        renderField={(key, copy, inline) => {
-          const field = sections.flatMap(section => section.fields).find(field => field.key === key);
-          return field ? <FieldControl field={{ ...field, ...copy }} value={config[key]} context={resourceContext} onChange={onChange} inline={inline} /> : null;
-        }} />
-    </section>
-  );
+  const scam = feature?.key === 'protection.antiscam';
+  if (scam || feature?.key === 'protection.antispam') {
+    const fields = sections.flatMap(section => section.fields);
+    const needsRepair = scam && !localPreviewMode && feature?.health?.status && feature.health.status !== 'ready' && revision > 0;
+    return (
+      <section className="detail-page antispam-page" onBlur={onFlush}>
+        <div className="spam-navigation">
+          <button type="button" className="back-link" onClick={onBack}>{helperText('← Back to features')}</button>
+          {docsUrl && <a className="spam-help" href={docsUrl} target="_blank" rel="noopener noreferrer">
+            {helperText('Learn how this works')}
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
+              <circle cx="8" cy="8" r="6.5" />
+              <path d="M8 7.5v3.5" strokeLinecap="round" />
+              <circle cx="8" cy="5" r=".65" fill="currentColor" stroke="none" />
+            </svg>
+          </a>}
+        </div>
+        <ProtectionSettings key={premiumGuildId} scam={scam} title={translatedFeature?.label ?? helperText('Feature')}
+          keys={fields.map(field => field.key)}
+          enabled={enabled} onEnabled={onEnabled} onTest={() => onTest(scam)}
+          onSimulate={scam ? () => onTest() : undefined} onRepair={needsRepair ? onRepair : undefined}
+          alertOnly={config.alertOnly === true} saving={saving} onRestore={onRestore}
+          renderField={(key, copy, inline) => {
+            const field = fields.find(field => field.key === key);
+            return field ? <FieldControl field={{ ...field, ...copy }} value={config[key]} context={resourceContext} onChange={onChange} inline={inline} /> : null;
+          }} />
+      </section>
+    );
+  }
   return (
     <section className="detail-page" onBlur={onFlush}>
       <button type="button" className="back-link" onClick={onBack}>
@@ -4509,7 +4520,7 @@ function FeatureDetail({
               {helperText('Use the simulation to see what would happen. It never deletes messages or punishes members.')}
             </p>
           </div>
-          <button type="button" className="secondary full" onClick={onTest}>
+          <button type="button" className="secondary full" onClick={() => onTest()}>
             {feature?.key === 'social.youtube' ||
             feature?.key === 'social.twitch' ||
             feature?.key === 'social.rss' ||
@@ -5606,6 +5617,7 @@ function FieldControl({
   onChange: (key: string, value: unknown) => void;
   inline?: boolean;
 }) {
+  const [tagsDraft, setTagsDraft] = useState<string | null>(null);
   const normalized = value ?? (field.kind === 'toggle' ? false : field.kind === 'tags' || field.kind === 'channels' || field.kind === 'roles' ? [] : '');
   const resourceOptions = field.kind === 'category'
     ? (context?.channels ?? []).filter((option) => option.type === 'category')
@@ -5705,7 +5717,8 @@ function FieldControl({
         />
       </label>
     );
-  if (field.kind === 'tags')
+  if (field.kind === 'tags') {
+    const savedTags = Array.isArray(normalized) ? normalized.join(', ') : String(normalized);
     return (
       <label className="field">
         <span>
@@ -5713,19 +5726,18 @@ function FieldControl({
           <small>{field.help ?? helperText('Separate multiple values with commas.')}</small>
         </span>
         <input
-          value={Array.isArray(normalized) ? normalized.join(', ') : String(normalized)}
-          onChange={(event) =>
-            onChange(
-              field.key,
-              event.target.value
-                .split(',')
-                .map((item) => item.trim())
-                .filter(Boolean),
-            )
-          }
+          value={tagsDraft ?? savedTags}
+          onBlur={() => setTagsDraft(null)}
+          onChange={(event) => {
+            const draft = event.target.value;
+            setTagsDraft(draft);
+            const tags = draft.split(',').map(item => item.trim()).filter(Boolean);
+            if (tags.join(', ') !== savedTags) onChange(field.key, tags);
+          }}
         />
       </label>
     );
+  }
   if (field.kind === 'select')
     return (
       <label className="field">
