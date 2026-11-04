@@ -1,8 +1,20 @@
 .panel-main .spam-settings { --spam-muted: #b4c3d9; container-type: inline-size; }
 .workspace-app--helper .workspace-shell.workspace-shell--helper > .panel-main > .panel-header:has(.antispam-title) {
   border-block-end: 0;
+  flex-wrap: wrap;
+  row-gap: 4px;
   margin-block-end: 6px;
   padding-block-end: 0;
+}
+.panel-main .panel-header:has(.antispam-title) > div:first-child {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  overflow-wrap: anywhere;
+}
+.panel-main .panel-header:has(.antispam-title) .header-state {
+  max-inline-size: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .workspace-app--helper .workspace-shell.workspace-shell--helper .panel-header .antispam-title {
   font-size: clamp(36px, 4vw, 48px);
@@ -115,8 +127,8 @@
 .panel-main .spam-group .field-grid > div { min-width: 0; display: grid; }
 .panel-main .spam-group .field { margin: 0; font-size: .9375rem; }
 .panel-main .spam-group .field-grid .field:not(.toggle-field) { height: 100%; grid-template-rows: 1fr auto; }
-.panel-main .spam-group .field > span { align-content: start; }
-.panel-main .spam-group .toggle-field { align-self: end; }
+.panel-main .spam-group .field > span { min-inline-size: 0; align-content: start; overflow-wrap: anywhere; }
+.panel-main .spam-group .toggle-field { align-self: end; grid-template-columns: minmax(0, 1fr) auto; }
 .panel-main .spam-group .field small { color: var(--spam-muted); font-size: .875rem; line-height: 1.55; }
 .panel-main .spam-group .field :is(input:not([type="checkbox"]), select) { min-height: 50px; font-size: 1rem; }
 .panel-main .spam-group fieldset.field-grid { border: 0; padding: 0; margin: 22px 0 0; min-width: 0; }
@@ -125,7 +137,7 @@
 .panel-main .spam-group .spam-warning-field:disabled { opacity: .55; }
 .panel-main .spam-mode-note { margin: 16px 0 0; color: #edd39b; max-width: 70ch; font-size: .875rem; }
 .panel-main .spam-footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; padding: 4px 0; }
-.panel-main .spam-footer button { white-space: nowrap; }
+.panel-main .spam-footer button { max-inline-size: 100%; white-space: normal; overflow-wrap: anywhere; }
 .panel-main :is(.spam-settings, .spam-toolbar) :focus-visible { outline: 2px solid #9ce9de; outline-offset: 4px; }
 .panel-main .spam-placeholder-link { width: min(100%, 8rem); height: 14px; margin-block: 15px; }
 .panel-main .spam-placeholder-button { width: min(100%, 11rem); height: 54px; }
@@ -143,21 +155,26 @@
   .panel-main .spam-tabs button { min-height: 46px; padding: 8px 3px; font-size: .9375rem; white-space: normal; overflow-wrap: anywhere; }
   .panel-main .spam-rule input { inline-size: 3.25rem; }
   .panel-main .spam-group { padding: 20px 16px; }
-  .panel-main .spam-group .field-grid { grid-template-columns: minmax(0, 1fr); }
 }
 @container (max-width: 773px) {
   .panel-main .spam-detection:not([hidden]) { grid-template-columns: minmax(0, 1fr); }
 }
-@media (max-width: 480px) {
-  .panel-main .spam-navigation { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .panel-main .spam-navigation .back-link { text-align: start; }
-  .panel-main .spam-navigation .spam-help { justify-self: end; min-height: 44px; }
-  .panel-main .spam-navigation :is(.spam-help, .back-link) { font-size: .8125rem; white-space: normal; }
-  .panel-main .spam-toolbar { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 10px; }
+@container (max-width: 620px) {
+  .panel-main .spam-group .field-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@container (max-width: 448px) {
+  .panel-main .spam-toolbar,
+  .panel-main .spam-footer { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .panel-main .spam-toolbar { gap: 8px; padding: 10px; }
   .panel-main .spam-toolbar :is(.spam-activation, .spam-demo-button) { min-height: 48px; }
   .panel-main .spam-toolbar .spam-placeholder-button { width: 100%; height: 48px; }
   .panel-main .spam-toolbar .spam-demo-button { padding-inline: 10px; white-space: normal; }
+}
+@media (max-width: 480px) {
+  .panel-main .spam-navigation { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .panel-main .spam-navigation .back-link { text-align: start; }
+  .panel-main .spam-navigation .spam-help { justify-self: end; min-height: 44px; }
+  .panel-main .spam-navigation :is(.spam-help, .back-link) { font-size: .8125rem; white-space: normal; }
   .panel-main .spam-rule { font-size: 1rem; }
   .panel-main .spam-group, .panel-main .spam-detection .spam-group { padding: 16px 14px; }
-  .panel-main .spam-footer button { max-inline-size: 100%; white-space: normal; overflow-wrap: anywhere; }
 }
