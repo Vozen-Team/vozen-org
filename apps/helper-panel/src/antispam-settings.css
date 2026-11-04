@@ -127,6 +127,14 @@
 .panel-main .spam-footer { display: flex; justify-content: flex-end; padding: 4px 0; }
 .panel-main .spam-footer button { white-space: nowrap; }
 .panel-main :is(.spam-settings, .spam-toolbar) :focus-visible { outline: 2px solid #9ce9de; outline-offset: 4px; }
+.panel-main .spam-placeholder-link { width: min(100%, 8rem); height: 14px; margin-block: 15px; }
+.panel-main .spam-placeholder-button { width: min(100%, 11rem); height: 54px; }
+.panel-main .spam-placeholder-tab { width: min(100%, 4.5rem); height: 16px; margin-block: 17px; }
+.panel-main .spam-placeholder-intro { width: min(100%, 22rem); height: 16px; }
+.panel-main .spam-placeholder-heading { width: 7rem; height: 18px; margin-block: 4px 22px; }
+.panel-main .spam-placeholder-input { height: 50px; margin-block: 18px 0; }
+.panel-main .spam-settings-skeleton .spam-group { min-height: 232px; }
+.panel-main .spam-settings-skeleton .spam-footer { margin-block-start: 8px; }
 @media (max-width: 700px) {
   .workspace-app--helper .workspace-shell.workspace-shell--helper .panel-header .antispam-title {
     font-size: clamp(32px, 8.5vw, 38px);
@@ -147,6 +155,7 @@
   .panel-main .spam-navigation :is(.spam-help, .back-link) { font-size: .8125rem; white-space: normal; }
   .panel-main .spam-toolbar { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 10px; }
   .panel-main .spam-toolbar :is(.spam-activation, .spam-demo-button) { min-height: 48px; }
+  .panel-main .spam-toolbar .spam-placeholder-button { width: 100%; height: 48px; }
   .panel-main .spam-toolbar .spam-demo-button { padding-inline: 10px; white-space: normal; }
   .panel-main .spam-rule { font-size: 1rem; }
   .panel-main .spam-group, .panel-main .spam-detection .spam-group { padding: 16px 14px; }

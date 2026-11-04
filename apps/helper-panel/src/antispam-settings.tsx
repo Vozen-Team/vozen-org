@@ -3,6 +3,34 @@ import { helperLocale, helperText } from './i18n';
 import copy from './antispam-copy.json';
 import './antispam-settings.css';
 
+export function AntiSpamSettingsSkeleton() {
+  const pulse = (shape: string) => <span className={`helper-skeleton__pulse spam-placeholder-${shape}`} />;
+  return <div className="detail-page antispam-page spam-settings-skeleton" aria-hidden="true">
+    <div className="spam-navigation">
+      {pulse('link')}
+      {pulse('link')}
+    </div>
+    <div className="spam-settings">
+      <div className="spam-toolbar">
+        {pulse('button')}
+        {pulse('button')}
+      </div>
+      <div className="spam-tabs">{[0, 1, 2].map(tab =>
+        <span className="helper-skeleton__pulse spam-placeholder-tab" key={tab} />)}
+      </div>
+      <div className="spam-detection">
+        <div className="spam-tab-intro">{pulse('intro')}</div>
+        {[0, 1].map(group => <div className="spam-group" key={group}>
+          {pulse('heading')}
+          {pulse('input')}
+          {pulse('input')}
+        </div>)}
+      </div>
+      <div className="spam-footer">{pulse('button')}</div>
+    </div>
+  </div>;
+}
+
 export const SPAM_GROUPS = [
   { title: 3, tab: 0, keys: ['floodCount', 'windowSeconds', 'duplicateLimit'] },
   { title: 4, tab: 0, keys: ['mentionLimit', 'maxLinks'] },
