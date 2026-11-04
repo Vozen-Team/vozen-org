@@ -78,7 +78,7 @@
   // links remain untouched. This small state object also gives Overview a truthful
   // summary instead of inventing usage metrics.
   var workspaceState = { guild: null, guilds: [], data: null, view: "overview", pendingView: null, dirty: false, requestSeq: 0 };
-  var TTS_VIEWS = { overview: true, reading: true, community: true, profiles: true, limits: true };
+  var TTS_VIEWS = { overview: true, reading: true, community: true, profiles: true, limits: true, "bot-profile": true };
 
   function viewFromHash() {
     var raw = String(window.location.hash || "").replace(/^#\/?/, "");
@@ -253,11 +253,13 @@
       return;
     }
     showWorkspaceShell();
+    if (workspaceState.view === "bot-profile") return renderBotProfile(workspaceState.guild);
     renderForm(workspaceState.guild, workspaceState.data.config, workspaceState.guilds, workspaceState.data, false);
   }
 
   function navigateTtsView(viewName) {
     var next = TTS_VIEWS[viewName] ? viewName : "overview";
+    if (next === "bot-profile" && next === workspaceState.view) return;
     if (next !== workspaceState.view && !confirmTtsDiscard()) return;
     if (next !== workspaceState.view) workspaceState.dirty = false;
     setTtsView(next, "push");
@@ -842,7 +844,7 @@
     var art = url
       ? '<img class="dash-head__ic" src="' + esc(url) + '" alt="">'
       : '<span class="dash-head__ph" aria-hidden="true">' + esc(guildInitials(guild.name)) + "</span>";
-    var titles = { reading: "readingVoice", community: "community", profiles: "channelProfiles", limits: "accessLimits" };
+    var titles = { reading: "readingVoice", community: "community", profiles: "channelProfiles", limits: "accessLimits", "bot-profile": "botProfile" };
     var title = titles[workspaceState.view] ? t("dashboard." + titles[workspaceState.view]) : guild.name;
     return (
       '<div class="dash-head">' +
@@ -1076,6 +1078,224 @@
     if (f.type === "role") return el.value === "" ? null : el.value;
     return el.value;
   }
+
+  function renderBotProfile(guild) {
+    view(
+      '<div class="dash-form">' + headHtml(guild) +
+      '<section class="workspace-card tts-bot-profile" aria-labelledby="ttsProfileTitle">' +
+        '<h2 id="ttsProfileTitle" data-i18n="dashboard.botProfileServer"></h2>' +
+        '<p data-i18n="dashboard.botProfileIntro"></p>' +
+        '<form hidden><div class="tts-profile-preview">' +
+          '<div class="tts-profile-banner"><img alt="" hidden><button type="button" data-image="banner"><span aria-hidden="true">✎</span></button><button type="button" data-undo="banner" hidden>↶</button></div>' +
+          '<div class="tts-profile-avatar"><img alt=""><button type="button" data-image="avatar"><span aria-hidden="true">✎</span></button><button type="button" data-undo="avatar" hidden>↶</button></div>' +
+          '<input type="file" name="banner" accept="image/png,image/jpeg,image/webp" hidden>' +
+          '<input type="file" name="avatar" accept="image/png,image/jpeg,image/webp" hidden>' +
+          '<div class="tts-profile-body"><label for="ttsProfileNick" data-i18n="dashboard.botProfileName"></label>' +
+            '<div class="tts-profile-name"><input id="ttsProfileNick" name="nick" maxlength="32" autocomplete="off" aria-describedby="ttsProfileCount"><span>APP</span></div>' +
+            '<small id="ttsProfileCount"></small><p class="tts-profile-bio" hidden></p>' +
+            '<p class="tts-profile-caption" data-i18n="dashboard.botProfilePreview"></p></div>' +
+        '</div><p data-i18n="dashboard.botProfileImages"></p>' +
+        '<div class="tts-profile-actions"><button type="submit" class="workspace-button" data-i18n="dashboard.botProfileApply"></button>' +
+        '<button type="button" class="workspace-button workspace-button--secondary" data-reset data-i18n="dashboard.botProfileReset"></button></div></form>' +
+        '<p role="status" class="tts-profile-status"></p>' +
+        '<button type="button" class="workspace-button workspace-button--secondary" data-retry data-i18n="dashboard.retry" hidden></button>' +
+      '</section></div>'
+    );
+    var section = root.querySelector(".tts-bot-profile");
+    var form = section.querySelector("form");
+    var nick = form.elements.nick;
+    var apply = form.querySelector('[type="submit"]');
+    var reset = form.querySelector("[data-reset]");
+    var retry = section.querySelector("[data-retry]");
+    var status = section.querySelector('[role="status"]');
+    var imageButtons = form.querySelectorAll("[data-image]");
+    var undoButtons = form.querySelectorAll("[data-undo]");
+    var saved, pending = 0, saving = false;
+    var uploads = {};
+    var statusKey = "";
+    var endpoint = API + "/api/dashboard/guild/" + encodeURIComponent(guild.id) + "/bot-profile";
+
+    function setStatus(key) {
+      statusKey = key;
+      status.textContent = key ? t(key) : "";
+    }
+    function imageUrl(key) {
+      if (uploads[key]) return uploads[key];
+      var hash = saved[key];
+      if (/^(a_)?[0-9a-f]{32}$/.test(hash || "") && /^\d+$/.test(saved.botId) && /^\d+$/.test(guild.id)) {
+        return "https://cdn.discordapp.com/guilds/" + guild.id + "/users/" + saved.botId + "/" + key + "s/" + hash + ".png?size=512";
+      }
+      if (key === "avatar" && /^(a_)?[0-9a-f]{32}$/.test(saved.defaultAvatar || "") && /^\d+$/.test(saved.botId)) {
+        return "https://cdn.discordapp.com/avatars/" + saved.botId + "/" + saved.defaultAvatar + ".png?size=256";
+      }
+      return key === "avatar" ? "/assets/settings-tts.png" : "";
+    }
+    function refresh() {
+      if (!saved || !section.isConnected) return;
+      var dirty = nick.value !== (saved.nick || "") || pending > 0 || Object.keys(uploads).length > 0;
+      workspaceState.dirty = dirty;
+      apply.disabled = !dirty || pending > 0 || saving;
+      reset.disabled = saving || pending > 0 || !(dirty || saved.nick || saved.avatar || saved.banner);
+      nick.disabled = saving;
+      section.querySelector("#ttsProfileCount").textContent = t("dashboard.botProfileCount").replace("{n}", Array.from(nick.value).length);
+      imageButtons.forEach(function (button) {
+        button.disabled = saving;
+        var key = button.dataset.image;
+        var img = button.previousElementSibling;
+        var src = imageUrl(key);
+        img.hidden = !src;
+        if (src) img.src = src;
+        else img.removeAttribute("src");
+      });
+      undoButtons.forEach(function (button) {
+        button.hidden = !uploads[button.dataset.undo];
+        button.disabled = saving;
+      });
+    }
+    function localize() {
+      section.closest(".dash-form").querySelector("h1").textContent = t("dashboard.botProfile");
+      section.querySelectorAll("[data-i18n]").forEach(function (node) {
+        node.textContent = t(node.dataset.i18n);
+      });
+      imageButtons.forEach(function (button) {
+        var key = button.dataset.image === "avatar" ? "dashboard.botProfileAvatar" : "dashboard.botProfileBanner";
+        button.setAttribute("aria-label", t(key));
+        button.title = t(key);
+      });
+      undoButtons.forEach(function (button) {
+        var key = button.dataset.undo === "avatar" ? "dashboard.botProfileUndoAvatar" : "dashboard.botProfileUndoBanner";
+        button.setAttribute("aria-label", t(key));
+        button.title = t(key);
+      });
+      setStatus(statusKey);
+      refresh();
+    }
+    onLang = localize;
+    function showProfile(profile) {
+      saved = profile;
+      nick.value = saved.nick || "";
+      nick.placeholder = saved.defaultName || "Vozen TTS";
+      var bio = section.querySelector(".tts-profile-bio");
+      bio.textContent = saved.bio || "";
+      bio.hidden = !saved.bio;
+      form.hidden = false;
+      refresh();
+    }
+    function profileError(res) {
+      return res.json().catch(function () { return {}; }).then(function (data) {
+        var messages = {
+          invalid_name: "dashboard.botProfileInvalidName",
+          invalid_image: "dashboard.botProfileInvalidImage",
+          too_large: "dashboard.botProfileInvalidImage",
+          discord_permission: "dashboard.botProfilePermission",
+          forbidden: "dashboard.botProfilePermission",
+          rate_limited: "dashboard.botProfileRate",
+          no_token: "dashboard.expired",
+          invalid_token: "dashboard.expired"
+        };
+        throw new Error(messages[data.error] || "dashboard.botProfileFailed");
+      });
+    }
+    function load() {
+      retry.hidden = true;
+      setStatus("dashboard.botProfileLoading");
+      fetchWithTimeout(endpoint, { headers: authHeaders() }).then(function (res) {
+        return res.ok ? res.json() : profileError(res);
+      }).then(function (profile) {
+        if (!section.isConnected) return;
+        setStatus("");
+        showProfile(profile);
+      }).catch(function (cause) {
+        if (!section.isConnected) return;
+        setStatus(cause.message.indexOf("dashboard.") === 0 ? cause.message : "dashboard.botProfileFailed");
+        retry.hidden = false;
+      });
+    }
+    function save(restore) {
+      if (saving || pending || (!restore && apply.disabled)) return;
+      var patch = restore ? { reset: true } : Object.assign({}, uploads);
+      if (!restore && nick.value !== (saved.nick || "")) patch.nick = nick.value;
+      saving = true;
+      setStatus("dashboard.saving");
+      refresh();
+      fetchWithTimeout(endpoint, {
+        method: "POST",
+        headers: Object.assign({ "Content-Type": "application/json" }, authHeaders()),
+        body: JSON.stringify(patch)
+      }).then(function (res) {
+        return res.ok ? res.json() : profileError(res);
+      }).then(function (profile) {
+        if (!section.isConnected) return;
+        uploads = {};
+        form.elements.avatar.value = "";
+        form.elements.banner.value = "";
+        showProfile(Object.assign({}, saved, profile, { bio: saved.bio }));
+        setStatus("dashboard.botProfileSaved");
+      }).catch(function (cause) {
+        if (section.isConnected) {
+          setStatus(cause.message.indexOf("dashboard.") === 0 ? cause.message : "dashboard.botProfileFailed");
+        }
+      }).finally(function () {
+        saving = false;
+        refresh();
+      });
+    }
+    imageButtons.forEach(function (button) {
+      var key = button.dataset.image;
+      var input = form.elements[key];
+      button.addEventListener("click", function () {
+        input.value = "";
+        input.click();
+      });
+      input.addEventListener("change", function () {
+        var file = input.files[0];
+        if (!file) return;
+        if (!/^(image\/png|image\/jpeg|image\/webp)$/.test(file.type) || file.size > 2 * 1024 * 1024) {
+          setStatus("dashboard.botProfileInvalidImage");
+          return;
+        }
+        var reader = new FileReader();
+        pending++;
+        setStatus("");
+        refresh();
+        reader.addEventListener("loadend", async function () {
+          try {
+            var img = new Image();
+            if (typeof reader.result !== "string") throw new Error();
+            img.src = reader.result;
+            await img.decode();
+            if (img.naturalWidth > 4096 || img.naturalHeight > 4096) throw new Error();
+            if (section.isConnected && input.files[0] === file) uploads[key] = reader.result;
+          } catch (e) {
+            if (section.isConnected && input.files[0] === file) setStatus("dashboard.botProfileInvalidImage");
+          } finally {
+            pending--;
+            refresh();
+          }
+        });
+        reader.readAsDataURL(file);
+      });
+    });
+    undoButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var key = button.dataset.undo;
+        form.elements[key].value = "";
+        delete uploads[key];
+        setStatus("");
+        refresh();
+        form.querySelector('[data-image="' + key + '"]').focus();
+      });
+    });
+    nick.addEventListener("input", function () { setStatus(""); refresh(); });
+    form.addEventListener("submit", function (event) { event.preventDefault(); save(false); });
+    reset.addEventListener("click", function () {
+      if (window.confirm(t("dashboard.botProfileConfirm"))) save(true);
+    });
+    retry.addEventListener("click", load);
+    localize();
+    load();
+  }
+
 
   function renderForm(guild, cfg, guilds, meta, saved) {
     if (workspaceState.view === "overview") return renderTtsOverview();
