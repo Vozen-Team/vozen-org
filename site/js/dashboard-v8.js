@@ -77,7 +77,7 @@
   // links remain untouched. This small state object also gives Overview a truthful
   // summary instead of inventing usage metrics.
   var workspaceState = { guild: null, guilds: [], data: null, view: "overview", pendingView: null, dirty: false, requestSeq: 0 };
-  var TTS_VIEWS = { overview: true, quick: true, reading: true, community: true, profiles: true, limits: true };
+  var TTS_VIEWS = { overview: true, reading: true, community: true, profiles: true, limits: true };
 
   function viewFromHash() {
     var raw = String(window.location.hash || "").replace(/^#\/?/, "");
@@ -230,10 +230,9 @@
       '<div class="workspace-overview-grid">' +
         '<section class="workspace-card workspace-checklist" aria-labelledby="ttsReadyTitle">' +
           '<div><p class="workspace-heading__eyebrow">' + esc(t("dashboard.readiness")) + '</p><h2 id="ttsReadyTitle">' + esc(t("dashboard.voiceSetup")) + '</h2></div>' +
-          '<div class="workspace-checklist__item"><span class="workspace-status-dot"></span><div><strong>' + esc(t("dashboard.readingChannel")) + '</strong><span>' + esc(hasChannel ? t("dashboard.configuredReady") : t("dashboard.chooseChannelQuick")) + '</span></div></div>' +
+          '<div class="workspace-checklist__item"><span class="workspace-status-dot"></span><div><strong>' + esc(t("dashboard.readingChannel")) + '</strong><span>' + esc(hasChannel ? t("dashboard.configuredReady") : t("dashboard.notSelected")) + '</span></div></div>' +
           '<div class="workspace-checklist__item"><span class="workspace-status-dot"></span><div><strong>' + esc(t("dashboard.voice")) + '</strong><span>' + esc(voice + " · " + locale) + '</span></div></div>' +
           '<div class="workspace-checklist__item"><span class="workspace-status-dot"></span><div><strong>' + esc(t("dashboard.safety")) + '</strong><span>' + esc(t("dashboard.autoReadStatus").replace("{value}", boolLabel(cfg.autoread)) + " · " + t("dashboard.antiSpamStatus").replace("{value}", boolLabel(cfg.antispam))) + '</span></div></div>' +
-          '<div><button class="workspace-button" type="button" data-tts-view="quick">' + esc(t("dashboard.continueSetup")) + ' <span aria-hidden="true">→</span></button></div>' +
         '</section>' +
         '<aside class="workspace-card workspace-card--soft workspace-checklist" aria-labelledby="ttsSummaryTitle">' +
           '<div><p class="workspace-heading__eyebrow">' + esc(t("dashboard.serverSnapshot")) + '</p><h2 id="ttsSummaryTitle">' + esc(workspaceState.guild.name) + '</h2></div>' +
@@ -243,8 +242,6 @@
         '</aside>' +
       '</div>'
     );
-    var next = root.querySelector('[data-tts-view="quick"]');
-    if (next) next.addEventListener("click", function () { navigateTtsView("quick"); });
     onLang = renderTtsOverview;
   }
 
@@ -830,7 +827,7 @@
     var art = url
       ? '<img class="dash-head__ic" src="' + esc(url) + '" alt="">'
       : '<span class="dash-head__ph" aria-hidden="true">' + esc(guildInitials(guild.name)) + "</span>";
-    var titles = { quick: "quickSetup", reading: "readingVoice", community: "community", profiles: "channelProfiles", limits: "accessLimits" };
+    var titles = { reading: "readingVoice", community: "community", profiles: "channelProfiles", limits: "accessLimits" };
     var title = titles[workspaceState.view] ? t("dashboard." + titles[workspaceState.view]) : guild.name;
     return (
       '<div class="dash-head">' +
@@ -849,7 +846,7 @@
     workspaceState.guilds = guilds || [];
     workspaceState.data = null;
     updateTtsServerLabel();
-    var requestedView = workspaceState.pendingView || (workspaceState.view === "overview" ? "quick" : workspaceState.view);
+    var requestedView = workspaceState.pendingView || workspaceState.view;
     workspaceState.pendingView = null;
     setTtsView(requestedView, false);
     renderSkeleton("workspace");
@@ -1061,7 +1058,7 @@
   }
 
   function renderForm(guild, cfg, guilds, meta, saved) {
-    setTtsView(workspaceState.view === "overview" ? "quick" : workspaceState.view, false);
+    if (workspaceState.view === "overview") return renderTtsOverview();
     var allSections = sectionsFor(meta);
     var sectionIdsByView = {
       profiles: [],
@@ -1073,9 +1070,6 @@
     var sections = requestedSections
       ? allSections.filter(function (section) { return requestedSections.indexOf(section.id) !== -1; })
       : allSections;
-    // Channel Profiles is an intentional deep-dive view. Keep it out of the
-    // guided setup so the first-run path stays focused and scannable; the
-    // existing editor remains available from its dedicated sidebar item.
     var showProfiles = workspaceState.view === "profiles";
     // Baseline para dirty-tracking: o botão só fica ativo quando algo muda.
     var baseline = {};
@@ -1098,20 +1092,6 @@
       );
     }).join("");
 
-    var quickIntro = workspaceState.view === "quick"
-      ? '<section class="workspace-quick-intro" aria-labelledby="ttsQuickTitle">' +
-        '<p class="workspace-heading__eyebrow">' + esc(t("dashboard.quickSetupIntro")) + '</p>' +
-        '<h1 id="ttsQuickTitle">' + esc(t("dashboard.quickSetupTitle")) + '</h1>' +
-        '<p>' + esc(t("dashboard.quickSetupDescription")).replace("Review &amp; Save", "<strong>" + esc(t("dashboard.reviewSave")) + "</strong>") + '</p>' +
-        '<ol class="workspace-quick-intro__steps">' +
-          '<li><b>1</b><span><strong>' + esc(t("dashboard.stepReadingChannel")) + '</strong><small>' + esc(t("dashboard.stepReadingChannelHint")) + '</small></span></li>' +
-          '<li><b>2</b><span><strong>' + esc(t("dashboard.stepVoiceLanguage")) + '</strong><small>' + esc(t("dashboard.stepVoiceLanguageHint")) + '</small></span></li>' +
-          '<li><b>3</b><span><strong>' + esc(t("dashboard.stepReadingRules")) + '</strong><small>' + esc(t("dashboard.stepReadingRulesHint")) + '</small></span></li>' +
-          '<li><b>4</b><span><strong>' + esc(t("dashboard.stepReviewSave")) + '</strong><small>' + esc(t("dashboard.stepReviewSaveHint")) + '</small></span></li>' +
-        '</ol>' +
-      '</section>'
-      : "";
-
     var savebar =
       '<div class="dash-savebar" id="dashSavebar"><button type="button" class="' +
       BTN +
@@ -1122,7 +1102,6 @@
     view(
       '<div class="dash-form">' +
         headHtml(guild) +
-        quickIntro +
         sectionsHtml +
         (showProfiles ? profileEditorHtml(meta) : "") +
         savebar +
@@ -1157,11 +1136,7 @@
       discardBtn.disabled = n === 0;
       if (savebarEl) savebarEl.classList.toggle("dash-savebar--visible", n > 0 || !!saved);
       saveBtn.textContent =
-        n === 0
-          ? (workspaceState.view === "quick" ? t("dashboard.reviewSave") : t("dashboard.save"))
-          : n === 1
-            ? (workspaceState.view === "quick" ? t("dashboard.reviewSaveOne") : t("dashboard.save1"))
-            : (workspaceState.view === "quick" ? t("dashboard.reviewSaveMany").replace("{n}", n) : t("dashboard.saveN").replace("{n}", n));
+        n === 0 ? t("dashboard.save") : n === 1 ? t("dashboard.save1") : t("dashboard.saveN").replace("{n}", n);
       if (n > 0) setStatus(""); // limpa "Guardado ✓" assim que se volta a mexer
     }
 
@@ -1185,10 +1160,6 @@
 
     saveBtn.addEventListener("click", function () {
       if (saveBtn.disabled) return;
-      if (workspaceState.view === "quick" && !window.confirm(t("dashboard.reviewConfirm"))) {
-        refresh();
-        return;
-      }
       var patch = {};
       eachField(sections, function (key) {
         var v = domValue(key);
