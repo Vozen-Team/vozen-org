@@ -156,9 +156,11 @@
               </div>
               <div class="workspace-sidebar__section workspace-sidebar__server-picker">
                 <label class="workspace-sidebar__label" for="ttsServerSelect" data-i18n="dashboard.currentServer">Current server</label>
-                <select id="ttsServerSelect" class="workspace-sidebar__server-select" aria-label="Current server">
-                  <option value="" data-i18n="dashboard.chooseServer">Choose a server to begin.</option>
-                </select>
+                <div class="workspace-server-picker">
+                  <select id="ttsServerSelect" class="workspace-sidebar__server-select" aria-label="Current server">
+                    <option value="" data-i18n="dashboard.chooseServer">Choose a server to begin.</option>
+                  </select>
+                </div>
                 <button type="button" class="workspace-sidebar__add-server" id="ttsSidebarAddServer" data-i18n="dashboard.addServer">Add a server</button>
               </div>
               <nav class="workspace-sidebar__nav" aria-label="Dashboard views" data-i18n-aria-label="dashboard.dashboardViews">
