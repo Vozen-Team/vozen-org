@@ -16,6 +16,7 @@
   var AUTH_CHANNEL_NAME = "vozen.ecosystem.auth.v1";
   var LEGACY_TOK_KEY = "vozen.dtoken";
   var LS_LANG = "vozen.lang";
+  var LAST_GUILD_KEY = "vozen.tts.lastGuild";
 
   var workspaceRoot = document.getElementById("dashRoot");
   var pickerRoot = document.getElementById("dashPickerRoot");
@@ -393,7 +394,20 @@
       return null;
     }
   }
+  function rememberedGuildId() {
+    try { return sessionStorage.getItem(LAST_GUILD_KEY); }
+    catch (e) { return null; }
+  }
+
+  function rememberGuild(guildId) {
+    try {
+      if (guildId) sessionStorage.setItem(LAST_GUILD_KEY, String(guildId));
+      else sessionStorage.removeItem(LAST_GUILD_KEY);
+    } catch (e) {}
+  }
+
   function clearToken() {
+    rememberGuild(null);
     try {
       sessionStorage.removeItem(TOK_KEY);
       sessionStorage.removeItem(LEGACY_TOK_KEY);
@@ -668,6 +682,7 @@
   }
 
   function renderPicker(guilds) {
+    rememberGuild(null);
     workspaceState.requestSeq += 1;
     showPickerShell();
     var pendingView = workspaceState.view || "overview";
@@ -838,7 +853,7 @@
     );
   }
 
-  function loadForm(guild, guilds) {
+  function loadForm(guild, guilds, restoring) {
     var requestId = ++workspaceState.requestSeq;
     showWorkspaceShell();
     workspaceState.dirty = false;
@@ -858,6 +873,10 @@
           renderLogin("dashboard.expired");
           return null;
         }
+        if (res.status === 403 && restoring) {
+          renderPicker(guilds.filter(function (entry) { return entry.id !== guild.id; }));
+          return null;
+        }
         if (res.status === 403) {
           renderMessage("dashboard.forbidden", "dashboard.noneHint");
           return null;
@@ -865,7 +884,7 @@
         if (!res.ok) {
           renderMessage("dashboard.error", "", {
             retry: true,
-            onRetry: function () { loadForm(guild, guilds); },
+            onRetry: function () { loadForm(guild, guilds, restoring); },
           });
           return null;
         }
@@ -874,6 +893,7 @@
       .then(function (data) {
         if (requestId !== workspaceState.requestSeq) return;
         if (data && data.config) {
+          rememberGuild(guild.id);
           workspaceState.data = data;
           updateTtsServerLabel();
           renderCurrentTtsView();
@@ -883,7 +903,7 @@
         if (requestId !== workspaceState.requestSeq) return;
         renderMessage("dashboard.error", "", {
           retry: true,
-          onRetry: function () { loadForm(guild, guilds); },
+          onRetry: function () { loadForm(guild, guilds, restoring); },
         });
       });
   }
@@ -1248,8 +1268,7 @@
     };
   }
 
-  function loadGuilds() {
-    renderSkeleton("picker");
+  function loadGuilds(savedId) {
     fetchWithTimeout(API + "/api/dashboard/guilds", { headers: authHeaders() })
       .then(function (res) {
         if (res.status === 401) {
@@ -1266,7 +1285,14 @@
       .then(function (data) {
         if (!data) return;
         var guilds = data.guilds || [];
+        var saved = guilds.find(function (guild) { return String(guild.id) === savedId; });
+        if (saved) {
+          loadForm(saved, guilds, true);
+          return;
+        }
         if (!guilds.length) {
+          rememberGuild(null);
+          showPickerShell();
           renderMessage("dashboard.none", "dashboard.noneHint", { addServer: true });
           return;
         }
@@ -1278,11 +1304,14 @@
   }
 
   async function boot() {
-    showPickerShell();
+    var savedId = rememberedGuildId();
+    if (savedId) showWorkspaceShell();
+    else showPickerShell();
+    renderSkeleton(savedId ? "workspace" : "picker");
     // Authentication belongs to /account. The TTS dashboard must consume the
     // shared HttpOnly ecosystem session instead of opening a second OAuth flow.
     await waitForSharedSession();
-    loadGuilds();
+    loadGuilds(savedId);
   }
 
   window.addEventListener("vozen:languagechange", function () {

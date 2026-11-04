@@ -2,20 +2,25 @@ import {test,expect} from '@playwright/test';
 
 for(const product of ['tts','helper']) for(const width of [320,768,1440,1910]) test(`${product} real server picker preserves scale and selection at ${width}px`,async({page})=>{
   await page.setViewportSize({width,height:1000});
+  let activeGuild = '999';
+  let otherServerAvailable = true;
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
   const guilds=[{id:'999',name:'Community <safe>',permissions:'32',canManage:true,icon:'fixture',iconUrl:'https://cdn.discordapp.com/icons/999/fixture.png'},{id:'998',name:'A long server name that must wrap without overflowing the viewport',permissions:'32',canManage:true}];
   await page.addInitScript(()=>{sessionStorage.setItem('vozen.ecosystem.dtoken','fixture-token');sessionStorage.setItem('vozen.ecosystem.authexp',String(Date.now()+3600000));});
   await page.route('https://api.vozen.org/**',async route=>{
     const path=new URL(route.request().url()).pathname;let json={};
-    if(path.endsWith('/api/dashboard/guilds'))json={guilds};
-    else if(path.endsWith('/api/dashboard/guild/999'))json={config:{},profiles:[],capabilities:{},options:{}};
-    else if(path.endsWith('/api/me'))json={id:'owner',guildId:'999',expiresAt:'2099-01-01T00:00:00Z',dbOk:true};
+    if(path.endsWith('/api/dashboard/guilds'))json={guilds:otherServerAvailable?guilds:guilds.slice(0,1)};
+    else if(/\/api\/dashboard\/guild\/99[89]$/.test(path))json={config:{},profiles:[],capabilities:{},options:{}};
+    else if(path.endsWith('/api/me'))json={id:'owner',guildId:activeGuild,expiresAt:'2099-01-01T00:00:00Z',dbOk:true};
     else if(path.endsWith('/api/guilds'))json={guilds};
-    else if(path.endsWith('/api/session/switch'))json={ok:true,guildId:'999'};
-    else if(path.endsWith('/api/config/features'))json={guildId:'999',features:[]};
-    else if(path.endsWith('/api/guild-context'))json={guildId:'999',name:guilds[0].name,channels:[],roles:[],hierarchy:{known:true},capabilities:{}};
+    else if(path.endsWith('/api/session/switch')){
+      activeGuild=route.request().postDataJSON().guild_id;
+      json={ok:true,guildId:activeGuild};
+    }
+    else if(path.endsWith('/api/config/features'))json={guildId:activeGuild,features:[]};
+    else if(path.endsWith('/api/guild-context'))json={guildId:activeGuild,name:guilds.find(guild=>guild.id===activeGuild).name,channels:[],roles:[],hierarchy:{known:true},capabilities:{}};
     else if(path.endsWith('/api/quotas'))json={plan:'Free',limits:{},usage:{}};
-    else if(path.endsWith('/api/stats'))json={guildId:'999',totalCases:0};
+    else if(path.endsWith('/api/stats'))json={guildId:activeGuild,totalCases:0};
     else if(path.endsWith('/api/cases'))json={cases:[]};
     else if(path.endsWith('/api/audit'))json={events:[]};
     else if(path.endsWith('/api/activity'))json={activity:[]};
@@ -57,8 +62,30 @@ for(const product of ['tts','helper']) for(const width of [320,768,1440,1910]) t
   expect(await server.evaluate(select=>select.offsetHeight)).toBe(width<=900?44:47);
   await expect(server).toHaveCSS('padding-inline-start',width<=900?'35px':'40px');
   await expect(server.locator('option').last()).toHaveAttribute('value','__choose_server__');
+  if (width===1440) {
+    await server.selectOption('998');
+    await expect(server).toHaveValue('998');
+    await expect(page.getByText(guilds[1].name,{exact:true}).filter({visible:true}).last()).toBeVisible();
+    await page.reload();
+    await expect(server).toHaveValue('998');
+    await expect(picker).toHaveCount(0);
+    if (product==='tts') {
+      otherServerAvailable=false;
+      await page.reload();
+      await expect(picker.locator('.vp-server')).toHaveCount(1);
+      otherServerAvailable=true;
+      await page.reload();
+      await expect(picker.locator('.vp-server')).toHaveCount(2);
+      await picker.locator('.vp-server').first().click();
+      await expect(server).toHaveValue('999');
+    }
+  }
   await server.selectOption('__choose_server__');
   await expect(picker.locator('.vp-server')).toHaveCount(2);
+  if (width===1440) {
+    await page.reload();
+    await expect(picker.locator('.vp-server')).toHaveCount(2);
+  }
   expect(errors).toEqual([]);
 });
 
