@@ -17,7 +17,7 @@ import { ticketSettingsGroups, ticketSettingCopy } from './ticket-settings';
 import './ticket-settings.css';
 import { welcomeSettingsGroups, welcomeSettingCopy, welcomeStepOptions, changeWelcomeStep } from './welcome-settings';
 import './welcome-settings.css';
-import { AntiSpamSettings } from './antispam-settings';
+import { AntiSpamSettings, AntiSpamSettingsSkeleton } from './antispam-settings';
 import { LevelsSettings } from './levels-settings-panel';
 import { levelSettingCopy } from './levels-settings';
 import { guildStorage, preferredGuild, rememberGuild } from './last-guild';
@@ -2512,6 +2512,7 @@ function App() {
   const premiumGuildRef = useRef(me?.guildId);
   premiumGuildRef.current = me?.guildId;
   const currentFeature = features.find((item) => item.key === route.key);
+  const isAntiSpamDetail = route.page === 'detail' && route.key === 'protection.antispam';
   const detailDirty = JSON.stringify(detailConfig) !== JSON.stringify(savedDetailConfig);
   const rankDirty = JSON.stringify(rankConfig) !== JSON.stringify(savedRankConfig);
   const dirty =
@@ -3160,7 +3161,7 @@ function App() {
             <div>
               <small className="eyebrow">{currentGuild?.name ?? helperText('WORKSPACE')} · HELPER</small>
               <h1 id="route-heading" data-route-heading tabIndex={-1}
-                className={route.page === 'detail' && currentFeature?.key === 'protection.antispam' ? 'antispam-title' : undefined}>
+                className={isAntiSpamDetail ? 'antispam-title' : undefined}>
                 {title}
               </h1>
               {route.page !== 'activity' && !['community.achievements','protection.antispam'].includes(currentFeature?.key ?? '') && <p className="subtitle">{subtitle}</p>}
@@ -3203,7 +3204,8 @@ function App() {
             <button type="button" className="secondary" onClick={() => void autosaveRef.current?.retry()}>{helperText('Try again')}</button>
           </div>
         )}
-        {!localPreviewMode && needsGuildContext && (guildContextLoading || guildContextError || guildContext?.stale) && (
+        {!localPreviewMode && needsGuildContext &&
+          (guildContextLoading ? !isAntiSpamDetail : guildContextError || guildContext?.stale) && (
           <div className="card resource-status" role="status">
             <span>
             {guildContextLoading
@@ -3260,7 +3262,7 @@ function App() {
         )}
         {route.page === 'activity' && <ActivityFeed key={me?.guildId} guildId={me?.guildId || ''} preview={localPreviewMode} />}
         {route.page === 'detail' &&
-          (detailLoading ? (
+          (detailLoading ? isAntiSpamDetail ? <AntiSpamSettingsSkeleton /> : (
             <div className="loading-card card">
               <div className="loader" />
               <span>{helperText('Loading configuration…')}</span>
