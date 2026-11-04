@@ -20,11 +20,17 @@ test('local pricing previews preserve prices, full comparisons and paused checko
     assert.match(markup,/TTS \+ Helper Premium for everyone in your selected servers\./);
     const highlights=nodes.filter(node=>attrs(node).class?.split(' ').includes('price-card__highlights'));
     const listCounts=highlights.map(node=>(node.childNodes||[]).filter(child=>child.tagName==='li').length);
-    assert.deepEqual(product==='tts'?listCounts:listCounts.filter((_,i)=>i!==1),product==='tts'?[5,7,8]:[4,8]);
+    assert.deepEqual(product==='tts'?listCounts:listCounts.filter((_,i)=>i!==1),product==='tts'?[6,7,9]:[4,8]);
     assert.match(markup,/href="\/premium#plans"/);
     assert.doesNotMatch(markup,/class="plan-scene |Google HD|price\.m\.22/);
     assert.doesNotMatch(markup,/data-billing-plan|data-buy|Most popular|−20%|-20%/);
-    if(product==='tts')assert.match(markup,/<details class="plan-full-comparison">/);
+    if(product==='tts') {
+      assert.match(markup,/<details class="plan-full-comparison">/);
+      const [free, plus, premium]=highlights.map(list=>parse5.serialize(list));
+      assert.match(free,/data-i18n="price\.ttsBotName"/);
+      assert.doesNotMatch(free+plus,/data-i18n="price\.ttsBotImages"/);
+      assert.match(premium,/data-i18n="price\.ttsBotImages"/);
+    }
     else assert.match(html,/<details class="helper-comparison-disclosure">/);
   }
   assert.match(readFileSync('site/js/main-v51.js','utf8'),/const PAYMENTS_ENABLED = false;/);

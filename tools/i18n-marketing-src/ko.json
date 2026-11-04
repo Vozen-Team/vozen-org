@@ -151,6 +151,8 @@
     "price.idNoteLink": "내 ID 복사 →",
     "price.m.19": "서버 발음 50개",
     "price.m.20": "매일 대화 스트릭",
+    "price.ttsBotName": "서버에서 TTS 봇 이름 변경",
+    "price.ttsBotImages": "TTS 봇 아바타 및 배너 맞춤 설정",
     "common.skipToContent": "콘텐츠로 건너뛰기",
     "common.homeLabel": "Vozen 홈",
     "common.primaryNav": "기본 탐색",
