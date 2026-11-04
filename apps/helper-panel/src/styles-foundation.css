@@ -718,9 +718,13 @@ textarea:focus-visible {
   overflow: hidden;
 }
 
-.helper-skeleton {
+.helper-skeleton,
+.spam-settings-skeleton {
   --helper-skeleton-base: rgba(145, 167, 255, .10);
   --helper-skeleton-highlight: rgba(142, 229, 210, .18);
+}
+
+.helper-skeleton {
   display: grid;
   grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
   min-height: min(720px, calc(100vh - 88px));
