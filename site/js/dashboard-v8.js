@@ -1094,9 +1094,9 @@
             '<div class="tts-profile-name"><input id="ttsProfileNick" name="nick" maxlength="32" autocomplete="off" aria-describedby="ttsProfileCount"><span>APP</span></div>' +
             '<small id="ttsProfileCount"></small><p class="tts-profile-bio" hidden></p>' +
             '<p class="tts-profile-caption" data-i18n="dashboard.botProfilePreview"></p></div>' +
-        '</div><p data-i18n="dashboard.botProfileImages"></p>' +
+        '</div><p data-image-note></p>' +
         '<div class="tts-profile-actions"><button type="submit" class="workspace-button" data-i18n="dashboard.botProfileApply"></button>' +
-        '<button type="button" class="workspace-button workspace-button--secondary" data-reset data-i18n="dashboard.botProfileReset"></button></div></form>' +
+        '<button type="button" class="workspace-button workspace-button--secondary" data-reset></button></div></form>' +
         '<p role="status" class="tts-profile-status"></p>' +
         '<button type="button" class="workspace-button workspace-button--secondary" data-retry data-i18n="dashboard.retry" hidden></button>' +
       '</section></div>'
@@ -1135,11 +1135,15 @@
       var dirty = nick.value !== (saved.nick || "") || pending > 0 || Object.keys(uploads).length > 0;
       workspaceState.dirty = dirty;
       apply.disabled = !dirty || pending > 0 || saving;
-      reset.disabled = saving || pending > 0 || !(dirty || saved.nick || saved.avatar || saved.banner);
+      var canEditImages = saved.canEditImages === true;
+      reset.disabled = saving || pending > 0 || !(dirty || saved.nick || (canEditImages && (saved.avatar || saved.banner)));
+      reset.textContent = t(canEditImages ? "dashboard.botProfileReset" : "dashboard.botProfileResetName");
+      section.querySelector("[data-image-note]").textContent = t(canEditImages ? "dashboard.botProfileImages" : "dashboard.botProfilePremium");
       nick.disabled = saving;
       section.querySelector("#ttsProfileCount").textContent = t("dashboard.botProfileCount").replace("{n}", Array.from(nick.value).length);
       imageButtons.forEach(function (button) {
-        button.disabled = saving;
+        button.hidden = !canEditImages;
+        button.disabled = !canEditImages || saving;
         var key = button.dataset.image;
         var img = button.previousElementSibling;
         var src = imageUrl(key);
@@ -1183,7 +1187,12 @@
     }
     function profileError(res) {
       return res.json().catch(function () { return {}; }).then(function (data) {
+        if (data.error === "premium_required" && saved) {
+          saved.canEditImages = false;
+          uploads = {};
+        }
         var messages = {
+          premium_required: "dashboard.botProfilePremium",
           invalid_name: "dashboard.botProfileInvalidName",
           invalid_image: "dashboard.botProfileInvalidImage",
           too_large: "dashboard.botProfileInvalidImage",
@@ -1212,8 +1221,10 @@
       });
     }
     function save(restore) {
-      if (saving || pending || (!restore && apply.disabled)) return;
-      var patch = restore ? { reset: true } : Object.assign({}, uploads);
+      if (restore ? reset.disabled : apply.disabled) return;
+      var patch = restore
+        ? (saved.canEditImages === true ? { reset: true } : { nick: "" })
+        : Object.assign({}, uploads);
       if (!restore && nick.value !== (saved.nick || "")) patch.nick = nick.value;
       saving = true;
       setStatus("dashboard.saving");
@@ -1249,7 +1260,7 @@
       });
       input.addEventListener("change", function () {
         var file = input.files[0];
-        if (!file) return;
+        if (!file || saved?.canEditImages !== true) return;
         if (!/^(image\/png|image\/jpeg|image\/webp)$/.test(file.type) || file.size > 2 * 1024 * 1024) {
           setStatus("dashboard.botProfileInvalidImage");
           return;
@@ -1289,7 +1300,8 @@
     nick.addEventListener("input", function () { setStatus(""); refresh(); });
     form.addEventListener("submit", function (event) { event.preventDefault(); save(false); });
     reset.addEventListener("click", function () {
-      if (window.confirm(t("dashboard.botProfileConfirm"))) save(true);
+      var message = saved.canEditImages === true ? "dashboard.botProfileConfirm" : "dashboard.botProfileConfirmName";
+      if (window.confirm(t(message))) save(true);
     });
     retry.addEventListener("click", load);
     localize();

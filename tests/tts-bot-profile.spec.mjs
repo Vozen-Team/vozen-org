@@ -13,7 +13,7 @@ for (const [width, locale] of [[390, 'pt'], [1440, 'en']]) {
       sessionStorage.setItem('vozen.ecosystem.authexp', String(Date.now() + 3600000));
     }, { locale });
     const writes = [];
-    const saved = { botId, defaultName: 'Vozen TTS', defaultAvatar: null, nick: null, banner: null, avatar: null, bio: '<b>Plain text</b>' };
+    const saved = { botId, canEditImages: true, defaultName: 'Vozen TTS', defaultAvatar: null, nick: null, banner: null, avatar: null, bio: '<b>Plain text</b>' };
     let failNext = true;
     await page.route('https://api.vozen.org/**', async route => {
       const path = new URL(route.request().url()).pathname;
@@ -76,3 +76,53 @@ for (const [width, locale] of [[390, 'pt'], [1440, 'en']]) {
     await page.screenshot({ path: 'test-results/tts-bot-profile-' + width + '.png', fullPage: true });
   });
 }
+
+test('TTS Bot Profile without guild Premium can rename and restore only the name', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem('vozen.lang', 'en');
+    sessionStorage.setItem('vozen.ecosystem.dtoken', 'fixture-token');
+    sessionStorage.setItem('vozen.ecosystem.authexp', String(Date.now() + 3600000));
+  });
+  const writes = [];
+  const profile = {
+    botId, canEditImages: false, defaultName: 'Vozen TTS', nick: 'Existing name',
+    avatar: '0123456789abcdef0123456789abcdef', banner: 'fedcba9876543210fedcba9876543210',
+  };
+  await page.route('https://api.vozen.org/**', async route => {
+    const path = new URL(route.request().url()).pathname;
+    if (path === '/api/dashboard/guilds') {
+      return route.fulfill({ json: { guilds: [{ id: guildId, name: 'Profile QA' }] } });
+    }
+    if (path.endsWith('/bot-profile')) {
+      if (route.request().method() === 'POST') {
+        const patch = route.request().postDataJSON();
+        writes.push(patch);
+        profile.nick = patch.nick || null;
+      }
+      return route.fulfill({ json: profile });
+    }
+    return route.fulfill({ json: { config: {} } });
+  });
+  await page.route('https://cdn.discordapp.com/**', route => route.abort());
+  await page.goto('/dashboard.html');
+  await page.getByRole('button', { name: 'Profile QA' }).click();
+  await page.getByRole('button', { name: 'Bot Profile' }).click();
+  const form = page.locator('.tts-bot-profile form');
+  await expect(form.getByText(/requires Vozen Premium/)).toBeVisible();
+  await expect(form.locator('[data-image="avatar"]')).toBeHidden();
+  await expect(form.locator('[data-image="banner"]')).toBeHidden();
+  const avatar = form.locator('.tts-profile-avatar img');
+  const banner = form.locator('.tts-profile-banner img');
+  await expect(avatar).toHaveAttribute('src', new RegExp(profile.avatar));
+  await expect(banner).toHaveAttribute('src', new RegExp(profile.banner));
+  await form.getByLabel('Display name').fill('New name');
+  await form.getByRole('button', { name: 'Apply profile' }).click();
+  await expect.poll(() => writes).toEqual([{ nick: 'New name' }]);
+  await expect(form.getByRole('button', { name: 'Apply profile' })).toBeDisabled();
+  page.once('dialog', dialog => dialog.accept());
+  await form.getByRole('button', { name: 'Restore default name' }).click();
+  await expect.poll(() => writes).toEqual([{ nick: 'New name' }, { nick: '' }]);
+  await expect(form.getByLabel('Display name')).toHaveValue('');
+  await expect(avatar).toHaveAttribute('src', new RegExp(profile.avatar));
+  await expect(banner).toHaveAttribute('src', new RegExp(profile.banner));
+});
