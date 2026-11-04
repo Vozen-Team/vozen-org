@@ -7,6 +7,7 @@
   if (!paint) return;
   const elapsed = document.querySelector('#hearElapsed');
   const duration = document.querySelector('#hearDuration');
+  const timing = duration.parentElement;
   const controls = document.querySelector('#hear');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   let context, analyser, samples, frame;
@@ -18,28 +19,36 @@
   const updateTime = () => {
     elapsed.textContent = clock(audio.currentTime);
     duration.textContent = clock(audio.duration);
+    timing.toggleAttribute('data-timed', Number.isFinite(audio.duration) && audio.duration > 0);
+    if (frame === undefined) draw(false);
   };
   const draw = (live = true) => {
     paint.clearRect(0, 0, canvas.width, canvas.height);
     const active = live && analyser && !audio.paused && !audio.ended && !audio.error && visible && !document.hidden && !reduced.matches;
-    if (active) analyser.getByteTimeDomainData(samples);
+    if (!active) {
+      paint.fillStyle = '#465b7e';
+      paint.fillRect(0, 46, canvas.width, 4);
+      if (Number.isFinite(audio.duration) && audio.duration > 0 && audio.currentTime > 0 && !audio.error) {
+        paint.fillStyle = '#55ebd1';
+        paint.fillRect(0, 46, canvas.width * Math.min(1, audio.currentTime / audio.duration), 4);
+      }
+      return;
+    }
+    analyser.getByteTimeDomainData(samples);
     for (let bar = 0; bar < 40; bar++) {
       let peak = 0;
-      if (active) {
-        for (let index = bar * 12; index < (bar + 1) * 12; index++) {
-          peak = Math.max(peak, Math.abs(samples[index] - 128) / 128);
-        }
+      for (let index = bar * 12; index < (bar + 1) * 12; index++) {
+        peak = Math.max(peak, Math.abs(samples[index] - 128) / 128);
       }
       const height = 4 + Math.min(1, peak * 2.5) * 76;
-      paint.fillStyle = active ? (bar % 3 ? '#55ebd1' : '#a8aeff') : '#7588b0';
+      paint.fillStyle = bar % 3 ? '#55ebd1' : '#a8aeff';
       paint.fillRect(bar * 16 + 3, (96 - height) / 2, 6, height);
     }
-    if (active) frame = requestAnimationFrame(() => draw());
+    frame = requestAnimationFrame(() => { frame = undefined; draw(); });
   };
   const stop = () => {
     cancelAnimationFrame(frame);
     frame = undefined;
-    draw(false);
     updateTime();
   };
   const start = async () => {
@@ -59,6 +68,7 @@
         samples = new Uint8Array(analyser.fftSize);
       }
       cancelAnimationFrame(frame);
+      frame = undefined;
       draw();
     } catch {
       // Optional analysis must not replace the player's normal failure/retry UI.
@@ -79,6 +89,5 @@
       else stop();
     }).observe(canvas);
   }
-  draw();
   updateTime();
 })();

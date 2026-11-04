@@ -178,6 +178,46 @@ test('audio demo retries the real media request after a temporary server failure
   expect(requests).toBe(2);
 });
 
+test('audio demo keeps the message in place through loading, play and pause', async ({ page }) => {
+  await page.addInitScript(() => {
+    HTMLMediaElement.prototype.play = function () {
+      return new Promise(resolve => {
+        window.startSample = () => {
+          Object.defineProperty(this, 'paused', { configurable: true, value: false });
+          this.dispatchEvent(new Event('playing'));
+          resolve();
+        };
+      });
+    };
+    HTMLMediaElement.prototype.pause = function () {
+      Object.defineProperty(this, 'paused', { configurable: true, value: true });
+      this.dispatchEvent(new Event('pause'));
+    };
+  });
+  for (const width of [375, 880, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/pt/tts/#hear', { waitUntil: 'networkidle' });
+    const play = page.locator('#hearBtn');
+    const phrase = page.locator('#hearPhrase');
+    const position = () => phrase.evaluate(el => {
+      const { x, y, width, height } = el.getBoundingClientRect();
+      return { x: x + window.scrollX, y: y + window.scrollY, width, height };
+    });
+    await page.evaluate(() => document.fonts.ready.then(() => true));
+    const original = await position();
+    await play.click();
+    await expect(play).toHaveAttribute('aria-busy', 'true');
+    await expect(page.locator('#hearStatus')).toHaveCSS('clip-path', 'inset(50%)');
+    expect(await position(), `loading at ${width}px`).toEqual(original);
+    await page.evaluate(() => window.startSample());
+    await expect(play).toHaveAttribute('aria-pressed', 'true');
+    expect(await position(), `playing at ${width}px`).toEqual(original);
+    await play.click();
+    await expect(play).toHaveAttribute('aria-pressed', 'false');
+    expect(await position(), `paused at ${width}px`).toEqual(original);
+  }
+});
+
 test.beforeEach(async ({ page }) => {
   await mockPublicStatus(page);
   // Keep browser QA deterministic when CI or a sandbox blocks the optional
