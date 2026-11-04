@@ -66,6 +66,14 @@
   animation: spam-demo-arrive 200ms ease-out both;
 }
 .spam-simulation .spam-demo-messages li:last-child { color: #ffbbc9; }
+.spam-simulation .raid-demo-joins li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: baseline;
+  padding-block: 5px;
+}
+.raid-demo-time { color: #b9c9df; font-variant-numeric: tabular-nums; }
 .scam-demo-message { animation: scam-demo-removed 220ms ease-out 2000ms forwards; }
 @keyframes scam-demo-removed {
   to { opacity: .66; text-decoration: line-through; }
