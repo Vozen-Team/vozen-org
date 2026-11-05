@@ -138,8 +138,9 @@
     var add = document.getElementById("ttsSidebarAddServer");
     if (!select) return;
     select.parentElement.querySelector(".workspace-server-avatar")?.remove();
+    select.removeAttribute("title");
     var guilds = Array.isArray(workspaceState.guilds) ? workspaceState.guilds : [];
-    select.innerHTML = "";
+    Array.from(select.options).forEach(function (option) { option.remove(); });
     if (!guilds.length) {
       var empty = document.createElement("option");
       empty.value = "";
@@ -151,14 +152,17 @@
         var guild = guilds[i] || {};
         var option = document.createElement("option");
         option.value = String(guild.id || "");
-        option.textContent = String(guild.name || "Unnamed server");
-        option.prepend(ttsServerAvatar(guild, option.textContent));
+        var name = document.createElement("span");
+        name.className = "workspace-server-name";
+        name.textContent = String(guild.name || "Unnamed server");
+        option.append(ttsServerAvatar(guild, name.textContent), name);
         option.selected = !!workspaceState.guild && String(workspaceState.guild.id) === option.value;
         select.appendChild(option);
       }
       select.add(new Option(t("dashboard.back").replace(/^←\s*/, ""), "__choose_server__"));
       var selectedGuild = guilds.find(function (guild) { return String(guild?.id) === select.value; });
       if (selectedGuild) {
+        select.title = selectedGuild.name || "Unnamed server";
         var selectedAvatar = ttsServerAvatar(selectedGuild, selectedGuild.name || "Unnamed server");
         selectedAvatar.classList.add("workspace-server-avatar");
         select.before(selectedAvatar);
