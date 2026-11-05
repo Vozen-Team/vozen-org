@@ -4,6 +4,7 @@ import translations from './antispam-simulation-copy.json';
 import scamTranslations from './antiscam-simulation-copy.json';
 import raidTranslations from './anti-raid-simulation-copy.json';
 import joinTranslations from './join-protection-demo-copy.json';
+import auditTranslations from './audit-copy.json';
 
 export const spamSimulationText = () => translations[helperLocale() as keyof typeof translations] ?? translations.en;
 export const scamSimulationText = () => scamTranslations[helperLocale() as keyof typeof scamTranslations] ?? scamTranslations.en;
@@ -16,15 +17,17 @@ const raidJoins = [
   ['00:07', 'Alex'],
   ['00:11', 'Sam'],
 ];
+const auditEvents = [['00:00', '#chat-1'], ['00:04', '#chat-2'], ['00:08', '#chat-3']];
 
-export function ProtectionChatDemo({ kind }: { kind: 'spam' | 'scam' | 'raid' | 'join' }) {
+export function ProtectionChatDemo({ kind }: { kind: 'spam' | 'scam' | 'raid' | 'join' | 'audit' }) {
   const copy = spamSimulationText();
   const scamCopy = kind === 'scam' ? scamSimulationText() : null;
   const raidCopy = kind === 'raid' ? raidSimulationText() : null;
   const joinCopy = kind === 'join' ? joinSimulationText() : null;
-  const entryCopy = raidCopy ?? (joinCopy ? raidSimulationText() : null);
+  const auditCopy = kind === 'audit' ? auditTranslations[helperLocale()] : null;
+  const entryCopy = raidCopy ?? (joinCopy || auditCopy ? raidSimulationText() : null);
   const logChannel = entryCopy?.log ?? scamCopy?.log;
-  const feedLabel = entryCopy?.feed ?? copy.channel;
+  const feedLabel = auditCopy?.feed ?? entryCopy?.feed ?? copy.channel;
   const [play, setPlay] = useState(0);
   return <>
     <section className="spam-demo-chat" aria-label={feedLabel}>
@@ -33,10 +36,11 @@ export function ProtectionChatDemo({ kind }: { kind: 'spam' | 'scam' | 'raid' | 
         <small>{copy.sample}</small>
       </header>
       <div className="spam-demo-feed" key={play}>
-        {raidCopy ? <ul className="spam-demo-messages raid-demo-joins">
-          {raidJoins.map(([time, name], index) => <li key={name} style={{ animationDelay: `${index * 440}ms` }}>
+        {raidCopy || auditCopy ? <ul className="spam-demo-messages raid-demo-joins">
+          {(auditCopy ? auditEvents : raidJoins).map(([time, name], index) => <li key={name} style={{ animationDelay: `${index * 440}ms` }}>
             <bdi className="raid-demo-time">{time}</bdi>
-            <span><strong><bdi>{name}</bdi></strong> {raidCopy.joined}</span>
+            <span>{auditCopy ? <><strong>Noa</strong> {auditCopy.deleted} <bdi>{name}</bdi></>
+              : <><strong><bdi>{name}</bdi></strong> {raidCopy?.joined}</>}</span>
           </li>)}
         </ul> : <div className="spam-demo-member">
           <span className="spam-demo-avatar" aria-hidden="true">M</span>
@@ -59,14 +63,14 @@ export function ProtectionChatDemo({ kind }: { kind: 'spam' | 'scam' | 'raid' | 
           <div className="spam-demo-warning">
             {logChannel && <small className="scam-demo-log"><bdi># {logChannel}</bdi></small>}
             <div className="spam-demo-bot"><strong>Vozen Helper</strong><span>APP</span></div>
-            <b>{joinCopy?.flagged ?? raidCopy?.detected ?? scamCopy?.detected ?? copy.detected}</b>
-            <p>{joinCopy ? joinCopy.outcome : raidCopy ? raidCopy.alert : scamCopy ? <bdi>{blockedDomain}</bdi> : copy.warning}</p>
+            <b>{auditCopy?.detected ?? joinCopy?.flagged ?? raidCopy?.detected ?? scamCopy?.detected ?? copy.detected}</b>
+            <p>{auditCopy ? auditCopy.alert : joinCopy ? joinCopy.outcome : raidCopy ? raidCopy.alert : scamCopy ? <bdi>{blockedDomain}</bdi> : copy.warning}</p>
           </div>
           {!joinCopy && <div className="spam-demo-timeout">
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
               <circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" />
             </svg>
-            <span>{raidCopy?.containment ?? scamCopy?.timeout ?? copy.timeout}</span>
+            <span>{entryCopy?.containment ?? scamCopy?.timeout ?? copy.timeout}</span>
           </div>}
         </div>
       </div>
