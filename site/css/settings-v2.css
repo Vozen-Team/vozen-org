@@ -108,6 +108,22 @@ body.page-dashboard.workspace-page--tts .tts-workspace__main{padding:36px 40px 9
   padding-inline-start: 40px;
   text-overflow: ellipsis;
 }
+@supports (appearance: base-select) {
+  #ttsServerSelect > button,
+  #ttsServerSelect selectedcontent {
+    display: flex;
+    align-items: center;
+    min-inline-size: 0;
+  }
+  #ttsServerSelect > button { flex: 1; }
+  #ttsServerSelect selectedcontent .server-option-icon { display: none; }
+  #ttsServerSelect selectedcontent .workspace-server-name {
+    min-inline-size: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
 .workspace-sidebar .workspace-sidebar__product select.settings-product-switch {
   block-size: 44px;
   min-block-size: 44px;
