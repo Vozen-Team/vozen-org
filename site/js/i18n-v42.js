@@ -1740,6 +1740,32 @@
     "helper.premiumCheckAgain": "Verificar novamente",
     "helper.premiumActivateError": "Não foi possível confirmar o Premium. Verifica novamente antes de repetir; se o servidor já estiver ativo, não será gasta outra vaga."
   });
+  Object.assign(extra.en, {
+    "dashboard.settings": "Settings",
+    "dashboard.settingsSections": "Settings sections",
+    "dashboard.settingsIntro": "Choose a section. Save when you’re ready.",
+    "dashboard.settingsHint_reading": "Choose what Vozen reads and how it joins your calls.",
+    "dashboard.settingsHint_community": "Control streak announcements, sounds and community reminders.",
+    "dashboard.settingsHint_profiles": "Override the server defaults for a text channel. Profiles save separately.",
+    "dashboard.settingsHint_limits": "Set reading limits, language and role access.",
+    "dashboard.channelOverrides": "Channel overrides",
+    "dashboard.profilesHint": "Leave a field on Inherit to use the server default."
+  });
+  Object.assign(extra.pt, {
+    "dashboard.settings": "Definições",
+    "dashboard.settingsSections": "Secções das definições",
+    "dashboard.settingsIntro": "Escolhe uma secção. Guarda quando estiveres pronto.",
+    "dashboard.settingsHint_reading": "Escolhe o que o Vozen lê e como entra nas chamadas.",
+    "dashboard.settingsHint_community": "Controla anúncios de streaks, sons e lembretes da comunidade.",
+    "dashboard.settingsHint_profiles": "Personaliza as definições para um canal de texto. Os perfis são guardados à parte.",
+    "dashboard.settingsHint_limits": "Define limites de leitura, idioma e acesso por cargo.",
+    "dashboard.channelOverrides": "Definições por canal",
+    "dashboard.profilesHint": "Deixa um campo em Herdar para usar a predefinição do servidor."
+  });
+  var settingsNames = {fr:"Paramètres",es:"Ajustes",de:"Einstellungen",tr:"Ayarlar",ar:"الإعدادات",zh:"設定",ru:"Настройки",ko:"설정"};
+  Object.keys(settingsNames).forEach(function (locale) {
+    extra[locale] = Object.assign({}, extra[locale], {"dashboard.settings": settingsNames[locale]});
+  });
   var dictionary = window.VOZEN_I18N || {};
   var pickerTitles = {en:'Your servers',pt:'Os teus servidores',fr:'Vos serveurs',es:'Tus servidores',de:'Deine Server',tr:'Sunucuların',ar:'خوادمك',zh:'你的伺服器',ru:'Ваши серверы',ko:'내 서버'};
   Object.keys(pickerTitles).forEach(function (locale) {
