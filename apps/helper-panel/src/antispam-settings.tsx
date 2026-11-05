@@ -3,12 +3,13 @@ import { helperLocale, helperText } from './i18n';
 import copy from './antispam-copy.json';
 import scamCopy from './antiscam-settings-copy.json';
 import raidCopy from './anti-raid-settings-copy.json';
+import moderationCopy from './moderation-copy.json';
 import './antispam-settings.css';
 
 const spamSettingsText = () => copy[helperLocale() as keyof typeof copy] ?? copy.en;
 export const protectionRestorePrompt = () => spamSettingsText()[24];
 
-export function ProtectionSettingsSkeleton({ raid, join }: { raid: boolean; join: boolean }) {
+export function ProtectionSettingsSkeleton({ raid, join, moderation }: { raid: boolean; join: boolean; moderation: boolean }) {
   const pulse = (shape: string) => <span className={`helper-skeleton__pulse spam-placeholder-${shape}`} />;
   return <div className="detail-page antispam-page spam-settings-skeleton" aria-hidden="true">
     <div className="spam-navigation">
@@ -20,12 +21,12 @@ export function ProtectionSettingsSkeleton({ raid, join }: { raid: boolean; join
         {pulse('button')}
         {pulse('button')}
       </div>
-      <div className="spam-tabs" data-tab-count={raid || join ? 2 : 3}>{(raid || join ? [0, 1] : [0, 1, 2]).map(tab =>
+      {!moderation && <div className="spam-tabs" data-tab-count={raid || join ? 2 : 3}>{(raid || join ? [0, 1] : [0, 1, 2]).map(tab =>
         <span className="helper-skeleton__pulse spam-placeholder-tab" key={tab} />)}
-      </div>
-      <div className={raid ? 'raid-detection' : 'spam-detection'}>
+      </div>}
+      <div className={moderation ? undefined : raid ? 'raid-detection' : 'spam-detection'}>
         <div className="spam-tab-intro">{pulse('intro')}</div>
-        {(raid ? [0] : [0, 1]).map(group => <div className="spam-group" key={group}>
+        {(raid || moderation ? [0] : [0, 1]).map(group => <div className="spam-group" key={group}>
           {pulse('heading')}
           {pulse('input')}
           {pulse('input')}
@@ -65,8 +66,12 @@ const JOIN_GROUPS = [
   { title: 6, tab: 1, keys: ['autoRole', 'logChannel'] },
 ] as const;
 
+const MODERATION_GROUPS = [
+  { title: 3, tab: 0, keys: ['requireReason', 'maxPurge'] },
+] as const;
+
 export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTest, alertOnly, saving, onRestore, onSimulate, onRepair, renderField }: {
-  kind: 'spam' | 'scam' | 'raid' | 'join'; title: string; enabled: boolean; onEnabled: (enabled: boolean) => void; onTest: () => void;
+  kind: 'spam' | 'scam' | 'raid' | 'join' | 'moderation'; title: string; enabled: boolean; onEnabled: (enabled: boolean) => void; onTest: () => void;
   keys: string[]; alertOnly: boolean; saving: boolean; onRestore?: () => void; onSimulate?: () => void; onRepair?: () => void;
   renderField: (key: string, copy?: { label?: string; help?: string }, inline?: boolean) => ReactNode;
 }) {
@@ -77,13 +82,17 @@ export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTe
   const scam = kind === 'scam';
   const raid = kind === 'raid';
   const join = kind === 'join';
+  const moderation = kind === 'moderation';
+  const moderationText = moderationCopy[locale];
   const scamText = scamCopy[locale];
   const raidText = raidCopy[locale];
-  const groups = join ? JOIN_GROUPS : raid ? RAID_GROUPS : scam ? SCAM_GROUPS : SPAM_GROUPS;
-  const sectionTitles = join ? { 3: helperText('Safe joining'), 4: helperText('Blocked name patterns'), 5: text[5], 6: helperText('Roles and logging') }
+  const groups = moderation ? MODERATION_GROUPS : join ? JOIN_GROUPS : raid ? RAID_GROUPS : scam ? SCAM_GROUPS : SPAM_GROUPS;
+  const sectionTitles = moderation ? { 3: helperText('Moderation safety') }
+    : join ? { 3: helperText('Safe joining'), 4: helperText('Blocked name patterns'), 5: text[5], 6: helperText('Roles and logging') }
     : raid ? { 3: helperText('Join burst protection'), 5: text[5], 6: scamText.logs }
     : scam ? { 3: scamText.links, 4: scamText.phrases, 5: text[5], 6: scamText.logs, 7: text[7] } : text;
-  const introductions = join ? [helperText('Applies basic checks to new members.'), scamText.actions]
+  const introductions = moderation ? [moderationText.intro]
+    : join ? [helperText('Applies basic checks to new members.'), scamText.actions]
     : raid ? [raidText.detection, scamText.actions]
     : scam ? [scamText.detection, scamText.actions, text[14]] : text.slice(12, 15);
   const tabs = join ? [helperText('Join verification'), text[1]] : text.slice(0, introductions.length);
@@ -97,6 +106,8 @@ export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTe
     deleteMessage: { help: text[20] },
     warningDelivery: { help: text[21] },
     logChannel: join ? {} : { help: text[22] },
+    requireReason: { help: moderationText.reasonHelp },
+    maxPurge: { help: moderationText.purgeHelp },
   };
   const field = (key: string) => renderField(key, fieldCopy[key]);
   const frequency = (raid ? raidText.rule : text[23]).split(/\{(\w+)\}/);
@@ -116,7 +127,7 @@ export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTe
         <span aria-hidden="true">▶ </span>{text[10]}
       </button>
     </div>
-    <div className="spam-tabs" data-tab-count={tabs.length} role="tablist" aria-label={title}>
+    {!moderation && <div className="spam-tabs" data-tab-count={tabs.length} role="tablist" aria-label={title}>
       {tabs.map((label, index) => <button type="button" role="tab" key={index}
         id={`${id}-tab-${index}`} aria-controls={`${id}-panel-${index}`} aria-selected={tab === index}
         tabIndex={tab === index ? 0 : -1} onClick={() => setTab(index)} onKeyDown={event => {
@@ -129,11 +140,18 @@ export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTe
           event.preventDefault(); setTab(next);
           document.getElementById(`${id}-tab-${next}`)?.focus();
         }}>{label}</button>)}
-    </div>
-    {tabs.map((_, index) => <div key={index} id={`${id}-panel-${index}`} role="tabpanel"
-      className={index === 0 ? (raid ? 'raid-detection' : 'spam-detection') : undefined}
-      aria-labelledby={`${id}-tab-${index}`} hidden={tab !== index} tabIndex={0}>
+    </div>}
+    {tabs.map((_, index) => <div key={index} id={`${id}-panel-${index}`} role={moderation ? 'region' : 'tabpanel'}
+      className={index === 0 && !moderation ? (raid ? 'raid-detection' : 'spam-detection') : undefined}
+      aria-label={moderation ? title : undefined}
+      aria-labelledby={moderation ? undefined : `${id}-tab-${index}`} hidden={tab !== index} tabIndex={0}>
       <p className="spam-tab-intro">{introductions[index]}</p>
+      {moderation && <ul className="moderation-commands" aria-label={helperText('Commands')}>
+        {Object.entries(moderationText.commands).map(([command, description]) => <li key={command}>
+          <code dir="ltr">{command}</code>
+          <span>{description}</span>
+        </li>)}
+      </ul>}
       {groups.filter(group => group.tab === index).map(group => {
         const fields: string[] = group.keys.filter(key => keys.includes(key));
         const inlineFrequency = group.title === 3 && frequencyKeys.every(key => fields.includes(key));

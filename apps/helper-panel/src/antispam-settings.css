@@ -114,6 +114,17 @@
   margin-block-end: 12px;
 }
 .panel-main .spam-rule-part { display: inline-flex; align-items: center; gap: 6px; max-inline-size: 100%; }
+.panel-main .moderation-commands {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  gap: 16px;
+  padding: 0;
+  margin: 0 0 24px;
+  list-style: none;
+}
+.panel-main .moderation-commands li { display: grid; align-content: start; gap: 6px; }
+.panel-main .moderation-commands code { color: #9ce9de; font-size: 1rem; }
+.panel-main .moderation-commands span { color: #b4c3d9; font-size: .875rem; line-height: 1.5; }
 .panel-main .spam-rule input {
   box-sizing: border-box;
   flex: none;
