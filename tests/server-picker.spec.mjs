@@ -62,8 +62,18 @@ for(const product of ['tts','helper']) for(const width of [320,768,1440,1910]) t
   expect(await server.evaluate(select=>select.offsetHeight)).toBe(width<=900?44:47);
   await expect(server).toHaveCSS('padding-inline-start',width<=900?'35px':'40px');
   await expect(server.locator('option').last()).toHaveAttribute('value','__choose_server__');
+  const checkLongName = product==='tts' && (width===320 || width===1440);
+  if (checkLongName || width===1440) await server.selectOption('998');
+  if (checkLongName) {
+    const name = server.locator('selectedcontent .workspace-server-name');
+    await expect(name).toHaveText(guilds[1].name);
+    await expect(name).toHaveCSS('text-overflow','ellipsis');
+    expect(await name.evaluate(label=>label.scrollWidth>label.clientWidth)).toBe(true);
+    const labelBox = await name.boundingBox();
+    const serverBox = await server.boundingBox();
+    expect(labelBox.x+labelBox.width).toBeLessThan(serverBox.x+serverBox.width);
+  }
   if (width===1440) {
-    await server.selectOption('998');
     await expect(server).toHaveValue('998');
     await expect(page.getByText(guilds[1].name,{exact:true}).filter({visible:true}).last()).toBeVisible();
     await page.reload();
