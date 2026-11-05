@@ -78,17 +78,25 @@
   // links remain untouched. This small state object also gives Overview a truthful
   // summary instead of inventing usage metrics.
   var workspaceState = { guild: null, guilds: [], data: null, view: "overview", pendingView: null, dirty: false, requestSeq: 0 };
-  var TTS_VIEWS = { overview: true, reading: true, community: true, profiles: true, limits: true, "bot-profile": true };
+  var TTS_VIEWS = { overview: true, settings: true, "bot-profile": true };
+  var SETTINGS_SECTIONS = { reading: "readingVoice", community: "community", profiles: "channelProfiles", limits: "accessLimits" };
+
+  function settingsSectionFromHash() {
+    var parts = String(window.location.hash || "").replace(/^#\/?/, "").split(/[/?#]/);
+    var section = parts[0] === "settings" ? parts[1] : parts[0];
+    return Object.hasOwn(SETTINGS_SECTIONS, section) ? section : "reading";
+  }
 
   function viewFromHash() {
     var raw = String(window.location.hash || "").replace(/^#\/?/, "");
     var name = raw.split(/[/?#]/)[0];
-    return TTS_VIEWS[name] ? name : "overview";
+    return Object.hasOwn(SETTINGS_SECTIONS, name) ? "settings" : TTS_VIEWS[name] ? name : "overview";
   }
 
   function syncTtsHash(viewName, mode) {
     if (!mode || !window.history || !window.history.pushState) return;
     var next = viewName === "overview" ? "" : "#/" + viewName;
+    if (viewName === "settings") next += "/" + workspaceState.settingsSection;
     if (window.location.hash === next) return;
     var url = window.location.pathname + window.location.search + next;
     if (mode === "push") window.history.pushState({ ttsView: viewName }, "", url);
@@ -263,7 +271,7 @@
 
   function navigateTtsView(viewName) {
     var next = TTS_VIEWS[viewName] ? viewName : "overview";
-    if (next === "bot-profile" && next === workspaceState.view) return;
+    if (next === workspaceState.view) return;
     if (next !== workspaceState.view && !confirmTtsDiscard()) return;
     if (next !== workspaceState.view) workspaceState.dirty = false;
     setTtsView(next, "push");
@@ -281,9 +289,14 @@
   }
 
   workspaceState.view = viewFromHash();
+  workspaceState.settingsSection = settingsSectionFromHash();
   window.addEventListener("popstate", function () {
     var previous = workspaceState.view;
     var next = viewFromHash();
+    if (next === "settings" && previous === "settings") {
+      showSettingsSection(true);
+      return;
+    }
     if (next !== previous && !confirmTtsDiscard()) {
       syncTtsHash(previous, "replace");
       return;
@@ -848,7 +861,7 @@
     var art = url
       ? '<img class="dash-head__ic" src="' + esc(url) + '" alt="">'
       : '<span class="dash-head__ph" aria-hidden="true">' + esc(guildInitials(guild.name)) + "</span>";
-    var titles = { reading: "readingVoice", community: "community", profiles: "channelProfiles", limits: "accessLimits", "bot-profile": "botProfile" };
+    var titles = { settings: "settings", "bot-profile": "botProfile" };
     var title = titles[workspaceState.view] ? t("dashboard." + titles[workspaceState.view]) : guild.name;
     return (
       '<div class="dash-head">' +
@@ -945,8 +958,8 @@
     var locales = meta.options.locales || [];
     return (
       '<section class="dash-profiles" aria-labelledby="dashProfilesTitle">' +
-      '<p class="dash-sec__t" id="dashProfilesTitle">' + esc(t("dashboard.sec_voice")) + "</p>" +
-      '<p class="dash-row__d">' + esc(t("dashboard.d_ttsChannelId")) + "</p>" +
+      '<h3 id="dashProfilesTitle">' + esc(t("dashboard.channelOverrides")) + "</h3>" +
+      '<p class="dash-row__d">' + esc(t("dashboard.profilesHint")) + "</p>" +
       '<div class="dash-profiles__grid">' +
       '<label class="dash-profile-field">' + esc(t("dashboard.readingChannel")) + '<select class="dash-sel" id="dashProfileChannel">' +
       profileOptionHtml(channels, "", t("dashboard.chooseChannelFirst")) +
@@ -1037,7 +1050,11 @@
           return res.json();
         })
         .then(function (data) {
-          renderForm(guild, data.config, guilds, data, true);
+          if (!channel.isConnected) return;
+          meta = data;
+          workspaceState.data = data;
+          loadSelected();
+          status.textContent = t("dashboard.saved");
         })
         .catch(function () {
           status.textContent = t("dashboard.saveFail");
@@ -1052,7 +1069,18 @@
       })
         .then(function (res) {
           if (res.status !== 204) throw new Error("profile-delete");
-          return loadForm(guild, guilds);
+          return fetchWithTimeout(API + "/api/dashboard/guild/" + guild.id, { headers: authHeaders() });
+        })
+        .then(function (res) {
+          if (!res.ok) throw new Error("profile-reload");
+          return res.json();
+        })
+        .then(function (data) {
+          if (!channel.isConnected) return;
+          meta = data;
+          workspaceState.data = data;
+          loadSelected();
+          status.textContent = t("dashboard.saved");
         })
         .catch(function () {
           status.textContent = t("dashboard.saveFail");
@@ -1313,40 +1341,76 @@
   }
 
 
+  function showSettingsSection(moveFocus) {
+    var active = settingsSectionFromHash();
+    if (!root.querySelector('[data-settings-panel="' + active + '"]')) active = "reading";
+    workspaceState.settingsSection = active;
+    root.querySelectorAll("[data-settings-panel]").forEach(function (panel) {
+      panel.hidden = panel.dataset.settingsPanel !== active;
+    });
+    root.querySelectorAll("[data-settings-section]").forEach(function (tab) {
+      var selected = tab.dataset.settingsSection === active;
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      if (selected && moveFocus) tab.focus();
+    });
+  }
+
+  function bindSettingsSections() {
+    var tabs = Array.from(root.querySelectorAll("[data-settings-section]"));
+    function select(tab) {
+      window.history.pushState({}, "", "#/settings/" + tab.dataset.settingsSection);
+      showSettingsSection(true);
+    }
+    tabs.forEach(function (tab, index) {
+      tab.addEventListener("click", function () { select(tab); });
+      tab.addEventListener("keydown", function (event) {
+        var next;
+        if (event.key === "ArrowRight") next = (index + 1) % tabs.length;
+        if (event.key === "ArrowLeft") next = (index + tabs.length - 1) % tabs.length;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = tabs.length - 1;
+        if (next !== undefined) { event.preventDefault(); select(tabs[next]); }
+      });
+    });
+    showSettingsSection(false);
+  }
+
   function renderForm(guild, cfg, guilds, meta, saved) {
     if (workspaceState.view === "overview") return renderTtsOverview();
-    var allSections = sectionsFor(meta);
-    var sectionIdsByView = {
-      profiles: [],
-      reading: ["reading", "voice"],
-      community: ["community"],
-      limits: ["limits"],
-    };
-    var requestedSections = sectionIdsByView[workspaceState.view];
-    var sections = requestedSections
-      ? allSections.filter(function (section) { return requestedSections.indexOf(section.id) !== -1; })
-      : allSections;
-    var showProfiles = workspaceState.view === "profiles";
+    var sections = sectionsFor(meta);
     // Baseline para dirty-tracking: o botão só fica ativo quando algo muda.
     var baseline = {};
     eachField(sections, function (key) {
       baseline[key] = fieldValue(key, cfg);
     });
 
-    var sectionsHtml = sections.map(function (sec) {
+    function sectionHtml(sec) {
       var rows = sec.fields
         .map(function (k) {
           return rowHtml(k, cfg, meta);
         })
         .join("");
       return (
-        '<div class="dash-sec"><p class="dash-sec__t">' +
+        '<div class="dash-sec" data-field-section="' + sec.id + '"><h3 class="dash-sec__t">' +
         esc(t("dashboard.sec_" + sec.id)) +
-        "</p>" +
+        "</h3>" +
         rows +
         "</div>"
       );
-    }).join("");
+    }
+    var tabsHtml = '<div class="tts-settings-tabs" role="tablist" aria-label="' + esc(t("dashboard.settingsSections")) + '">';
+    var panelsHtml = "";
+    Object.keys(SETTINGS_SECTIONS).forEach(function (id) {
+      if (id === "profiles" && !meta.capabilities.channelProfiles) return;
+      var label = t("dashboard." + SETTINGS_SECTIONS[id]);
+      tabsHtml += '<button type="button" role="tab" id="tts-tab-' + id + '" aria-controls="tts-settings-' + id + '" data-settings-section="' + id + '">' + esc(label) + '</button>';
+      var fields = sections.filter(function (sec) { return sec.id === id || (id === "reading" && sec.id === "voice"); });
+      panelsHtml += '<section class="tts-settings-section" role="tabpanel" id="tts-settings-' + id + '" aria-labelledby="tts-tab-' + id + '" data-settings-panel="' + id + '">' +
+        '<header><h2 data-settings-title="' + id + '">' + esc(label) + '</h2><p data-settings-hint="' + id + '">' + esc(t("dashboard.settingsHint_" + id)) + '</p></header>' +
+        (id === "profiles" ? profileEditorHtml(meta) : fields.map(sectionHtml).join("")) + '</section>';
+    });
+    tabsHtml += '</div>';
 
     var savebar =
       '<div class="dash-savebar" id="dashSavebar"><button type="button" class="' +
@@ -1358,12 +1422,13 @@
     view(
       '<div class="dash-form">' +
         headHtml(guild) +
-        sectionsHtml +
-        (showProfiles ? profileEditorHtml(meta) : "") +
+        '<p class="tts-settings-intro">' + esc(t("dashboard.settingsIntro")) + '</p>' +
+        tabsHtml + panelsHtml +
         savebar +
         "</div>",
     );
     wireIconFallback(root.querySelector(".dash-head__ic"), guild.name, "dash-head__ph");
+    bindSettingsSections();
 
     var formEl = root.querySelector(".dash-form");
     var saveBtn = document.getElementById("dashSave");
@@ -1390,7 +1455,10 @@
       workspaceState.dirty = n > 0;
       saveBtn.disabled = n === 0;
       discardBtn.disabled = n === 0;
-      if (savebarEl) savebarEl.classList.toggle("dash-savebar--visible", n > 0 || !!saved);
+      if (savebarEl) {
+        savebarEl.classList.toggle("dash-savebar--visible", n > 0 || !!saved);
+        savebarEl.classList.toggle("dash-savebar--dirty", n > 0);
+      }
       saveBtn.textContent =
         n === 0 ? t("dashboard.save") : n === 1 ? t("dashboard.save1") : t("dashboard.saveN").replace("{n}", n);
       if (n > 0) setStatus(""); // limpa "Guardado ✓" assim que se volta a mexer
@@ -1399,7 +1467,14 @@
     discardBtn.addEventListener("click", function () {
       if (!workspaceState.dirty) return;
       workspaceState.dirty = false;
-      renderForm(guild, cfg, guilds, meta, false);
+      eachField(sections, function (key) {
+        var control = root.querySelector('[data-k="' + key + '"]');
+        if (FIELD[key].type === "toggle") control.checked = baseline[key];
+        else control.value = baseline[key] === null ? "" : String(baseline[key]);
+      });
+      saved = false;
+      refresh();
+      setStatus("");
     });
     // Listeners no próprio form (substituído a cada render -> morrem com ele; sem leaks).
     formEl.addEventListener("input", refresh);
@@ -1442,8 +1517,8 @@
             return;
           }
           if (!res.ok) {
-            setStatus(t("dashboard.saveFail"), "err");
             refresh();
+            setStatus(t("dashboard.saveFail"), "err");
             return;
           }
           return res.json();
@@ -1451,15 +1526,25 @@
         .then(function (data) {
           // Rebuild the controls and dirty baseline from the authoritative server response.
           if (data && data.config) {
+            if (!formEl.isConnected) return;
             workspaceState.dirty = false;
             workspaceState.data = data;
             workspaceState.guild = guild;
-            renderForm(guild, data.config, guilds, data, true);
+            cfg = data.config;
+            eachField(sections, function (key) {
+              baseline[key] = fieldValue(key, cfg);
+              var control = root.querySelector('[data-k="' + key + '"]');
+              if (FIELD[key].type === "toggle") control.checked = baseline[key];
+              else control.value = baseline[key] === null ? "" : String(baseline[key]);
+            });
+            saved = true;
+            refresh();
+            setStatus(t("dashboard.saved"), "ok");
           }
         })
         .catch(function () {
-          setStatus(t("dashboard.saveFail"), "err");
           refresh();
+          setStatus(t("dashboard.saveFail"), "err");
         });
     });
 
@@ -1471,6 +1556,16 @@
     // Guardar com a contagem de alterações atual. Não toca nos inputs -> preserva valores e
     // o estado "por guardar". Registado como re-localizador enquanto o form está visível.
     onLang = function relocalizeForm() {
+      root.querySelector("h1").textContent = t("dashboard.settings");
+      root.querySelector(".tts-settings-intro").textContent = t("dashboard.settingsIntro");
+      root.querySelector('[role="tablist"]').setAttribute("aria-label", t("dashboard.settingsSections"));
+      Object.keys(SETTINGS_SECTIONS).forEach(function (id) {
+        var tab = root.querySelector('[data-settings-section="' + id + '"]');
+        if (!tab) return;
+        tab.textContent = t("dashboard." + SETTINGS_SECTIONS[id]);
+        root.querySelector('[data-settings-title="' + id + '"]').textContent = tab.textContent;
+        root.querySelector('[data-settings-hint="' + id + '"]').textContent = t("dashboard.settingsHint_" + id);
+      });
       var secEls = root.querySelectorAll(".dash-sec");
       sections.forEach(function (sec, i) {
         var tEl = secEls[i] && secEls[i].querySelector(".dash-sec__t");

@@ -1516,6 +1516,83 @@ body.page-dashboard.workspace-page--tts .dash-form .dash-row {
 .tts-profile-actions button { flex: 1 1 205px; min-height: 44px; }
 .tts-profile-actions button:disabled { opacity: .55; cursor: default; }
 .tts-bot-profile .tts-profile-status:empty { display: none; }
+.workspace-page--tts .tts-settings-intro {
+  margin: -18px 0 24px;
+  color: var(--workspace-muted);
+}
+.workspace-page--tts .tts-settings-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid var(--workspace-border);
+}
+.workspace-page--tts .tts-settings-tabs button {
+  min-height: 44px;
+  padding: 10px 2px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--workspace-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+.workspace-page--tts .tts-settings-tabs button:hover { color: var(--workspace-copy); }
+.workspace-page--tts .tts-settings-tabs button[aria-selected="true"] {
+  color: var(--workspace-tts);
+  border-bottom-color: currentColor;
+}
+.workspace-page--tts .tts-settings-tabs button:focus-visible {
+  outline: 2px solid var(--workspace-tts);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.workspace-page--tts .tts-settings-section > header h2 {
+  margin: 0;
+  font-size: clamp(22px, 3vw, 28px) !important;
+  letter-spacing: -.025em;
+}
+.workspace-page--tts .tts-settings-section > header p {
+  max-width: 65ch;
+  margin: 8px 0 24px;
+  color: var(--workspace-muted);
+  line-height: 1.5;
+}
+body.page-dashboard.workspace-page--tts .dash-form .tts-settings-section .dash-sec {
+  margin-top: 20px !important;
+  padding: 18px 22px;
+  border: 1px solid var(--workspace-border);
+  border-radius: 12px;
+  background: var(--workspace-surface);
+}
+.workspace-page--tts .tts-settings-section .dash-sec__t {
+  font: inherit;
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--workspace-copy);
+}
+.workspace-page--tts .tts-settings-section .dash-profiles h3 { margin: 0 0 4px; font-size: 18px; }
+.workspace-page--tts .dash-form:has(.tts-settings-tabs) .dash-savebar--visible {
+  position: static;
+  bottom: 12px;
+  z-index: 5;
+  max-height: none;
+  margin: 24px 0 0;
+  padding: 14px;
+  flex-wrap: wrap;
+  border: 1px solid var(--workspace-border);
+  border-radius: 12px;
+  background: var(--workspace-surface-raised);
+}
+.workspace-page--tts .dash-form:has(.tts-settings-tabs) .dash-savebar--dirty { position: sticky; }
+@media (max-width: 600px) {
+  .workspace-page--tts .tts-settings-tabs { gap: 4px 14px; }
+  body.page-dashboard.workspace-page--tts .dash-form .tts-settings-section .dash-sec { padding: 14px; }
+}
 @media (max-width: 600px) {
   .tts-profile-body { padding: 16px; }
   .tts-profile-avatar { margin-left: 16px; }

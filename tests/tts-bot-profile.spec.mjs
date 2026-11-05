@@ -39,7 +39,6 @@ for (const [width, locale] of [[390, 'pt'], [1440, 'en']]) {
     await page.route('https://cdn.discordapp.com/**', route => route.abort());
     await page.goto('/dashboard.html');
     await page.getByRole('button', { name: 'Profile QA' }).click();
-    if (width < 900) await page.locator('.settings-sections-button').click();
     await page.getByRole('button', { name: /^(Bot Profile|Perfil do bot)$/ }).click();
     const form = page.locator('.tts-bot-profile form');
     await expect(form).toBeVisible();

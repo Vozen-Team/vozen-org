@@ -1,5 +1,6 @@
 
 /* Approved Vozen settings surface. Keep native data and publishing components. */
+@media(max-width:900px){body.page-dashboard.workspace-page--tts #ttsWorkspace .tts-workspace__sidebar .workspace-sidebar__nav>button[data-tts-view="bot-profile"]{display:flex}body.page-dashboard.workspace-page--tts .tts-workspace__sidebar .workspace-sidebar__nav>.settings-sections-button{display:none!important}}
 .workspace-page,.workspace-app--helper{background:radial-gradient(65% 48% at 0 0,rgba(94,112,255,.19),transparent 70%),radial-gradient(48% 58% at 100% 54%,rgba(22,186,166,.11),transparent 70%),#080f1b}
 .tts-workspace,.workspace-shell.workspace-shell--helper{width:calc(100% - 48px);max-width:1576px;height:calc(100dvh - 112px);min-height:520px;margin:0 auto 20px;display:grid;grid-template-columns:264px minmax(0,1fr);border:1px solid #2c405b;border-radius:18px;background:#080f1b;overflow:hidden}
 .tts-workspace__sidebar,.workspace-shell.workspace-shell--helper>.workspace-sidebar{position:static;min-width:0;width:auto;max-height:none;overflow-y:auto;background:#0b1523;border-right:1px solid #283b53;padding:28px 18px;display:flex;flex-direction:column;gap:22px}
