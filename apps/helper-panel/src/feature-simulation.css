@@ -102,6 +102,12 @@
 }
 .spam-demo-timeout svg { flex-shrink: 0; }
 .spam-demo-footer { display: flex; justify-content: flex-end; margin-block-start: 12px; }
+.moderation-demo-scenarios { display: flex; flex-wrap: wrap; gap: 8px; }
+.moderation-demo-scenarios button { max-inline-size: 100%; white-space: normal; }
+.moderation-demo-scenarios [aria-pressed="true"] { border-color: #9ce9de; color: #9ce9de; background: #163039; }
+.moderation-cleanup-messages { margin-block-end: 12px; padding-inline-start: 40px; animation: moderation-demo-clear 250ms ease-out 1600ms both; }
+.feature-simulation .moderation-cleanup-messages p { margin-block: 2px; }
+@keyframes moderation-demo-clear { to { opacity: .35; text-decoration: line-through; } }
 @keyframes spam-demo-arrive {
   from { visibility: hidden; opacity: 0; transform: translateY(4px); }
   to { visibility: visible; opacity: 1; transform: translateY(0); }
@@ -128,5 +134,6 @@
 @media (prefers-reduced-motion: reduce) {
   .spam-simulation .spam-demo-messages li, .spam-demo-response, .scam-demo-message { animation: none; }
   .scam-demo-message { text-decoration: line-through; }
+  .moderation-cleanup-messages { animation: none; opacity: .35; text-decoration: line-through; }
   .spam-demo-footer { display: none; }
 }

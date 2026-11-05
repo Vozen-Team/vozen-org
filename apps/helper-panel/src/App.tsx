@@ -2514,7 +2514,8 @@ function App() {
   const currentFeature = features.find((item) => item.key === route.key);
   const isProtectionDetail = route.page === 'detail' &&
     (route.key === 'protection.antispam' || route.key === 'protection.antiscam' ||
-      route.key === 'protection.anti_raid' || route.key === 'protection.join_gate');
+      route.key === 'protection.anti_raid' || route.key === 'protection.join_gate' ||
+      route.key === 'management.moderation' || route.key === 'management.audit');
   const detailDirty = JSON.stringify(detailConfig) !== JSON.stringify(savedDetailConfig);
   const rankDirty = JSON.stringify(rankConfig) !== JSON.stringify(savedRankConfig);
   const dirty =
@@ -3266,7 +3267,8 @@ function App() {
         {route.page === 'activity' && <ActivityFeed key={me?.guildId} guildId={me?.guildId || ''} preview={localPreviewMode} />}
         {route.page === 'detail' &&
           (detailLoading ? isProtectionDetail ? <ProtectionSettingsSkeleton
-            raid={route.key === 'protection.anti_raid'} join={route.key === 'protection.join_gate'} /> : (
+            raid={route.key === 'protection.anti_raid'} join={route.key === 'protection.join_gate'}
+            moderation={route.key === 'management.moderation'} audit={route.key === 'management.audit'} /> : (
             <div className="loading-card card">
               <div className="loader" />
               <span>{helperText('Loading configuration…')}</span>
@@ -4388,9 +4390,11 @@ function FeatureDetail({
   const scam = feature?.key === 'protection.antiscam';
   const raid = feature?.key === 'protection.anti_raid';
   const join = feature?.key === 'protection.join_gate';
-  if (join || raid || scam || feature?.key === 'protection.antispam') {
+  const moderation = feature?.key === 'management.moderation';
+  const audit = feature?.key === 'management.audit';
+  if (audit || moderation || join || raid || scam || feature?.key === 'protection.antispam') {
     const fields = sections.flatMap(section => section.fields);
-    const canSimulate = join || raid || scam;
+    const canSimulate = audit || moderation || join || raid || scam;
     const needsRepair = canSimulate && !localPreviewMode && feature?.health?.status && feature.health.status !== 'ready' && revision > 0;
     return (
       <section className="detail-page antispam-page" onBlur={onFlush}>
@@ -4405,11 +4409,11 @@ function FeatureDetail({
             </svg>
           </a>}
         </div>
-        <ProtectionSettings key={feature.key + ':' + premiumGuildId} kind={join ? 'join' : raid ? 'raid' : scam ? 'scam' : 'spam'} title={translatedFeature?.label ?? helperText('Feature')}
+        <ProtectionSettings key={feature.key + ':' + premiumGuildId} kind={audit ? 'audit' : moderation ? 'moderation' : join ? 'join' : raid ? 'raid' : scam ? 'scam' : 'spam'} title={translatedFeature?.label ?? helperText('Feature')}
           keys={fields.map(field => field.key)}
           enabled={enabled} onEnabled={onEnabled} onTest={() => onTest(canSimulate)}
           onSimulate={canSimulate ? () => onTest() : undefined} onRepair={needsRepair ? onRepair : undefined}
-          alertOnly={config.alertOnly === true} saving={saving} onRestore={onRestore}
+          alertOnly={audit ? config.shadowMode === true : config.alertOnly === true} saving={saving} onRestore={onRestore}
           renderField={(key, copy, inline) => {
             const field = fields.find(field => field.key === key);
             return field ? <FieldControl field={{ ...field, ...copy }} value={config[key]} context={resourceContext} onChange={onChange} inline={inline} /> : null;
