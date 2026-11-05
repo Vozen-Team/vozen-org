@@ -5,6 +5,8 @@ import './feature-simulation.css';
 import { featureDemo } from './feature-demo';
 import { isOutsideDialog } from './dialog-dismiss';
 import { ProtectionChatDemo, joinSimulationText, raidSimulationText, scamSimulationText, spamSimulationText } from './antispam-simulation';
+import { ModerationDemo } from './moderation-demo';
+import moderationCopy from './moderation-copy.json';
 
 type Simulation = Awaited<ReturnType<typeof api.testFeature>>;
 export type SimulationDraft = {
@@ -34,7 +36,8 @@ export function FeatureSimulation({ draft, onClose }: {
   const scam = draft.key === 'protection.antiscam' && draft.visualDemo === true;
   const raid = draft.key === 'protection.anti_raid' && draft.visualDemo === true;
   const join = draft.key === 'protection.join_gate' && draft.visualDemo === true;
-  const protectionDemo = spam || scam || raid || join;
+  const moderation = draft.key === 'management.moderation' && draft.visualDemo === true;
+  const protectionDemo = spam || scam || raid || join || moderation;
   const copy = spamSimulationText();
   const demo = protectionDemo ? null : featureDemo(draft.key, locale);
   const media = demo ? `${import.meta.env.BASE_URL}feature-demos/${demo.asset}` : '';
@@ -91,8 +94,8 @@ export function FeatureSimulation({ draft, onClose }: {
         <h2 id="simulation-title">{spam ? copy.title : label}</h2></div>
       <button type="button" className="secondary" autoFocus onClick={onClose}>{protectionDemo ? copy.close : t('helper.demoClose', 'Close demonstration')}</button>
     </header>
-    <p id="simulation-safety">{join ? joinSimulationText().safety : raid ? raidSimulationText().safety : scam ? scamSimulationText().safety : spam ? copy.safety : t('helper.demoSafety', 'This demonstration does not send messages or change your server. Editor changes are saved separately and automatically.')}</p>
-    {protectionDemo ? <ProtectionChatDemo kind={join ? 'join' : raid ? 'raid' : scam ? 'scam' : 'spam'} /> : <>
+    <p id="simulation-safety">{moderation ? moderationCopy[locale].safety : join ? joinSimulationText().safety : raid ? raidSimulationText().safety : scam ? scamSimulationText().safety : spam ? copy.safety : t('helper.demoSafety', 'This demonstration does not send messages or change your server. Editor changes are saved separately and automatically.')}</p>
+    {moderation ? <ModerationDemo /> : protectionDemo ? <ProtectionChatDemo kind={join ? 'join' : raid ? 'raid' : scam ? 'scam' : 'spam'} /> : <>
     {demo && <section className="feature-simulation__example" aria-labelledby="simulation-example">
       <h3 id="simulation-example">{demo.title}</h3>
       <p>{demo.example}</p>
