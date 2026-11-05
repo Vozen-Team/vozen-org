@@ -5,7 +5,7 @@ for(const product of ['tts','helper']) for(const width of [320,768,1440,1910]) t
   let activeGuild = '999';
   let otherServerAvailable = true;
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
-  const guilds=[{id:'999',name:'Community <safe>',permissions:'32',canManage:true,icon:'fixture',iconUrl:'https://cdn.discordapp.com/icons/999/fixture.png'},{id:'998',name:'A long server name that must wrap without overflowing the viewport',permissions:'32',canManage:true}];
+  const guilds=[{id:'999',name:'Community <safe>',permissions:'32',canManage:true,icon:'fixture',iconUrl:'https://cdn.discordapp.com/icons/999/fixture.png'},{id:'998',name:'W'.repeat(100),permissions:'32',canManage:true}];
   await page.addInitScript(()=>{sessionStorage.setItem('vozen.ecosystem.dtoken','fixture-token');sessionStorage.setItem('vozen.ecosystem.authexp',String(Date.now()+3600000));});
   await page.route('https://api.vozen.org/**',async route=>{
     const path=new URL(route.request().url()).pathname;let json={};
@@ -62,11 +62,12 @@ for(const product of ['tts','helper']) for(const width of [320,768,1440,1910]) t
   expect(await server.evaluate(select=>select.offsetHeight)).toBe(width<=900?44:47);
   await expect(server).toHaveCSS('padding-inline-start',width<=900?'35px':'40px');
   await expect(server.locator('option').last()).toHaveAttribute('value','__choose_server__');
-  const checkLongName = product==='tts' && (width===320 || width===1440);
+  const checkLongName = width===320 || width===1440;
   if (checkLongName || width===1440) await server.selectOption('998');
   if (checkLongName) {
-    const name = server.locator('selectedcontent .workspace-server-name');
+    const name = server.locator(product==='tts' ? 'selectedcontent .workspace-server-name' : 'selectedcontent .helper-server-option-name');
     await expect(name).toHaveText(guilds[1].name);
+    await expect(server).toHaveAttribute('title',guilds[1].name);
     await expect(name).toHaveCSS('text-overflow','ellipsis');
     expect(await name.evaluate(label=>label.scrollWidth>label.clientWidth)).toBe(true);
     const labelBox = await name.boundingBox();

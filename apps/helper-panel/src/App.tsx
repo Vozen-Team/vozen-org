@@ -3096,6 +3096,7 @@ function App() {
               )}
               <select
                 aria-label={helperText('Current server')}
+                title={currentGuild?.name}
                 value={currentGuild?.id ?? ''}
                 disabled={status === 'saving'}
                 onChange={(event) => {
