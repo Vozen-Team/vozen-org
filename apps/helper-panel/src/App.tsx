@@ -2513,7 +2513,8 @@ function App() {
   premiumGuildRef.current = me?.guildId;
   const currentFeature = features.find((item) => item.key === route.key);
   const isProtectionDetail = route.page === 'detail' &&
-    (route.key === 'protection.antispam' || route.key === 'protection.antiscam' || route.key === 'protection.anti_raid');
+    (route.key === 'protection.antispam' || route.key === 'protection.antiscam' ||
+      route.key === 'protection.anti_raid' || route.key === 'protection.join_gate');
   const detailDirty = JSON.stringify(detailConfig) !== JSON.stringify(savedDetailConfig);
   const rankDirty = JSON.stringify(rankConfig) !== JSON.stringify(savedRankConfig);
   const dirty =
@@ -3263,7 +3264,8 @@ function App() {
         )}
         {route.page === 'activity' && <ActivityFeed key={me?.guildId} guildId={me?.guildId || ''} preview={localPreviewMode} />}
         {route.page === 'detail' &&
-          (detailLoading ? isProtectionDetail ? <ProtectionSettingsSkeleton raid={route.key === 'protection.anti_raid'} /> : (
+          (detailLoading ? isProtectionDetail ? <ProtectionSettingsSkeleton
+            raid={route.key === 'protection.anti_raid'} join={route.key === 'protection.join_gate'} /> : (
             <div className="loading-card card">
               <div className="loader" />
               <span>{helperText('Loading configuration…')}</span>
@@ -4384,9 +4386,11 @@ function FeatureDetail({
     );
   const scam = feature?.key === 'protection.antiscam';
   const raid = feature?.key === 'protection.anti_raid';
-  if (raid || scam || feature?.key === 'protection.antispam') {
+  const join = feature?.key === 'protection.join_gate';
+  if (join || raid || scam || feature?.key === 'protection.antispam') {
     const fields = sections.flatMap(section => section.fields);
-    const needsRepair = (raid || scam) && !localPreviewMode && feature?.health?.status && feature.health.status !== 'ready' && revision > 0;
+    const canSimulate = join || raid || scam;
+    const needsRepair = canSimulate && !localPreviewMode && feature?.health?.status && feature.health.status !== 'ready' && revision > 0;
     return (
       <section className="detail-page antispam-page" onBlur={onFlush}>
         <div className="spam-navigation">
@@ -4400,10 +4404,10 @@ function FeatureDetail({
             </svg>
           </a>}
         </div>
-        <ProtectionSettings key={premiumGuildId} kind={raid ? 'raid' : scam ? 'scam' : 'spam'} title={translatedFeature?.label ?? helperText('Feature')}
+        <ProtectionSettings key={feature.key + ':' + premiumGuildId} kind={join ? 'join' : raid ? 'raid' : scam ? 'scam' : 'spam'} title={translatedFeature?.label ?? helperText('Feature')}
           keys={fields.map(field => field.key)}
-          enabled={enabled} onEnabled={onEnabled} onTest={() => onTest(raid || scam)}
-          onSimulate={raid || scam ? () => onTest() : undefined} onRepair={needsRepair ? onRepair : undefined}
+          enabled={enabled} onEnabled={onEnabled} onTest={() => onTest(canSimulate)}
+          onSimulate={canSimulate ? () => onTest() : undefined} onRepair={needsRepair ? onRepair : undefined}
           alertOnly={config.alertOnly === true} saving={saving} onRestore={onRestore}
           renderField={(key, copy, inline) => {
             const field = fields.find(field => field.key === key);
