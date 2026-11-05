@@ -8,7 +8,7 @@ import './antispam-settings.css';
 const spamSettingsText = () => copy[helperLocale() as keyof typeof copy] ?? copy.en;
 export const protectionRestorePrompt = () => spamSettingsText()[24];
 
-export function ProtectionSettingsSkeleton({ raid }: { raid: boolean }) {
+export function ProtectionSettingsSkeleton({ raid, join }: { raid: boolean; join: boolean }) {
   const pulse = (shape: string) => <span className={`helper-skeleton__pulse spam-placeholder-${shape}`} />;
   return <div className="detail-page antispam-page spam-settings-skeleton" aria-hidden="true">
     <div className="spam-navigation">
@@ -20,7 +20,7 @@ export function ProtectionSettingsSkeleton({ raid }: { raid: boolean }) {
         {pulse('button')}
         {pulse('button')}
       </div>
-      <div className="spam-tabs" data-tab-count={raid ? 2 : 3}>{(raid ? [0, 1] : [0, 1, 2]).map(tab =>
+      <div className="spam-tabs" data-tab-count={raid || join ? 2 : 3}>{(raid || join ? [0, 1] : [0, 1, 2]).map(tab =>
         <span className="helper-skeleton__pulse spam-placeholder-tab" key={tab} />)}
       </div>
       <div className={raid ? 'raid-detection' : 'spam-detection'}>
@@ -58,8 +58,15 @@ const RAID_GROUPS = [
   { title: 6, tab: 1, keys: ['alertChannel'] },
 ] as const;
 
+const JOIN_GROUPS = [
+  { title: 3, tab: 0, keys: ['minimumAccountDays', 'requireAvatar'] },
+  { title: 4, tab: 0, keys: ['blockedNamePatterns'] },
+  { title: 5, tab: 1, keys: ['action', 'verifiedRole'] },
+  { title: 6, tab: 1, keys: ['autoRole', 'logChannel'] },
+] as const;
+
 export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTest, alertOnly, saving, onRestore, onSimulate, onRepair, renderField }: {
-  kind: 'spam' | 'scam' | 'raid'; title: string; enabled: boolean; onEnabled: (enabled: boolean) => void; onTest: () => void;
+  kind: 'spam' | 'scam' | 'raid' | 'join'; title: string; enabled: boolean; onEnabled: (enabled: boolean) => void; onTest: () => void;
   keys: string[]; alertOnly: boolean; saving: boolean; onRestore?: () => void; onSimulate?: () => void; onRepair?: () => void;
   renderField: (key: string, copy?: { label?: string; help?: string }, inline?: boolean) => ReactNode;
 }) {
@@ -69,14 +76,17 @@ export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTe
   const locale = helperLocale();
   const scam = kind === 'scam';
   const raid = kind === 'raid';
+  const join = kind === 'join';
   const scamText = scamCopy[locale];
   const raidText = raidCopy[locale];
-  const groups = raid ? RAID_GROUPS : scam ? SCAM_GROUPS : SPAM_GROUPS;
-  const sectionTitles = raid ? { 3: helperText('Join burst protection'), 5: text[5], 6: scamText.logs }
+  const groups = join ? JOIN_GROUPS : raid ? RAID_GROUPS : scam ? SCAM_GROUPS : SPAM_GROUPS;
+  const sectionTitles = join ? { 3: helperText('Safe joining'), 4: helperText('Blocked name patterns'), 5: text[5], 6: helperText('Roles and logging') }
+    : raid ? { 3: helperText('Join burst protection'), 5: text[5], 6: scamText.logs }
     : scam ? { 3: scamText.links, 4: scamText.phrases, 5: text[5], 6: scamText.logs, 7: text[7] } : text;
-  const introductions = raid ? [raidText.detection, scamText.actions]
+  const introductions = join ? [helperText('Applies basic checks to new members.'), scamText.actions]
+    : raid ? [raidText.detection, scamText.actions]
     : scam ? [scamText.detection, scamText.actions, text[14]] : text.slice(12, 15);
-  const tabs = text.slice(0, introductions.length);
+  const tabs = join ? [helperText('Join verification'), text[1]] : text.slice(0, introductions.length);
   const fieldCopy: Record<string, { label?: string; help?: string }> = {
     floodCount: { label: text[17] },
     windowSeconds: { label: text[18] },
@@ -86,7 +96,7 @@ export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTe
     verification: { label: helperText('Join verification') },
     deleteMessage: { help: text[20] },
     warningDelivery: { help: text[21] },
-    logChannel: { help: text[22] },
+    logChannel: join ? {} : { help: text[22] },
   };
   const field = (key: string) => renderField(key, fieldCopy[key]);
   const frequency = (raid ? raidText.rule : text[23]).split(/\{(\w+)\}/);
@@ -140,7 +150,7 @@ export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTe
               </span>;
             })}
           </div>}
-          {group.title === 5 ? <>
+          {group.title === 5 && !join ? <>
             {keys.includes('alertOnly') && field('alertOnly')}
             {alertOnly && <p className="spam-mode-note" role="status">{raid ? raidText.monitor : scam ? scamText.monitor : text[9]}</p>}
             <fieldset className="field-grid" disabled={alertOnly}>
