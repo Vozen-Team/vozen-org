@@ -101,3 +101,33 @@ test('Overview presents missing leaderboard data and failed profile loading with
  await expect(page.locator('.tts-overview-profile [role=status]')).toContainText('unavailable');
  await expect(page.locator('.tts-overview-profile')).toHaveAttribute('href','#/bot-profile');
 });
+
+test('Server rankings exclude expired streaks and survive settings saves',async({page})=>{
+ const entries=[{name:'Most messages',count:40,streak:0},{name:'Current streak',count:9,streak:3}];
+ const config={autoread:true};
+ await page.addInitScript(()=>{sessionStorage.setItem('vozen.tts.lastGuild','999');sessionStorage.setItem('vozen.ecosystem.dtoken','fixture-token');sessionStorage.setItem('vozen.ecosystem.authexp',String(Date.now()+3600000));});
+ await page.route('https://api.vozen.org/**',async route=>{
+  const path=new URL(route.request().url()).pathname;
+  if(path.endsWith('/guilds'))return route.fulfill({json:{guilds:[{id:'999',name:'Overview QA'}]}});
+  if(path.endsWith('/guild/999')){
+   const payload={config,capabilities:{},options:{}};
+   if(route.request().method()==='POST')Object.assign(config,route.request().postDataJSON());
+   else payload.leaderboard={entries};
+   return route.fulfill({json:payload});
+  }
+  await route.fulfill({json:{}});
+ });
+ await page.goto('/dashboard.html');
+ const names=page.locator('.tts-leaderboard tbody .tts-member > span:last-child');
+ await expect(names).toHaveText(['Current streak']);
+ await page.getByRole('button',{name:'Messages',exact:true}).click();
+ await expect(names).toHaveText(['Most messages','Current streak']);
+ await page.locator('[data-tts-view=settings]').click();
+ await page.locator('[data-k=autoread]').uncheck();
+ await page.locator('#dashSave').click();
+ await expect(page.locator('#dashStatus')).toContainText(/saved/i);
+ await page.locator('[data-tts-view=overview]').click();
+ await expect(names).toHaveText(['Most messages','Current streak']);
+ await page.getByRole('button',{name:'Streaks',exact:true}).click();
+ await expect(names).toHaveText(['Current streak']);
+});
