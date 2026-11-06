@@ -239,10 +239,12 @@
 
   function overviewLeaderboardHtml(data, metric) {
     var leaderboard = data.leaderboard;
-    var rows = leaderboard && Array.isArray(leaderboard.entries) ? leaderboard.entries.filter(function (entry) { return entry && typeof entry === "object"; }) : [];
     var streak = metric === "streak";
     var field = streak ? "streak" : "count";
     function score(entry, key) { return Number.isFinite(entry[key]) ? Math.max(0, Math.floor(entry[key])) : 0; }
+    var rows = leaderboard && Array.isArray(leaderboard.entries) ? leaderboard.entries.filter(function (entry) {
+      return entry && typeof entry === "object" && score(entry, field) > 0;
+    }) : [];
     rows.sort(function (a, b) {
       return score(b, field) - score(a, field) || score(b, streak ? "count" : "streak") - score(a, streak ? "count" : "streak") || String(a.name || "").localeCompare(String(b.name || ""));
     });
@@ -1122,7 +1124,7 @@
         .then(function (data) {
           if (!channel.isConnected) return;
           meta = data;
-          workspaceState.data = data;
+          workspaceState.data = Object.assign({}, data, { leaderboard: workspaceState.data.leaderboard });
           loadSelected();
           status.textContent = t("dashboard.saved");
         })
@@ -1591,7 +1593,7 @@
           if (data && data.config) {
             if (!formEl.isConnected) return;
             workspaceState.dirty = false;
-            workspaceState.data = data;
+            workspaceState.data = Object.assign({}, data, { leaderboard: workspaceState.data.leaderboard });
             workspaceState.guild = guild;
             cfg = data.config;
             eachField(sections, function (key) {
