@@ -9,7 +9,7 @@ for(const width of [320,390,768,900,1440])test(`TTS settings workspace preserves
  await page.goto('/dashboard.html#/quick');
  await page.locator('.dash-server').click();
  await expect(page.locator('[data-tts-view=overview]')).toHaveAttribute('aria-current','page');
- await expect(page.locator('#ttsReadyTitle')).toBeVisible();
+ await expect(page.locator('#ttsLeaderboardTitle')).toBeVisible();
  await expect(page.locator('[data-tts-view=quick]')).toHaveCount(0);
  await expect(page.getByRole('button',{name:/continue setup/i})).toHaveCount(0);
  await expect(page.locator('[data-tts-view]')).toHaveCount(3);
