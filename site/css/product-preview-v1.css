@@ -574,7 +574,7 @@ body.product-preview :is(#premium,#plans).plan-preview .pricing .price-card--pro
 body.product-preview .plan-preview .price-card--pro > h3 { grid-column: 1 / -1; grid-row: 2; }
 body.product-preview .plan-preview .price-card--pro > .price-card__pitch { grid-column: 1 / -1; grid-row: 3; }
 body.product-preview :is(#premium,#plans).plan-preview .price-card--pro > .seat-toggle { grid-column: 2; grid-row: 4; justify-self: end; align-self: start; margin: 0; }
-body.product-preview .plan-preview .price-card--pro .seat-toggle__btn { width: 77px; min-width: 0; min-height: 44px; padding: 7px 5px; font-size: 13px; white-space: normal; }
+body.product-preview .plan-preview .price-card--pro .seat-toggle__btn { width: 77px; min-width: 0; min-height: 44px; padding: 4px 5px; font-size: 13px; white-space: normal; overflow-wrap: anywhere; }
 body.product-preview .plan-preview .price-card--pro > .price-card__price { grid-column: 1; grid-row: 4; min-width: 0; }
 body.product-preview .plan-preview .price-line { position: relative; }
 body.product-preview .plan-preview .price-line .was { position: absolute; bottom: calc(100% + 6px); left: 0; order: -1; white-space: nowrap; }
@@ -592,7 +592,7 @@ body.product-preview .plan-preview .price-card--pro > .price-card__buy { grid-co
   body.product-preview :is(#premium,#plans).plan-preview .price-line :is(b,.amt) { font-size: clamp(26px,3vw,42px); }
 }
 @media (max-width: 1240px) {
-  body.product-preview .plan-preview .price-card--pro .seat-toggle__btn { width: 60px; padding-inline: 2px; font-size: 12px; }
+  body.product-preview .plan-preview .price-card--pro .seat-toggle__btn { width: 64px; padding-inline: 2px; font-size: 12px; }
 }
 @media (max-width: 1000px) {
   body.product-preview :is(#premium,#plans).plan-preview .price-card > .price-card__price { margin-top: 8px; }

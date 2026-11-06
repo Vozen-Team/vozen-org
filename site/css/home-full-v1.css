@@ -4845,6 +4845,11 @@ header.vozen-global-nav .nav__login--account:hover { color: var(--text-0); }
   header.vozen-global-nav .nav__login { inline-size: 132px; padding-inline: 10px; white-space: nowrap; }
   header.vozen-global-nav:lang(fr, es, ar) .nav__login { inline-size: 156px; }
 }
+@media (min-width: 1280px) and (max-width: 1359px) {
+  .vozen-global-nav .nav__links:has(a[href="/music/"]) { gap: 10px; }
+  .vozen-global-nav .nav__inner:has(a[href="/music/"]) { gap: 8px; }
+  header.vozen-global-nav .nav__actions { gap: 10px; }
+}
 .vozen-global-nav .lang__btn {
   min-height: 42px;
   border-color: rgba(255, 255, 255, .08);
@@ -5034,4 +5039,35 @@ header.vozen-global-nav .nav__links a.is-current {
   header.vozen-global-nav .nav__login > span:not(.discord-avatar):not(.nav__login-av):not(.docs-ecosystem-nav__account-avatar-wrap):not(.docs-ecosystem-nav__account-mark) {
     position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
   }
+}
+.vozen-footer {
+  --footer-line: #252d40;
+  color: #a8b4ce;
+  background: #0c101c;
+  border-block-start: 1px solid var(--footer-line);
+  font: 400 14px/1.45 Outfit, system-ui, sans-serif;
+}
+.vozen-footer .vozen-footer__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px 20px;
+  width: min(1232px, calc(100% - 48px));
+  margin-inline: auto;
+  padding-block: 12px;
+}
+.vozen-footer .vozen-footer__links { display: flex; flex-wrap: wrap; align-items: center; gap: 0 clamp(10px, 1.5vw, 22px); }
+.vozen-footer a { display: inline-flex; align-items: center; min-height: 34px; color: inherit; text-decoration: none; }
+.vozen-footer a:hover { color: #56e5d1; }
+.vozen-footer a:focus-visible { outline: 2px solid #56e5d1; outline-offset: 3px; border-radius: 4px; }
+.vozen-footer .vozen-footer__brand { display: inline-flex; align-items: center; gap: 9px; color: #f1f4ff; font-size: 13px; white-space: nowrap; }
+.vozen-footer .vozen-footer__brand img { display: block; flex: none; border-radius: 8px; }
+.vozen-footer .vozen-footer__disclaimer { text-align: end; font-size: 13px; }
+@media (max-width: 600px) {
+  .vozen-footer .vozen-footer__inner { grid-template-columns: minmax(0, 1fr); justify-items: center; width: calc(100% - 32px); row-gap: 3px; }
+  .vozen-footer .vozen-footer__links { justify-content: center; }
+  .vozen-footer .vozen-footer__disclaimer { text-align: center; }
+}
+@media (min-width: 981px) {
+  body.docs-shell-active:has(.docs-sidebar) > .vozen-footer { margin-left: var(--docs-shell-sidebar, 264px); }
 }

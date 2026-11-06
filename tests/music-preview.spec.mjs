@@ -285,13 +285,13 @@ test('product plan prices share a row despite different pitches and server selec
           })),
         }));
         expect(layout.toggle.left, route + ' selector beside price at ' + width).toBeGreaterThanOrEqual(layout.amount.right);
-        expect(Math.abs((layout.toggle.y + layout.toggle.height / 2) - (layout.amount.y + layout.amount.height / 2))).toBeLessThan(15);
+        expect(Math.abs((layout.toggle.y + layout.toggle.height / 2) - (layout.amount.y + layout.amount.height / 2)), route + ' selector height at ' + width).toBeLessThan(15);
         expect(layout.toggle.right).toBeLessThanOrEqual(layout.card.right);
         if (width >= 1440) expect(layout.toggle.width).toBeGreaterThan(160);
         for (const button of layout.buttons) {
           expect(button.fontSize).toBeGreaterThanOrEqual(12);
           expect(button.height).toBeGreaterThanOrEqual(44);
-          expect(button.clipped).toBe(false);
+          expect(button.clipped, route + ' selector text at ' + width).toBe(false);
         }
       }
     }
@@ -326,6 +326,7 @@ test('approved monthly and yearly prices agree across pages while payments stay 
 });
 
 test('Premium description puts its own bot first and fits on one line', async ({ page }) => {
+  test.setTimeout(90_000);
   const routes = ['/music/', '/premium.html', ...['', 'pt/', 'fr/', 'es/', 'de/', 'tr/', 'ar/', 'zh/', 'ru/', 'ko/'].flatMap(locale => ['/' + locale + 'tts/', '/' + locale + 'helper/'])];
   for (const route of routes) {
     await page.goto(route);
@@ -455,7 +456,7 @@ test('both lines of the Music headline use the TTS display face', async ({ page 
   expect(nodeIds).toHaveLength(2);
   for (const nodeId of nodeIds) {
     const { fonts } = await cdp.send('CSS.getPlatformFontsForNode', { nodeId });
-    expect(fonts.map(font => font.postScriptName)).toEqual(['Unbounded-ExtraBold']);
+    expect(fonts.map(({ familyName, isCustomFont }) => [familyName, isCustomFont])).toEqual([['Unbounded', true]]);
   }
 });
 

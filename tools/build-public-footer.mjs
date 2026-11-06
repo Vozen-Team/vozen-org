@@ -35,6 +35,7 @@ export function withSharedFooter(html, route) {
   const start = oldFooter?.sourceCodeLocation.startOffset ?? body.sourceCodeLocation.endTag.startOffset;
   const end = oldFooter?.sourceCodeLocation.endOffset ?? start;
   const updated = html.slice(0, start) + footer + html.slice(end);
+  if (/\b(?:home-critical|tts-page|helper-page)-v1\.css\b/.test(html)) return updated;
   if (head.childNodes.some(node => node.tagName === 'link' && node.attrs.some(attr => attr.name === 'href' && attr.value.split('?')[0] === stylesheet))) return updated;
   const cssAt = head.sourceCodeLocation.endTag.startOffset;
   return updated.slice(0, cssAt) + `<link rel="stylesheet" href="${stylesheet}">\n` + updated.slice(cssAt);
