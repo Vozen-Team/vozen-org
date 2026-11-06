@@ -37,7 +37,9 @@ test('all marketing locales have protection demo copy and routes retain the comp
   for(const route of ['helper/index.html','helper.html','pt/helper/index.html']){
     const html=readFileSync(`site/${route}`,'utf8');
     assert.equal((html.match(/\bdata-protection-demo(?:=|\s|>)/g)||[]).length,1,route);
-    assert.match(html,/helper-protection-demo-v1\.css/);
+    const stylesheet=route==='helper.html'?'helper-protection-demo-v1.css':'helper-page-v1.css';
+    assert.ok(html.includes(stylesheet),route);
+    assert.match(readFileSync(`site/css/${stylesheet}`,'utf8'),/\.helper-protection-demo__cannon/);
     assert.match(html,/helper-protection-demo-v1\.js/);
     assert.equal((html.match(/class="helper-protection-demo__cannon"/g)||[]).length,1,route);
     assert.equal((html.match(/data-packet="SPAM"/g)||[]).length,5,route);
