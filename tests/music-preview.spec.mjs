@@ -172,6 +172,7 @@ test('all three bots appear in one Premium bundle across product pages', async (
     await expect(icons).toHaveCount(3);
     expect(await icons.evaluateAll(elements => elements.map(el => el.getAttribute('src'))))
       .toEqual(['/assets/settings-tts.png', '/assets/music/avatar.webp', '/assets/settings-helper.png']);
+    await ribbon.scrollIntoViewIfNeeded();
     await expect.poll(() => icons.evaluateAll(elements => elements.every(el => el.naturalWidth > 0))).toBe(true);
 
     for (const width of [1440, 320]) {
