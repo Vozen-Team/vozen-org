@@ -1,6 +1,20 @@
 {
   "locale": "fr",
   "messages": {
+    "helper.landing.demoTitle": "Testez la protection.",
+    "helper.landing.demoPrompt": "Envoyez du spam. Gardez la conversation.",
+    "helper.landing.demoTag": "Démo interactive",
+    "helper.landing.demoMessage1": "On joue à 20 h ?",
+    "helper.landing.demoMessage2": "Ça marche. À tout à l’heure.",
+    "helper.landing.demoBlocked": "Spam bloqué",
+    "helper.landing.demoSend": "Envoyer du spam",
+    "helper.landing.demoSending": "Envoi…",
+    "helper.landing.demoAgain": "Renvoyer",
+    "helper.landing.demoChecking": "Vérification des messages…",
+    "commands.groupPlayback": "Lecture",
+    "commands.groupLibrary": "Votre bibliothèque",
+    "commands.generic.playback": "Utilisez {command} pour contrôler la lecture musicale.",
+    "commands.generic.library": "Utilisez {command} pour gérer vos évaluations des morceaux.",
     "home.proof.aria": "Communauté Vozen TTS et note sur Top.gg",
     "home.proof.servers": "serveurs Discord",
     "home.proof.rating": "sur Top.gg",
@@ -47,7 +61,7 @@
     "feat.7.t": "Effets de voix",
     "feat.7.d": "Robot, écho, grave, chipmunk, radio, démon… vos messages, transformés. Deux effets gratuits, les huit avec Premium",
     "feat.8.t": "Un Premium équitable",
-    "feat.8.d": "6,99 €/mois débloquent Kokoro et les extras du serveur. Le cœur essentiel avec Piper reste gratuit",
+    "feat.8.d": "3,99 €/mois débloquent Kokoro et les extras du serveur. Le cœur essentiel avec Piper reste gratuit",
     "feat.9.t": "Open source",
     "feat.9.d": "Tout le code de Vozen est public sur GitHub. Auditez-le, apprenez-en, ou ouvrez une PR — aucun secret, aucun mouchard",
     "lang.eyebrow": "Langues",
@@ -84,7 +98,10 @@
     "price.choose.sub": "Gardez l’essentiel gratuit, améliorez votre compte ou débloquez Premium pour tout le serveur",
     "price.free.pitch": "Tout l’essentiel. Sans carte, sans essai",
     "price.plus.pitch": "Vos avantages vocaux premium vous suivent sur chaque serveur",
-    "price.pro.pitch": "Débloquez toute l’expérience Vozen pour votre communauté",
+    "price.pro.pitch": "TTS + Music + Helper.",
+    "price.pro.audience": "Premium pour tous sur vos serveurs.",
+    "price.pro.pitchMusic": "Music + TTS + Helper.",
+    "price.pro.pitchHelper": "Helper + Music + TTS.",
     "price.compare.title": "Comparez chaque détail",
     "price.compare.sub": "La comparaison complète, sans surprise",
     "price.checkout": "Passer au paiement",
@@ -95,12 +112,12 @@
     "price.plus.badge": "PERSONNEL",
     "price.plus.name": "Vozen Plus",
     "price.plus.per": "/ mois · par utilisateur",
-    "price.plus.note": "€37.99/an (~20 % d’économie) · sur Ko-fi",
+    "price.plus.note": "€18.99/an (~50 % d’économie) · sur Ko-fi",
     "price.pro.badge": "PREMIUM",
     "price.pro.name": "Vozen Premium",
     "price.pro.per": "/ mois · 2 serveurs",
     "price.pro.deal": "🎁 Deux serveurs. Un abonnement",
-    "price.pro.note": "€66.99/an (~20 % d’économie) · sur Ko-fi",
+    "price.pro.note": "€37.99/an (~43 % d’économie) · sur Ko-fi",
     "faq.eyebrow": "FAQ",
     "faq.title": "Vos questions, nos réponses",
     "reviews.eyebrow": "Avis indépendants",
@@ -127,7 +144,7 @@
     "price.max.per": "/ mois · 5 serveurs",
     "price.max.perYear": "/ an · 5 serveurs",
     "price.max.deal": "🎁 Cinq serveurs. Un abonnement",
-    "price.max.note": "133,99 €/an (~20 % d’économie) · sur Ko-fi",
+    "price.max.note": "70,99 €/an (~47 % d’économie) · sur Ko-fi",
     "price.pro.seats2": "2 serveurs",
     "price.pro.seats5": "5 serveurs",
     "price.m.1": "38 voix Piper",
@@ -165,6 +182,7 @@
     "price.m.22": "Voix Google HD",
     "price.m.24": "Vozen Helper Premium pour chaque serveur sélectionné",
     "price.m.23": "Transcription vocale en direct",
+    "price.m.25": "Avatar et bannière personnalisés du bot TTS",
     "price.includesFree": "Tout ce qui est inclus dans Free",
     "ecosystem.login": "Se connecter",
     "ecosystem.loginAria": "Se connecter à Vozen",
@@ -186,9 +204,9 @@
     "price.billingPeriod": "Période de facturation",
     "price.bundleAria": "Pack Vozen",
     "price.bundleEyebrow": "PACK VOZEN",
-    "price.bundleTitle": "Deux bots. Un abonnement.",
-    "price.bundleText": "TTS et Helper Premium pour les communautés que vous choisissez.",
-    "price.bundleValue": "TTS + HELPER",
+    "price.bundleTitle": "Trois bots. Un abonnement.",
+    "price.bundleText": "TTS, Music et Helper Premium pour tous sur les serveurs sélectionnés.",
+    "price.bundleValue": "TTS + MUSIC + HELPER",
     "price.freeHighlights": "Points forts du forfait gratuit",
     "price.digital": "Abonnement numérique · sans livraison",
     "price.checkoutLater": "Le paiement reviendra lorsque les paiements seront réactivés.",
@@ -208,7 +226,7 @@
     "premium.plusHelperNote": "Helper reste soumis aux limites du serveur gratuit. Plus améliore uniquement le TTS.",
     "premium.premiumPitch": "TTS et Helper Premium pour tous dans chaque serveur sélectionné.",
     "premium.bundleAria": "Pack Premium",
-    "premium.bundleTitle": "Deux bots. Un abonnement.",
+    "premium.bundleTitle": "Trois bots. Un abonnement.",
     "premium.seat2": "2 serveurs",
     "premium.seat5": "5 serveurs",
     "premium.premiumScope": "Un abonnement couvre les serveurs sélectionnés et leurs communautés.",
@@ -321,7 +339,7 @@
     "home.eyebrow": "écosystème Vozen",
     "home.heroTitle1": "Un seul foyer.",
     "home.heroTitle2": "Chaque outil serveur.",
-    "home.heroLead": "Deux bots Discord. Une voix pour vos messages. Un coup de main pour votre serveur.",
+    "home.heroLead": "Trois bots Discord. Voix, musique et outils pour votre serveur.",
     "home.exploreProducts": "Explorer les produits",
     "home.viewCommands": "Voir les commandes",
     "home.mapAria": "Carte de l’écosystème Vozen",
@@ -332,6 +350,8 @@
     "home.oneEcosystem": "un écosystème",
     "home.productsAria": "Produits Vozen",
     "home.ttsTitle": "TTS",
+    "home.musicLead": "De la musique pour vos appels Discord.",
+    "home.exploreMusic": "Explorer Music",
     "home.helperTitle": "Helper",
     "home.ttsLead": "Vos messages texte, lus à voix haute.",
     "home.helperLead": "Modération, tickets et rôles dans un seul bot.",
@@ -487,7 +507,6 @@
     "ecosystem.ecosystem": "Écosystème",
     "ecosystem.tts": "Vozen TTS",
     "ecosystem.helper": "Vozen Helper",
-    "ecosystem.docs": "Docs",
     "ecosystem.commands": "Commandes",
     "ecosystem.accountAria": "Ouvrir le compte Vozen de {name}",
     "helper.moduleCore": "Noyau",
@@ -497,7 +516,15 @@
     "helper.moduleCommunity": "Communauté",
     "helper.moduleAutomation": "Automatisation",
     "helper.moduleInsights": "Analyses",
-    "helper.moduleStudio": "Studio"
+    "helper.moduleStudio": "Studio",
+    "stat.helperOverview": "Vozen Helper en bref",
+    "stat.setupSteps": "Étapes de configuration",
+    "stat.freeCore": "Fonctions essentielles",
+    "stat.helperProtections": "Protections",
+    "stat.helperCommands": "Commandes",
+    "finale.musicTitle": "Offrez une bande-son à vos appels",
+    "finale.helperTitle": "Donnez un coup de main à votre serveur",
+    "finale.freeNote": "L’essentiel gratuit. Sans carte bancaire."
   },
   "commands": {
     "general": [
@@ -667,8 +694,8 @@
   },
   "helperFaq": [
     [
-      "Vozen Helper est-il déjà disponible ?",
-      "Oui. Helper est disponible publiquement. Installez-le depuis cette page, choisissez un serveur et configurez votre premier module grâce au démarrage guidé."
+      "Comment configurer des tickets privés ?",
+      "Dans le module Support du tableau de bord Helper, publiez un panneau pour que les membres puissent ouvrir un ticket privé."
     ],
     [
       "Helper demande-t-il la permission Administrateur ?",
@@ -684,7 +711,7 @@
     ],
     [
       "Puis-je acheter Premium maintenant ?",
-      "Oui. Choisissez un forfait sur la page Premium et connectez-vous avec Discord. Stripe traite les informations de paiement. Le cœur de Helper reste gratuit."
+      "Les paiements sont temporairement désactivés. Les prix sont affichés à titre indicatif."
     ]
   ],
   "faq": [
@@ -702,7 +729,7 @@
     ],
     [
       "Dois-je choisir Plus ou Premium ?",
-      "Plus ajoute les voix Kokoro et des effets supplémentaires à ton compte Discord. Premium ajoute des fonctions payantes aux serveurs sélectionnés, dans TTS et Helper. Les paiements sont suspendus pour le moment."
+      "Plus ajoute les voix Kokoro et des effets à votre compte Discord. Premium ajoute la transcription en direct et la personnalisation de l’avatar et de la bannière du bot TTS sur les serveurs sélectionnés. Les paiements sont suspendus."
     ],
     [
       "Pourquoi n'entends-je rien ?",

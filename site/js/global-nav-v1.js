@@ -23,9 +23,8 @@
   const navLocale = () => {
     try {
       const routeLocale = document.documentElement.dataset.vozenLocale;
-      if (window.VOZEN_I18N && window.VOZEN_I18N[routeLocale]) return routeLocale;
-      const value = localStorage.getItem("vozen.lang") || "en";
-      return window.VOZEN_I18N && window.VOZEN_I18N[value] ? value : "en";
+      const value = routeLocale || localStorage.getItem("vozen.lang");
+      return NAV_LANGUAGES.some(([code]) => code === value) ? value : "en";
     } catch (_) {
       return "en";
     }
@@ -84,6 +83,7 @@
     });
   };
   const applyNavTranslations = () => {
+    if (!window.VOZEN_I18N?.[navLocale()]) return;
     document.querySelectorAll("header.vozen-global-nav [data-i18n]").forEach((element) => {
       const key = element.getAttribute("data-i18n");
       if (!key) return;
@@ -243,6 +243,7 @@
     };
     const currentClass = (name) => current === name ? " is-current" : "";
     const currentAria = (name) => current === name ? ' aria-current="page"' : "";
+    const musicLink = `<a class="${currentClass('music').trim()}" href="/music/"${currentAria('music')}>Vozen Music</a>`;
     const productLabel = navText("ecosystem.label", "Ecosystem");
 
     // Keep Docs event hooks, but use the same visual component on every page.
@@ -256,8 +257,8 @@
           </a>
           <nav class="docs-ecosystem-nav__links nav__links" aria-label="Vozen products" data-i18n-aria-label="ecosystem.productsAria">
             <a class="${currentClass('tts').trim()}" href="${link('tts/')}"${currentAria('tts')} data-i18n="ecosystem.tts">Vozen TTS</a>
+            ${musicLink}
             <a class="${currentClass('helper').trim()}" href="${link('helper/')}"${currentAria('helper')} data-i18n="ecosystem.helper">Vozen Helper</a>
-            <a class="${currentClass('docs').trim()}" href="${link('docs/')}"${currentAria('docs')} data-i18n="ecosystem.docs">Docs</a>
             <a class="${currentClass('commands').trim()}" href="${link('commands/')}"${currentAria('commands')} data-i18n="ecosystem.commands">Commands</a>
             <a class="${currentClass('status').trim()}" href="${link('status.html')}"${currentAria('status')} data-i18n="ecosystem.status">Status</a>
             <a class="${currentClass('premium').trim()}" href="${link('premium#plans')}"${currentAria('premium')} data-i18n="nav.premium">Premium</a>
@@ -288,8 +289,8 @@
         </a>
         <nav class="nav__links" aria-label="Primary" data-i18n-aria-label="ecosystem.productsAria">
           <a class="${currentClass('tts').trim()}" href="${link('tts/')}"${currentAria('tts')} data-i18n="ecosystem.tts">Vozen TTS</a>
+          ${musicLink}
           <a class="${currentClass('helper').trim()}" href="${link('helper/')}"${currentAria('helper')} data-i18n="ecosystem.helper">Vozen Helper</a>
-          <a class="${currentClass('docs').trim()}" href="${link('docs/')}"${currentAria('docs')} data-i18n="ecosystem.docs">Docs</a>
           <a class="${currentClass('commands').trim()}" href="${link('commands/')}"${currentAria('commands')} data-i18n="ecosystem.commands">Commands</a>
           <a class="${currentClass('status').trim()}" href="${link('status.html')}"${currentAria('status')} data-i18n="ecosystem.status">Status</a>
           <a class="${currentClass('premium').trim()}" href="${link('premium#plans')}"${currentAria('premium')} data-i18n="nav.premium">Premium</a>

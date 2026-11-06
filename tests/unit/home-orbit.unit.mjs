@@ -72,12 +72,13 @@ test('orbit controller ignores pages without an orbit', () => {
   assert.equal(Object.keys(events).length, 0);
 });
 
-test('homepage has real links for both orbit nodes and retains clean product cards', () => {
+test('homepage has real links for all orbit nodes and retains clean product cards', () => {
   const html = readFileSync('site/index.html', 'utf8');
   for (const bot of ['tts', 'helper']) {
     assert.ok(html.includes(`class="eco-orbit__node eco-orbit__node--${bot}" href="${bot}/"`), `${bot} orbit link`);
     assert.ok(html.includes(`class="eco-product eco-product--${bot}" href="${bot}/"`), `${bot} card link`);
   }
+  assert.ok(html.includes('class="eco-orbit__node eco-orbit__node--music" href="/music/"'));
   assert.ok(html.includes('data-home-orbit'));
   assert.ok(!html.includes('eco-product__preview'));
 });
@@ -86,7 +87,6 @@ test('planet cards follow an upright path with shared hover and keyboard pause',
   const css = readFileSync('site/css/ecosystem-v1.css', 'utf8');
   assert.ok(css.includes('offset-path: ellipse('), 'cards need an orbit trajectory');
   assert.ok(css.includes('offset-rotate: 0deg'), 'cards must stay upright');
-  assert.ok(css.includes('.eco-orbit:hover .eco-orbit__node'), 'pause both cards on hover');
-  assert.ok(css.includes('.eco-orbit:has(.eco-orbit__node:focus) .eco-orbit__node'), 'pause both cards for keyboard navigation');
-  assert.ok(css.includes('animation-delay: -22s'), 'keep bots half an orbit apart');
+  assert.ok(css.includes('.eco-orbit:hover .eco-orbit__node'), 'pause cards on hover');
+  assert.ok(css.includes('.eco-orbit:has(.eco-orbit__node:focus) .eco-orbit__node'), 'pause cards for keyboard navigation');
 });

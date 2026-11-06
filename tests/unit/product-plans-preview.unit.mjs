@@ -15,9 +15,9 @@ test('local pricing previews preserve prices, full comparisons and paused checko
     const section=nodes.find(node=>attrs(node).class?.split(' ').includes('plan-preview'));
     assert.ok(section);
     const markup=parse5.serialize(section);
-    for(const price of ['€0','€3.99','€37.99','€6.99','€14.99','€66.99','€133.99'])assert.ok(markup.includes(price),product+price);
-    assert.match(markup,/Two bots\. One subscription\./);
-    assert.match(markup,/TTS \+ Helper Premium for everyone in your selected servers\./);
+    for(const price of ['€0','€1.99','€18.99','€3.99','€7.99','€37.99','€70.99'])assert.ok(markup.includes(price),product+price);
+    assert.match(markup,/Three bots\. One subscription\./);
+    assert.match(markup,/TTS, Music and Helper Premium for everyone in your selected servers\./);
     const highlights=nodes.filter(node=>attrs(node).class?.split(' ').includes('price-card__highlights'));
     const listCounts=highlights.map(node=>(node.childNodes||[]).filter(child=>child.tagName==='li').length);
     assert.deepEqual(product==='tts'?listCounts:listCounts.filter((_,i)=>i!==1),product==='tts'?[6,7,9]:[4,8]);
@@ -61,7 +61,7 @@ test('a refreshed FAQ bundle removes obsolete cached questions',()=>{
   const context={window:{VOZEN_FAQ:Array.from({length:8},()=>[{en:'Old question'},{en:'Old answer'}])}};
   vm.runInNewContext(readFileSync('site/js/i18n-public/en.js','utf8'),context);
   assert.equal(context.window.VOZEN_FAQ.length,6);
-  assert.equal(context.window.VOZEN_FAQ[1][0].en,'How do I start using Vozen?');
+  assert.equal(context.window.VOZEN_FAQ[1][0].en,'How do I get Vozen to read my messages?');
 });
 
 test('locale cache versions match the shipped translation bundles',()=>{

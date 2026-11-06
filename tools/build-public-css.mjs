@@ -7,14 +7,17 @@ import { generate } from 'critical';
 const checkOnly = process.argv.includes('--check');
 const siteRoot = path.resolve('site');
 const cssRoot = path.join(siteRoot, 'css');
+const sharedProductExtras = ['vozen-footer-v1.css', 'product-faq-v1.css', 'product-finale-v1.css'];
 const pages = {
   home: {
     html: path.join(siteRoot, 'index.html'),
     sources: ['main-v43.css', 'ecosystem-v1.css', 'global-nav-v1.css'],
+    extras: ['vozen-footer-v1.css'],
   },
   tts: {
     html: path.join(siteRoot, 'tts', 'index.html'),
     sources: ['main-v43.css', 'ecosystem-bridge.css', 'global-nav-v1.css', 'tts-ui-v1.css', 'product-preview-v1.css'],
+    extras: sharedProductExtras,
     pageSources: [
       'main-v43.css',
       'ecosystem-bridge.css',
@@ -30,6 +33,7 @@ const pages = {
   helper: {
     html: path.join(siteRoot, 'helper', 'index.html'),
     sources: ['main-v43.css', 'ecosystem-v1.css', 'global-nav-v1.css', 'helper-ui-preview.css'],
+    extras: [...sharedProductExtras, 'product-stats-v1.css', 'helper-protection-demo-v1.css'],
     pageSources: [
       'main-v43.css',
       'ecosystem-v1.css',
@@ -78,10 +82,11 @@ const browser = await puppeteer.launch({
 
 try {
   for (const [name, config] of Object.entries(pages)) {
+    const extras = config.extras.map(file => normalize(fs.readFileSync(path.join(cssRoot, file), 'utf8')).trim()).join('\n');
     const fullBody = config.sources
       .map((sourceName) => `/* source: ${sourceName} */\n${normalize(fs.readFileSync(path.join(cssRoot, sourceName), 'utf8')).trim()}`)
       .join('\n\n');
-    const fullCss = `${generatedHeader('tools/build-public-css.mjs')}${fullBody}\n`;
+    const fullCss = `${generatedHeader('tools/build-public-css.mjs')}${fullBody}\n${name === 'home' ? extras + '\n' : ''}`;
     compareOrWrite(path.join(cssRoot, `${name}-full-v1.css`), fullCss);
 
     const sourceHtml = fs.readFileSync(config.html, 'utf8');
@@ -125,7 +130,7 @@ try {
         unstableKeepOpenPages: 'all',
       },
     });
-    const criticalCss = `${generatedHeader('tools/build-public-css.mjs')}${criticalFontCss}\n${result.css.trim()}\n`;
+    const criticalCss = `${generatedHeader('tools/build-public-css.mjs')}${criticalFontCss}\n${result.css.trim()}\n${name === 'home' ? extras + '\n' : ''}`;
     compareOrWrite(path.join(cssRoot, `${name}-critical-v1.css`), criticalCss);
 
     if (name !== 'home') {
@@ -191,7 +196,7 @@ try {
           unstableKeepOpenPages: 'all',
         },
       });
-      const pageCss = `${generatedHeader('tools/build-public-css.mjs')}${criticalFontCss}\n${pageResult.css.trim()}\n`;
+      const pageCss = `${generatedHeader('tools/build-public-css.mjs')}${criticalFontCss}\n${pageResult.css.trim()}\n${extras}\n`;
       compareOrWrite(path.join(cssRoot, `${name}-page-v1.css`), pageCss);
     }
   }

@@ -1,6 +1,20 @@
 {
   "locale": "en",
   "messages": {
+    "helper.landing.demoTitle": "Try the protection.",
+    "helper.landing.demoPrompt": "Send spam. Keep the conversation.",
+    "helper.landing.demoTag": "Interactive demo",
+    "helper.landing.demoMessage1": "Game night at 8?",
+    "helper.landing.demoMessage2": "I'm in. See you there.",
+    "helper.landing.demoBlocked": "Spam blocked",
+    "helper.landing.demoSend": "Send spam",
+    "helper.landing.demoSending": "Sending…",
+    "helper.landing.demoAgain": "Send again",
+    "helper.landing.demoChecking": "Checking messages…",
+    "commands.groupPlayback": "Playback",
+    "commands.groupLibrary": "Your library",
+    "commands.generic.playback": "Use {command} to control music playback.",
+    "commands.generic.library": "Use {command} to manage your recording ratings.",
     "home.proof.aria": "Vozen TTS community and Top.gg rating",
     "home.proof.servers": "Discord servers",
     "home.proof.rating": "on Top.gg",
@@ -18,7 +32,6 @@
     "status.httpLatency": "HTTP check latency",
     "status.ttsGuide": "Troubleshoot voice",
     "status.helperGuide": "Troubleshoot Helper",
-    "status.browseDocs": "Browse documentation",
     "status.details": "Details",
     "status.historyTitle": "How it works",
     "status.historyNotice": "Each bar is one UTC day. Checks are recorded once per minute, starting when monitoring is enabled. Pale green hatching means no history, not confirmed uptime; partial days are marked separately. Percentages describe recorded checks, not unobserved time.",
@@ -79,7 +92,7 @@
     "feat.7.t": "Voice effects",
     "feat.7.d": "Robot, echo, deep, chipmunk, radio, demon… your messages, transformed. Two effects free, all eight with Premium",
     "feat.8.t": "Fair Premium",
-    "feat.8.d": "€6.99/month unlocks Kokoro and the server-wide extras. The essential Piper-powered core stays free",
+    "feat.8.d": "€3.99/month unlocks Kokoro and the server-wide extras. The essential Piper-powered core stays free",
     "feat.9.t": "Open source",
     "feat.9.d": "All of Vozen's code is public on GitHub. Audit it, learn from it, or open a PR — no secrets, no spyware",
     "lang.eyebrow": "Languages",
@@ -116,7 +129,10 @@
     "price.choose.sub": "Keep the core free, upgrade yourself, or unlock Premium for everyone in your server",
     "price.free.pitch": "All the essentials. No card, no trial",
     "price.plus.pitch": "Your premium voice perks follow you into every server",
-    "price.pro.pitch": "Unlock the full Vozen experience for everyone in your community",
+    "price.pro.pitch": "TTS + Music + Helper.",
+    "price.pro.audience": "Premium for every member of your servers.",
+    "price.pro.pitchMusic": "Music + TTS + Helper.",
+    "price.pro.pitchHelper": "Helper + Music + TTS.",
     "price.compare.title": "See every difference",
     "price.compare.sub": "The complete plan comparison, without surprises",
     "price.checkout": "Continue to checkout",
@@ -127,12 +143,12 @@
     "price.plus.badge": "PERSONAL",
     "price.plus.name": "Vozen Plus",
     "price.plus.per": "/ month · per user",
-    "price.plus.note": "€37.99/year (save ~20%) · Stripe checkout",
+    "price.plus.note": "€18.99/year (save ~50%) · Stripe checkout",
     "price.pro.badge": "PREMIUM",
     "price.pro.name": "Vozen Premium",
     "price.pro.per": "/ month · 2 servers",
     "price.pro.deal": "🎁 Two servers. One subscription",
-    "price.pro.note": "€66.99/year (save ~20%) · Stripe checkout",
+    "price.pro.note": "€37.99/year (save ~43%) · Stripe checkout",
     "faq.eyebrow": "FAQ",
     "faq.title": "Questions, answered",
     "reviews.eyebrow": "Independent reviews",
@@ -159,7 +175,7 @@
     "price.max.per": "/ month · 5 servers",
     "price.max.perYear": "/ year · 5 servers",
     "price.max.deal": "🎁 Five servers. One subscription",
-    "price.max.note": "€133.99/year (save ~25%) · Stripe checkout",
+    "price.max.note": "€70.99/year (save ~47%) · Stripe checkout",
     "price.pro.seats2": "2 servers",
     "price.pro.seats5": "5 servers",
     "price.m.1": "38 Piper voices",
@@ -196,6 +212,7 @@
     "price.m.21": "Kokoro neural engine",
     "price.m.22": "Google HD voices",
     "price.m.23": "Live voice transcription",
+    "price.m.25": "Custom TTS bot avatar and banner",
     "price.m.24": "Vozen Helper Premium for every selected server",
     "price.includesFree": "Everything in Free",
     "ecosystem.navAria": "Vozen ecosystem navigation",
@@ -203,7 +220,6 @@
     "ecosystem.productsAria": "Vozen products",
     "ecosystem.tts": "Vozen TTS",
     "ecosystem.helper": "Vozen Helper",
-    "ecosystem.docs": "Docs",
     "ecosystem.commands": "Commands",
     "ecosystem.premiumUnavailable": "Premium is temporarily unavailable",
     "ecosystem.githubAria": "Vozen on GitHub",
@@ -223,9 +239,9 @@
     "price.billingPeriod": "Billing period",
     "price.bundleAria": "Vozen bundle",
     "price.bundleEyebrow": "VOZEN BUNDLE",
-    "price.bundleTitle": "Two bots. One subscription.",
-    "price.bundleText": "Premium TTS and Helper for the communities you select.",
-    "price.bundleValue": "TTS + HELPER",
+    "price.bundleTitle": "Three bots. One subscription.",
+    "price.bundleText": "TTS, Music and Helper Premium for everyone in your selected servers.",
+    "price.bundleValue": "TTS + MUSIC + HELPER",
     "price.freeHighlights": "Free plan highlights",
     "price.digital": "Digital subscription · no shipping",
     "price.checkoutLater": "Checkout will return when payments are enabled again.",
@@ -245,7 +261,7 @@
     "premium.plusHelperNote": "Helper stays on Free server limits. Plus upgrades TTS only.",
     "premium.premiumPitch": "Premium TTS and Helper for everyone in each selected server.",
     "premium.bundleAria": "Premium bundle",
-    "premium.bundleTitle": "Two bots. One subscription.",
+    "premium.bundleTitle": "Three bots. One subscription.",
     "premium.seat2": "2 servers",
     "premium.seat5": "5 servers",
     "premium.premiumScope": "One subscription covers the selected servers and their communities.",
@@ -358,7 +374,7 @@
     "home.eyebrow": "Vozen ecosystem",
     "home.heroTitle1": "One home.",
     "home.heroTitle2": "Every server tool.",
-    "home.heroLead": "Two Discord bots. A voice for your messages. A helping hand for your server.",
+    "home.heroLead": "Three Discord bots. Voice, music and tools for your server.",
     "home.exploreProducts": "Explore the products",
     "home.viewCommands": "View commands",
     "home.mapAria": "Vozen ecosystem map",
@@ -369,6 +385,8 @@
     "home.oneEcosystem": "one ecosystem",
     "home.productsAria": "Vozen products",
     "home.ttsTitle": "TTS",
+    "home.musicLead": "Music for your Discord calls.",
+    "home.exploreMusic": "Explore Music",
     "home.helperTitle": "Helper",
     "home.ttsLead": "Text messages, read aloud in voice.",
     "home.helperLead": "Moderation, tickets and roles in one bot.",
@@ -530,7 +548,15 @@
     "helper.moduleCommunity": "Community",
     "helper.moduleAutomation": "Automation",
     "helper.moduleInsights": "Insights",
-    "helper.moduleStudio": "Studio"
+    "helper.moduleStudio": "Studio",
+    "stat.helperOverview": "Vozen Helper at a glance",
+    "stat.setupSteps": "Setup steps",
+    "stat.freeCore": "Core features",
+    "stat.helperProtections": "Protections",
+    "stat.helperCommands": "Commands",
+    "finale.musicTitle": "Give your calls a soundtrack",
+    "finale.helperTitle": "Give your server a helping hand",
+    "finale.freeNote": "Free core. No credit card."
   },
   "commands": {
     "general": [
@@ -700,50 +726,50 @@
   },
   "helperFaq": [
     [
-      "Is Vozen Helper available now?",
-      "Yes. Helper is publicly available. Install it from this page, choose a server, and configure your first module through the guided setup."
+      "How do I set up private tickets?",
+      "Open Support in the Helper dashboard and publish a ticket panel. Members can use it to open a private ticket."
     ],
     [
-      "Does Helper request Administrator?",
-      "No. The base invite uses limited permissions and never requests Administrator. If a module needs an additional sensitive permission, Helper explains why before you enable it."
+      "Does Helper need Administrator?",
+      "No. The base invite uses limited permissions. The dashboard explains any extra permissions a module needs."
     ],
     [
-      "How do I get started?",
-      "Install Helper, choose your server, complete the guided setup, enable one module, and run its first useful action."
+      "Where do I start with Helper?",
+      "Add Helper, choose your server in the dashboard and configure the first module you need."
     ],
     [
-      "Which modules does Helper include?",
-      "Helper brings together protection and moderation, tickets, roles and community tools, events, automation, and operational insights. The panel shows the exact options available to your server."
+      "What can I manage from the dashboard?",
+      "Moderation, tickets, roles, events and automations. Enable only the modules your server needs."
     ],
     [
-      "Can I buy Premium now?",
-      "Yes. Choose a plan on the Premium page and sign in with Discord. Payment details are handled by Stripe. The Helper core remains free."
+      "What does Helper Premium include?",
+      "Higher limits for panels and workflows, plus longer history. Core tools stay free. Payments are currently paused."
     ]
   ],
   "faq": [
     [
-      "Can I use Vozen for free?",
-      "Yes. Use Piper voices, automatic reading and the free games without a subscription."
+      "Can I use Vozen TTS for free?",
+      "Yes. Piper voices, automatic reading and a selection of games are free."
     ],
     [
-      "How do I start using Vozen?",
-      "Add Vozen to a server you manage. Run /setup to choose a text channel and enable auto-read, then join a voice channel and run /join."
+      "How do I get Vozen to read my messages?",
+      "Run /setup to choose a text channel and enable auto-read. Join a voice channel and run /join."
     ],
     [
-      "Can each member choose a voice?",
-      "Use /voice set to choose your voice and language. Each member can keep their own settings."
+      "Can each person use a different voice?",
+      "Yes. Use /voice set to pick your own voice and language."
     ],
     [
-      "Should I choose Plus or Premium?",
-      "Plus gives your Discord account Kokoro voices and extra effects. Premium adds paid features to selected servers across TTS and Helper. Payments are currently paused."
+      "What do Plus and Premium unlock for TTS?",
+      "Plus gives your Discord account Kokoro voices and extra effects. Premium adds live transcription and a custom TTS bot avatar and banner to selected servers. Payments are currently paused."
     ],
     [
-      "Why can't I hear anything?",
-      "Join a voice channel and run /join. Check that Vozen can connect and speak, and that /setup points to the text channel you're using."
+      "Why is Vozen not reading my messages?",
+      "Check that Vozen is in your voice channel and can speak. Then check that /setup points to the text channel you are using."
     ],
     [
-      "How do I stop the voice?",
-      "Use /shut-up to clear the queue, or /leave to disconnect Vozen. Disable auto-read in /config to stop reading new messages."
+      "How do I stop the reading?",
+      "Use /shut-up to clear the queue or /leave to disconnect. Turn off auto-read in /config to stop reading new messages."
     ]
   ]
 }

@@ -1,12 +1,10 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
-import vm from 'node:vm';
 import { parse } from 'parse5';
 import { minifyAsset } from '../../tools/build-public-artifact.mjs';
 
 const policy = readFileSync(new URL('../../site/privacy.html', import.meta.url), 'utf8');
-const guide = readFileSync(new URL('../../site/docs/tts/privacy/index.html', import.meta.url), 'utf8');
 const attr = (node, name) => node.attrs?.find((entry) => entry.name === name)?.value;
 function find(node, predicate) {
   if (predicate(node)) return node;
@@ -52,7 +50,7 @@ test('published and minified policy keeps the quota erasure exception consistent
   }
 });
 
-test('privacy guide links to the same exception and auth copy avoids obsolete blanket claims', () => {
+test('privacy policy and auth copy avoid obsolete blanket claims', () => {
   const document = parse(policy);
   const copy = text(find(document, (node) => node.tagName === 'main'));
   assert.match(copy, /28 October 2026/);
@@ -61,14 +59,5 @@ test('privacy guide links to the same exception and auth copy avoids obsolete bl
   assert.match(section(document, 7), /server-side OAuth authorization-code flow/);
   assert.match(section(document, 8), /Secure and HttpOnly/);
   assert.match(section(document, 8), /Closing a tab alone may therefore leave a remembered login/);
-  const guideDocument = parse(guide);
-  assert.ok(find(guideDocument, (node) => attr(node, 'href') === '/privacy#google-hd-quota-retention'));
-  assert.match(text(find(guideDocument, (node) => node.tagName === 'main')), /pseudonymous HMAC.*first daily cleanup/);
-  const search = JSON.parse(readFileSync(new URL('../../site/docs/tts/search.json', import.meta.url), 'utf8'));
-  const globals = {};
-  vm.runInNewContext(readFileSync(new URL('../../site/docs/tts/search-data.js', import.meta.url), 'utf8'), { globalThis: globals });
-  const jsonGuide = search.documents.find((entry) => entry.url === 'privacy/index.html');
-  const scriptGuide = globals.VOZEN_DOCS_SEARCH.tts.documents.find((entry) => entry.url === 'privacy/index.html');
-  assert.equal(scriptGuide.text, jsonGuide.text);
-  assert.match(jsonGuide.text, /pseudonymous HMAC.*first daily cleanup/);
+
 });

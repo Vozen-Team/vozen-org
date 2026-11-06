@@ -74,7 +74,10 @@ async function handleRequest(request, response, fetchPublic, publicStatusPreview
   const extension = path.extname(filename).toLowerCase();
   const headers = {
     'content-type': types.get(path.extname(filename).toLowerCase()) || 'application/octet-stream',
-    'cache-control': 'no-store',
+    // Match repeat navigations without caching the HTML or CSS under edit.
+    'cache-control': /^\/assets\/fonts\/(?:outfit-400-latin|unbounded-brand-latin)\.woff2$/.test(pathname)
+      ? 'private, max-age=300'
+      : 'no-store',
   };
   if (extension === '.html') headers['content-security-policy'] = productionCsp;
   const acceptsGzip = /(?:^|,)\s*gzip\s*(?:,|$)/i.test(request.headers['accept-encoding'] || '');

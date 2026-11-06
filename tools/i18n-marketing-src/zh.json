@@ -1,6 +1,20 @@
 {
   "locale": "zh",
   "messages": {
+    "helper.landing.demoTitle": "試試防護功能。",
+    "helper.landing.demoPrompt": "送出垃圾訊息，保留正常對話。",
+    "helper.landing.demoTag": "互動示範",
+    "helper.landing.demoMessage1": "晚上 8 點一起玩？",
+    "helper.landing.demoMessage2": "算我一個，到時見。",
+    "helper.landing.demoBlocked": "垃圾訊息已封鎖",
+    "helper.landing.demoSend": "送出垃圾訊息",
+    "helper.landing.demoSending": "傳送中…",
+    "helper.landing.demoAgain": "再次傳送",
+    "helper.landing.demoChecking": "正在檢查訊息…",
+    "commands.groupPlayback": "播放",
+    "commands.groupLibrary": "你的曲库",
+    "commands.generic.playback": "使用 {command} 控制音乐播放。",
+    "commands.generic.library": "使用 {command} 管理你的曲目评分。",
     "home.proof.aria": "Vozen TTS 社群与 Top.gg 评分",
     "home.proof.servers": "個 Discord 伺服器",
     "home.proof.rating": "在 Top.gg",
@@ -47,7 +61,7 @@
     "feat.7.t": "語音特效",
     "feat.7.d": "機器人、回音、低沉、花栗鼠、廣播、惡魔……你的訊息，隨心變換。免費提供兩種特效，升級 Premium 即可享用全部八種。",
     "feat.8.t": "公道的 Premium",
-    "feat.8.d": "每月 €6.99 可解锁 Kokoro 和服务器附加功能；基础 Piper 核心仍然免费。",
+    "feat.8.d": "每月 €3.99 可解锁 Kokoro 和服务器附加功能；基础 Piper 核心仍然免费。",
     "feat.9.t": "開放原始碼",
     "feat.9.d": "Vozen 的所有程式碼都公開在 GitHub 上。你可以稽核、學習，或發起 PR——沒有秘密，沒有間諜軟體。",
     "lang.eyebrow": "語言",
@@ -84,7 +98,10 @@
     "price.choose.sub": "保留免费核心功能，升级你自己，或为服务器中的所有人解锁 Premium。",
     "price.free.pitch": "所有核心功能。无需银行卡，也没有试用期。",
     "price.plus.pitch": "你的高级语音权益会跟随你前往每个服务器。",
-    "price.pro.pitch": "为整个社区解锁完整的 Vozen 体验。",
+    "price.pro.pitch": "TTS + Music + Helper.",
+    "price.pro.audience": "伺服器所有成員都能享有 Premium 福利。",
+    "price.pro.pitchMusic": "Music + TTS + Helper.",
+    "price.pro.pitchHelper": "Helper + Music + TTS.",
     "price.compare.title": "查看所有差异",
     "price.compare.sub": "完整比较各方案，没有隐藏内容。",
     "price.checkout": "前往結帳",
@@ -95,12 +112,12 @@
     "price.plus.badge": "個人",
     "price.plus.name": "Vozen Plus",
     "price.plus.per": "/ 每月 · 每位使用者",
-    "price.plus.note": "€37.99/年（省约 20%）· 在 Ko-fi 购买",
+    "price.plus.note": "€18.99/年（省约 50%）· 在 Ko-fi 购买",
     "price.pro.badge": "PREMIUM",
     "price.pro.name": "Vozen Premium",
     "price.pro.per": "/ 每月 · 2 個伺服器",
     "price.pro.deal": "🎁 兩個伺服器。一份訂閱。",
-    "price.pro.note": "€66.99/年（省约 20%）· 在 Ko-fi 购买",
+    "price.pro.note": "€37.99/年（省约 43%）· 在 Ko-fi 购买",
     "faq.eyebrow": "常見問題",
     "faq.title": "問題，一次解答",
     "reviews.eyebrow": "獨立評價",
@@ -127,7 +144,7 @@
     "price.max.per": "/ 月 · 5 个服务器",
     "price.max.perYear": "/ 年 · 5 个服务器",
     "price.max.deal": "🎁 五個伺服器。一份訂閱。",
-    "price.max.note": "€143.99/年（省约 20%）· 在 Ko-fi 购买",
+    "price.max.note": "€70.99/年（省约 47%）· 在 Ko-fi 购买",
     "price.pro.seats2": "2 個伺服器",
     "price.pro.seats5": "5 個伺服器",
     "price.m.1": "38 种 Piper 语音",
@@ -165,6 +182,7 @@
     "price.m.22": "Google HD 語音",
     "price.m.24": "每个选定服务器都包含 Vozen Helper Premium",
     "price.m.23": "即時語音轉錄",
+    "price.m.25": "自訂 TTS 機器人的頭像與橫幅",
     "price.includesFree": "包含 Free 的全部内容",
     "ecosystem.login": "登入",
     "ecosystem.loginAria": "登入 Vozen",
@@ -186,9 +204,9 @@
     "price.billingPeriod": "付款週期",
     "price.bundleAria": "Vozen 套件",
     "price.bundleEyebrow": "VOZEN 套件",
-    "price.bundleTitle": "兩個機器人。一個訂閱。",
-    "price.bundleText": "為你選擇的社群提供 Premium TTS 與 Helper。",
-    "price.bundleValue": "TTS + HELPER",
+    "price.bundleTitle": "三個機器人。一個訂閱。",
+    "price.bundleText": "你所選伺服器中的所有成員都可使用 TTS、Music 和 Helper Premium。",
+    "price.bundleValue": "TTS + MUSIC + HELPER",
     "price.freeHighlights": "免費方案重點",
     "price.digital": "數位訂閱 · 無配送",
     "price.checkoutLater": "付款重新啟用後，結帳功能會恢復。",
@@ -208,7 +226,7 @@
     "premium.plusHelperNote": "Helper 仍使用免費伺服器限制。Plus 僅升級 TTS。",
     "premium.premiumPitch": "每個選取伺服器的所有成員都能使用 Premium TTS 與 Helper。",
     "premium.bundleAria": "Premium 套件",
-    "premium.bundleTitle": "兩個機器人。一個訂閱。",
+    "premium.bundleTitle": "三個機器人。一個訂閱。",
     "premium.seat2": "2 台伺服器",
     "premium.seat5": "5 台伺服器",
     "premium.premiumScope": "一個訂閱涵蓋選取的伺服器及其社群。",
@@ -321,7 +339,7 @@
     "home.eyebrow": "Vozen 生態系統",
     "home.heroTitle1": "一個家。",
     "home.heroTitle2": "每一種伺服器工具。",
-    "home.heroLead": "兩個 Discord 機器人。讓訊息發聲，讓伺服器管理更輕鬆。",
+    "home.heroLead": "三個 Discord 機器人。為你的伺服器帶來語音、音樂和管理工具。",
     "home.exploreProducts": "探索產品",
     "home.viewCommands": "查看指令",
     "home.mapAria": "Vozen 生態系統地圖",
@@ -332,6 +350,8 @@
     "home.oneEcosystem": "一個生態系統",
     "home.productsAria": "Vozen 產品",
     "home.ttsTitle": "TTS",
+    "home.musicLead": "為你的 Discord 通話配上音樂。",
+    "home.exploreMusic": "探索 Music",
     "home.helperTitle": "Helper",
     "home.ttsLead": "在語音頻道朗讀文字訊息。",
     "home.helperLead": "管理、客服單與身分組，一個機器人搞定。",
@@ -487,7 +507,6 @@
     "ecosystem.ecosystem": "生態系統",
     "ecosystem.tts": "Vozen TTS",
     "ecosystem.helper": "Vozen Helper",
-    "ecosystem.docs": "文件",
     "ecosystem.commands": "指令",
     "ecosystem.accountAria": "開啟 {name} 的 Vozen 帳戶",
     "helper.moduleCore": "核心",
@@ -497,7 +516,15 @@
     "helper.moduleCommunity": "社群",
     "helper.moduleAutomation": "自動化",
     "helper.moduleInsights": "洞察",
-    "helper.moduleStudio": "工作室"
+    "helper.moduleStudio": "工作室",
+    "stat.helperOverview": "Vozen Helper 一覽",
+    "stat.setupSteps": "設定步驟",
+    "stat.freeCore": "核心功能",
+    "stat.helperProtections": "防護功能",
+    "stat.helperCommands": "指令",
+    "finale.musicTitle": "為語音通話配上音樂",
+    "finale.helperTitle": "讓伺服器多一位好幫手",
+    "finale.freeNote": "核心功能免費，無需信用卡。"
   },
   "commands": {
     "general": [
@@ -667,8 +694,8 @@
   },
   "helperFaq": [
     [
-      "Vozen Helper 現在可以使用了嗎？",
-      "可以。Helper 已公開提供。從此頁安裝、選擇伺服器，然後透過引導式設定配置第一個模組。"
+      "如何設定私人支援工單？",
+      "在 Helper 控制台開啟支援模組並發布面板，讓成員可以開啟私人支援工單。"
     ],
     [
       "Helper 會要求管理員權限嗎？",
@@ -684,7 +711,7 @@
     ],
     [
       "我現在可以購買 Premium 嗎？",
-      "可以。請在 Premium 頁面選擇方案並使用 Discord 登入。付款資料由 Stripe 處理。Helper 核心功能仍然免費。"
+      "付款暫時停用。價格僅供參考。"
     ]
   ],
   "faq": [
@@ -702,7 +729,7 @@
     ],
     [
       "我應該選擇 Plus 還是 Premium？",
-      "Plus 為你的 Discord 帳號提供 Kokoro 語音和額外音效。Premium 為指定伺服器提供 TTS 和 Helper 的付費功能。目前暫停付款。"
+      "Plus 為你的 Discord 帳號提供 Kokoro 語音和額外音效。Premium 為所選伺服器提供即時語音轉錄及自訂 TTS 機器人頭像與橫幅。付款目前暫停。"
     ],
     [
       "為什麼聽不到聲音？",

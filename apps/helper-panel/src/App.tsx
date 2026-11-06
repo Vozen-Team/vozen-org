@@ -49,7 +49,6 @@ import {
   type YouTubeSubscription,
   type YouTubeSubscriptionHealth,
 } from './api';
-import { docsProviderStatusUrl, docsTroubleshootingUrl, docsUrlForFeature } from './docs';
 import { bundledFeatureSchema } from './feature-contract-fallback';
 import { ticketStaffField, ticketStaffRoleOptions } from './ticket-staff';
 import { createLoadGuard, isAbortError } from './load-lifecycle';
@@ -4131,7 +4130,6 @@ function FeatureCatalogue({
           const canConfigure = configurable && maturity !== 'blocked' && !premiumLocked;
           const healthStatus = feature.health?.status;
           const dependencies = feature.health?.dependencies ?? [];
-          const docsUrl = docsUrlForFeature(feature.key);
           const label =
             premiumLocked
               ? helperText('Premium required')
@@ -4215,11 +4213,6 @@ function FeatureCatalogue({
                         ? helperText('View requirements')
                         : helperText('View plan')}
                 </button>
-              )}
-              {docsUrl && (
-                <a className="link-button feature-doc-link" href={docsUrl} target="_blank" rel="noopener noreferrer">
-                  {helperText('Learn how this works')}
-                </a>
               )}
             </article>
           );
@@ -4308,7 +4301,6 @@ function FeatureDetail({
   // form that can only fail at publication time. Their detail page is a
   // requirements view until the backend reports a non-blocked maturity.
   const configurable = (feature?.configurable ?? true) && feature?.maturity !== 'blocked';
-  const docsUrl = docsUrlForFeature(feature?.key);
   if (premiumLocked)
     return (
       <section className="detail-page">
@@ -4357,11 +4349,6 @@ function FeatureDetail({
               </div>
             )}
           </div>
-          {docsUrl && (
-            <a className="link-button" href={docsUrl} target="_blank" rel="noopener noreferrer">
-              {helperText('Read the documentation')}
-            </a>
-          )}
         </div>
       </section>
     );
@@ -4379,11 +4366,6 @@ function FeatureDetail({
               {helperText('The dashboard did not receive this feature contract. Refresh the page or check the API status before publishing changes.')}
             </p>
           </div>
-          {docsUrl && (
-            <a className="link-button" href={docsUrl} target="_blank" rel="noopener noreferrer">
-              {helperText('Read the documentation')}
-            </a>
-          )}
         </div>
       </section>
     );
@@ -4400,14 +4382,6 @@ function FeatureDetail({
       <section className="detail-page antispam-page" onBlur={onFlush}>
         <div className="spam-navigation">
           <button type="button" className="back-link" onClick={onBack}>{helperText('← Back to features')}</button>
-          {docsUrl && <a className="spam-help" href={docsUrl} target="_blank" rel="noopener noreferrer">
-            {helperText('Learn how this works')}
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
-              <circle cx="8" cy="8" r="6.5" />
-              <path d="M8 7.5v3.5" strokeLinecap="round" />
-              <circle cx="8" cy="5" r=".65" fill="currentColor" stroke="none" />
-            </svg>
-          </a>}
         </div>
         <ProtectionSettings key={feature.key + ':' + premiumGuildId} kind={audit ? 'audit' : moderation ? 'moderation' : join ? 'join' : raid ? 'raid' : scam ? 'scam' : 'spam'} title={translatedFeature?.label ?? helperText('Feature')}
           keys={fields.map(field => field.key)}
@@ -4521,7 +4495,7 @@ function FeatureDetail({
             onChange={(event) => onEnabled(event.target.checked)}
           />
         </label>
-{docsUrl && <a className="link-button" href={docsUrl} target="_blank" rel="noopener noreferrer">{helperText('Learn how this works')}</a>}</section>
+</section>
           <section className="settings-review">
           <div>
             <small className="eyebrow">{helperText('AUTOMATIC SAVING')}</small>
@@ -4548,15 +4522,6 @@ function FeatureDetail({
                 {helperText('Repair publication')}
               </button>
             )}
-          <div className="tip">
-            <b>{helperText('Need help?')}</b>
-            <a className="link-button" href={docsTroubleshootingUrl('missing-permissions')} target="_blank" rel="noopener noreferrer">
-              {helperText('Why is this permission needed?')}
-            </a>
-            <a className="link-button" href={docsTroubleshootingUrl('restore-configuration')} target="_blank" rel="noopener noreferrer">
-              {helperText('Rollback instructions')}
-            </a>
-          </div>
           </section>
         </aside>}
       </div>
@@ -4669,9 +4634,6 @@ function ProviderHealthPanel({ health }: { health: ProviderSubscriptionHealth })
       {source && <small>{helperText('Latest source: {source}', { source })}</small>}
       {health.failureCount > 0 && <small>{helperText('Consecutive failures: {count}', { count: health.failureCount })}</small>}
       {health.lastError && <small className="provider-health-error">{helperText('Latest error: {error}', { error: helperText(health.lastError) })}</small>}
-      <a className="link-button" href={docsProviderStatusUrl()} target="_blank" rel="noopener noreferrer">
-        {helperText('Provider status')}
-      </a>
     </div>
   );
 }

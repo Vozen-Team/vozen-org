@@ -921,21 +921,32 @@ button.is-tap, a.btn.is-tap, [role="button"].is-tap {
    o tamanho/peso/família do <b> (46px display, 800). A cor vem das regras de gradiente. */
 .price-card__price .amt { font: inherit; }
 .amt--y, .per--y, .was--y { display: none; }
-.pricing.is-annual .amt--m, .pricing.is-annual .per--m { display: none; }
+.pricing.is-annual .amt--m, .pricing.is-annual .per--m, .pricing.is-annual .was--m { display: none; }
 .pricing.is-annual .amt--y, .pricing.is-annual .per--y { display: inline; }
 .pricing.is-annual .was--y { display: inline; }
-/* Preço "cheio" (12× mensal) riscado EMPILHADO por cima do preço grande (padrão
-   "was/now"): em 4 colunas cada cartão tem ~196px úteis e o par lado a lado transbordava.
+/* Preço anterior do mesmo período, riscado numa linha separada do preço atual:
+   em 4 colunas cada cartão tem ~196px úteis e o par lado a lado transbordava.
    Coluna → o riscado fica numa linha própria; o `order:-1` do .was sobe-o sem mexer no HTML. */
 .price-line { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
 /* Riscado pequeno (peso 600, cinzento) POR CIMA do preço. O TRAÇO herda o sotaque do cartão
    (âmbar/blurple/violeta), em vez do risco default do browser. Sem opacity aqui: a animação
    priceIn termina em opacity:1 e anulá-la-ia — o recuo vem da cor + peso. */
 .price-card__price .was {
+  position: relative;
   order: -1; /* sobe para cima do <b> sem tocar no markup dos 3 cartões */
   font-family: var(--f-display); font-weight: 600; font-size: 16px; line-height: 1;
   color: var(--text-2);
   text-decoration: line-through; text-decoration-thickness: 2px;
+}
+.price-card__price .was[data-discount]::after {
+  content: attr(data-discount);
+  position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%);
+  padding: 4px 9px; border: 1px solid #d3ceff; border-radius: 6px;
+  background: #b5b4ff; color: #19172f; box-shadow: 0 3px 12px #b5b4ff33;
+  font: 800 13px/1.2 var(--f-body); letter-spacing: .02em; white-space: nowrap;
+}
+.price-card--pro .was[data-discount]::after {
+  border-color: #ffe1a0; background: #ffca60; color: #2a1a03; box-shadow: 0 3px 12px #ffca6033;
 }
 .price-card--pro .price-card__price .was { text-decoration-color: rgba(255, 194, 75, 0.6); }
 .price-card--plus .price-card__price .was { text-decoration-color: rgba(102, 114, 255, 0.6); }
@@ -965,16 +976,18 @@ button.is-tap, a.btn.is-tap, [role="button"].is-tap {
 .price-card--pro .price-line .was { display: none; }
 /* 2 servidores (cartão SEM .is-5) */
 .pricing:not(.is-annual) .price-card--pro:not(.is-5) .amt--m.amt--s2,
-.pricing:not(.is-annual) .price-card--pro:not(.is-5) .per--m.per--s2 { display: inline; }
+.pricing:not(.is-annual) .price-card--pro:not(.is-5) .per--m.per--s2,
+.pricing:not(.is-annual) .price-card--pro:not(.is-5) .was--m.was--s2 { display: inline; }
 .pricing.is-annual .price-card--pro:not(.is-5) .amt--y.amt--s2,
 .pricing.is-annual .price-card--pro:not(.is-5) .per--y.per--s2,
-.pricing.is-annual .price-card--pro:not(.is-5) .was--s2 { display: inline; }
+.pricing.is-annual .price-card--pro:not(.is-5) .was--y.was--s2 { display: inline; }
 /* 5 servidores (cartão COM .is-5) */
 .pricing:not(.is-annual) .price-card--pro.is-5 .amt--m.amt--s5,
-.pricing:not(.is-annual) .price-card--pro.is-5 .per--m.per--s5 { display: inline; }
+.pricing:not(.is-annual) .price-card--pro.is-5 .per--m.per--s5,
+.pricing:not(.is-annual) .price-card--pro.is-5 .was--m.was--s5 { display: inline; }
 .pricing.is-annual .price-card--pro.is-5 .amt--y.amt--s5,
 .pricing.is-annual .price-card--pro.is-5 .per--y.per--s5,
-.pricing.is-annual .price-card--pro.is-5 .was--s5 { display: inline; }
+.pricing.is-annual .price-card--pro.is-5 .was--y.was--s5 { display: inline; }
 /* deal + nota: só dependem do nº de licenças (não do período) */
 .price-card--pro .deal--s5, .price-card--pro .note--s5 { display: none; }
 .price-card--pro.is-5 .deal--s2, .price-card--pro.is-5 .note--s2 { display: none; }
@@ -1636,6 +1649,8 @@ body.is-modal-open { overflow: hidden; }
 }
 .paid-plans .price-card h3 { margin: 0; font-size: clamp(24px, 3vw, 31px); }
 .price-card__pitch { min-height: 52px; max-width: 440px; margin: 8px 0 20px; color: var(--text-1); font-size: 15px; line-height: 1.55; }
+.price-card__audience { display: block; }
+.price-card__products { display: block; margin-top: 4px; font-size: 13px; line-height: 1.4; }
 .paid-plans .price-card__price { margin: 0 0 22px; }
 .paid-plans .price-card__price b { font-size: clamp(46px, 6vw, 60px); }
 .paid-plans .price-card .price-card__highlights { gap: 11px; margin: 6px 0 0; }

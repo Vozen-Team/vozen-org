@@ -179,7 +179,6 @@ function applyHelperTranslations(document, messages) {
   set(heroTitleParts[0], 'helper.landing.heroTitle1');
   set(heroTitleParts[1], 'helper.landing.heroTitle2');
   set(byClass(document, 'helper-hero__lede'), 'helper.landing.heroLede');
-  setOwn(byClass(document, 'helper-private-action'), 'helper.landing.getStarted');
   setOwn(byClass(document, 'helper-explore-action'), 'helper.landing.exploreModules');
   set(byClass(document, 'helper-hero__proof'), 'helper.landing.proof');
 
@@ -290,6 +289,7 @@ export function localize(sourceHtml, locale, page, catalogue) {
     } catch {}
   }
 
+  translateExactText(document, translations);
   visit(document, (node) => {
     if (!node.tagName) return;
     const key = attr(node, 'data-i18n') || attr(node, 'data-preview-i18n');
@@ -312,7 +312,11 @@ export function localize(sourceHtml, locale, page, catalogue) {
   });
 
   if (page.route === 'helper') applyHelperTranslations(document, messages);
-  translateExactText(document, translations);
+  const language = first(document, (node) => attr(node, 'data-lang') === locale.code && hasClass(node, 'lang__opt'));
+  const name = byClass(language, 'lang__optname');
+  const flag = first(language, (node) => isElement(node, 'img'));
+  if (name) setText(byId(document, 'langBtnName'), name.childNodes[0].value);
+  if (flag) setAttr(first(byId(document, 'langBtnFlag'), (node) => isElement(node, 'img')), 'src', attr(flag, 'src'));
 
   return parse5.serialize(document).replace(/[ \t]+$/gm, '');
 }

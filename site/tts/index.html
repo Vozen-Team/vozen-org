@@ -42,7 +42,8 @@
 
     <link rel="preload" href="/assets/fonts/unbounded-critical-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="/assets/fonts/outfit-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/tts-page-v1.css?v=4faefa42ee0b">
+    <link rel="preload" href="/assets/fonts/unbounded-brand-latin.woff2?no-inline" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/tts-page-v1.css?v=49d6232e687c">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -64,22 +65,8 @@
     <!-- FAQ structured data (Google rich results). Mantém em sincronia com
          window.VOZEN_FAQ (js/i18n.js) — o JSON-LD tem de ser ESTÁTICO porque os
          crawlers não correm o JS que renderiza o FAQ. -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "inLanguage": "en",
-      "mainEntity": [
-        {"@type":"Question","name":"Can I use Vozen for free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use Piper voices, automatic reading and the free games without a subscription."}},
-        {"@type":"Question","name":"How do I start using Vozen?","acceptedAnswer":{"@type":"Answer","text":"Add Vozen to a server you manage. Run /setup to choose a text channel and enable auto-read, then join a voice channel and run /join."}},
-        {"@type":"Question","name":"Can each member choose a voice?","acceptedAnswer":{"@type":"Answer","text":"Use /voice set to choose your voice and language. Each member can keep their own settings."}},
-        {"@type":"Question","name":"Should I choose Plus or Premium?","acceptedAnswer":{"@type":"Answer","text":"Plus gives your Discord account Kokoro voices and extra effects. Premium adds paid features to selected servers across TTS and Helper. Payments are currently paused."}},
-        {"@type":"Question","name":"Why can't I hear anything?","acceptedAnswer":{"@type":"Answer","text":"Join a voice channel and run /join. Check that Vozen can connect and speak, and that /setup points to the text channel you're using."}},
-        {"@type":"Question","name":"How do I stop the voice?","acceptedAnswer":{"@type":"Answer","text":"Use /shut-up to clear the queue, or /leave to disconnect Vozen. Disable auto-read in /config to stop reading new messages."}}
-      ]
-    }
-    </script>
-  </head>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"Can I use Vozen TTS for free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Piper voices, automatic reading and a selection of games are free."}},{"@type":"Question","name":"How do I get Vozen to read my messages?","acceptedAnswer":{"@type":"Answer","text":"Run /setup to choose a text channel and enable auto-read. Join a voice channel and run /join."}},{"@type":"Question","name":"Can each person use a different voice?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use /voice set to pick your own voice and language."}},{"@type":"Question","name":"What do Plus and Premium unlock for TTS?","acceptedAnswer":{"@type":"Answer","text":"Plus gives your Discord account Kokoro voices and extra effects. Premium adds live transcription and a custom TTS bot avatar and banner to selected servers. Payments are currently paused."}},{"@type":"Question","name":"Why is Vozen not reading my messages?","acceptedAnswer":{"@type":"Answer","text":"Check that Vozen is in your voice channel and can speak. Then check that /setup points to the text channel you are using."}},{"@type":"Question","name":"How do I stop the reading?","acceptedAnswer":{"@type":"Answer","text":"Use /shut-up to clear the queue or /leave to disconnect. Turn off auto-read in /config to stop reading new messages."}}]}</script>
+</head>
   <body class="tts-page product-preview product-preview--expressive" data-i18n-document-title="tts.documentTitle" data-vozen-public-analytics="true">
     <!-- grain overlay -->
     <div class="grain" aria-hidden="true"></div>
@@ -92,7 +79,7 @@
     <a class="skip-link" href="#hero">Skip to content</a>
 
     <!-- ─────────────── NAVBAR ─────────────── -->
-    <header class="nav vozen-global-nav is-stuck" id="nav" data-vozen-nav="" data-nav-product="TTS" data-nav-current="tts" data-nav-prerendered="true" data-prerender-fragment="navigation">
+    <header class="nav vozen-global-nav" id="nav" data-vozen-nav="" data-nav-product="TTS" data-nav-current="tts" data-nav-prerendered="true" data-prerender-fragment="navigation">
       <div class="wrap nav__inner">
         <a class="brand" href="./" aria-label="Vozen ecosystem home" data-i18n-aria-label="ecosystem.homeAria">
           <span class="brand__mark" aria-hidden="true"><img class="brand__portal" src="favicon.svg" alt="" width="40" height="40"></span>
@@ -101,8 +88,8 @@
         </a>
         <nav class="nav__links" aria-label="Vozen products" data-i18n-aria-label="ecosystem.productsAria" id="vozen-primary-links">
           <a class="is-current" href="tts/" aria-current="page" data-i18n="ecosystem.tts">Vozen TTS</a>
+          <a class="" href="/music/">Vozen Music</a>
           <a class="" href="helper/" data-i18n="ecosystem.helper">Vozen Helper</a>
-          <a class="" href="docs/" data-i18n="ecosystem.docs">Docs</a>
           <a class="" href="commands/" data-i18n="ecosystem.commands">Commands</a>
           <a class="" href="status.html" data-i18n="ecosystem.status">Status</a>
           <a class="" href="premium#plans" data-i18n="nav.premium">Premium</a>
@@ -116,7 +103,7 @@
             </button>
             <ul class="lang__panel" id="langPanel" role="listbox" tabindex="-1" aria-label="Choose language" data-i18n-aria-label="ecosystem.chooseLanguage"><li role="presentation"><a class="lang__opt is-active" href="/tts/" role="option" data-lang="en" aria-selected="true" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">English</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/pt/tts/" role="option" data-lang="pt" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Português</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/fr/tts/" role="option" data-lang="fr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/fr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Français</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/es/tts/" role="option" data-lang="es" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/es.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Español</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/de/tts/" role="option" data-lang="de" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/de.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/tr/tts/" role="option" data-lang="tr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Türkçe</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ar/tts/" role="option" data-lang="ar" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/sa.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">العربية</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/zh/tts/" role="option" data-lang="zh" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tw.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">繁體中文</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ru/tts/" role="option" data-lang="ru" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/ru.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Русский</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ko/tts/" role="option" data-lang="ko" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/kr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">한국어</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li></ul>
           </div>
-          <a class="btn btn--primary btn--discord-cta btn--sm nav__login" id="navLogin" href="account/"><svg viewBox="0 0 24 18" width="20" height="15" aria-hidden="true" fill="currentColor"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4 2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Z"></path></svg><span data-i18n="nav.login">Log in</span></a>
+          <a class="btn btn--primary btn--discord-cta btn--sm nav__login" id="navLogin" href="account/"><svg viewBox="0 0 24 18" width="18" height="14" fill="currentColor" aria-hidden="true"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Z"></path></svg><span data-i18n="ecosystem.login">Log in</span></a>
           <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="vozen-primary-links"><span></span><span></span><span></span></button>
         </div>
       </div>
@@ -128,8 +115,7 @@
         <canvas id="wave" class="hero__wave" aria-hidden="true"></canvas>
         <div class="wrap hero__grid">
           <div class="hero__copy">
-
-
+            <div class="product-hero-brand"><img loading="lazy" fetchpriority="low" src="/assets/settings-tts.png" alt="" width="44" height="44"><span>Vozen TTS</span></div>
             <h1 class="hero__title reveal" data-r="2">
               <span data-preview-i18n="hero.title1" data-preview-copy="Your chat.">Your chat.</span>
               <span class="grad" data-preview-i18n="hero.title2" data-preview-copy="Out loud.">Out loud.</span>
@@ -303,7 +289,7 @@
                 <svg viewBox="0 0 180 120" fill="none" stroke="#ffc95b" stroke-width="3" stroke-linejoin="round"><path class="feature-gem" d="M48 18h84l27 29-69 62-69-62Z"></path><path class="feature-gem-facet" d="m65 18 25 91 25-91M21 47h138M65 18l25 29 25-29"></path></svg>
               </div>
               <h3 data-i18n="feat.8.t">Fair Premium</h3>
-              <p data-i18n="feat.8.d">€6.99/month unlocks Kokoro and the server-wide extras. The essential Piper-powered core stays free</p>
+              <p data-i18n="feat.8.d">€3.99/month unlocks Kokoro and the server-wide extras. The essential Piper-powered core stays free</p>
             </article>
 
             <article class="card card--accent reveal">
@@ -443,7 +429,7 @@
               <p>Enter a voice channel, run /join, then type in your configured text channel.</p>
             </div>
           </div>
-          <p class="setup-caption"><a href="docs/tts/text-to-speech/reading-messages/">Auto-read guide</a></p>
+          <p class="setup-caption"></p>
         </div>
       </section>
 
@@ -481,7 +467,7 @@
         <div class="wrap">
           <header class="head reveal">
             <h2>Your voice. Or your whole server.</h2>
-            <p>Plus follows you. Premium upgrades your communities — in both bots.</p>
+            <p>Plus follows you. Premium upgrades your communities across all three bots.</p>
           </header>
           <!-- O login/estado da conta vivem agora numa página dedicada (account.html),
                acessível pelo botão "Log in" da navbar. -->
@@ -490,17 +476,16 @@
               <button type="button" class="bill-toggle__btn is-active" data-bill="month" data-i18n="price.billMonthly">Monthly</button>
               <button type="button" class="bill-toggle__btn" data-bill="year">
                 <span data-i18n="price.billYearly">Yearly</span>
-                <span class="bill-toggle__save">Annual billing</span>
               </button>
             </div>
           </div>
           <div class="bundle-ribbon" role="note" aria-label="Vozen bundle" data-i18n-aria-label="price.bundleAria">
-            <div class="plan-bundle-art" aria-hidden="true"><span class="eco-product__icon eco-product__icon--tts"><svg class="eco-tts-icon" viewBox="0 0 64 64"><rect x="10" y="27" width="6" height="10" rx="3"></rect><rect x="20" y="22" width="6" height="20" rx="3"></rect><rect x="30" y="18" width="6" height="28" rx="3"></rect><rect x="40" y="23" width="6" height="18" rx="3"></rect><rect x="50" y="28" width="4" height="8" rx="2"></rect></svg></span><span class="eco-product__icon eco-product__icon--helper"><svg class="eco-helper-character eco-helper-character--classic" viewBox="0 0 64 64"><path d="M32 19v-7"></path><circle cx="32" cy="9" r="3" class="white"></circle><path d="m15 36-6-4m2 0-2 4M49 36l6-4m-2 0 2 4"></path><rect x="13" y="20" width="38" height="29" rx="13" class="white"></rect><rect x="18" y="26" width="28" height="18" rx="8" class="screen"></rect><circle cx="26" cy="35" r="2.4" class="white"></circle><circle cx="38" cy="35" r="2.4" class="white"></circle><path d="M27 39c3 2.5 7 2.5 10 0"></path></svg></span></div>
+            <div class="plan-bundle-art" aria-hidden="true"><img loading="lazy" fetchpriority="low" class="eco-product__icon" src="/assets/settings-tts.png" alt="" width="44" height="44"><img loading="lazy" fetchpriority="low" class="eco-product__icon" src="/assets/music/avatar.webp" alt="" width="44" height="44"><img loading="lazy" fetchpriority="low" class="eco-product__icon" src="/assets/settings-helper.png" alt="" width="44" height="44"></div>
             <div class="bundle-ribbon__copy">
-              <strong>Two bots. One subscription.</strong>
-              <span>TTS + Helper Premium for everyone in your selected servers.</span>
+              <strong data-i18n="price.bundleTitle">Three bots. One subscription.</strong>
+              <span data-i18n="price.bundleText">TTS, Music and Helper Premium for everyone in your selected servers.</span>
             </div>
-            <span class="bundle-ribbon__value" data-i18n="price.bundleValue">TTS + HELPER</span>
+            <span class="bundle-ribbon__value" data-i18n="price.bundleValue">TTS + MUSIC + HELPER</span>
           </div>
           <div class="pricing">
             <article class="price-card price-card--free reveal">
@@ -531,12 +516,12 @@
             <div class="paid-plans">
             <article class="price-card price-card--plus reveal">
               <h3 data-i18n="price.plus.name">Vozen Plus</h3>
-              <p class="price-card__pitch">Your voice upgrades, wherever you chat.</p>
+              <p class="price-card__pitch">Your voice upgrades, wherever you chat.<small class="price-card__products">TTS + Music.</small></p>
               <div class="seat-toggle plan-scope">
                 <span class="seat-toggle__btn is-active" data-i18n="price.m.17">Goes with you to any server</span>
               </div>
               <div class="price-card__price">
-                <span class="price-line"><b><span class="amt amt--m">€3.99</span><span class="amt amt--y">€37.99</span></b><s class="was was--y">€47.88</s></span>
+                <span class="price-line"><b><span class="amt amt--m">€1.99</span><span class="amt amt--y">€18.99</span></b></span>
                 <span class="per per--m" data-i18n="price.plus.per">/ month · per user</span>
                 <span class="per per--y" data-i18n="price.plus.perYear">/ year · per user</span>
               </div>
@@ -556,14 +541,14 @@
             </article>
             <article class="price-card price-card--pro reveal">
               <h3 data-i18n="price.pro.name">Vozen Premium</h3>
-              <p class="price-card__pitch">Premium voices and Helper extras for everyone.</p>
+              <p class="price-card__pitch"><span class="price-card__audience" data-i18n="price.pro.audience">Premium for every member of your servers.</span><small class="price-card__products" data-i18n="price.pro.pitch">TTS + Music + Helper.</small></p>
               <!-- Toggle de licenças: a mesma tier muda o número de servidores e o preço. -->
               <div class="seat-toggle" role="group" aria-label="Servers per subscription" data-i18n-aria-label="price.serversPerSubscription">
                 <button type="button" class="seat-toggle__btn is-active" data-seats="2" data-i18n="price.pro.seats2">2 servers</button>
                 <button type="button" class="seat-toggle__btn" data-seats="5" data-i18n="price.pro.seats5">5 servers</button>
               </div>
               <div class="price-card__price">
-                <span class="price-line"><b><span class="amt amt--m amt--s2">€6.99</span><span class="amt amt--m amt--s5">€14.99</span><span class="amt amt--y amt--s2">€66.99</span><span class="amt amt--y amt--s5">€133.99</span></b><s class="was was--y was--s2">€83.88</s><s class="was was--y was--s5">€179.88</s></span>
+                <span class="price-line"><b><span class="amt amt--m amt--s2">€3.99</span><span class="amt amt--m amt--s5">€7.99</span><span class="amt amt--y amt--s2">€37.99</span><span class="amt amt--y amt--s5">€70.99</span></b></span>
                 <span class="per per--m per--s2" data-i18n="price.pro.per">/ month · 2 servers</span>
                 <span class="per per--m per--s5" data-i18n="price.max.per">/ month · 5 servers</span>
                 <span class="per per--y per--s2" data-i18n="price.pro.perYear">/ year · 2 servers</span>
@@ -623,8 +608,8 @@
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.6">Robot &amp; Echo voice effects</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.7">Weekly leaderboard</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.20">Daily talk streaks</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
-                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.ttsBotName">Change the TTS bot name in your server</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.8">Full admin kit</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.ttsBotName">Change the TTS bot name in your server</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <!-- Bloco B — extras pagos: iguais no Plus e no Premium. -->
                     <tr role="row" class="group-b"><th scope="row" role="rowheader" data-i18n="price.m.21">Kokoro neural engine</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.9">All 8 voice effects (deep, demon, radio…)</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
@@ -636,9 +621,9 @@
                     <!-- Bloco C — exclusivos: pessoal (Plus) vs servidor (Premium). -->
                     <tr role="row" class="group-c"><th scope="row" role="rowheader" data-i18n="price.m.17">Goes with you to any server</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has-not">—</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.19">50 server pronunciations</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
-                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.ttsBotImages">Custom TTS bot avatar and banner</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.16">In the call 24/7</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.23">Live voice transcription</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.ttsBotImages">Custom TTS bot avatar and banner</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.18">Works for everyone in the server</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                   </tbody>
                 </table>
@@ -649,113 +634,91 @@
       </section>
 
       <!-- ─────────────── FAQ ─────────────── -->
-      <section class="section" id="faq">
-        <div class="wrap wrap--narrow">
-          <header class="head reveal">
-            <h2 data-i18n="faq.title">Questions, answered</h2>
-          </header>
-          <div class="faq" id="faq-list" data-prerender-fragment="faq-list">
+      <section class="product-faq" id="faq" aria-labelledby="faq-title">
+  <header class="product-faq__heading"><h2 id="faq-title" data-i18n="faq.title">Questions, answered</h2></header>
+  <div class="faq" id="faq-list" data-prerender-fragment="faq-list">
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-0">
-          <span>Can I use Vozen for free?</span>
+          <span>Can I use Vozen TTS for free?</span>
         </button>
-        <div class="qa__a" id="qa-0" role="region"><p>Yes. Use Piper voices, automatic reading and the free games without a subscription.</p></div>
+        <div class="qa__a" id="qa-0" role="region"><p>Yes. Piper voices, automatic reading and a selection of games are free.</p></div>
       </div>
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-1">
-          <span>How do I start using Vozen?</span>
+          <span>How do I get Vozen to read my messages?</span>
         </button>
-        <div class="qa__a" id="qa-1" role="region"><p>Add Vozen to a server you manage. Run /setup to choose a text channel and enable auto-read, then join a voice channel and run /join.</p></div>
+        <div class="qa__a" id="qa-1" role="region"><p>Run /setup to choose a text channel and enable auto-read. Join a voice channel and run /join.</p></div>
       </div>
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-2">
-          <span>Can each member choose a voice?</span>
+          <span>Can each person use a different voice?</span>
         </button>
-        <div class="qa__a" id="qa-2" role="region"><p>Use /voice set to choose your voice and language. Each member can keep their own settings.</p></div>
+        <div class="qa__a" id="qa-2" role="region"><p>Yes. Use /voice set to pick your own voice and language.</p></div>
       </div>
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-3">
-          <span>Should I choose Plus or Premium?</span>
+          <span>What do Plus and Premium unlock for TTS?</span>
         </button>
-        <div class="qa__a" id="qa-3" role="region"><p>Plus gives your Discord account Kokoro voices and extra effects. Premium adds paid features to selected servers across TTS and Helper. Payments are currently paused.</p></div>
+        <div class="qa__a" id="qa-3" role="region"><p>Plus gives your Discord account Kokoro voices and extra effects. Premium adds live transcription and a custom TTS bot avatar and banner to selected servers. Payments are currently paused.</p></div>
       </div>
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-4">
-          <span>Why can't I hear anything?</span>
+          <span>Why is Vozen not reading my messages?</span>
         </button>
-        <div class="qa__a" id="qa-4" role="region"><p>Join a voice channel and run /join. Check that Vozen can connect and speak, and that /setup points to the text channel you're using.</p></div>
+        <div class="qa__a" id="qa-4" role="region"><p>Check that Vozen is in your voice channel and can speak. Then check that /setup points to the text channel you are using.</p></div>
       </div>
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-5">
-          <span>How do I stop the voice?</span>
+          <span>How do I stop the reading?</span>
         </button>
-        <div class="qa__a" id="qa-5" role="region"><p>Use /shut-up to clear the queue, or /leave to disconnect Vozen. Disable auto-read in /config to stop reading new messages.</p></div>
+        <div class="qa__a" id="qa-5" role="region"><p>Use /shut-up to clear the queue or /leave to disconnect. Turn off auto-read in /config to stop reading new messages.</p></div>
       </div></div>
-        </div>
-      </section>
+</section>
 
       <!-- ─────────────── FINAL CTA ─────────────── -->
-      <section class="finale">
-        <div class="wrap finale__inner reveal">
-          <h2 data-i18n="finale.title">Give your server a voice</h2>
-          <a class="btn btn--primary btn--discord-cta btn--lg js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero">
-            <span data-i18n="cta.add">Add to Discord</span>
-          </a>
-          <p class="finale__note" data-i18n="finale.note">Core free forever · 35 languages · Set up in 30 seconds</p>
-        </div>
-      </section>
+      <section class="product-finale" id="get-started" aria-labelledby="product-finale-title">
+ <img class="product-finale__icon" src="/assets/settings-tts.png" width="80" height="80" alt="" loading="lazy" decoding="async">
+ <div class="product-finale__copy"><span class="product-finale__name">Vozen TTS</span><h2 class="product-finale__title" id="product-finale-title" data-i18n="finale.title">Give your server a voice</h2></div>
+ <div class="product-finale__action"><a class="btn btn--primary btn--discord-cta product-finale__button js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+                  <path d="M20.3 4.4A19 19 0 0 0 15.6 3l-.24.48a17.6 17.6 0 0 1 4.16 1.3 15 15 0 0 0-11.06 0A17.6 17.6 0 0 1 12.63 3.5L12.4 3A19 19 0 0 0 7.7 4.4C4.8 8.7 4 13 4.2 17.2A19 19 0 0 0 9.9 20l.4-.6a12 12 0 0 1-1.9-.9c.16-.12.32-.24.47-.37a13.6 13.6 0 0 0 11.6 0c.15.13.3.25.47.37-.6.36-1.24.66-1.9.9l.4.6a19 19 0 0 0 5.7-2.8c.28-4.9-.76-9.16-3.36-12.8ZM9.7 14.7c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Zm4.6 0c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.88 2.3-2 2.3Z"></path>
+                </svg><span data-i18n="cta.add">Add to Discord</span></a><p class="product-finale__note" data-i18n="finale.freeNote">Free core. No credit card.</p></div>
+</section>
     </main>
 
     <!-- ─────────────── FOOTER ─────────────── -->
-    <footer class="foot">
-      <div class="wrap foot__grid">
-        <div>
-          <a class="brand" href="./" aria-label="Vozen ecosystem home">
-            <span class="brand__mark"><img class="brand__portal" src="favicon.svg" alt="" width="40" height="40"></span>
-            <span class="brand__word">Vozen</span>
-          </a>
-          <p class="foot__tag" data-i18n="foot.tag">Type it, hear it</p>
-        </div>
-        <div>
-          <h2 data-i18n="foot.product">Product</h2>
-          <a href="#features" data-i18n="nav.features">Features</a>
-          <a href="#games" data-i18n="nav.games">Games</a>
-          <a href="commands/" data-i18n="nav.commands">Commands</a>
-          <a href="premium.html#plans" data-i18n="nav.premium">Premium</a>
-          <a href="#faq" data-i18n="nav.faq">FAQ</a>
-          <a href="./" data-i18n="ecosystem.name">Vozen ecosystem</a>
-          <a href="helper/">Vozen Helper</a>
-          <a href="/status" data-i18n="site.status">Status</a>
-        </div>
-        <div>
-          <h2 data-i18n="foot.community">Community</h2>
-          <a href="https://discord.gg/4kYw2WUbNN" class="js-support" data-i18n="foot.support">Support server</a>
-          <a href="#" class="js-vote" data-i18n="foot.vote">Vote on top.gg</a>
-          <a href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener" data-i18n="site.github">GitHub</a>
-        </div>
-      </div>
-      <div class="wrap foot__base">
-        <span>© 2026 Vozen</span>
-        <span class="foot__legal">
-          <a href="/privacy" data-i18n="foot.privacy">Privacy</a>
-          <a href="/terms" data-i18n="foot.terms">Terms</a>
-        </span>
-        <span data-i18n="foot.legal">Not affiliated with Discord</span>
-      </div>
-    </footer>
+    <footer class="vozen-footer" id="site-footer">
+  <div class="vozen-footer__inner">
+    <span class="vozen-footer__brand"><img src="/favicon.svg" width="28" height="28" alt="">© 2026 Vozen</span>
+    <nav class="vozen-footer__links" aria-label="Vozen footer">
+      <a href="https://discord.gg/4kYw2WUbNN" data-i18n="foot.support">Support server</a>
+      <a href="/privacy.html" data-i18n="foot.privacy">Privacy</a>
+      <a href="/terms.html" data-i18n="foot.terms">Terms</a>
+    </nav>
+    <span class="vozen-footer__disclaimer" data-i18n="foot.legal">Not affiliated with Discord</span>
+  </div>
+</footer>
 
     <script defer="" src="js/analytics-config.js?v=f6b49da441d8"></script>
     <script defer="" src="js/web-analytics-v1.js?v=e934b4dd1f34"></script>
     <script defer="" src="js/install-config-v1.js?v=97c30a4aaef1"></script>
     <script defer="" src="js/tts-install-v1.js?v=06da33493db0"></script>
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer="" src="js/global-nav-v1.js?v=c36e628c7056"></script>
-    <script defer="" src="js/i18n-public-loader-v1.js?v=e9b3e3b4a5b1"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=2decb7cc2c60"></script>
+    <script defer="" src="js/global-nav-v1.js?v=93ac57255dc2"></script>
+    <script defer="" src="js/i18n-public-loader-v1.js?v=b43111dba3cd"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=86081478360f"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
 <script defer="" src="js/product-preview-v1.js?v=dd06ef7904bf"></script>
 <script defer="" src="js/tts-player-preview-v1.js?v=636d7df5514a"></script>
 <script defer="" src="js/tts-features-preview-v1.js?v=50a88a38197c"></script>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -774,7 +737,5 @@
 .vozen-global-nav{position:static!important;height:auto!important}
 .vozen-global-nav .nav__inner{height:auto!important;padding-block:14px;row-gap:14px}
 .vozen-global-nav .nav__links{order:3;flex:1 1 100%;justify-content:flex-start;gap:16px}
-.docs-topbar{position:static!important}
 .page-account main,.page-account .foot{visibility:visible!important}
-@media(max-width:980px){.docs-sidebar{position:static!important;transform:none!important;visibility:visible!important}.docs-main{margin-left:0!important}.docs-drawer-toggle,.docs-sidebar-scrim{display:none!important}}
-</style><p>Interactive search, audio, account information and live service checks require JavaScript. All public documentation and command descriptions are available below.</p></noscript></body></html>
+</style><p>Interactive search, audio, account information and live service checks require JavaScript. Public information and command descriptions are available below.</p></noscript></body></html>

@@ -93,8 +93,7 @@
     setText("#helper-title span:nth-child(1)", "helper.landing.heroTitle1");
     setText("#helper-title span:nth-child(2)", "helper.landing.heroTitle2");
     setText(".helper-hero__lede", "helper.landing.heroLede");
-    setTextPreservingChildren(".helper-private-action", "helper.landing.getStarted");
-    setTextPreservingChildren(".helper-explore-action", "helper.landing.exploreModules");
+    setText(".helper-hero__actions .js-support", "cta.support");
     setText(".helper-hero__proof", "helper.landing.proof");
 
     const tasks = [
@@ -196,7 +195,6 @@
     setText(".helper-pricing .price-card--free .price-card__note", "helper.landing.freeNote");
     setText(".helper-pricing .price-card--free .price-card__idnote", "helper.landing.startNote");
     setText(".helper-pricing .price-card--pro h3", "price.pro.name");
-    setText(".helper-pricing .price-card--pro .price-card__pitch", "premium.premiumPitch");
     setText(".helper-pricing .price-card--pro .price-card__scope-note", "helper.landing.scopeNote");
     setText(".helper-pricing .price-card--pro .price-card__note", "price.digital");
     setAll(".helper-pricing .price-card__buy--disabled", (button) => { button.textContent = text("price.checkout", "Payments temporarily disabled"); });

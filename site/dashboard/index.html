@@ -27,7 +27,8 @@
       <meta name="twitter:description" content="Complete your Vozen TTS installation and start your first voice session.">
       <meta name="twitter:image" content="https://vozen.org/assets/og-image.png">
       <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Vozen TTS installation","description":"Complete your Vozen TTS installation and start your first voice session.","url":"https://vozen.org/dashboard/","isPartOf":{"@type":"WebSite","name":"Vozen","url":"https://vozen.org/"},"publisher":{"@type":"Organization","name":"Vozen","url":"https://vozen.org/"}}</script>
-  </head>
+  <link rel="stylesheet" href="/css/vozen-footer-v1.css?v=15f94bd176ca">
+</head>
   <body>
     <a class="skip-link" href="#install-result">Skip to result</a>
     <header class="install-nav">
@@ -61,7 +62,7 @@
           </ol>
           <div class="install-actions">
             <a class="button button--primary" href="/account/">Open your Vozen account</a>
-            <a class="button button--secondary" href="/docs/tts/getting-started/first-voice-session/">Read the setup guide</a>
+
           </div>
         </section>
 
@@ -78,7 +79,7 @@
           <p class="install-help">Try once more. If it still fails, check that you can manage the target server and then contact support.</p>
           <div class="install-actions">
             <a class="button button--primary" href="https://api.vozen.org/api/install/tts/start?source=home">Try again</a>
-            <a class="button button--secondary" href="/docs/tts/troubleshooting/missing-permissions/">Check permissions</a>
+
           </div>
         </section>
 
@@ -87,7 +88,7 @@
           <p class="install-help">Confirm that you selected a server where you have Manage Server permission, then repeat the installation.</p>
           <div class="install-actions">
             <a class="button button--primary" href="https://api.vozen.org/api/install/tts/start?source=home">Choose a server</a>
-            <a class="button button--secondary" href="/docs/tts/getting-started/install/">Installation help</a>
+
           </div>
         </section>
 
@@ -98,11 +99,17 @@
       </article>
     </main>
 
-    <footer class="install-footer">
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <span>Not affiliated with Discord</span>
-    </footer>
+    <footer class="vozen-footer" id="site-footer">
+  <div class="vozen-footer__inner">
+    <span class="vozen-footer__brand"><img src="/favicon.svg" width="28" height="28" alt="">© 2026 Vozen</span>
+    <nav class="vozen-footer__links" aria-label="Vozen footer">
+      <a href="https://discord.gg/4kYw2WUbNN" data-i18n="foot.support">Support server</a>
+      <a href="/privacy.html" data-i18n="foot.privacy">Privacy</a>
+      <a href="/terms.html" data-i18n="foot.terms">Terms</a>
+    </nav>
+    <span class="vozen-footer__disclaimer" data-i18n="foot.legal">Not affiliated with Discord</span>
+  </div>
+</footer>
     <script src="/js/install-result-v1.js?v=9863d47953bb" defer></script>
   </body>
 </html>

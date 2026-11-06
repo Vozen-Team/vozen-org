@@ -41,12 +41,12 @@
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-    <link rel="stylesheet" href="css/main-v43.css?v=3b9071956753" />
+    <link rel="stylesheet" href="css/main-v43.css?v=a02be1bbcf65" />
     <link rel="stylesheet" href="css/pricing-cards-v3.css?v=298c3ed269fa" />
     <link rel="stylesheet" href="css/pricing-cards-v9.css?v=e9e341e02c99" />
     <link rel="stylesheet" href="css/billing-v3.css?v=79522ffcb267" />
     <link rel="stylesheet" href="css/ecosystem-bridge.css?v=3c3d05b1dc32" />
-    <link rel="stylesheet" href="css/global-nav-v1.css?v=ce50126907c3" />
+    <link rel="stylesheet" href="css/global-nav-v1.css?v=f4ec7a88458b" />
     <link rel="stylesheet" href="css/tts-ui-v1.css?v=08e0976792f5" />
     <link rel="stylesheet" href="css/bundle-pricing-v1.css?v=aadc7f866715" />
     <script src="js/legacy-product-redirect-v1.js?v=ff0a420844ce"></script>
@@ -60,7 +60,7 @@
       "@type": "FAQPage",
       "mainEntity": [
         { "@type": "Question", "name": "Is Vozen really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — the core is free forever: 38 Piper voices in 35 languages, auto-read, greetings, most games and every admin control. Kokoro and Google HD are Premium voice engines; Plus unlocks them personally and server Premium unlocks them for that server." } },
-        { "@type": "Question", "name": "What does Premium include?", "acceptedAnswer": { "@type": "Answer", "text": "Kokoro neural and Google HD voice engines, all 8 voice effects, 24/7 in-call, 50 personal pronunciations, /rizz and the premium games (Word Chain, Wordle, Chess). Server Premium also includes live voice transcription. €6.99/month covers 2 servers, or €14.99/month covers 5; annual saves about 20%. Vozen Plus (€3.99/month) gives the personal perks on any server." } },
+        { "@type": "Question", "name": "What does Premium include?", "acceptedAnswer": { "@type": "Answer", "text": "Kokoro neural and Google HD voice engines, all 8 voice effects, 24/7 in-call, 50 personal pronunciations, /rizz and the premium games (Word Chain, Wordle, Chess). Server Premium also includes live voice transcription. €3.99/month covers 2 servers, or €7.99/month covers 5; annual saves about 20%. Vozen Plus (€1.99/month) gives the personal perks on any server." } },
         { "@type": "Question", "name": "How do I add Vozen to my server?", "acceptedAnswer": { "@type": "Answer", "text": "Click \"Add to Discord\", pick your server (you need Manage Server), and run /setup. That's it." } },
         { "@type": "Question", "name": "Which languages does it support?", "acceptedAnswer": { "@type": "Answer", "text": "35 languages with 38 neural voices — Portuguese, English, Spanish, French, German, Japanese, Arabic, Russian and many more, each with a native voice." } },
         { "@type": "Question", "name": "Do I need to configure anything?", "acceptedAnswer": { "@type": "Answer", "text": "No. /setup does it in one step. After that, everything works with sensible defaults — you can fine-tune later with /config." } },
@@ -69,7 +69,9 @@
       ]
     }
     </script>
-  </head>
+  <link rel="stylesheet" href="/css/vozen-footer-v1.css?v=15f94bd176ca">
+<link rel="stylesheet" href="/css/product-finale-v1.css?v=f6a929ee5597">
+</head>
   <body class="tts-page" data-i18n-document-title="tts.documentTitle" data-vozen-public-analytics="true">
     <!-- grain overlay -->
     <div class="grain" aria-hidden="true"></div>
@@ -140,6 +142,7 @@
         <canvas id="wave" class="hero__wave" aria-hidden="true"></canvas>
         <div class="wrap hero__grid">
           <div class="hero__copy">
+            <div class="product-hero-brand"><img src="/assets/settings-tts.png" alt="" width="44" height="44"><span>Vozen TTS</span></div>
             <span class="pill reveal" data-r="1">
               <span class="pill__dot"></span>
               <span data-i18n="hero.badge">Core free forever · Open source</span>
@@ -310,7 +313,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9 3l3 6 3-6M12 21l-3-12M12 21l3-12"/></svg>
               </span>
               <h3 data-i18n="feat.8.t">Fair Premium</h3>
-              <p data-i18n="feat.8.d">€6.99/month unlocks Kokoro and the server-wide extras. The essential Piper-powered core stays free</p>
+              <p data-i18n="feat.8.d">€3.99/month unlocks Kokoro and the server-wide extras. The essential Piper-powered core stays free</p>
             </article>
 
             <article class="card card--accent reveal">
@@ -458,7 +461,6 @@
               <button type="button" class="bill-toggle__btn is-active" data-bill="month" data-i18n="price.billMonthly">Monthly</button>
               <button type="button" class="bill-toggle__btn" data-bill="year">
                 <span data-i18n="price.billYearly">Yearly</span>
-                <span class="bill-toggle__save">−20%</span>
               </button>
             </div>
           </div>
@@ -490,7 +492,6 @@
                 <li data-i18n="price.m.3">Auto-read your channel</li>
                 <li data-i18n="price.m.5">13 of the 16 games</li>
                 <li data-i18n="price.m.20">Daily talk streaks</li>
-                <li data-i18n="price.ttsBotName">Change the TTS bot name in your server</li>
               </ul>
               <p class="price-card__note" data-i18n="price.free.per">forever</p>
               <a class="price-card__buy price-card__buy--free btn--discord-cta js-invite" href="/dashboard.html?add=1" target="_blank" rel="noopener" data-tts-install-source="tts-pricing" data-i18n="cta.add">Add to Discord</a>
@@ -505,12 +506,12 @@
                 <span class="price-card__badge price-card__badge--plus"><span aria-hidden="true">✦</span> <span data-i18n="price.plus.badge">PERSONAL</span></span>
               </div>
               <h3 data-i18n="price.plus.name">Vozen Plus</h3>
-              <p class="price-card__pitch" data-i18n="price.plus.pitch">Your premium voice perks follow you into every server</p>
+              <p class="price-card__pitch"><span data-i18n="price.plus.pitch">Your premium voice perks follow you into every server</span><small class="price-card__products">TTS + Music.</small></p>
               <div class="seat-toggle plan-scope">
                 <span class="seat-toggle__btn is-active" data-i18n="price.m.17">Goes with you to any server</span>
               </div>
               <div class="price-card__price">
-                <span class="price-line"><b><span class="amt amt--m">€3.99</span><span class="amt amt--y">€37.99</span></b><s class="was was--y">€47.88</s></span>
+                <span class="price-line"><b><span class="amt amt--m">€1.99</span><span class="amt amt--y">€18.99</span></b></span>
                 <span class="per per--m" data-i18n="price.plus.per">/ month · per user</span>
                 <span class="per per--y" data-i18n="price.plus.perYear">/ year · per user</span>
               </div>
@@ -535,14 +536,14 @@
                 <span class="price-card__recommended" data-i18n="price.recommended">BEST FOR SERVERS</span>
               </div>
               <h3 data-i18n="price.pro.name">Vozen Premium</h3>
-              <p class="price-card__pitch" data-i18n="price.pro.pitch">Unlock the full Vozen experience for everyone in your community</p>
+              <p class="price-card__pitch"><span class="price-card__audience" data-i18n="price.pro.audience">Premium for every member of your servers.</span><small class="price-card__products" data-i18n="price.pro.pitch">TTS + Music + Helper.</small></p>
               <!-- Toggle de licenças: a mesma tier muda o número de servidores e o preço. -->
               <div class="seat-toggle" role="group" aria-label="Servers per subscription" data-i18n-aria-label="price.serversPerSubscription">
                 <button type="button" class="seat-toggle__btn is-active" data-seats="2" data-i18n="price.pro.seats2">2 servers</button>
                 <button type="button" class="seat-toggle__btn" data-seats="5" data-i18n="price.pro.seats5">5 servers</button>
               </div>
               <div class="price-card__price">
-                <span class="price-line"><b><span class="amt amt--m amt--s2">€6.99</span><span class="amt amt--m amt--s5">€14.99</span><span class="amt amt--y amt--s2">€66.99</span><span class="amt amt--y amt--s5">€133.99</span></b><s class="was was--y was--s2">€83.88</s><s class="was was--y was--s5">€179.88</s></span>
+                <span class="price-line"><b><span class="amt amt--m amt--s2">€3.99</span><span class="amt amt--m amt--s5">€7.99</span><span class="amt amt--y amt--s2">€37.99</span><span class="amt amt--y amt--s5">€70.99</span></b></span>
                 <span class="per per--m per--s2" data-i18n="price.pro.per">/ month · 2 servers</span>
                 <span class="per per--m per--s5" data-i18n="price.max.per">/ month · 5 servers</span>
                 <span class="per per--y per--s2" data-i18n="price.pro.perYear">/ year · 2 servers</span>
@@ -551,7 +552,6 @@
               <ul class="ticks ticks--amber price-card__highlights">
                 <li class="price-card__included-free" data-i18n="price.includesFree">Everything in Free</li>
                 <li data-i18n="price.m.18">Works for everyone in the server</li>
-                <li data-i18n="price.ttsBotImages">Custom TTS bot avatar and banner</li>
                 <li data-i18n="price.m.24">Vozen Helper Premium for every selected server</li>
                 <li data-i18n="price.m.21">Kokoro neural engine</li>
                 <li data-i18n="price.m.22">Google HD voices</li>
@@ -559,6 +559,7 @@
                 <li data-i18n="price.m.19">50 server pronunciations</li>
                 <li data-i18n="price.m.16">In the call 24/7</li>
                 <li data-i18n="price.m.23">Live voice transcription</li>
+                <li data-i18n="price.m.25">Custom TTS bot avatar and banner</li>
                 <li data-i18n="price.m.11">Word Chain game</li>
               </ul>
               <p class="price-card__note note--s2" data-i18n="price.digital">Digital subscription · no shipping</p>
@@ -601,7 +602,6 @@
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.6">Robot &amp; Echo voice effects</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.7">Weekly leaderboard</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.20">Daily talk streaks</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
-                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.ttsBotName">Change the TTS bot name in your server</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.8">Full admin kit</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <!-- Bloco B — extras pagos: iguais no Plus e no Premium. -->
                     <tr role="row" class="group-b"><th scope="row" role="rowheader" data-i18n="price.m.21">Kokoro neural engine</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
@@ -615,9 +615,9 @@
                     <!-- Bloco C — exclusivos: pessoal (Plus) vs servidor (Premium). -->
                     <tr role="row" class="group-c"><th scope="row" role="rowheader" data-i18n="price.m.17">Goes with you to any server</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has-not">—</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.19">50 server pronunciations</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
-                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.ttsBotImages">Custom TTS bot avatar and banner</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.16">In the call 24/7</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.23">Live voice transcription</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.25">Custom TTS bot avatar and banner</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.18">Works for everyone in the server</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                   </tbody>
                 </table>
@@ -639,63 +639,36 @@
       </section>
 
       <!-- ─────────────── FINAL CTA ─────────────── -->
-      <section class="finale">
-        <div class="wrap finale__inner reveal">
-          <h2 data-i18n="finale.title">Give your server a voice</h2>
-          <a class="btn btn--primary btn--discord-cta btn--lg js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero">
-            <span data-i18n="cta.add">Add to Discord</span>
-          </a>
-          <p class="finale__note" data-i18n="finale.note">Core free forever · 35 languages · Set up in 30 seconds</p>
-        </div>
-      </section>
+      <section class="product-finale" id="get-started" aria-labelledby="product-finale-title">
+ <img class="product-finale__icon" src="/assets/settings-tts.png" width="80" height="80" alt="" loading="lazy" decoding="async">
+ <div class="product-finale__copy"><span class="product-finale__name">Vozen TTS</span><h2 class="product-finale__title" id="product-finale-title" data-i18n="finale.title">Give your server a voice</h2></div>
+ <div class="product-finale__action"><a class="btn btn--primary btn--discord-cta product-finale__button js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+                  <path d="M20.3 4.4A19 19 0 0 0 15.6 3l-.24.48a17.6 17.6 0 0 1 4.16 1.3 15 15 0 0 0-11.06 0A17.6 17.6 0 0 1 12.63 3.5L12.4 3A19 19 0 0 0 7.7 4.4C4.8 8.7 4 13 4.2 17.2A19 19 0 0 0 9.9 20l.4-.6a12 12 0 0 1-1.9-.9c.16-.12.32-.24.47-.37a13.6 13.6 0 0 0 11.6 0c.15.13.3.25.47.37-.6.36-1.24.66-1.9.9l.4.6a19 19 0 0 0 5.7-2.8c.28-4.9-.76-9.16-3.36-12.8ZM9.7 14.7c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Zm4.6 0c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.88 2.3-2 2.3Z"></path>
+                </svg><span data-i18n="cta.add">Add to Discord</span></a><p class="product-finale__note" data-i18n="finale.freeNote">Free core. No credit card.</p></div>
+</section>
     </main>
 
     <!-- ─────────────── FOOTER ─────────────── -->
-    <footer class="foot">
-      <div class="wrap foot__grid">
-        <div>
-          <a class="brand" href="./" aria-label="Vozen ecosystem home">
-            <span class="brand__mark"><img class="brand__portal" src="favicon.svg" alt="" width="40" height="40" /></span>
-            <span class="brand__word">Vozen</span>
-          </a>
-          <p class="foot__tag" data-i18n="foot.tag">Type it, hear it</p>
-        </div>
-        <div>
-          <h2 data-i18n="foot.product">Product</h2>
-          <a href="#features" data-i18n="nav.features">Features</a>
-          <a href="#games" data-i18n="nav.games">Games</a>
-          <a href="commands/" data-i18n="nav.commands">Commands</a>
-          <a href="premium.html#plans" data-i18n="nav.premium">Premium</a>
-          <a href="#faq" data-i18n="nav.faq">FAQ</a>
-          <a href="./" data-i18n="ecosystem.name">Vozen ecosystem</a>
-          <a href="helper/">Vozen Helper</a>
-          <a href="/status" data-i18n="site.status">Status</a>
-        </div>
-        <div>
-          <h2 data-i18n="foot.community">Community</h2>
-          <a href="https://discord.gg/4kYw2WUbNN" class="js-support" data-i18n="foot.support">Support server</a>
-          <a href="#" class="js-vote" data-i18n="foot.vote">Vote on top.gg</a>
-          <a href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener" data-i18n="site.github">GitHub</a>
-        </div>
-      </div>
-      <div class="wrap foot__base">
-        <span>© 2026 Vozen</span>
-        <span class="foot__legal">
-          <a href="/privacy" data-i18n="foot.privacy">Privacy</a>
-          <a href="/terms" data-i18n="foot.terms">Terms</a>
-        </span>
-        <span data-i18n="foot.legal">Not affiliated with Discord</span>
-      </div>
-    </footer>
+    <footer class="vozen-footer" id="site-footer">
+  <div class="vozen-footer__inner">
+    <span class="vozen-footer__brand"><img src="/favicon.svg" width="28" height="28" alt="">© 2026 Vozen</span>
+    <nav class="vozen-footer__links" aria-label="Vozen footer">
+      <a href="https://discord.gg/4kYw2WUbNN" data-i18n="foot.support">Support server</a>
+      <a href="/privacy.html" data-i18n="foot.privacy">Privacy</a>
+      <a href="/terms.html" data-i18n="foot.terms">Terms</a>
+    </nav>
+    <span class="vozen-footer__disclaimer" data-i18n="foot.legal">Not affiliated with Discord</span>
+  </div>
+</footer>
 
     <script defer src="js/analytics-config.js?v=f6b49da441d8"></script>
     <script defer src="js/web-analytics-v1.js?v=e934b4dd1f34"></script>
     <script defer src="js/install-config-v1.js?v=97c30a4aaef1"></script>
     <script defer src="js/tts-install-v1.js?v=06da33493db0"></script>
     <script defer src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer src="js/global-nav-v1.js?v=c36e628c7056"></script>
-    <script defer src="js/i18n-public-loader-v1.js?v=e9b3e3b4a5b1"></script>
-    <script defer src="js/main-v51.js?oauth=ecosystem-v5&auth-tabs=1&account-fast=1&auth-race=4&auth-persist=1&v=2decb7cc2c60"></script>
+    <script defer src="js/global-nav-v1.js?v=93ac57255dc2"></script>
+    <script defer src="js/i18n-public-loader-v1.js?v=b43111dba3cd"></script>
+    <script defer src="js/main-v51.js?oauth=ecosystem-v5&auth-tabs=1&account-fast=1&auth-race=4&auth-persist=1&v=86081478360f"></script>
     <script defer src="js/motion-v1.js?v=e61ca8f4a378"></script>
   </body>
 </html>

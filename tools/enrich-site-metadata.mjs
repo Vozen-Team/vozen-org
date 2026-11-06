@@ -39,10 +39,9 @@ function addDescription(html, title, relative) {
     'privacy.html': 'Read how Vozen handles account, server and diagnostic data, and how to request deletion.',
     'terms.html': 'Terms governing use of the Vozen tools for Discord communities.',
     'status.html': 'Current availability and service health for Vozen services.',
-    '404.html': 'The requested Vozen page could not be found. Return to the ecosystem, products or documentation.',
+    '404.html': 'The requested Vozen page could not be found. Return to the ecosystem or products.',
     'account.html': 'Continue to your Vozen account to review your Discord identity and personal Plus and Premium access.',
     'panel/helper/index.html': 'Continue to the authenticated Vozen Helper panel to manage your Discord server configuration.',
-    'docs/tts/troubleshooting/provider-failure/index.html': 'This Vozen TTS troubleshooting page has moved to the service failure guide.',
   };
   const description = descriptions[relative] || `${title || 'Vozen'} — public information from Vozen.`;
   return addMeta(html, 'name', 'description', description);

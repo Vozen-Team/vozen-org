@@ -1,6 +1,20 @@
 {
   "locale": "ar",
   "messages": {
+    "helper.landing.demoTitle": "جرّب الحماية.",
+    "helper.landing.demoPrompt": "أرسل رسائل مزعجة. وأبقِ المحادثة.",
+    "helper.landing.demoTag": "عرض تفاعلي",
+    "helper.landing.demoMessage1": "نلعب الساعة 8؟",
+    "helper.landing.demoMessage2": "أنا معكم. أراكم لاحقًا.",
+    "helper.landing.demoBlocked": "تم حظر الرسائل المزعجة",
+    "helper.landing.demoSend": "أرسل رسائل مزعجة",
+    "helper.landing.demoSending": "جارٍ الإرسال…",
+    "helper.landing.demoAgain": "أرسل مجددًا",
+    "helper.landing.demoChecking": "جارٍ فحص الرسائل…",
+    "commands.groupPlayback": "التشغيل",
+    "commands.groupLibrary": "مكتبتك",
+    "commands.generic.playback": "استخدم {command} للتحكم في تشغيل الموسيقى.",
+    "commands.generic.library": "استخدم {command} لإدارة تقييماتك للمقاطع.",
     "home.proof.aria": "مجتمع Vozen TTS وتقييم Top.gg",
     "home.proof.servers": "خادم Discord",
     "home.proof.rating": "على Top.gg",
@@ -47,7 +61,7 @@
     "feat.7.t": "مؤثرات صوتية",
     "feat.7.d": "روبوت، صدى، صوت عميق، سنجاب، راديو، شيطان… رسائلك، بحُلّة جديدة. مؤثران مجانًا، والثمانية كاملة مع Premium",
     "feat.8.t": "‏Premium عادل",
-    "feat.8.d": "يفتح اشتراك €6.99 شهريًا Kokoro وإضافات الخادم. يبقى أساس Piper الضروري مجانيًا",
+    "feat.8.d": "يفتح اشتراك €3.99 شهريًا Kokoro وإضافات الخادم. يبقى أساس Piper الضروري مجانيًا",
     "feat.9.t": "مفتوح المصدر",
     "feat.9.d": "كل شيفرة Vozen متاحة للعموم على GitHub. راجعها، أو تعلّم منها، أو افتح PR — لا أسرار، ولا برامج تجسس",
     "lang.eyebrow": "اللغات",
@@ -84,7 +98,10 @@
     "price.choose.sub": "أبقِ الأساسيات مجانية، أو رقِّ حسابك، أو افتح Premium للجميع في خادمك",
     "price.free.pitch": "كل الأساسيات. بلا بطاقة ولا فترة تجريبية",
     "price.plus.pitch": "مزايا الصوت المميزة ترافقك إلى كل خادم",
-    "price.pro.pitch": "افتح تجربة Vozen الكاملة لكل مجتمعك",
+    "price.pro.pitch": "TTS + Music + Helper.",
+    "price.pro.audience": "مزايا Premium لجميع أعضاء خوادمك.",
+    "price.pro.pitchMusic": "Music + TTS + Helper.",
+    "price.pro.pitchHelper": "Helper + Music + TTS.",
     "price.compare.title": "قارن كل التفاصيل",
     "price.compare.sub": "مقارنة كاملة للخطط، بلا مفاجآت",
     "price.checkout": "المتابعة إلى الدفع",
@@ -95,12 +112,12 @@
     "price.plus.badge": "شخصي",
     "price.plus.name": "Vozen Plus",
     "price.plus.per": "/ شهريًا · لكل مستخدم",
-    "price.plus.note": "€37.99/سنويًا (وفّر ~20٪) · اشترِ على Ko-fi",
+    "price.plus.note": "€18.99/سنويًا (وفّر ~50٪) · اشترِ على Ko-fi",
     "price.pro.badge": "PREMIUM",
     "price.pro.name": "Vozen Premium",
     "price.pro.per": "/ شهريًا · خادمان",
     "price.pro.deal": "🎁 خادمان. اشتراك واحد",
-    "price.pro.note": "€66.99/سنويًا (وفّر ~20٪) · اشترِ على Ko-fi",
+    "price.pro.note": "€37.99/سنويًا (وفّر ~43٪) · اشترِ على Ko-fi",
     "faq.eyebrow": "الأسئلة الشائعة",
     "faq.title": "أسئلة، بإجابات",
     "reviews.eyebrow": "مراجعات مستقلة",
@@ -127,7 +144,7 @@
     "price.max.per": "/ شهر · 5 خوادم",
     "price.max.perYear": "/ سنة · 5 خوادم",
     "price.max.deal": "🎁 خمسة خوادم. اشتراك واحد",
-    "price.max.note": "133.99 €/سنة (وفّر ~20٪) · اشترِ على Ko-fi",
+    "price.max.note": "70.99 €/سنة (وفّر ~47٪) · اشترِ على Ko-fi",
     "price.pro.seats2": "خادمان",
     "price.pro.seats5": "5 خوادم",
     "price.m.1": "38 صوت Piper",
@@ -165,6 +182,7 @@
     "price.m.22": "أصوات Google HD",
     "price.m.24": "Vozen Helper Premium لكل خادم محدد",
     "price.m.23": "تحويل الصوت المباشر إلى نص",
+    "price.m.25": "صورة رمزية ولافتة مخصصتان لبوت TTS",
     "price.includesFree": "كل ما في Free",
     "ecosystem.login": "تسجيل الدخول",
     "ecosystem.loginAria": "تسجيل الدخول إلى Vozen",
@@ -186,9 +204,9 @@
     "price.billingPeriod": "فترة الفوترة",
     "price.bundleAria": "حزمة Vozen",
     "price.bundleEyebrow": "حزمة VOZEN",
-    "price.bundleTitle": "روبوتان. اشتراك واحد.",
-    "price.bundleText": "TTS وHelper Premium للمجتمعات التي تختارها.",
-    "price.bundleValue": "TTS + HELPER",
+    "price.bundleTitle": "ثلاثة روبوتات. اشتراك واحد.",
+    "price.bundleText": "‏TTS وMusic وHelper Premium للجميع في الخوادم التي تختارها.",
+    "price.bundleValue": "TTS + MUSIC + HELPER",
     "price.freeHighlights": "أبرز مزايا الخطة المجانية",
     "price.digital": "اشتراك رقمي · بدون شحن",
     "price.checkoutLater": "سيعود الدفع عند إعادة تفعيل المدفوعات.",
@@ -208,7 +226,7 @@
     "premium.plusHelperNote": "يبقى Helper ضمن حدود الخادم المجانية. Plus يطوّر TTS فقط.",
     "premium.premiumPitch": "TTS وHelper Premium للجميع في كل خادم تختاره.",
     "premium.bundleAria": "حزمة Premium",
-    "premium.bundleTitle": "روبوتان. اشتراك واحد.",
+    "premium.bundleTitle": "ثلاثة روبوتات. اشتراك واحد.",
     "premium.seat2": "خادمان",
     "premium.seat5": "5 خوادم",
     "premium.premiumScope": "يغطي اشتراك واحد الخوادم المختارة ومجتمعاتها.",
@@ -321,7 +339,7 @@
     "home.eyebrow": "منظومة Vozen",
     "home.heroTitle1": "منزل واحد.",
     "home.heroTitle2": "كل أدوات الخادم.",
-    "home.heroLead": "بوتان لديسكورد. صوت لرسائلك. ومساعدة لخادمك.",
+    "home.heroLead": "ثلاثة بوتات لديسكورد. صوت وموسيقى وأدوات لخادمك.",
     "home.exploreProducts": "استكشف المنتجات",
     "home.viewCommands": "عرض الأوامر",
     "home.mapAria": "خريطة منظومة Vozen",
@@ -332,6 +350,8 @@
     "home.oneEcosystem": "منظومة واحدة",
     "home.productsAria": "منتجات Vozen",
     "home.ttsTitle": "TTS",
+    "home.musicLead": "موسيقى لمكالماتك على Discord.",
+    "home.exploreMusic": "استكشف Music",
     "home.helperTitle": "Helper",
     "home.ttsLead": "رسائل نصية تُقرأ بصوت عالٍ.",
     "home.helperLead": "الإشراف والتذاكر والرتب في بوت واحد.",
@@ -487,7 +507,6 @@
     "ecosystem.ecosystem": "النظام البيئي",
     "ecosystem.tts": "Vozen TTS",
     "ecosystem.helper": "Vozen Helper",
-    "ecosystem.docs": "التوثيق",
     "ecosystem.commands": "الأوامر",
     "ecosystem.accountAria": "فتح حساب Vozen الخاص بـ {name}",
     "helper.moduleCore": "الأساسي",
@@ -497,7 +516,15 @@
     "helper.moduleCommunity": "المجتمع",
     "helper.moduleAutomation": "الأتمتة",
     "helper.moduleInsights": "الرؤى",
-    "helper.moduleStudio": "الاستوديو"
+    "helper.moduleStudio": "الاستوديو",
+    "stat.helperOverview": "لمحة عن Vozen Helper",
+    "stat.setupSteps": "خطوات الإعداد",
+    "stat.freeCore": "الميزات الأساسية",
+    "stat.helperProtections": "وسائل حماية",
+    "stat.helperCommands": "أوامر",
+    "finale.musicTitle": "أضف الموسيقى إلى مكالماتك",
+    "finale.helperTitle": "امنح خادمك يد العون",
+    "finale.freeNote": "الميزات الأساسية مجانية. لا حاجة لبطاقة ائتمان."
   },
   "commands": {
     "general": [
@@ -667,8 +694,8 @@
   },
   "helperFaq": [
     [
-      "هل Vozen Helper متاح الآن؟",
-      "نعم. Helper متاح للعامة. ثبّته من هذه الصفحة، واختر خادمًا، ثم اضبط وحدتك الأولى من خلال الإعداد الموجّه."
+      "كيف أُعدّ تذاكر الدعم الخاصة؟",
+      "افتح وحدة الدعم في لوحة Helper وانشر لوحة تتيح للأعضاء فتح تذكرة خاصة."
     ],
     [
       "هل يطلب Helper صلاحية المسؤول؟",
@@ -684,7 +711,7 @@
     ],
     [
       "هل يمكنني شراء Premium الآن؟",
-      "نعم. اختر خطة من صفحة Premium وسجّل الدخول باستخدام Discord. تتولى Stripe معالجة بيانات الدفع. تبقى ميزات Helper الأساسية مجانية."
+      "المدفوعات متوقفة مؤقتًا. الأسعار معروضة للمرجع فقط."
     ]
   ],
   "faq": [
@@ -702,7 +729,7 @@
     ],
     [
       "هل أختار Plus أم Premium؟",
-      "يضيف Plus أصوات Kokoro ومؤثرات إضافية إلى حسابك في Discord. يضيف Premium ميزات مدفوعة إلى الخوادم المحددة في TTS وHelper. المدفوعات متوقفة حاليًا."
+      "يضيف Plus أصوات Kokoro ومؤثرات إلى حسابك على ديسكورد. ويضيف Premium إلى الخوادم المختارة التفريغ المباشر وصورة رمزية ولافتة مخصصتين لبوت TTS. المدفوعات معلّقة."
     ],
     [
       "لماذا لا أسمع شيئًا؟",

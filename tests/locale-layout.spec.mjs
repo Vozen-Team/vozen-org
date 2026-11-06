@@ -43,7 +43,7 @@ test('Portuguese TTS uses the same product template and player as English', asyn
 });
 
 test('shared navigation language choices stay on the current page', async ({ page }) => {
-  for (const route of ['/docs/tts/', '/guides/discord-without-a-mic/', '/privacy.html']) {
+  for (const route of ['/music/', '/guides/discord-without-a-mic/', '/privacy.html']) {
     await page.goto(`${route}?locale-test=1#main`);
     const url = page.url();
     await page.locator('[data-vozen-docs-language-button]').click();

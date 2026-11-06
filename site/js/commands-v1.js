@@ -1,4 +1,4 @@
-/* Public command snapshots: TTS 89c15fb and Helper 5f15888.
+/* Public command snapshots: TTS 89c15fb, Music b66e1ac and Helper 5f15888.
  * Keep names and subcommands aligned with tests/fixtures/command-registration.json. */
 (function () {
   "use strict";
@@ -138,6 +138,32 @@
     ["/event-cancel","Cancel a native Discord scheduled event","community","Admin","","CREATE_EVENTS",""],
   ].map(([name, description, category, access, usage, permission, premiumExtras]) => ({ product: "helper", name, description, category, access, usage, permission, premiumExtras }));
 
+  const musicCommands = [
+    ["/play","Start a Vozen station","playback","Free","station","","My Station requires Premium; Plus or Premium increases station-change allowances."],
+    ["/station","Switch stations","playback","Free","station (required)","","My Station requires Premium; Plus or Premium increases station-change allowances."],
+    ["/nowplaying","Show the current track and credits","playback","Free",""],
+    ["/pause","Pause the station","playback","Free",""],
+    ["/resume","Resume the station","playback","Free",""],
+    ["/skip","Skip or vote to skip the current track","playback","Premium","","",""],
+    ["/stop","Stop the station and leave the voice channel","playback","Free",""],
+    ["/volume","View or set the playback volume","playback","Free","level (0–100)","","Viewing the volume is free; changing the call volume requires Premium on this server."],
+    ["/sleep","View, set or cancel the sleep timer","playback","Free","minutes (1–720) · cancel"],
+    ["/panel","Show a fresh player panel","playback","Free",""],
+    ["/like","Like this recording","library","Free",""],
+    ["/dislike","Dislike this recording","library","Free",""],
+    ["/library","View or remove your ratings in this server","library","Free","page · remove · clear"],
+    ["/profile","View your time-in-call profile","stats","Free",""],
+    ["/leaderboard","View this server's opted-in leaderboard","stats","Free",""],
+    ["/privacy","Control your server listening statistics","settings","Free","enabled · visible · erase"],
+    ["/radio-mode","Choose how Music behaves in empty calls","settings","Admin","mode (session / always / auto_join) · channel","MANAGE_GUILD","A fixed voice channel requires Premium. Free users need an active vote for 24/7 or auto-join; Plus and Premium bypass that vote."],
+    ["/skip-settings","View or change this server's skip settings","settings","Admin","access · mode · majority-scope · add-role · remove-role · clear-roles","MANAGE_GUILD",""],
+    ["/settings","Open this server's Music settings","settings","Free",""],
+    ["/help","Show Music commands","help","Free",""],
+    ["/support","Get Vozen support","help","Free",""],
+    ["/invite","Add Vozen Music to a server","help","Free",""],
+    ["/feedback","Find where to send feedback","help","Free",""]
+  ].map(([name, description, category, access, usage, permission, premiumExtras]) => ({ product: "music", name, description, category, access, usage, permission, premiumExtras }));
+
   const catalogue = {
     tts: {
       label: "Vozen TTS",
@@ -158,6 +184,24 @@
       href: typeof window.vozenTtsInstallHref === "function"
         ? (window.vozenTtsInstallHref("commands") || "/dashboard.html?add=1")
         : "/dashboard.html?add=1",
+      external: false,
+    },
+    music: {
+      label: "Vozen Music",
+      search: "Try play, station or volume",
+      note: "Browse the complete Music command set.",
+      contract: "Music commands follow the bot's registered Rust definitions.",
+      commands: musicCommands,
+      groups: [
+        ["playback", "Playback", "Start a station and control playback."],
+        ["library", "Your library", "Rate recordings and manage your preferences."],
+        ["stats", "Stats & activity", "See your opted-in listening activity."],
+        ["settings", "Settings & privacy", "Manage your server and privacy preferences."],
+        ["help", "Help & community", "Get support and share Music."],
+      ],
+      steps: [["/play", "Start a station"], ["/station", "Choose your soundtrack"], ["/panel", "Open playback controls"]],
+      action: "Explore Vozen Music",
+      href: "../music/",
       external: false,
     },
     helper: {
@@ -208,6 +252,8 @@
     return interpolate(value, variables);
   };
   const groupKeys = {
+    playback: ["commands.groupPlayback", "Playback"],
+    library: ["commands.groupLibrary", "Your library"],
     start: ["commands.groupStart", "Start & voice"],
     fun: ["commands.groupFun", "Fun & games"],
     stats: ["commands.groupStats", "Stats & activity"],
@@ -281,6 +327,8 @@
   const current = () => catalogue[product];
 
   const categoryPaths = {
+    playback: '<path d="M9 18V5l12-2v13M9 8l12-2"/><ellipse cx="6" cy="18" rx="3" ry="3"/><ellipse cx="18" cy="16" rx="3" ry="3"/>',
+    library: '<path d="M4 4h4v16H4Zm7 0h4v16h-4Zm7 1 3-1 3 15-3 1Z"/>',
     invite: '<circle cx="9" cy="7" r="3"/><path d="M2 21v-3a7 7 0 0 1 14 0v3m3-15v6m-3-3h6"/>',
     leave: '<path d="m11 4-6 5H2v6h3l6 5V4Zm5 5 6 6m0-6-6 6"/>',
     skip: '<path d="m5 4 11 8L5 20V4Zm14 0v16"/>',
@@ -322,6 +370,16 @@
 
   function renderAside() {
     const item = current();
+    if (product === "music") {
+      asideTitle.textContent = item.label;
+      asideSteps.innerHTML = item.steps.map(([command, copy]) => `<li><code>${escapeHtml(command)}</code><span>${escapeHtml(copy)}</span></li>`).join("");
+      asideCta.textContent = item.action;
+      asideCta.href = item.href;
+      asideCta.removeAttribute("target");
+      asideCta.removeAttribute("rel");
+      asideNote.textContent = item.contract;
+      return;
+    }
     const isTts = product === "tts";
     asideTitle.textContent = isTts ? t("commands.threeStepsTts", "Three steps to voice") : t("commands.threeStepsHelper", "Three steps to Helper");
     const stepKeys = {
@@ -344,7 +402,9 @@
   function commandRow(command) {
     const localized = localizedCommand(command);
     const permission = command.permission?.toLowerCase().replaceAll("_", " ").replace("manage guild", "manage server");
-    const accessTitle = command.product === "helper"
+    const accessTitle = command.product === "music" && command.name === "/skip"
+      ? "Requires Vozen Plus or Premium on this server; the server's skip policy still applies."
+      : command.product === "helper" || command.product === "music"
       ? (permission ? `Free plan. Requires ${permission} or Administrator.` : "Free plan. No command-specific staff permission required.")
       : localized.access;
     const baseTag = localized.access ? `<span class="command-tag ${tagClass(command.access)}" title="${escapeHtml(accessTitle)}" aria-label="${escapeHtml(localized.access + ": " + accessTitle)}">${escapeHtml(localized.access)}</span>` : "";
@@ -410,7 +470,8 @@
     button.addEventListener("keydown", event => {
       if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
       event.preventDefault();
-      const next = event.key === "Home" ? productButtons[0] : event.key === "End" ? productButtons.at(-1) : productButtons.find(item => item !== button);
+      const index = productButtons.indexOf(button);
+      const next = event.key === "Home" ? productButtons[0] : event.key === "End" ? productButtons.at(-1) : productButtons[(index + (event.key === "ArrowRight" ? 1 : -1) + productButtons.length) % productButtons.length];
       setProduct(next.dataset.commandProduct);
       next.focus();
     });

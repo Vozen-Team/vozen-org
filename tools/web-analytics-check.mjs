@@ -49,12 +49,9 @@ for (const relative of [
 
 const config = await read('site/js/analytics-config.js');
 const loader = await read('site/js/web-analytics-v1.js');
-const docsShell = await read('site/docs/shared/docs-shell.js');
 assert.match(config, /cloudflareBeaconToken:\s*"[a-zA-Z0-9-]{20,80}"/);
 assert.equal(config.includes(publicPropertyId), false, 'the GraphQL property ID must stay server-side');
 assert.match(loader, /static\.cloudflareinsights\.com\/beacon\.min\.js/);
 assert.match(loader, /page\.dataset\.vozenPublicAnalytics !== "true"/);
-assert.match(docsShell, /function installPublicAnalytics\(\)/);
-assert.match(docsShell, /installPublicAnalytics\(\);/);
 
 console.log('Cloudflare Web Analytics scope and beacon contract are valid.');

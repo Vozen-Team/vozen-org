@@ -1,0 +1,35 @@
+.product-finale {
+  display: grid;
+  grid-template-columns: 80px minmax(0,1fr) auto;
+  align-items: center;
+  gap: 28px;
+  width: min(1120px,calc(100% - 48px));
+  margin: 48px auto 64px;
+  padding: 34px 36px;
+  border: 1px solid #35425c;
+  border-radius: 18px;
+  background: #111b2e;
+  box-shadow: inset 0 1px #ffffff08;
+}
+.product-finale__icon { display: block; width: 80px; height: 80px; border-radius: 18px; object-fit: contain; }
+.product-finale__copy { min-width: 0; }
+.product-finale__name { display: block; margin-bottom: 8px; color: #b4c2dc; font: 600 14px/1.4 var(--f-body,Outfit,sans-serif); }
+.product-finale .product-finale__title { margin: 0; color: #f5f5ff; font: 700 clamp(25px,2.3vw,32px)/1.25 'Vozen Critical Display','Vozen Product Display',sans-serif; letter-spacing: -.035em; text-align: start; text-wrap: balance; }
+.product-finale__action { display: grid; justify-items: center; gap: 11px; }
+.product-finale .product-finale__button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 14px 22px; border: 0; border-radius: 10px; background: linear-gradient(110deg,#7383ff,#34d8ca); color: #071019; font: 650 15px/1.6 var(--f-body,Outfit,sans-serif); text-decoration: none; white-space: nowrap; box-shadow: 0 12px 28px -20px #42e0cc; }
+.product-finale__button svg { flex: 0 0 20px; }
+.product-finale .product-finale__note { margin: 0; max-width: 30ch; color: #b4c2dc; font: 400 12px/1.5 var(--f-body,Outfit,sans-serif); text-align: center; text-wrap: pretty; }
+.product-finale__button:focus-visible { outline: 2px solid #55ebd1; outline-offset: 5px; }
+@media(max-width:760px) {
+  .product-finale { grid-template-columns: 64px minmax(0,1fr); gap: 20px; padding: 26px; margin-block: 32px 48px; }
+  .product-finale__icon { width: 64px; height: 64px; border-radius: 14px; }
+  .product-finale__action { grid-column: 1/-1; justify-items: stretch; }
+  .product-finale .product-finale__title { font-size: 25px; }
+  .product-finale .product-finale__note { max-width: none; }
+}
+@media(max-width:390px) {
+  .product-finale { width: calc(100% - 30px); grid-template-columns: 52px minmax(0,1fr); gap: 16px; padding: 22px 18px; }
+  .product-finale__icon { width: 52px; height: 52px; border-radius: 12px; }
+  .product-finale .product-finale__title { font-size: 22px; }
+  .product-finale__name { font-size: 13px; }
+}

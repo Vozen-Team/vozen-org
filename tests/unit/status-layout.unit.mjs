@@ -44,7 +44,7 @@ test('each status card keeps explanations and help in one closed disclosure', ()
     const nested = walk(details[0]);
     assert.ok(nested.some(node => has(node, 'data-history-measurements')));
     assert.ok(nested.some(node => /Scope$/.test(attr(node, 'data-i18n') || '')));
-    assert.ok(nested.some(node => node.tagName === 'a' && attr(node, 'href')?.startsWith('docs/')));
+    assert.ok(!nested.some(node => node.tagName === 'a' && attr(node, 'href')?.startsWith('docs/')));
     const summary = details[0].childNodes.find(node => node.tagName === 'summary');
     assert.ok(walk(summary).some(node => has(node, 'data-status-latency')));
   }
