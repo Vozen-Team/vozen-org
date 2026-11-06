@@ -222,6 +222,45 @@
     return value ? t("dashboard.on") : t("dashboard.off");
   }
 
+  function botProfileImageUrl(profile, guild, key) {
+    var hash = profile[key];
+    if (/^(a_)?[0-9a-f]{32}$/.test(hash || "") && /^\d+$/.test(profile.botId) && /^\d+$/.test(guild.id)) {
+      return "https://cdn.discordapp.com/guilds/" + guild.id + "/users/" + profile.botId + "/" + key + "s/" + hash + ".png?size=512";
+    }
+    if (key === "avatar" && /^(a_)?[0-9a-f]{32}$/.test(profile.defaultAvatar || "") && /^\d+$/.test(profile.botId)) {
+      return "https://cdn.discordapp.com/avatars/" + profile.botId + "/" + profile.defaultAvatar + ".png?size=256";
+    }
+    return key === "avatar" ? "/assets/settings-tts.png" : "";
+  }
+
+  function overviewCount(value) {
+    return new Intl.NumberFormat(lang()).format(Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0);
+  }
+
+  function overviewLeaderboardHtml(data, metric) {
+    var leaderboard = data.leaderboard;
+    var rows = leaderboard && Array.isArray(leaderboard.entries) ? leaderboard.entries.filter(function (entry) { return entry && typeof entry === "object"; }) : [];
+    var streak = metric === "streak";
+    var field = streak ? "streak" : "count";
+    function score(entry, key) { return Number.isFinite(entry[key]) ? Math.max(0, Math.floor(entry[key])) : 0; }
+    rows.sort(function (a, b) {
+      return score(b, field) - score(a, field) || score(b, streak ? "count" : "streak") - score(a, streak ? "count" : "streak") || String(a.name || "").localeCompare(String(b.name || ""));
+    });
+    var titleId = "ttsLeaderboard-" + metric;
+    var icon = streak ? "🔥" : "💬";
+    var body = rows.slice(0, 5).map(function (entry, index) {
+      var name = String(entry.name || t("dashboard.member"));
+      var rank = index < 3 ? '<span class="tts-rank-medal" role="img" aria-label="' + esc(t("dashboard.rank")) + ' ' + (index + 1) + '">' + ["🥇", "🥈", "🥉"][index] + '</span>' : String(index + 1);
+      var value = overviewCount(score(entry, field));
+      return '<tr><td class="tts-rank">' + rank + '</td><th scope="row"><span class="tts-member"><span class="tts-member-avatar" aria-hidden="true">' + esc(guildInitials(name)) + '</span><span>' + esc(name) + '</span></span></th><td><span class="tts-score" title="' + esc(value) + '"><span aria-hidden="true">' + icon + '</span><span class="tts-score-value">' + value + '</span></span></td></tr>';
+    }).join("");
+    return '<section class="workspace-card tts-leaderboard" data-metric="' + metric + '" aria-labelledby="' + titleId + '"><header><div class="tts-leaderboard-heading"><h2 id="' + titleId + '"><span class="tts-leaderboard-symbol" aria-hidden="true">' + icon + '</span><span>' + esc(t(streak ? "dashboard.streakLeaderboard" : "dashboard.messageLeaderboard")) + '</span></h2><p>' + esc(t(streak ? "dashboard.streakLeaderboardHint" : "dashboard.messageLeaderboardHint")) + '</p></div><div class="tts-leaderboard-controls">' +
+      (leaderboard && leaderboard.demo === true ? '<span class="tts-preview-label">' + esc(t("dashboard.previewData")) + '</span>' : '') +
+      '<div class="tts-leaderboard-segments" role="group" aria-label="' + esc(t("dashboard.serverLeaderboard")) + '"><button type="button" data-leaderboard-metric="streak" aria-pressed="' + streak + '"><span aria-hidden="true">🔥</span> ' + esc(t("dashboard.streaks")) + '</button><button type="button" data-leaderboard-metric="messages" aria-pressed="' + !streak + '"><span aria-hidden="true">💬</span> ' + esc(t("dashboard.messages")) + '</button></div></div></header>' + (rows.length ? '<table><thead><tr><th scope="col" aria-label="' + esc(t("dashboard.rank")) + '">#</th><th scope="col">' + esc(t("dashboard.member")) + '</th><th scope="col">' + esc(t(streak ? "dashboard.days" : "dashboard.messages")) + '</th></tr></thead><tbody>' + body + '</tbody></table>' :
+      '<p class="tts-leaderboard-empty">' + esc(t(leaderboard ? "dashboard.leaderboardEmpty" : "dashboard.leaderboardUnavailable")) + '</p>') +
+      '<footer>' + esc(t(streak ? "dashboard.streakLeaderboardScope" : "dashboard.leaderboardScope")) + '</footer></section>';
+  }
+
   function renderTtsOverview() {
     if (!workspaceState.guild || !workspaceState.data || !workspaceState.data.config) {
       setTtsView("overview", false);
@@ -230,31 +269,62 @@
     }
     showWorkspaceShell();
     var cfg = workspaceState.data.config;
-    var hasChannel = !!cfg.ttsChannelId;
-    var voice = cfg.defaultVoice || t("dashboard.notSelected");
-    var locale = cfg.locale || t("dashboard.defaultLocale");
+    var data = workspaceState.data;
+    function optionLabel(key, value, fallback) {
+      var options = data.options && data.options[key];
+      var match = Array.isArray(options) && options.find(function (option) { return String(option.id) === String(value); });
+      return match ? match.label : value || fallback;
+    }
+    var summaries = {
+      reading: optionLabel("channels", cfg.ttsChannelId, t("dashboard.notSelected")) + " · " + optionLabel("voices", cfg.defaultVoice, t("dashboard.voiceGlobal")),
+      community: t("dashboard.streak") + " " + boolLabel(cfg.streakAnnounce) + " · " + t("dashboard.sounds") + " " + boolLabel(cfg.soundboard),
+      profiles: t("dashboard.profileCount").replace("{n}", overviewCount(Array.isArray(data.channelProfiles) ? data.channelProfiles.length : 0)),
+      limits: t("dashboard.limitsSummary").replace("{chars}", overviewCount(cfg.maxChars)).replace("{rate}", overviewCount(cfg.ratePerMin))
+    };
+    var choices = Object.keys(SETTINGS_SECTIONS).map(function (section) {
+      var label = t("dashboard." + SETTINGS_SECTIONS[section]);
+      return '<div class="tts-choice"><div><h3>' + esc(label) + '</h3><p>' + esc(summaries[section]) + '</p></div><a href="#/settings/' + section + '" data-overview-section="' + section + '" aria-label="' + esc(t("dashboard.editSection").replace("{section}", label)) + '">' + esc(t("dashboard.edit")) + ' <span aria-hidden="true">→</span></a></div>';
+    }).join("");
     setTtsView("overview", false);
     view(
-      '<div class="workspace-heading">' +
-        '<p class="workspace-heading__eyebrow">' + esc(t("dashboard.overviewEyebrow")) + '</p>' +
-        '<h1>' + esc(t("dashboard.overviewTitle")) + '</h1>' +
-        '<p>' + esc(t("dashboard.overviewIntro").replace("{name}", workspaceState.guild.name)) + '</p>' +
-      '</div>' +
-      '<div class="workspace-overview-grid">' +
-        '<section class="workspace-card workspace-checklist" aria-labelledby="ttsReadyTitle">' +
-          '<div><p class="workspace-heading__eyebrow">' + esc(t("dashboard.readiness")) + '</p><h2 id="ttsReadyTitle">' + esc(t("dashboard.voiceSetup")) + '</h2></div>' +
-          '<div class="workspace-checklist__item"><span class="workspace-status-dot"></span><div><strong>' + esc(t("dashboard.readingChannel")) + '</strong><span>' + esc(hasChannel ? t("dashboard.configuredReady") : t("dashboard.notSelected")) + '</span></div></div>' +
-          '<div class="workspace-checklist__item"><span class="workspace-status-dot"></span><div><strong>' + esc(t("dashboard.voice")) + '</strong><span>' + esc(voice + " · " + locale) + '</span></div></div>' +
-          '<div class="workspace-checklist__item"><span class="workspace-status-dot"></span><div><strong>' + esc(t("dashboard.safety")) + '</strong><span>' + esc(t("dashboard.autoReadStatus").replace("{value}", boolLabel(cfg.autoread)) + " · " + t("dashboard.antiSpamStatus").replace("{value}", boolLabel(cfg.antispam))) + '</span></div></div>' +
-        '</section>' +
-        '<aside class="workspace-card workspace-card--soft workspace-checklist" aria-labelledby="ttsSummaryTitle">' +
-          '<div><p class="workspace-heading__eyebrow">' + esc(t("dashboard.serverSnapshot")) + '</p><h2 id="ttsSummaryTitle">' + esc(workspaceState.guild.name) + '</h2></div>' +
-          '<div class="workspace-checklist__item"><div><strong>' + esc(t("dashboard.textInVoice")) + '</strong><span>' + esc(boolLabel(cfg.textInVoice)) + '</span></div></div>' +
-          '<div class="workspace-checklist__item"><div><strong>' + esc(t("dashboard.readBotMessages")) + '</strong><span>' + esc(boolLabel(cfg.readBots)) + '</span></div></div>' +
-          '<div class="workspace-checklist__item"><div><strong>' + esc(t("dashboard.recording")) + '</strong><span>' + esc(t("dashboard.noRecording")) + '</span></div></div>' +
-        '</aside>' +
-      '</div>'
+      '<div class="tts-overview"><header class="tts-overview-heading"><h1>' + esc(t("dashboard.overview")) + '</h1></header><div class="tts-overview-layout"><div class="tts-overview-rankings" id="ttsLeaderboardTitle">' + overviewLeaderboardHtml(data, workspaceState.leaderboardMetric || "streak") + '</div>' +
+        '<aside class="tts-overview-side"><section class="workspace-card tts-overview-choices" aria-labelledby="ttsChoicesTitle"><h2 id="ttsChoicesTitle">' + esc(t("dashboard.yourChoices")) + '</h2>' + choices + '</section>' +
+          '<a href="#/bot-profile" class="workspace-card tts-overview-profile" aria-label="' + esc(t("dashboard.openBotProfile")) + '"><div class="tts-overview-banner"><img alt="" hidden></div><div class="tts-overview-profile-body"><img class="tts-overview-avatar" src="/assets/settings-tts.png" alt=""><div><span class="tts-overview-profile-label">' + esc(t("dashboard.botProfile")) + '</span><div class="tts-overview-profile-name"><strong>Vozen TTS</strong><span class="tts-app-badge">APP</span></div><small role="status">' + esc(t("dashboard.botProfileLoading")) + '</small></div></div><span class="tts-profile-overlay" aria-hidden="true">' + esc(t("dashboard.openBotProfile")) + ' →</span></a>' +
+        '</aside></div></div>'
     );
+    var rankings = root.querySelector(".tts-overview-rankings");
+    rankings.addEventListener("click", function (event) {
+      var button = event.target.closest("[data-leaderboard-metric]");
+      if (!button || button.getAttribute("aria-pressed") === "true") return;
+      workspaceState.leaderboardMetric = button.dataset.leaderboardMetric;
+      rankings.innerHTML = overviewLeaderboardHtml(data, workspaceState.leaderboardMetric);
+      rankings.querySelector('[data-leaderboard-metric="' + workspaceState.leaderboardMetric + '"]').focus({ preventScroll: true });
+    });
+    root.querySelectorAll("[data-overview-section]").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        workspaceState.settingsSection = link.dataset.overviewSection;
+        navigateTtsView("settings");
+      });
+    });
+    var card = root.querySelector(".tts-overview-profile");
+    card.querySelector(".tts-overview-avatar").addEventListener("error", function (event) { event.currentTarget.src = "/assets/settings-tts.png"; }, { once: true });
+    card.querySelector(".tts-overview-banner img").addEventListener("error", function (event) { event.currentTarget.hidden = true; });
+    card.addEventListener("click", function (event) { event.preventDefault(); navigateTtsView("bot-profile"); });
+    fetchWithTimeout(API + "/api/dashboard/guild/" + workspaceState.guild.id + "/bot-profile", { headers: authHeaders() }).then(function (res) {
+      if (!res.ok) throw new Error("profile-load");
+      return res.json();
+    }).then(function (profile) {
+      if (!card.isConnected) return;
+      card.querySelector("strong").textContent = profile.nick || profile.defaultName || "Vozen TTS";
+      card.querySelector(".tts-overview-avatar").src = botProfileImageUrl(profile, workspaceState.guild, "avatar");
+      var banner = botProfileImageUrl(profile, workspaceState.guild, "banner");
+      var img = card.querySelector(".tts-overview-banner img");
+      if (banner) { img.src = banner; img.hidden = false; }
+      card.querySelector('[role="status"]').hidden = true;
+    }).catch(function () {
+      if (card.isConnected) card.querySelector('[role="status"]').textContent = t("dashboard.profilePreviewFailed");
+    });
     onLang = renderTtsOverview;
   }
 
@@ -1153,14 +1223,7 @@
     }
     function imageUrl(key) {
       if (uploads[key]) return uploads[key];
-      var hash = saved[key];
-      if (/^(a_)?[0-9a-f]{32}$/.test(hash || "") && /^\d+$/.test(saved.botId) && /^\d+$/.test(guild.id)) {
-        return "https://cdn.discordapp.com/guilds/" + guild.id + "/users/" + saved.botId + "/" + key + "s/" + hash + ".png?size=512";
-      }
-      if (key === "avatar" && /^(a_)?[0-9a-f]{32}$/.test(saved.defaultAvatar || "") && /^\d+$/.test(saved.botId)) {
-        return "https://cdn.discordapp.com/avatars/" + saved.botId + "/" + saved.defaultAvatar + ".png?size=256";
-      }
-      return key === "avatar" ? "/assets/settings-tts.png" : "";
+      return botProfileImageUrl(saved, guild, key);
     }
     function refresh() {
       if (!saved || !section.isConnected) return;

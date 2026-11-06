@@ -46,7 +46,16 @@ for (const [width, locale] of [[390, 'pt'], [1440, 'en']]) {
     await expect(page.locator('.tts-profile-bio b')).toHaveCount(0);
     const apply = form.locator('[type=submit]');
     await expect(apply).toBeDisabled();
+    await expect(apply).toHaveCSS('opacity','1');
+    const disabledBackground=await apply.evaluate(button=>getComputedStyle(button).backgroundColor);
+    await apply.hover();
+    await expect(apply).toHaveCSS('background-color',disabledBackground);
     await page.locator('#ttsProfileNick').fill('Vozen QA');
+    await page.mouse.move(0,0);
+    const primaryBackground=await apply.evaluate(button=>getComputedStyle(button).backgroundColor);
+    const secondaryBackground=await form.locator('[data-reset]').evaluate(button=>getComputedStyle(button).backgroundColor);
+    expect(primaryBackground).not.toBe(disabledBackground);
+    expect(secondaryBackground).not.toBe(primaryBackground);
     const avatarInput = form.locator('[name=avatar]');
     const file = { name: 'avatar.png', mimeType: 'image/png', buffer: Buffer.from(image, 'base64') };
     const avatar = page.locator('.tts-profile-avatar img');
