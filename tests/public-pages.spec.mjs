@@ -23,7 +23,7 @@ test('the shared header stays pinned and darkens consistently across public page
   await page.route('https://api.vozen.org/api/dashboard/guilds', route => route.fulfill({ json: { guilds: [] } }));
   for (const width of [375, 1440]) {
     await page.setViewportSize({ width, height: 700 });
-    for (const route of ['/', '/tts/', '/helper/', '/commands/', '/premium.html', '/status.html', '/account/', '/dashboard.html', '/docs/', '/docs/tts/getting-started/install/', '/guides/discord-without-a-mic/', '/privacy.html', '/terms.html']) {
+    for (const route of ['/', '/tts/', '/helper/', '/commands/', '/premium.html', '/status.html', '/account/', '/dashboard.html', '/guides/discord-without-a-mic/', '/privacy.html', '/terms.html']) {
       await test.step(`${route} at ${width}px`, async () => {
         await page.goto(route);
         // Dashboard view initialization resets scroll on its next animation frame.
@@ -360,7 +360,7 @@ test('marketing and Docs language menus use all ten bundled SVG flags', async ({
   expect(marketingFlags.every((src) => /^\/assets\/flags-v2\/(gb|pt|fr|es|de|tr|sa|tw|ru|kr)\.svg$/.test(src || ''))).toBe(true);
   await expect(page.locator('#langBtnFlag img')).toHaveAttribute('src', '/assets/flags-v2/gb.svg');
 
-  await page.goto('/docs/', { waitUntil: 'networkidle' });
+  await page.goto('/music/', { waitUntil: 'networkidle' });
   const docsMenu = page.locator('[data-vozen-docs-language-menu]');
   await docsMenu.locator('[data-vozen-docs-language-button]').click();
   const docsFlags = await docsMenu.locator('[data-vozen-docs-language-panel] img').evaluateAll(async (nodes) => {
@@ -384,10 +384,10 @@ test('the localized Helper page exposes translated product copy and a real acces
   await expect(questions).toHaveCount(5);
 
   const firstQuestion = questions.first();
-  await expect(firstQuestion.locator('summary')).toContainText('O Vozen Helper já está disponível?');
+  await expect(firstQuestion.locator('summary')).toContainText('Como configuro tickets privados?');
   await firstQuestion.locator('summary').click();
   await expect(firstQuestion).toHaveAttribute('open', '');
-  await expect(firstQuestion.locator('p')).toContainText('O Helper está disponível publicamente');
+  await expect(firstQuestion.locator('p')).toContainText('publica um painel de tickets');
 });
 
 test('the language selector translates the current product page without navigating', async ({ page }) => {
@@ -412,7 +412,12 @@ test('mobile navigation opens without obscuring the page or losing keyboard focu
   await expect(page.locator('.nav__links')).toHaveCSS('display', 'grid');
   const menuIcons = await page.locator('.nav__links a').evaluateAll(links => links.map(link => getComputedStyle(link, '::before').backgroundImage));
   expect(menuIcons).toHaveLength(6);
-  expect(menuIcons.every(icon => icon.includes('data:image/svg+xml'))).toBe(true);
+  expect(menuIcons.slice(0, 3)).toEqual([
+    expect.stringContaining('/assets/settings-tts.png'),
+    expect.stringContaining('/assets/music/avatar.webp'),
+    expect.stringContaining('/assets/settings-helper.png'),
+  ]);
+  expect(menuIcons.slice(3).every(icon => icon.includes('data:image/svg+xml'))).toBe(true);
   const currentDot = await page.locator('.nav__links a[aria-current="page"]').evaluate(link => getComputedStyle(link, '::after').width);
   expect(currentDot).toBe('6px');
   await page.keyboard.press('Escape');

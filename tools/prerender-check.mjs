@@ -40,7 +40,7 @@ for (const file of walkHtml('site')) {
   count++;
 }
 const commands = fs.readFileSync('site/commands/index.html', 'utf8');
-assert.ok(commands.includes('/setup') && commands.includes('/ticket-panel'), 'Raw command catalogue must include both TTS and Helper');
+assert.ok(commands.includes('/setup') && commands.includes('id="catalogue-music"') && commands.includes('/play') && commands.includes('/ticket-panel'), 'Raw command catalogue must include TTS, Music and Helper');
 const robots = fs.readFileSync('site/robots.txt', 'utf8');
 assert.match(robots, /Sitemap: https:\/\/vozen.org\/sitemap.xml/);
 console.log(`Raw HTML, metadata and navigation verified for ${count} public pages.`);

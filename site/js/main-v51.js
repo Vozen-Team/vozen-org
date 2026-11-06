@@ -1540,9 +1540,11 @@
     if (!btn) return;
     const u = data && data.user ? data.user : null;
     if (!u) {
+      // Keep the prerendered translation while the locale dictionary loads.
+      if (!btn.classList.contains("nav__login--account")) return;
       btn.classList.remove("nav__login--account");
       btn.removeAttribute("aria-label");
-      btn.innerHTML = `${DISCORD_MARK}<span data-i18n="nav.login">${t("nav.login")}</span>`;
+      btn.innerHTML = `${DISCORD_MARK}<span data-i18n="nav.login">${esc(DICT[lang]?.["nav.login"] || DICT.en?.["nav.login"] || "Log in")}</span>`;
       return;
     }
     btn.classList.add("nav__login--account");

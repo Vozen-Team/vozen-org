@@ -53,12 +53,21 @@ const helperPage = {
   description: 'helper.landing.heroLede',
 };
 
+test('localized navigation is correct before the scripts run', () => {
+  const source = fs.readFileSync('site/helper/index.html', 'utf8');
+  const catalogue = readCatalogue('pt');
+  const html = localize(source, { code: 'pt', html: 'pt-PT' }, helperPage, catalogue);
+  assert.match(html, /id="langBtnFlag"><img[^>]+src="\/assets\/flags-v2\/pt\.svg"/);
+  assert.match(html, /id="langBtnName">Português</);
+  assert.ok(html.includes(`data-i18n="ecosystem.status">${catalogue.messages['ecosystem.status']}</a>`));
+});
+
 test('translation map includes visible copy and FAQ pairs', () => {
   const catalogue = readCatalogue('pt');
   const translations = translationMap(catalogue);
 
-  assert.equal(translations.get('The work around your server, made lighter.'), 'O trabalho à volta do teu servidor, mais leve.');
-  assert.equal(translations.get('Is Vozen Helper available now?'), 'O Vozen Helper já está disponível?');
+  assert.equal(translations.get('Moderation, tickets and community. One bot.'), 'Moderação, tickets e comunidade. Um só bot.');
+  assert.equal(translations.get('How do I set up private tickets?'), 'Como configuro tickets privados?');
   assert.equal(translations.has('Vozen'), false);
 });
 
@@ -81,8 +90,8 @@ test('Helper localization is static, indexable, complete, and aligned with its s
   assert.match(html, /<link rel="canonical" href="https:\/\/vozen\.org\/pt\/helper\/">/);
   assert.match(html, /O teu servidor\./);
   assert.match(html, /data-helper-cards/);
-  assert.match(html, /O Vozen Helper já está disponível\?/);
-  assert.doesNotMatch(html, /The work around your server, made lighter\./);
+  assert.ok(html.includes(catalogue.helperFaq[0][0]));
+  assert.match(html, /class="helper-hero__lede"[^>]*>Moderação, tickets e comunidade\. Um só bot\./);
 
   const structured = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
     .map((match) => JSON.parse(match[1]));
@@ -101,7 +110,7 @@ test('Arabic localization sets the document direction', () => {
   const html = localize(source, { code: 'ar', html: 'ar' }, helperPage, readCatalogue('ar'));
 
   assert.match(html, /<html[^>]+dir="rtl"/);
-  assert.match(html, /هل Vozen Helper متاح الآن؟/);
+  assert.ok(html.includes('كيف أُعدّ تذاكر الدعم الخاصة؟'));
 });
 
 test('the checked build covers every generated locale route', () => {

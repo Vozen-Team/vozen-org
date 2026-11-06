@@ -234,7 +234,7 @@
         .wordmark { border-right: 0; }
         .nav__links { display: none; }
         .nav { justify-content: flex-end; }
-        .hero__grid, .section__grid { grid-template-columns: 1fr; }
+        .hero__grid, .section__grid { grid-template-columns: minmax(0, 1fr); }
         .hero__story, .section__intro { border-right: 0; border-bottom: 1px solid var(--ink); }
         h1 { font-size: clamp(66px, 19vw, 120px); }
         .closing { grid-template-columns: 1fr; align-items: start; }
@@ -247,7 +247,8 @@
         .hero__story { padding: 44px 20px 34px; }
         .dek { margin-top: 28px; }
         .sample { padding: 28px 20px; }
-        .features, .pricing { grid-template-columns: 1fr; }
+        .section__intro { padding-inline: 20px; }
+        .features, .pricing { grid-template-columns: minmax(0, 1fr); }
         .feature, .feature:nth-child(even), .feature:nth-last-child(-n+2) { min-height: 0; border-right: 0; border-bottom: 1px solid var(--rule); }
         .feature:last-child { border-bottom: 0; }
         .price { padding: 34px 24px; border-right: 0; border-bottom: 1px solid var(--ink); }

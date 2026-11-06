@@ -227,7 +227,7 @@ main {
 
 .eco-products {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   padding-bottom: 80px;
 }
@@ -321,6 +321,8 @@ main {
   box-shadow: 0 18px 32px -16px rgba(53, 221, 197, .9);
   transform: translateY(-2px) rotate(-2deg) scale(1.04);
 }
+
+.eco-products img.eco-product__icon { object-fit: contain; background: transparent; box-shadow: none; }
 
 .eco-helper-mark {
   position: relative;
@@ -727,7 +729,7 @@ main {
 .eco-home-hero__primary:hover, .eco-home-hero__secondary:hover { transform: translateY(-2px); }
 .eco-home-hero__primary:focus-visible, .eco-home-hero__secondary:focus-visible { outline: 2px solid var(--aqua); outline-offset: 5px; }
 
-/* Opposite planets share one path and pause together during interaction. */
+/* Three evenly spaced planets share one path and pause together. */
 .eco-orbit { --orbit-node-w: 144px; --orbit-node-h: 106px; position: relative; isolation: isolate; width: 100%; max-width: 540px; height: clamp(440px, 34vw, 460px); margin-inline: auto; }
 .eco-orbit__tracks { position: absolute; inset: 0; pointer-events: none; }
 .eco-orbit__tracks::before { content: ""; position: absolute; inset: 5%; border-radius: 50%; background: radial-gradient(ellipse, rgba(102,114,255,.12), rgba(53,221,197,.035) 50%, transparent 72%); }
@@ -748,22 +750,25 @@ main {
 .eco-orbit__core strong { font: 500 18px/1 var(--display); letter-spacing: -.04em; }
 .eco-orbit__node { position: absolute; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; width: var(--orbit-node-w); height: var(--orbit-node-h); padding: 14px; border: 1px solid rgba(151,161,222,.32); border-radius: 16px; background: #111525; color: var(--text); text-decoration: none; transition: border-color 180ms ease-out, background-color 180ms ease-out; }
 .eco-orbit__node--tts { top: 10%; inset-inline-start: 0; }
-.eco-orbit__node--helper { bottom: 10%; inset-inline-end: 0; }
+.eco-orbit__node--music { top: 10%; inset-inline-end: 0; }
+.eco-orbit__node--helper { bottom: 10%; inset-inline: 0; margin-inline: auto; }
 @supports (offset-path: ellipse(10px 20px at 50% 50%)) {
   .eco-orbit__node {
     inset: 0 auto auto 0;
+    margin: 0;
     offset-path: ellipse(calc(50% - var(--orbit-node-w) / 2 - 6px) calc(50% - var(--orbit-node-h) / 2 - 6px) at 50% 50%);
     offset-anchor: center;
     offset-rotate: 0deg;
-    animation: eco-planet-travel 44s cubic-bezier(.37,0,.63,1) infinite;
+    animation: eco-planet-travel 44s linear infinite;
+    animation-delay: calc(-44s * var(--orbit-phase));
     animation-play-state: paused;
   }
-  .eco-orbit__node--tts { offset-distance: 62.5%; animation-delay: -22s; }
-  .eco-orbit__node--helper { offset-distance: 12.5%; }
+  .eco-orbit__node--tts { --orbit-phase: .583333; offset-distance: 58.3333%; }
+  .eco-orbit__node--music { --orbit-phase: .916667; offset-distance: 91.6667%; }
+  .eco-orbit__node--helper { --orbit-phase: .25; offset-distance: 25%; }
 }
 .eco-orbit__node-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.eco-orbit__icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: var(--brand); }
-.eco-orbit__icon .eco-helper-character { width: 32px; height: 32px; }
+.eco-orbit__icon { display: block; width: 40px; height: 40px; border-radius: 11px; object-fit: contain; }
 .eco-orbit__arrow { color: var(--muted); }
 .eco-orbit__node strong { font: 600 16px/1.4 var(--body); white-space: nowrap; }
 .eco-orbit__node:hover { border-color: var(--aqua); background: #182034; }
@@ -774,7 +779,7 @@ main {
 .eco-orbit__play-icon, .eco-orbit__pause[aria-pressed="true"] .eco-orbit__pause-icon { display: none; }
 .eco-orbit__pause[aria-pressed="true"] .eco-orbit__play-icon { display: block; }
 @keyframes eco-orbit-turn { 0% { transform: rotate(0deg); } 25% { transform: rotate(90deg); } 50% { transform: rotate(180deg); } 75% { transform: rotate(270deg); } 100% { transform: rotate(360deg); } }
-@keyframes eco-planet-travel { 0% { offset-distance: 12.5%; } 25% { offset-distance: 37.5%; } 50% { offset-distance: 62.5%; } 75% { offset-distance: 87.5%; } 100% { offset-distance: 112.5%; } }
+@keyframes eco-planet-travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
 @media (max-width: 1000px) {
   .eco-home-hero { grid-template-columns: 1fr; gap: 32px; }
   .eco-home-hero__copy { max-width: 680px; margin-inline: auto; text-align: center; }
@@ -815,9 +820,9 @@ main {
   padding-top: 32px;
 }
 
-.eco-products .eco-product { min-height: 0; }
-.eco-products .eco-product__copy { margin-top: 0; padding-block: 24px; }
-.eco-products .eco-product__action { margin-top: auto; font-size: 16px; }
+.eco-products .eco-product { min-height: 0; padding-block: 24px; }
+.eco-products .eco-product__copy { margin-top: 0; padding-block: 16px; }
+.eco-products .eco-product__action { margin-top: auto; padding-top: 14px; font-size: 16px; }
 .eco-products .eco-product__action span { font-size: inherit; }
 .eco-products .eco-product__action span:last-child { font-size: 22px; }
 

@@ -1,6 +1,20 @@
 {
   "locale": "ko",
   "messages": {
+    "helper.landing.demoTitle": "보호 기능을 체험하세요.",
+    "helper.landing.demoPrompt": "스팸은 지우고 대화는 이어가세요.",
+    "helper.landing.demoTag": "인터랙티브 데모",
+    "helper.landing.demoMessage1": "8시에 같이 게임할까요?",
+    "helper.landing.demoMessage2": "좋아요. 그때 봐요.",
+    "helper.landing.demoBlocked": "스팸 차단됨",
+    "helper.landing.demoSend": "스팸 보내기",
+    "helper.landing.demoSending": "보내는 중…",
+    "helper.landing.demoAgain": "다시 보내기",
+    "helper.landing.demoChecking": "메시지 확인 중…",
+    "commands.groupPlayback": "재생",
+    "commands.groupLibrary": "내 라이브러리",
+    "commands.generic.playback": "{command} 명령어로 음악 재생을 제어하세요.",
+    "commands.generic.library": "{command} 명령어로 곡 평가를 관리하세요.",
     "home.proof.aria": "Vozen TTS 커뮤니티 및 Top.gg 평점",
     "home.proof.servers": "개 Discord 서버",
     "home.proof.rating": "Top.gg 평점",
@@ -47,7 +61,7 @@
     "feat.7.t": "음성 효과",
     "feat.7.d": "로봇, 에코, 저음, 다람쥐, 라디오, 악마… 당신의 메시지가 변신합니다. 두 가지 효과는 무료, 여덟 가지 전부는 Premium으로",
     "feat.8.t": "공정한 Premium",
-    "feat.8.d": "월 €6.99로 Kokoro와 서버용 부가 기능을 잠금 해제합니다. 필수 Piper 핵심 기능은 계속 무료입니다",
+    "feat.8.d": "월 €3.99로 Kokoro와 서버용 부가 기능을 잠금 해제합니다. 필수 Piper 핵심 기능은 계속 무료입니다",
     "feat.9.t": "오픈 소스",
     "feat.9.d": "Vozen의 모든 코드는 GitHub에 공개되어 있습니다. 직접 검토하고, 배우고, PR을 열어보세요 — 비밀도, 스파이웨어도 없습니다",
     "lang.eyebrow": "언어",
@@ -84,7 +98,10 @@
     "price.choose.sub": "핵심 기능은 무료로 쓰고, 나만 업그레이드하거나 서버 전체에 Premium을 열어 주세요",
     "price.free.pitch": "모든 핵심 기능. 카드도 체험판도 필요 없습니다",
     "price.plus.pitch": "프리미엄 음성 혜택이 어느 서버에서든 나를 따라옵니다",
-    "price.pro.pitch": "커뮤니티 전체에 완전한 Vozen 경험을 열어 주세요",
+    "price.pro.pitch": "TTS + Music + Helper.",
+    "price.pro.audience": "서버의 모든 멤버를 위한 Premium 혜택.",
+    "price.pro.pitchMusic": "Music + TTS + Helper.",
+    "price.pro.pitchHelper": "Helper + Music + TTS.",
     "price.compare.title": "모든 차이 비교",
     "price.compare.sub": "숨김 없이 모든 플랜을 비교하세요",
     "price.checkout": "결제 계속하기",
@@ -95,12 +112,12 @@
     "price.plus.badge": "개인용",
     "price.plus.name": "Vozen Plus",
     "price.plus.per": "/ 월 · 사용자당",
-    "price.plus.note": "연 €37.99 (~20% 절약) · Ko-fi에서 구매",
+    "price.plus.note": "연 €18.99 (~50% 절약) · Ko-fi에서 구매",
     "price.pro.badge": "PREMIUM",
     "price.pro.name": "Vozen Premium",
     "price.pro.per": "/ 월 · 2개 서버",
     "price.pro.deal": "🎁 서버 2개. 구독 하나",
-    "price.pro.note": "연 €66.99 (~20% 절약) · Ko-fi에서 구매",
+    "price.pro.note": "연 €37.99 (~43% 절약) · Ko-fi에서 구매",
     "faq.eyebrow": "자주 묻는 질문",
     "faq.title": "궁금증, 해결해 드립니다",
     "reviews.eyebrow": "독립 리뷰",
@@ -127,7 +144,7 @@
     "price.max.per": "/ 월 · 서버 5개",
     "price.max.perYear": "/ 년 · 서버 5개",
     "price.max.deal": "🎁 서버 5개. 구독 하나",
-    "price.max.note": "€143.99/년 (~20% 절약) · Ko-fi에서 구매",
+    "price.max.note": "€70.99/년 (~47% 절약) · Ko-fi에서 구매",
     "price.pro.seats2": "서버 2개",
     "price.pro.seats5": "서버 5개",
     "price.m.1": "38개 Piper 음성",
@@ -165,6 +182,7 @@
     "price.m.22": "Google HD 음성",
     "price.m.24": "선택한 각 서버의 Vozen Helper Premium",
     "price.m.23": "실시간 음성 텍스트 변환",
+    "price.m.25": "TTS 봇 아바타 및 배너 맞춤 설정",
     "price.includesFree": "Free의 모든 기능",
     "ecosystem.login": "로그인",
     "ecosystem.loginAria": "Vozen에 로그인",
@@ -186,9 +204,9 @@
     "price.billingPeriod": "결제 기간",
     "price.bundleAria": "Vozen 번들",
     "price.bundleEyebrow": "VOZEN 번들",
-    "price.bundleTitle": "봇 두 개. 구독 하나.",
-    "price.bundleText": "선택한 커뮤니티를 위한 Premium TTS 및 Helper입니다.",
-    "price.bundleValue": "TTS + HELPER",
+    "price.bundleTitle": "봇 세 개. 구독 하나.",
+    "price.bundleText": "선택한 서버의 모든 멤버가 TTS, Music, Helper Premium을 이용할 수 있습니다.",
+    "price.bundleValue": "TTS + MUSIC + HELPER",
     "price.freeHighlights": "무료 요금제 주요 기능",
     "price.digital": "디지털 구독 · 배송 없음",
     "price.checkoutLater": "결제가 다시 활성화되면 결제가 돌아옵니다.",
@@ -208,7 +226,7 @@
     "premium.plusHelperNote": "Helper는 무료 서버 제한을 유지하며 Plus는 TTS만 업그레이드합니다.",
     "premium.premiumPitch": "선택한 각 서버의 모든 멤버에게 Premium TTS와 Helper를 제공합니다.",
     "premium.bundleAria": "Premium 번들",
-    "premium.bundleTitle": "봇 두 개. 구독 하나.",
+    "premium.bundleTitle": "봇 세 개. 구독 하나.",
     "premium.seat2": "서버 2개",
     "premium.seat5": "서버 5개",
     "premium.premiumScope": "하나의 구독으로 선택한 서버와 커뮤니티를 지원합니다.",
@@ -321,7 +339,7 @@
     "home.eyebrow": "Vozen 생태계",
     "home.heroTitle1": "하나의 집.",
     "home.heroTitle2": "모든 서버 도구.",
-    "home.heroLead": "두 개의 Discord 봇. 메시지에 목소리를, 서버에 도움을.",
+    "home.heroLead": "세 가지 Discord 봇. 서버를 위한 음성, 음악, 도구.",
     "home.exploreProducts": "제품 살펴보기",
     "home.viewCommands": "명령어 보기",
     "home.mapAria": "Vozen 생태계 지도",
@@ -332,6 +350,8 @@
     "home.oneEcosystem": "하나의 생태계",
     "home.productsAria": "Vozen 제품",
     "home.ttsTitle": "TTS",
+    "home.musicLead": "Discord 통화에 음악을 더하세요.",
+    "home.exploreMusic": "Music 살펴보기",
     "home.helperTitle": "Helper",
     "home.ttsLead": "텍스트 메시지를 음성 채널에서 읽어 줍니다.",
     "home.helperLead": "관리, 티켓, 역할을 하나의 봇으로.",
@@ -487,7 +507,6 @@
     "ecosystem.ecosystem": "생태계",
     "ecosystem.tts": "Vozen TTS",
     "ecosystem.helper": "Vozen Helper",
-    "ecosystem.docs": "문서",
     "ecosystem.commands": "명령어",
     "ecosystem.accountAria": "{name}님의 Vozen 계정 열기",
     "helper.moduleCore": "핵심",
@@ -497,7 +516,15 @@
     "helper.moduleCommunity": "커뮤니티",
     "helper.moduleAutomation": "자동화",
     "helper.moduleInsights": "인사이트",
-    "helper.moduleStudio": "스튜디오"
+    "helper.moduleStudio": "스튜디오",
+    "stat.helperOverview": "Vozen Helper 한눈에 보기",
+    "stat.setupSteps": "설정 단계",
+    "stat.freeCore": "핵심 기능",
+    "stat.helperProtections": "보호 기능",
+    "stat.helperCommands": "명령어",
+    "finale.musicTitle": "통화에 음악을 더하세요",
+    "finale.helperTitle": "서버에 든든한 도우미를 더하세요",
+    "finale.freeNote": "핵심 기능은 무료. 카드 등록 없이."
   },
   "commands": {
     "general": [
@@ -667,8 +694,8 @@
   },
   "helperFaq": [
     [
-      "Vozen Helper를 지금 사용할 수 있나요?",
-      "예. Helper는 공개적으로 사용할 수 있습니다. 이 페이지에서 설치하고 서버를 선택한 뒤 안내 설정을 통해 첫 번째 모듈을 구성하세요."
+      "비공개 티켓은 어떻게 설정하나요?",
+      "Helper 대시보드에서 지원 모듈을 열고 멤버가 비공개 티켓을 열 수 있는 패널을 게시하세요."
     ],
     [
       "Helper가 관리자 권한을 요청하나요?",
@@ -684,7 +711,7 @@
     ],
     [
       "지금 Premium을 구매할 수 있나요?",
-      "네. Premium 페이지에서 요금제를 선택하고 Discord로 로그인하세요. 결제 정보는 Stripe에서 처리합니다. Helper 핵심 기능은 계속 무료입니다."
+      "결제가 일시적으로 비활성화되었습니다. 가격은 참고용입니다."
     ]
   ],
   "faq": [
@@ -702,7 +729,7 @@
     ],
     [
       "Plus와 Premium 중 무엇을 선택하나요?",
-      "Plus는 Discord 계정에 Kokoro 음성과 추가 효과를 제공해요. Premium은 선택한 서버에 TTS와 Helper 유료 기능을 제공해요. 현재 결제는 중단된 상태예요."
+      "Plus는 Discord 계정에 Kokoro 음성과 추가 효과를 제공합니다. Premium은 선택한 서버에 실시간 음성 텍스트 변환과 TTS 봇 아바타 및 배너 맞춤 설정을 추가합니다. 결제는 일시 중단되었습니다."
     ],
     [
       "왜 소리가 들리지 않나요?",

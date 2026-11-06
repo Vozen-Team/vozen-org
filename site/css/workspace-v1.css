@@ -907,7 +907,6 @@ body.page-dashboard.workspace-page--tts .tts-picker-page .dash-server {
   padding: 14px 16px;
 }
 
-body.page-dashboard.workspace-page--tts > footer,
 body.page-dashboard.workspace-page--tts .site-footer {
   display: none;
 }

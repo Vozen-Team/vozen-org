@@ -1,6 +1,20 @@
 {
   "locale": "ru",
   "messages": {
+    "helper.landing.demoTitle": "Попробуйте защиту.",
+    "helper.landing.demoPrompt": "Отправьте спам. Сохраните беседу.",
+    "helper.landing.demoTag": "Интерактивное демо",
+    "helper.landing.demoMessage1": "Играем в 8?",
+    "helper.landing.demoMessage2": "Я с вами. До встречи.",
+    "helper.landing.demoBlocked": "Спам заблокирован",
+    "helper.landing.demoSend": "Отправить спам",
+    "helper.landing.demoSending": "Отправка…",
+    "helper.landing.demoAgain": "Отправить ещё",
+    "helper.landing.demoChecking": "Проверка сообщений…",
+    "commands.groupPlayback": "Воспроизведение",
+    "commands.groupLibrary": "Ваша медиатека",
+    "commands.generic.playback": "Используйте {command} для управления музыкой.",
+    "commands.generic.library": "Используйте {command} для управления оценками треков.",
     "home.proof.aria": "Сообщество Vozen TTS и оценка на Top.gg",
     "home.proof.servers": "серверов Discord",
     "home.proof.rating": "на Top.gg",
@@ -47,7 +61,7 @@
     "feat.7.t": "Голосовые эффекты",
     "feat.7.d": "Робот, эхо, бас, бурундук, радио, демон… твои сообщения в новом звучании. Два эффекта бесплатно, все восемь — с Premium",
     "feat.8.t": "Честный Premium",
-    "feat.8.d": "€6.99 в месяц открывают Kokoro и серверные дополнения. Основные функции на Piper остаются бесплатными",
+    "feat.8.d": "€3.99 в месяц открывают Kokoro и серверные дополнения. Основные функции на Piper остаются бесплатными",
     "feat.9.t": "Открытый код",
     "feat.9.d": "Весь код Vozen открыт на GitHub. Проверяй его, учись на нём или открывай PR — никаких секретов и слежки",
     "lang.eyebrow": "Языки",
@@ -84,7 +98,10 @@
     "price.choose.sub": "Оставьте основу бесплатной, улучшите свой аккаунт или откройте Premium для всего сервера",
     "price.free.pitch": "Всё необходимое. Без карты и пробного периода",
     "price.plus.pitch": "Ваши премиум-возможности голоса работают на любом сервере",
-    "price.pro.pitch": "Откройте полный набор Vozen для всего сообщества",
+    "price.pro.pitch": "TTS + Music + Helper.",
+    "price.pro.audience": "Premium для всех на ваших серверах.",
+    "price.pro.pitchMusic": "Music + TTS + Helper.",
+    "price.pro.pitchHelper": "Helper + Music + TTS.",
     "price.compare.title": "Сравните все отличия",
     "price.compare.sub": "Полное сравнение тарифов без сюрпризов",
     "price.checkout": "Перейти к оплате",
@@ -95,12 +112,12 @@
     "price.plus.badge": "ЛИЧНЫЙ",
     "price.plus.name": "Vozen Plus",
     "price.plus.per": "/ месяц · за пользователя",
-    "price.plus.note": "€37.99/год (экономия ~20%) · купить на Ko-fi",
+    "price.plus.note": "€18.99/год (экономия ~50%) · купить на Ko-fi",
     "price.pro.badge": "PREMIUM",
     "price.pro.name": "Vozen Premium",
     "price.pro.per": "/ месяц · 2 сервера",
     "price.pro.deal": "🎁 Два сервера. Одна подписка",
-    "price.pro.note": "€66.99/год (экономия ~20%) · купить на Ko-fi",
+    "price.pro.note": "€37.99/год (экономия ~43%) · купить на Ko-fi",
     "faq.eyebrow": "FAQ",
     "faq.title": "Ответы на вопросы",
     "reviews.eyebrow": "Независимые отзывы",
@@ -127,7 +144,7 @@
     "price.max.per": "/ месяц · 5 серверов",
     "price.max.perYear": "/ год · 5 серверов",
     "price.max.deal": "🎁 Пять серверов. Одна подписка",
-    "price.max.note": "€143.99/год (экономия ~20%) · купить на Ko-fi",
+    "price.max.note": "€70.99/год (экономия ~47%) · купить на Ko-fi",
     "price.pro.seats2": "2 сервера",
     "price.pro.seats5": "5 серверов",
     "price.m.1": "38 голосов Piper",
@@ -165,6 +182,7 @@
     "price.m.22": "Голоса Google HD",
     "price.m.24": "Vozen Helper Premium для каждого выбранного сервера",
     "price.m.23": "Расшифровка речи в реальном времени",
+    "price.m.25": "Свой аватар и баннер для TTS-бота",
     "price.includesFree": "Всё из Free",
     "ecosystem.login": "Войти",
     "ecosystem.loginAria": "Войти в Vozen",
@@ -186,9 +204,9 @@
     "price.billingPeriod": "Период оплаты",
     "price.bundleAria": "Пакет Vozen",
     "price.bundleEyebrow": "ПАКЕТ VOZEN",
-    "price.bundleTitle": "Два бота. Одна подписка.",
-    "price.bundleText": "Premium TTS и Helper для выбранных вами сообществ.",
-    "price.bundleValue": "TTS + HELPER",
+    "price.bundleTitle": "Три бота. Одна подписка.",
+    "price.bundleText": "TTS, Music и Helper Premium для всех на выбранных серверах.",
+    "price.bundleValue": "TTS + MUSIC + HELPER",
     "price.freeHighlights": "Преимущества бесплатного плана",
     "price.digital": "Цифровая подписка · без доставки",
     "price.checkoutLater": "Оплата вернётся после повторного включения платежей.",
@@ -208,7 +226,7 @@
     "premium.plusHelperNote": "Helper остаётся в рамках бесплатных лимитов сервера. Plus улучшает только TTS.",
     "premium.premiumPitch": "Premium TTS и Helper для всех на каждом выбранном сервере.",
     "premium.bundleAria": "Пакет Premium",
-    "premium.bundleTitle": "Два бота. Одна подписка.",
+    "premium.bundleTitle": "Три бота. Одна подписка.",
     "premium.seat2": "2 сервера",
     "premium.seat5": "5 серверов",
     "premium.premiumScope": "Одна подписка покрывает выбранные серверы и их сообщества.",
@@ -321,7 +339,7 @@
     "home.eyebrow": "экосистема Vozen",
     "home.heroTitle1": "Один дом.",
     "home.heroTitle2": "Все инструменты сервера.",
-    "home.heroLead": "Два бота для Discord. Голос для сообщений. Помощник для сервера.",
+    "home.heroLead": "Три бота Discord. Голос, музыка и инструменты для вашего сервера.",
     "home.exploreProducts": "Изучить продукты",
     "home.viewCommands": "Посмотреть команды",
     "home.mapAria": "Карта экосистемы Vozen",
@@ -332,6 +350,8 @@
     "home.oneEcosystem": "одна экосистема",
     "home.productsAria": "Продукты Vozen",
     "home.ttsTitle": "TTS",
+    "home.musicLead": "Музыка для звонков в Discord.",
+    "home.exploreMusic": "Изучить Music",
     "home.helperTitle": "Helper",
     "home.ttsLead": "Текстовые сообщения вслух в голосовом канале.",
     "home.helperLead": "Модерация, тикеты и роли в одном боте.",
@@ -487,7 +507,6 @@
     "ecosystem.ecosystem": "Экосистема",
     "ecosystem.tts": "Vozen TTS",
     "ecosystem.helper": "Vozen Helper",
-    "ecosystem.docs": "Документация",
     "ecosystem.commands": "Команды",
     "ecosystem.accountAria": "Открыть аккаунт Vozen пользователя {name}",
     "helper.moduleCore": "Основное",
@@ -497,7 +516,15 @@
     "helper.moduleCommunity": "Сообщество",
     "helper.moduleAutomation": "Автоматизация",
     "helper.moduleInsights": "Аналитика",
-    "helper.moduleStudio": "Студия"
+    "helper.moduleStudio": "Студия",
+    "stat.helperOverview": "Vozen Helper в цифрах",
+    "stat.setupSteps": "Шаги настройки",
+    "stat.freeCore": "Основные функции",
+    "stat.helperProtections": "Функции защиты",
+    "stat.helperCommands": "Команды",
+    "finale.musicTitle": "Добавь музыку в свои звонки",
+    "finale.helperTitle": "Помощник для твоего сервера",
+    "finale.freeNote": "Основные функции бесплатно. Без банковской карты."
   },
   "commands": {
     "general": [
@@ -667,8 +694,8 @@
   },
   "helperFaq": [
     [
-      "Vozen Helper уже доступен?",
-      "Да. Helper доступен всем. Установите его с этой страницы, выберите сервер и настройте первый модуль с помощью пошаговой настройки."
+      "Как настроить приватные заявки?",
+      "Откройте модуль поддержки в панели Helper и опубликуйте панель, через которую участники смогут открыть приватную заявку."
     ],
     [
       "Запрашивает ли Helper права администратора?",
@@ -684,7 +711,7 @@
     ],
     [
       "Можно ли сейчас купить Premium?",
-      "Да. Выберите план на странице Premium и войдите через Discord. Платёжные данные обрабатывает Stripe. Основные функции Helper остаются бесплатными."
+      "Платежи временно отключены. Цены приведены только для справки."
     ]
   ],
   "faq": [
@@ -702,7 +729,7 @@
     ],
     [
       "Что выбрать: Plus или Premium?",
-      "Plus добавляет голоса Kokoro и дополнительные эффекты твоему аккаунту Discord. Premium добавляет платные функции TTS и Helper на выбранные серверы. Платежи сейчас приостановлены."
+      "Plus добавляет голоса Kokoro и эффекты для вашего аккаунта Discord. Premium открывает на выбранных серверах расшифровку речи в реальном времени и настройку аватара и баннера TTS-бота. Платежи приостановлены."
     ],
     [
       "Почему ничего не слышно?",

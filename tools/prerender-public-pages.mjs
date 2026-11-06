@@ -4,6 +4,7 @@ import { chromium } from '@playwright/test';
 import * as parse5 from 'parse5';
 import { createSiteServer, closeSiteServer } from './serve-site.mjs';
 import { isIndexable, walkHtml } from './site-meta-utils.mjs';
+import { buildSharedFooters } from './build-public-footer.mjs';
 
 // Only public, deterministic content is rendered. There are no credentials,
 // API responses, visitor sessions or network services in this build.
@@ -16,10 +17,8 @@ const noScript = `<noscript data-prerender-fallback><style>
 .vozen-global-nav{position:static!important;height:auto!important}
 .vozen-global-nav .nav__inner{height:auto!important;padding-block:14px;row-gap:14px}
 .vozen-global-nav .nav__links{order:3;flex:1 1 100%;justify-content:flex-start;gap:16px}
-.docs-topbar{position:static!important}
 .page-account main,.page-account .foot{visibility:visible!important}
-@media(max-width:980px){.docs-sidebar{position:static!important;transform:none!important;visibility:visible!important}.docs-main{margin-left:0!important}.docs-drawer-toggle,.docs-sidebar-scrim{display:none!important}}
-</style><p>Interactive search, audio, account information and live service checks require JavaScript. All public documentation and command descriptions are available below.</p></noscript>`;
+</style><p>Interactive search, audio, account information and live service checks require JavaScript. Public information and command descriptions are available below.</p></noscript>`;
 
 const attrs = (node) => Object.fromEntries((node.attrs || []).map(({ name, value }) => [name, value]));
 function visit(node, callback) {
@@ -55,14 +54,14 @@ try {
   browser = await chromium.launch();
   const files = walkHtml(root).filter((file) => {
     const relative = path.relative(root, file).replaceAll('\\', '/');
-    return isIndexable(relative, fs.readFileSync(file, 'utf8')) || relative === 'account/index.html' || relative === '404.html';
+    return isIndexable(relative, fs.readFileSync(file, 'utf8')) || ['account/index.html', 'music/index.html', '404.html'].includes(relative);
   });
   for (const file of files) {
     const relative = path.relative(root, file).replaceAll('\\', '/');
     const source = fs.readFileSync(file, 'utf8');
     const document = parse5.parse(source);
     const host = find(document, (node) => attrs(node)['data-vozen-nav'] != null);
-    const hostAttributes = host ? attrs(host) : { 'data-vozen-nav': '', 'data-nav-root': '/', 'data-nav-product': 'Ecosystem', 'data-nav-current': 'docs', 'data-nav-surface': 'docs' };
+    const hostAttributes = host ? attrs(host) : { 'data-vozen-nav': '', 'data-nav-root': '/', 'data-nav-product': 'Ecosystem' };
     const locale = attrs(find(document, (node) => node.tagName === 'html'))['data-vozen-locale'] || 'en';
     const context = await browser.newContext({ reducedMotion: 'reduce', serviceWorkers: 'block' });
     await context.addInitScript((language) => { localStorage.setItem('vozen.lang', language); }, locale);
@@ -83,17 +82,17 @@ try {
       const response = await page.goto(`${origin}/${pathname}`, { waitUntil: 'load' });
       if (!response?.ok()) throw new Error(`HTTP ${response?.status()}`);
       await page.evaluate(() => window.vozenPublicI18nReady || Promise.resolve());
-      if (source.includes('docs-shell.js')) {
-        await page.waitForFunction(() => document.body.dataset.vozenDocsShell === 'ready' && document.querySelector('.docs-sidebar__tree a'));
-      }
       if (source.includes('id="faq-list"')) await page.waitForFunction(() => document.querySelector('#faq-list .qa'));
       if (source.includes('id="commandGroups"')) await page.waitForFunction(() => document.querySelector('#commandGroups .command-row'));
       let allCommands;
       if (source.includes('id="commandGroups"')) {
-        const tts = await page.locator('#commandGroups').innerHTML();
-        await page.locator('[data-command-product="helper"]').click();
-        const helper = await page.locator('#commandGroups').innerHTML();
-        allCommands = `<section id="catalogue-tts" aria-label="Vozen TTS commands">${tts}</section><section id="catalogue-helper" aria-label="Vozen Helper commands"><h2>Vozen Helper commands</h2>${helper}</section>`;
+        const catalogues = [];
+        for (const [product, label] of [['tts', 'Vozen TTS'], ['music', 'Vozen Music'], ['helper', 'Vozen Helper']]) {
+          await page.locator('[data-command-product="' + product + '"]').click();
+          const commands = await page.locator('#commandGroups').innerHTML();
+          catalogues.push(`<section id="catalogue-${product}" aria-label="${label} commands">${product === 'tts' ? '' : `<h2>${label} commands</h2>`}${commands}</section>`);
+        }
+        allCommands = catalogues.join('');
         await page.locator('[data-command-product="tts"]').click();
       }
       let marketingCommands;
@@ -107,28 +106,18 @@ try {
       }
       const snapshot = await page.evaluate((ids) => ({
         header: document.querySelector('.vozen-global-nav, .docs-ecosystem-nav')?.outerHTML,
-        docs: document.body.dataset.vozenDocsShell === 'ready' ? document.body.innerHTML : null,
-        bodyClass: document.body.className,
         styles: [...document.querySelectorAll('link[rel="stylesheet"]')].map((link) => link.href),
         fragments: ids.map((selector) => [selector, document.querySelector(selector)?.innerHTML]),
       }), selectors);
-      if (snapshot.docs) {
-        const body = find(document, (node) => node.tagName === 'body');
-        fill(body, snapshot.docs.replaceAll(origin + '/', '/'));
-        setAttr(body, 'class', snapshot.bodyClass);
-        setAttr(body, 'data-vozen-docs-shell', 'ready');
-      }
       if (snapshot.header) {
         const header = parse5.parseFragment(snapshot.header.replaceAll(origin + '/', '/')).childNodes[0];
+        setAttr(header, 'class', attrs(header).class.split(/\s+/).filter(name => name !== 'is-stuck').join(' '));
         for (const [name, value] of Object.entries(hostAttributes)) {
           if (name.startsWith('data-nav') || name === 'data-vozen-nav') setAttr(header, name, value);
         }
         setAttr(header, 'data-nav-prerendered', 'true');
         setAttr(header, 'data-prerender-fragment', 'navigation');
-        const target = snapshot.docs
-          ? find(document, (node) => (attrs(node).class || '').includes('docs-ecosystem-nav'))
-          : host;
-        if (target) replace(target, header);
+        if (host) replace(host, header);
         // Remove obsolete fallback headers so JavaScript-free visits also
         // receive exactly one primary navigation.
         const legacy = find(document, (node) => node.tagName === 'header' && /(^|\s)nav(\s|$)/.test(attrs(node).class || '') && !/vozen-global-nav/.test(attrs(node).class || ''));
@@ -181,6 +170,7 @@ try {
     }
   }
   console.log(`Prerendered ${rendered} pages with public content and navigation in raw HTML.`);
+  buildSharedFooters();
 } finally {
   await browser?.close();
   await closeSiteServer(server);

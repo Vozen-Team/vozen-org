@@ -7,7 +7,8 @@
     <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Configurar moderação, tickets e cargos com o Vozen Helper"><meta name="twitter:description" content="Uma ordem de configuração com permissões mínimas para módulos do Vozen Helper."><meta name="twitter:image" content="https://vozen.org/assets/og-image.png">
     <link rel="icon" href="../../../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../../css/guides-v1.css?v=413bb9e94825">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","inLanguage":"pt-PT","headline":"Configurar moderação, tickets e cargos com o Vozen Helper","description":"Uma ordem de configuração com permissões mínimas para os primeiros módulos úteis do Vozen Helper.","url":"https://vozen.org/pt/guides/helper-moderation-tickets-roles/","publisher":{"@type":"Organization","name":"Vozen","url":"https://vozen.org/"}}</script>
-  <link rel="stylesheet" href="/css/global-nav-v1.css?v=ce50126907c3"></head>
+  <link rel="stylesheet" href="/css/global-nav-v1.css?v=d711660e6936"><link rel="stylesheet" href="/css/vozen-footer-v1.css?v=15f94bd176ca">
+</head>
   <body class="vozen-guide-page" data-vozen-public-analytics="true">
     <a class="guide-skip" href="#main">Saltar para o conteúdo</a>
     <header class="nav vozen-global-nav docs-ecosystem-nav" data-vozen-standalone-nav="" data-vozen-nav="" data-nav-root="/" data-nav-product="Ecosystem" data-nav-surface="docs" data-nav-prerendered="true" data-prerender-fragment="navigation">
@@ -19,8 +20,8 @@
           </a>
           <nav class="docs-ecosystem-nav__links nav__links" aria-label="Produtos Vozen" data-i18n-aria-label="ecosystem.productsAria" id="vozen-primary-links">
             <a class="" href="/tts/" data-i18n="ecosystem.tts">Vozen TTS</a>
+            <a class="" href="/music/">Vozen Music</a>
             <a class="" href="/helper/" data-i18n="ecosystem.helper">Vozen Helper</a>
-            <a class="" href="/docs/" data-i18n="ecosystem.docs">Docs</a>
             <a class="" href="/commands/" data-i18n="ecosystem.commands">Comandos</a>
             <a class="" href="/status.html" data-i18n="ecosystem.status">Status</a>
             <a class="" href="/premium#plans" data-i18n="nav.premium">Premium</a>
@@ -40,15 +41,25 @@
         </div>
       </header>
     <main id="main" class="guide-shell guide-main">
-      <section class="guide-hero"><div><p class="guide-kicker">GUIA DO HELPER</p><h1>Começa a organizar o servidor com um módulo útil de cada vez.</h1><p class="guide-lede">O Vozen Helper reúne moderação, tickets, painéis de cargos, eventos e automações num só produto. Começa pelo módulo que resolve o problema de hoje e concede apenas a permissão que ele explica.</p><div class="guide-actions"><a class="guide-button" href="https://api.vozen.org/rust/api/install/start?source=commands">Adicionar o Vozen Helper</a><a class="guide-button guide-button--quiet" href="../../../docs/helper/get-started/quick-setup/">Ler a configuração rápida</a></div></div><aside class="guide-card"><div class="guide-stat"><strong>Convite base reduzido</strong><span>Canais, mensagens, incorporações e histórico. Sem Administrador nem poderes de moderação na instalação.</span></div><div class="guide-stat"><strong>Um módulo</strong><span>Conclui uma configuração e uma ação útil antes de ativares outro.</span></div><div class="guide-stat"><strong>Explicável</strong><span>Quando faltar uma permissão, resolve a verificação específica desse módulo.</span></div></aside></section>
-      <section class="guide-section" aria-labelledby="modules"><h2 id="modules">Uma ordem segura para o primeiro módulo</h2><div class="guide-grid"><article class="guide-step"><span class="guide-step__number">01 · MODERAÇÃO</span><h3>Protege a conversa pública</h3><p>Começa com uma regra de moderação de âmbito limitado e os canais onde deve atuar. Mantém o cargo do Helper abaixo dos cargos que não deve gerir.</p><p><a href="../../../docs/helper/modules/manage/moderation/">Documentação do módulo de moderação</a></p></article><article class="guide-step"><span class="guide-step__number">02 · TICKETS</span><h3>Cria uma fila privada de apoio</h3><p>Escolhe uma categoria de tickets, o cargo da equipa e o comportamento das transcrições. Testa um ticket como membro normal antes de o anunciares.</p><p><a href="../../../docs/helper/modules/support/tickets/">Documentação do módulo de tickets</a></p></article><article class="guide-step"><span class="guide-step__number">03 · CARGOS</span><h3>Deixa os membros escolherem cargos seguros</h3><p>Cria um painel com cargos abaixo do cargo do Helper. Testa a atribuição e a remoção antes de adicionares painéis opcionais.</p><p><a href="../../../docs/helper/modules/roles-and-progression/role-panels/">Documentação dos painéis de cargos</a></p></article></div></section>
-      <section class="guide-section guide-copy" aria-labelledby="permissions"><h2 id="permissions">Passaporte de permissões antes de cada módulo</h2><p>Não concedas uma permissão alargada na esperança de resolver um erro pouco claro. Revê o objetivo indicado pelo módulo, o pedido do Discord e o canal ou categoria de destino. Se o Vozen Helper detetar uma permissão em falta, concede-a apenas onde esse módulo precisa de atuar e repete a ação.</p><ul class="guide-list"><li>Nunca coles um token de bot, token de conta ou palavra-passe num comando, painel ou mensagem de suporte.</li><li>Mantém os limites de auditoria, moderação e suporte visíveis para a equipa responsável.</li><li>Usa o <a href="../../../docs/helper/troubleshooting/missing-permissions/">guia de permissões em falta</a> quando uma etapa de configuração parar.</li></ul><aside class="guide-note">Uma instalação é apenas o início. O evento útil do produto acontece quando o primeiro módulo configurado conclui a primeira ação; é esse o ponto de ativação medido no painel privado.</aside></section>
+      <section class="guide-hero"><div><p class="guide-kicker">GUIA DO HELPER</p><h1>Começa a organizar o servidor com um módulo útil de cada vez.</h1><p class="guide-lede">O Vozen Helper reúne moderação, tickets, painéis de cargos, eventos e automações num só produto. Começa pelo módulo que resolve o problema de hoje e concede apenas a permissão que ele explica.</p><div class="guide-actions"><a class="guide-button" href="https://api.vozen.org/rust/api/install/start?source=commands">Adicionar o Vozen Helper</a></div></div><aside class="guide-card"><div class="guide-stat"><strong>Convite base reduzido</strong><span>Canais, mensagens, incorporações e histórico. Sem Administrador nem poderes de moderação na instalação.</span></div><div class="guide-stat"><strong>Um módulo</strong><span>Conclui uma configuração e uma ação útil antes de ativares outro.</span></div><div class="guide-stat"><strong>Explicável</strong><span>Quando faltar uma permissão, resolve a verificação específica desse módulo.</span></div></aside></section>
+      <section class="guide-section" aria-labelledby="modules"><h2 id="modules">Uma ordem segura para o primeiro módulo</h2><div class="guide-grid"><article class="guide-step"><span class="guide-step__number">01 · MODERAÇÃO</span><h3>Protege a conversa pública</h3><p>Começa com uma regra de moderação de âmbito limitado e os canais onde deve atuar. Mantém o cargo do Helper abaixo dos cargos que não deve gerir.</p><p></p></article><article class="guide-step"><span class="guide-step__number">02 · TICKETS</span><h3>Cria uma fila privada de apoio</h3><p>Escolhe uma categoria de tickets, o cargo da equipa e o comportamento das transcrições. Testa um ticket como membro normal antes de o anunciares.</p><p></p></article><article class="guide-step"><span class="guide-step__number">03 · CARGOS</span><h3>Deixa os membros escolherem cargos seguros</h3><p>Cria um painel com cargos abaixo do cargo do Helper. Testa a atribuição e a remoção antes de adicionares painéis opcionais.</p><p></p></article></div></section>
+      <section class="guide-section guide-copy" aria-labelledby="permissions"><h2 id="permissions">Passaporte de permissões antes de cada módulo</h2><p>Não concedas uma permissão alargada na esperança de resolver um erro pouco claro. Revê o objetivo indicado pelo módulo, o pedido do Discord e o canal ou categoria de destino. Se o Vozen Helper detetar uma permissão em falta, concede-a apenas onde esse módulo precisa de atuar e repete a ação.</p><ul class="guide-list"><li>Nunca coles um token de bot, token de conta ou palavra-passe num comando, painel ou mensagem de suporte.</li><li>Mantém os limites de auditoria, moderação e suporte visíveis para a equipa responsável.</li><li>Usa o  quando uma etapa de configuração parar.</li></ul><aside class="guide-note">Uma instalação é apenas o início. O evento útil do produto acontece quando o primeiro módulo configurado conclui a primeira ação; é esse o ponto de ativação medido no painel privado.</aside></section>
     </main>
-    <footer class="guide-shell guide-footer">Vozen Helper para Discord.<nav aria-label="Rodapé"><a href="../../../docs/helper/reference/permissions/">Referência de permissões</a><a href="../../../privacy.html">Privacidade</a><a href="../../../terms.html">Termos</a></nav></footer>
+    <footer class="vozen-footer" id="site-footer">
+  <div class="vozen-footer__inner">
+    <span class="vozen-footer__brand"><img src="/favicon.svg" width="28" height="28" alt="">© 2026 Vozen</span>
+    <nav class="vozen-footer__links" aria-label="Vozen footer">
+      <a href="https://discord.gg/4kYw2WUbNN" data-i18n="foot.support">Servidor de suporte</a>
+      <a href="/privacy.html" data-i18n="foot.privacy">Privacidade</a>
+      <a href="/terms.html" data-i18n="foot.terms">Termos</a>
+    </nav>
+    <span class="vozen-footer__disclaimer" data-i18n="foot.legal">Sem afiliação com o Discord</span>
+  </div>
+</footer>
     <script defer="" src="../../../js/analytics-config.js?v=f6b49da441d8"></script><script defer="" src="../../../js/web-analytics-v1.js?v=e934b4dd1f34"></script>
 
 
-<script src="/js/oauth-config.js?v=15ffe1a765c9"></script><script src="/js/i18n-v41.js?v=09e9c1d6b6ff"></script><script src="/js/i18n-v42.js?v=6946efcb3ff6"></script><script src="/js/global-nav-v1.js?v=c36e628c7056"></script>
+<script src="/js/oauth-config.js?v=15ffe1a765c9"></script><script src="/js/i18n-v41.js?v=27eeeec12d99"></script><script src="/js/i18n-v42.js?v=3bca3bc18550"></script><script src="/js/global-nav-v1.js?v=93ac57255dc2"></script>
 <noscript data-prerender-fallback=""><style>
 .reveal{opacity:1!important;transform:none!important}.qa__a{max-height:none!important}
 .helper-module-panel[hidden]{display:block!important}.nav__links{display:flex!important;flex-wrap:wrap}
@@ -56,7 +67,5 @@
 .vozen-global-nav{position:static!important;height:auto!important}
 .vozen-global-nav .nav__inner{height:auto!important;padding-block:14px;row-gap:14px}
 .vozen-global-nav .nav__links{order:3;flex:1 1 100%;justify-content:flex-start;gap:16px}
-.docs-topbar{position:static!important}
 .page-account main,.page-account .foot{visibility:visible!important}
-@media(max-width:980px){.docs-sidebar{position:static!important;transform:none!important;visibility:visible!important}.docs-main{margin-left:0!important}.docs-drawer-toggle,.docs-sidebar-scrim{display:none!important}}
-</style><p>Interactive search, audio, account information and live service checks require JavaScript. All public documentation and command descriptions are available below.</p></noscript></body></html>
+</style><p>Interactive search, audio, account information and live service checks require JavaScript. Public information and command descriptions are available below.</p></noscript></body></html>

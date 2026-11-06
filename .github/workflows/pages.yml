@@ -7,14 +7,11 @@ on:
     branches: [main]
     paths:
       - 'site/**'
-      - 'docs-src/**'
-      - 'docs-data/**'
       - 'tools/**'
       - 'tests/**'
       - 'playwright.config.mjs'
       - 'package.json'
       - 'package-lock.json'
-      - '.eleventy.cjs'
       - 'apps/helper-panel/**'
       - 'deploy/cloudflare/**'
       - 'tools/install-helper-panel.mjs'
@@ -55,17 +52,13 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Build and validate public site
         run: |
-          npm run docs:build
-          npm run docs:test
-          npm run docs:links
-          npm run docs:a11y
+          npm run build
           npm run site:check
           npm run helper-tracker:check
           npm run helper-panel:redirect-check
           npm run helper-panel:vozen-session-check
           npm run product-install:check
           npm run auth-session:check
-          npm run test:unit
       - name: Build Helper panel
         run: |
           npm ci --prefix apps/helper-panel
@@ -73,6 +66,7 @@ jobs:
           npm test --prefix apps/helper-panel
           node tools/helper-locale-coverage.mjs
           node tools/install-helper-panel.mjs
+          npm run test:unit
           node tools/helper-clean-routes-check.mjs
           node tools/release-artifact-check.mjs
           node tools/prerender-check.mjs

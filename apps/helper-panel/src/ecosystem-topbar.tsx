@@ -219,7 +219,6 @@ export function EcosystemTopbar() {
         <nav id="ecosystem-products" className={`nav__links${menuOpen ? ' is-open' : ''}`} onClick={() => setMenuOpen(false)} aria-label={helperT('ecosystem.productsAria', 'Vozen products')}>
           <a href="/tts/" data-i18n="ecosystem.tts">{helperT('ecosystem.tts', 'Vozen TTS')}</a>
           <a href="/helper/" className="is-current" aria-current="page" data-i18n="ecosystem.helper">{helperT('ecosystem.helper', 'Vozen Helper')}</a>
-          <a href="/docs/" data-i18n="ecosystem.docs">{helperT('ecosystem.docs', 'Docs')}</a>
           <a href="/commands/" data-i18n="ecosystem.commands">{helperT('ecosystem.commands', 'Commands')}</a>
           <a href="/status.html" data-i18n="ecosystem.status">{helperT('ecosystem.status', 'Status')}</a>
           <a href="/premium#plans" data-i18n="nav.premium">{helperT('helper.premium', 'Premium')}</a>

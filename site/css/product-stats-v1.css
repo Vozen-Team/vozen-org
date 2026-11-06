@@ -1,0 +1,20 @@
+.product-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-block: 0 clamp(32px, 5vw, 64px);
+  border-block: 1px solid #28334c;
+}
+.product-stats > div { position: relative; min-width: 0; padding: 26px clamp(12px, 2.4vw, 34px); }
+.product-stats > div + div::before {
+  content: ""; position: absolute; inset-block: 18%; inset-inline-start: 0; border-inline-start: 1px solid #28334c;
+}
+.product-stats b { display: block; color: #edf2ff; font: 800 clamp(36px, 4.2vw, 50px)/1 Outfit, system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.product-stats .product-stats__time { font-size: clamp(25px, 3.4vw, 42px); white-space: nowrap; }
+.product-stats .product-stats__free { color: #55ebd1; }
+.product-stats span { display: block; margin-block-start: 8px; color: #a4b2ce; font: 11px/1.45 var(--f-mono, monospace); letter-spacing: .04em; text-transform: uppercase; }
+@media (max-width: 640px) {
+  .product-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .product-stats > div { padding-block: 17px; }
+  .product-stats > div:nth-child(3)::before { display: none; }
+  .product-stats > div:nth-child(n+3) { border-block-start: 1px solid #28334c; }
+}

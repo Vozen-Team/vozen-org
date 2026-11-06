@@ -12,6 +12,9 @@ const titleKeys = [
   'hero.title2',
   'helper.landing.heroTitle1',
   'helper.landing.heroTitle2',
+  'finale.title',
+  'finale.musicTitle',
+  'finale.helperTitle',
 ];
 const titleText = fs.readdirSync(sourceRoot)
   .filter((name) => name.endsWith('.json'))
@@ -19,7 +22,7 @@ const titleText = fs.readdirSync(sourceRoot)
     const messages = JSON.parse(fs.readFileSync(path.join(sourceRoot, name), 'utf8')).messages;
     return titleKeys.map((key) => messages[key] || '');
   })
-  .concat(['Vozen', 'Vozen TTS', 'Vozen Helper'])
+  .concat(['Vozen', 'Vozen TTS', 'Vozen Helper', 'Music for your calls.'])
   .join('\n');
 
 const subsets = [

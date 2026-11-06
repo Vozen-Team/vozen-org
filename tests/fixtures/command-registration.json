@@ -1,4 +1,267 @@
 {
+  "music": {
+    "revision": "b66e1aceb8a76ebff6081887edd9b03a55c0ecdb",
+    "source": "src/main.rs, src/runtime.rs, src/controls.rs",
+    "commands": [
+      {
+        "name": "play",
+        "type": 1,
+        "subcommands": [],
+        "options": [
+          "station"
+        ],
+        "description": "Start a Vozen station",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": "My Station requires Premium; Plus or Premium increases station-change allowances."
+      },
+      {
+        "name": "station",
+        "type": 1,
+        "subcommands": [],
+        "options": [
+          "station"
+        ],
+        "description": "Switch stations",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": "My Station requires Premium; Plus or Premium increases station-change allowances."
+      },
+      {
+        "name": "nowplaying",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Show the current track and credits",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "pause",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Pause the station",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "resume",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Resume the station",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "skip",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Skip or vote to skip the current track",
+        "access": "Premium",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "stop",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Stop the station and leave the voice channel",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "volume",
+        "type": 1,
+        "subcommands": [],
+        "options": [
+          "level"
+        ],
+        "description": "View or set the playback volume",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": "Viewing the volume is free; changing the call volume requires Premium on this server."
+      },
+      {
+        "name": "sleep",
+        "type": 1,
+        "subcommands": [],
+        "options": [
+          "minutes",
+          "cancel"
+        ],
+        "description": "View, set or cancel the sleep timer",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "panel",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Show a fresh player panel",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "like",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Like this recording",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "dislike",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Dislike this recording",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "library",
+        "type": 1,
+        "subcommands": [],
+        "options": [
+          "page",
+          "remove",
+          "clear"
+        ],
+        "description": "View or remove your ratings in this server",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "profile",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "View your time-in-call profile",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "leaderboard",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "View this server's opted-in leaderboard",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "privacy",
+        "type": 1,
+        "subcommands": [],
+        "options": [
+          "enabled",
+          "visible",
+          "erase"
+        ],
+        "description": "Control your server listening statistics",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "radio-mode",
+        "type": 1,
+        "subcommands": [],
+        "options": [
+          "mode",
+          "channel"
+        ],
+        "description": "Choose how Music behaves in empty calls",
+        "access": "Admin",
+        "permission": "MANAGE_GUILD",
+        "premiumExtras": "A fixed voice channel requires Premium. Free users need an active vote for 24/7 or auto-join; Plus and Premium bypass that vote."
+      },
+      {
+        "name": "skip-settings",
+        "type": 1,
+        "subcommands": [],
+        "options": [
+          "access",
+          "mode",
+          "majority-scope",
+          "add-role",
+          "remove-role",
+          "clear-roles"
+        ],
+        "description": "View or change this server's skip settings",
+        "access": "Admin",
+        "permission": "MANAGE_GUILD",
+        "premiumExtras": ""
+      },
+      {
+        "name": "settings",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Open this server's Music settings",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "help",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Show Music commands",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "support",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Get Vozen support",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "invite",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Add Vozen Music to a server",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      },
+      {
+        "name": "feedback",
+        "type": 1,
+        "subcommands": [],
+        "options": [],
+        "description": "Find where to send feedback",
+        "access": "Free",
+        "permission": "",
+        "premiumExtras": ""
+      }
+    ]
+  },
   "tts": {
     "revision": "89c15fb82cd72a91ee60ec51b8bb27caa57ac702",
     "source": "crates/vozen-contracts/src/commands.rs",

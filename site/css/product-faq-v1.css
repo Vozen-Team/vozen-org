@@ -1,0 +1,50 @@
+.product-faq {
+  width: min(960px, calc(100% - 40px));
+  margin-inline: auto;
+  padding-block: clamp(42px, 6vw, 74px);
+  scroll-margin-top: 96px;
+}
+.product-faq .product-faq__heading {
+  margin: 0 0 22px;
+}
+.product-faq .product-faq__heading h2 {
+  max-width: none;
+  margin: 0;
+  color: #f3f5ff;
+  font: 650 clamp(30px, 3.3vw, 45px)/1.18 Outfit, system-ui, sans-serif;
+  letter-spacing: -.025em;
+  text-align: start;
+  text-wrap: pretty;
+}
+.product-faq .faq { display: grid; gap: 10px; }
+.product-faq .qa { border: 1px solid #2a344b; border-radius: 15px; background: #11192a; box-shadow: none; }
+.product-faq .qa:is([open], .is-open) { border-color: #3b666d; }
+.product-faq .qa__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 64px;
+  padding: 12px clamp(14px, 2vw, 22px);
+  list-style: none;
+  color: #edf1ff;
+  text-align: start;
+  font: 550 18px/1.35 Outfit, system-ui, sans-serif;
+  cursor: pointer;
+}
+.product-faq .qa__q::-webkit-details-marker { display: none; }
+.product-faq .qa__q::after {
+  content: "+" / "";
+  display: grid;
+  place-items: center;
+  flex: 0 0 20px;
+  height: 24px;
+  color: #64e5d2;
+  font: 500 19px/1 Outfit, system-ui, sans-serif;
+}
+.product-faq .qa:is([open], .is-open) .qa__q::after { content: "−" / ""; transform: none; }
+.product-faq .qa:is([open], .is-open) .qa__q,
+.product-faq .qa__q:hover { color: #77ebda; }
+.product-faq .qa__q:focus-visible { outline: 2px solid #64e5d2; outline-offset: -2px; border-radius: 14px; }
+.product-faq details .qa__a { max-height: none; }
+.product-faq .qa__a p { margin: 0; padding-block-end: 16px; padding-inline: clamp(14px, 2vw, 22px); color: #b8c5de; font-size: 17px; line-height: 1.55; }

@@ -1,6 +1,20 @@
 {
   "locale": "tr",
   "messages": {
+    "helper.landing.demoTitle": "Korumayı dene.",
+    "helper.landing.demoPrompt": "Spam gönder. Sohbet devam etsin.",
+    "helper.landing.demoTag": "Etkileşimli demo",
+    "helper.landing.demoMessage1": "Saat 8'de oynayalım mı?",
+    "helper.landing.demoMessage2": "Ben varım. Görüşürüz.",
+    "helper.landing.demoBlocked": "Spam engellendi",
+    "helper.landing.demoSend": "Spam gönder",
+    "helper.landing.demoSending": "Gönderiliyor…",
+    "helper.landing.demoAgain": "Tekrar gönder",
+    "helper.landing.demoChecking": "Mesajlar kontrol ediliyor…",
+    "commands.groupPlayback": "Oynatma",
+    "commands.groupLibrary": "Kitaplığın",
+    "commands.generic.playback": "Müzik oynatımını kontrol etmek için {command} kullan.",
+    "commands.generic.library": "Parça değerlendirmelerini yönetmek için {command} kullan.",
     "home.proof.aria": "Vozen TTS topluluğu ve Top.gg puanı",
     "home.proof.servers": "Discord sunucusu",
     "home.proof.rating": "Top.gg üzerinde",
@@ -47,7 +61,7 @@
     "feat.7.t": "Ses efektleri",
     "feat.7.d": "Robot, yankı, kalın, sincap, radyo, iblis… mesajların, dönüştürülmüş halde. İki efekt ücretsiz, sekizinin tamamı Premium ile",
     "feat.8.t": "Adil Premium",
-    "feat.8.d": "Aylık €6.99 Kokoro ve sunucu ekstralarını açar. Temel Piper çekirdeği ücretsiz kalır",
+    "feat.8.d": "Aylık €3.99 Kokoro ve sunucu ekstralarını açar. Temel Piper çekirdeği ücretsiz kalır",
     "feat.9.t": "Açık kaynak",
     "feat.9.d": "Vozen'in tüm kodu GitHub'da herkese açık. İncele, öğren ya da bir PR aç — gizli bir şey yok, casus yazılım yok",
     "lang.eyebrow": "Diller",
@@ -84,7 +98,10 @@
     "price.choose.sub": "Temel özellikleri ücretsiz kullan, kendini yükselt veya sunucundaki herkes için Premium'u aç",
     "price.free.pitch": "Tüm temel özellikler. Kart yok, deneme yok",
     "price.plus.pitch": "Premium ses avantajların her sunucuda seninle gelir",
-    "price.pro.pitch": "Tüm topluluğun için eksiksiz Vozen deneyimini aç",
+    "price.pro.pitch": "TTS + Music + Helper.",
+    "price.pro.audience": "Sunucularındaki herkes için Premium.",
+    "price.pro.pitchMusic": "Music + TTS + Helper.",
+    "price.pro.pitchHelper": "Helper + Music + TTS.",
     "price.compare.title": "Tüm farkları karşılaştır",
     "price.compare.sub": "Sürprizsiz, eksiksiz plan karşılaştırması",
     "price.checkout": "Ödemeye devam et",
@@ -95,12 +112,12 @@
     "price.plus.badge": "KİŞİSEL",
     "price.plus.name": "Vozen Plus",
     "price.plus.per": "/ ay · kullanıcı başına",
-    "price.plus.note": "€37.99/yıl (~%20 tasarruf) · Ko-fi’de al",
+    "price.plus.note": "€18.99/yıl (~%50 tasarruf) · Ko-fi’de al",
     "price.pro.badge": "PREMIUM",
     "price.pro.name": "Vozen Premium",
     "price.pro.per": "/ ay · 2 sunucu",
     "price.pro.deal": "🎁 İki sunucu. Tek abonelik",
-    "price.pro.note": "€66.99/yıl (~%20 tasarruf) · Ko-fi’de al",
+    "price.pro.note": "€37.99/yıl (~%43 tasarruf) · Ko-fi’de al",
     "faq.eyebrow": "SSS",
     "faq.title": "Sorular, yanıtlandı",
     "reviews.eyebrow": "Bağımsız değerlendirmeler",
@@ -127,7 +144,7 @@
     "price.max.per": "/ ay · 5 sunucu",
     "price.max.perYear": "/ yıl · 5 sunucu",
     "price.max.deal": "🎁 Beş sunucu. Tek abonelik",
-    "price.max.note": "Yılda 133,99 € (~%20 tasarruf) · Ko-fi’de al",
+    "price.max.note": "Yılda 70,99 € (~%47 tasarruf) · Ko-fi’de al",
     "price.pro.seats2": "2 sunucu",
     "price.pro.seats5": "5 sunucu",
     "price.m.1": "38 Piper sesi",
@@ -165,6 +182,7 @@
     "price.m.22": "Google HD sesleri",
     "price.m.24": "Seçilen her sunucu için Vozen Helper Premium",
     "price.m.23": "Canlı ses transkripsiyonu",
+    "price.m.25": "TTS botu için özel avatar ve banner",
     "price.includesFree": "Free'deki her şey",
     "ecosystem.login": "Giriş yap",
     "ecosystem.loginAria": "Vozen’e giriş yap",
@@ -186,9 +204,9 @@
     "price.billingPeriod": "Faturalandırma dönemi",
     "price.bundleAria": "Vozen paketi",
     "price.bundleEyebrow": "VOZEN PAKETİ",
-    "price.bundleTitle": "İki bot. Tek abonelik.",
-    "price.bundleText": "Seçtiğiniz topluluklar için Premium TTS ve Helper.",
-    "price.bundleValue": "TTS + HELPER",
+    "price.bundleTitle": "Üç bot. Tek abonelik.",
+    "price.bundleText": "Seçtiğin sunuculardaki herkes için TTS, Music ve Helper Premium.",
+    "price.bundleValue": "TTS + MUSIC + HELPER",
     "price.freeHighlights": "Ücretsiz plan öne çıkanları",
     "price.digital": "Dijital abonelik · kargo yok",
     "price.checkoutLater": "Ödemeler yeniden etkinleştirildiğinde ödeme sayfası geri dönecek.",
@@ -208,7 +226,7 @@
     "premium.plusHelperNote": "Helper ücretsiz sunucu sınırlarında kalır. Plus yalnızca TTS'i yükseltir.",
     "premium.premiumPitch": "Seçili her sunucudaki herkes için Premium TTS ve Helper.",
     "premium.bundleAria": "Premium paketi",
-    "premium.bundleTitle": "İki bot. Tek abonelik.",
+    "premium.bundleTitle": "Üç bot. Tek abonelik.",
     "premium.seat2": "2 sunucu",
     "premium.seat5": "5 sunucu",
     "premium.premiumScope": "Tek abonelik, seçilen sunucuları ve topluluklarını kapsar.",
@@ -321,7 +339,7 @@
     "home.eyebrow": "Vozen ekosistemi",
     "home.heroTitle1": "Tek bir yuva.",
     "home.heroTitle2": "Her sunucu aracı.",
-    "home.heroLead": "İki Discord botu. Mesajların için bir ses. Sunucun için bir yardımcı.",
+    "home.heroLead": "Üç Discord botu. Sunucunuz için ses, müzik ve araçlar.",
     "home.exploreProducts": "Ürünleri keşfedin",
     "home.viewCommands": "Komutları görüntüle",
     "home.mapAria": "Vozen ekosistem haritası",
@@ -332,6 +350,8 @@
     "home.oneEcosystem": "tek ekosistem",
     "home.productsAria": "Vozen ürünleri",
     "home.ttsTitle": "TTS",
+    "home.musicLead": "Discord aramaların için müzik.",
+    "home.exploreMusic": "Music'i keşfedin",
     "home.helperTitle": "Helper",
     "home.ttsLead": "Metin mesajların ses kanalında okunsun.",
     "home.helperLead": "Moderasyon, biletler ve roller tek botta.",
@@ -487,7 +507,6 @@
     "ecosystem.ecosystem": "Ekosistem",
     "ecosystem.tts": "Vozen TTS",
     "ecosystem.helper": "Vozen Helper",
-    "ecosystem.docs": "Belgeler",
     "ecosystem.commands": "Komutlar",
     "ecosystem.accountAria": "{name} kullanıcısının Vozen hesabını aç",
     "helper.moduleCore": "Çekirdek",
@@ -497,7 +516,15 @@
     "helper.moduleCommunity": "Topluluk",
     "helper.moduleAutomation": "Otomasyon",
     "helper.moduleInsights": "İçgörüler",
-    "helper.moduleStudio": "Stüdyo"
+    "helper.moduleStudio": "Stüdyo",
+    "stat.helperOverview": "Bir bakışta Vozen Helper",
+    "stat.setupSteps": "Kurulum adımları",
+    "stat.freeCore": "Temel özellikler",
+    "stat.helperProtections": "Koruma",
+    "stat.helperCommands": "Komut",
+    "finale.musicTitle": "Görüşmelerine müzik kat",
+    "finale.helperTitle": "Sunucuna bir yardımcı ekle",
+    "finale.freeNote": "Temel özellikler ücretsiz. Kredi kartı gerekmez."
   },
   "commands": {
     "general": [
@@ -667,8 +694,8 @@
   },
   "helperFaq": [
     [
-      "Vozen Helper şu anda kullanılabilir mi?",
-      "Evet. Helper herkese açık olarak kullanılabilir. Bu sayfadan yükleyin, bir sunucu seçin ve rehberli kurulumla ilk modülünüzü yapılandırın."
+      "Özel destek taleplerini nasıl ayarlarım?",
+      "Helper panelinde Destek modülünü aç ve üyelerin özel talep açabileceği bir panel yayımla."
     ],
     [
       "Helper Yönetici izni ister mi?",
@@ -684,7 +711,7 @@
     ],
     [
       "Premium'u şimdi satın alabilir miyim?",
-      "Evet. Premium sayfasında bir plan seçin ve Discord ile giriş yapın. Ödeme bilgilerini Stripe işler. Helper'ın temel özellikleri ücretsiz kalır."
+      "Ödemeler geçici olarak devre dışı. Fiyatlar yalnızca referans içindir."
     ]
   ],
   "faq": [
@@ -702,7 +729,7 @@
     ],
     [
       "Plus mı Premium mu seçmeliyim?",
-      "Plus, Discord hesabına Kokoro sesleri ve ek efektler ekler. Premium, seçilen sunucularda TTS ve Helper için ücretli özellikler ekler. Ödemeler şu anda duraklatılmıştır."
+      "Plus, Discord hesabına Kokoro sesleri ve ek efektler ekler. Premium, seçili sunuculara canlı transkripsiyon ve TTS botuna özel avatar ve banner ekler. Ödemeler duraklatıldı."
     ],
     [
       "Neden ses duyamıyorum?",

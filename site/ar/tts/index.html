@@ -42,14 +42,18 @@
 
     <link rel="preload" href="/assets/fonts/unbounded-critical-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="/assets/fonts/outfit-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/tts-page-v1.css?v=4faefa42ee0b">
+    <link rel="preload" href="/assets/fonts/unbounded-brand-latin.woff2?no-inline" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/tts-page-v1.css?v=c7471a3c1e88">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen TTS","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/ar/tts/","description":"تحويل النص إلى كلام لمكالماتك على Discord.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"},"inLanguage":"ar"}</script>
 
     <!-- FAQ structured data (Google rich results). Mantém em sincronia com
          window.VOZEN_FAQ (js/i18n.js) — o JSON-LD tem de ser ESTÁTICO porque os
          crawlers não correm o JS que renderiza o FAQ. -->
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"ar","mainEntity":[{"@type":"Question","name":"هل يمكنني استخدام Vozen مجانًا؟","acceptedAnswer":{"@type":"Answer","text":"نعم. يمكنك استخدام أصوات Piper والقراءة التلقائية والألعاب المجانية دون اشتراك."}},{"@type":"Question","name":"كيف أبدأ باستخدام Vozen؟","acceptedAnswer":{"@type":"Answer","text":"أضف Vozen إلى خادم تديره. استخدم /setup لاختيار قناة نصية وتفعيل القراءة التلقائية، ثم انضم إلى قناة صوتية واستخدم /join."}},{"@type":"Question","name":"هل يستطيع كل عضو اختيار صوته؟","acceptedAnswer":{"@type":"Answer","text":"استخدم /voice set لاختيار صوتك ولغتك. يمكن لكل عضو حفظ إعداداته الخاصة."}},{"@type":"Question","name":"هل أختار Plus أم Premium؟","acceptedAnswer":{"@type":"Answer","text":"يضيف Plus أصوات Kokoro ومؤثرات إضافية إلى حسابك في Discord. يضيف Premium ميزات مدفوعة إلى الخوادم المحددة في TTS وHelper. المدفوعات متوقفة حاليًا."}},{"@type":"Question","name":"لماذا لا أسمع شيئًا؟","acceptedAnswer":{"@type":"Answer","text":"انضم إلى قناة صوتية واستخدم /join. تحقق من صلاحيات اتصال Vozen وتحدثه، ومن أن /setup يشير إلى القناة النصية التي تستخدمها."}},{"@type":"Question","name":"كيف أوقف القراءة؟","acceptedAnswer":{"@type":"Answer","text":"استخدم /shut-up لمسح قائمة الانتظار أو /leave لفصل Vozen. عطّل القراءة التلقائية في /config لإيقاف قراءة الرسائل الجديدة."}}]}</script>
-  </head>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"ar","mainEntity":[{"@type":"Question","name":"هل يمكنني استخدام Vozen مجانًا؟","acceptedAnswer":{"@type":"Answer","text":"نعم. يمكنك استخدام أصوات Piper والقراءة التلقائية والألعاب المجانية دون اشتراك."}},{"@type":"Question","name":"كيف أبدأ باستخدام Vozen؟","acceptedAnswer":{"@type":"Answer","text":"أضف Vozen إلى خادم تديره. استخدم /setup لاختيار قناة نصية وتفعيل القراءة التلقائية، ثم انضم إلى قناة صوتية واستخدم /join."}},{"@type":"Question","name":"هل يستطيع كل عضو اختيار صوته؟","acceptedAnswer":{"@type":"Answer","text":"استخدم /voice set لاختيار صوتك ولغتك. يمكن لكل عضو حفظ إعداداته الخاصة."}},{"@type":"Question","name":"هل أختار Plus أم Premium؟","acceptedAnswer":{"@type":"Answer","text":"يضيف Plus أصوات Kokoro ومؤثرات إلى حسابك على ديسكورد. ويضيف Premium إلى الخوادم المختارة التفريغ المباشر وصورة رمزية ولافتة مخصصتين لبوت TTS. المدفوعات معلّقة."}},{"@type":"Question","name":"لماذا لا أسمع شيئًا؟","acceptedAnswer":{"@type":"Answer","text":"انضم إلى قناة صوتية واستخدم /join. تحقق من صلاحيات اتصال Vozen وتحدثه، ومن أن /setup يشير إلى القناة النصية التي تستخدمها."}},{"@type":"Question","name":"كيف أوقف القراءة؟","acceptedAnswer":{"@type":"Answer","text":"استخدم /shut-up لمسح قائمة الانتظار أو /leave لفصل Vozen. عطّل القراءة التلقائية في /config لإيقاف قراءة الرسائل الجديدة."}}]}</script>
+  <link rel="stylesheet" href="/css/vozen-footer-v1.css?v=15f94bd176ca">
+  <link rel="stylesheet" href="/css/product-faq-v1.css?v=041a315ce08f">
+<link rel="stylesheet" href="/css/product-finale-v1.css?v=f6a929ee5597">
+</head>
   <body class="tts-page product-preview product-preview--expressive" data-i18n-document-title="tts.documentTitle" data-vozen-public-analytics="true">
     <!-- grain overlay -->
     <div class="grain" aria-hidden="true"></div>
@@ -62,17 +66,17 @@
     <a class="skip-link" href="https://vozen.org/ar/tts/#hero">الانتقال إلى المحتوى</a>
 
     <!-- ─────────────── NAVBAR ─────────────── -->
-    <header class="nav vozen-global-nav is-stuck" id="nav" data-vozen-nav="" data-nav-product="TTS" data-nav-current="tts" data-nav-prerendered="true" data-nav-locale-root="ar/" data-prerender-fragment="navigation">
+    <header class="nav vozen-global-nav" id="nav" data-vozen-nav="" data-nav-product="TTS" data-nav-current="tts" data-nav-prerendered="true" data-prerender-fragment="navigation" data-nav-locale-root="ar/">
       <div class="wrap nav__inner">
-        <a class="brand" href="ar/" aria-label="الصفحة الرئيسية لنظام Vozen" data-i18n-aria-label="ecosystem.homeAria">
+        <a class="brand" href="https://vozen.org/ar/tts/" aria-label="الصفحة الرئيسية لنظام Vozen" data-i18n-aria-label="ecosystem.homeAria">
           <span class="brand__mark" aria-hidden="true"><img class="brand__portal" src="favicon.svg" alt="" width="40" height="40"></span>
           <span class="brand__word">Vozen</span>
           <span class="nav__product" data-i18n="ecosystem.label">المنظومة</span>
         </a>
         <nav class="nav__links" aria-label="منتجات Vozen" data-i18n-aria-label="ecosystem.productsAria" id="vozen-primary-links">
           <a class="is-current" href="ar/tts/" aria-current="page" data-i18n="ecosystem.tts">Vozen TTS</a>
+          <a class="" href="/music/">Vozen Music</a>
           <a class="" href="ar/helper/" data-i18n="ecosystem.helper">Vozen Helper</a>
-          <a class="" href="docs/" data-i18n="ecosystem.docs">التوثيق</a>
           <a class="" href="commands/" data-i18n="ecosystem.commands">الأوامر</a>
           <a class="" href="status.html" data-i18n="ecosystem.status">الحالة</a>
           <a class="" href="premium#plans" data-i18n="nav.premium">Premium</a>
@@ -84,10 +88,10 @@
               <span class="lang__flag" id="langBtnFlag"><img class="lang__flag" src="/assets/flags-v2/sa.svg" width="24" height="18" alt="" loading="lazy" decoding="async"></span><span class="lang__name" id="langBtnName">العربية</span>
               <svg class="lang__chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
             </button>
-            <ul class="lang__panel" id="langPanel" role="listbox" tabindex="-1" aria-label="اختر اللغة" data-i18n-aria-label="ecosystem.chooseLanguage"><li role="presentation"><a class="lang__opt" href="/tts/" role="option" data-lang="en" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">English</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/pt/tts/" role="option" data-lang="pt" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Português</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/fr/tts/" role="option" data-lang="fr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/fr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Français</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/es/tts/" role="option" data-lang="es" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/es.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Español</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/de/tts/" role="option" data-lang="de" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/de.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/tr/tts/" role="option" data-lang="tr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Türkçe</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt is-active" href="/ar/tts/" role="option" data-lang="ar" aria-selected="true" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/sa.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">العربية</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/zh/tts/" role="option" data-lang="zh" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tw.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">繁體中文</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ru/tts/" role="option" data-lang="ru" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/ru.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Русский</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ko/tts/" role="option" data-lang="ko" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/kr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">한국어</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li></ul>
+            <ul class="lang__panel" id="langPanel" role="listbox" tabindex="-1" aria-label="اختر اللغة" data-i18n-aria-label="ecosystem.chooseLanguage"><li role="presentation"><a class="lang__opt is-active" href="/tts/" role="option" data-lang="en" aria-selected="true" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">English</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/pt/tts/" role="option" data-lang="pt" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Português</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/fr/tts/" role="option" data-lang="fr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/fr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Français</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/es/tts/" role="option" data-lang="es" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/es.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Español</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/de/tts/" role="option" data-lang="de" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/de.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/tr/tts/" role="option" data-lang="tr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Türkçe</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ar/tts/" role="option" data-lang="ar" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/sa.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">العربية</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/zh/tts/" role="option" data-lang="zh" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tw.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">繁體中文</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ru/tts/" role="option" data-lang="ru" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/ru.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Русский</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ko/tts/" role="option" data-lang="ko" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/kr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">한국어</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li></ul>
           </div>
-          <a class="btn btn--primary btn--discord-cta btn--sm nav__login" id="navLogin" href="account/"><svg viewBox="0 0 24 18" width="20" height="15" aria-hidden="true" fill="currentColor"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4 2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Z"></path></svg><span data-i18n="nav.login">تسجيل الدخول</span></a>
-          <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="vozen-primary-links"><span></span><span></span><span></span></button>
+          <a class="btn btn--primary btn--discord-cta btn--sm nav__login" id="navLogin" href="account/"><svg viewBox="0 0 24 18" width="18" height="14" fill="currentColor" aria-hidden="true"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Z"></path></svg><span data-i18n="ecosystem.login">تسجيل الدخول</span></a>
+          <button class="nav__burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="vozen-primary-links"><span></span><span></span><span></span></button>
         </div>
       </div>
     </header>
@@ -98,8 +102,7 @@
         <canvas id="wave" class="hero__wave" aria-hidden="true"></canvas>
         <div class="wrap hero__grid">
           <div class="hero__copy">
-
-
+            <div class="product-hero-brand"><img src="/assets/settings-tts.png" alt="" width="44" height="44"><span>Vozen TTS</span></div>
             <h1 class="hero__title reveal" data-r="2">
               <span data-preview-i18n="hero.title1" data-preview-copy="Your chat.">دردشتك.</span>
               <span class="grad" data-preview-i18n="hero.title2" data-preview-copy="Out loud.">بصوت مسموع.</span>
@@ -136,7 +139,7 @@
       <div class="msg__av msg__av--v"><span class="eq" style="height:16px"><i></i><i></i><i></i><i></i><i></i></span></div>
       <div class="msg__b">
         <div class="msg__name"><b>Vozen</b><span class="tag">APP</span></div>
-        <div class="speaking"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span> reading it out loud…</div>
+        <div class="speaking"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span> يقرأه بصوت عالٍ…</div>
       </div></div></div>
             </div>
           </div>
@@ -271,7 +274,7 @@
                 <svg viewBox="0 0 180 120" fill="none" stroke="#ffc95b" stroke-width="3" stroke-linejoin="round"><path class="feature-gem" d="M48 18h84l27 29-69 62-69-62Z"></path><path class="feature-gem-facet" d="m65 18 25 91 25-91M21 47h138M65 18l25 29 25-29"></path></svg>
               </div>
               <h3 data-i18n="feat.8.t">‏Premium عادل</h3>
-              <p data-i18n="feat.8.d">يفتح اشتراك €6.99 شهريًا Kokoro وإضافات الخادم. يبقى أساس Piper الضروري مجانيًا</p>
+              <p data-i18n="feat.8.d">يفتح اشتراك €3.99 شهريًا Kokoro وإضافات الخادم. يبقى أساس Piper الضروري مجانيًا</p>
             </article>
 
             <article class="card card--accent reveal">
@@ -411,7 +414,7 @@
               <p>Enter a voice channel, run /join, then type in your configured text channel.</p>
             </div>
           </div>
-          <p class="setup-caption"><a href="docs/tts/text-to-speech/reading-messages/">Auto-read guide</a></p>
+          <p class="setup-caption"></p>
         </div>
       </section>
 
@@ -429,7 +432,7 @@
               <button type="button" data-tab="fun" data-i18n="cmd.fun" aria-pressed="false">التسلية</button>
               <button type="button" data-tab="admin" data-i18n="cmd.admin" aria-pressed="false">الإدارة</button>
             </div>
-          <div class="cmd-list reveal" id="cmdList" data-prerender-fragment="cmdList"><section aria-label="عام"><div class="cmd"><code>/setup</code><span>إعداد مُوجَّه بخطوة واحدة</span></div><div class="cmd"><code>/join</code><span>الانضمام إلى قناتك الصوتية</span></div><div class="cmd"><code>/tts</code><span>قراءة نص بصوت مسموع</span></div><div class="cmd"><code>/skip</code><span>تخطّي الصوت الحالي</span></div><div class="cmd"><code>/leave</code><span>مغادرة القناة الصوتية</span></div><div class="cmd"><code>/help</code><span>عرض قائمة أوامر Vozen</span></div></section><section aria-label="الصوت"><div class="cmd"><code>/voice set</code><span>اختر صوتك ولغتك ومحركك</span></div><div class="cmd"><code>/voice list</code><span>تصفّح كل الأصوات</span></div><div class="cmd"><code>/voice favorites</code><span>Open your saved favourite voices</span></div><div class="cmd"><code>/voice recent</code><span>Open your recently used voices</span></div><div class="cmd"><code>/voice preview</code><span>استمع إلى عيّنة صوتية</span></div><div class="cmd"><code>/voice effect</code><span>روبوت، صدى، شيطان… مؤثرات صوتية</span></div></section><section aria-label="التسلية"><div class="cmd"><code>/game play</code><span>ابدأ إحدى الألعاب المصغّرة الـ 16</span></div><div class="cmd"><code>/game leaderboard</code><span>أفضل اللاعبين في الخادم</span></div><div class="cmd"><code>/game stats</code><span>نقاطك وانتصاراتك ورتبتك</span></div><div class="cmd"><code>/joke</code><span>نكتة قصيرة بأي لغة</span></div><div class="cmd"><code>/laugh</code><span>يضحك Vozen بصوتك</span></div><div class="cmd"><code>/8-ball</code><span>اسأل كرة الحظ السحرية بصوت مسموع</span></div></section><section aria-label="الإدارة"><div class="cmd"><code>/config greet</code><span>رحّب بالمنضمّين إلى المكالمة</span></div><div class="cmd"><code>/config language</code><span>اضبط لغة الواجهة</span></div><div class="cmd"><code>/config default-voice</code><span>اضبط الصوت الافتراضي للخادم</span></div><div class="cmd"><code>/config auto-read</code><span>تشغيل/إيقاف القراءة التلقائية</span></div><div class="cmd"><code>/config block-word</code><span>إدارة قائمة الحظر</span></div><div class="cmd"><code>/server-pronunciation</code><span>نطق لكامل الخادم (مشرف، 3 · 50 مع Premium)</span></div></section></div>
+          <div class="cmd-list reveal" id="cmdList" data-prerender-fragment="cmdList"><section aria-label="عام"><div class="cmd"><code>/setup</code><span>Guided one-step setup</span></div><div class="cmd"><code>/join</code><span>Join your voice channel</span></div><div class="cmd"><code>/tts</code><span>Read a text out loud</span></div><div class="cmd"><code>/skip</code><span>Skip the current audio</span></div><div class="cmd"><code>/leave</code><span>Leave the voice channel</span></div><div class="cmd"><code>/help</code><span>Show Vozen's command list</span></div></section><section aria-label="الصوت"><div class="cmd"><code>/voice set</code><span>Pick your voice, language &amp; engine</span></div><div class="cmd"><code>/voice list</code><span>Browse all voices</span></div><div class="cmd"><code>/voice favorites</code><span>Open your saved favourite voices</span></div><div class="cmd"><code>/voice recent</code><span>Open your recently used voices</span></div><div class="cmd"><code>/voice preview</code><span>Hear a voice sample</span></div><div class="cmd"><code>/voice effect</code><span>Robot, echo, demon… voice effects</span></div></section><section aria-label="التسلية"><div class="cmd"><code>/game play</code><span>Start one of 16 minigames</span></div><div class="cmd"><code>/game leaderboard</code><span>Top players on the server</span></div><div class="cmd"><code>/game stats</code><span>Your points, wins &amp; rank</span></div><div class="cmd"><code>/joke</code><span>A short joke in any language</span></div><div class="cmd"><code>/laugh</code><span>Vozen laughs in your voice</span></div><div class="cmd"><code>/8-ball</code><span>Ask the magic 8-ball, out loud</span></div></section><section aria-label="مسؤول"><div class="cmd"><code>/config greet</code><span>Greet people who join the call</span></div><div class="cmd"><code>/config language</code><span>Set the interface language</span></div><div class="cmd"><code>/config default-voice</code><span>Set the server's default voice</span></div><div class="cmd"><code>/config auto-read</code><span>Turn auto-read on/off</span></div><div class="cmd"><code>/config block-word</code><span>Manage the blocklist</span></div><div class="cmd"><code>/server-pronunciation</code><span>Server-wide pronunciations for everyone (admin, 3 · 50 with Premium)</span></div></section></div>
             <a class="command-catalogue-link" href="commands/">View all commands</a>
           </div>
           <figure class="command-example reveal">
@@ -449,7 +452,7 @@
         <div class="wrap">
           <header class="head reveal">
             <h2>Your voice. Or your whole server.</h2>
-            <p>Plus follows you. Premium upgrades your communities — in both bots.</p>
+            <p>Plus follows you. Premium upgrades your communities across all three bots.</p>
           </header>
           <!-- O login/estado da conta vivem agora numa página dedicada (account.html),
                acessível pelo botão "Log in" da navbar. -->
@@ -458,21 +461,20 @@
               <button type="button" class="bill-toggle__btn is-active" data-bill="month" data-i18n="price.billMonthly">شهري</button>
               <button type="button" class="bill-toggle__btn" data-bill="year">
                 <span data-i18n="price.billYearly">سنوي</span>
-                <span class="bill-toggle__save">Annual billing</span>
               </button>
             </div>
           </div>
           <div class="bundle-ribbon" role="note" aria-label="حزمة Vozen" data-i18n-aria-label="price.bundleAria">
-            <div class="plan-bundle-art" aria-hidden="true"><span class="eco-product__icon eco-product__icon--tts"><svg class="eco-tts-icon" viewBox="0 0 64 64"><rect x="10" y="27" width="6" height="10" rx="3"></rect><rect x="20" y="22" width="6" height="20" rx="3"></rect><rect x="30" y="18" width="6" height="28" rx="3"></rect><rect x="40" y="23" width="6" height="18" rx="3"></rect><rect x="50" y="28" width="4" height="8" rx="2"></rect></svg></span><span class="eco-product__icon eco-product__icon--helper"><svg class="eco-helper-character eco-helper-character--classic" viewBox="0 0 64 64"><path d="M32 19v-7"></path><circle cx="32" cy="9" r="3" class="white"></circle><path d="m15 36-6-4m2 0-2 4M49 36l6-4m-2 0 2 4"></path><rect x="13" y="20" width="38" height="29" rx="13" class="white"></rect><rect x="18" y="26" width="28" height="18" rx="8" class="screen"></rect><circle cx="26" cy="35" r="2.4" class="white"></circle><circle cx="38" cy="35" r="2.4" class="white"></circle><path d="M27 39c3 2.5 7 2.5 10 0"></path></svg></span></div>
+            <div class="plan-bundle-art" aria-hidden="true"><img class="eco-product__icon" src="/assets/settings-tts.png" alt="" width="44" height="44"><img class="eco-product__icon" src="/assets/music/avatar.webp" alt="" width="44" height="44"><img class="eco-product__icon" src="/assets/settings-helper.png" alt="" width="44" height="44"></div>
             <div class="bundle-ribbon__copy">
-              <strong>روبوتان. اشتراك واحد.</strong>
-              <span>TTS + Helper Premium for everyone in your selected servers.</span>
+              <strong data-i18n="price.bundleTitle">ثلاثة روبوتات. اشتراك واحد.</strong>
+              <span data-i18n="price.bundleText">‏TTS وMusic وHelper Premium للجميع في الخوادم التي تختارها.</span>
             </div>
-            <span class="bundle-ribbon__value" data-i18n="price.bundleValue">TTS + HELPER</span>
+            <span class="bundle-ribbon__value" data-i18n="price.bundleValue">TTS + MUSIC + HELPER</span>
           </div>
           <div class="pricing">
             <article class="price-card price-card--free reveal">
-              <h3 data-i18n="price.free.name">مجاني</h3>
+              <h3 data-i18n="price.free.name">Free</h3>
               <p class="price-card__pitch" data-i18n="price.free.pitch">كل الأساسيات. بلا بطاقة ولا فترة تجريبية</p>
               <div class="seat-toggle plan-scope plan-scope--free">
                 <span class="seat-toggle__btn is-active" data-i18n="price.free.per">للأبد</span>
@@ -499,12 +501,12 @@
             <div class="paid-plans">
             <article class="price-card price-card--plus reveal">
               <h3 data-i18n="price.plus.name">Vozen Plus</h3>
-              <p class="price-card__pitch">Your voice upgrades, wherever you chat.</p>
+              <p class="price-card__pitch">Your voice upgrades, wherever you chat.<small class="price-card__products">TTS + Music.</small></p>
               <div class="seat-toggle plan-scope">
                 <span class="seat-toggle__btn is-active" data-i18n="price.m.17">يرافقك في أي خادم</span>
               </div>
               <div class="price-card__price">
-                <span class="price-line"><b><span class="amt amt--m">€3.99</span><span class="amt amt--y">€37.99</span></b><s class="was was--y">€47.88</s></span>
+                <span class="price-line"><b><span class="amt amt--m">€1.99</span><span class="amt amt--y">€18.99</span></b></span>
                 <span class="per per--m" data-i18n="price.plus.per">/ شهريًا · لكل مستخدم</span>
                 <span class="per per--y" data-i18n="price.plus.perYear">/ سنويًا · لكل مستخدم</span>
               </div>
@@ -524,14 +526,14 @@
             </article>
             <article class="price-card price-card--pro reveal">
               <h3 data-i18n="price.pro.name">Vozen Premium</h3>
-              <p class="price-card__pitch">Premium voices and Helper extras for everyone.</p>
+              <p class="price-card__pitch"><span class="price-card__audience" data-i18n="price.pro.audience">مزايا Premium لجميع أعضاء خوادمك.</span><small class="price-card__products" data-i18n="price.pro.pitch">TTS + Music + Helper.</small></p>
               <!-- Toggle de licenças: a mesma tier muda o número de servidores e o preço. -->
               <div class="seat-toggle" role="group" aria-label="الخوادم لكل اشتراك" data-i18n-aria-label="price.serversPerSubscription">
                 <button type="button" class="seat-toggle__btn is-active" data-seats="2" data-i18n="price.pro.seats2">خادمان</button>
                 <button type="button" class="seat-toggle__btn" data-seats="5" data-i18n="price.pro.seats5">5 خوادم</button>
               </div>
               <div class="price-card__price">
-                <span class="price-line"><b><span class="amt amt--m amt--s2">€6.99</span><span class="amt amt--m amt--s5">€14.99</span><span class="amt amt--y amt--s2">€66.99</span><span class="amt amt--y amt--s5">€133.99</span></b><s class="was was--y was--s2">€83.88</s><s class="was was--y was--s5">€179.88</s></span>
+                <span class="price-line"><b><span class="amt amt--m amt--s2">€3.99</span><span class="amt amt--m amt--s5">€7.99</span><span class="amt amt--y amt--s2">€37.99</span><span class="amt amt--y amt--s5">€70.99</span></b></span>
                 <span class="per per--m per--s2" data-i18n="price.pro.per">/ شهريًا · خادمان</span>
                 <span class="per per--m per--s5" data-i18n="price.max.per">/ شهر · 5 خوادم</span>
                 <span class="per per--y per--s2" data-i18n="price.pro.perYear">/ سنويًا · خادمان</span>
@@ -576,7 +578,7 @@
                   <thead>
                     <tr role="row">
                       <th scope="col" role="columnheader" data-i18n="nav.features">المزايا</th>
-                      <th scope="col" role="columnheader" data-i18n="price.free.name">مجاني</th>
+                      <th scope="col" role="columnheader" data-i18n="price.free.name">Free</th>
                       <th scope="col" role="columnheader" data-i18n="price.plus.name">Vozen Plus</th>
                       <th scope="col" role="columnheader" data-i18n="price.pro.name">Vozen Premium</th>
                     </tr>
@@ -591,8 +593,8 @@
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.6">مؤثرات صوت Robot وEcho</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.7">لوحة المتصدرين الأسبوعية</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.20">سلاسل محادثة يومية</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
-                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.ttsBotName">تغيير اسم بوت TTS في خادمك</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.8">طقم إدارة كامل</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.ttsBotName">تغيير اسم بوت TTS في خادمك</th><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <!-- Bloco B — extras pagos: iguais no Plus e no Premium. -->
                     <tr role="row" class="group-b"><th scope="row" role="rowheader" data-i18n="price.m.21">محرك Kokoro العصبي</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.9">كل المؤثرات الصوتية الثمانية (عميق، شيطان، راديو…)</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has">✓</td></tr>
@@ -604,9 +606,9 @@
                     <!-- Bloco C — exclusivos: pessoal (Plus) vs servidor (Premium). -->
                     <tr role="row" class="group-c"><th scope="row" role="rowheader" data-i18n="price.m.17">يرافقك في أي خادم</th><td role="cell" class="has-not">—</td><td role="cell" class="has">✓</td><td role="cell" class="has-not">—</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.19">50 نطقًا للخادم</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
-                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.ttsBotImages">صورة ملف شخصي وبانر مخصصان لبوت TTS</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.16">في المكالمة على مدار الساعة</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.23">تحويل الصوت المباشر إلى نص</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
+                    <tr role="row"><th scope="row" role="rowheader" data-i18n="price.ttsBotImages">صورة ملف شخصي وبانر مخصصان لبوت TTS</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                     <tr role="row"><th scope="row" role="rowheader" data-i18n="price.m.18">يعمل للجميع في الخادم</th><td role="cell" class="has-not">—</td><td role="cell" class="has-not">—</td><td role="cell" class="has has--premium">✓</td></tr>
                   </tbody>
                 </table>
@@ -617,12 +619,9 @@
       </section>
 
       <!-- ─────────────── FAQ ─────────────── -->
-      <section class="section" id="faq">
-        <div class="wrap wrap--narrow">
-          <header class="head reveal">
-            <h2 data-i18n="faq.title">أسئلة، بإجابات</h2>
-          </header>
-          <div class="faq" id="faq-list" data-prerender-fragment="faq-list">
+      <section class="product-faq" id="faq" aria-labelledby="faq-title">
+  <header class="product-faq__heading"><h2 id="faq-title" data-i18n="faq.title">أسئلة، بإجابات</h2></header>
+  <div class="faq" id="faq-list" data-prerender-fragment="faq-list">
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-0">
           <span>هل يمكنني استخدام Vozen مجانًا؟</span>
@@ -645,7 +644,7 @@
         <button class="qa__q" aria-expanded="false" aria-controls="qa-3">
           <span>هل أختار Plus أم Premium؟</span>
         </button>
-        <div class="qa__a" id="qa-3" role="region"><p>يضيف Plus أصوات Kokoro ومؤثرات إضافية إلى حسابك في Discord. يضيف Premium ميزات مدفوعة إلى الخوادم المحددة في TTS وHelper. المدفوعات متوقفة حاليًا.</p></div>
+        <div class="qa__a" id="qa-3" role="region"><p>يضيف Plus أصوات Kokoro ومؤثرات إلى حسابك على ديسكورد. ويضيف Premium إلى الخوادم المختارة التفريغ المباشر وصورة رمزية ولافتة مخصصتين لبوت TTS. المدفوعات معلّقة.</p></div>
       </div>
       <div class="qa">
         <button class="qa__q" aria-expanded="false" aria-controls="qa-4">
@@ -659,71 +658,52 @@
         </button>
         <div class="qa__a" id="qa-5" role="region"><p>استخدم /shut-up لمسح قائمة الانتظار أو /leave لفصل Vozen. عطّل القراءة التلقائية في /config لإيقاف قراءة الرسائل الجديدة.</p></div>
       </div></div>
-        </div>
-      </section>
+</section>
 
       <!-- ─────────────── FINAL CTA ─────────────── -->
-      <section class="finale">
-        <div class="wrap finale__inner reveal">
-          <h2 data-i18n="finale.title">امنح خادمك صوتًا</h2>
-          <a class="btn btn--primary btn--discord-cta btn--lg js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero">
-            <span data-i18n="cta.add">أضِفه إلى Discord</span>
-          </a>
-          <p class="finale__note" data-i18n="finale.note">أساسيات مجانية للأبد · 35 لغة · إعداد خلال 30 ثانية</p>
-        </div>
-      </section>
+      <section class="product-finale" id="get-started" aria-labelledby="product-finale-title">
+ <img class="product-finale__icon" src="/assets/settings-tts.png" width="80" height="80" alt="" loading="lazy" decoding="async">
+ <div class="product-finale__copy"><span class="product-finale__name">Vozen TTS</span><h2 class="product-finale__title" id="product-finale-title" data-i18n="finale.title">امنح خادمك صوتًا</h2></div>
+ <div class="product-finale__action"><a class="btn btn--primary btn--discord-cta product-finale__button js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+                  <path d="M20.3 4.4A19 19 0 0 0 15.6 3l-.24.48a17.6 17.6 0 0 1 4.16 1.3 15 15 0 0 0-11.06 0A17.6 17.6 0 0 1 12.63 3.5L12.4 3A19 19 0 0 0 7.7 4.4C4.8 8.7 4 13 4.2 17.2A19 19 0 0 0 9.9 20l.4-.6a12 12 0 0 1-1.9-.9c.16-.12.32-.24.47-.37a13.6 13.6 0 0 0 11.6 0c.15.13.3.25.47.37-.6.36-1.24.66-1.9.9l.4.6a19 19 0 0 0 5.7-2.8c.28-4.9-.76-9.16-3.36-12.8ZM9.7 14.7c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Zm4.6 0c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.88 2.3-2 2.3Z"></path>
+                </svg><span data-i18n="cta.add">أضِفه إلى Discord</span></a><p class="product-finale__note" data-i18n="finale.freeNote">الميزات الأساسية مجانية. لا حاجة لبطاقة ائتمان.</p></div>
+</section>
     </main>
 
     <!-- ─────────────── FOOTER ─────────────── -->
-    <footer class="foot">
-      <div class="wrap foot__grid">
-        <div>
-          <a class="brand" href="https://vozen.org/ar/tts/" aria-label="الصفحة الرئيسية لنظام Vozen">
-            <span class="brand__mark"><img class="brand__portal" src="favicon.svg" alt="" width="40" height="40"></span>
-            <span class="brand__word">Vozen</span>
-          </a>
-          <p class="foot__tag" data-i18n="foot.tag">اكتبها، استمع إليها</p>
-        </div>
-        <div>
-          <h2 data-i18n="foot.product">المنتج</h2>
-          <a href="https://vozen.org/ar/tts/#features" data-i18n="nav.features">المزايا</a>
-          <a href="https://vozen.org/ar/tts/#games" data-i18n="nav.games">الألعاب</a>
-          <a href="commands/" data-i18n="nav.commands">الأوامر</a>
-          <a href="premium.html#plans" data-i18n="nav.premium">Premium</a>
-          <a href="https://vozen.org/ar/tts/#faq" data-i18n="nav.faq">الأسئلة الشائعة</a>
-          <a href="https://vozen.org/ar/tts/" data-i18n="ecosystem.name">منظومة Vozen</a>
-          <a href="ar/helper/">Vozen Helper</a>
-          <a href="/status" data-i18n="site.status">الحالة</a>
-        </div>
-        <div>
-          <h2 data-i18n="foot.community">المجتمع</h2>
-          <a href="https://discord.gg/4kYw2WUbNN" class="js-support" data-i18n="foot.support">خادم الدعم</a>
-          <a href="https://vozen.org/ar/tts/#" class="js-vote" data-i18n="foot.vote">صوّت على top.gg</a>
-          <a href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener" data-i18n="site.github">GitHub</a>
-        </div>
-      </div>
-      <div class="wrap foot__base">
-        <span>© 2026 Vozen</span>
-        <span class="foot__legal">
-          <a href="/privacy" data-i18n="foot.privacy">الخصوصية</a>
-          <a href="/terms" data-i18n="foot.terms">الشروط</a>
-        </span>
-        <span data-i18n="foot.legal">غير تابع لـ Discord</span>
-      </div>
-    </footer>
+    <footer class="vozen-footer" id="site-footer">
+  <div class="vozen-footer__inner">
+    <span class="vozen-footer__brand"><img src="/favicon.svg" width="28" height="28" alt="">© 2026 Vozen</span>
+    <nav class="vozen-footer__links" aria-label="Vozen footer">
+      <a href="https://discord.gg/4kYw2WUbNN" data-i18n="foot.support">خادم الدعم</a>
+      <a href="/privacy.html" data-i18n="foot.privacy">الخصوصية</a>
+      <a href="/terms.html" data-i18n="foot.terms">الشروط</a>
+    </nav>
+    <span class="vozen-footer__disclaimer" data-i18n="foot.legal">غير تابع لـ Discord</span>
+  </div>
+</footer>
 
     <script defer="" src="js/analytics-config.js?v=f6b49da441d8"></script>
     <script defer="" src="js/web-analytics-v1.js?v=e934b4dd1f34"></script>
     <script defer="" src="js/install-config-v1.js?v=97c30a4aaef1"></script>
     <script defer="" src="js/tts-install-v1.js?v=06da33493db0"></script>
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer="" src="js/global-nav-v1.js?v=c36e628c7056"></script>
-    <script defer="" src="js/i18n-public-loader-v1.js?v=e9b3e3b4a5b1"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=2decb7cc2c60"></script>
+    <script defer="" src="js/global-nav-v1.js?v=93ac57255dc2"></script>
+    <script defer="" src="js/i18n-public-loader-v1.js?v=b43111dba3cd"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v5&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=4&amp;auth-persist=1&amp;v=86081478360f"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
 <script defer="" src="js/product-preview-v1.js?v=dd06ef7904bf"></script>
 <script defer="" src="js/tts-player-preview-v1.js?v=636d7df5514a"></script>
 <script defer="" src="js/tts-features-preview-v1.js?v=50a88a38197c"></script>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -742,7 +722,6 @@
 .vozen-global-nav{position:static!important;height:auto!important}
 .vozen-global-nav .nav__inner{height:auto!important;padding-block:14px;row-gap:14px}
 .vozen-global-nav .nav__links{order:3;flex:1 1 100%;justify-content:flex-start;gap:16px}
-.docs-topbar{position:static!important}
 .page-account main,.page-account .foot{visibility:visible!important}
-@media(max-width:980px){.docs-sidebar{position:static!important;transform:none!important;visibility:visible!important}.docs-main{margin-left:0!important}.docs-drawer-toggle,.docs-sidebar-scrim{display:none!important}}
-</style><p>Interactive search, audio, account information and live service checks require JavaScript. All public documentation and command descriptions are available below.</p></noscript></body></html>
+</style><p>Interactive search, audio, account information and live service checks require JavaScript. Public information and command descriptions are available below.</p></noscript>
+</body></html>

@@ -20,11 +20,11 @@
     <link rel="canonical" href="https://vozen.org/helper/" />
     <title>Vozen Helper — Available now</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="css/main-v43.css?v=3b9071956753" />
-    <link rel="stylesheet" href="css/ecosystem-v1.css?v=d1fb22fe718b" />
+    <link rel="stylesheet" href="css/main-v43.css?v=a02be1bbcf65" />
+    <link rel="stylesheet" href="css/ecosystem-v1.css?v=d1892cbbaeee" />
     <link rel="stylesheet" href="css/pricing-cards-v3.css?v=298c3ed269fa" />
     <link rel="stylesheet" href="css/pricing-cards-v9.css?v=e9e341e02c99" />
-    <link rel="stylesheet" href="css/global-nav-v1.css?v=ce50126907c3" />
+    <link rel="stylesheet" href="css/global-nav-v1.css?v=d711660e6936" />
     <link rel="stylesheet" href="css/helper-ui-preview.css?v=22c21e85812a" />
     <link rel="stylesheet" href="css/helper-pricing-v1.css?v=5882c95d9928" />
     <link rel="stylesheet" href="css/bundle-pricing-v1.css?v=aadc7f866715" />
@@ -41,7 +41,11 @@
       <meta name="twitter:description" content="Vozen Helper is a Discord operations companion for safer, clearer server management. Explore its modules and setup path.">
       <meta name="twitter:image" content="https://vozen.org/assets/og-image.png">
       <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Vozen Helper — Available now","description":"Vozen Helper is a Discord operations companion for safer, clearer server management. Explore its modules and setup path.","url":"https://vozen.org/helper/","isPartOf":{"@type":"WebSite","name":"Vozen","url":"https://vozen.org/"},"publisher":{"@type":"Organization","name":"Vozen","url":"https://vozen.org/"}}</script>
-  </head>
+  <link rel="stylesheet" href="/css/vozen-footer-v1.css?v=15f94bd176ca">
+<link rel="stylesheet" href="/css/product-finale-v1.css?v=f6a929ee5597">
+  <link rel="stylesheet" href="/css/helper-protection-demo-v1.css?v=3a766733ab21">
+  <script defer src="/js/helper-protection-demo-v1.js?v=f47a3b38396c"></script>
+</head>
   <body class="helper-page">
     <a class="eco-skip" href="#helper">Skip to content</a>
 
@@ -59,25 +63,17 @@
           </div>
           <div class="helper-hero__copy">
             <span class="eco-locked helper-available"><span aria-hidden="true">•</span> Available now</span>
-            <div class="helper-hero__identity">
-              <span class="helper-hero__mark" aria-hidden="true">
-                <svg class="eco-helper-character" viewBox="0 0 64 64">
-                  <path d="m15 34-6-4m2 0-2 4M49 34l6-4m-2 0 2 4M32 17v-5" />
-                  <circle cx="32" cy="9" r="3" class="white" />
-                  <rect x="13" y="18" width="38" height="31" rx="13" class="white" />
-                  <rect x="18" y="24" width="28" height="19" rx="8" class="screen" />
-                  <circle cx="26" cy="33" r="3" class="white" />
-                  <circle cx="38" cy="33" r="3" class="white" />
-                  <path d="M26 38c3.3 3.2 8.7 3.2 12 0" />
-                </svg>
-              </span>
-              <span>Vozen Helper</span>
-            </div>
+            <div class="helper-hero__identity product-hero-brand"><img src="/assets/settings-helper.png" alt="" width="44" height="44"><span>Vozen Helper</span></div>
             <h1 id="helper-title"><span>A smarter hand</span><span>for your server.</span></h1>
             <p class="helper-hero__lede">Safety, support, events, and everyday community work — coordinated by one calm Discord companion.</p>
-            <div class="helper-hero__actions">
-              <a class="helper-private-action" href="#setup"><span class="helper-private-action__dot" aria-hidden="true"></span> Get started with Helper</a>
-              <a class="helper-explore-action" href="#modules">Explore the modules <span aria-hidden="true">↓</span></a>
+            <div class="helper-hero__actions hero__cta">
+              <a class="btn btn--primary btn--discord-cta js-helper-invite" href="https://api.vozen.org/rust/api/install/start?source=helper-pricing">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+                  <path d="M20.3 4.4A19 19 0 0 0 15.6 3l-.24.48a17.6 17.6 0 0 1 4.16 1.3 15 15 0 0 0-11.06 0A17.6 17.6 0 0 1 12.63 3.5L12.4 3A19 19 0 0 0 7.7 4.4C4.8 8.7 4 13 4.2 17.2A19 19 0 0 0 9.9 20l.4-.6a12 12 0 0 1-1.9-.9c.16-.12.32-.24.47-.37a13.6 13.6 0 0 0 11.6 0c.15.13.3.25.47.37-.6.36-1.24.66-1.9.9l.4.6a19 19 0 0 0 5.7-2.8c.28-4.9-.76-9.16-3.36-12.8ZM9.7 14.7c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Zm4.6 0c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.88 2.3-2 2.3Z"></path>
+                </svg>
+                <span data-i18n="cta.add">Add to Discord</span>
+              </a>
+              <a class="btn btn--ghost js-support" href="https://discord.gg/4kYw2WUbNN" data-i18n="cta.support">Join support server</a>
             </div>
             <p class="helper-hero__proof">8 modules · scoped permissions · traceable actions</p>
           </div>
@@ -92,17 +88,7 @@
               </div>
               <div class="helper-console__body">
                 <div class="helper-console__rail" aria-hidden="true">
-                  <span class="helper-console__bot">
-                    <svg class="eco-helper-character" viewBox="0 0 64 64">
-                      <path d="m15 34-6-4m2 0-2 4M49 34l6-4m-2 0 2 4M32 17v-5" />
-                      <circle cx="32" cy="9" r="3" class="white" />
-                      <rect x="13" y="18" width="38" height="31" rx="13" class="white" />
-                      <rect x="18" y="24" width="28" height="19" rx="8" class="screen" />
-                      <circle cx="26" cy="33" r="3" class="white" />
-                      <circle cx="38" cy="33" r="3" class="white" />
-                      <path d="M26 38c3.3 3.2 8.7 3.2 12 0" />
-                    </svg>
-                  </span>
+                  <img class="helper-console__bot" src="/assets/settings-helper.png" width="46" height="46" alt="">
                   <i class="is-active"></i><i></i><i></i><i></i>
                 </div>
                 <div class="helper-console__stream">
@@ -132,6 +118,50 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="helper-protection-demo" id="try-helper" aria-labelledby="protection-demo-title" data-protection-demo data-state="ready">
+          <div class="helper-protection-demo__intro">
+            <h2 id="protection-demo-title" data-i18n="helper.landing.demoTitle">Try the protection.</h2>
+            <small data-i18n="helper.landing.demoTag">Interactive demo</small>
+          </div>
+          <div class="helper-protection-demo__chat">
+            <div class="helper-protection-demo__conversation">
+              <div class="helper-protection-demo__channel"><b aria-hidden="true">#</b> general</div>
+              <div class="helper-protection-demo__messages">
+                <div class="helper-protection-demo__message"><span class="helper-protection-demo__avatar" aria-hidden="true">M</span><div><strong>Maya</strong><p data-i18n="helper.landing.demoMessage1">Game night at 8?</p></div></div>
+                <div class="helper-protection-demo__message"><span class="helper-protection-demo__avatar helper-protection-demo__avatar--mint" aria-hidden="true">L</span><div><strong>Leo</strong><p data-i18n="helper.landing.demoMessage2">I'm in. See you there.</p></div></div>
+                <p class="helper-protection-demo__waiting" data-i18n="helper.landing.demoPrompt">Send spam. Keep the conversation.</p>
+              </div>
+            </div>
+            <div class="helper-protection-demo__visual" aria-hidden="true">
+              <div class="helper-protection-demo__arena">
+                <div class="helper-protection-demo__lane">
+                  <span class="helper-protection-demo__shot helper-protection-demo__shot--normal"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm2 5h10M7 12h6"></path></svg></span>
+                  <span class="helper-protection-demo__shot"><span data-packet="SPAM"></span></span><span class="helper-protection-demo__shot"><span data-packet="SPAM"></span></span><span class="helper-protection-demo__shot"><span data-packet="SPAM"></span></span><span class="helper-protection-demo__shot"><span data-packet="SPAM"></span></span><span class="helper-protection-demo__shot"><span data-packet="SPAM"></span></span>
+                </div>
+                <svg class="helper-protection-demo__cannon" viewBox="0 0 88 94" fill="none">
+                  <path d="M43 61h24l10 18H32z" fill="#23324d" stroke="#566889" stroke-width="2"></path>
+                  <path d="M30 80h50v5H30z" fill="#65789b"></path>
+                  <g class="helper-protection-demo__barrel">
+                    <path d="M7 30h44l21-6h6a6 6 0 0 1 6 6v25a6 6 0 0 1-6 6h-6l-21-6H7z" fill="#344464" stroke="#7487ad" stroke-width="2"></path>
+                    <rect x="4" y="26" width="12" height="33" rx="3" fill="#18253f" stroke="#a3b4d5" stroke-width="2"></rect>
+                    <path d="M27 37h18m-18 11h12" stroke="#adadff" stroke-width="2.5" stroke-linecap="round"></path>
+                    <circle cx="66" cy="43" r="11" fill="#17243c" stroke="#8395b9" stroke-width="2"></circle>
+                    <circle class="helper-protection-demo__charge" cx="66" cy="43" r="3.5" fill="#4de5cd"></circle>
+                  </g>
+                  <path class="helper-protection-demo__discharge" d="M1 37h-7m6 6h-13m14 6h-7" stroke="#80e4d5" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+                <div class="helper-protection-demo__emblem"><img src="/assets/settings-helper.png" alt="" width="72" height="72"></div>
+                <span class="helper-protection-demo__sword"></span>
+              </div>
+            </div>
+            <div class="helper-protection-demo__controls">
+              <p class="helper-protection-demo__status" role="status" aria-live="polite" aria-atomic="true"></p>
+              <div class="helper-protection-demo__score" aria-hidden="true"><span class="helper-protection-demo__count">0</span><span data-i18n="helper.landing.demoBlocked">Spam blocked</span></div>
+              <button type="button" class="helper-protection-demo__send"><span data-i18n="helper.landing.demoSend">Send spam</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 14 0m-6-6 6 6-6 6"></path></svg></button>
             </div>
           </div>
         </section>
@@ -292,7 +322,7 @@
           <div class="price-toolbar">
             <div class="bill-toggle" role="group" aria-label="Billing period">
               <button type="button" class="bill-toggle__btn is-active" data-bill="month">Monthly</button>
-              <button type="button" class="bill-toggle__btn" data-bill="year"><span>Yearly</span><span class="bill-toggle__save">-20%</span></button>
+              <button type="button" class="bill-toggle__btn" data-bill="year"><span>Yearly</span></button>
             </div>
           </div>
           <div class="bundle-ribbon" role="note" aria-label="Vozen bundle">
@@ -317,15 +347,15 @@
                 <div class="price-card__topline"><span class="price-card__badge price-card__badge--plus"><span aria-hidden="true">✦</span> PERSONAL</span></div><h3>Vozen Plus</h3><p class="price-card__pitch">Your premium voice perks follow you into every server</p>
                 <div class="seat-toggle plan-scope"><span class="seat-toggle__btn is-active">Goes with you to any server</span></div>
                 <p class="price-card__scope-note">Helper stays on Free server limits. Plus upgrades TTS only.</p>
-                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m">&#8364;3.99</span><span class="amt amt--y">&#8364;37.99</span></b></span><span class="per per--m">/ month · per user</span><span class="per per--y">/ year · per user</span></div>
+                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m">&#8364;1.99</span><span class="amt amt--y">&#8364;18.99</span></b></span><span class="per per--m">/ month · per user</span><span class="per per--y">/ year · per user</span></div>
                 <ul class="ticks price-card__highlights"><li class="price-card__included-free">Everything in Free</li><li>Kokoro neural engine</li><li>Google HD voices</li><li>All 8 voice effects (deep, demon, radio...)</li><li>50 personal pronunciations</li><li>Word Chain game</li><li>Wordle game</li><li>/rizz</li></ul><p class="price-card__note">Digital subscription · no shipping</p><a class="price-card__buy" href="/premium#plans" data-i18n="price.checkout">Continue to checkout</a><p class="price-card__idnote">Sign in with Discord first. Stripe handles payment details.</p>
               </article>
               <article class="price-card price-card--pro">
-                <div class="price-card__topline"><span class="price-card__badge"><span aria-hidden="true">💎</span> PREMIUM</span><span class="price-card__recommended">BEST FOR SERVERS</span></div><h3>Vozen Premium</h3><p class="price-card__pitch">Unlock the full Vozen experience for everyone in your community</p>
+                <div class="price-card__topline"><span class="price-card__badge"><span aria-hidden="true">💎</span> PREMIUM</span><span class="price-card__recommended">BEST FOR SERVERS</span></div><h3>Vozen Premium</h3><p class="price-card__pitch"><span class="price-card__audience" data-i18n="price.pro.audience">Premium for every member of your servers.</span><small class="price-card__products" data-i18n="price.pro.pitchHelper">Helper + Music + TTS.</small></p>
                 <div class="seat-toggle" role="group" aria-label="Servers per subscription"><button type="button" class="seat-toggle__btn is-active" data-seats="2">2 servers</button><button type="button" class="seat-toggle__btn" data-seats="5">5 servers</button></div>
                  <ul class="ticks ticks--amber price-card__highlights helper-premium-highlights" aria-label="Premium Helper bundle highlights"><li class="price-card__included-free">Everything in Free</li><li>Premium TTS voices and effects for everyone</li><li>Helper Premium for everyone in each server</li><li>Vozen TTS Premium for every selected server</li><li>More panels, workflows, feeds and templates</li><li>Longer audit, analytics and transcript history</li><li>Advanced roles, XP and automation options</li></ul>
                 <p class="price-card__scope-note">One subscription covers the selected servers and their communities.</p>
-                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m amt--s2">&#8364;6.99</span><span class="amt amt--m amt--s5">&#8364;14.99</span><span class="amt amt--y amt--s2">&#8364;66.99</span><span class="amt amt--y amt--s5">&#8364;133.99</span></b><s class="was was--y was--s2">&#8364;83.88</s><s class="was was--y was--s5">&#8364;179.88</s></span><span class="per per--m per--s2">/ month · 2 servers</span><span class="per per--m per--s5">/ month · 5 servers</span><span class="per per--y per--s2">/ year · 2 servers</span><span class="per per--y per--s5">/ year · 5 servers</span></div>
+                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m amt--s2">&#8364;3.99</span><span class="amt amt--m amt--s5">&#8364;7.99</span><span class="amt amt--y amt--s2">&#8364;37.99</span><span class="amt amt--y amt--s5">&#8364;70.99</span></b></span><span class="per per--m per--s2">/ month · 2 servers</span><span class="per per--m per--s5">/ month · 5 servers</span><span class="per per--y per--s2">/ year · 2 servers</span><span class="per per--y per--s5">/ year · 5 servers</span></div>
                 <ul class="ticks ticks--amber price-card__highlights"><li class="price-card__included-free">Everything in Free</li><li>Works for everyone in the server</li><li>Kokoro neural engine</li><li>Google HD voices</li><li>All 8 voice effects (deep, demon, radio...)</li><li>50 server pronunciations</li><li>In the call 24/7</li><li>Live voice transcription</li><li>Word Chain game</li></ul><p class="price-card__note note--s2">Digital subscription · no shipping</p><p class="price-card__note note--s5">Digital subscription · no shipping</p><a class="price-card__buy price-card__buy--pro" href="/premium#plans" data-i18n="price.checkout">Continue to checkout</a><p class="price-card__idnote">Sign in with Discord first. Stripe handles payment details.</p>
               </article>
             </div>
@@ -364,23 +394,32 @@
 
         <a class="eco-back" href="./">← Back to Vozen</a>
       </div>
-    </main>
+    <section class="product-finale" id="get-started" aria-labelledby="product-finale-title">
+ <img class="product-finale__icon" src="/assets/settings-helper.png" width="80" height="80" alt="" loading="lazy" decoding="async">
+ <div class="product-finale__copy"><span class="product-finale__name">Vozen Helper</span><h2 class="product-finale__title" id="product-finale-title" data-i18n="finale.helperTitle">Give your server a helping hand</h2></div>
+ <div class="product-finale__action"><a class="btn btn--primary btn--discord-cta product-finale__button js-helper-invite" href="https://api.vozen.org/rust/api/install/start?source=helper-pricing"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+                  <path d="M20.3 4.4A19 19 0 0 0 15.6 3l-.24.48a17.6 17.6 0 0 1 4.16 1.3 15 15 0 0 0-11.06 0A17.6 17.6 0 0 1 12.63 3.5L12.4 3A19 19 0 0 0 7.7 4.4C4.8 8.7 4 13 4.2 17.2A19 19 0 0 0 9.9 20l.4-.6a12 12 0 0 1-1.9-.9c.16-.12.32-.24.47-.37a13.6 13.6 0 0 0 11.6 0c.15.13.3.25.47.37-.6.36-1.24.66-1.9.9l.4.6a19 19 0 0 0 5.7-2.8c.28-4.9-.76-9.16-3.36-12.8ZM9.7 14.7c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Zm4.6 0c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.88 2.3-2 2.3Z"></path>
+                </svg><span data-i18n="cta.add">Add to Discord</span></a><p class="product-finale__note" data-i18n="finale.freeNote">Free core. No credit card.</p></div>
+</section>
+</main>
 
-    <footer class="eco-footer">
-      <div class="eco-wrap eco-footer__inner">
-        <p>© 2026 Vozen</p>
-        <nav class="eco-footer__links" aria-label="Legal">
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-        </nav>
-      </div>
-    </footer>
+    <footer class="vozen-footer" id="site-footer">
+  <div class="vozen-footer__inner">
+    <span class="vozen-footer__brand"><img src="/favicon.svg" width="28" height="28" alt="">© 2026 Vozen</span>
+    <nav class="vozen-footer__links" aria-label="Vozen footer">
+      <a href="https://discord.gg/4kYw2WUbNN" data-i18n="foot.support">Support server</a>
+      <a href="/privacy.html" data-i18n="foot.privacy">Privacy</a>
+      <a href="/terms.html" data-i18n="foot.terms">Terms</a>
+    </nav>
+    <span class="vozen-footer__disclaimer" data-i18n="foot.legal">Not affiliated with Discord</span>
+  </div>
+</footer>
 
-    <script defer src="js/global-nav-v1.js?v=c36e628c7056"></script>
-    <script defer src="js/i18n-public-loader-v1.js?v=e9b3e3b4a5b1"></script>
-    <script defer src="js/helper-landing-i18n-v1.js?v=ba7b03cc6a12"></script>
+    <script defer src="js/global-nav-v1.js?v=93ac57255dc2"></script>
+    <script defer src="js/i18n-public-loader-v1.js?v=b43111dba3cd"></script>
+    <script defer src="js/helper-landing-i18n-v1.js?v=763ef8b46129"></script>
     <script defer src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer src="js/main-v51.js?oauth=ecosystem-v3&auth-tabs=1&account-fast=1&auth-race=1&v=2decb7cc2c60"></script>
+    <script defer src="js/main-v51.js?oauth=ecosystem-v3&auth-tabs=1&account-fast=1&auth-race=1&v=86081478360f"></script>
     <script defer src="js/helper-ambient-v1.js?v=f2937020e43a"></script>
     <script>
       (() => {

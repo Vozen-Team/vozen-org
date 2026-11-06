@@ -7,7 +7,7 @@
 .commands-docs svg { width: 18px; height: 18px; }
 .commands-docs:hover { color: #55ebd1; }
 .page-commands .command-finder { padding: 0; border: none; border-radius: 0; background: none; box-shadow: none; overflow: visible; }
-.page-commands .command-product-picker { grid-template-columns: repeat(2,minmax(0,1fr)); margin: 0; gap: 12px; }
+.page-commands .command-product-picker { grid-template-columns: repeat(3,minmax(0,1fr)); margin: 0; gap: 12px; }
 .page-commands .command-product-picker button { display: flex; align-items: center; justify-content: center; min-height: 68px; padding: 14px 20px; color: #c9d3e7; background: #111b2f; border: 1px solid #34415e; box-shadow: none; font-size: 17px; }
 .page-commands .command-product-picker button.is-active { color: #f6f7fe; background: #1d2240; border-color: #9c9afa; box-shadow: none; }
 .page-commands .command-product-picker [data-command-product="helper"].is-active { background: #133137; border-color: #43b8ac; }
@@ -76,9 +76,10 @@
 .commands-calm .commands-hero { padding: 32px 0 20px; }
 .commands-calm .commands-hero h1 { font-size: 38px; }
 .commands-calm .commands-hero__copy { margin-bottom: 24px; }
-.commands-calm .command-product-picker { width: min(100%,380px); gap: 6px; }
+.commands-calm .command-product-picker { width: min(100%,600px); gap: 6px; }
 .commands-calm .command-product-picker button { min-height: 48px; padding: 8px 12px; font: 500 14px var(--f-body); border-radius: 10px; }
 .commands-calm .command-product-picker__icon { width: 26px; height: 26px; border-radius: 8px; }
+.page-commands img.command-product-picker__icon { object-fit: contain; background: transparent; }
 .commands-calm .command-product-picker__icon svg { width: 23px; height: 23px; }
 .commands-calm .command-search { min-height: 54px; margin-top: 16px; }
 .commands-calm .command-filters { margin-top: 16px; }
@@ -158,4 +159,8 @@
   .commands-calm .command-row__copy > p,
   .commands-calm .command-row > p { grid-column: 1 / -1; grid-row: 2; font-size: 12px; }
   .commands-calm .command-row__usage { grid-column: 1 / -1; grid-row: 3; font-size: 10px; }
+}
+@media (max-width: 480px) {
+  .commands-calm .command-product-picker__title { flex-direction: column; gap: 5px; }
+  .commands-calm .command-product-picker button { min-height: 72px; font-size: 12px; }
 }

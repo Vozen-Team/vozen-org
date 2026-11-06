@@ -1,6 +1,20 @@
 {
   "locale": "pt",
   "messages": {
+    "helper.landing.demoTitle": "Experimenta a proteção.",
+    "helper.landing.demoPrompt": "Envia spam. Mantém a conversa.",
+    "helper.landing.demoTag": "Demo interativa",
+    "helper.landing.demoMessage1": "Jogamos às 8?",
+    "helper.landing.demoMessage2": "Alinho. Até logo.",
+    "helper.landing.demoBlocked": "Spam bloqueado",
+    "helper.landing.demoSend": "Enviar spam",
+    "helper.landing.demoSending": "A enviar…",
+    "helper.landing.demoAgain": "Enviar de novo",
+    "helper.landing.demoChecking": "A verificar mensagens…",
+    "commands.groupPlayback": "Reprodução",
+    "commands.groupLibrary": "A tua biblioteca",
+    "commands.generic.playback": "Usa {command} para controlar a reprodução de música.",
+    "commands.generic.library": "Usa {command} para gerir as tuas avaliações de músicas.",
     "home.proof.aria": "Comunidade do Vozen TTS e avaliação no Top.gg",
     "home.proof.servers": "servidores Discord",
     "home.proof.rating": "no Top.gg",
@@ -18,7 +32,6 @@
     "status.httpLatency": "Latência da verificação HTTP",
     "status.ttsGuide": "Resolver problemas de voz",
     "status.helperGuide": "Resolver problemas do Helper",
-    "status.browseDocs": "Consultar documentação",
     "status.details": "Detalhes",
     "status.historyTitle": "Como funciona",
     "status.historyNotice": "Cada barra corresponde a um dia UTC. É guardada uma verificação por minuto a partir da ativação da monitorização. O verde suave riscado indica dias sem histórico, não disponibilidade confirmada; os dias parciais têm uma cor própria. As percentagens referem-se às verificações registadas, não aos períodos sem observações.",
@@ -79,7 +92,7 @@
     "feat.7.t": "Efeitos de voz",
     "feat.7.d": "Robô, eco, grave, esquilo, rádio, demónio… as tuas mensagens, transformadas. Dois efeitos grátis, os oito com Premium",
     "feat.8.t": "Premium justo",
-    "feat.8.d": "€6,99/mês desbloqueia o Kokoro e os extras do servidor. O núcleo essencial com Piper continua grátis",
+    "feat.8.d": "€3,99/mês desbloqueia o Kokoro e os extras do servidor. O núcleo essencial com Piper continua grátis",
     "feat.9.t": "Open source",
     "feat.9.d": "Todo o código do Vozen é público no GitHub. Audita-o, aprende com ele ou abre um PR — sem segredos, sem spyware",
     "lang.eyebrow": "Línguas",
@@ -116,7 +129,10 @@
     "price.choose.sub": "Fica com o essencial grátis, melhora a tua conta ou desbloqueia Premium para todos no servidor",
     "price.free.pitch": "Todo o essencial. Sem cartão, sem período experimental",
     "price.plus.pitch": "As tuas vantagens de voz premium acompanham-te em qualquer servidor",
-    "price.pro.pitch": "Desbloqueia a experiência Vozen completa para toda a tua comunidade",
+    "price.pro.pitch": "TTS + Music + Helper.",
+    "price.pro.audience": "Premium para todos nos teus servidores.",
+    "price.pro.pitchMusic": "Music + TTS + Helper.",
+    "price.pro.pitchHelper": "Helper + Music + TTS.",
     "price.compare.title": "Vê todas as diferenças",
     "price.compare.sub": "A comparação completa dos planos, sem surpresas",
     "price.checkout": "Continuar para o pagamento",
@@ -127,12 +143,12 @@
     "price.plus.badge": "PESSOAL",
     "price.plus.name": "Vozen Plus",
     "price.plus.per": "/ mês · por utilizador",
-    "price.plus.note": "€37,99/ano (poupa ~20%) · checkout Stripe",
+    "price.plus.note": "€18,99/ano (poupa ~50%) · checkout Stripe",
     "price.pro.badge": "PREMIUM",
     "price.pro.name": "Vozen Premium",
     "price.pro.per": "/ mês · 2 servidores",
     "price.pro.deal": "🎁 Dois servidores. Uma subscrição",
-    "price.pro.note": "€66,99/ano (poupa ~20%) · checkout Stripe",
+    "price.pro.note": "€37,99/ano (poupa ~43%) · checkout Stripe",
     "faq.eyebrow": "FAQ",
     "faq.title": "Perguntas, respondidas",
     "reviews.eyebrow": "Avaliações independentes",
@@ -159,7 +175,7 @@
     "price.max.per": "/ mês · 5 servidores",
     "price.max.perYear": "/ ano · 5 servidores",
     "price.max.deal": "🎁 Cinco servidores. Uma subscrição",
-    "price.max.note": "€133,99/ano (poupa ~25%) · checkout Stripe",
+    "price.max.note": "€70,99/ano (poupa ~47%) · checkout Stripe",
     "price.pro.seats2": "2 servidores",
     "price.pro.seats5": "5 servidores",
     "price.m.1": "38 vozes Piper",
@@ -197,13 +213,13 @@
     "price.m.22": "Vozes Google HD",
     "price.m.24": "Vozen Helper Premium para cada servidor selecionado",
     "price.m.23": "Transcrição de voz em direto",
+    "price.m.25": "Avatar e banner personalizados do bot TTS",
     "price.includesFree": "Tudo o que está no Free",
     "ecosystem.navAria": "Navegação do ecossistema Vozen",
     "ecosystem.homeAria": "Página inicial do ecossistema Vozen",
     "ecosystem.productsAria": "Produtos Vozen",
     "ecosystem.tts": "Vozen TTS",
     "ecosystem.helper": "Vozen Helper",
-    "ecosystem.docs": "Docs",
     "ecosystem.commands": "Comandos",
     "ecosystem.premiumUnavailable": "O Premium está temporariamente indisponível",
     "ecosystem.githubAria": "Vozen no GitHub",
@@ -223,9 +239,9 @@
     "price.billingPeriod": "Período de faturação",
     "price.bundleAria": "Pacote Vozen",
     "price.bundleEyebrow": "PACOTE VOZEN",
-    "price.bundleTitle": "Dois bots. Uma subscrição.",
-    "price.bundleText": "TTS e Helper Premium para as comunidades que escolheres.",
-    "price.bundleValue": "TTS + HELPER",
+    "price.bundleTitle": "Três bots. Uma subscrição.",
+    "price.bundleText": "TTS, Music e Helper Premium para todos nos servidores que selecionares.",
+    "price.bundleValue": "TTS + MUSIC + HELPER",
     "price.freeHighlights": "Destaques do plano grátis",
     "price.digital": "Subscrição digital · sem envio",
     "price.checkoutLater": "O checkout voltará quando os pagamentos forem reativados.",
@@ -245,7 +261,7 @@
     "premium.plusHelperNote": "O Helper mantém os limites do servidor Free. O Plus melhora apenas o TTS.",
     "premium.premiumPitch": "TTS e Helper Premium para todos em cada servidor selecionado.",
     "premium.bundleAria": "Pacote Premium",
-    "premium.bundleTitle": "Dois bots. Uma subscrição.",
+    "premium.bundleTitle": "Três bots. Uma subscrição.",
     "premium.seat2": "2 servidores",
     "premium.seat5": "5 servidores",
     "premium.premiumScope": "Uma subscrição cobre os servidores selecionados e as suas comunidades.",
@@ -358,7 +374,7 @@
     "home.eyebrow": "ecossistema Vozen",
     "home.heroTitle1": "Uma casa.",
     "home.heroTitle2": "Para o teu servidor.",
-    "home.heroLead": "Dois bots para o Discord. Uma voz para as tuas mensagens. Uma ajuda para o teu servidor.",
+    "home.heroLead": "Três bots para o Discord. Voz, música e ferramentas para o teu servidor.",
     "home.exploreProducts": "Explorar os produtos",
     "home.viewCommands": "Ver comandos",
     "home.mapAria": "Mapa do ecossistema Vozen",
@@ -369,6 +385,8 @@
     "home.oneEcosystem": "um ecossistema",
     "home.productsAria": "Produtos Vozen",
     "home.ttsTitle": "TTS",
+    "home.musicLead": "Música para as tuas chamadas no Discord.",
+    "home.exploreMusic": "Explorar Music",
     "home.helperTitle": "Helper",
     "home.ttsLead": "Mensagens de texto, lidas em voz alta.",
     "home.helperLead": "Moderação, tickets e cargos num só bot.",
@@ -530,7 +548,15 @@
     "helper.moduleCommunity": "Comunidade",
     "helper.moduleAutomation": "Automação",
     "helper.moduleInsights": "Análises",
-    "helper.moduleStudio": "Estúdio"
+    "helper.moduleStudio": "Estúdio",
+    "stat.helperOverview": "Vozen Helper em resumo",
+    "stat.setupSteps": "Passos de configuração",
+    "stat.freeCore": "Funcionalidades essenciais",
+    "stat.helperProtections": "Proteções",
+    "stat.helperCommands": "Comandos",
+    "finale.musicTitle": "Dá uma banda sonora às tuas chamadas",
+    "finale.helperTitle": "Dá uma ajuda ao teu servidor",
+    "finale.freeNote": "Essencial gratuito. Sem cartão."
   },
   "commands": {
     "general": [
@@ -700,50 +726,50 @@
   },
   "helperFaq": [
     [
-      "O Vozen Helper já está disponível?",
-      "Sim. O Helper está disponível publicamente. Instala-o a partir desta página, escolhe um servidor e configura o primeiro módulo através do início guiado."
+      "Como configuro tickets privados?",
+      "Abre o módulo de Suporte no painel do Helper e publica um painel de tickets. Os membros podem usá-lo para abrir um ticket privado."
     ],
     [
-      "O Helper pede a permissão Administrador?",
-      "Não. O convite base usa permissões limitadas e nunca pede Administrador. Se um módulo precisar de uma permissão sensível adicional, o Helper explica porquê antes de a ativares."
+      "O Helper precisa da permissão de Administrador?",
+      "Não. O convite base usa permissões limitadas. O painel explica as permissões adicionais de cada módulo."
     ],
     [
-      "Como começo a utilizar o Helper?",
-      "Instala o Helper, escolhe o teu servidor, conclui o início guiado, ativa um módulo e executa a primeira ação útil."
+      "Por onde começo no Helper?",
+      "Adiciona o Helper, escolhe o teu servidor no painel e configura o primeiro módulo de que precisas."
     ],
     [
-      "Que módulos estão incluídos?",
-      "O Helper reúne proteção e moderação, tickets, cargos e ferramentas de comunidade, eventos, automação e informação operacional. O painel mostra as opções exatas disponíveis no teu servidor."
+      "O que posso gerir no painel?",
+      "Moderação, tickets, cargos, eventos e automações. Ativa só os módulos de que o teu servidor precisa."
     ],
     [
-      "Posso comprar o Premium agora?",
-      "Sim. Escolhe um plano na página Premium e inicia sessão com o Discord. O Stripe trata dos dados de pagamento. O núcleo do Helper continua gratuito."
+      "O que inclui o Helper Premium?",
+      "Limites maiores para painéis e automações, e um histórico mais longo. As ferramentas essenciais continuam grátis. Os pagamentos estão suspensos."
     ]
   ],
   "faq": [
     [
-      "Posso usar o Vozen grátis?",
-      "Sim. Podes usar as vozes Piper, a leitura automática e os jogos gratuitos sem subscrição."
+      "Posso usar o Vozen TTS grátis?",
+      "Sim. As vozes Piper, a leitura automática e uma seleção de jogos são grátis."
     ],
     [
-      "Como começo a usar o Vozen?",
-      "Adiciona o Vozen a um servidor que geres. Usa /setup para escolher um canal de texto e ativar a leitura automática. Depois, entra num canal de voz e usa /join."
+      "Como faço o Vozen ler as minhas mensagens?",
+      "Usa /setup para escolher um canal de texto e ativar a leitura automática. Entra num canal de voz e usa /join."
     ],
     [
-      "Cada membro pode escolher a sua voz?",
-      "Usa /voice set para escolher a voz e o idioma. Cada membro pode guardar as suas próprias definições."
+      "Cada pessoa pode escolher uma voz diferente?",
+      "Sim. Usa /voice set para escolheres a tua voz e o teu idioma."
     ],
     [
-      "Devo escolher Plus ou Premium?",
-      "O Plus dá vozes Kokoro e efeitos extra à tua conta Discord. O Premium acrescenta funcionalidades pagas aos servidores selecionados, no TTS e no Helper. Os pagamentos estão temporariamente suspensos."
+      "O que desbloqueiam o Plus e o Premium no TTS?",
+      "O Plus dá vozes Kokoro e efeitos extra à tua conta Discord. O Premium acrescenta transcrição em direto e avatar e banner personalizados do bot TTS aos servidores escolhidos. Os pagamentos estão suspensos."
     ],
     [
-      "Porque não ouço nada?",
-      "Entra num canal de voz e usa /join. Confirma que o Vozen tem permissão para se ligar e falar, e que o /setup aponta para o canal de texto que estás a usar."
+      "Porque é que o Vozen não lê as minhas mensagens?",
+      "Confirma que o Vozen está no canal de voz e pode falar. Depois, verifica se o /setup aponta para o canal de texto que estás a usar."
     ],
     [
       "Como paro a leitura?",
-      "Usa /shut-up para limpar a fila ou /leave para desligar o Vozen do canal de voz. Desativa a leitura automática em /config para deixar de ler novas mensagens."
+      "Usa /shut-up para limpar a fila ou /leave para desligar o bot. Para deixar de ler novas mensagens, desativa a leitura automática em /config."
     ]
   ]
 }

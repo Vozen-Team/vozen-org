@@ -9,37 +9,6 @@ test('the homepage lead matches its runtime translation before scripts load', ()
   assert.ok(html.includes(`data-i18n="home.heroLead">${messages['home.heroLead']}</p>`));
 });
 
-test('Docs drawer is inert while closed on mobile and accessible after resizing to desktop', () => {
-  const source = readFileSync('site/docs/shared/docs-shell.js', 'utf8');
-  const snippet = source.slice(source.indexOf('    let lastFocus = null;'), source.indexOf("    toggle.addEventListener('click'"));
-  const classes = new Set();
-  const attrs = new Map();
-  const media = { matches: true, addEventListener(_, callback) { this.change = callback; } };
-  let focused = null;
-  const toggle = { setAttribute(key, value) { attrs.set(key, value); }, focus() { focused = this; } };
-  const sidebar = { inert: false, setAttribute(key, value) { attrs.set('sidebar:' + key, value); }, removeAttribute(key) { attrs.delete('sidebar:' + key); }, querySelector() { return { focus() { focused = sidebar; } }; }, contains(node) { return node === sidebar; } };
-  const document = { activeElement: toggle, body: { classList: { contains: name => classes.has(name), toggle(name, enabled) { enabled ? classes.add(name) : classes.delete(name); } } } };
-  const scrim = {};
-  const context = vm.createContext({ window: { matchMedia: () => media, setTimeout: fn => fn() }, document, sidebar, toggle, scrim });
-  vm.runInContext(snippet + '\nglobalThis.openDrawer = setOpen;', context);
-  assert.equal(sidebar.inert, true);
-  assert.equal(scrim.inert, true);
-  context.openDrawer(true);
-  assert.equal(sidebar.inert, false);
-  assert.equal(scrim.inert, false);
-  assert.equal(focused, sidebar);
-  context.openDrawer(false);
-  assert.equal(sidebar.inert, true);
-  assert.equal(focused, toggle);
-  media.matches = false;
-  media.change();
-  assert.equal(sidebar.inert, false);
-  assert.equal(attrs.has('sidebar:aria-hidden'), false);
-  media.matches = true;
-  media.change();
-  assert.equal(sidebar.inert, true);
-});
-
 test('homepage keeps both product links and icons without the rejected diagrams', () => {
   const html = readFileSync('site/index.html', 'utf8');
   assert.doesNotMatch(html, /class="eco-home-map"/);

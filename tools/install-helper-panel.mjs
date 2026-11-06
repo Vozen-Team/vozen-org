@@ -2,6 +2,7 @@ import { access, cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { constants } from 'node:fs';
 import { dirname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { withSharedFooter } from './build-public-footer.mjs';
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const source = resolve(repositoryRoot, 'apps/helper-panel/dist');
@@ -21,13 +22,15 @@ if (!destination.startsWith(approvedDestinationRoot)) {
 await rm(destination, { recursive: true, force: true });
 await cp(source, destination, { recursive: true, force: true, errorOnExist: false });
 
-const output = await readFile(resolve(destination, 'index.html'), 'utf8');
+const entry = resolve(destination, 'index.html');
+const output = withSharedFooter(await readFile(entry, 'utf8'), 'panel/helper-tracker/index.html');
 if (!output.includes('/panel/helper-tracker/')) {
   throw new Error('The Helper build does not use the /panel/helper-tracker/ production base.');
 }
 if (/\.map(?:["']|$)|sourceMappingURL/i.test(output)) {
   throw new Error('The Helper build must not publish source maps.');
 }
+await writeFile(entry, output);
 
 console.log('Installed Helper panel into site/panel/helper-tracker/.');
 

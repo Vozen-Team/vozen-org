@@ -1,0 +1,31 @@
+.vozen-footer {
+  --footer-line: #252d40;
+  color: #a8b4ce;
+  background: #0c101c;
+  border-block-start: 1px solid var(--footer-line);
+  font: 400 14px/1.45 Outfit, system-ui, sans-serif;
+}
+.vozen-footer .vozen-footer__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px 20px;
+  width: min(1232px, calc(100% - 48px));
+  margin-inline: auto;
+  padding-block: 12px;
+}
+.vozen-footer .vozen-footer__links { display: flex; flex-wrap: wrap; align-items: center; gap: 0 clamp(10px, 1.5vw, 22px); }
+.vozen-footer a { display: inline-flex; align-items: center; min-height: 34px; color: inherit; text-decoration: none; }
+.vozen-footer a:hover { color: #56e5d1; }
+.vozen-footer a:focus-visible { outline: 2px solid #56e5d1; outline-offset: 3px; border-radius: 4px; }
+.vozen-footer .vozen-footer__brand { display: inline-flex; align-items: center; gap: 9px; color: #f1f4ff; font-size: 13px; white-space: nowrap; }
+.vozen-footer .vozen-footer__brand img { display: block; flex: none; border-radius: 8px; }
+.vozen-footer .vozen-footer__disclaimer { text-align: end; font-size: 13px; }
+@media (max-width: 600px) {
+  .vozen-footer .vozen-footer__inner { grid-template-columns: minmax(0, 1fr); justify-items: center; width: calc(100% - 32px); row-gap: 3px; }
+  .vozen-footer .vozen-footer__links { justify-content: center; }
+  .vozen-footer .vozen-footer__disclaimer { text-align: center; }
+}
+@media (min-width: 981px) {
+  body.docs-shell-active:has(.docs-sidebar) > .vozen-footer { margin-left: var(--docs-shell-sidebar, 264px); }
+}

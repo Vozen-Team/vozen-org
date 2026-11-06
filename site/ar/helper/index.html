@@ -32,23 +32,32 @@
     <meta name="twitter:image" content="https://vozen.org/assets/helper-og-v1.jpg">
     <title>Vozen Helper — متاح الآن</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="css/helper-page-v1.css?v=e31459a883a4">
-      <link rel="stylesheet" href="css/product-preview-v1.css?v=f80e6af88960">
-  </head>
+    <link rel="preload" href="/assets/fonts/unbounded-brand-latin.woff2?no-inline" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/assets/fonts/outfit-400-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/helper-page-v1.css?v=7cbc99ad70d0">
+      <link rel="stylesheet" href="css/product-preview-v1.css?v=c178b43d9223">
+  <link rel="stylesheet" href="/css/vozen-footer-v1.css?v=15f94bd176ca">
+  <link rel="stylesheet" href="/css/product-faq-v1.css?v=041a315ce08f">
+  <link rel="stylesheet" href="/css/product-stats-v1.css?v=42081418526c">
+<script defer="" src="/js/product-stats-v1.js?v=3f7cee04b343"></script>
+<link rel="stylesheet" href="/css/product-finale-v1.css?v=f6a929ee5597">
+  <link rel="stylesheet" href="/css/helper-protection-demo-v1.css?v=3a766733ab21">
+  <script defer="" src="/js/helper-protection-demo-v1.js?v=f47a3b38396c"></script>
+</head>
   <body class="helper-page product-preview product-preview--expressive" data-vozen-public-analytics="true">
     <a class="eco-skip" href="https://vozen.org/ar/helper/#helper">الانتقال إلى المحتوى</a>
 
-    <header class="nav vozen-global-nav" id="nav" data-vozen-nav="" data-nav-product="Helper" data-nav-current="helper" data-nav-prerendered="true" data-nav-locale-root="ar/" data-prerender-fragment="navigation">
+    <header class="nav vozen-global-nav" id="nav" data-vozen-nav="" data-nav-product="Helper" data-nav-current="helper" data-nav-prerendered="true" data-prerender-fragment="navigation" data-nav-locale-root="ar/">
       <div class="wrap nav__inner">
-        <a class="brand" href="ar/" aria-label="الصفحة الرئيسية لنظام Vozen" data-i18n-aria-label="ecosystem.homeAria">
+        <a class="brand" href="https://vozen.org/ar/helper/" aria-label="الصفحة الرئيسية لنظام Vozen" data-i18n-aria-label="ecosystem.homeAria">
           <span class="brand__mark" aria-hidden="true"><img class="brand__portal" src="favicon.svg" alt="" width="40" height="40"></span>
           <span class="brand__word">Vozen</span>
           <span class="nav__product" data-i18n="ecosystem.label">المنظومة</span>
         </a>
         <nav class="nav__links" aria-label="منتجات Vozen" data-i18n-aria-label="ecosystem.productsAria" id="vozen-primary-links">
           <a class="" href="ar/tts/" data-i18n="ecosystem.tts">Vozen TTS</a>
+          <a class="" href="/music/">Vozen Music</a>
           <a class="is-current" href="ar/helper/" aria-current="page" data-i18n="ecosystem.helper">Vozen Helper</a>
-          <a class="" href="docs/" data-i18n="ecosystem.docs">التوثيق</a>
           <a class="" href="commands/" data-i18n="ecosystem.commands">الأوامر</a>
           <a class="" href="status.html" data-i18n="ecosystem.status">الحالة</a>
           <a class="" href="premium#plans" data-i18n="nav.premium">Premium</a>
@@ -60,10 +69,10 @@
               <span class="lang__flag" id="langBtnFlag"><img class="lang__flag" src="/assets/flags-v2/sa.svg" width="24" height="18" alt="" loading="lazy" decoding="async"></span><span class="lang__name" id="langBtnName">العربية</span>
               <svg class="lang__chev" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
             </button>
-            <ul class="lang__panel" id="langPanel" role="listbox" tabindex="-1" aria-label="اختر اللغة" data-i18n-aria-label="ecosystem.chooseLanguage"><li role="presentation"><a class="lang__opt" href="/helper/" role="option" data-lang="en" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">English</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/pt/helper/" role="option" data-lang="pt" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Português</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/fr/helper/" role="option" data-lang="fr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/fr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Français</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/es/helper/" role="option" data-lang="es" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/es.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Español</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/de/helper/" role="option" data-lang="de" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/de.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/tr/helper/" role="option" data-lang="tr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Türkçe</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt is-active" href="/ar/helper/" role="option" data-lang="ar" aria-selected="true" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/sa.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">العربية</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/zh/helper/" role="option" data-lang="zh" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tw.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">繁體中文</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ru/helper/" role="option" data-lang="ru" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/ru.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Русский</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ko/helper/" role="option" data-lang="ko" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/kr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">한국어</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li></ul>
+            <ul class="lang__panel" id="langPanel" role="listbox" tabindex="-1" aria-label="اختر اللغة" data-i18n-aria-label="ecosystem.chooseLanguage"><li role="presentation"><a class="lang__opt is-active" href="/helper/" role="option" data-lang="en" aria-selected="true" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/gb.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">English</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/pt/helper/" role="option" data-lang="pt" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/pt.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Português</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/fr/helper/" role="option" data-lang="fr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/fr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Français</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/es/helper/" role="option" data-lang="es" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/es.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Español</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/de/helper/" role="option" data-lang="de" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/de.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Deutsch</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/tr/helper/" role="option" data-lang="tr" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Türkçe</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ar/helper/" role="option" data-lang="ar" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/sa.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">العربية</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/zh/helper/" role="option" data-lang="zh" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/tw.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">繁體中文</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ru/helper/" role="option" data-lang="ru" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/ru.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">Русский</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li><li role="presentation"><a class="lang__opt" href="/ko/helper/" role="option" data-lang="ko" aria-selected="false" tabindex="-1"><img class="lang__flag" src="/assets/flags-v2/kr.svg" width="24" height="18" alt="" loading="lazy" decoding="async"><span class="lang__optname">한국어</span><svg class="lang__check" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg></a></li></ul>
           </div>
-          <a class="btn btn--primary btn--discord-cta btn--sm nav__login" id="navLogin" href="account/"><svg viewBox="0 0 24 18" width="20" height="15" aria-hidden="true" fill="currentColor"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4 2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Z"></path></svg><span data-i18n="nav.login">تسجيل الدخول</span></a>
-          <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="vozen-primary-links"><span></span><span></span><span></span></button>
+          <a class="btn btn--primary btn--discord-cta btn--sm nav__login" id="navLogin" href="account/"><svg viewBox="0 0 24 18" width="18" height="14" fill="currentColor" aria-hidden="true"><path d="M20.3 1.6A19.8 19.8 0 0 0 15.4.1a14 14 0 0 0-.6 1.3 18.3 18.3 0 0 0-5.5 0A13 13 0 0 0 8.6.1 19.7 19.7 0 0 0 3.7 1.6C.6 6.3-.3 10.8.2 15.3a19.9 19.9 0 0 0 6 3 14.7 14.7 0 0 0 1.3-2.1 12.9 12.9 0 0 1-2-1c.2-.1.3-.3.5-.4a14.2 14.2 0 0 0 12 0l.5.4a12.8 12.8 0 0 1-2 1 14.5 14.5 0 0 0 1.3 2.1 19.8 19.8 0 0 0 6-3c.6-5.2-.8-9.7-3.5-13.7ZM8 12.6c-1.2 0-2.1-1.1-2.1-2.4S6.8 7.8 8 7.8s2.2 1.1 2.1 2.4c0 1.3-.9 2.4-2.1 2.4Zm8 0c-1.2 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Z"></path></svg><span data-i18n="ecosystem.login">تسجيل الدخول</span></a>
+          <button class="nav__burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="vozen-primary-links"><span></span><span></span><span></span></button>
         </div>
       </div>
     </header>
@@ -80,25 +89,17 @@
           </div>
           <div class="helper-hero__copy">
 
-            <div class="helper-hero__identity">
-              <span class="helper-hero__mark" aria-hidden="true">
-                <svg class="eco-helper-character" viewBox="0 0 64 64">
-                  <path d="m15 34-6-4m2 0-2 4M49 34l6-4m-2 0 2 4M32 17v-5"></path>
-                  <circle cx="32" cy="9" r="3" class="white"></circle>
-                  <rect x="13" y="18" width="38" height="31" rx="13" class="white"></rect>
-                  <rect x="18" y="24" width="28" height="19" rx="8" class="screen"></rect>
-                  <circle cx="26" cy="33" r="3" class="white"></circle>
-                  <circle cx="38" cy="33" r="3" class="white"></circle>
-                  <path d="M26 38c3.3 3.2 8.7 3.2 12 0"></path>
-                </svg>
-              </span>
-              <span>Vozen Helper</span>
-            </div>
+            <div class="helper-hero__identity product-hero-brand"><img src="/assets/settings-helper.png" alt="" width="44" height="44"><span>Vozen Helper</span></div>
             <h1 id="helper-title"><span data-preview-copy="Your server.">خادمك.</span><span data-preview-copy="In good hands.">بأيدٍ أمينة.</span></h1>
             <p class="helper-hero__lede" data-preview-copy="Moderation, tickets and community. One bot.">إشراف وتذاكر دعم ومجتمع. بوت واحد.</p>
-            <div class="helper-hero__actions">
-              <a class="helper-private-action js-helper-invite" href="https://api.vozen.org/rust/api/install/start?source=helper-pricing"><span class="helper-private-action__dot" aria-hidden="true"></span> ابدأ مع Helper</a>
-              <a class="helper-explore-action" href="https://vozen.org/ar/helper/#modules">استكشف الوحدات <span aria-hidden="true">↓</span></a>
+            <div class="helper-hero__actions hero__cta">
+              <a class="btn btn--primary btn--discord-cta js-helper-invite" href="https://api.vozen.org/rust/api/install/start?source=helper-pricing">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+                  <path d="M20.3 4.4A19 19 0 0 0 15.6 3l-.24.48a17.6 17.6 0 0 1 4.16 1.3 15 15 0 0 0-11.06 0A17.6 17.6 0 0 1 12.63 3.5L12.4 3A19 19 0 0 0 7.7 4.4C4.8 8.7 4 13 4.2 17.2A19 19 0 0 0 9.9 20l.4-.6a12 12 0 0 1-1.9-.9c.16-.12.32-.24.47-.37a13.6 13.6 0 0 0 11.6 0c.15.13.3.25.47.37-.6.36-1.24.66-1.9.9l.4.6a19 19 0 0 0 5.7-2.8c.28-4.9-.76-9.16-3.36-12.8ZM9.7 14.7c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Zm4.6 0c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.88 2.3-2 2.3Z"></path>
+                </svg>
+                <span data-i18n="cta.add">أضِفه إلى Discord</span>
+              </a>
+              <a class="btn btn--ghost js-support" href="https://discord.gg/4kYw2WUbNN" data-i18n="cta.support">انضم إلى خادم الدعم</a>
             </div>
           </div>
 
@@ -111,17 +112,7 @@
               </div>
               <div class="helper-console__body">
                 <div class="helper-console__rail" aria-hidden="true">
-                  <span class="helper-console__bot">
-                    <svg class="eco-helper-character" viewBox="0 0 64 64">
-                      <path d="m15 34-6-4m2 0-2 4M49 34l6-4m-2 0 2 4M32 17v-5"></path>
-                      <circle cx="32" cy="9" r="3" class="white"></circle>
-                      <rect x="13" y="18" width="38" height="31" rx="13" class="white"></rect>
-                      <rect x="18" y="24" width="28" height="19" rx="8" class="screen"></rect>
-                      <circle cx="26" cy="33" r="3" class="white"></circle>
-                      <circle cx="38" cy="33" r="3" class="white"></circle>
-                      <path d="M26 38c3.3 3.2 8.7 3.2 12 0"></path>
-                    </svg>
-                  </span>
+                  <img class="helper-console__bot" src="/assets/settings-helper.png" width="46" height="46" alt="">
                   <i class="is-active"></i><i></i><i></i><i></i>
                 </div>
                 <div class="helper-console__stream">
@@ -155,6 +146,57 @@
           </div>
         </section>
 
+        <section class="helper-protection-demo" id="try-helper" aria-labelledby="protection-demo-title" data-protection-demo="" data-state="ready">
+          <div class="helper-protection-demo__intro">
+            <h2 id="protection-demo-title" data-i18n="helper.landing.demoTitle">جرّب الحماية.</h2>
+            <small data-i18n="helper.landing.demoTag">عرض تفاعلي</small>
+          </div>
+          <div class="helper-protection-demo__chat">
+            <div class="helper-protection-demo__conversation">
+              <div class="helper-protection-demo__channel"><b aria-hidden="true">#</b> general</div>
+              <div class="helper-protection-demo__messages">
+                <div class="helper-protection-demo__message"><span class="helper-protection-demo__avatar" aria-hidden="true">M</span><div><strong>Maya</strong><p data-i18n="helper.landing.demoMessage1">نلعب الساعة 8؟</p></div></div>
+                <div class="helper-protection-demo__message"><span class="helper-protection-demo__avatar helper-protection-demo__avatar--mint" aria-hidden="true">L</span><div><strong>Leo</strong><p data-i18n="helper.landing.demoMessage2">أنا معكم. أراكم لاحقًا.</p></div></div>
+                <p class="helper-protection-demo__waiting" data-i18n="helper.landing.demoPrompt">أرسل رسائل مزعجة. وأبقِ المحادثة.</p>
+              </div>
+            </div>
+            <div class="helper-protection-demo__visual" aria-hidden="true">
+              <div class="helper-protection-demo__arena">
+                <div class="helper-protection-demo__lane">
+                  <span class="helper-protection-demo__shot helper-protection-demo__shot--normal"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm2 5h10M7 12h6"></path></svg></span>
+                  <span class="helper-protection-demo__shot"><span data-packet="SPAM"></span></span><span class="helper-protection-demo__shot"><span data-packet="SPAM"></span></span><span class="helper-protection-demo__shot"><span data-packet="SPAM"></span></span><span class="helper-protection-demo__shot"><span data-packet="SPAM"></span></span><span class="helper-protection-demo__shot"><span data-packet="SPAM"></span></span>
+                </div>
+                <svg class="helper-protection-demo__cannon" viewBox="0 0 88 94" fill="none">
+                  <path d="M43 61h24l10 18H32z" fill="#23324d" stroke="#566889" stroke-width="2"></path>
+                  <path d="M30 80h50v5H30z" fill="#65789b"></path>
+                  <g class="helper-protection-demo__barrel">
+                    <path d="M7 30h44l21-6h6a6 6 0 0 1 6 6v25a6 6 0 0 1-6 6h-6l-21-6H7z" fill="#344464" stroke="#7487ad" stroke-width="2"></path>
+                    <rect x="4" y="26" width="12" height="33" rx="3" fill="#18253f" stroke="#a3b4d5" stroke-width="2"></rect>
+                    <path d="M27 37h18m-18 11h12" stroke="#adadff" stroke-width="2.5" stroke-linecap="round"></path>
+                    <circle cx="66" cy="43" r="11" fill="#17243c" stroke="#8395b9" stroke-width="2"></circle>
+                    <circle class="helper-protection-demo__charge" cx="66" cy="43" r="3.5" fill="#4de5cd"></circle>
+                  </g>
+                  <path class="helper-protection-demo__discharge" d="M1 37h-7m6 6h-13m14 6h-7" stroke="#80e4d5" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+                <div class="helper-protection-demo__emblem"><img src="/assets/settings-helper.png" alt="" width="72" height="72"></div>
+                <span class="helper-protection-demo__sword"></span>
+              </div>
+            </div>
+            <div class="helper-protection-demo__controls">
+              <p class="helper-protection-demo__status" role="status" aria-live="polite" aria-atomic="true"></p>
+              <div class="helper-protection-demo__score" aria-hidden="true"><span class="helper-protection-demo__count">0</span><span data-i18n="helper.landing.demoBlocked">تم حظر الرسائل المزعجة</span></div>
+              <button type="button" class="helper-protection-demo__send"><span data-i18n="helper.landing.demoSend">أرسل رسائل مزعجة</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 14 0m-6-6 6 6-6 6"></path></svg></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="product-stats" aria-label="لمحة عن Vozen Helper" data-i18n-aria-label="stat.helperOverview">
+          <div><b data-count-to="4">4</b><span data-i18n="stat.helperProtections">وسائل حماية</span></div>
+          <div><b data-count-to="89">89</b><span data-i18n="stat.helperCommands">أوامر</span></div>
+          <div><b data-count-to="3">3</b><span data-i18n="stat.setupSteps">خطوات الإعداد</span></div>
+          <div><b class="product-stats__free">∞</b><span data-i18n="stat.free">أساسيات مجانية للأبد</span></div>
+        </section>
+
         <div class="helper-stories" id="modules" data-helper-cards="">
           <header class="helper-cards-heading"><h2>Your server. Less busywork.</h2><p>Protection, support and community — working together.</p></header>
           <section class="helper-story-section helper-story-section--security" id="module-security" aria-labelledby="story-security-title">
@@ -163,7 +205,7 @@
                 <div class="spam-message" aria-hidden="true"><span>SPAM</span><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4"><circle cx="32" cy="32" r="25"></circle><path d="m14 14 36 36" pathLength="1"></path></svg></div>
               </div>
             </figure>
-            <div class="helper-story-copy"><h3 id="story-security-title"><a href="docs/helper/modules/protect/spam/">الحماية<svg class="helper-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></h3><p>Less spam. More chat.</p></div>
+            <div class="helper-story-copy"><h3 id="story-security-title">الحماية</h3><p>Less spam. More chat.</p></div>
           </section>
           <section class="helper-story-section helper-story-section--support" id="module-support" aria-labelledby="story-support-title">
             <figure class="product-module-visual module-demo module-demo--support" data-demo="support" data-autoplay="once">
@@ -172,31 +214,31 @@
                 <div class="glance-bubble glance-bubble--question">Help?</div><div class="glance-bubble glance-bubble--answer">On it.</div>
               </div>
             </figure>
-            <div class="helper-story-copy"><h3 id="story-support-title"><a href="docs/helper/modules/support/tickets/">Private tickets<svg class="helper-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></h3><p>Your team, in private.</p></div>
+            <div class="helper-story-copy"><h3 id="story-support-title">Private tickets</h3><p>Your team, in private.</p></div>
           </section>
           <section class="helper-story-section helper-story-section--events" id="module-events" aria-labelledby="story-events-title">
             <figure class="product-module-visual module-demo module-demo--events" data-demo="events" data-autoplay="once">
               <div class="glance-scene glance-event" role="img" aria-label="Illustrative event signup confirmed for Saturday the 21st."><div class="glance-calendar" aria-hidden="true"><span>SAT</span><strong>21</strong></div><span class="glance-joined" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"></circle><path d="m7 12 3 3 7-7"></path></svg></span></div>
             </figure>
-            <div class="helper-story-copy"><h3 id="story-events-title"><a href="docs/helper/modules/community/events/">الأحداث<svg class="helper-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></h3><p>Bring people together.</p></div>
+            <div class="helper-story-copy"><h3 id="story-events-title">الأحداث</h3><p>Bring people together.</p></div>
           </section>
           <section class="helper-story-section helper-story-section--community" id="module-community" aria-labelledby="story-community-title">
             <figure class="product-module-visual module-demo module-demo--community" data-demo="community" data-autoplay="once">
               <div class="glance-scene glance-progression" role="img" aria-label="Illustrative level 13 reward: a configured role is unlocked."><div class="glance-level"><strong>13</strong></div><span class="glance-reward"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m12 3 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"></path></svg>New role</span></div>
             </figure>
-            <div class="helper-story-copy"><h3 id="story-community-title"><a href="docs/helper/modules/roles-and-progression/levels/">Levels &amp; roles<svg class="helper-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></h3><p>Make participation count.</p></div>
+            <div class="helper-story-copy"><h3 id="story-community-title">Levels &amp; roles</h3><p>Make participation count.</p></div>
           </section>
           <section class="helper-story-section helper-story-section--automate" id="module-automate" aria-labelledby="story-automate-title">
             <figure class="product-module-visual module-demo module-demo--automate" data-demo="automate" data-autoplay="once">
               <div class="glance-scene glance-automation" role="img" aria-label="Illustrative configured keyword reply: help receives a reply pointing to #guide."><div class="glance-trigger"><strong>help</strong></div><svg class="glance-auto-arrow" viewBox="0 0 64 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 12h56m-9-8 9 8-9 8" pathLength="1"></path><circle class="glance-signal" cx="5" cy="12" r="4" fill="currentColor" stroke="none"></circle></svg><div class="glance-auto-reply"><strong>#guide</strong></div></div>
             </figure>
-            <div class="helper-story-copy"><h3 id="story-automate-title"><a href="docs/helper/modules/automate/workflows/">Auto replies<svg class="helper-card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></h3><p>Your keyword. Your reply.</p></div>
+            <div class="helper-story-copy"><h3 id="story-automate-title">Auto replies</h3><p>Your keyword. Your reply.</p></div>
           </section>
           <section class="helper-story-more" aria-labelledby="helper-more-title">
             <figure class="product-module-visual module-demo module-demo--workspace" data-demo="workspace" data-autoplay="once">
               <div class="helper-tools-scene" role="img" aria-label="Illustrative server tools: modules, activity insights and configuration."><svg viewBox="0 0 260 130" fill="none" aria-hidden="true"><rect x="22" y="15" width="216" height="100" rx="14" fill="#233454"></rect><g fill="#aaa7ff"><rect x="40" y="39" width="18" height="18" rx="4"></rect><rect x="64" y="39" width="18" height="18" rx="4"></rect><rect x="40" y="63" width="18" height="18" rx="4"></rect><rect x="64" y="63" width="18" height="18" rx="4"></rect></g><g class="tools-bars" fill="#55ebd1"><rect x="106" y="66" width="10" height="22" rx="3"></rect><rect x="122" y="47" width="10" height="41" rx="3"></rect><rect x="138" y="29" width="10" height="59" rx="3"></rect></g><g stroke="#aaa7ff" stroke-width="2.5" stroke-linecap="round"><path d="M174 43h43m-43 22h43m-43 22h43"></path><g class="tools-controls" fill="#233454"><circle cx="187" cy="43" r="5"></circle><circle cx="206" cy="65" r="5"></circle><circle cx="187" cy="87" r="5"></circle></g></g></svg></div>
             </figure>
-            <div class="helper-story-copy"><h3 id="helper-more-title">Server tools</h3><div class="helper-tools-links"><a id="module-core" href="docs/helper/get-started/quick-setup/">الأساسي</a><a id="module-insights" href="docs/helper/modules/activity/statistics-channels/">الرؤى</a><a id="module-studio" href="docs/helper/get-started/server-selection/">الاستوديو</a></div></div>
+            <div class="helper-story-copy"><h3 id="helper-more-title">Server tools</h3><div class="helper-tools-links"><span id="module-core">الأساسي</span><span id="module-insights">الرؤى</span><span id="module-studio">الاستوديو</span></div></div>
           </section>
         </div>
 
@@ -228,16 +270,16 @@
           <div class="price-toolbar">
             <div class="bill-toggle" role="group" aria-label="فترة الفوترة">
               <button type="button" class="bill-toggle__btn is-active" data-bill="month">شهري</button>
-              <button type="button" class="bill-toggle__btn" data-bill="year"><span>سنوي</span><span class="bill-toggle__save">Annual billing</span></button>
+              <button type="button" class="bill-toggle__btn" data-bill="year"><span>سنوي</span></button>
             </div>
           </div>
           <div class="bundle-ribbon" role="note" aria-label="حزمة Vozen">
-            <div class="plan-bundle-art" aria-hidden="true"><span class="eco-product__icon eco-product__icon--tts"><svg class="eco-tts-icon" viewBox="0 0 64 64"><rect x="10" y="27" width="6" height="10" rx="3"></rect><rect x="20" y="22" width="6" height="20" rx="3"></rect><rect x="30" y="18" width="6" height="28" rx="3"></rect><rect x="40" y="23" width="6" height="18" rx="3"></rect><rect x="50" y="28" width="4" height="8" rx="2"></rect></svg></span><span class="eco-product__icon eco-product__icon--helper"><svg class="eco-helper-character eco-helper-character--classic" viewBox="0 0 64 64"><path d="M32 19v-7"></path><circle cx="32" cy="9" r="3" class="white"></circle><path d="m15 36-6-4m2 0-2 4M49 36l6-4m-2 0 2 4"></path><rect x="13" y="20" width="38" height="29" rx="13" class="white"></rect><rect x="18" y="26" width="28" height="18" rx="8" class="screen"></rect><circle cx="26" cy="35" r="2.4" class="white"></circle><circle cx="38" cy="35" r="2.4" class="white"></circle><path d="M27 39c3 2.5 7 2.5 10 0"></path></svg></span></div>
+            <div class="plan-bundle-art" aria-hidden="true"><img class="eco-product__icon" src="/assets/settings-tts.png" alt="" width="44" height="44"><img class="eco-product__icon" src="/assets/music/avatar.webp" alt="" width="44" height="44"><img class="eco-product__icon" src="/assets/settings-helper.png" alt="" width="44" height="44"></div>
             <div class="bundle-ribbon__copy">
-              <strong>روبوتان. اشتراك واحد.</strong>
-              <span>TTS + Helper Premium for everyone in your selected servers.</span>
+              <strong data-i18n="price.bundleTitle">ثلاثة روبوتات. اشتراك واحد.</strong>
+              <span data-i18n="price.bundleText">‏TTS وMusic وHelper Premium للجميع في الخوادم التي تختارها.</span>
             </div>
-            <span class="bundle-ribbon__value">TTS + HELPER</span>
+            <span class="bundle-ribbon__value">TTS + MUSIC + HELPER</span>
           </div>
           <div class="pricing helper-pricing__grid">
             <article class="price-card price-card--free">
@@ -252,11 +294,11 @@
                 <div class="price-card__topline"><span class="price-card__badge price-card__badge--plus"><span aria-hidden="true">✦</span> شخصي</span></div><h3>Vozen Plus</h3><p class="price-card__pitch">مزايا الصوت المميزة ترافقك إلى كل خادم</p>
                 <div class="seat-toggle plan-scope"><span class="seat-toggle__btn is-active">يتبعك إلى أي خادم</span></div>
                 <p class="price-card__scope-note">يبقى Helper ضمن حدود الخادم المجانية. Plus يطوّر TTS فقط.</p>
-                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m">€3.99</span><span class="amt amt--y">€37.99</span></b></span><span class="per per--m">/ شهر · لكل مستخدم</span><span class="per per--y">/ سنة · لكل مستخدم</span></div>
+                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m">€1.99</span><span class="amt amt--y">€18.99</span></b></span><span class="per per--m">/ شهر · لكل مستخدم</span><span class="per per--y">/ سنة · لكل مستخدم</span></div>
                 <ul class="ticks price-card__highlights"><li class="price-card__included-free">كل ما في Free</li><li>محرك Kokoro العصبي</li><li>All 8 voice effects (deep, demon, radio...)</li><li>50 نطقًا شخصيًا</li><li>لعبة Word Chain</li><li>لعبة Wordle</li><li>/rizz</li></ul><p class="price-card__note">اشتراك رقمي · بدون شحن</p><a class="price-card__buy" href="/premium#plans" data-i18n="price.checkout">المتابعة إلى الدفع</a><p class="price-card__idnote">سجّل الدخول عبر Discord أولًا. يتولى Stripe بيانات الدفع.</p>
               </article>
               <article class="price-card price-card--pro">
-                <h3>Vozen Premium</h3><p class="price-card__pitch" data-preview-copy="More Helper capacity. Premium voices for everyone.">More Helper capacity. Premium voices for everyone.</p>
+                <h3>Vozen Premium</h3><p class="price-card__pitch"><span class="price-card__audience" data-i18n="price.pro.audience">مزايا Premium لجميع أعضاء خوادمك.</span><small class="price-card__products" data-i18n="price.pro.pitchHelper">Helper + Music + TTS.</small></p>
                 <div class="seat-toggle" role="group" aria-label="الخوادم لكل اشتراك"><button type="button" class="seat-toggle__btn is-active" data-seats="2">خادمان</button><button type="button" class="seat-toggle__btn" data-seats="5">5 خوادم</button></div>
                 <ul class="ticks ticks--amber price-card__highlights helper-premium-highlights" aria-label="Premium Helper bundle highlights">
                   <li>Everything in Helper Free</li>
@@ -269,7 +311,7 @@
                   <li>Premium TTS voices and effects for your community</li>
                 </ul>
                 <p class="price-card__scope-note">يغطي اشتراك واحد الخوادم المختارة ومجتمعاتها.</p>
-                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m amt--s2">€6.99</span><span class="amt amt--m amt--s5">€14.99</span><span class="amt amt--y amt--s2">€66.99</span><span class="amt amt--y amt--s5">€133.99</span></b><s class="was was--y was--s2">€83.88</s><s class="was was--y was--s5">€179.88</s></span><span class="per per--m per--s2">/ شهر · خادمان</span><span class="per per--m per--s5">/ شهر · 5 خوادم</span><span class="per per--y per--s2">/ سنة · خادمان</span><span class="per per--y per--s5">/ سنة · 5 خوادم</span></div>
+                <div class="price-card__price"><span class="price-line"><b><span class="amt amt--m amt--s2">€3.99</span><span class="amt amt--m amt--s5">€7.99</span><span class="amt amt--y amt--s2">€37.99</span><span class="amt amt--y amt--s5">€70.99</span></b></span><span class="per per--m per--s2">/ شهر · خادمان</span><span class="per per--m per--s5">/ شهر · 5 خوادم</span><span class="per per--y per--s2">/ سنة · خادمان</span><span class="per per--y per--s5">/ سنة · 5 خوادم</span></div>
                 <p class="price-card__note note--s2">اشتراك رقمي · بدون شحن</p><p class="price-card__note note--s5">اشتراك رقمي · بدون شحن</p><a class="price-card__buy price-card__buy--pro" href="/premium#plans">View Premium</a><p class="price-card__idnote">سجّل الدخول عبر Discord أولًا. يتولى Stripe بيانات الدفع.</p>
               </article>
             </div>
@@ -304,63 +346,65 @@
           </div></details>
         </section>
 
-        <section class="helper-faq" id="helper-faq" aria-labelledby="helper-faq-title">
-          <div class="helper-section-heading">
-            <h2 id="helper-faq-title" data-i18n="faq.title">أسئلة، بإجابات</h2>
-          </div>
-          <div class="faq">
-            <details class="qa">
-              <summary class="qa__q">هل Vozen Helper متاح الآن؟</summary>
-              <div class="qa__a"><p>نعم. Helper متاح للعامة. ثبّته من هذه الصفحة، واختر خادمًا، ثم اضبط وحدتك الأولى من خلال الإعداد الموجّه.</p></div>
-            </details>
-            <details class="qa">
-              <summary class="qa__q">هل يطلب Helper صلاحية المسؤول؟</summary>
-              <div class="qa__a"><p>لا. يستخدم رابط الدعوة الأساسي صلاحيات محدودة ولا يطلب صلاحية المسؤول أبدًا. إذا احتاجت وحدة إلى صلاحية حساسة إضافية، يوضح Helper السبب قبل تفعيلها.</p></div>
-            </details>
-            <details class="qa">
-              <summary class="qa__q">كيف أبدأ استخدام Helper؟</summary>
-              <div class="qa__a"><p>ثبّت Helper، واختر خادمك، وأكمل الإعداد الموجّه، وفعّل وحدة واحدة، ثم نفّذ أول إجراء مفيد لها.</p></div>
-            </details>
-            <details class="qa">
-              <summary class="qa__q">ما الوحدات المتاحة؟</summary>
-              <div class="qa__a"><p>يجمع Helper الحماية والإشراف، والتذاكر، والأدوار وأدوات المجتمع، والفعاليات، والأتمتة، والمعلومات التشغيلية. تعرض لوحة التحكم الخيارات المتاحة بالضبط لخادمك.</p></div>
-            </details>
-            <details class="qa">
-              <summary class="qa__q">هل يمكنني شراء Premium الآن؟</summary>
-              <div class="qa__a"><p data-i18n="price.paused">المدفوعات متوقفة مؤقتًا. الأسعار معروضة للمرجع فقط.</p></div>
-            </details>
-          </div>
-        </section>
+        <section class="product-faq" id="helper-faq" aria-labelledby="helper-faq-title">
+  <header class="product-faq__heading"><h2 id="helper-faq-title" data-i18n="faq.title">أسئلة، بإجابات</h2></header>
+  <div class="faq">
+    <details class="qa"><summary class="qa__q">كيف أُعدّ تذاكر الدعم الخاصة؟</summary><div class="qa__a"><p>افتح وحدة الدعم في لوحة Helper وانشر لوحة تتيح للأعضاء فتح تذكرة خاصة.</p></div></details>
+    <details class="qa"><summary class="qa__q">هل يطلب Helper صلاحية المسؤول؟</summary><div class="qa__a"><p>لا. يستخدم رابط الدعوة الأساسي صلاحيات محدودة ولا يطلب صلاحية المسؤول أبدًا. إذا احتاجت وحدة إلى صلاحية حساسة إضافية، يوضح Helper السبب قبل تفعيلها.</p></div></details>
+    <details class="qa"><summary class="qa__q">كيف أبدأ استخدام Helper؟</summary><div class="qa__a"><p>ثبّت Helper، واختر خادمك، وأكمل الإعداد الموجّه، وفعّل وحدة واحدة، ثم نفّذ أول إجراء مفيد لها.</p></div></details>
+    <details class="qa"><summary class="qa__q">ما الوحدات المتاحة؟</summary><div class="qa__a"><p>يجمع Helper الحماية والإشراف، والتذاكر، والأدوار وأدوات المجتمع، والفعاليات، والأتمتة، والمعلومات التشغيلية. تعرض لوحة التحكم الخيارات المتاحة بالضبط لخادمك.</p></div></details>
+    <details class="qa"><summary class="qa__q">هل يمكنني شراء Premium الآن؟</summary><div class="qa__a"><p>المدفوعات متوقفة مؤقتًا. الأسعار معروضة للمرجع فقط.</p></div></details>
+  </div>
+</section>
 
         <a class="eco-back" href="https://vozen.org/ar/helper/">← العودة إلى Vozen</a>
       </div>
-    </main>
+    <section class="product-finale" id="get-started" aria-labelledby="product-finale-title">
+ <img class="product-finale__icon" src="/assets/settings-helper.png" width="80" height="80" alt="" loading="lazy" decoding="async">
+ <div class="product-finale__copy"><span class="product-finale__name">Vozen Helper</span><h2 class="product-finale__title" id="product-finale-title" data-i18n="finale.helperTitle">امنح خادمك يد العون</h2></div>
+ <div class="product-finale__action"><a class="btn btn--primary btn--discord-cta product-finale__button js-helper-invite" href="https://api.vozen.org/rust/api/install/start?source=helper-pricing"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+                  <path d="M20.3 4.4A19 19 0 0 0 15.6 3l-.24.48a17.6 17.6 0 0 1 4.16 1.3 15 15 0 0 0-11.06 0A17.6 17.6 0 0 1 12.63 3.5L12.4 3A19 19 0 0 0 7.7 4.4C4.8 8.7 4 13 4.2 17.2A19 19 0 0 0 9.9 20l.4-.6a12 12 0 0 1-1.9-.9c.16-.12.32-.24.47-.37a13.6 13.6 0 0 0 11.6 0c.15.13.3.25.47.37-.6.36-1.24.66-1.9.9l.4.6a19 19 0 0 0 5.7-2.8c.28-4.9-.76-9.16-3.36-12.8ZM9.7 14.7c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Zm4.6 0c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.88 2.3-2 2.3Z"></path>
+                </svg><span data-i18n="cta.add">أضِفه إلى Discord</span></a><p class="product-finale__note" data-i18n="finale.freeNote">الميزات الأساسية مجانية. لا حاجة لبطاقة ائتمان.</p></div>
+</section>
+</main>
 
-    <footer class="eco-footer">
-      <div class="eco-wrap eco-footer__inner">
-        <p>© 2026 Vozen</p>
-        <nav class="eco-footer__links" aria-label="قانوني">
-          <a href="privacy.html">الخصوصية</a>
-          <a href="terms.html">الشروط</a>
-        </nav>
-      </div>
-    </footer>
+    <footer class="vozen-footer" id="site-footer">
+  <div class="vozen-footer__inner">
+    <span class="vozen-footer__brand"><img src="/favicon.svg" width="28" height="28" alt="">© 2026 Vozen</span>
+    <nav class="vozen-footer__links" aria-label="Vozen footer">
+      <a href="https://discord.gg/4kYw2WUbNN" data-i18n="foot.support">خادم الدعم</a>
+      <a href="/privacy.html" data-i18n="foot.privacy">الخصوصية</a>
+      <a href="/terms.html" data-i18n="foot.terms">الشروط</a>
+    </nav>
+    <span class="vozen-footer__disclaimer" data-i18n="foot.legal">غير تابع لـ Discord</span>
+  </div>
+</footer>
 
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Vozen Helper","applicationCategory":"UtilitiesApplication","operatingSystem":"Discord","url":"https://vozen.org/ar/helper/","description":"إشراف وتذاكر دعم ومجتمع. بوت واحد.","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR","availability":"https://schema.org/InStock"}}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"ar","mainEntity":[{"@type":"Question","name":"هل Vozen Helper متاح الآن؟","acceptedAnswer":{"@type":"Answer","text":"نعم. Helper متاح للعامة. ثبّته من هذه الصفحة، واختر خادمًا، ثم اضبط وحدتك الأولى من خلال الإعداد الموجّه."}},{"@type":"Question","name":"هل يطلب Helper صلاحية المسؤول؟","acceptedAnswer":{"@type":"Answer","text":"لا. يستخدم رابط الدعوة الأساسي صلاحيات محدودة ولا يطلب صلاحية المسؤول أبدًا. إذا احتاجت وحدة إلى صلاحية حساسة إضافية، يوضح Helper السبب قبل تفعيلها."}},{"@type":"Question","name":"كيف أبدأ استخدام Helper؟","acceptedAnswer":{"@type":"Answer","text":"ثبّت Helper، واختر خادمك، وأكمل الإعداد الموجّه، وفعّل وحدة واحدة، ثم نفّذ أول إجراء مفيد لها."}},{"@type":"Question","name":"ما الوحدات المتاحة؟","acceptedAnswer":{"@type":"Answer","text":"يجمع Helper الحماية والإشراف، والتذاكر، والأدوار وأدوات المجتمع، والفعاليات، والأتمتة، والمعلومات التشغيلية. تعرض لوحة التحكم الخيارات المتاحة بالضبط لخادمك."}},{"@type":"Question","name":"هل يمكنني شراء Premium الآن؟","acceptedAnswer":{"@type":"Answer","text":"نعم. اختر خطة من صفحة Premium وسجّل الدخول باستخدام Discord. تتولى Stripe معالجة بيانات الدفع. تبقى ميزات Helper الأساسية مجانية."}}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"ar","mainEntity":[{"@type":"Question","name":"كيف أُعدّ تذاكر الدعم الخاصة؟","acceptedAnswer":{"@type":"Answer","text":"افتح وحدة الدعم في لوحة Helper وانشر لوحة تتيح للأعضاء فتح تذكرة خاصة."}},{"@type":"Question","name":"هل يطلب Helper صلاحية المسؤول؟","acceptedAnswer":{"@type":"Answer","text":"لا. يستخدم رابط الدعوة الأساسي صلاحيات محدودة ولا يطلب صلاحية المسؤول أبدًا. إذا احتاجت وحدة إلى صلاحية حساسة إضافية، يوضح Helper السبب قبل تفعيلها."}},{"@type":"Question","name":"كيف أبدأ استخدام Helper؟","acceptedAnswer":{"@type":"Answer","text":"ثبّت Helper، واختر خادمك، وأكمل الإعداد الموجّه، وفعّل وحدة واحدة، ثم نفّذ أول إجراء مفيد لها."}},{"@type":"Question","name":"ما الوحدات المتاحة؟","acceptedAnswer":{"@type":"Answer","text":"يجمع Helper الحماية والإشراف، والتذاكر، والأدوار وأدوات المجتمع، والفعاليات، والأتمتة، والمعلومات التشغيلية. تعرض لوحة التحكم الخيارات المتاحة بالضبط لخادمك."}},{"@type":"Question","name":"هل يمكنني شراء Premium الآن؟","acceptedAnswer":{"@type":"Answer","text":"المدفوعات متوقفة مؤقتًا. الأسعار معروضة للمرجع فقط."}}]}</script>
     <script defer="" src="js/analytics-config.js?v=f6b49da441d8"></script>
     <script defer="" src="js/web-analytics-v1.js?v=e934b4dd1f34"></script>
-    <script defer="" src="js/global-nav-v1.js?v=c36e628c7056"></script>
-    <script defer="" src="js/i18n-public-loader-v1.js?v=e9b3e3b4a5b1"></script>
-    <script defer="" src="js/helper-landing-i18n-v1.js?v=ba7b03cc6a12"></script>
+    <script defer="" src="js/global-nav-v1.js?v=93ac57255dc2"></script>
+    <script defer="" src="js/i18n-public-loader-v1.js?v=b43111dba3cd"></script>
+    <script defer="" src="js/helper-landing-i18n-v1.js?v=763ef8b46129"></script>
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v3&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=1&amp;v=2decb7cc2c60"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v3&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=1&amp;v=86081478360f"></script>
     <script defer="" src="js/helper-ambient-v1.js?v=f2937020e43a"></script>
     <script defer="" src="js/helper-module-tabs-v1.js?v=23a37e79cd5d"></script>
     <script defer="" src="js/helper-demos-v1.js?v=50352c212f63"></script>
 
 
 <script defer="" src="js/product-preview-v1.js?v=dd06ef7904bf"></script>
+
+
+
+
+
+
+
+
+
+
 <noscript data-prerender-fallback=""><style>
 .reveal{opacity:1!important;transform:none!important}.qa__a{max-height:none!important}
 .helper-module-panel[hidden]{display:block!important}.nav__links{display:flex!important;flex-wrap:wrap}
@@ -368,7 +412,5 @@
 .vozen-global-nav{position:static!important;height:auto!important}
 .vozen-global-nav .nav__inner{height:auto!important;padding-block:14px;row-gap:14px}
 .vozen-global-nav .nav__links{order:3;flex:1 1 100%;justify-content:flex-start;gap:16px}
-.docs-topbar{position:static!important}
 .page-account main,.page-account .foot{visibility:visible!important}
-@media(max-width:980px){.docs-sidebar{position:static!important;transform:none!important;visibility:visible!important}.docs-main{margin-left:0!important}.docs-drawer-toggle,.docs-sidebar-scrim{display:none!important}}
-</style><p>Interactive search, audio, account information and live service checks require JavaScript. All public documentation and command descriptions are available below.</p></noscript></body></html>
+</style><p>Interactive search, audio, account information and live service checks require JavaScript. Public information and command descriptions are available below.</p></noscript></body></html>
