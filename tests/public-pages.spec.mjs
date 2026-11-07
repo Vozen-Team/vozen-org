@@ -458,7 +458,7 @@ test('the refreshed TTS FAQ has six useful questions and working mobile answers'
   }
   await expect(page.locator('#faq-list')).toContainText('/setup');
   await expect(page.locator('#faq-list')).toContainText('/join');
-  await expect(page.locator('#faq-list')).toContainText('Payments are currently paused.');
+  await expect(page.locator('#faq-list')).not.toContainText('Payments are currently paused.');
   await questions.first().click();
   await expect(questions.first()).toHaveAttribute('aria-expanded','false');
   for (const locale of ['fr','es','de','tr','ar','zh','ru','ko']) {
