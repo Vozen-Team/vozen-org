@@ -232,10 +232,10 @@ test('Music plan previews match the TTS cards and switch prices without checkout
   await expect(plans.locator('.price-card')).toHaveCount(3);
   await expect(premium).toHaveCSS('background-image', premiumBackground);
   expect(await plans.locator('.price-card__buy').evaluateAll(links => links.map(el => getComputedStyle(el).color))).toEqual(buttonColors);
-  await expect(amount(premium)).toHaveText('€3.99');
+  await expect(amount(premium)).toHaveText('€7.99');
   await expect(amount(plans.locator('.price-card--plus'))).toHaveText('€1.99');
   await plans.getByRole('button', { name: '5 servers' }).click();
-  await expect(amount(premium)).toHaveText('€7.99');
+  await expect(amount(premium)).toHaveText('€15.99');
   await plans.getByRole('button', { name: 'Yearly', exact: true }).click();
   await expect(amount(premium)).toHaveText('€70.99');
   await expect(amount(plans.locator('.price-card--plus'))).toHaveText('€18.99');
@@ -319,10 +319,11 @@ test('approved monthly and yearly prices agree across pages while payments stay 
     const plus = page.locator('.pricing .price-card--plus');
     for (const yearly of [false, true]) {
       await page.locator('.bill-toggle [data-bill="' + (yearly ? 'year' : 'month') + '"]').click();
-      for (const [seats, amount, previous] of [['2', yearly ? '€37.99' : '€3.99', yearly ? '€66.99' : '€6.99'], ['5', yearly ? '€70.99' : '€7.99', yearly ? '€133.99' : '€14.99']]) {
+      for (const [seats, amount, previous] of [['2', yearly ? '€37.99' : '€7.99', '€66.99'], ['5', yearly ? '€70.99' : '€15.99', '€133.99']]) {
         await premium.locator('[data-seats="' + seats + '"]').click();
         await expect(premium.locator('.amt:visible')).toHaveText(amount);
-        await checkPrevious(premium, previous);
+        if (yearly) await checkPrevious(premium, previous);
+        else await expect(premium.locator('s.was:visible')).toHaveCount(0);
         await expect(premium.locator('[data-discount]')).toHaveCount(0);
       }
       if (await plus.isVisible()) {

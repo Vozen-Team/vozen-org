@@ -15,7 +15,7 @@ test('local pricing previews preserve prices, full comparisons and paused checko
     const section=nodes.find(node=>attrs(node).class?.split(' ').includes('plan-preview'));
     assert.ok(section);
     const markup=parse5.serialize(section);
-    for(const price of ['€0','€1.99','€18.99','€3.99','€7.99','€37.99','€70.99'])assert.ok(markup.includes(price),product+price);
+    for(const price of ['€0','€1.99','€18.99','€7.99','€15.99','€37.99','€70.99'])assert.ok(markup.includes(price),product+price);
     assert.match(markup,/Three bots\. One subscription\./);
     assert.match(markup,/TTS, Music and Helper Premium for everyone in your selected servers\./);
     const highlights=nodes.filter(node=>attrs(node).class?.split(' ').includes('price-card__highlights'));

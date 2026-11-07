@@ -5,8 +5,8 @@ import {parse} from 'parse5';
 
 const plans = [
   ['plus', 199, 1899, 399, 3799, ''],
-  ['pro', 399, 3799, 699, 6699, 's2'],
-  ['pro', 799, 7099, 1499, 13399, 's5'],
+  ['pro', 799, 3799, null, 6699, 's2'],
+  ['pro', 1599, 7099, null, 13399, 's5'],
 ];
 const money = cents => '€' + (cents / 100).toFixed(2);
 function elements(node) {
@@ -30,7 +30,7 @@ test('current and previously listed prices match across product routes and local
         const value = children.find(node => classes(node).includes('amt--' + period) && (!seats || classes(node).includes('amt--' + seats)));
         assert.equal(text(value), money(amount), route + ' ' + plan + seats + period);
         const old = children.filter(node => node.tagName === 's' && classes(node).includes('was--' + period) && (!seats || classes(node).includes('was--' + seats)));
-        assert.deepEqual(old.map(text), [money(previous)], route + ' previous ' + plan + seats + period);
+        assert.deepEqual(old.map(text), previous === null ? [] : [money(previous)], route + ' previous ' + plan + seats + period);
       }
       assert.ok(yearly < monthly * 12);
     }
@@ -40,7 +40,7 @@ test('current and previously listed prices match across product routes and local
     for (const [plan, yearly] of [['plus', '18.99'], ['pro', '37.99'], ['max', '70.99']]) {
       assert.ok(messages['price.' + plan + '.note'].replaceAll(',', '.').includes(yearly), locale + plan);
     }
-    assert.ok(messages['feat.8.d'].replaceAll(',', '.').includes('3.99'), locale + ' feature price');
+    assert.ok(messages['feat.8.d'].replaceAll(',', '.').includes('7.99'), locale + ' feature price');
   }
   assert.match(readFileSync('site/js/main-v51.js', 'utf8'), /const PAYMENTS_ENABLED = false;/);
 });
