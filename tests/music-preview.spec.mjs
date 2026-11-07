@@ -202,8 +202,7 @@ test('all three bots appear in one Premium bundle across product pages', async (
       }
     }
     if (path === '/premium.html') {
-      await expect(page.locator('#paymentsNotice')).toBeVisible();
-      for (const button of await page.locator('.premium-unavailable').all()) await expect(button).toBeDisabled();
+      for (const plan of ['plus', 'premium']) await expect(page.locator(`[data-billing-plan="${plan}"]`)).toBeEnabled();
     }
   }
 });
@@ -305,7 +304,7 @@ test('product plan prices share a row despite different pitches and server selec
   }
 });
 
-test('approved monthly and yearly prices agree across pages while payments stay paused', async ({ page }) => {
+test('approved monthly and yearly prices agree across product and checkout pages', async ({ page }) => {
   const checkPrevious = async (card, value) => {
     const previous = card.locator('s.was:visible');
     await expect(previous).toHaveText(value);
@@ -333,8 +332,15 @@ test('approved monthly and yearly prices agree across pages while payments stay 
       }
     }
     if (route === '/premium.html') {
-      await expect(page.locator('#paymentsNotice')).toBeVisible();
-      for (const button of await page.locator('.premium-unavailable').all()) await expect(button).toBeDisabled();
+      for (const plan of ['plus', 'premium']) {
+        const buy = page.locator(`[data-billing-plan="${plan}"]`);
+        await buy.click();
+        const dialog = page.getByRole('dialog', { name: plan === 'plus' ? 'Vozen Plus' : 'Vozen Premium' });
+        await expect(dialog).toBeVisible();
+        await expect(dialog.locator('#vozenBillingLogin')).toBeVisible();
+        await dialog.locator('#vozenBillingClose').click();
+        await expect(buy).toBeEnabled();
+      }
     } else {
       await expect(page.locator('.plan-preview [data-buy], .plan-preview [data-billing-plan]')).toHaveCount(0);
     }

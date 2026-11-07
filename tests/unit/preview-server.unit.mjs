@@ -20,14 +20,13 @@ test('invalid URL requests return 400 without stopping the local preview', async
   }
 });
 
-test('local plan links resolve the existing paused Premium page', async(t)=>{
+test('local plan links resolve both paid checkout buttons on the Premium page', async(t)=>{
   const {server,origin}=await createSiteServer();
   t.after(()=>closeSiteServer(server));
   const response=await fetch(origin+'/premium');
   assert.equal(response.status,200);
   const html=await response.text();
-  assert.equal((html.match(/class="[^"]*premium-unavailable"[^>]* disabled/g)||[]).length,2);
-  assert.doesNotMatch(html,/data-billing-plan=/);
+  assert.deepEqual([...html.matchAll(/data-billing-plan="([^"]+)"/g)].map(match=>match[1]),['plus','premium']);
 });
 
 test('preview shutdown closes unfinished browser connections', async (t) => {

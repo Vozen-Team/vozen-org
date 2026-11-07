@@ -44,15 +44,14 @@ test('Premium selection announces billing totals and keeps seat selection indepe
   assert.equal(note.textContent, 'Showing monthly prices.');
 });
 
-test('new checkout is paused and pricing cannot start a purchase even without JavaScript', () => {
-  assert.ok(/const PAYMENTS_ENABLED = false;/.test(script), 'new checkout paused');
+test('paid plans use the shared checkout and product pages link to it', () => {
+  assert.match(script, /const PAYMENTS_ENABLED = true;/);
   const premium = documentNodes('site/premium.html');
-  const paidButtons = premium.filter(node => node.tagName === 'button' && (attrs(node).class || '').split(' ').includes('premium-unavailable'));
-  assert.equal(paidButtons.length, 2);
+  const paidButtons = premium.filter(node => node.tagName === 'button' && attrs(node)['data-billing-plan']);
+  assert.deepEqual(paidButtons.map(node => attrs(node)['data-billing-plan']), ['plus', 'premium']);
   for (const button of paidButtons) {
-    assert.equal(attrs(button).disabled, '');
-    assert.equal(attrs(button)['aria-describedby'], 'paymentsNotice');
-    assert.equal(attrs(button)['data-billing-plan'], undefined);
+    assert.equal(attrs(button).disabled, undefined);
+    assert.equal(attrs(button)['data-i18n'], 'price.checkout');
   }
   for (const file of ['site/tts.html', 'site/helper.html', 'site/tts/index.html', 'site/helper/index.html']) {
     const nodes = documentNodes(file);

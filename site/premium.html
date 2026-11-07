@@ -10,7 +10,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="css/main-v43.css?v=a02be1bbcf65">
     <link rel="stylesheet" href="css/billing-v3.css?v=79522ffcb267">
-    <link rel="stylesheet" href="css/premium-page-v1.css?v=eaa0cab9a1a7">
+    <link rel="stylesheet" href="css/premium-page-v1.css?v=739ec7c48cac">
     <link rel="stylesheet" href="css/global-nav-v1.css?v=f4ec7a88458b">
       <meta property="og:site_name" content="Vozen">
       <meta property="og:type" content="website">
@@ -82,7 +82,6 @@
               <button class="bill-toggle__btn" type="button" data-bill="year" aria-pressed="false">Yearly</button>
             </div>
             <p class="sr-only" id="billingNote" aria-live="polite">Showing monthly prices.</p>
-            <p class="premium-hero__notice" id="paymentsNotice" role="note">Payments paused. Prices shown for reference.</p>
           </div>
           <h2 class="sr-only" id="plansTitle">Vozen plans</h2>
           <div class="pricing" id="pricingGrid">
@@ -99,7 +98,7 @@
                 <h3>Vozen Plus</h3><p class="price-card__pitch">Personal perks, wherever you chat.<small class="price-card__products">TTS + Music.</small></p>
                 <div class="premium-price-row"><div class="price-card__price"><span class="price-line"><s class="was was--m">€3.99</s><s class="was was--y">€37.99</s><b><span class="amt amt--m">€1.99</span><span class="amt amt--y">€18.99</span></b></span><span class="per per--m" data-i18n="premium.monthPerUser">/ month · per user</span><span class="per per--y" data-i18n="premium.yearPerUser">/ year · per user</span></div></div>
                 <ul class="ticks price-card__highlights"><li>Everything in Free</li><li>Kokoro neural voices + all 8 effects</li><li>50 personal pronunciations</li><li>Wordle, Word Chain, Chess and /rizz</li><li>Skip tracks in Music</li><li>Better Music audio quality</li><li>Perks follow your Discord account</li></ul>
-                <div class="premium-card-action"><button class="price-card__buy premium-unavailable" type="button" disabled="" aria-describedby="paymentsNotice">Payments paused</button><span>Personal perks. Not a server subscription.</span></div>
+                <div class="premium-card-action"><button class="price-card__buy" type="button" data-billing-plan="plus" data-i18n="price.checkout">Continue to checkout</button><span>Personal perks. Not a server subscription.</span></div>
               </article>
               <article class="price-card price-card--pro" id="proCard">
                 <div class="premium-audience">For your servers</div>
@@ -109,7 +108,7 @@
                   <div class="seat-toggle" role="group" aria-label="Servers per subscription"><button class="seat-toggle__btn is-active" type="button" data-seats="2" aria-pressed="true">2 servers</button><button class="seat-toggle__btn" type="button" data-seats="5" aria-pressed="false">5 servers</button></div>
                 </div>
                 <ul class="ticks price-card__highlights"><li>Free core + premium perks for everyone</li><li>Kokoro voices + all 8 effects</li><li>50 personal + 50 server pronunciations</li><li>Wordle, Word Chain, Chess and /rizz</li><li>24/7 TTS voice + live transcription</li><li>Custom TTS bot avatar and banner</li><li>More Helper panels and workflows</li><li>Longer audit and analytics history</li><li>Music: My Station, better audio + call volume</li></ul>
-                <div class="premium-card-action"><button class="price-card__buy price-card__buy--pro premium-unavailable" type="button" disabled="" aria-describedby="paymentsNotice">Payments paused</button><span>All three bots. Every member in selected servers.</span></div>
+                <div class="premium-card-action"><button class="price-card__buy price-card__buy--pro" type="button" data-billing-plan="premium" data-i18n="price.checkout">Continue to checkout</button><span>All three bots. Every member in selected servers.</span></div>
               </article>
             </div>
           </div>
@@ -199,7 +198,7 @@
     <script defer="" src="js/i18n-v41.js?v=27eeeec12d99"></script>
     <script defer="" src="js/i18n-v42.js?v=3bca3bc18550"></script>
     <script defer="" src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v3&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=1&amp;v=86081478360f"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v3&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=1&amp;v=0280d34fc4e7"></script>
     <script defer="" src="js/premium-preview-v1.js?v=07d872c11f8c"></script>
     <script defer="" src="js/motion-v1.js?v=e61ca8f4a378"></script>
 
