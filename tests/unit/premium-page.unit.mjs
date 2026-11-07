@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {parse,serialize} from 'parse5';
 
-test('Premium uses one price row, correct product scopes and paused payments',()=>{
+test('Premium uses one price row, correct product scopes and shared checkout',()=>{
   const html=readFileSync('site/premium.html','utf8');
   const nodes=[];
   const visit=node=>{nodes.push(node);for(const child of node.childNodes||[])visit(child);};
@@ -44,9 +44,7 @@ test('Premium uses one price row, correct product scopes and paused payments',()
   assert.deepEqual(matrix.get('Fixed voice channel'),['—','—','✓']);
   assert.deepEqual(matrix.get('Automated workflows'),['3','3','25']);
   assert.deepEqual(matrix.get('Ticket transcript history'),['Standard','Standard','Extended']);
-  const checkout=nodes.filter(node=>hasClass(node,'premium-unavailable'));
+  const checkout=nodes.filter(node=>attrs(node)['data-billing-plan']);
   assert.equal(checkout.length,2);
-  for(const button of checkout)assert.ok('disabled' in attrs(button));
-  assert.doesNotMatch(html,/data-billing-plan|data-buy|Google HD|Most popular/);
-  assert.match(readFileSync('site/js/main-v51.js','utf8'),/const PAYMENTS_ENABLED = false;/);
+  assert.doesNotMatch(html,/paymentsNotice|data-buy|Google HD|Most popular/);
 });

@@ -42,5 +42,4 @@ test('current and previously listed prices match across product routes and local
     }
     assert.ok(messages['feat.8.d'].replaceAll(',', '.').includes('7.99'), locale + ' feature price');
   }
-  assert.match(readFileSync('site/js/main-v51.js', 'utf8'), /const PAYMENTS_ENABLED = false;/);
 });

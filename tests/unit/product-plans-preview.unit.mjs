@@ -5,7 +5,7 @@ import * as parse5 from 'parse5';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 
-test('local pricing previews preserve prices, full comparisons and paused checkout destinations',()=>{
+test('product pricing preserves prices, full comparisons and links to the shared checkout',()=>{
   for(const product of ['tts','helper']) {
     const html=readFileSync('site/'+product+'/index.html','utf8');
     const nodes=[];
@@ -33,7 +33,6 @@ test('local pricing previews preserve prices, full comparisons and paused checko
     }
     else assert.match(html,/<details class="helper-comparison-disclosure">/);
   }
-  assert.match(readFileSync('site/js/main-v51.js','utf8'),/const PAYMENTS_ENABLED = false;/);
   const english=JSON.parse(readFileSync('tools/i18n-marketing-src/en.json','utf8'));
   assert.doesNotMatch(JSON.stringify(english.faq),/Google HD/);
   assert.doesNotMatch(readFileSync('site/premium.html','utf8'),/data-i18n="price\.m\.22"/);

@@ -53,7 +53,7 @@
   const IS_ACCOUNT = document.body.classList.contains("page-account");
   const IS_PREMIUM = document.body.classList.contains("page-premium");
   // Purchases and paid plan changes stay paused; existing billing management remains available.
-  const PAYMENTS_ENABLED = false;
+  const PAYMENTS_ENABLED = true;
   const PREMIUM_PLANS_URL = "premium.html#plans";
   // Deterministic fixture for local visual QA. The hostname gate keeps this branch unreachable on
   // vozen.org; it exists so the authenticated layout can be reviewed without copying a real token

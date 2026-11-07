@@ -65,7 +65,7 @@ test('TTS discovers its headline font before the stylesheet finishes', async ({ 
   await expect(page.locator('#languages')).toHaveCSS('content-visibility', 'auto');
 });
 
-test('Premium finishes initialization and darkens navigation on scroll while purchases stay paused', async ({ page }) => {
+test('Premium initializes checkout and darkens navigation on scroll', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   for (const width of [320, 1440]) {
@@ -76,8 +76,7 @@ test('Premium finishes initialization and darkens navigation on scroll while pur
     await page.evaluate(() => window.scrollTo(0, 600));
     await expect(page.locator('#nav')).toHaveClass(/is-stuck/);
     await expect(page.locator('#nav')).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
-    await expect(page.locator('.premium-unavailable')).toHaveCount(2);
-    for (const button of await page.locator('.premium-unavailable').all()) await expect(button).toBeDisabled();
+    for (const plan of ['plus', 'premium']) await expect(page.locator(`[data-billing-plan="${plan}"]`)).toBeEnabled();
     expect(errors).toEqual([]);
     await page.evaluate(() => window.scrollTo(0, 0));
     await expect(page.locator('#nav')).not.toHaveClass(/is-stuck/);
@@ -459,7 +458,7 @@ test('the refreshed TTS FAQ has six useful questions and working mobile answers'
   }
   await expect(page.locator('#faq-list')).toContainText('/setup');
   await expect(page.locator('#faq-list')).toContainText('/join');
-  await expect(page.locator('#faq-list')).toContainText('Payments are currently paused.');
+  await expect(page.locator('#faq-list')).not.toContainText('Payments are currently paused.');
   await questions.first().click();
   await expect(questions.first()).toHaveAttribute('aria-expanded','false');
   for (const locale of ['fr','es','de','tr','ar','zh','ru','ko']) {
