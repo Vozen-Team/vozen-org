@@ -40,7 +40,7 @@
 .page-premium .price-card__price b { color: var(--plan-accent); font: 700 42px/1.15 var(--f-body); letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
 .page-premium .price-card__price .amt { font: inherit; color: inherit; background: none; -webkit-text-fill-color: currentColor; }
 .page-premium .price-card__price .per { margin-top: 7px; color: #bac7df; font: 400 12px/1.5 var(--f-body); }
-.page-premium .price-card__price .was { position: absolute; bottom: calc(100% + 8px); left: 0; color: #a4aec7; font-size: 14px; line-height: 24px; white-space: nowrap; }
+.page-premium .price-card__price .was { position: absolute; bottom: calc(100% + 8px); left: 0; color: #a4aec7; font-size: 16px; line-height: 24px; white-space: nowrap; }
 .page-premium .pricing .price-card .price-card__highlights { display: grid; align-content: start; grid-template-columns: minmax(0,1fr); gap: 10px; margin: 0 0 26px; padding: 20px 0 0; border-top: 1px solid #3a4257; list-style: none; }
 .page-premium .price-card__highlights::before { content: none; }
 .page-premium .price-card__highlights li { display: flex; align-items: baseline; gap: 10px; margin: 0; padding: 0; color: #d1d8e9; font: 400 14px/1.5 var(--f-body); }
