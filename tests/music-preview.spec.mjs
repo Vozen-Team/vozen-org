@@ -258,13 +258,19 @@ test('product plan prices share a row despite different pitches and server selec
       const boxes = await page.locator('.plan-preview .price-card:not([hidden])').evaluateAll(cards => cards.map(card => ({
         card: card.getBoundingClientRect().toJSON(),
         price: card.querySelector('.price-card__price').getBoundingClientRect().toJSON(),
+        amount: [...card.querySelectorAll('.amt')].find(el => el.getClientRects().length)?.getBoundingClientRect().toJSON(),
         pitch: card.querySelector('.price-card__pitch').getBoundingClientRect().toJSON(),
+        previous: [...card.querySelectorAll('s.was')].find(el => el.getClientRects().length)?.getBoundingClientRect().toJSON(),
       })));
       if (width > 1000) {
         expect(Math.max(...boxes.map(box => box.price.y)) - Math.min(...boxes.map(box => box.price.y)), route + ' at ' + width).toBeLessThan(1);
         for (const box of boxes) expect(box.price.y - box.pitch.bottom).toBeLessThan(50);
       } else {
         for (const box of boxes) expect(box.price.bottom).toBeLessThanOrEqual(box.card.bottom);
+      }
+      for (const box of boxes.filter(box => box.previous)) {
+        expect(box.previous.top, route + ' previous price clears pitch at ' + width).toBeGreaterThanOrEqual(box.pitch.bottom);
+        expect(box.previous.bottom, route + ' previous price is above current price at ' + width).toBeLessThanOrEqual(box.amount.top);
       }
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
       const premium = page.locator('.plan-preview .price-card--pro');
@@ -300,6 +306,12 @@ test('product plan prices share a row despite different pitches and server selec
 });
 
 test('approved monthly and yearly prices agree across pages while payments stay paused', async ({ page }) => {
+  const checkPrevious = async (card, value) => {
+    const previous = card.locator('s.was:visible');
+    await expect(previous).toHaveText(value);
+    await expect(previous).toHaveCSS('text-decoration-line', 'line-through');
+    expect((await previous.boundingBox()).y).toBeLessThan((await card.locator('.amt:visible').boundingBox()).y);
+  };
   await page.emulateMedia({ reducedMotion: 'reduce' });
   for (const route of ['/tts/', '/music/', '/helper/', '/premium.html', '/pt/tts/', '/pt/helper/']) {
     await page.goto(route);
@@ -307,13 +319,15 @@ test('approved monthly and yearly prices agree across pages while payments stay 
     const plus = page.locator('.pricing .price-card--plus');
     for (const yearly of [false, true]) {
       await page.locator('.bill-toggle [data-bill="' + (yearly ? 'year' : 'month') + '"]').click();
-      for (const [seats, amount] of [['2', yearly ? '€37.99' : '€3.99'], ['5', yearly ? '€70.99' : '€7.99']]) {
+      for (const [seats, amount, previous] of [['2', yearly ? '€37.99' : '€3.99', yearly ? '€66.99' : '€6.99'], ['5', yearly ? '€70.99' : '€7.99', yearly ? '€133.99' : '€14.99']]) {
         await premium.locator('[data-seats="' + seats + '"]').click();
         await expect(premium.locator('.amt:visible')).toHaveText(amount);
+        await checkPrevious(premium, previous);
         await expect(premium.locator('[data-discount]')).toHaveCount(0);
       }
       if (await plus.isVisible()) {
         await expect(plus.locator('.amt:visible')).toHaveText(yearly ? '€18.99' : '€1.99');
+        await checkPrevious(plus, yearly ? '€37.99' : '€3.99');
         await expect(plus.locator('[data-discount]')).toHaveCount(0);
       }
     }

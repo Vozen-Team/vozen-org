@@ -573,11 +573,11 @@ body.product-preview :is(#premium,#plans).plan-preview .price-card--pro .price-l
 body.product-preview :is(#premium,#plans).plan-preview .pricing .price-card--pro { display: grid; grid-template-columns: minmax(0,1fr) auto; column-gap: 8px; }
 body.product-preview .plan-preview .price-card--pro > h3 { grid-column: 1 / -1; grid-row: 2; }
 body.product-preview .plan-preview .price-card--pro > .price-card__pitch { grid-column: 1 / -1; grid-row: 3; }
-body.product-preview :is(#premium,#plans).plan-preview .price-card--pro > .seat-toggle { grid-column: 2; grid-row: 4; justify-self: end; align-self: start; margin: 0; }
+body.product-preview :is(#premium,#plans).plan-preview .price-card--pro > .seat-toggle { grid-column: 2; grid-row: 4; justify-self: end; align-self: start; margin: 24px 0 0; }
 body.product-preview .plan-preview .price-card--pro .seat-toggle__btn { width: 77px; min-width: 0; min-height: 44px; padding: 4px 5px; font-size: 13px; white-space: normal; overflow-wrap: anywhere; }
 body.product-preview .plan-preview .price-card--pro > .price-card__price { grid-column: 1; grid-row: 4; min-width: 0; }
-body.product-preview .plan-preview .price-line { position: relative; }
-body.product-preview .plan-preview .price-line .was { position: absolute; bottom: calc(100% + 6px); left: 0; order: -1; white-space: nowrap; }
+body.product-preview .plan-preview .price-line { position: relative; padding-block-start: 24px; }
+body.product-preview .plan-preview .price-line .was { position: absolute; inset-block-start: 0; inset-inline-start: 0; color: #a4aec7; font-size: 14px; line-height: 18px; white-space: nowrap; }
 body.product-preview .plan-preview .price-card--pro > .price-card__highlights { grid-column: 1 / -1; grid-row: 5; }
 body.product-preview .plan-preview .price-card--pro > .price-card__buy { grid-column: 1 / -1; grid-row: 6; }
 @media (min-width: 1001px) {
