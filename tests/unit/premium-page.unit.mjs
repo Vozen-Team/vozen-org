@@ -20,7 +20,7 @@ test('Premium uses one price row, correct product scopes and paused payments',()
   }
   assert.match(serialize(cards[1]),/TTS \+ Music\./);
   assert.match(serialize(cards[2]),/Premium for every member of your servers\./);
-  for(const price of ['€1.99','€18.99','€3.99','€7.99','€37.99','€70.99'])assert.ok(html.includes(price));
+  for(const price of ['€1.99','€18.99','€7.99','€15.99','€37.99','€70.99'])assert.ok(html.includes(price));
   const products=nodes.find(node=>hasClass(node,'premium-products'));
   for(const name of ['Vozen TTS','Vozen Music','Vozen Helper'])assert.ok(serialize(products).includes(name));
   const comparison=nodes.find(node=>hasClass(node,'premium-comparison'));
