@@ -52,10 +52,10 @@
   if (!field || !hero) return;
 
   const tasks = [...field.querySelectorAll(".helper-task")];
+  const obstacleNodes = [...hero.querySelectorAll(".helper-hero__copy, .helper-console__shell")];
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const state = new Map();
   let resizeFrame;
-  let layoutTimer;
   let observer;
   let running = false;
 
@@ -182,7 +182,13 @@
       .filter((other) => other !== item && other.visible)
       .map((other) => ({ left: other.x, top: other.y, right: other.x + other.width, bottom: other.y + other.height }));
     const next = findPoint(item, layout, occupied);
-    if (next) animateTo(item, next);
+    if (!next) return;
+    // A new slot can be clear even when the path from the old one crosses the hero.
+    const swept = {
+      left: Math.min(item.x, next.x), top: Math.min(item.y, next.y),
+      right: Math.max(item.x, next.x) + item.width, bottom: Math.max(item.y, next.y) + item.height,
+    };
+    if (layout.obstacles.every((obstacle) => !intersects(swept, obstacle))) animateTo(item, next);
   };
 
   const buildLayout = () => {
@@ -201,7 +207,6 @@
     [...state.values()].forEach((item) => {
       if (isRenderable(item.node)) measure(item);
     });
-    const obstacleNodes = [hero.querySelector(".helper-hero__copy"), hero.querySelector(".helper-console")].filter(Boolean);
     const obstacles = obstacleNodes.map((node) => expandRect(relativeRect(node, fieldRect), OBSTACLE_GAP));
     const visibleItems = [...state.values()].filter((item) => isRenderable(item.node));
     const widest = Math.max(104, ...visibleItems.map((item) => item.width));
@@ -283,6 +288,7 @@
     state.forEach((item) => {
       if (item.visible) schedule(item);
     });
+    field.classList.add("is-positioned");
   };
 
   tasks.forEach((node, index) => {
@@ -291,6 +297,7 @@
   });
 
   const queueLayout = () => {
+    field.classList.remove("is-positioned");
     window.cancelAnimationFrame(resizeFrame);
     resizeFrame = window.requestAnimationFrame(layout);
   };
@@ -302,7 +309,10 @@
     if (shouldRun) state.forEach((item) => item.visible && schedule(item));
   }, { threshold: 0.15 });
   observer.observe(hero);
+  const resizeObserver = new ResizeObserver(queueLayout);
+  [field, ...obstacleNodes].forEach((node) => resizeObserver.observe(node));
   window.addEventListener("resize", queueLayout, { passive: true });
+  window.addEventListener("vozen:languagechange", queueLayout);
   document.addEventListener("visibilitychange", () => {
     const heroRect = hero.getBoundingClientRect();
     const offscreen = heroRect.bottom <= 0 || heroRect.top >= window.innerHeight;
@@ -310,5 +320,5 @@
     pauseAnimations(paused);
   });
   reducedMotion.addEventListener?.("change", queueLayout);
-  layoutTimer = window.setTimeout(layout, 850);
+  queueLayout();
 })();
