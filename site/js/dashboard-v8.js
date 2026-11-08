@@ -254,7 +254,9 @@
       var name = String(entry.name || t("dashboard.member"));
       var rank = index < 3 ? '<span class="tts-rank-medal" role="img" aria-label="' + esc(t("dashboard.rank")) + ' ' + (index + 1) + '">' + ["🥇", "🥈", "🥉"][index] + '</span>' : String(index + 1);
       var value = overviewCount(score(entry, field));
-      return '<tr><td class="tts-rank">' + rank + '</td><th scope="row"><span class="tts-member"><span class="tts-member-avatar" aria-hidden="true">' + esc(guildInitials(name)) + '</span><span>' + esc(name) + '</span></span></th><td><span class="tts-score" title="' + esc(value) + '"><span aria-hidden="true">' + icon + '</span><span class="tts-score-value">' + value + '</span></span></td></tr>';
+      var avatar = typeof entry.avatar === "string" && /^https:\/\/cdn\.discordapp\.com\/(?:avatars\/|guilds\/|embed\/avatars\/)/.test(entry.avatar)
+        ? '<img src="' + esc(entry.avatar) + '" alt="">' : "";
+      return '<tr><td class="tts-rank">' + rank + '</td><th scope="row"><span class="tts-member"><span class="tts-member-avatar" aria-hidden="true">' + esc(guildInitials(name)) + avatar + '</span><span>' + esc(name) + '</span></span></th><td><span class="tts-score" title="' + esc(value) + '"><span aria-hidden="true">' + icon + '</span><span class="tts-score-value">' + value + '</span></span></td></tr>';
     }).join("");
     return '<section class="workspace-card tts-leaderboard" data-metric="' + metric + '" aria-labelledby="' + titleId + '"><header><div class="tts-leaderboard-heading"><h2 id="' + titleId + '"><span class="tts-leaderboard-symbol" aria-hidden="true">' + icon + '</span><span>' + esc(t(streak ? "dashboard.streakLeaderboard" : "dashboard.messageLeaderboard")) + '</span></h2><p>' + esc(t(streak ? "dashboard.streakLeaderboardHint" : "dashboard.messageLeaderboardHint")) + '</p></div><div class="tts-leaderboard-controls">' +
       (leaderboard && leaderboard.demo === true ? '<span class="tts-preview-label">' + esc(t("dashboard.previewData")) + '</span>' : '') +
@@ -295,6 +297,9 @@
         '</aside></div></div>'
     );
     var rankings = root.querySelector(".tts-overview-rankings");
+    rankings.addEventListener("error", function (event) {
+      if (event.target.matches(".tts-member-avatar img")) event.target.remove();
+    }, true);
     rankings.addEventListener("click", function (event) {
       var button = event.target.closest("[data-leaderboard-metric]");
       if (!button || button.getAttribute("aria-pressed") === "true") return;

@@ -103,8 +103,12 @@ test('Overview presents missing leaderboard data and failed profile loading with
 });
 
 test('Server rankings exclude expired streaks and survive settings saves',async({page})=>{
- const entries=[{name:'Most messages',count:40,streak:0},{name:'Current streak',count:9,streak:3}];
+ const validAvatar='https://cdn.discordapp.com/embed/avatars/0.png';
+ const missingAvatar='https://cdn.discordapp.com/embed/avatars/1.png';
+ const entries=[{name:'Most messages',avatar:missingAvatar,count:40,streak:0},{name:'Current streak',avatar:validAvatar,count:9,streak:3}];
  const config={autoread:true};
+ await page.route(validAvatar,route=>route.fulfill({contentType:'image/svg+xml',body:'<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><circle cx="16" cy="16" r="16" fill="#5865f2"/></svg>'}));
+ await page.route(missingAvatar,route=>route.fulfill({status:404}));
  await page.addInitScript(()=>{sessionStorage.setItem('vozen.tts.lastGuild','999');sessionStorage.setItem('vozen.ecosystem.dtoken','fixture-token');sessionStorage.setItem('vozen.ecosystem.authexp',String(Date.now()+3600000));});
  await page.route('https://api.vozen.org/**',async route=>{
   const path=new URL(route.request().url()).pathname;
@@ -119,9 +123,14 @@ test('Server rankings exclude expired streaks and survive settings saves',async(
  });
  await page.goto('/dashboard.html');
  const names=page.locator('.tts-leaderboard tbody .tts-member > span:last-child');
+ const avatars=page.locator('.tts-leaderboard tbody .tts-member-avatar');
  await expect(names).toHaveText(['Current streak']);
+ await expect.poll(()=>avatars.locator('img').evaluate(img=>img.naturalWidth)).toBe(32);
  await page.getByRole('button',{name:'Messages',exact:true}).click();
  await expect(names).toHaveText(['Most messages','Current streak']);
+ await expect(avatars.first().locator('img')).toHaveCount(0);
+ await expect(avatars.first()).toHaveText('MM');
+ await expect.poll(()=>avatars.nth(1).locator('img').evaluate(img=>img.naturalWidth)).toBe(32);
  await page.locator('[data-tts-view=settings]').click();
  await page.locator('[data-k=autoread]').uncheck();
  await page.locator('#dashSave').click();
