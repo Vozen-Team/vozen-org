@@ -43,4 +43,12 @@ const commands = fs.readFileSync('site/commands/index.html', 'utf8');
 assert.ok(commands.includes('/setup') && commands.includes('id="catalogue-music"') && commands.includes('/play') && commands.includes('/ticket-panel'), 'Raw command catalogue must include TTS, Music and Helper');
 const robots = fs.readFileSync('site/robots.txt', 'utf8');
 assert.match(robots, /Sitemap: https:\/\/vozen.org\/sitemap.xml/);
+const llms = fs.readFileSync('site/llms.txt', 'utf8');
+const sitemap = fs.readFileSync('site/sitemap.xml', 'utf8');
+for (const route of ['/tts/', '/music/', '/helper/']) {
+  const url = `https://vozen.org${route}`;
+  assert.ok(llms.includes(`](${url})`), `${route} is missing from llms.txt`);
+  assert.ok(sitemap.includes(`<loc>${url}</loc>`), `${route} is missing from sitemap.xml`);
+}
+assert.doesNotMatch(llms, /https:\/\/vozen\.org\/docs\//, 'llms.txt links to removed public Docs');
 console.log(`Raw HTML, metadata and navigation verified for ${count} public pages.`);
