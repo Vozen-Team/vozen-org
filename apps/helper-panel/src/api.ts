@@ -659,7 +659,7 @@ export const api = {
     request<{ ok: boolean; id: number }>(`/api/reminders/${id}/retry`, { method: 'POST' }),
   cases: (options?: ReadOptions) => request<{ cases: CaseRecord[] }>('/api/cases?limit=8', options),
   audit: (options?: ReadOptions) => request<{ events: AuditRecord[] }>('/api/audit?limit=12', options),
-  activityFeed: (category: string, before?: string, options?: ReadOptions) => request<{guildId:string;events:ActivityFeedRecord[];nextCursor:string|null}>(`/api/activity/feed?${new URLSearchParams({category,limit:'50',...(before?{before}:{})})}`,options),
+  activityFeed: (category: string, before?: string, options?: ReadOptions, limit = 50) => request<{guildId:string;events:ActivityFeedRecord[];nextCursor:string|null}>(`/api/activity/feed?${new URLSearchParams({category,limit:String(limit),...(before?{before}:{})})}`,options),
   activity: (options?: ReadOptions) => request<{ activity: ActivityRecord[] }>('/api/activity?limit=24', options),
   quotas: (options?: ReadOptions) =>
     request<{ plan: string; limits: Record<string, number>; usage: Record<string, number> }>(
