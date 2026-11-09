@@ -201,11 +201,39 @@
   white-space: normal;
 }
 .vozen-overview__profile-banner { display: block; height: clamp(96px, 10vw, 132px); background: #243b52; }
+.vozen-overview__profile-banner img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .vozen-overview__profile-body { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 14px 17px; }
 .vozen-overview__profile-body > img { flex: 0 0 44px; width: 44px; height: 44px; object-fit: cover; border-radius: 50%; }
 .vozen-overview__profile-copy { flex: 1; min-width: 0; display: grid; gap: 4px; overflow-wrap: anywhere; }
 .vozen-overview__profile-copy small { font-size: 12px; color: var(--muted); }
 .vozen-overview__profile-copy strong { font-size: 15px; }
+.vozen-overview__profile-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: #070d18d9;
+  color: #d7fff8;
+  font-size: 18px;
+  font-weight: 650;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .16s ease;
+}
+.vozen-overview__profile:focus-visible .vozen-overview__profile-overlay { opacity: 1; }
+.vozen-overview__profile-arrow { display: inline-block; }
+.vozen-overview__profile-body > .vozen-overview__profile-arrow { display: none; color: var(--mint); }
+@media (hover: hover) {
+  .vozen-overview__profile:hover .vozen-overview__profile-overlay { opacity: 1; }
+}
+@media (hover: none) {
+  .vozen-overview__profile-body > .vozen-overview__profile-arrow { display: inline-block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vozen-overview__profile-overlay { transition: none; }
+}
 @media (prefers-reduced-motion: no-preference) {
   .vozen-overview__stack > * { animation: vozen-overview-in .24s ease-out both; }
   .vozen-overview__stack > :nth-child(2) { animation-delay: .05s; }

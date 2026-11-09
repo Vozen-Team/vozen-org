@@ -9,7 +9,7 @@ const copy={
   'Helper actions':['Ações do Helper','Actions du Helper','Acciones del Helper','Helper-Aktionen','Helper işlemleri','إجراءات Helper','Helper 動作','Действия Helper','Helper 활동'],
   'Up to {limit} recent records':['Até {limit} registos recentes','Jusqu’à {limit} entrées récentes','Hasta {limit} registros recientes','Bis zu {limit} aktuelle Einträge','En fazla {limit} son kayıt','حتى {limit} من أحدث السجلات','最多 {limit} 筆近期紀錄','До {limit} последних записей','최근 기록 최대 {limit}개'],
   'Colours and background':['Cores e fundo','Couleurs et arrière-plan','Colores y fondo','Farben und Hintergrund','Renkler ve arka plan','الألوان والخلفية','色彩和背景','Цвета и фон','색상과 배경'],
-  'Bot Profile':["Perfil do bot","Profil du bot","Perfil del bot","Bot-Profil","Bot Profili","ملف البوت","機器人個人檔案","Профиль бота","봇 프로필"],
+  'Open Bot Profile':['Abrir perfil do bot','Ouvrir le profil du bot','Abrir el perfil del bot','Bot-Profil öffnen','Bot profilini aç','فتح ملف البوت','開啟機器人個人檔案','Открыть профиль бота','봇 프로필 열기'],
   'Levels & XP':['Níveis e XP','Niveaux et XP','Niveles y XP','Level und XP','Seviyeler ve XP','المستويات والخبرة','等級與經驗值','Уровни и XP','레벨 및 XP'],
   'On':['Ativo','Activé','Activado','Aktiv','Açık','مفعّل','已啟用','Включено','켜짐'],
   'Off':['Desligado','Désactivé','Desactivado','Inaktiv','Kapalı','غير مفعّل','已停用','Выключено','꺼짐'],

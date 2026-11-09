@@ -5,7 +5,7 @@ import { createSiteServer, closeSiteServer } from './serve-site.mjs';
 const features=JSON.parse(await readFile(new URL('../apps/helper-panel/src/panel-paths.json',import.meta.url),'utf8'));
 assert.equal(Object.keys(features).length,47);
 assert.equal(new Set(Object.values(features)).size,47);
-const slugs=['','servers','setup','features','activity','collection',...Object.values(features)];
+const slugs=['','servers','setup','features','activity','bot-profile','collection',...Object.values(features)];
 const {server,origin}=await createSiteServer();
 try {
   for(const slug of slugs) {

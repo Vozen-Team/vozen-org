@@ -2,6 +2,7 @@ import { navigatePanel, normalizePanelRoute, panelRoute, PANEL_ROUTE_EVENT } fro
 import {EconomyShop} from './economy-shop';
 import {AchievementSettings} from './achievement-settings';
 import { overviewText } from './overview-i18n';
+import { BotProfile, botProfileTitle } from './bot-profile';
 import './overview.css';
 import { ActivityFeed } from './activity-feed';
 import { activityText } from './activity-i18n';
@@ -114,7 +115,7 @@ const localPreviewMode =
 type Category =
   'all' | 'protection' | 'community' | 'management' | 'utility' | 'social' | 'growth' | 'web3';
 type Route = {
-  page: 'overview' | 'servers' | 'features' | 'activity' | 'rank-card' | 'quick-setup' | 'detail';
+  page: 'overview' | 'servers' | 'features' | 'activity' | 'bot-profile' | 'rank-card' | 'quick-setup' | 'detail';
   key?: string;
 };
 type ProviderSubscriptionHealth =
@@ -169,6 +170,7 @@ const pages = [
   { id: 'quick-setup', label: 'Quick Setup', icon: 'M3 7h6m4 0h8M9 4v6M3 17h12m4 0h2m-6-3v6' },
   { id: 'features', label: 'Features', icon: 'M12 2v4m0 12v4M2 12h4m12 0h4M12 6a6 6 0 0 0 6 6 6 6 0 0 0-6 6 6 6 0 0 0-6-6 6 6 0 0 0 6-6Z' },
   { id: 'activity', label: 'Activity', icon: 'M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z' },
+  { id: 'bot-profile', label: 'Bot Profile', icon: 'M15.5 8a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0ZM5 20v-1a7 5 0 0 1 14 0v1' },
 ] as const;
 const helperPageCopy: Record<string, [string, string]> = {
   overview: ['dashboard.overview', 'Overview'],
@@ -178,6 +180,7 @@ const helperPageCopy: Record<string, [string, string]> = {
   'rank-card': ['helper.xpIdentity', 'XP card'],
 };
 function helperPageLabel(id: string, fallback: string): string {
+  if (id === 'bot-profile') return botProfileTitle();
   return helperText(helperPageCopy[id]?.[1] ?? fallback);
 }
 // Discord only accepts OAuth callback URLs registered on the Helper
@@ -1802,6 +1805,7 @@ function parseRoute(hash: string): Route {
   if (value === '/quick-setup') return { page: 'quick-setup' };
   if (value === '/features' || value === '/config') return { page: 'features' };
   if (value === '/activity') return { page: 'activity' };
+  if (value === '/bot-profile') return { page: 'bot-profile' };
   if (value === '/rank-card' || value === '/config/studio.rank_card') return { page: 'detail', key: 'community.levels' };
   if (value.startsWith('/config/'))
     return { page: 'detail', key: canonicalWelcomeKey(decodeURIComponent(value.slice('/config/'.length))) };
@@ -3154,9 +3158,9 @@ function App() {
                 className={isProtectionDetail ? 'antispam-title' : undefined}>
                 {title}
               </h1>
-              {route.page !== 'activity' && !isProtectionDetail && currentFeature?.key !== 'community.achievements' && <p className="subtitle">{subtitle}</p>}
+              {route.page !== 'activity' && route.page !== 'bot-profile' && !isProtectionDetail && currentFeature?.key !== 'community.achievements' && <p className="subtitle">{subtitle}</p>}
             </div>
-            {route.page !== 'activity' && <div className="header-state" role="status" aria-live="polite">
+            {route.page !== 'activity' && route.page !== 'bot-profile' && <div className="header-state" role="status" aria-live="polite">
               <span className="status-dot" />{' '}
               {autosaveState === 'saving'
                 ? helperText('Saving…')
@@ -3254,6 +3258,7 @@ function App() {
           />
         )}
         {route.page === 'activity' && <ActivityFeed key={me?.guildId} guildId={me?.guildId || ''} preview={localPreviewMode} />}
+        {route.page === 'bot-profile' && me && <BotProfile key={me.guildId} guildId={me.guildId} preview={localPreviewMode} />}
         {route.page === 'detail' &&
           (detailLoading ? isProtectionDetail ? <ProtectionSettingsSkeleton
             raid={route.key === 'protection.anti_raid'} join={route.key === 'protection.join_gate'}
@@ -3955,6 +3960,19 @@ function Overview({ features, stats, plan, guildId, guildName, guildIcon, onOpen
     return () => controller.abort();
   }, [guildId]);
 
+  const [loadedProfile, setProfile] = useState<Awaited<ReturnType<typeof api.botProfile>> | null>(null);
+  const profile = loadedProfile?.guildId === guildId ? loadedProfile : null;
+  useEffect(() => {
+    if (!guildId) return;
+    const controller = new AbortController();
+    void api.botProfile(guildId, { signal: controller.signal }).then(result => {
+      if (!controller.signal.aborted && result.guildId === guildId) setProfile(result);
+    }).catch(() => {
+      // A missing profile endpoint or unavailable Discord connection still leaves the overview usable.
+    });
+    return () => controller.abort();
+  }, [guildId]);
+
   const choices = [
     { key: 'protection.antispam', label: helperText('Protection') },
     { key: 'support.welcome', label: helperText('Welcome flow') },
@@ -4025,16 +4043,20 @@ function Overview({ features, stats, plan, guildId, guildName, guildIcon, onOpen
             <span className="vozen-overview__edit">{helperText('Edit')} <span aria-hidden="true">→</span></span>
           </button>
         </section>
-        <div className="vozen-overview__panel vozen-overview__profile">
-          <span className="vozen-overview__profile-banner" aria-hidden="true" />
-          <div className="vozen-overview__profile-body">
-            <img src="/assets/settings-helper.png" alt="" />
-            <div className="vozen-overview__profile-copy">
-              <small>{overviewText('Bot Profile')}</small>
-              <strong>Vozen Helper <span className="vozen-overview__app-badge">APP</span></strong>
-            </div>
-          </div>
-        </div>
+        <button type="button" className="vozen-overview__panel vozen-overview__profile"
+          aria-label={overviewText('Open Bot Profile')} onClick={() => onOpen('#/bot-profile')}>
+          <span className="vozen-overview__profile-banner">
+            {profile?.bannerUrl && <img src={profile.bannerUrl} alt="" />}
+          </span>
+          <span className="vozen-overview__profile-body">
+            <img src={profile?.avatarUrl || '/assets/settings-helper.png'} alt="" />
+            <span className="vozen-overview__profile-copy"><small>{botProfileTitle()}</small><strong><bdi>{profile?.nick || 'Vozen Helper'}</bdi> <span className="vozen-overview__app-badge">APP</span></strong></span>
+            <span className="vozen-overview__profile-arrow" aria-hidden="true">→</span>
+          </span>
+          <span className="vozen-overview__profile-overlay" aria-hidden="true">
+            <span>{overviewText('Open Bot Profile')} <span className="vozen-overview__profile-arrow">→</span></span>
+          </span>
+        </button>
       </div>
     </div>
   </section>;
