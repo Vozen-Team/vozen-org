@@ -20,7 +20,7 @@
   const ACTIVATION_INTENT_TTL_MS = 5 * 60 * 1000;
   const FALLBACK_INVITE_URL =
     TTS_CLIENT_ID && TTS_CLIENT_ID !== "YOUR_CLIENT_ID"
-      ? "/dashboard.html?add=1"
+      ? "/dashboard?add=1"
       : "#";
   const TOPGG_URL =
     TTS_CLIENT_ID && TTS_CLIENT_ID !== "YOUR_CLIENT_ID" ? `https://top.gg/bot/${TTS_CLIENT_ID}/vote` : "#";
@@ -54,7 +54,7 @@
   const IS_PREMIUM = document.body.classList.contains("page-premium");
   // Purchases and paid plan changes stay paused; existing billing management remains available.
   const PAYMENTS_ENABLED = true;
-  const PREMIUM_PLANS_URL = "premium.html#plans";
+  const PREMIUM_PLANS_URL = "/premium#plans";
   // Deterministic fixture for local visual QA. The hostname gate keeps this branch unreachable on
   // vozen.org; it exists so the authenticated layout can be reviewed without copying a real token
   // or Discord profile into development tools.
@@ -1524,7 +1524,7 @@
     const text = active ? t("account.active") : t("account.notActive");
     const action = active
       ? ""
-      : `<a class="ppanel__get" href="premium.html#plans">${t("nav.premium")} <span aria-hidden="true">→</span></a>`;
+      : `<a class="ppanel__get" href="/premium#plans">${t("nav.premium")} <span aria-hidden="true">→</span></a>`;
     return (
       `<article class="ppanel__status ${state}">` +
       `<div class="ppanel__status-top"><span class="ppanel__status-label">${esc(label)}</span>` +

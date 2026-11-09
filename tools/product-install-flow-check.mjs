@@ -41,7 +41,7 @@ for (const relative of await readdir(path.join(root, 'site'), { recursive: true 
 }
 assert.match(main, /vozenTtsInstallHref/);
 assert.match(commands, /vozenTtsInstallHref\("commands"\)/);
-assert.match(commands, /"\/dashboard\.html\?add=1"/);
+assert.match(commands, /"\/dashboard\?add=1"/);
 assert.match(installConfig, /ttsStartEndpoint:\s*"https:\/\/api\.vozen\.org\/api\/install\/tts\/start"/);
 assert.match(installConfig, /signed state/);
 assert.match(ttsInstall, /api\\\.vozen\\\.org\\\/api\\\/install\\\/tts\\\/start/);
@@ -75,7 +75,7 @@ assert.match(installResultPage, /Run <code>\/setup<\/code>/);
 assert.match(installResultPage, /Test Vozen TTS/);
 assert.equal(installResultPage.includes('static.cloudflareinsights.com'), false);
 assert.match(installResultScript, /new Set\(\["installed", "cancelled", "oauth_failed", "guild_missing"\]\)/);
-assert.match(installResultScript, /window\.location\.replace\("\/dashboard\.html"\)/);
+assert.match(installResultScript, /window\.location\.replace\("\/dashboard"\)/);
 assert.equal(installResultScript.includes('innerHTML'), false);
 assert.equal(installResultScript.includes('textContent = outcome'), false);
 assert.equal(installResultScript.includes(ttsInstallStart), false);
@@ -90,7 +90,7 @@ vm.runInNewContext(installResultScript, {
     },
   },
 });
-assert.equal(invalidOutcomeRedirect, '/dashboard.html');
+assert.equal(invalidOutcomeRedirect, '/dashboard');
 
 assert.match(helperRedirect, /HELPER_INSTALL_URL/);
 assert.match(helperRedirect, /window\.location\.replace\(HELPER_INSTALL_URL\)/);

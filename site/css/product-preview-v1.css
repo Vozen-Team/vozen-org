@@ -98,7 +98,7 @@ body.product-preview .hero::before { content: none; }
 body.product-preview .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 34px; align-items: center; }
 body.product-preview .hero__copy { position: relative; z-index: 2; max-width: 610px; }
 body.product-preview .hero__title { margin-top: 0; margin-bottom: 24px; }
-body.product-preview .hero__wave { inset: 5% -12% auto; width: 124%; height: 88%; opacity: .65; }
+body.product-preview .hero__wave { inset: 38% -12% auto; width: 124%; height: 88%; opacity: .65; }
 body.product-preview .hero__demo {
   position: relative;
   isolation: isolate;
@@ -109,7 +109,7 @@ body.product-preview .hero__demo {
 body.product-preview .voice-field {
   position: absolute;
   z-index: -2;
-  inset: -38px -80px 30px -50px;
+  inset: -16px -20px 30px;
   transform: rotate(-18deg);
   pointer-events: none;
 }
@@ -621,7 +621,7 @@ body.product-preview .helper-faq .helper-section-heading h2 { font-size: 32px; }
   body.product-preview .hero__cta .btn, body.product-preview .helper-hero__actions a { min-height: 46px; padding: 12px 15px; font-size: 13px; }
   body.product-preview .hero__demo { width: min(580px, 100%); justify-self: center; padding-top: 12px; }
   body.product-preview .hero__wave { top: 30%; height: 68%; }
-  body.product-preview .voice-field { inset: -35px -30px 35px; }
+  body.product-preview .voice-field { inset: -35px -20px 35px; }
   body.product-preview .discord { width: calc(100% - 20px); margin-left: 4px; margin-right: 16px; }
   body.product-preview .hear__inner { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 24px; }
   body.product-preview .voice-options { grid-column: 1; grid-row: auto; padding-top: 20px; margin-top: 20px; border-top: 1px solid var(--scene-line); }

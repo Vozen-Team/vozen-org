@@ -47,7 +47,7 @@ test('aggregate summaries preserve outages and missing observations', () => {
 test('the header links to the same Status page on marketing and docs surfaces', () => {
   const nav = readFileSync('site/js/global-nav-v1.js', 'utf8');
   assert.equal((nav.match(/data-i18n="ecosystem.status"/g) || []).length, 2);
-  assert.ok(nav.includes("link('status.html')"));
+  assert.ok(nav.includes("link('status')"));
 });
 
 test('the status page does not contain fictional uptime or shard totals', () => {

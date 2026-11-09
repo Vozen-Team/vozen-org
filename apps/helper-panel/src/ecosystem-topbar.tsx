@@ -221,8 +221,8 @@ export function EcosystemTopbar() {
           <a href="/music/">Vozen Music</a>
           <a href="/helper/" className="is-current" aria-current="page" data-i18n="ecosystem.helper">{helperT('ecosystem.helper', 'Vozen Helper')}</a>
           <a href="/commands/" data-i18n="ecosystem.commands">{helperT('ecosystem.commands', 'Commands')}</a>
-          <a href="/status.html" data-i18n="ecosystem.status">{helperT('ecosystem.status', 'Status')}</a>
-          <a href="/premium#plans" data-i18n="nav.premium">{helperT('helper.premium', 'Premium')}</a>
+          <a href="/status" data-i18n="ecosystem.status">{helperT('ecosystem.status', 'Status')}</a>
+          <a href="/premium" data-i18n="nav.premium">{helperT('helper.premium', 'Premium')}</a>
         </nav>
         <div className="nav__actions">
           <a className="nav__gh" href="https://github.com/Rexy40407/vozen" target="_blank" rel="noreferrer" aria-label={helperT('ecosystem.githubAria', 'Vozen on GitHub')}>
