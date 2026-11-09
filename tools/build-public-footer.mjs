@@ -21,8 +21,8 @@ export function withSharedFooter(html, route) {
     <span class="vozen-footer__brand"><img src="/favicon.svg" width="28" height="28" alt="">© 2026 Vozen</span>
     <nav class="vozen-footer__links" aria-label="Vozen footer">
       ${link('https://discord.gg/4kYw2WUbNN', 'foot.support', 'Support server')}
-      ${link('/privacy.html', 'foot.privacy', 'Privacy')}
-      ${link('/terms.html', 'foot.terms', 'Terms')}
+      ${link('/privacy', 'foot.privacy', 'Privacy')}
+      ${link('/terms', 'foot.terms', 'Terms')}
     </nav>
     <span class="vozen-footer__disclaimer" data-i18n="foot.legal">${label('foot.legal', 'Not affiliated with Discord')}</span>
   </div>

@@ -45,6 +45,7 @@ body.tts-page .hero::after {
   inset: 0;
   content: "";
   background: radial-gradient(ellipse 46% 42% at 45% 18%, rgba(127, 156, 255, .08), transparent 72%);
+  mask-image: linear-gradient(transparent, #000 96px);
   pointer-events: none;
 }
 

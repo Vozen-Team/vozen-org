@@ -8,7 +8,7 @@
   var script = document.currentScript;
   var baseUrl = new URL("i18n-public/", script && script.src ? script.src : document.baseURI);
   var pending = {};
-  var bundleVersions = {"en":"af29b5a953f1","pt":"1183772c0474","fr":"cf878b5b0ffb","es":"a2be4bd686c6","de":"121ec2a36f75","tr":"8ffa5d40ba87","ar":"f414c6df724b","zh":"d06151bd51bd","ru":"8587d202fb1b","ko":"1c6f1338059c"};
+  var bundleVersions = {"en":"882fa0e8adcb","pt":"e7fad1c73357","fr":"80ac7755ef5b","es":"cb84d1f3c61f","de":"a429a907218f","tr":"e785eb8f1c59","ar":"d7c709d747b2","zh":"e1d32c76615f","ru":"fc3d1c3381b1","ko":"b7ac2a476a2e"};
   window.VOZEN_I18N = window.VOZEN_I18N || {};
 
   function safeLocale(value) {
