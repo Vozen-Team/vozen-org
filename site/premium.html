@@ -10,7 +10,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="css/main-v43.css?v=7901c418e6ca">
     <link rel="stylesheet" href="css/billing-v3.css?v=8d14a4cff263">
-    <link rel="stylesheet" href="css/premium-page-v1.css?v=c9eb022be4fd">
+    <link rel="stylesheet" href="css/premium-page-v1.css?v=3163bf6dabbf">
     <link rel="stylesheet" href="css/global-nav-v1.css?v=8ad92584b583">
       <meta property="og:site_name" content="Vozen">
       <meta property="og:type" content="website">
@@ -82,6 +82,7 @@
               <button class="bill-toggle__btn" type="button" data-bill="year" aria-pressed="false">Yearly</button>
             </div>
             <p class="sr-only" id="billingNote" aria-live="polite">Showing monthly prices.</p>
+            <p class="premium-hero__notice" id="paymentsNotice" role="note" data-i18n="price.paused">Payments are temporarily disabled. Pricing is shown for reference.</p>
           </div>
           <h2 class="sr-only" id="plansTitle">Vozen plans</h2>
           <div class="pricing" id="pricingGrid">
@@ -98,7 +99,7 @@
                 <h3>Vozen Plus</h3><p class="price-card__pitch">Personal perks, wherever you chat.<small class="price-card__products">TTS + Music.</small></p>
                 <div class="premium-price-row"><div class="price-card__price"><span class="price-line"><s class="was was--m" data-discount="−50%">€3.99</s><s class="was was--y">€37.99</s><b><span class="amt amt--m">€1.99</span><span class="amt amt--y">€18.99</span></b></span><span class="per per--m" data-i18n="premium.monthPerUser">/ month · per user</span><span class="per per--y" data-i18n="premium.yearPerUser">/ year · per user</span></div></div>
                 <ul class="ticks price-card__highlights"><li>Everything in Free</li><li>Kokoro neural voices + all 8 effects</li><li>50 personal pronunciations</li><li>Wordle, Word Chain, Chess and /rizz</li><li>Skip tracks in Music</li><li>Better Music audio quality</li><li>Perks follow your Discord account</li></ul>
-                <div class="premium-card-action"><button class="price-card__buy" type="button" data-billing-plan="plus" data-i18n="price.checkout">Continue to checkout</button><span>Personal perks. Not a server subscription.</span></div>
+                <div class="premium-card-action"><button class="price-card__buy" type="button" data-billing-plan="plus" disabled="" aria-describedby="paymentsNotice">Payments paused</button><span>Personal perks. Not a server subscription.</span></div>
               </article>
               <article class="price-card price-card--pro" id="proCard">
                 <div class="premium-audience">For your servers</div>
@@ -108,7 +109,7 @@
                   <div class="seat-toggle" role="group" aria-label="Servers per subscription"><button class="seat-toggle__btn is-active" type="button" data-seats="2" aria-pressed="true">2 servers</button><button class="seat-toggle__btn" type="button" data-seats="5" aria-pressed="false">5 servers</button></div>
                 </div>
                 <ul class="ticks price-card__highlights"><li>Free core + premium perks for everyone</li><li>Kokoro voices + all 8 effects</li><li>50 personal + 50 server pronunciations</li><li>Wordle, Word Chain, Chess and /rizz</li><li>24/7 TTS voice + live transcription</li><li>Custom TTS bot avatar and banner</li><li>More Helper panels and workflows</li><li>Longer audit and analytics history</li><li>Music: My Station, better audio + call volume</li></ul>
-                <div class="premium-card-action"><button class="price-card__buy price-card__buy--pro" type="button" data-billing-plan="premium" data-i18n="price.checkout">Continue to checkout</button><span>All three bots. Every member in selected servers.</span></div>
+                <div class="premium-card-action"><button class="price-card__buy price-card__buy--pro" type="button" data-billing-plan="premium" disabled="" aria-describedby="paymentsNotice">Payments paused</button><span>All three bots. Every member in selected servers.</span></div>
               </article>
             </div>
           </div>
@@ -194,13 +195,14 @@
 </footer>
     <script defer="" src="js/analytics-config.js?v=aeac0d49e3b7"></script>
     <script defer="" src="js/web-analytics-v1.js?v=8a15ad19f3e3"></script>
-    <script defer="" src="js/global-nav-v1.js?v=7359d7e636c6"></script>
+    <script defer="" src="js/global-nav-v1.js?v=ee5e271d6879"></script>
     <script defer="" src="js/i18n-v41.js?v=de9e7e0da52f"></script>
     <script defer="" src="js/i18n-v42.js?v=e0c79118ec10"></script>
     <script defer="" src="js/oauth-config.js?v=619a1fcb0b71"></script>
-    <script defer="" src="js/main-v51.js?oauth=ecosystem-v3&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=1&amp;v=b6066a5148eb"></script>
+    <script defer="" src="js/main-v51.js?oauth=ecosystem-v3&amp;auth-tabs=1&amp;account-fast=1&amp;auth-race=1&amp;v=56e5bffdc855"></script>
     <script defer="" src="js/premium-preview-v1.js?v=e615956fbe1c"></script>
     <script defer="" src="js/motion-v1.js?v=fb1f4a036091"></script>
+
 
 
 

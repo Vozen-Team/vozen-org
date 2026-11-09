@@ -65,7 +65,7 @@ test('TTS discovers its headline font before the stylesheet finishes', async ({ 
   await expect(page.locator('#languages')).toHaveCSS('content-visibility', 'auto');
 });
 
-test('Premium initializes checkout and darkens navigation on scroll', async ({ page }) => {
+test('Premium shows paused payments and darkens navigation on scroll', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   for (const width of [320, 1440]) {
@@ -76,7 +76,8 @@ test('Premium initializes checkout and darkens navigation on scroll', async ({ p
     await page.evaluate(() => window.scrollTo(0, 600));
     await expect(page.locator('#nav')).toHaveClass(/is-stuck/);
     await expect(page.locator('#nav')).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
-    for (const plan of ['plus', 'premium']) await expect(page.locator(`[data-billing-plan="${plan}"]`)).toBeEnabled();
+    await expect(page.locator('#paymentsNotice')).toBeVisible();
+    for (const plan of ['plus', 'premium']) await expect(page.locator(`[data-billing-plan="${plan}"]`)).toBeDisabled();
     expect(errors).toEqual([]);
     await page.evaluate(() => window.scrollTo(0, 0));
     await expect(page.locator('#nav')).not.toHaveClass(/is-stuck/);
