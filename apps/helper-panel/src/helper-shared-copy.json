@@ -1,4 +1,15 @@
 {
+  "Sections": {
+    "pt": "Secções",
+    "fr": "Rubriques",
+    "es": "Secciones",
+    "de": "Bereiche",
+    "tr": "Bölümler",
+    "ar": "الأقسام",
+    "zh": "區段",
+    "ru": "Разделы",
+    "ko": "섹션"
+  },
   "Could not load this configuration": {
     "pt": "Não foi possível carregar esta configuração",
     "fr": "Impossible de charger cette configuration",

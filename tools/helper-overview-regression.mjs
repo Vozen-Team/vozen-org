@@ -65,6 +65,18 @@ try {
       await page.screenshot({path:`output/playwright/overview-${locale}.png`,fullPage:true});
     }
     if(locale==='en') {
+      const featuresTab=page.locator('[data-helper-view="features"]');
+      await featuresTab.hover();
+      await page.waitForFunction(tab=>getComputedStyle(tab,'::after').opacity==='1'
+        && getComputedStyle(tab.querySelector('svg')).transform!=='none',await featuresTab.elementHandle());
+      await page.emulateMedia({reducedMotion:'reduce'});
+      await page.waitForFunction(icon=>matchMedia('(prefers-reduced-motion: reduce)').matches
+        && getComputedStyle(icon).transform==='none',await featuresTab.locator('svg').elementHandle());
+      await page.emulateMedia({reducedMotion:'no-preference'});
+      await featuresTab.click();
+      await page.waitForURL(url=>url.pathname==='/panel/features/');
+      assert.equal(await featuresTab.getAttribute('aria-current'),'page');
+      await page.goto(base+'#/');await overview.waitFor();
       for(const [control,path] of [
         ['.vozen-overview__row:nth-of-type(1)','/panel/antispam/'],
         ['.vozen-overview__row:nth-of-type(2)','/panel/welcome/'],
@@ -89,6 +101,14 @@ try {
       assert.match(await overview.locator('.vozen-overview__profile').innerText(),/Vozen Helper/);
       await page.keyboard.press('Tab');
       assert.ok(await page.locator(':focus-visible').count(),'keyboard focus remains visible');
+    }
+    if(locale==='pt-mobile') {
+      await page.locator('.settings-sections-button').click();
+      const activityTab=page.locator('[data-helper-view="activity"]');
+      await activityTab.locator('svg').waitFor();
+      await activityTab.click();
+      await page.waitForURL(url=>url.pathname==='/panel/activity/');
+      assert.equal(await activityTab.getAttribute('aria-current'),'page');
     }
     assert.equal(writes,0,'overview navigation never changes settings');
     console.log(`PASS overview ${locale}`);await page.close();
