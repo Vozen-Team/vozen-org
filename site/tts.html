@@ -9,7 +9,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#07070d" />
-    <title data-i18n="tts.documentTitle">Vozen TTS — 35 Languages, 38 Voices</title>
+    <title data-i18n="tts.documentTitle">Vozen TTS - 35 Languages, 38 Voices</title>
     <meta
       name="description"
       content="Vozen reads Discord chat aloud with 38 neural voices in 35 languages and 16 minigames. The core is free forever. Set up in 30 seconds."
@@ -39,17 +39,17 @@
     />
     <meta name="twitter:image" content="https://vozen.org/assets/og-image.png" />
 
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" href="/assets/favicon-tts.png" />
 
-    <link rel="stylesheet" href="css/main-v43.css?v=a02be1bbcf65" />
-    <link rel="stylesheet" href="css/pricing-cards-v3.css?v=298c3ed269fa" />
-    <link rel="stylesheet" href="css/pricing-cards-v9.css?v=e9e341e02c99" />
-    <link rel="stylesheet" href="css/billing-v3.css?v=79522ffcb267" />
-    <link rel="stylesheet" href="css/ecosystem-bridge.css?v=3c3d05b1dc32" />
-    <link rel="stylesheet" href="css/global-nav-v1.css?v=f4ec7a88458b" />
-    <link rel="stylesheet" href="css/tts-ui-v1.css?v=08e0976792f5" />
-    <link rel="stylesheet" href="css/bundle-pricing-v1.css?v=aadc7f866715" />
-    <script src="js/legacy-product-redirect-v1.js?v=ff0a420844ce"></script>
+    <link rel="stylesheet" href="css/main-v43.css?v=7901c418e6ca" />
+    <link rel="stylesheet" href="css/pricing-cards-v3.css?v=fa3a03f0da83" />
+    <link rel="stylesheet" href="css/pricing-cards-v9.css?v=ff645426e758" />
+    <link rel="stylesheet" href="css/billing-v3.css?v=8d14a4cff263" />
+    <link rel="stylesheet" href="css/ecosystem-bridge.css?v=fa004a39d344" />
+    <link rel="stylesheet" href="css/global-nav-v1.css?v=8ad92584b583" />
+    <link rel="stylesheet" href="css/tts-ui-v1.css?v=3575c0ecef4c" />
+    <link rel="stylesheet" href="css/bundle-pricing-v1.css?v=f3d54be88d8f" />
+    <script src="js/legacy-product-redirect-v1.js?v=281a6e7cf668"></script>
 
     <!-- FAQ structured data (Google rich results). Mantém em sincronia com
          window.VOZEN_FAQ (js/i18n.js) — o JSON-LD tem de ser ESTÁTICO porque os
@@ -96,7 +96,7 @@
           <a class="is-current" href="tts/" aria-current="page">Vozen TTS</a>
           <a href="helper/">Vozen Helper</a>
           <a href="commands/">Commands</a>
-          <a href="premium.html">Premium</a>
+          <a href="/premium">Premium</a>
         </nav>
 
         <div class="nav__actions">
@@ -159,7 +159,7 @@
             </p>
 
             <div class="hero__cta reveal" data-r="4">
-              <a class="btn btn--primary btn--discord-cta js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero">
+              <a class="btn btn--primary btn--discord-cta js-invite" href="/dashboard?add=1" data-tts-install-source="tts-hero">
                 <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
                   <path d="M20.3 4.4A19 19 0 0 0 15.6 3l-.24.48a17.6 17.6 0 0 1 4.16 1.3 15 15 0 0 0-11.06 0A17.6 17.6 0 0 1 12.63 3.5L12.4 3A19 19 0 0 0 7.7 4.4C4.8 8.7 4 13 4.2 17.2A19 19 0 0 0 9.9 20l.4-.6a12 12 0 0 1-1.9-.9c.16-.12.32-.24.47-.37a13.6 13.6 0 0 0 11.6 0c.15.13.3.25.47.37-.6.36-1.24.66-1.9.9l.4.6a19 19 0 0 0 5.7-2.8c.28-4.9-.76-9.16-3.36-12.8ZM9.7 14.7c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Zm4.6 0c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.88 2.3-2 2.3Z"/>
                 </svg>
@@ -494,7 +494,7 @@
                 <li data-i18n="price.m.20">Daily talk streaks</li>
               </ul>
               <p class="price-card__note" data-i18n="price.free.per">forever</p>
-              <a class="price-card__buy price-card__buy--free btn--discord-cta js-invite" href="/dashboard.html?add=1" target="_blank" rel="noopener" data-tts-install-source="tts-pricing" data-i18n="cta.add">Add to Discord</a>
+              <a class="price-card__buy price-card__buy--free btn--discord-cta js-invite" href="/dashboard?add=1" target="_blank" rel="noopener" data-tts-install-source="tts-pricing" data-i18n="cta.add">Add to Discord</a>
               <p class="price-card__idnote">
                 <span data-i18n="price.free.pitch">All the essentials. No card, no trial</span>
               </p>
@@ -642,7 +642,7 @@
       <section class="product-finale" id="get-started" aria-labelledby="product-finale-title">
  <img class="product-finale__icon" src="/assets/settings-tts.png" width="80" height="80" alt="" loading="lazy" decoding="async">
  <div class="product-finale__copy"><span class="product-finale__name">Vozen TTS</span><h2 class="product-finale__title" id="product-finale-title" data-i18n="finale.title">Give your server a voice</h2></div>
- <div class="product-finale__action"><a class="btn btn--primary btn--discord-cta product-finale__button js-invite" href="/dashboard.html?add=1" data-tts-install-source="tts-hero"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+ <div class="product-finale__action"><a class="btn btn--primary btn--discord-cta product-finale__button js-invite" href="/dashboard?add=1" data-tts-install-source="tts-hero"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
                   <path d="M20.3 4.4A19 19 0 0 0 15.6 3l-.24.48a17.6 17.6 0 0 1 4.16 1.3 15 15 0 0 0-11.06 0A17.6 17.6 0 0 1 12.63 3.5L12.4 3A19 19 0 0 0 7.7 4.4C4.8 8.7 4 13 4.2 17.2A19 19 0 0 0 9.9 20l.4-.6a12 12 0 0 1-1.9-.9c.16-.12.32-.24.47-.37a13.6 13.6 0 0 0 11.6 0c.15.13.3.25.47.37-.6.36-1.24.66-1.9.9l.4.6a19 19 0 0 0 5.7-2.8c.28-4.9-.76-9.16-3.36-12.8ZM9.7 14.7c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.9 2.3-2 2.3Zm4.6 0c-1.1 0-2-1-2-2.3 0-1.24.88-2.28 2-2.28s2.02 1.04 2 2.28c0 1.26-.88 2.3-2 2.3Z"></path>
                 </svg><span data-i18n="cta.add">Add to Discord</span></a><p class="product-finale__note" data-i18n="finale.freeNote">Free core. No credit card.</p></div>
 </section>
@@ -654,21 +654,21 @@
     <span class="vozen-footer__brand"><img src="/favicon.svg" width="28" height="28" alt="">© 2026 Vozen</span>
     <nav class="vozen-footer__links" aria-label="Vozen footer">
       <a href="https://discord.gg/4kYw2WUbNN" data-i18n="foot.support">Support server</a>
-      <a href="/privacy.html" data-i18n="foot.privacy">Privacy</a>
-      <a href="/terms.html" data-i18n="foot.terms">Terms</a>
+      <a href="/privacy" data-i18n="foot.privacy">Privacy</a>
+      <a href="/terms" data-i18n="foot.terms">Terms</a>
     </nav>
     <span class="vozen-footer__disclaimer" data-i18n="foot.legal">Not affiliated with Discord</span>
   </div>
 </footer>
 
-    <script defer src="js/analytics-config.js?v=f6b49da441d8"></script>
-    <script defer src="js/web-analytics-v1.js?v=e934b4dd1f34"></script>
-    <script defer src="js/install-config-v1.js?v=97c30a4aaef1"></script>
-    <script defer src="js/tts-install-v1.js?v=06da33493db0"></script>
-    <script defer src="js/oauth-config.js?v=15ffe1a765c9"></script>
-    <script defer src="js/global-nav-v1.js?v=93ac57255dc2"></script>
-    <script defer src="js/i18n-public-loader-v1.js?v=e7d4b1c80f72"></script>
-    <script defer src="js/main-v51.js?oauth=ecosystem-v5&auth-tabs=1&account-fast=1&auth-race=4&auth-persist=1&v=0280d34fc4e7"></script>
-    <script defer src="js/motion-v1.js?v=e61ca8f4a378"></script>
+    <script defer src="js/analytics-config.js?v=aeac0d49e3b7"></script>
+    <script defer src="js/web-analytics-v1.js?v=8a15ad19f3e3"></script>
+    <script defer src="js/install-config-v1.js?v=8331c77a4ed5"></script>
+    <script defer src="js/tts-install-v1.js?v=40da3de42ed5"></script>
+    <script defer src="js/oauth-config.js?v=619a1fcb0b71"></script>
+    <script defer src="js/global-nav-v1.js?v=7359d7e636c6"></script>
+    <script defer src="js/i18n-public-loader-v1.js?v=4703bb366834"></script>
+    <script defer src="js/main-v51.js?oauth=ecosystem-v5&auth-tabs=1&account-fast=1&auth-race=4&auth-persist=1&v=b6066a5148eb"></script>
+    <script defer src="js/motion-v1.js?v=fb1f4a036091"></script>
   </body>
 </html>

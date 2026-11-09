@@ -34,7 +34,7 @@ try {
     assert.equal(await page.locator('.workspace-global-nav').count(),1);
     const header = page.locator('header.vozen-global-nav');
     assert.deepEqual(await header.locator('.nav__links a').evaluateAll(links => links.map(link => link.getAttribute('href'))),
-      ['/tts/', '/music/', '/helper/', '/commands/', '/status.html', '/premium#plans']);
+      ['/tts/', '/music/', '/helper/', '/commands/', '/status', '/premium']);
     assert.equal(await header.evaluate(node => getComputedStyle(node).position),'sticky');
     assert.equal(await header.evaluate(node => getComputedStyle(node).backgroundColor),'rgba(0, 0, 0, 0)');
     await page.evaluate(() => document.fonts.ready);

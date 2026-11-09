@@ -32,9 +32,11 @@ const publicStatusEndpoints = {
 };
 
 async function handleRequest(request, response, fetchPublic, publicStatusPreview) {
+  let url;
   let pathname;
   try {
-    pathname = decodeURIComponent(new URL(request.url || '/', 'http://local.test').pathname);
+    url = new URL(request.url || '/', 'http://local.test');
+    pathname = decodeURIComponent(url.pathname);
   } catch {
     response.writeHead(400);
     response.end('Invalid request URL');
@@ -64,9 +66,31 @@ async function handleRequest(request, response, fetchPublic, publicStatusPreview
     }
     return;
   }
-  const relative = pathname === '/premium' ? '/premium.html' : pathname.endsWith('/') ? `${pathname}index.html` : pathname;
-  const filename = path.resolve(root, `.${relative}`);
-  if (!filename.startsWith(`${root}${path.sep}`) || !fs.existsSync(filename) || !fs.statSync(filename).isFile()) {
+  const fileAt = (relative) => {
+    const file = path.resolve(root, `.${relative}`);
+    return file.startsWith(`${root}${path.sep}`) && fs.statSync(file, { throwIfNoEntry: false })?.isFile() ? file : null;
+  };
+  let filename;
+  if (!pathname.startsWith('//') && !/[\\\0]/.test(pathname)) {
+    if (!path.posix.extname(pathname) || pathname.endsWith('.html')) {
+      const stem = pathname.replace(/(?:\/index(?:\.html)?|\.html|\/)$/, '');
+      const index = fileAt(`${stem}/index.html`);
+      const flat = stem && fileAt(`${stem}.html`);
+      // Match production when both a file and a directory exist, notably the TTS dashboard and its OAuth return.
+      const useIndex = index && (!flat || pathname.endsWith('/') || /\/index(?:\.html)?$/.test(pathname));
+      const canonical = useIndex ? `${stem}/` : stem;
+      const html = useIndex ? index : flat;
+      if (html && pathname !== canonical) {
+        response.writeHead(307, { location: canonical.split('/').map(encodeURIComponent).join('/') + url.search, 'cache-control': 'no-store' });
+        response.end();
+        return;
+      }
+      filename = html || fileAt(pathname);
+    } else {
+      filename = fileAt(pathname);
+    }
+  }
+  if (!filename) {
     response.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' });
     response.end('Not found');
     return;

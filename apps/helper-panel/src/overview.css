@@ -1,28 +1,238 @@
-.vozen-overview{min-width:0;display:grid;gap:24px}
-.vozen-overview__header{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.vozen-overview__header h1{margin:0;font-size:clamp(30px,3vw,42px);line-height:1.15;letter-spacing:-.04em}
-.vozen-overview__header p{margin:8px 0 0;color:var(--muted);overflow-wrap:anywhere}
-.vozen-overview__header button{min-height:44px;flex-shrink:0}
-.vozen-overview__metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;border-block:1px solid var(--line);padding:24px 0;gap:24px}
-.vozen-overview__metrics div{min-width:0}
-.vozen-overview__metrics dt{color:var(--muted);font-size:13px;margin-bottom:8px;text-transform:none}
-.vozen-overview__metrics dd{margin:0;font-size:28px;font-weight:600;line-height:1.2;overflow-wrap:anywhere}
-.vozen-overview__columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.vozen-overview__panel{min-width:0;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
-.vozen-overview__panel h2{margin:0 0 16px;font-size:18px;letter-spacing:-.02em;line-height:1.35;text-transform:none}
-.vozen-overview__row{display:flex;align-items:center;gap:12px;width:100%;min-height:58px;padding:12px 0;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;color:var(--text);font-size:14px;text-align:start}
-.vozen-overview__row>span:first-child{flex:1;min-width:0;overflow-wrap:anywhere}
-.vozen-overview__row>span:last-child{color:var(--mint);font-size:20px}
-.vozen-overview__row:disabled{opacity:.6;cursor:default}
-.vozen-overview__row:hover:not(:disabled){color:var(--mint)}
-.vozen-overview button:focus-visible{outline:2px solid var(--mint);outline-offset:4px}
-.vozen-overview__state{color:var(--muted);font-size:11px;padding:4px 8px;border-radius:6px;background:#8d9ab514}
-.vozen-overview__state.is-on{color:var(--mint);background:#8ee5d214}
-.vozen-overview__limits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.vozen-overview__limits .quota-item{min-width:0}
-@media(max-width:900px){.vozen-overview__columns{grid-template-columns:1fr}}
-@media(max-width:560px){
-  .vozen-overview{gap:20px}.vozen-overview__header{align-items:flex-start;flex-direction:column;gap:16px}
-  .vozen-overview__metrics{gap:12px;padding:20px 0}.vozen-overview__metrics dt{font-size:11px}.vozen-overview__metrics dd{font-size:22px}
-  .vozen-overview__panel{padding:18px}.vozen-overview__limits{grid-template-columns:1fr;gap:18px}
+.vozen-overview {
+  --overview-arrow-shift: 4px;
+  min-width: 0;
+  display: grid;
+  gap: 20px;
+  container-type: inline-size;
+}
+.vozen-overview__header { margin: 0; }
+.vozen-overview__header h1 {
+  margin: 0;
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.15;
+  letter-spacing: -.04em;
+}
+.vozen-overview__server {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 6px 14px;
+  padding: 24px 22px;
+  border-bottom: 1px solid #2c4658;
+  background: #13283b;
+}
+.vozen-overview__server::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset-block: 0;
+  inset-inline-end: 0;
+  width: 48%;
+  background: radial-gradient(circle, #72b2c8 1px, transparent 1.5px) 0 0 / 14px 14px;
+  opacity: .22;
+  mask-image: linear-gradient(90deg, transparent, black);
+}
+.vozen-overview__server-copy { min-width: 0; }
+.panel-main .vozen-overview__server h2 {
+  margin: 0 0 4px;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.25;
+  letter-spacing: -.025em;
+}
+.vozen-overview__server-name {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.vozen-overview__server-icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 10px;
+  color: #c1e3ff;
+  background: #243d56;
+  font-size: 18px;
+  font-weight: 650;
+}
+.vozen-overview__server-icon img { width: 100%; height: 100%; object-fit: cover; }
+.vozen-overview__columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
+}
+.vozen-overview__stack { min-width: 0; display: grid; gap: 16px; align-content: start; }
+.vozen-overview__panel {
+  min-width: 0;
+  border: 1px solid #2c4059;
+  border-radius: 16px;
+  background: #101a29;
+}
+.vozen-overview__snapshot { overflow: hidden; border-color: #365668; }
+.vozen-overview__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 20px 22px;
+  gap: 10px;
+}
+.vozen-overview__metrics div {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #273c53;
+  border-radius: 10px;
+  background: #152237;
+}
+.vozen-overview__metrics div:first-child { background: #142b34; border-color: #284c51; }
+.vozen-overview__metrics div:first-child dd { color: #a2eadb; }
+.vozen-overview__metrics dt { color: var(--muted); font-size: 13px; margin-bottom: 7px; text-transform: none; }
+.vozen-overview__metrics dd { margin: 0; font-size: clamp(19px, 2vw, 26px); font-weight: 650; line-height: 1.2; overflow-wrap: anywhere; }
+.vozen-overview__actions { margin-inline: 22px; padding-block: 14px; border-top: 1px solid var(--line); }
+.panel-main .vozen-overview__features {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 9px;
+  background: #91e4d5;
+  color: #0d2430;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: normal;
+  text-align: start;
+}
+.panel-main .vozen-overview__features:hover { background: #b2f2e7; }
+.panel-main .vozen-overview__activity {
+  display: grid;
+  gap: 12px;
+  padding: 16px 22px;
+  color: var(--text);
+  text-align: start;
+  white-space: normal;
+}
+.panel-main .vozen-overview__activity:hover { border-color: #4c7784; background: #142235; }
+.vozen-overview__activity-header { display: flex; align-items: center; gap: 12px; }
+.vozen-overview__activity-icon {
+  display: grid;
+  flex: 0 0 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  background: #1d3346;
+  color: var(--mint);
+}
+.vozen-overview__activity strong { flex: 1; min-width: 0; font-size: 16px; overflow-wrap: anywhere; }
+.vozen-overview__activity .vozen-overview__arrow { color: var(--mint); }
+.vozen-overview__activity-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.vozen-overview__activity-stats > span { display: grid; gap: 4px; align-content: start; overflow-wrap: anywhere; }
+.vozen-overview__activity-stats > span + span { padding-inline-start: 12px; border-inline-start: 1px solid var(--line); }
+.vozen-overview__activity-stats span span, .vozen-overview__activity-caption { color: var(--muted); font-size: 12px; }
+.vozen-overview__activity-stats b { font-size: 24px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.vozen-overview__activity-stats > span + span b { color: #a2eadb; }
+.vozen-overview__activity-bar {
+  display: block;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #2b4058;
+}
+.vozen-overview__activity-bar > span { display: block; height: 100%; background: #8bdbca; border-radius: inherit; }
+.vozen-overview__choices { padding: 19px 22px; }
+.panel-main .vozen-overview__choices h2 { margin: 0 0 12px; font-size: 18px; letter-spacing: -.02em; line-height: 1.35; }
+.panel-main .vozen-overview__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 62px;
+  padding: 10px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--text);
+  font-size: 14px;
+  text-align: start;
+  white-space: normal;
+}
+.vozen-overview__row > span:first-child { min-width: 0; display: grid; gap: 4px; overflow-wrap: anywhere; }
+.vozen-overview__row small { color: var(--muted); font-size: 12px; }
+.vozen-overview__row .vozen-overview__state {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 5px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: #1b293c;
+}
+.vozen-overview__state::before { content: ''; flex: 0 0 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.vozen-overview__row .is-on { color: #a2eadb; background: #183631; }
+.vozen-overview__row:disabled { cursor: default; }
+.vozen-overview__edit { color: var(--mint); font-size: 13px; font-weight: 600; text-align: end; }
+.vozen-overview__edit > span,
+.vozen-overview__arrow { display: inline-block; }
+.vozen-overview button:hover:not(:disabled) .vozen-overview__edit { text-decoration: underline; text-underline-offset: 4px; }
+.vozen-overview button:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+.panel-main .vozen-overview__profile {
+  position: relative;
+  display: grid;
+  padding: 0;
+  overflow: hidden;
+  color: var(--text);
+  text-align: start;
+  white-space: normal;
+}
+.vozen-overview__profile-banner { display: block; height: clamp(96px, 10vw, 132px); background: #243b52; }
+.vozen-overview__profile-body { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 14px 17px; }
+.vozen-overview__profile-body > img { flex: 0 0 44px; width: 44px; height: 44px; object-fit: cover; border-radius: 50%; }
+.vozen-overview__profile-copy { flex: 1; min-width: 0; display: grid; gap: 4px; overflow-wrap: anywhere; }
+.vozen-overview__profile-copy small { font-size: 12px; color: var(--muted); }
+.vozen-overview__profile-copy strong { font-size: 15px; }
+@media (prefers-reduced-motion: no-preference) {
+  .vozen-overview__stack > * { animation: vozen-overview-in .24s ease-out both; }
+  .vozen-overview__stack > :nth-child(2) { animation-delay: .05s; }
+  .vozen-overview__arrow, .vozen-overview__edit > span { transition: translate .18s ease-out; }
+  @media (hover: hover) {
+    .vozen-overview button:hover:not(:disabled) .vozen-overview__arrow,
+    .vozen-overview button:hover:not(:disabled) .vozen-overview__edit > span {
+      translate: var(--overview-arrow-shift) 0;
+    }
+  }
+}
+@keyframes vozen-overview-in {
+  from { opacity: 0; translate: 0 6px; }
+  to { opacity: 1; translate: 0 0; }
+}
+.vozen-overview:dir(rtl) { --overview-arrow-shift: -4px; }
+.vozen-overview:dir(rtl) .vozen-overview__server::after { mask-image: linear-gradient(270deg, transparent, black); }
+.vozen-overview__app-badge { display: inline-block; margin-inline-start: 3px; padding: 2px 4px; border-radius: 4px; color: white; background: #5865f2; font-size: 10px; vertical-align: middle; }
+.vozen-overview:dir(rtl) .vozen-overview__edit > span,
+.vozen-overview:dir(rtl) .vozen-overview__arrow { transform: scaleX(-1); }
+@container (max-width: 700px) {
+  .vozen-overview__columns { grid-template-columns: minmax(0, 1fr); }
+}
+@container (max-width: 400px) {
+  .vozen-overview__metrics { padding-inline: 14px; gap: 8px; }
+  .vozen-overview__metrics div { padding: 8px; }
+  .vozen-overview__metrics dt { font-size: 11px; }
+  .vozen-overview__actions { margin-inline: 14px; }
+  .vozen-overview__choices, .vozen-overview__server, .panel-main .vozen-overview__activity { padding-inline: 14px; }
 }

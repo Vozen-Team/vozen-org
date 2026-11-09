@@ -4,6 +4,8 @@ import {AchievementSettings} from './achievement-settings';
 import { overviewText } from './overview-i18n';
 import './overview.css';
 import { ActivityFeed } from './activity-feed';
+import { activityText } from './activity-i18n';
+import { validActivityFeed } from './activity-model';
 import { EcosystemTopbar, EcosystemAccountAvatar, useEcosystemAccount, discordAvatarUrl } from './ecosystem-topbar';
 import { createElement, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { canonicalWelcomeKey, visibleWelcomeFeatures } from './welcome';
@@ -3082,7 +3084,7 @@ function App() {
             decoding="async"
           />
           <div>
-            <select className="settings-product-switch" aria-label="Product" value="helper" onChange={event => { const target=event.target.value==='tts'?'/dashboard.html':'/account/?music=1'; void (async()=>{if(autosaveRef.current && !(await autosaveRef.current.flush()))return;window.location.assign(target);})(); }}><option value="tts">Vozen TTS</option><option value="music">Vozen Music</option><option value="helper">Vozen Helper</option></select>
+            <select className="settings-product-switch" aria-label="Product" value="helper" onChange={event => { const target=event.target.value==='tts'?'/dashboard':'/account/?music=1'; void (async()=>{if(autosaveRef.current && !(await autosaveRef.current.flush()))return;window.location.assign(target);})(); }}><option value="tts">Vozen TTS</option><option value="music">Vozen Music</option><option value="helper">Vozen Helper</option></select>
             <small>{helperText('SERVER TOOLKIT')}</small>
           </div>
         </div>
@@ -3229,9 +3231,12 @@ function App() {
         )}
         {route.page === 'overview' && (
           <Overview
+            key={me?.guildId}
             features={features}
             stats={stats}
-            quota={quota}
+            plan={quota.plan}
+            guildId={localPreviewMode ? undefined : me?.guildId}
+            guildIcon={currentGuild?.iconUrl}
             guildName={currentGuild?.name ?? helperText('your server')}
             onOpen={navigate}
           />
@@ -3940,53 +3945,113 @@ function AuthScreen() {
   return <WorkspaceSkeleton />;
 }
 
-function Overview({ features, stats, quota, guildName, onOpen }: {
+const overviewActivityLimit = 10;
+
+function Overview({ features, stats, plan, guildId, guildName, guildIcon, onOpen }: {
   features: Feature[];
   stats: { totalCases: number };
-  quota: { plan: string; limits: Record<string, number>; usage: Record<string, number> };
+  plan: string;
+  guildId?: string;
   guildName: string;
+  guildIcon?: string | null;
   onOpen: (path: string) => void;
 }) {
-  const setup = [
-    {key:'protection.antispam',label:helperText('Protection')},
-    {key:'support.welcome',label:helperText('Welcome flow')},
-    {key:'community.levels',label:overviewText('Levels & XP')},
-  ];
-  const shortcuts = [
-    {path:'#/features',label:helperPageLabel('features','Features')},
-    {path:'#/activity',label:helperText('Recent activity')},
-    {path:'#/rank-card',label:overviewText('XP card')},
+  const [activity, setActivity] = useState<{ records: number; helperActions: number } | null>();
+  useEffect(() => {
+    if (!guildId) return;
+    const controller = new AbortController();
+    void api.activityFeed('all', undefined, { signal: controller.signal }, overviewActivityLimit).then(result => {
+      if (controller.signal.aborted) return;
+      if (!validActivityFeed(result, guildId)) throw new Error('Invalid activity response');
+      setActivity({ records: result.events.length, helperActions: result.events.filter(event => event.helper).length });
+    }).catch(() => {
+      if (!controller.signal.aborted) setActivity(null);
+    });
+    return () => controller.abort();
+  }, [guildId]);
+
+  const choices = [
+    { key: 'protection.antispam', label: helperText('Protection') },
+    { key: 'support.welcome', label: helperText('Welcome flow') },
+    { key: 'community.levels', label: overviewText('Levels & XP') },
   ];
   return <section className="vozen-overview" aria-labelledby="route-heading">
     <header className="vozen-overview__header">
-      <div><h1 id="route-heading" data-route-heading tabIndex={-1}>{helperText('Overview')}</h1><p><bdi>{guildName}</bdi></p></div>
-      <button type="button" className="primary" onClick={()=>onOpen('#/quick-setup')}>{overviewText('Quick setup')}</button>
+      <h1 id="route-heading" data-route-heading tabIndex={-1}>{helperText('Overview')}</h1>
     </header>
-    <dl className="vozen-overview__metrics">
-      <div><dt>{helperText('Active modules')}</dt><dd>{features.filter(feature=>feature.enabled && feature.available!==false).length}</dd></div>
-      <div><dt>{helperText('Moderation cases')}</dt><dd>{stats.totalCases}</dd></div>
-      <div><dt>{helperText('Current plan')}</dt><dd>{quotaPlanLabel(quota.plan)}</dd></div>
-    </dl>
     <div className="vozen-overview__columns">
-      <section className="vozen-overview__panel"><h2>{helperText('Your server setup')}</h2>
-        {setup.map(item=>{
-          const feature=features.find(feature=>feature.key===item.key);
-          const available=Boolean(feature && feature.available!==false);
-          const enabled=available && feature?.enabled;
-          return <button type="button" className="vozen-overview__row" key={item.key} disabled={!available} onClick={()=>onOpen(`#/config/${item.key}`)}>
-            <span>{item.label}</span><span className={`vozen-overview__state${enabled?' is-on':''}`}>{overviewText(!available?'Unavailable':enabled?'On':'Off')}</span><span aria-hidden="true">›</span>
-          </button>;
-        })}
-      </section>
-      <section className="vozen-overview__panel"><h2>{overviewText('Shortcuts')}</h2>
-        {shortcuts.map(item=><button type="button" className="vozen-overview__row" key={item.path} onClick={()=>onOpen(item.path)}><span>{item.label}</span><span aria-hidden="true">›</span></button>)}
-      </section>
+      <div className="vozen-overview__stack">
+        <section className="vozen-overview__panel vozen-overview__snapshot">
+          <div className="vozen-overview__server">
+            <span className="vozen-overview__server-icon" aria-hidden="true">{guildIcon
+              ? <img src={guildIcon} alt="" />
+              : Array.from(guildName)[0]}</span>
+            <div className="vozen-overview__server-copy">
+              <h2>{overviewText('Server snapshot')}</h2>
+              <bdi className="vozen-overview__server-name">{guildName}</bdi>
+            </div>
+          </div>
+          <dl className="vozen-overview__metrics">
+            <div><dt>{helperText('Active modules')}</dt><dd>{features.filter(feature => feature.enabled && feature.available !== false).length}</dd></div>
+            <div><dt>{helperText('Moderation cases')}</dt><dd>{stats.totalCases}</dd></div>
+            <div><dt>{helperText('Current plan')}</dt><dd>{quotaPlanLabel(plan)}</dd></div>
+          </dl>
+          <div className="vozen-overview__actions">
+            <button type="button" className="vozen-overview__features" onClick={() => onOpen('#/features')}>
+              {helperPageLabel('features', 'Features')} <span className="vozen-overview__arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+        </section>
+        <button type="button" className="vozen-overview__panel vozen-overview__activity" onClick={() => onOpen('#/activity')}>
+          <span className="vozen-overview__activity-header">
+            <span className="vozen-overview__activity-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+            </span>
+            <strong>{helperText('Recent activity')}</strong>
+            <span className="vozen-overview__arrow" aria-hidden="true">→</span>
+          </span>
+          <span className="vozen-overview__activity-stats">
+            <span><span>{overviewText('Records')}</span><b>{activity?.records ?? '—'}</b></span>
+            <span><span>{overviewText('Helper actions')}</span><b>{activity?.helperActions ?? '—'}</b></span>
+          </span>
+          {activity && activity.records > 0 && <span className="vozen-overview__activity-bar" aria-hidden="true">
+            <span style={{ width: `${activity.helperActions / activity.records * 100}%` }} />
+          </span>}
+          <small className="vozen-overview__activity-caption">
+            {activity ? overviewText('Up to {limit} recent records').replace('{limit}', String(overviewActivityLimit))
+              : guildId && activity === undefined ? activityText('Loading…') : activityText('Could not load activity.')}
+          </small>
+        </button>
+      </div>
+      <div className="vozen-overview__stack">
+        <section className="vozen-overview__panel vozen-overview__choices">
+          <h2>{overviewText('Your choices')}</h2>
+          {choices.map(item => {
+            const feature = features.find(entry => entry.key === item.key);
+            const available = Boolean(feature && feature.available !== false);
+            const enabled = available && feature?.enabled;
+            return <button type="button" className="vozen-overview__row" key={item.key} disabled={!available} onClick={() => onOpen(`#/config/${item.key}`)}>
+              <span><strong>{item.label}</strong><small className={`vozen-overview__state${enabled ? ' is-on' : ''}`}>{overviewText(!available ? 'Unavailable' : enabled ? 'On' : 'Off')}</small></span>
+              {available && <span className="vozen-overview__edit">{helperText('Edit')} <span aria-hidden="true">→</span></span>}
+            </button>;
+          })}
+          <button type="button" className="vozen-overview__row" onClick={() => onOpen('#/rank-card')}>
+            <span><strong>{overviewText('XP card')}</strong><small>{overviewText('Colours and background')}</small></span>
+            <span className="vozen-overview__edit">{helperText('Edit')} <span aria-hidden="true">→</span></span>
+          </button>
+        </section>
+        <div className="vozen-overview__panel vozen-overview__profile">
+          <span className="vozen-overview__profile-banner" aria-hidden="true" />
+          <div className="vozen-overview__profile-body">
+            <img src="/assets/settings-helper.png" alt="" />
+            <div className="vozen-overview__profile-copy">
+              <small>{overviewText('Bot Profile')}</small>
+              <strong>Vozen Helper <span className="vozen-overview__app-badge">APP</span></strong>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <section className="vozen-overview__panel"><h2>{overviewText('Plan limits')}</h2><div className="vozen-overview__limits">
-      <Quota label={helperText('Workflows')} used={quota.usage.workflows??0} limit={quota.limits.workflows??0}/>
-      <Quota label={helperText('Templates')} used={quota.usage.templates??0} limit={quota.limits.templates??0}/>
-      <Quota label={helperText('Role panels')} used={quota.usage.role_panels??0} limit={quota.limits.role_panels??0}/>
-    </div></section>
   </section>;
 }
 function quotaPlanLabel(value: unknown): string {
@@ -4011,22 +4076,6 @@ function quotaPlanLabel(value: unknown): string {
   return helperText('Free');
 }
 
-function Quota({ label, used, limit }: { label: string; used: number; limit: number }) {
-  const percent = limit > 0 ? Math.min(100, Math.round((used / limit) * 100)) : 0;
-  return (
-    <div className="quota-item">
-      <div>
-        <span>{label}</span>
-        <b>
-          {used} / {limit || '—'}
-        </b>
-      </div>
-      <i>
-        <em style={{ width: `${percent}%` }} />
-      </i>
-    </div>
-  );
-}
 function FeatureCatalogue({
   features,
   catalogue,

@@ -87,7 +87,7 @@
     if (!catalogue || (locale === appliedLocale && catalogue === appliedCatalogue)) return;
     document.documentElement.lang = htmlLocale(currentLocale());
     document.documentElement.dir = currentLocale() === "ar" ? "rtl" : "ltr";
-    document.title = text("helper.landing.documentTitle", "Vozen Helper — Available now");
+    document.title = text("helper.landing.documentTitle", "Vozen Helper - Available now");
 
     setTextPreservingChildren(".helper-available", "helper.landing.available");
     setText("#helper-title span:nth-child(1)", "helper.landing.heroTitle1");

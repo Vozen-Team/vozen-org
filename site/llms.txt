@@ -1,20 +1,24 @@
 # Vozen
 
-> Vozen builds focused tools for Discord communities, including Vozen TTS and Vozen Helper.
+> Vozen offers three Discord bots: TTS reads chat aloud, Music plays curated stations in voice channels, and Helper handles moderation, tickets and community tools.
 
-## Public products
+The core features are free. Vozen Plus adds personal perks for TTS and Music. Vozen Premium unlocks server-wide perks across all three bots in selected servers. See the plans page for current prices and inclusions.
 
-- [Vozen TTS](https://vozen.org/tts/): voice and reading tools for Discord channels.
-- [Vozen Helper](https://vozen.org/helper/): moderation, community, support and server-operation tools.
-- [Vozen Helper documentation](https://vozen.org/docs/helper/): public setup and troubleshooting guides.
-- [TTS without a microphone](https://vozen.org/guides/discord-without-a-mic/): a practical typed-to-voice Discord guide.
-- [Vozen Helper first modules](https://vozen.org/guides/helper-moderation-tickets-roles/): moderation, tickets and role-panel setup.
+## Products
 
-## Account and support
+- [Vozen ecosystem](https://vozen.org/): overview of all three bots.
+- [Vozen TTS](https://vozen.org/tts/): read Discord chat aloud, try voice samples and learn to set up automatic reading.
+- [Vozen Music](https://vozen.org/music/): preview curated music stations and learn to listen together in a Discord voice channel.
+- [Vozen Helper](https://vozen.org/helper/): protect and manage your server with moderation, tickets, roles and workflows.
 
-- [Account](https://vozen.org/account/): manage signed-in product access.
-- [Support server](https://discord.gg/4kYw2WUbNN): community support and product help.
-- [Privacy policy](https://vozen.org/privacy.html)
-- [Terms of service](https://vozen.org/terms.html)
+## Commands, plans and support
 
-Vozen does not publish private account, guild, user or billing data in this file.
+- [Commands](https://vozen.org/commands/): browse the command catalogue by bot.
+- [Plans](https://vozen.org/premium): compare Free, Plus and Premium across the three bots.
+- [Status](https://vozen.org/status): check service availability.
+- [Discord support server](https://discord.gg/4kYw2WUbNN): get help with setup and troubleshooting.
+
+## Optional
+
+- [Privacy policy](https://vozen.org/privacy)
+- [Terms of service](https://vozen.org/terms)

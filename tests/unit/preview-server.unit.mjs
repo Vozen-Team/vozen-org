@@ -29,6 +29,29 @@ test('local plan links resolve both paid checkout buttons on the Premium page', 
   assert.deepEqual([...html.matchAll(/data-billing-plan="([^"]+)"/g)].map(match=>match[1]),['plus','premium']);
 });
 
+test('clean page URLs serve HTML and old URLs redirect without losing their query', async (t) => {
+  const { server, origin } = await createSiteServer();
+  t.after(() => closeSiteServer(server));
+  for (const [oldPath, cleanPath] of [
+    ['/status.html', '/status'], ['/premium.html', '/premium'], ['/privacy.html', '/privacy'],
+    ['/terms.html', '/terms'], ['/dashboard.html', '/dashboard'], ['/404.html', '/404'],
+    ['/tts.html', '/tts'], ['/helper.html', '/helper'], ['/account.html', '/account'],
+    ['/commands/index.html', '/commands/'], ['/pt/tts', '/pt/tts/'], ['/index.html', '/'],
+    ['/dashboard/index.html', '/dashboard/'],
+  ]) {
+    const response = await fetch(origin + oldPath + '?lang=pt&add=1', { redirect: 'manual' });
+    assert.equal(response.status, 307, oldPath);
+    assert.equal(response.headers.get('location'), cleanPath + '?lang=pt&add=1');
+    assert.match((await fetch(origin + cleanPath)).headers.get('content-type'), /^text\/html/, cleanPath);
+  }
+  assert.equal((await fetch(origin + '/missing.html')).status, 404);
+  assert.match(await (await fetch(origin + '/dashboard')).text(), /data-i18n-document-title="dashboard.documentTitle"/);
+  assert.match(await (await fetch(origin + '/dashboard/')).text(), /Vozen TTS installation/);
+  const home = await (await fetch(origin)).text();
+  assert.match(home, /href="\/?status"[^>]*data-i18n="ecosystem.status"/);
+  assert.match(home, /href="\/?premium"[^>]*data-i18n="nav.premium"/);
+});
+
 test('preview shutdown closes unfinished browser connections', async (t) => {
   const { server, origin } = await createSiteServer();
   const socket = net.connect(Number(new URL(origin).port), '127.0.0.1');

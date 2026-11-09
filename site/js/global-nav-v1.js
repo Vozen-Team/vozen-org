@@ -260,8 +260,8 @@
             ${musicLink}
             <a class="${currentClass('helper').trim()}" href="${link('helper/')}"${currentAria('helper')} data-i18n="ecosystem.helper">Vozen Helper</a>
             <a class="${currentClass('commands').trim()}" href="${link('commands/')}"${currentAria('commands')} data-i18n="ecosystem.commands">Commands</a>
-            <a class="${currentClass('status').trim()}" href="${link('status.html')}"${currentAria('status')} data-i18n="ecosystem.status">Status</a>
-            <a class="${currentClass('premium').trim()}" href="${link('premium#plans')}"${currentAria('premium')} data-i18n="nav.premium">Premium</a>
+            <a class="${currentClass('status').trim()}" href="${link('status')}"${currentAria('status')} data-i18n="ecosystem.status">Status</a>
+            <a class="${currentClass('premium').trim()}" href="${link('premium')}"${currentAria('premium')} data-i18n="nav.premium">Premium</a>
           </nav>
           <div class="docs-ecosystem-nav__actions nav__actions">
             <a class="docs-ecosystem-nav__github nav__gh" href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener noreferrer" aria-label="Vozen on GitHub" data-i18n-aria-label="ecosystem.githubAria">${githubIcon}</a>
@@ -292,8 +292,8 @@
           ${musicLink}
           <a class="${currentClass('helper').trim()}" href="${link('helper/')}"${currentAria('helper')} data-i18n="ecosystem.helper">Vozen Helper</a>
           <a class="${currentClass('commands').trim()}" href="${link('commands/')}"${currentAria('commands')} data-i18n="ecosystem.commands">Commands</a>
-          <a class="${currentClass('status').trim()}" href="${link('status.html')}"${currentAria('status')} data-i18n="ecosystem.status">Status</a>
-          <a class="${currentClass('premium').trim()}" href="${link('premium#plans')}"${currentAria('premium')} data-i18n="nav.premium">Premium</a>
+          <a class="${currentClass('status').trim()}" href="${link('status')}"${currentAria('status')} data-i18n="ecosystem.status">Status</a>
+          <a class="${currentClass('premium').trim()}" href="${link('premium')}"${currentAria('premium')} data-i18n="nav.premium">Premium</a>
         </nav>
         <div class="nav__actions">
           <a class="nav__gh" href="https://github.com/Rexy40407/vozen" target="_blank" rel="noopener" aria-label="Vozen on GitHub (open source)" data-i18n-aria-label="common.githubLabel" title="Open source on GitHub" data-i18n-title="common.githubTitle">${githubIcon}</a>

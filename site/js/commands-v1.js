@@ -182,8 +182,8 @@
       steps: [["/setup", "Configure the server once"], ["/join", "Join your current voice channel"], ["/tts", "Say something out loud"]],
       action: "Add Vozen TTS to Discord",
       href: typeof window.vozenTtsInstallHref === "function"
-        ? (window.vozenTtsInstallHref("commands") || "/dashboard.html?add=1")
-        : "/dashboard.html?add=1",
+        ? (window.vozenTtsInstallHref("commands") || "/dashboard?add=1")
+        : "/dashboard?add=1",
       external: false,
     },
     music: {

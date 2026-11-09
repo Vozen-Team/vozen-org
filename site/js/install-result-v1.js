@@ -19,7 +19,7 @@
   var installed = query.get("installed");
 
   if (!allowedOutcomes.has(outcome) || installed !== expectedFlags[outcome]) {
-    window.location.replace("/dashboard.html");
+    window.location.replace("/dashboard");
     return;
   }
 
