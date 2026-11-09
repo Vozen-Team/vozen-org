@@ -48,8 +48,8 @@ test('clean page URLs serve HTML and old URLs redirect without losing their quer
   assert.match(await (await fetch(origin + '/dashboard')).text(), /data-i18n-document-title="dashboard.documentTitle"/);
   assert.match(await (await fetch(origin + '/dashboard/')).text(), /Vozen TTS installation/);
   const home = await (await fetch(origin)).text();
-  assert.match(home, /href="\/status"[^>]*data-i18n="ecosystem.status"/);
-  assert.match(home, /href="\/premium"[^>]*data-i18n="nav.premium"/);
+  assert.match(home, /href="\/?status"[^>]*data-i18n="ecosystem.status"/);
+  assert.match(home, /href="\/?premium"[^>]*data-i18n="nav.premium"/);
 });
 
 test('preview shutdown closes unfinished browser connections', async (t) => {
