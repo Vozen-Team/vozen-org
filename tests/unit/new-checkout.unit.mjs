@@ -44,15 +44,16 @@ test('Premium selection announces billing totals and keeps seat selection indepe
   assert.equal(note.textContent, 'Showing monthly prices.');
 });
 
-test('paid plans use the shared checkout and product pages link to it', () => {
-  assert.match(script, /const PAYMENTS_ENABLED = true;/);
+test('paid plans cannot start checkout while product pages still link to their prices', () => {
+  assert.match(script, /const PAYMENTS_ENABLED = false;/);
   const premium = documentNodes('site/premium.html');
   const paidButtons = premium.filter(node => node.tagName === 'button' && attrs(node)['data-billing-plan']);
   assert.deepEqual(paidButtons.map(node => attrs(node)['data-billing-plan']), ['plus', 'premium']);
   for (const button of paidButtons) {
-    assert.equal(attrs(button).disabled, undefined);
-    assert.equal(attrs(button)['data-i18n'], 'price.checkout');
+    assert.equal(attrs(button).disabled, '');
+    assert.equal(attrs(button)['aria-describedby'], 'paymentsNotice');
   }
+  assert.ok(premium.some(node => attrs(node).id === 'paymentsNotice' && attrs(node)['data-i18n'] === 'price.paused'));
   for (const file of ['site/tts.html', 'site/helper.html', 'site/tts/index.html', 'site/helper/index.html']) {
     const nodes = documentNodes(file);
     const links = nodes.filter(node => node.tagName === 'a' && attrs(node).href === '/premium#plans');

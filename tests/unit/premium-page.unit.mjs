@@ -46,5 +46,6 @@ test('Premium uses one price row, correct product scopes and shared checkout',()
   assert.deepEqual(matrix.get('Ticket transcript history'),['Standard','Standard','Extended']);
   const checkout=nodes.filter(node=>attrs(node)['data-billing-plan']);
   assert.equal(checkout.length,2);
-  assert.doesNotMatch(html,/paymentsNotice|data-buy|Google HD|Most popular/);
+  assert.ok(checkout.every(node=>attrs(node).disabled === ''));
+  assert.doesNotMatch(html,/data-buy|Google HD|Most popular/);
 });

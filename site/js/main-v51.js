@@ -53,7 +53,7 @@
   const IS_ACCOUNT = document.body.classList.contains("page-account");
   const IS_PREMIUM = document.body.classList.contains("page-premium");
   // Purchases and paid plan changes stay paused; existing billing management remains available.
-  const PAYMENTS_ENABLED = true;
+  const PAYMENTS_ENABLED = false;
   const PREMIUM_PLANS_URL = "/premium#plans";
   // Deterministic fixture for local visual QA. The hostname gate keeps this branch unreachable on
   // vozen.org; it exists so the authenticated layout can be reviewed without copying a real token
@@ -671,10 +671,7 @@
 
   const billingInterval = () => pricingGrid?.classList.contains("is-annual") ? "yearly" : "monthly";
   $$('[data-billing-plan]').forEach((button) => {
-    if (!PAYMENTS_ENABLED) {
-      button.disabled = true;
-      button.dataset.i18n = "price.paused";
-    }
+    if (!PAYMENTS_ENABLED) button.disabled = true;
     const preserveScrollBeforeFocus = (event) => {
       if (event.type === "keydown" && !["Enter", " "].includes(event.key)) return;
       billingPendingScrollY = window.scrollY;
