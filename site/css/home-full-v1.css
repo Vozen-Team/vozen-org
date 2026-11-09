@@ -3001,6 +3001,9 @@ html:has(.helper-page) {
   pointer-events: none;
 }
 
+.helper-task-field:not(.is-positioned) { visibility: hidden; }
+.helper-task[hidden] { display: none; }
+
 .helper-hero__copy,
 .helper-console {
   position: relative;
