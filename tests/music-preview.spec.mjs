@@ -202,7 +202,7 @@ test('all three bots appear in one Premium bundle across product pages', async (
       }
     }
     if (path === '/premium.html') {
-      for (const plan of ['plus', 'premium']) await expect(page.locator(`[data-billing-plan="${plan}"]`)).toBeEnabled();
+      for (const plan of ['plus', 'premium']) await expect(page.locator(`[data-billing-plan="${plan}"]`)).toBeDisabled();
     }
   }
 });
@@ -335,14 +335,11 @@ test('approved monthly and yearly prices agree across product and checkout pages
       }
     }
     if (route === '/premium.html') {
+      await expect(page.locator('#paymentsNotice')).toBeVisible();
       for (const plan of ['plus', 'premium']) {
         const buy = page.locator(`[data-billing-plan="${plan}"]`);
-        await buy.click();
-        const dialog = page.getByRole('dialog', { name: plan === 'plus' ? 'Vozen Plus' : 'Vozen Premium' });
-        await expect(dialog).toBeVisible();
-        await expect(dialog.locator('#vozenBillingLogin')).toBeVisible();
-        await dialog.locator('#vozenBillingClose').click();
-        await expect(buy).toBeEnabled();
+        await expect(buy).toBeDisabled();
+        await expect(buy).toHaveAttribute('aria-describedby', 'paymentsNotice');
       }
     } else {
       await expect(page.locator('.plan-preview [data-buy], .plan-preview [data-billing-plan]')).toHaveCount(0);
