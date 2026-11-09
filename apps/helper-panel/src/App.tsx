@@ -165,10 +165,10 @@ function configForSchema(
 }
 
 const pages = [
-  { id: 'overview', label: 'Dashboard', icon: '⌂', hint: 'Overview' },
-  { id: 'quick-setup', label: 'Quick Setup', icon: '✧', hint: 'Guided setup' },
-  { id: 'features', label: 'Features', icon: '✦', hint: 'Configure modules' },
-  { id: 'activity', label: 'Activity', icon: '◷', hint: 'Server history' },
+  { id: 'overview', label: 'Dashboard', icon: 'M3 3h7v7H3z M14 3h7v7h-7z M3 14h7v7H3z M14 14h7v7h-7z' },
+  { id: 'quick-setup', label: 'Quick Setup', icon: 'M3 7h6m4 0h8M9 4v6M3 17h12m4 0h2m-6-3v6' },
+  { id: 'features', label: 'Features', icon: 'M12 2v4m0 12v4M2 12h4m12 0h4M12 6a6 6 0 0 0 6 6 6 6 0 0 0-6 6 6 6 0 0 0-6-6 6 6 0 0 0 6-6Z' },
+  { id: 'activity', label: 'Activity', icon: 'M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z' },
 ] as const;
 const helperPageCopy: Record<string, [string, string]> = {
   overview: ['dashboard.overview', 'Overview'],
@@ -179,9 +179,6 @@ const helperPageCopy: Record<string, [string, string]> = {
 };
 function helperPageLabel(id: string, fallback: string): string {
   return helperText(helperPageCopy[id]?.[1] ?? fallback);
-}
-function helperPageHint(_id: string, fallback: string): string {
-  return helperText(fallback);
 }
 // Discord only accepts OAuth callback URLs registered on the Helper
 // application. The API owns that callback, validates the installation and
@@ -3126,30 +3123,18 @@ function App() {
           <p className="workspace-sidebar__hint">{helperText('Changes are isolated to this server.')}</p>
         </div>
         <nav className="panel-nav workspace-sidebar__nav" aria-label={helperText('Main navigation')}>
-          {pages.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              className={
-                route.page === item.id || (item.id === 'features' && route.page === 'detail')
-                  ? 'nav active'
-                  : 'nav'
-              }
-              aria-current={
-                route.page === item.id || (item.id === 'features' && route.page === 'detail')
-                  ? 'page'
-                  : undefined
-              }
-              onClick={() => navigate(item.id === 'overview' ? '#/' : `#/${item.id}`)}
-            >
-              <span>{item.icon}</span>
-              <div>
-                <b>{helperPageLabel(item.id, item.label)}</b>
-                <small>{helperPageHint(item.id, item.hint)}</small>
-              </div>
-            </button>
-          ))}
-          <button ref={sectionsTrigger} type="button" className="settings-sections-button" aria-expanded={sectionsOpen} aria-label="Sections" onClick={()=>setSectionsOpen(!sectionsOpen)}>Sections ▾</button>
+          {pages.map((item) => {
+            const active = route.page === item.id || (item.id === 'features' && route.page === 'detail');
+            return <button key={item.id} type="button" data-helper-view={item.id}
+              className={active ? 'nav active' : 'nav'} aria-current={active ? 'page' : undefined}
+              onClick={() => navigate(item.id === 'overview' ? '#/' : `#/${item.id}`)}>
+              <span className="workspace-sidebar__nav-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d={item.icon} /></svg>
+              </span>
+              <b>{helperPageLabel(item.id, item.label)}</b>
+            </button>;
+          })}
+          <button ref={sectionsTrigger} type="button" className="settings-sections-button" aria-expanded={sectionsOpen} aria-label={helperText('Sections')} onClick={()=>setSectionsOpen(!sectionsOpen)}>{helperText('Sections')} ▾</button>
         </nav>
         <div className="workspace-sidebar__footer">
           <a className="panel-account-link workspace-exit" href="/account/">
