@@ -1,0 +1,32 @@
+.workspace-shell--helper .panel-main .helper-bot-profile {
+  margin-block-start: 20px;
+  min-width: 0;
+}
+.workspace-shell--helper .panel-main .helper-bot-profile h2 {
+  margin: 0;
+  font-size: 20px;
+}
+.workspace-shell.workspace-shell--helper .panel-main .helper-bot-profile .tts-profile-name input {
+  border-color: transparent;
+  background: transparent;
+  font-size: clamp(20px, 3vw, 24px);
+  font-weight: 650;
+}
+.workspace-shell.workspace-shell--helper .panel-main .helper-bot-profile .tts-profile-name input:hover {
+  border-color: var(--workspace-border);
+}
+.workspace-shell--helper .helper-bot-profile .tts-profile-actions button[type="submit"] {
+  background: #783ff1;
+  border-color: transparent;
+  color: white;
+}
+.workspace-shell--helper .helper-bot-profile .tts-profile-actions button[type="submit"]:hover:not(:disabled) {
+  background: #6a32dc;
+}
+.workspace-shell--helper .helper-bot-profile :focus-visible {
+  outline: 2px solid #c6abff;
+  outline-offset: 2px;
+}
+.workspace-shell--helper .helper-bot-profile .tts-profile-name input:focus-visible {
+  outline-offset: 0;
+}

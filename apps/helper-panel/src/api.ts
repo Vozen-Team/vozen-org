@@ -570,7 +570,25 @@ async function meOrBootstrap(options?: ReadOptions): Promise<Me> {
   }
 }
 
+export type BotProfileState = {
+  guildId: string;
+  nick: string;
+  avatarUrl: string | null;
+  bannerUrl: string | null;
+  customAvatar: boolean;
+  customBanner: boolean;
+  canEditImages: boolean;
+};
+
+export type BotProfileChanges = Partial<Record<'nick' | 'avatar' | 'banner', string | null>>;
+
 export const api = {
+  botProfile: (guildId: string, options?: ReadOptions) =>
+    request<BotProfileState>(`/api/guilds/${encodeURIComponent(guildId)}/bot-profile`, options),
+  updateBotProfile: (guildId: string, fields: BotProfileChanges) =>
+    request<BotProfileState>(`/api/guilds/${encodeURIComponent(guildId)}/bot-profile`, {
+      method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(fields),
+    }),
   createTempCategory: (guildId:string,name:string) => request<{guildId:string;channel:{id:string;name:string;type:number};reused:boolean;creatorChannel?:{id:string;name:string;type:number;parentId:string;guildId:string}|null;creatorError?:string}>('/api/temp-channels/category',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,guildId})}),
   createShopChannel: (guildId:string,name:string) => request<{guildId:string;channel:{id:string;name:string;type:number};reused:boolean}>(`/api/economy/channel?guildId=${encodeURIComponent(guildId)}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name})}),
   shopNotifications: (guildId:string,channelId:string) => request<{ok:boolean}>(`/api/economy/notifications?guildId=${encodeURIComponent(guildId)}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({channelId})}),

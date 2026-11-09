@@ -9,12 +9,13 @@ try {
     const page=await browser.newPage({viewport:{width:locale.includes('mobile')?390:1440,height:900}});
     await page.addInitScript(lang=>localStorage.setItem('vozen.lang',lang),language);
     let writes=0,caseReads=0,mode='normal',guild='a';
+    let profileNick='',profileWrites=0;
     const features=[{key:'protection.antispam',label:'Anti-spam',category:'protection',enabled:true,available:true},{key:'support.welcome',label:'Welcome',category:'management',enabled:false,available:true},{key:'community.levels',label:'Levels & XP',category:'community',enabled:false,available:false}];
     await page.route('**/api/**',async route=>{
       const url=new URL(route.request().url());
       const path=url.pathname.replace(/^.*?(?=\/api\/)/,'');
       let value={};
-      if(route.request().method()!=='GET'&&path!=='/api/session/switch') writes++;
+      if(route.request().method()!=='GET'&&path!=='/api/session/switch'&&!path.endsWith('/bot-profile')) writes++;
       if(path==='/api/me') value={id:'qa-owner',guildId:guild,dbOk:true};
       else if(path==='/api/guilds') value={guilds:[{id:'a',name:'Alpha community',canManage:true},{id:'b',name:'Beta '+('long name '.repeat(12)),canManage:true}]};
       else if(path==='/api/session/switch') {guild=route.request().postDataJSON().guild_id;value={ok:true,guildId:guild};}
@@ -29,6 +30,14 @@ try {
         value={guildId:guild,nextCursor:null,events:kinds.map((kind,index)=>({
           id:`activity:${index+1}`,source:'activity',kind,user_id:'123',detail:'{}',outcome:'recorded',created_at:10,helper:kind.startsWith('helper_'),
         }))};
+      }
+      else if(path===`/api/guilds/${guild}/bot-profile` && mode!=='empty') {
+        if(route.request().method()==='PUT') {
+          assert.deepEqual(route.request().postDataJSON(),{nick:'Helper QA'});
+          profileNick='Helper QA';
+          profileWrites++;
+        }
+        value={guildId:guild,nick:guild==='a'?profileNick:'',avatarUrl:null,bannerUrl:null,customAvatar:false,customBanner:false,canEditImages:guild==='a'};
       }
       else if(path==='/api/cases') {caseReads++;value={cases:[]};}
       else if(path==='/api/quotas') value={plan:'Premium',limits:{workflows:25,templates:100,role_panels:10},usage:{workflows:4,templates:2,role_panels:1}};
@@ -83,14 +92,26 @@ try {
         ['.vozen-overview__row:nth-of-type(4)','/panel/rank/'],
         ['.vozen-overview__features','/panel/features/'],
         ['.vozen-overview__activity','/panel/activity/'],
+        ['.vozen-overview__profile','/panel/bot-profile/'],
       ]) {
         await overview.locator(control).click();
         await page.waitForURL(url=>url.pathname===path&&!url.hash);
+        if(path==='/panel/bot-profile/') {
+          await page.locator('#helperProfileNick').waitFor();
+          assert.equal(await page.locator('[data-helper-view="bot-profile"]').getAttribute('aria-current'),'page');
+          assert.equal(await page.locator('.helper-bot-profile [data-image]').count(),2);
+          await page.locator('#helperProfileNick').fill('Helper QA');
+          await page.locator('.helper-bot-profile button[type=submit]').click();
+          await page.waitForFunction(()=>document.querySelector('.helper-bot-profile button[type=submit]').disabled
+            && !document.querySelector('#helperProfileNick').disabled);
+          assert.equal(profileWrites,1);
+        }
         await page.goto(base+'#/');await overview.waitFor();
       }
       await page.locator('select[aria-label="Current server"]').selectOption('b');
       await overview.locator('.vozen-overview__server-name').filter({hasText:'Beta'}).waitFor();
       await activityNumbers.first().getByText('0',{exact:true}).waitFor();
+      assert.doesNotMatch(await overview.locator('.vozen-overview__profile').innerText(),/Helper QA/);
       assert.deepEqual(await activityNumbers.allTextContents(),['0','0']);
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'long guild name wraps');
       mode='empty';await page.reload();await overview.waitFor();

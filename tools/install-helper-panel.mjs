@@ -36,7 +36,7 @@ console.log('Installed Helper panel into site/panel/helper-tracker/.');
 
 // Real static entry documents make clean deep links and reloads work on GitHub Pages.
 const featurePaths = JSON.parse(await readFile(resolve(repositoryRoot, 'apps/helper-panel/src/panel-paths.json'), 'utf8'));
-const slugs = ['', 'servers', 'setup', 'features', 'activity', 'collection', ...Object.values(featurePaths)];
+const slugs = ['', 'servers', 'setup', 'features', 'activity', 'bot-profile', 'collection', ...Object.values(featurePaths)];
 for (const slug of new Set(slugs)) {
   if (slug !== '' && !/^[a-z][a-z0-9-]*$/.test(slug)) throw new Error('Invalid panel route');
   const target = resolve(repositoryRoot, 'site/panel', slug, 'index.html');

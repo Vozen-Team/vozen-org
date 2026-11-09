@@ -1,6 +1,6 @@
 import features from './panel-paths.json';
 
-const pages: Record<string, string> = { '#/': '', '#/servers': 'servers', '#/quick-setup': 'setup', '#/features': 'features', '#/activity': 'activity' };
+const pages: Record<string, string> = { '#/': '', '#/servers': 'servers', '#/quick-setup': 'setup', '#/features': 'features', '#/activity': 'activity', '#/bot-profile': 'bot-profile' };
 const featurePaths: Record<string, string> = features;
 const profileTokens = new Map<string, string>();
 export const PANEL_ROUTE_EVENT = 'vozen:routechange';

@@ -297,6 +297,11 @@ body:has(.workspace-standalone--helper-picker) #root,
   --nav-tint: #e995ca;
   --nav-icon-motion: rotate(14deg);
 }
+.workspace-shell--helper .panel-nav .nav[data-helper-view="bot-profile"] {
+  --nav-accent: #ffe2b2;
+  --nav-tint: #f0bd73;
+  --nav-icon-motion: scale(1.13) rotate(-6deg);
+}
 
 .workspace-shell--helper .panel-nav .nav:dir(rtl) {
   --nav-arrow-turn: -45deg;
