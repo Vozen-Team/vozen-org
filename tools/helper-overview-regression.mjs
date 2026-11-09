@@ -70,7 +70,8 @@ try {
       await page.waitForFunction(tab=>getComputedStyle(tab,'::after').opacity==='1'
         && getComputedStyle(tab.querySelector('svg')).transform!=='none',await featuresTab.elementHandle());
       await page.emulateMedia({reducedMotion:'reduce'});
-      assert.equal(await featuresTab.locator('svg').evaluate(icon=>getComputedStyle(icon).transform),'none');
+      await page.waitForFunction(icon=>matchMedia('(prefers-reduced-motion: reduce)').matches
+        && getComputedStyle(icon).transform==='none',await featuresTab.locator('svg').elementHandle());
       await page.emulateMedia({reducedMotion:'no-preference'});
       await featuresTab.click();
       await page.waitForURL(url=>url.pathname==='/panel/features/');
