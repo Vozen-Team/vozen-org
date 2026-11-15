@@ -28,3 +28,15 @@ test('publication requires validation and explicitly enabled protected main depl
   const headers = await readFile('deploy/cloudflare/_headers', 'utf8');
   assert.match(headers, /https:\/\/:worker\.:account\.workers\.dev\/\*\s+X-Robots-Tag: noindex/);
 });
+
+test('origin headers carry the production CSP served by the local preview server', async () => {
+  const headers = await readFile('deploy/cloudflare/_headers', 'utf8');
+  const server = await readFile('tools/serve-site.mjs', 'utf8');
+  const expected = server.match(/const productionCsp = "([^"]+)";/)?.[1];
+  assert.ok(expected, 'tools/serve-site.mjs defines productionCsp');
+  const block = headers.split(/\r?\n\r?\n/).find((section) => section.startsWith('/*'));
+  const csp = block?.match(/^\s+Content-Security-Policy: (.+)$/m)?.[1].trim();
+  assert.equal(csp, expected);
+  assert.match(csp, /(?:^|; )frame-ancestors 'none'(?:;|$)/);
+  assert.match(csp, /(?:^|; )object-src 'none'(?:;|$)/);
+});

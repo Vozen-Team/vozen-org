@@ -356,6 +356,8 @@ const base =
   'https://api.vozen.org/rust';
 let sessionBearer: string | null = null;
 const OAUTH_RETURN_HASH_KEY = 'vh_oauth_return_hash';
+const OAUTH_PENDING_KEY = 'vh_oauth_pending';
+const OAUTH_PENDING_MAX_AGE_MS = 10 * 60_000;
 const VOZEN_ACCOUNT_TOKEN_KEY = 'vozen.ecosystem.dtoken';
 const AUTH_CHANNEL_NAME = 'vozen.ecosystem.auth.v1';
 const SESSION_BRIDGE_TIMEOUT_MS = 6_000;
@@ -417,9 +419,37 @@ try {
 } catch {
   /* optional */
 }
+// The legacy `#session=` transport is only trusted when this tab started the
+// OAuth flow itself (login CSRF guard). The marker is single-use: it is
+// consumed on the first page load after startOAuth, whatever the outcome.
+function consumeOAuthPending(): boolean {
+  let raw: string | null = null;
+  try {
+    raw = sessionStorage.getItem(OAUTH_PENDING_KEY);
+    sessionStorage.removeItem(OAUTH_PENDING_KEY);
+    sessionStorage.removeItem('vh_oauth_verifier');
+  } catch {
+    return false;
+  }
+  if (!raw) return false;
+  try {
+    const pending = JSON.parse(raw) as { state?: unknown; createdAt?: unknown };
+    const age = Date.now() - Number(pending.createdAt);
+    return (
+      typeof pending.state === 'string' &&
+      pending.state.length > 0 &&
+      age >= 0 &&
+      age <= OAUTH_PENDING_MAX_AGE_MS
+    );
+  } catch {
+    return false;
+  }
+}
+
+const oauthPending = consumeOAuthPending();
 const oauthSession = window.location.hash.match(/^#session=([A-Za-z0-9._~-]{32,4096})$/)?.[1];
-if (oauthSession) {
-  persistSessionBearer(oauthSession);
+if (window.location.hash.startsWith('#session=')) {
+  if (oauthSession && oauthPending) persistSessionBearer(oauthSession);
   window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}#/`);
 }
 
@@ -1172,19 +1202,16 @@ export const api = {
   startOAuth: async (guildId = '') => {
     persistSessionBearer(null);
     rememberOAuthReturnHash();
+    // The Helper API requires the verifier at start and keeps it server-side,
+    // bound to the signed state; the browser never needs it again.
     const verifier =
       crypto.randomUUID().replaceAll('-', '') + crypto.randomUUID().replaceAll('-', '');
-    try {
-      sessionStorage.setItem('vh_oauth_verifier', verifier);
-    } catch {
-      /* optional storage */
-    }
     const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier));
     const challenge = btoa(String.fromCharCode(...new Uint8Array(digest)))
       .replaceAll('+', '-')
       .replaceAll('/', '_')
       .replaceAll('=', '');
-    const result = await request<{ authorization_url: string }>('/api/oauth/start', {
+    const result = await request<{ authorization_url: string; state?: string }>('/api/oauth/start', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -1193,6 +1220,13 @@ export const api = {
         code_verifier: verifier,
       }),
     });
+    const state =
+      result.state ?? new URL(result.authorization_url).searchParams.get('state') ?? '';
+    try {
+      sessionStorage.setItem(OAUTH_PENDING_KEY, JSON.stringify({ state, createdAt: Date.now() }));
+    } catch {
+      /* without storage the legacy fragment session is refused */
+    }
     window.location.assign(result.authorization_url);
   },
 };
