@@ -1,0 +1,289 @@
+{
+  "key": "social.rss",
+  "tabs": [
+    {
+      "title": "tabSource",
+      "intro": "sourceIntro",
+      "groups": [
+        {
+          "title": "groupSource",
+          "keys": [
+            "feedUrl",
+            "intervalSeconds"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabPost",
+      "intro": "postIntro",
+      "groups": [
+        {
+          "title": "groupDelivery",
+          "keys": [
+            "targetChannelId"
+          ]
+        },
+        {
+          "title": "groupMessage",
+          "hint": "messageHint",
+          "keys": [
+            "messageTemplate",
+            "mention"
+          ]
+        }
+      ]
+    }
+  ],
+  "fields": {
+    "messageTemplate": {
+      "help": "templateHelp"
+    }
+  },
+  "demo": {
+    "stages": [
+      {
+        "label": "stageNew",
+        "channel": "# news",
+        "messages": [
+          {
+            "bot": true,
+            "text": "alert",
+            "card": {
+              "title": "cardTitle",
+              "body": "cardBody",
+              "footer": "feedName"
+            },
+            "note": "sentOnce"
+          }
+        ]
+      },
+      {
+        "label": "stageRead",
+        "channel": "# news",
+        "messages": [
+          {
+            "author": "Mia",
+            "note": "opened"
+          },
+          {
+            "author": "Rexy",
+            "text": "reply"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabPost": "Post",
+      "postIntro": "Choose where alerts go and what they say.",
+      "groupDelivery": "Where to post",
+      "groupMessage": "Message",
+      "messageHint": "The mention is added to every alert.",
+      "safety": "Example only. Nothing is checked and no messages are sent to Discord.",
+      "tabSource": "Feed",
+      "sourceIntro": "Helper checks a public RSS or Atom feed and posts each new item once.",
+      "groupSource": "Feed and checks",
+      "stageNew": "New item",
+      "stageRead": "Members read",
+      "alert": "@News New update from Vozen Blog: Helper 2.0 is out",
+      "cardTitle": "Helper 2.0 is out",
+      "cardBody": "What changed and how to update your server.",
+      "feedName": "Vozen Blog",
+      "sentOnce": "Each item is posted once. Repeats are skipped.",
+      "opened": "Opened the link",
+      "reply": "Nice, reading it now.",
+      "templateHelp": "Variables: {feed}, {title}, {url}, {published_at}."
+    },
+    "pt": {
+      "tabPost": "Publicação",
+      "postIntro": "Escolhe onde os alertas são publicados e o que dizem.",
+      "groupDelivery": "Onde publicar",
+      "groupMessage": "Mensagem",
+      "messageHint": "A menção é adicionada a cada alerta.",
+      "safety": "Apenas um exemplo. Nada é verificado e nenhuma mensagem é enviada para o Discord.",
+      "tabSource": "Feed",
+      "sourceIntro": "O Helper verifica um feed RSS ou Atom público e publica cada novo item uma única vez.",
+      "groupSource": "Feed e verificações",
+      "stageNew": "Novo item",
+      "stageRead": "Os membros leem",
+      "alert": "@News Nova atualização de Vozen Blog: o Helper 2.0 já saiu",
+      "cardTitle": "O Helper 2.0 já saiu",
+      "cardBody": "O que mudou e como atualizar o teu servidor.",
+      "feedName": "Vozen Blog",
+      "sentOnce": "Cada item é publicado uma vez. As repetições são ignoradas.",
+      "opened": "Abriu a ligação",
+      "reply": "Boa, vou ler já.",
+      "templateHelp": "Variáveis: {feed}, {title}, {url}, {published_at}."
+    },
+    "fr": {
+      "tabPost": "Publication",
+      "postIntro": "Choisissez où les alertes sont publiées et ce qu'elles disent.",
+      "groupDelivery": "Où publier",
+      "groupMessage": "Message",
+      "messageHint": "La mention est ajoutée à chaque alerte.",
+      "safety": "Exemple uniquement. Rien n'est vérifié et aucun message n'est envoyé sur Discord.",
+      "tabSource": "Flux",
+      "sourceIntro": "Helper vérifie un flux RSS ou Atom public et publie chaque nouvel élément une seule fois.",
+      "groupSource": "Flux et vérifications",
+      "stageNew": "Nouvel élément",
+      "stageRead": "Les membres lisent",
+      "alert": "@News Nouvelle mise à jour de Vozen Blog : Helper 2.0 est disponible",
+      "cardTitle": "Helper 2.0 est disponible",
+      "cardBody": "Ce qui change et comment mettre à jour votre serveur.",
+      "feedName": "Vozen Blog",
+      "sentOnce": "Chaque élément est publié une fois. Les doublons sont ignorés.",
+      "opened": "A ouvert le lien",
+      "reply": "Super, je le lis maintenant.",
+      "templateHelp": "Variables : {feed}, {title}, {url}, {published_at}."
+    },
+    "es": {
+      "tabPost": "Publicación",
+      "postIntro": "Elige dónde se publican las alertas y qué dicen.",
+      "groupDelivery": "Dónde publicar",
+      "groupMessage": "Mensaje",
+      "messageHint": "La mención se añade a cada alerta.",
+      "safety": "Solo es un ejemplo. No se comprueba nada ni se envían mensajes a Discord.",
+      "tabSource": "Feed",
+      "sourceIntro": "Helper revisa un feed RSS o Atom público y publica cada elemento nuevo una sola vez.",
+      "groupSource": "Feed y comprobaciones",
+      "stageNew": "Nuevo elemento",
+      "stageRead": "Los miembros leen",
+      "alert": "@News Nueva actualización de Vozen Blog: ya está aquí Helper 2.0",
+      "cardTitle": "Ya está aquí Helper 2.0",
+      "cardBody": "Qué ha cambiado y cómo actualizar tu servidor.",
+      "feedName": "Vozen Blog",
+      "sentOnce": "Cada elemento se publica una vez. Los repetidos se omiten.",
+      "opened": "Abrió el enlace",
+      "reply": "Genial, lo leo ahora.",
+      "templateHelp": "Variables: {feed}, {title}, {url}, {published_at}."
+    },
+    "de": {
+      "tabPost": "Beitrag",
+      "postIntro": "Wähle, wo Benachrichtigungen erscheinen und was darin steht.",
+      "groupDelivery": "Wo posten",
+      "groupMessage": "Nachricht",
+      "messageHint": "Die Erwähnung wird jeder Benachrichtigung hinzugefügt.",
+      "safety": "Nur ein Beispiel. Es wird nichts geprüft und keine Nachricht an Discord gesendet.",
+      "tabSource": "Feed",
+      "sourceIntro": "Helper prüft einen öffentlichen RSS- oder Atom-Feed und postet jeden neuen Eintrag genau einmal.",
+      "groupSource": "Feed und Prüfungen",
+      "stageNew": "Neuer Eintrag",
+      "stageRead": "Mitglieder lesen",
+      "alert": "@News Neues Update von Vozen Blog: Helper 2.0 ist da",
+      "cardTitle": "Helper 2.0 ist da",
+      "cardBody": "Was sich geändert hat und wie du deinen Server aktualisierst.",
+      "feedName": "Vozen Blog",
+      "sentOnce": "Jeder Eintrag wird einmal gepostet. Wiederholungen werden übersprungen.",
+      "opened": "Hat den Link geöffnet",
+      "reply": "Super, lese ich gleich.",
+      "templateHelp": "Variablen: {feed}, {title}, {url}, {published_at}."
+    },
+    "tr": {
+      "tabPost": "Gönderi",
+      "postIntro": "Uyarıların nerede paylaşılacağını ve ne yazacağını seçin.",
+      "groupDelivery": "Nerede paylaşılacak",
+      "groupMessage": "Mesaj",
+      "messageHint": "Bahsetme her uyarıya eklenir.",
+      "safety": "Yalnızca örnek. Hiçbir şey kontrol edilmez ve Discord'a mesaj gönderilmez.",
+      "tabSource": "Akış",
+      "sourceIntro": "Helper herkese açık bir RSS veya Atom akışını kontrol eder ve her yeni öğeyi bir kez paylaşır.",
+      "groupSource": "Akış ve kontroller",
+      "stageNew": "Yeni öğe",
+      "stageRead": "Üyeler okur",
+      "alert": "@News Vozen Blog'dan yeni güncelleme: Helper 2.0 yayında",
+      "cardTitle": "Helper 2.0 yayında",
+      "cardBody": "Neler değişti ve sunucunuzu nasıl güncellersiniz.",
+      "feedName": "Vozen Blog",
+      "sentOnce": "Her öğe bir kez paylaşılır. Tekrarlar atlanır.",
+      "opened": "Bağlantıyı açtı",
+      "reply": "Harika, hemen okuyorum.",
+      "templateHelp": "Değişkenler: {feed}, {title}, {url}, {published_at}."
+    },
+    "ar": {
+      "tabPost": "النشر",
+      "postIntro": "اختر مكان نشر التنبيهات وما تقوله.",
+      "groupDelivery": "مكان النشر",
+      "groupMessage": "الرسالة",
+      "messageHint": "تُضاف الإشارة إلى كل تنبيه.",
+      "safety": "مثال فقط. لا يُفحص أي شيء ولا تُرسل أي رسائل إلى Discord.",
+      "tabSource": "الخلاصة",
+      "sourceIntro": "يفحص Helper خلاصة RSS أو Atom عامة وينشر كل عنصر جديد مرة واحدة.",
+      "groupSource": "الخلاصة والفحص",
+      "stageNew": "عنصر جديد",
+      "stageRead": "الأعضاء يقرؤون",
+      "alert": "@News تحديث جديد من Vozen Blog: صدر Helper 2.0",
+      "cardTitle": "صدر Helper 2.0",
+      "cardBody": "ما الذي تغيّر وكيف تحدّث خادمك.",
+      "feedName": "Vozen Blog",
+      "sentOnce": "يُنشر كل عنصر مرة واحدة، ويُتجاهل التكرار.",
+      "opened": "فتحت الرابط",
+      "reply": "رائع، سأقرأه الآن.",
+      "templateHelp": "المتغيرات: {feed}, {title}, {url}, {published_at}."
+    },
+    "zh": {
+      "tabPost": "發布",
+      "postIntro": "選擇通知要發布的位置與內容。",
+      "groupDelivery": "發布位置",
+      "groupMessage": "訊息",
+      "messageHint": "每則通知都會附上此提及。",
+      "safety": "僅為範例。不會進行任何檢查，也不會向 Discord 傳送訊息。",
+      "tabSource": "訂閱來源",
+      "sourceIntro": "Helper 會檢查公開的 RSS 或 Atom 訂閱來源，每個新項目只發布一次。",
+      "groupSource": "訂閱來源與檢查",
+      "stageNew": "新項目",
+      "stageRead": "成員閱讀",
+      "alert": "@News 來自 Vozen Blog 的新內容：Helper 2.0 已發布",
+      "cardTitle": "Helper 2.0 已發布",
+      "cardBody": "更新內容，以及如何更新你的伺服器。",
+      "feedName": "Vozen Blog",
+      "sentOnce": "每個項目只發布一次，重複內容會略過。",
+      "opened": "開啟了連結",
+      "reply": "不錯，馬上來看。",
+      "templateHelp": "變數：{feed}、{title}、{url}、{published_at}。"
+    },
+    "ru": {
+      "tabPost": "Публикация",
+      "postIntro": "Выберите, куда отправлять оповещения и что в них писать.",
+      "groupDelivery": "Куда публиковать",
+      "groupMessage": "Сообщение",
+      "messageHint": "Упоминание добавляется к каждому оповещению.",
+      "safety": "Только пример. Ничего не проверяется, сообщения в Discord не отправляются.",
+      "tabSource": "Лента",
+      "sourceIntro": "Helper проверяет публичную ленту RSS или Atom и публикует каждую новую запись один раз.",
+      "groupSource": "Лента и проверки",
+      "stageNew": "Новая запись",
+      "stageRead": "Участники читают",
+      "alert": "@News Новое обновление от Vozen Blog: вышел Helper 2.0",
+      "cardTitle": "Вышел Helper 2.0",
+      "cardBody": "Что изменилось и как обновить сервер.",
+      "feedName": "Vozen Blog",
+      "sentOnce": "Каждая запись публикуется один раз. Повторы пропускаются.",
+      "opened": "Открыла ссылку",
+      "reply": "Отлично, сейчас прочитаю.",
+      "templateHelp": "Переменные: {feed}, {title}, {url}, {published_at}."
+    },
+    "ko": {
+      "tabPost": "게시",
+      "postIntro": "알림을 보낼 위치와 내용을 고르세요.",
+      "groupDelivery": "게시 위치",
+      "groupMessage": "메시지",
+      "messageHint": "모든 알림에 멘션이 추가됩니다.",
+      "safety": "예시일 뿐입니다. 아무것도 확인하지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "tabSource": "피드",
+      "sourceIntro": "Helper가 공개 RSS 또는 Atom 피드를 확인하고 새 항목을 한 번씩 게시합니다.",
+      "groupSource": "피드와 확인 주기",
+      "stageNew": "새 항목",
+      "stageRead": "멤버가 읽음",
+      "alert": "@News Vozen Blog의 새 업데이트: Helper 2.0 출시",
+      "cardTitle": "Helper 2.0 출시",
+      "cardBody": "변경 사항과 서버 업데이트 방법.",
+      "feedName": "Vozen Blog",
+      "sentOnce": "각 항목은 한 번만 게시됩니다. 중복은 건너뜁니다.",
+      "opened": "링크를 열었습니다",
+      "reply": "좋네요, 지금 읽어볼게요.",
+      "templateHelp": "변수: {feed}, {title}, {url}, {published_at}."
+    }
+  }
+}

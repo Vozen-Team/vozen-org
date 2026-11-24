@@ -1,0 +1,303 @@
+{
+  "key": "web3.gas_tracker",
+  "tabs": [
+    {
+      "title": "tabNetwork",
+      "intro": "networkIntro",
+      "commands": [
+        [
+          "/gas",
+          "commandGas"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupNetwork",
+          "hint": "networkHint",
+          "keys": [
+            "network"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabPosting",
+      "intro": "postingIntro",
+      "groups": [
+        {
+          "title": "groupChannel",
+          "hint": "channelHint",
+          "keys": [
+            "targetChannelId"
+          ]
+        },
+        {
+          "title": "groupSchedule",
+          "hint": "scheduleHint",
+          "keys": [
+            "intervalSeconds"
+          ]
+        },
+        {
+          "title": "groupMessage",
+          "hint": "messageHint",
+          "keys": [
+            "messageTemplate"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageUpdate",
+        "channel": "# gas",
+        "messages": [
+          {
+            "bot": true,
+            "text": "gasUpdate",
+            "note": "sampleNote"
+          }
+        ]
+      },
+      {
+        "label": "stageAsk",
+        "channel": "# gas",
+        "messages": [
+          {
+            "author": "Rexy",
+            "command": "/gas"
+          },
+          {
+            "bot": true,
+            "text": "gasReply",
+            "note": "betaNote"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabNetwork": "Network",
+      "networkIntro": "Helper reads gas prices from an approved RPC endpoint. This feature is in beta.",
+      "commandGas": "Shows a read-only gas price for the network below.",
+      "groupNetwork": "Network to track",
+      "networkHint": "Pick Ethereum, Polygon, Arbitrum or Base.",
+      "tabPosting": "Posting",
+      "postingIntro": "Choose where updates go, how often they post and what they say.",
+      "groupChannel": "Where it posts",
+      "channelHint": "Helper needs permission to send messages in this channel.",
+      "groupSchedule": "Schedule",
+      "scheduleHint": "From 300 seconds (5 minutes) to 86400 (1 day). 900 posts every 15 minutes.",
+      "groupMessage": "Message",
+      "messageHint": "{network}, {gasPriceGwei} and {blockNumber} are replaced with the reading.",
+      "safety": "Example only. Sample gas prices; no messages are sent to Discord.",
+      "stageUpdate": "Update",
+      "stageAsk": "Ask",
+      "gasUpdate": "Ethereum gas: 12 Gwei (block 21500000)",
+      "gasReply": "Ethereum gas: 14 Gwei (block 21500075)",
+      "sampleNote": "Sample values, not live data.",
+      "betaNote": "Beta feature. Sample values, not live data."
+    },
+    "pt": {
+      "tabNetwork": "Rede",
+      "networkIntro": "O Helper lê os preços de gas de um endpoint RPC aprovado. Esta funcionalidade está em beta.",
+      "commandGas": "Mostra o preço de gas, só de leitura, da rede abaixo.",
+      "groupNetwork": "Rede a acompanhar",
+      "networkHint": "Escolhe Ethereum, Polygon, Arbitrum ou Base.",
+      "tabPosting": "Publicação",
+      "postingIntro": "Escolhe onde as atualizações aparecem, com que frequência e o que dizem.",
+      "groupChannel": "Onde publica",
+      "channelHint": "O Helper precisa de permissão para enviar mensagens neste canal.",
+      "groupSchedule": "Frequência",
+      "scheduleHint": "De 300 segundos (5 minutos) a 86400 (1 dia). Com 900, publica a cada 15 minutos.",
+      "groupMessage": "Mensagem",
+      "messageHint": "{network}, {gasPriceGwei} e {blockNumber} são substituídos pela leitura.",
+      "safety": "Apenas um exemplo. Preços de gas fictícios; nenhuma mensagem é enviada para o Discord.",
+      "stageUpdate": "Atualização",
+      "stageAsk": "Consultar",
+      "gasUpdate": "Gas na Ethereum: 12 Gwei (bloco 21500000)",
+      "gasReply": "Gas na Ethereum: 14 Gwei (bloco 21500075)",
+      "sampleNote": "Valores de exemplo, não são dados em tempo real.",
+      "betaNote": "Funcionalidade em beta. Valores de exemplo, não são dados em tempo real."
+    },
+    "fr": {
+      "tabNetwork": "Réseau",
+      "networkIntro": "Helper lit les prix du gas depuis un point d'accès RPC approuvé. Cette fonctionnalité est en bêta.",
+      "commandGas": "Affiche le prix du gas, en lecture seule, du réseau ci-dessous.",
+      "groupNetwork": "Réseau suivi",
+      "networkHint": "Choisissez Ethereum, Polygon, Arbitrum ou Base.",
+      "tabPosting": "Publication",
+      "postingIntro": "Choisissez où vont les mises à jour, leur fréquence et leur contenu.",
+      "groupChannel": "Salon de publication",
+      "channelHint": "Helper doit pouvoir envoyer des messages dans ce salon.",
+      "groupSchedule": "Fréquence",
+      "scheduleHint": "De 300 secondes (5 minutes) à 86400 (1 jour). Avec 900, une publication toutes les 15 minutes.",
+      "groupMessage": "Message",
+      "messageHint": "{network}, {gasPriceGwei} et {blockNumber} sont remplacés par la mesure.",
+      "safety": "Exemple uniquement. Prix du gas fictifs ; aucun message n'est envoyé sur Discord.",
+      "stageUpdate": "Mise à jour",
+      "stageAsk": "Demande",
+      "gasUpdate": "Gas Ethereum : 12 Gwei (bloc 21500000)",
+      "gasReply": "Gas Ethereum : 14 Gwei (bloc 21500075)",
+      "sampleNote": "Valeurs d'exemple, pas des données en direct.",
+      "betaNote": "Fonctionnalité en bêta. Valeurs d'exemple, pas des données en direct."
+    },
+    "es": {
+      "tabNetwork": "Red",
+      "networkIntro": "Helper lee los precios de gas desde un endpoint RPC aprobado. Esta función está en beta.",
+      "commandGas": "Muestra el precio de gas, solo lectura, de la red de abajo.",
+      "groupNetwork": "Red que se sigue",
+      "networkHint": "Elige Ethereum, Polygon, Arbitrum o Base.",
+      "tabPosting": "Publicación",
+      "postingIntro": "Elige dónde se publican las actualizaciones, cada cuánto y qué dicen.",
+      "groupChannel": "Dónde publica",
+      "channelHint": "Helper necesita permiso para enviar mensajes en este canal.",
+      "groupSchedule": "Frecuencia",
+      "scheduleHint": "De 300 segundos (5 minutos) a 86400 (1 día). Con 900, publica cada 15 minutos.",
+      "groupMessage": "Mensaje",
+      "messageHint": "{network}, {gasPriceGwei} y {blockNumber} se sustituyen por la lectura.",
+      "safety": "Solo es un ejemplo. Precios de gas ficticios; no se envían mensajes a Discord.",
+      "stageUpdate": "Actualización",
+      "stageAsk": "Consulta",
+      "gasUpdate": "Gas de Ethereum: 12 Gwei (bloque 21500000)",
+      "gasReply": "Gas de Ethereum: 14 Gwei (bloque 21500075)",
+      "sampleNote": "Valores de ejemplo, no son datos en tiempo real.",
+      "betaNote": "Función en beta. Valores de ejemplo, no son datos en tiempo real."
+    },
+    "de": {
+      "tabNetwork": "Netzwerk",
+      "networkIntro": "Helper liest Gaspreise von einem freigegebenen RPC-Endpunkt. Diese Funktion ist in der Beta.",
+      "commandGas": "Zeigt den Gaspreis (nur lesend) für das Netzwerk unten.",
+      "groupNetwork": "Beobachtetes Netzwerk",
+      "networkHint": "Wähle Ethereum, Polygon, Arbitrum oder Base.",
+      "tabPosting": "Veröffentlichung",
+      "postingIntro": "Lege fest, wo Updates erscheinen, wie oft und mit welchem Text.",
+      "groupChannel": "Wo gepostet wird",
+      "channelHint": "Helper braucht die Berechtigung, in diesem Kanal Nachrichten zu senden.",
+      "groupSchedule": "Zeitplan",
+      "scheduleHint": "Von 300 Sekunden (5 Minuten) bis 86400 (1 Tag). Mit 900 wird alle 15 Minuten gepostet.",
+      "groupMessage": "Nachricht",
+      "messageHint": "{network}, {gasPriceGwei} und {blockNumber} werden durch den Messwert ersetzt.",
+      "safety": "Nur ein Beispiel. Fiktive Gaspreise; es wird keine Nachricht an Discord gesendet.",
+      "stageUpdate": "Update",
+      "stageAsk": "Abfrage",
+      "gasUpdate": "Ethereum-Gas: 12 Gwei (Block 21500000)",
+      "gasReply": "Ethereum-Gas: 14 Gwei (Block 21500075)",
+      "sampleNote": "Beispielwerte, keine Live-Daten.",
+      "betaNote": "Beta-Funktion. Beispielwerte, keine Live-Daten."
+    },
+    "tr": {
+      "tabNetwork": "Ağ",
+      "networkIntro": "Helper gas fiyatlarını onaylı bir RPC uç noktasından okur. Bu özellik beta aşamasındadır.",
+      "commandGas": "Aşağıdaki ağ için salt okunur gas fiyatını gösterir.",
+      "groupNetwork": "İzlenecek ağ",
+      "networkHint": "Ethereum, Polygon, Arbitrum veya Base'i seçin.",
+      "tabPosting": "Paylaşım",
+      "postingIntro": "Güncellemelerin nereye, ne sıklıkla ve hangi metinle paylaşılacağını seçin.",
+      "groupChannel": "Nereye paylaşılır",
+      "channelHint": "Helper'ın bu kanalda mesaj gönderme izni olmalı.",
+      "groupSchedule": "Zamanlama",
+      "scheduleHint": "300 saniye (5 dakika) ile 86400 (1 gün) arası. 900 ile her 15 dakikada bir paylaşır.",
+      "groupMessage": "Mesaj",
+      "messageHint": "{network}, {gasPriceGwei} ve {blockNumber} okunan değerle değiştirilir.",
+      "safety": "Yalnızca örnek. Gas fiyatları örnektir; Discord'a mesaj gönderilmez.",
+      "stageUpdate": "Güncelleme",
+      "stageAsk": "Sorgu",
+      "gasUpdate": "Ethereum gas: 12 Gwei (blok 21500000)",
+      "gasReply": "Ethereum gas: 14 Gwei (blok 21500075)",
+      "sampleNote": "Örnek değerler, canlı veri değildir.",
+      "betaNote": "Beta özelliği. Örnek değerler, canlı veri değildir."
+    },
+    "ar": {
+      "tabNetwork": "الشبكة",
+      "networkIntro": "يقرأ Helper أسعار الغاز من نقطة RPC معتمدة. هذه الميزة في مرحلة تجريبية.",
+      "commandGas": "يعرض سعر الغاز للقراءة فقط للشبكة أدناه.",
+      "groupNetwork": "الشبكة المتابَعة",
+      "networkHint": "اختر Ethereum أو Polygon أو Arbitrum أو Base.",
+      "tabPosting": "النشر",
+      "postingIntro": "اختر مكان نشر التحديثات وعدد مراتها ونصها.",
+      "groupChannel": "مكان النشر",
+      "channelHint": "يحتاج Helper إلى إذن إرسال الرسائل في هذه القناة.",
+      "groupSchedule": "الجدول",
+      "scheduleHint": "من 300 ثانية (5 دقائق) إلى 86400 (يوم واحد). القيمة 900 تعني النشر كل 15 دقيقة.",
+      "groupMessage": "الرسالة",
+      "messageHint": "تُستبدل {network} و{gasPriceGwei} و{blockNumber} بالقراءة.",
+      "safety": "مثال فقط. أسعار الغاز تجريبية ولا تُرسل أي رسائل إلى Discord.",
+      "stageUpdate": "التحديث",
+      "stageAsk": "الاستعلام",
+      "gasUpdate": "غاز Ethereum: 12 Gwei (الكتلة 21500000)",
+      "gasReply": "غاز Ethereum: 14 Gwei (الكتلة 21500075)",
+      "sampleNote": "قيم تجريبية وليست بيانات مباشرة.",
+      "betaNote": "ميزة تجريبية. قيم تجريبية وليست بيانات مباشرة."
+    },
+    "zh": {
+      "tabNetwork": "網路",
+      "networkIntro": "Helper 從經核准的 RPC 端點讀取 Gas 費用。此功能處於測試階段。",
+      "commandGas": "顯示下方網路的 Gas 費用（唯讀）。",
+      "groupNetwork": "追蹤的網路",
+      "networkHint": "可選擇 Ethereum、Polygon、Arbitrum 或 Base。",
+      "tabPosting": "發布",
+      "postingIntro": "選擇更新要發布到哪裡、多久發布一次，以及訊息內容。",
+      "groupChannel": "發布位置",
+      "channelHint": "Helper 需要在此頻道傳送訊息的權限。",
+      "groupSchedule": "發布頻率",
+      "scheduleHint": "範圍為 300 秒（5 分鐘）到 86400 秒（1 天）。設為 900 即每 15 分鐘發布一次。",
+      "groupMessage": "訊息",
+      "messageHint": "{network}、{gasPriceGwei} 和 {blockNumber} 會替換為讀取到的數值。",
+      "safety": "僅為範例。Gas 費用為範例數值，不會向 Discord 傳送訊息。",
+      "stageUpdate": "更新",
+      "stageAsk": "查詢",
+      "gasUpdate": "Ethereum Gas：12 Gwei（區塊 21500000）",
+      "gasReply": "Ethereum Gas：14 Gwei（區塊 21500075）",
+      "sampleNote": "範例數值，並非即時資料。",
+      "betaNote": "測試版功能。範例數值，並非即時資料。"
+    },
+    "ru": {
+      "tabNetwork": "Сеть",
+      "networkIntro": "Helper берёт цену газа из одобренного RPC-узла. Функция в бета-версии.",
+      "commandGas": "Показывает цену газа (только чтение) для сети ниже.",
+      "groupNetwork": "Отслеживаемая сеть",
+      "networkHint": "Выберите Ethereum, Polygon, Arbitrum или Base.",
+      "tabPosting": "Публикация",
+      "postingIntro": "Выберите, куда и как часто публиковать обновления и что в них писать.",
+      "groupChannel": "Куда публиковать",
+      "channelHint": "Helper нужно право отправлять сообщения в этом канале.",
+      "groupSchedule": "Расписание",
+      "scheduleHint": "От 300 секунд (5 минут) до 86400 (1 день). При 900 — публикация каждые 15 минут.",
+      "groupMessage": "Сообщение",
+      "messageHint": "{network}, {gasPriceGwei} и {blockNumber} заменяются полученными данными.",
+      "safety": "Только пример. Цены газа условные, сообщения в Discord не отправляются.",
+      "stageUpdate": "Обновление",
+      "stageAsk": "Запрос",
+      "gasUpdate": "Газ Ethereum: 12 Gwei (блок 21500000)",
+      "gasReply": "Газ Ethereum: 14 Gwei (блок 21500075)",
+      "sampleNote": "Примерные значения, а не актуальные данные.",
+      "betaNote": "Бета-функция. Примерные значения, а не актуальные данные."
+    },
+    "ko": {
+      "tabNetwork": "네트워크",
+      "networkIntro": "Helper는 승인된 RPC 엔드포인트에서 가스비를 읽습니다. 이 기능은 베타입니다.",
+      "commandGas": "아래 네트워크의 가스비를 읽기 전용으로 보여 줍니다.",
+      "groupNetwork": "추적할 네트워크",
+      "networkHint": "Ethereum, Polygon, Arbitrum, Base 중에서 고르세요.",
+      "tabPosting": "게시",
+      "postingIntro": "업데이트를 게시할 곳, 주기, 내용을 정하세요.",
+      "groupChannel": "게시할 곳",
+      "channelHint": "Helper에 이 채널의 메시지 보내기 권한이 필요합니다.",
+      "groupSchedule": "일정",
+      "scheduleHint": "300초(5분)에서 86400초(1일) 사이입니다. 900이면 15분마다 게시합니다.",
+      "groupMessage": "메시지",
+      "messageHint": "{network}, {gasPriceGwei}, {blockNumber}는 읽어 온 값으로 바뀝니다.",
+      "safety": "예시일 뿐입니다. 가스비는 예시 값이며 Discord로 메시지가 전송되지 않습니다.",
+      "stageUpdate": "업데이트",
+      "stageAsk": "조회",
+      "gasUpdate": "Ethereum 가스비: 12 Gwei (블록 21500000)",
+      "gasReply": "Ethereum 가스비: 14 Gwei (블록 21500075)",
+      "sampleNote": "예시 값이며 실시간 데이터가 아닙니다.",
+      "betaNote": "베타 기능입니다. 예시 값이며 실시간 데이터가 아닙니다."
+    }
+  }
+}

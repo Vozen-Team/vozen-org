@@ -1,0 +1,279 @@
+{
+  "key": "management.polls",
+  "tabs": [
+    {
+      "title": "tabDefaults",
+      "intro": "defaultsIntro",
+      "commands": [
+        [
+          "/poll",
+          "commandPoll"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupDuration",
+          "hint": "durationHint",
+          "keys": [
+            "defaultDurationHours"
+          ]
+        },
+        {
+          "title": "groupChannel",
+          "keys": [
+            "channel"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageCreate",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/poll question: Game night? option1: Friday option2: Saturday duration: 24h"
+          },
+          {
+            "bot": true,
+            "card": {
+              "title": "📊 Game night?",
+              "body": "pollBody",
+              "buttons": [
+                "Friday",
+                "Saturday"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageVote",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Rexy",
+            "note": "votedFriday"
+          },
+          {
+            "author": "Mia",
+            "note": "votedSaturday"
+          },
+          {
+            "author": "Rexy",
+            "note": "changedVote"
+          }
+        ]
+      },
+      {
+        "label": "stageResults",
+        "channel": "# general",
+        "messages": [
+          {
+            "bot": true,
+            "card": {
+              "tone": "success",
+              "title": "pollClosed",
+              "fields": [
+                [
+                  "Friday",
+                  "4"
+                ],
+                [
+                  "Saturday",
+                  "7"
+                ]
+              ],
+              "footer": "totalsFooter"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabDefaults": "Defaults",
+      "defaultsIntro": "Anyone can start a poll with /poll. Members vote with buttons and can change their vote.",
+      "commandPoll": "Asks a question with 2 to 5 options and an optional duration.",
+      "groupDuration": "Duration",
+      "durationHint": "Used when /poll has no duration. When it ends, Helper closes the poll and shows the totals.",
+      "groupChannel": "Channel",
+      "stageCreate": "Create",
+      "stageVote": "Vote",
+      "stageResults": "Results",
+      "pollBody": "Vote with the buttons. Ends in 24 hours.",
+      "votedFriday": "Voted Friday",
+      "votedSaturday": "Voted Saturday",
+      "changedVote": "Voted again: Saturday. The new choice replaces the old one.",
+      "pollClosed": "Poll closed",
+      "totalsFooter": "11 votes · voting buttons removed",
+      "safety": "Example only. No poll is created and no messages are sent to Discord."
+    },
+    "pt": {
+      "tabDefaults": "Predefinições",
+      "defaultsIntro": "Qualquer membro pode iniciar uma sondagem com /poll. Os membros votam nos botões e podem mudar o voto.",
+      "commandPoll": "Faz uma pergunta com 2 a 5 opções e uma duração opcional.",
+      "groupDuration": "Duração",
+      "durationHint": "Usada quando o /poll não indica duração. No fim, o Helper fecha a sondagem e mostra os totais.",
+      "groupChannel": "Canal",
+      "stageCreate": "Criar",
+      "stageVote": "Votar",
+      "stageResults": "Resultados",
+      "pollBody": "Vota nos botões. Termina daqui a 24 horas.",
+      "votedFriday": "Votou em Friday",
+      "votedSaturday": "Votou em Saturday",
+      "changedVote": "Votou de novo: Saturday. A nova escolha substitui a anterior.",
+      "pollClosed": "Sondagem terminada",
+      "totalsFooter": "11 votos · botões de voto retirados",
+      "safety": "Apenas um exemplo. Nenhuma sondagem é criada e nenhuma mensagem é enviada para o Discord."
+    },
+    "fr": {
+      "tabDefaults": "Valeurs par défaut",
+      "defaultsIntro": "Tout membre peut lancer un sondage avec /poll. Les membres votent avec les boutons et peuvent changer leur vote.",
+      "commandPoll": "Pose une question avec 2 à 5 options et une durée facultative.",
+      "groupDuration": "Durée",
+      "durationHint": "Utilisée quand /poll n'indique pas de durée. À la fin, Helper ferme le sondage et affiche les totaux.",
+      "groupChannel": "Salon",
+      "stageCreate": "Créer",
+      "stageVote": "Voter",
+      "stageResults": "Résultats",
+      "pollBody": "Votez avec les boutons. Fin dans 24 heures.",
+      "votedFriday": "A voté Friday",
+      "votedSaturday": "A voté Saturday",
+      "changedVote": "Nouveau vote : Saturday. Le nouveau choix remplace l'ancien.",
+      "pollClosed": "Sondage terminé",
+      "totalsFooter": "11 votes · boutons de vote retirés",
+      "safety": "Exemple uniquement. Aucun sondage n'est créé et aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabDefaults": "Valores predeterminados",
+      "defaultsIntro": "Cualquier miembro puede crear una encuesta con /poll. Se vota con botones y se puede cambiar el voto.",
+      "commandPoll": "Hace una pregunta con 2 a 5 opciones y una duración opcional.",
+      "groupDuration": "Duración",
+      "durationHint": "Se usa cuando /poll no indica duración. Al terminar, Helper cierra la encuesta y muestra los totales.",
+      "groupChannel": "Canal",
+      "stageCreate": "Crear",
+      "stageVote": "Votar",
+      "stageResults": "Resultados",
+      "pollBody": "Vota con los botones. Termina en 24 horas.",
+      "votedFriday": "Votó Friday",
+      "votedSaturday": "Votó Saturday",
+      "changedVote": "Votó otra vez: Saturday. La nueva elección sustituye a la anterior.",
+      "pollClosed": "Encuesta cerrada",
+      "totalsFooter": "11 votos · botones de voto retirados",
+      "safety": "Solo es un ejemplo. No se crea ninguna encuesta ni se envían mensajes a Discord."
+    },
+    "de": {
+      "tabDefaults": "Standardwerte",
+      "defaultsIntro": "Mit /poll kann jedes Mitglied eine Umfrage starten. Abgestimmt wird per Button, die Stimme lässt sich ändern.",
+      "commandPoll": "Stellt eine Frage mit 2 bis 5 Optionen und optionaler Dauer.",
+      "groupDuration": "Dauer",
+      "durationHint": "Gilt, wenn /poll keine Dauer angibt. Danach schließt Helper die Umfrage und zeigt die Ergebnisse.",
+      "groupChannel": "Kanal",
+      "stageCreate": "Erstellen",
+      "stageVote": "Abstimmen",
+      "stageResults": "Ergebnis",
+      "pollBody": "Per Button abstimmen. Endet in 24 Stunden.",
+      "votedFriday": "Hat für Friday gestimmt",
+      "votedSaturday": "Hat für Saturday gestimmt",
+      "changedVote": "Erneut abgestimmt: Saturday. Die neue Wahl ersetzt die alte.",
+      "pollClosed": "Umfrage beendet",
+      "totalsFooter": "11 Stimmen · Abstimmungsbuttons entfernt",
+      "safety": "Nur ein Beispiel. Es wird keine Umfrage erstellt und keine Nachricht an Discord gesendet."
+    },
+    "tr": {
+      "tabDefaults": "Varsayılanlar",
+      "defaultsIntro": "Herkes /poll ile anket başlatabilir. Üyeler düğmelerle oy verir ve oylarını değiştirebilir.",
+      "commandPoll": "2 ila 5 seçenekli bir soru sorar; süre isteğe bağlıdır.",
+      "groupDuration": "Süre",
+      "durationHint": "/poll süre belirtmediğinde kullanılır. Süre bitince Helper anketi kapatır ve sonuçları gösterir.",
+      "groupChannel": "Kanal",
+      "stageCreate": "Oluştur",
+      "stageVote": "Oy ver",
+      "stageResults": "Sonuçlar",
+      "pollBody": "Düğmelerle oy verin. 24 saat sonra biter.",
+      "votedFriday": "Friday için oy verdi",
+      "votedSaturday": "Saturday için oy verdi",
+      "changedVote": "Yeniden oy verdi: Saturday. Yeni seçim eskisinin yerini alır.",
+      "pollClosed": "Anket kapandı",
+      "totalsFooter": "11 oy · oy düğmeleri kaldırıldı",
+      "safety": "Yalnızca örnek. Anket oluşturulmaz ve Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabDefaults": "القيم الافتراضية",
+      "defaultsIntro": "يمكن لأي عضو بدء استطلاع بالأمر /poll. يصوّت الأعضاء بالأزرار ويمكنهم تغيير تصويتهم.",
+      "commandPoll": "يطرح سؤالًا بخيارين إلى خمسة خيارات ومدة اختيارية.",
+      "groupDuration": "المدة",
+      "durationHint": "تُستخدم عندما لا يحدد /poll مدة. عند انتهائها يغلق Helper الاستطلاع ويعرض النتائج.",
+      "groupChannel": "القناة",
+      "stageCreate": "الإنشاء",
+      "stageVote": "التصويت",
+      "stageResults": "النتائج",
+      "pollBody": "صوّت بالأزرار. ينتهي خلال 24 ساعة.",
+      "votedFriday": "التصويت: Friday",
+      "votedSaturday": "التصويت: Saturday",
+      "changedVote": "تصويت جديد: Saturday. يحل الاختيار الجديد محل القديم.",
+      "pollClosed": "انتهى الاستطلاع",
+      "totalsFooter": "11 صوتًا · أُزيلت أزرار التصويت",
+      "safety": "مثال فقط. لا يُنشأ أي استطلاع ولا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabDefaults": "預設值",
+      "defaultsIntro": "任何成員都能用 /poll 發起投票。成員以按鈕投票，也可以更改選擇。",
+      "commandPoll": "提出含 2 到 5 個選項的問題，可另設時長。",
+      "groupDuration": "時長",
+      "durationHint": "當 /poll 未指定時長時使用。結束後 Helper 會關閉投票並顯示票數。",
+      "groupChannel": "頻道",
+      "stageCreate": "建立",
+      "stageVote": "投票",
+      "stageResults": "結果",
+      "pollBody": "點按鈕投票。24 小時後結束。",
+      "votedFriday": "投給了 Friday",
+      "votedSaturday": "投給了 Saturday",
+      "changedVote": "再次投票：Saturday。新選擇會取代舊選擇。",
+      "pollClosed": "投票已結束",
+      "totalsFooter": "11 票 · 投票按鈕已移除",
+      "safety": "僅為範例。不會建立投票，也不會傳送訊息到 Discord。"
+    },
+    "ru": {
+      "tabDefaults": "По умолчанию",
+      "defaultsIntro": "Любой участник может создать опрос командой /poll. Голосуют кнопками, голос можно изменить.",
+      "commandPoll": "Задаёт вопрос с 2–5 вариантами и необязательной длительностью.",
+      "groupDuration": "Длительность",
+      "durationHint": "Используется, если в /poll не указана длительность. По её окончании Helper закрывает опрос и показывает итоги.",
+      "groupChannel": "Канал",
+      "stageCreate": "Создание",
+      "stageVote": "Голосование",
+      "stageResults": "Итоги",
+      "pollBody": "Голосуйте кнопками. Завершится через 24 часа.",
+      "votedFriday": "Голос: Friday",
+      "votedSaturday": "Голос: Saturday",
+      "changedVote": "Повторный голос: Saturday. Новый выбор заменяет прежний.",
+      "pollClosed": "Опрос завершён",
+      "totalsFooter": "11 голосов · кнопки голосования убраны",
+      "safety": "Только пример. Опрос не создаётся, сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabDefaults": "기본값",
+      "defaultsIntro": "누구나 /poll로 투표를 시작할 수 있습니다. 멤버는 버튼으로 투표하고 선택을 바꿀 수 있습니다.",
+      "commandPoll": "선택지 2~5개와 선택 사항인 기간으로 질문합니다.",
+      "groupDuration": "기간",
+      "durationHint": "/poll에 기간이 없을 때 사용합니다. 끝나면 Helper가 투표를 닫고 결과를 보여 줍니다.",
+      "groupChannel": "채널",
+      "stageCreate": "만들기",
+      "stageVote": "투표",
+      "stageResults": "결과",
+      "pollBody": "버튼으로 투표하세요. 24시간 후 끝납니다.",
+      "votedFriday": "Friday에 투표했습니다",
+      "votedSaturday": "Saturday에 투표했습니다",
+      "changedVote": "다시 투표: Saturday. 새 선택이 이전 선택을 대신합니다.",
+      "pollClosed": "투표 종료",
+      "totalsFooter": "11표 · 투표 버튼 제거됨",
+      "safety": "예시일 뿐입니다. 투표가 만들어지지 않으며 Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

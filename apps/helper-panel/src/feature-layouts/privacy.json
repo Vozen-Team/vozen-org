@@ -1,0 +1,303 @@
+{
+  "key": "management.privacy",
+  "tabs": [
+    {
+      "title": "tabRequests",
+      "intro": "requestsIntro",
+      "commands": [
+        [
+          "/privacy data",
+          "commandData"
+        ],
+        [
+          "/privacy erase",
+          "commandErase"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupExport",
+          "hint": "exportHint",
+          "keys": [
+            "allowMemberExport",
+            "maxExportBytes"
+          ]
+        },
+        {
+          "title": "groupErase",
+          "hint": "eraseHint",
+          "keys": [
+            "allowMemberErase"
+          ]
+        }
+      ]
+    }
+  ],
+  "fields": {
+    "maxExportBytes": {
+      "label": "maxExportLabel"
+    }
+  },
+  "demo": {
+    "stages": [
+      {
+        "label": "stageExport",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Mia",
+            "command": "/privacy data"
+          },
+          {
+            "bot": true,
+            "text": "dmSent"
+          }
+        ]
+      },
+      {
+        "label": "stageFile",
+        "channel": "@Mia",
+        "messages": [
+          {
+            "bot": true,
+            "text": "dmText",
+            "card": {
+              "title": "fileName",
+              "body": "fileBody"
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageErase",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Mia",
+            "command": "/privacy erase"
+          },
+          {
+            "bot": true,
+            "card": {
+              "tone": "warning",
+              "title": "erasedTitle",
+              "body": "erasedBody"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabRequests": "Member requests",
+      "requestsIntro": "Members can get a copy of their Helper data or erase it themselves, without asking staff.",
+      "commandData": "Sends the member's data for this server as a file by DM.",
+      "commandErase": "Erases the member's voluntary data in this server right away.",
+      "groupExport": "Data export",
+      "exportHint": "If the member's DMs are closed, Helper asks them to open DMs and try again.",
+      "groupErase": "Erasure",
+      "eraseHint": "Erasure runs at once, with no confirmation step.",
+      "maxExportLabel": "Maximum export size (bytes)",
+      "stageExport": "Export",
+      "stageFile": "Direct message",
+      "stageErase": "Erase",
+      "dmSent": "I sent your data by direct message.",
+      "dmText": "Here is your Vozen Helper data export.",
+      "fileName": "my-vozen-data.json",
+      "fileBody": "Your data from this server, as JSON.",
+      "erasedTitle": "Voluntary data deleted",
+      "erasedBody": "Moderation records, infractions and quarantine were kept for audit.",
+      "safety": "Example only. No data is exported or erased and no messages are sent to Discord."
+    },
+    "pt": {
+      "tabRequests": "Pedidos dos membros",
+      "requestsIntro": "Os membros podem receber uma cópia dos seus dados do Helper ou apagá-los sozinhos, sem pedir à staff.",
+      "commandData": "Envia por mensagem privada um ficheiro com os dados do membro neste servidor.",
+      "commandErase": "Apaga de imediato os dados voluntários do membro neste servidor.",
+      "groupExport": "Exportação de dados",
+      "exportHint": "Se o membro tiver as mensagens privadas fechadas, o Helper pede-lhe que as abra e tente de novo.",
+      "groupErase": "Eliminação",
+      "eraseHint": "A eliminação é imediata e não pede confirmação.",
+      "maxExportLabel": "Tamanho máximo da exportação (bytes)",
+      "stageExport": "Exportar",
+      "stageFile": "Mensagem privada",
+      "stageErase": "Apagar",
+      "dmSent": "Enviei os teus dados por mensagem privada.",
+      "dmText": "Aqui está a exportação dos teus dados do Vozen Helper.",
+      "fileName": "my-vozen-data.json",
+      "fileBody": "Os teus dados deste servidor, em JSON.",
+      "erasedTitle": "Dados voluntários apagados",
+      "erasedBody": "Os registos de moderação, infrações e quarentena foram mantidos para auditoria.",
+      "safety": "Apenas um exemplo. Nenhum dado é exportado ou apagado e nenhuma mensagem é enviada para o Discord."
+    },
+    "fr": {
+      "tabRequests": "Demandes des membres",
+      "requestsIntro": "Les membres peuvent obtenir une copie de leurs données Helper ou les effacer eux-mêmes, sans passer par l'équipe.",
+      "commandData": "Envoie en message privé un fichier avec les données du membre sur ce serveur.",
+      "commandErase": "Efface immédiatement les données volontaires du membre sur ce serveur.",
+      "groupExport": "Export des données",
+      "exportHint": "Si les messages privés du membre sont fermés, Helper lui demande de les ouvrir et de réessayer.",
+      "groupErase": "Effacement",
+      "eraseHint": "L'effacement est immédiat et ne demande pas de confirmation.",
+      "maxExportLabel": "Taille maximale de l'export (octets)",
+      "stageExport": "Exporter",
+      "stageFile": "Message privé",
+      "stageErase": "Effacer",
+      "dmSent": "Je vous ai envoyé vos données en message privé.",
+      "dmText": "Voici l'export de vos données Vozen Helper.",
+      "fileName": "my-vozen-data.json",
+      "fileBody": "Vos données de ce serveur, au format JSON.",
+      "erasedTitle": "Données volontaires supprimées",
+      "erasedBody": "Les dossiers de modération, les infractions et la quarantaine sont conservés pour l'audit.",
+      "safety": "Exemple uniquement. Aucune donnée n'est exportée ni effacée et aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabRequests": "Solicitudes de miembros",
+      "requestsIntro": "Los miembros pueden obtener una copia de sus datos de Helper o borrarlos ellos mismos, sin pedírselo al equipo.",
+      "commandData": "Envía por mensaje directo un archivo con los datos del miembro en este servidor.",
+      "commandErase": "Borra al instante los datos voluntarios del miembro en este servidor.",
+      "groupExport": "Exportación de datos",
+      "exportHint": "Si el miembro tiene los mensajes directos cerrados, Helper le pide que los abra y lo intente de nuevo.",
+      "groupErase": "Borrado",
+      "eraseHint": "El borrado es inmediato y no pide confirmación.",
+      "maxExportLabel": "Tamaño máximo de la exportación (bytes)",
+      "stageExport": "Exportar",
+      "stageFile": "Mensaje directo",
+      "stageErase": "Borrar",
+      "dmSent": "Te he enviado tus datos por mensaje directo.",
+      "dmText": "Aquí tienes la exportación de tus datos de Vozen Helper.",
+      "fileName": "my-vozen-data.json",
+      "fileBody": "Tus datos de este servidor, en JSON.",
+      "erasedTitle": "Datos voluntarios borrados",
+      "erasedBody": "Los registros de moderación, las infracciones y la cuarentena se conservan para auditoría.",
+      "safety": "Solo es un ejemplo. No se exportan ni se borran datos ni se envían mensajes a Discord."
+    },
+    "de": {
+      "tabRequests": "Anfragen von Mitgliedern",
+      "requestsIntro": "Mitglieder können eine Kopie ihrer Helper-Daten anfordern oder sie selbst löschen, ohne das Team zu fragen.",
+      "commandData": "Schickt die Daten des Mitglieds auf diesem Server als Datei per Direktnachricht.",
+      "commandErase": "Löscht die freiwilligen Daten des Mitglieds auf diesem Server sofort.",
+      "groupExport": "Datenexport",
+      "exportHint": "Sind die Direktnachrichten des Mitglieds geschlossen, bittet Helper darum, sie zu öffnen und es erneut zu versuchen.",
+      "groupErase": "Löschung",
+      "eraseHint": "Die Löschung erfolgt sofort und ohne Rückfrage.",
+      "maxExportLabel": "Maximale Exportgröße (Bytes)",
+      "stageExport": "Export",
+      "stageFile": "Direktnachricht",
+      "stageErase": "Löschen",
+      "dmSent": "Ich habe dir deine Daten per Direktnachricht geschickt.",
+      "dmText": "Hier ist dein Datenexport von Vozen Helper.",
+      "fileName": "my-vozen-data.json",
+      "fileBody": "Deine Daten von diesem Server als JSON.",
+      "erasedTitle": "Freiwillige Daten gelöscht",
+      "erasedBody": "Moderationsakten, Verstöße und Quarantäne bleiben für die Prüfung erhalten.",
+      "safety": "Nur ein Beispiel. Es werden keine Daten exportiert oder gelöscht und keine Nachrichten an Discord gesendet."
+    },
+    "tr": {
+      "tabRequests": "Üye talepleri",
+      "requestsIntro": "Üyeler, ekibe sormadan Helper verilerinin bir kopyasını alabilir veya bunları kendileri silebilir.",
+      "commandData": "Üyenin bu sunucudaki verilerini özel mesajla dosya olarak gönderir.",
+      "commandErase": "Üyenin bu sunucudaki gönüllü verilerini hemen siler.",
+      "groupExport": "Veri dışa aktarma",
+      "exportHint": "Üyenin özel mesajları kapalıysa Helper açmasını ve tekrar denemesini ister.",
+      "groupErase": "Silme",
+      "eraseHint": "Silme hemen gerçekleşir ve onay istemez.",
+      "maxExportLabel": "Azami dışa aktarma boyutu (bayt)",
+      "stageExport": "Dışa aktar",
+      "stageFile": "Özel mesaj",
+      "stageErase": "Sil",
+      "dmSent": "Verilerinizi özel mesajla gönderdim.",
+      "dmText": "Vozen Helper veri dışa aktarımınız burada.",
+      "fileName": "my-vozen-data.json",
+      "fileBody": "Bu sunucudaki verileriniz, JSON biçiminde.",
+      "erasedTitle": "Gönüllü veriler silindi",
+      "erasedBody": "Moderasyon kayıtları, ihlaller ve karantina denetim için saklandı.",
+      "safety": "Yalnızca örnek. Hiçbir veri dışa aktarılmaz veya silinmez ve Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabRequests": "طلبات الأعضاء",
+      "requestsIntro": "يمكن للأعضاء الحصول على نسخة من بياناتهم في Helper أو محوها بأنفسهم دون الرجوع إلى الطاقم.",
+      "commandData": "يرسل بيانات العضو في هذا الخادم كملف في رسالة خاصة.",
+      "commandErase": "يمحو فورًا البيانات الطوعية للعضو في هذا الخادم.",
+      "groupExport": "تصدير البيانات",
+      "exportHint": "إذا كانت الرسائل الخاصة للعضو مغلقة، يطلب منه Helper فتحها والمحاولة مجددًا.",
+      "groupErase": "المحو",
+      "eraseHint": "يتم المحو فورًا ودون طلب تأكيد.",
+      "maxExportLabel": "الحد الأقصى لحجم التصدير (بايت)",
+      "stageExport": "التصدير",
+      "stageFile": "رسالة خاصة",
+      "stageErase": "المحو",
+      "dmSent": "أرسلتُ بياناتك في رسالة خاصة.",
+      "dmText": "إليك ملف تصدير بياناتك من Vozen Helper.",
+      "fileName": "my-vozen-data.json",
+      "fileBody": "بياناتك في هذا الخادم بصيغة JSON.",
+      "erasedTitle": "حُذفت البيانات الطوعية",
+      "erasedBody": "احتُفظ بسجلات الإشراف والمخالفات والحجر لأغراض التدقيق.",
+      "safety": "مثال فقط. لا تُصدَّر أي بيانات ولا تُمحى، ولا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabRequests": "成員請求",
+      "requestsIntro": "成員可以自行取得或刪除自己的 Helper 資料，不必聯絡管理團隊。",
+      "commandData": "透過私訊以檔案傳送該成員在此伺服器的資料。",
+      "commandErase": "立即刪除該成員在此伺服器自願提供的資料。",
+      "groupExport": "資料匯出",
+      "exportHint": "如果成員關閉了私訊，Helper 會請對方開啟後再試一次。",
+      "groupErase": "刪除",
+      "eraseHint": "刪除會立即執行，不需要確認。",
+      "maxExportLabel": "匯出檔案大小上限（位元組）",
+      "stageExport": "匯出",
+      "stageFile": "私訊",
+      "stageErase": "刪除",
+      "dmSent": "已透過私訊傳送你的資料。",
+      "dmText": "這是你的 Vozen Helper 資料匯出。",
+      "fileName": "my-vozen-data.json",
+      "fileBody": "你在此伺服器的資料，JSON 格式。",
+      "erasedTitle": "已刪除自願提供的資料",
+      "erasedBody": "管理紀錄、違規紀錄與隔離紀錄會保留以供稽核。",
+      "safety": "僅為範例。不會匯出或刪除任何資料，也不會傳送訊息到 Discord。"
+    },
+    "ru": {
+      "tabRequests": "Запросы участников",
+      "requestsIntro": "Участники могут сами получить копию своих данных Helper или удалить их, не обращаясь к команде.",
+      "commandData": "Отправляет данные участника на этом сервере файлом в личные сообщения.",
+      "commandErase": "Сразу удаляет добровольные данные участника на этом сервере.",
+      "groupExport": "Экспорт данных",
+      "exportHint": "Если у участника закрыты личные сообщения, Helper попросит открыть их и повторить.",
+      "groupErase": "Удаление",
+      "eraseHint": "Удаление выполняется сразу, без подтверждения.",
+      "maxExportLabel": "Максимальный размер экспорта (байт)",
+      "stageExport": "Экспорт",
+      "stageFile": "Личное сообщение",
+      "stageErase": "Удаление",
+      "dmSent": "Я отправил ваши данные в личные сообщения.",
+      "dmText": "Вот экспорт ваших данных Vozen Helper.",
+      "fileName": "my-vozen-data.json",
+      "fileBody": "Ваши данные с этого сервера в формате JSON.",
+      "erasedTitle": "Добровольные данные удалены",
+      "erasedBody": "Записи модерации, нарушения и карантин сохранены для аудита.",
+      "safety": "Только пример. Данные не экспортируются и не удаляются, сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabRequests": "멤버 요청",
+      "requestsIntro": "멤버는 운영진에게 묻지 않고 Helper 데이터 사본을 받거나 직접 삭제할 수 있습니다.",
+      "commandData": "이 서버의 멤버 데이터를 파일로 개인 메시지에 보냅니다.",
+      "commandErase": "이 서버의 자발적 데이터를 즉시 삭제합니다.",
+      "groupExport": "데이터 내보내기",
+      "exportHint": "멤버의 개인 메시지가 닫혀 있으면 Helper가 열고 다시 시도하라고 안내합니다.",
+      "groupErase": "삭제",
+      "eraseHint": "삭제는 확인 단계 없이 즉시 진행됩니다.",
+      "maxExportLabel": "최대 내보내기 크기(바이트)",
+      "stageExport": "내보내기",
+      "stageFile": "개인 메시지",
+      "stageErase": "삭제",
+      "dmSent": "데이터를 개인 메시지로 보냈습니다.",
+      "dmText": "Vozen Helper 데이터 내보내기 파일입니다.",
+      "fileName": "my-vozen-data.json",
+      "fileBody": "이 서버의 내 데이터(JSON 형식).",
+      "erasedTitle": "자발적 데이터 삭제됨",
+      "erasedBody": "관리 기록, 위반 기록, 격리 기록은 감사를 위해 보존됩니다.",
+      "safety": "예시일 뿐입니다. 데이터를 내보내거나 삭제하지 않으며 Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

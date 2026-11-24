@@ -1,0 +1,301 @@
+{
+  "key": "social.youtube",
+  "tabs": [
+    {
+      "title": "tabSource",
+      "intro": "sourceIntro",
+      "slot": "health",
+      "groups": [
+        {
+          "title": "groupSource",
+          "hint": "sourceHint",
+          "keys": [
+            "sourceChannelId",
+            "intervalSeconds"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabPost",
+      "intro": "postIntro",
+      "groups": [
+        {
+          "title": "groupDelivery",
+          "keys": [
+            "targetChannelId"
+          ]
+        },
+        {
+          "title": "groupMessage",
+          "hint": "messageHint",
+          "keys": [
+            "messageTemplate",
+            "mention"
+          ]
+        }
+      ]
+    }
+  ],
+  "fields": {
+    "messageTemplate": {
+      "help": "templateHelp"
+    }
+  },
+  "demo": {
+    "stages": [
+      {
+        "label": "stageNew",
+        "channel": "# videos",
+        "messages": [
+          {
+            "bot": true,
+            "text": "alert",
+            "card": {
+              "title": "cardTitle",
+              "body": "cardBody",
+              "footer": "platform"
+            },
+            "note": "sentOnce"
+          }
+        ]
+      },
+      {
+        "label": "stageRead",
+        "channel": "# videos",
+        "messages": [
+          {
+            "author": "Mia",
+            "note": "opened"
+          },
+          {
+            "author": "Rexy",
+            "text": "reply"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabPost": "Post",
+      "postIntro": "Choose where alerts go and what they say.",
+      "groupDelivery": "Where to post",
+      "groupMessage": "Message",
+      "messageHint": "The mention is added to every alert.",
+      "safety": "Example only. Nothing is checked and no messages are sent to Discord.",
+      "tabSource": "Channel",
+      "sourceIntro": "Helper checks a YouTube channel through the official YouTube Data API and posts each new video once.",
+      "groupSource": "YouTube channel",
+      "sourceHint": "Checks run at most every 15 minutes.",
+      "stageNew": "New video",
+      "stageRead": "Members watch",
+      "alert": "@Subscribers New video from Vozen: Set up Helper in 5 minutes",
+      "cardTitle": "Set up Helper in 5 minutes",
+      "cardBody": "A quick tour of the dashboard and your first alerts.",
+      "platform": "YouTube",
+      "sentOnce": "Each video is posted once. Repeats are skipped.",
+      "opened": "Opened the video",
+      "reply": "Watching now!",
+      "templateHelp": "Variables: {title}, {url}, {channel}, {published_at}."
+    },
+    "pt": {
+      "tabPost": "Publicação",
+      "postIntro": "Escolhe onde os alertas são publicados e o que dizem.",
+      "groupDelivery": "Onde publicar",
+      "groupMessage": "Mensagem",
+      "messageHint": "A menção é adicionada a cada alerta.",
+      "safety": "Apenas um exemplo. Nada é verificado e nenhuma mensagem é enviada para o Discord.",
+      "tabSource": "Canal",
+      "sourceIntro": "O Helper verifica um canal do YouTube através da API oficial YouTube Data e publica cada novo vídeo uma única vez.",
+      "groupSource": "Canal do YouTube",
+      "sourceHint": "As verificações correm no máximo a cada 15 minutos.",
+      "stageNew": "Novo vídeo",
+      "stageRead": "Os membros veem",
+      "alert": "@Subscribers Novo vídeo de Vozen: Configura o Helper em 5 minutos",
+      "cardTitle": "Configura o Helper em 5 minutos",
+      "cardBody": "Uma visita rápida ao painel e aos primeiros alertas.",
+      "platform": "YouTube",
+      "sentOnce": "Cada vídeo é publicado uma vez. As repetições são ignoradas.",
+      "opened": "Abriu o vídeo",
+      "reply": "A ver agora!",
+      "templateHelp": "Variáveis: {title}, {url}, {channel}, {published_at}."
+    },
+    "fr": {
+      "tabPost": "Publication",
+      "postIntro": "Choisissez où les alertes sont publiées et ce qu'elles disent.",
+      "groupDelivery": "Où publier",
+      "groupMessage": "Message",
+      "messageHint": "La mention est ajoutée à chaque alerte.",
+      "safety": "Exemple uniquement. Rien n'est vérifié et aucun message n'est envoyé sur Discord.",
+      "tabSource": "Chaîne",
+      "sourceIntro": "Helper vérifie une chaîne YouTube via l'API officielle YouTube Data et publie chaque nouvelle vidéo une seule fois.",
+      "groupSource": "Chaîne YouTube",
+      "sourceHint": "Les vérifications ont lieu au plus toutes les 15 minutes.",
+      "stageNew": "Nouvelle vidéo",
+      "stageRead": "Les membres regardent",
+      "alert": "@Subscribers Nouvelle vidéo de Vozen : Configurer Helper en 5 minutes",
+      "cardTitle": "Configurer Helper en 5 minutes",
+      "cardBody": "Un tour rapide du tableau de bord et de vos premières alertes.",
+      "platform": "YouTube",
+      "sentOnce": "Chaque vidéo est publiée une fois. Les doublons sont ignorés.",
+      "opened": "A ouvert la vidéo",
+      "reply": "Je regarde !",
+      "templateHelp": "Variables : {title}, {url}, {channel}, {published_at}."
+    },
+    "es": {
+      "tabPost": "Publicación",
+      "postIntro": "Elige dónde se publican las alertas y qué dicen.",
+      "groupDelivery": "Dónde publicar",
+      "groupMessage": "Mensaje",
+      "messageHint": "La mención se añade a cada alerta.",
+      "safety": "Solo es un ejemplo. No se comprueba nada ni se envían mensajes a Discord.",
+      "tabSource": "Canal",
+      "sourceIntro": "Helper revisa un canal de YouTube con la API oficial YouTube Data y publica cada vídeo nuevo una sola vez.",
+      "groupSource": "Canal de YouTube",
+      "sourceHint": "Se comprueba como mucho cada 15 minutos.",
+      "stageNew": "Nuevo vídeo",
+      "stageRead": "Los miembros lo ven",
+      "alert": "@Subscribers Nuevo vídeo de Vozen: Configura Helper en 5 minutos",
+      "cardTitle": "Configura Helper en 5 minutos",
+      "cardBody": "Un repaso rápido al panel y a tus primeras alertas.",
+      "platform": "YouTube",
+      "sentOnce": "Cada vídeo se publica una vez. Los repetidos se omiten.",
+      "opened": "Abrió el vídeo",
+      "reply": "¡Viéndolo ya!",
+      "templateHelp": "Variables: {title}, {url}, {channel}, {published_at}."
+    },
+    "de": {
+      "tabPost": "Beitrag",
+      "postIntro": "Wähle, wo Benachrichtigungen erscheinen und was darin steht.",
+      "groupDelivery": "Wo posten",
+      "groupMessage": "Nachricht",
+      "messageHint": "Die Erwähnung wird jeder Benachrichtigung hinzugefügt.",
+      "safety": "Nur ein Beispiel. Es wird nichts geprüft und keine Nachricht an Discord gesendet.",
+      "tabSource": "Kanal",
+      "sourceIntro": "Helper prüft einen YouTube-Kanal über die offizielle YouTube Data API und postet jedes neue Video genau einmal.",
+      "groupSource": "YouTube-Kanal",
+      "sourceHint": "Geprüft wird höchstens alle 15 Minuten.",
+      "stageNew": "Neues Video",
+      "stageRead": "Mitglieder schauen",
+      "alert": "@Subscribers Neues Video von Vozen: Helper in 5 Minuten einrichten",
+      "cardTitle": "Helper in 5 Minuten einrichten",
+      "cardBody": "Eine kurze Tour durch das Dashboard und deine ersten Benachrichtigungen.",
+      "platform": "YouTube",
+      "sentOnce": "Jedes Video wird einmal gepostet. Wiederholungen werden übersprungen.",
+      "opened": "Hat das Video geöffnet",
+      "reply": "Schaue gerade!",
+      "templateHelp": "Variablen: {title}, {url}, {channel}, {published_at}."
+    },
+    "tr": {
+      "tabPost": "Gönderi",
+      "postIntro": "Uyarıların nerede paylaşılacağını ve ne yazacağını seçin.",
+      "groupDelivery": "Nerede paylaşılacak",
+      "groupMessage": "Mesaj",
+      "messageHint": "Bahsetme her uyarıya eklenir.",
+      "safety": "Yalnızca örnek. Hiçbir şey kontrol edilmez ve Discord'a mesaj gönderilmez.",
+      "tabSource": "Kanal",
+      "sourceIntro": "Helper bir YouTube kanalını resmi YouTube Data API ile kontrol eder ve her yeni videoyu bir kez paylaşır.",
+      "groupSource": "YouTube kanalı",
+      "sourceHint": "Kontroller en sık 15 dakikada bir yapılır.",
+      "stageNew": "Yeni video",
+      "stageRead": "Üyeler izler",
+      "alert": "@Subscribers Vozen'den yeni video: Helper'ı 5 dakikada kurun",
+      "cardTitle": "Helper'ı 5 dakikada kurun",
+      "cardBody": "Panele ve ilk uyarılarınıza hızlı bir bakış.",
+      "platform": "YouTube",
+      "sentOnce": "Her video bir kez paylaşılır. Tekrarlar atlanır.",
+      "opened": "Videoyu açtı",
+      "reply": "Şimdi izliyorum!",
+      "templateHelp": "Değişkenler: {title}, {url}, {channel}, {published_at}."
+    },
+    "ar": {
+      "tabPost": "النشر",
+      "postIntro": "اختر مكان نشر التنبيهات وما تقوله.",
+      "groupDelivery": "مكان النشر",
+      "groupMessage": "الرسالة",
+      "messageHint": "تُضاف الإشارة إلى كل تنبيه.",
+      "safety": "مثال فقط. لا يُفحص أي شيء ولا تُرسل أي رسائل إلى Discord.",
+      "tabSource": "القناة",
+      "sourceIntro": "يفحص Helper قناة YouTube عبر واجهة YouTube Data الرسمية وينشر كل فيديو جديد مرة واحدة.",
+      "groupSource": "قناة YouTube",
+      "sourceHint": "يجري الفحص مرة كل 15 دقيقة على الأكثر.",
+      "stageNew": "فيديو جديد",
+      "stageRead": "الأعضاء يشاهدون",
+      "alert": "@Subscribers فيديو جديد من Vozen: إعداد Helper في 5 دقائق",
+      "cardTitle": "إعداد Helper في 5 دقائق",
+      "cardBody": "جولة سريعة في لوحة التحكم وتنبيهاتك الأولى.",
+      "platform": "YouTube",
+      "sentOnce": "يُنشر كل فيديو مرة واحدة، ويُتجاهل التكرار.",
+      "opened": "فتحت الفيديو",
+      "reply": "أشاهده الآن!",
+      "templateHelp": "المتغيرات: {title}, {url}, {channel}, {published_at}."
+    },
+    "zh": {
+      "tabPost": "發布",
+      "postIntro": "選擇通知要發布的位置與內容。",
+      "groupDelivery": "發布位置",
+      "groupMessage": "訊息",
+      "messageHint": "每則通知都會附上此提及。",
+      "safety": "僅為範例。不會進行任何檢查，也不會向 Discord 傳送訊息。",
+      "tabSource": "頻道",
+      "sourceIntro": "Helper 透過官方 YouTube Data API 檢查 YouTube 頻道，每部新影片只發布一次。",
+      "groupSource": "YouTube 頻道",
+      "sourceHint": "最多每 15 分鐘檢查一次。",
+      "stageNew": "新影片",
+      "stageRead": "成員觀看",
+      "alert": "@Subscribers Vozen 的新影片：5 分鐘設定 Helper",
+      "cardTitle": "5 分鐘設定 Helper",
+      "cardBody": "快速了解控制台和你的第一批通知。",
+      "platform": "YouTube",
+      "sentOnce": "每部影片只發布一次，重複內容會略過。",
+      "opened": "開啟了影片",
+      "reply": "正在看！",
+      "templateHelp": "變數：{title}、{url}、{channel}、{published_at}。"
+    },
+    "ru": {
+      "tabPost": "Публикация",
+      "postIntro": "Выберите, куда отправлять оповещения и что в них писать.",
+      "groupDelivery": "Куда публиковать",
+      "groupMessage": "Сообщение",
+      "messageHint": "Упоминание добавляется к каждому оповещению.",
+      "safety": "Только пример. Ничего не проверяется, сообщения в Discord не отправляются.",
+      "tabSource": "Канал",
+      "sourceIntro": "Helper проверяет канал YouTube через официальный YouTube Data API и публикует каждое новое видео один раз.",
+      "groupSource": "Канал YouTube",
+      "sourceHint": "Проверка выполняется не чаще раза в 15 минут.",
+      "stageNew": "Новое видео",
+      "stageRead": "Участники смотрят",
+      "alert": "@Subscribers Новое видео от Vozen: Настройка Helper за 5 минут",
+      "cardTitle": "Настройка Helper за 5 минут",
+      "cardBody": "Краткий обзор панели и первых оповещений.",
+      "platform": "YouTube",
+      "sentOnce": "Каждое видео публикуется один раз. Повторы пропускаются.",
+      "opened": "Открыла видео",
+      "reply": "Смотрю!",
+      "templateHelp": "Переменные: {title}, {url}, {channel}, {published_at}."
+    },
+    "ko": {
+      "tabPost": "게시",
+      "postIntro": "알림을 보낼 위치와 내용을 고르세요.",
+      "groupDelivery": "게시 위치",
+      "groupMessage": "메시지",
+      "messageHint": "모든 알림에 멘션이 추가됩니다.",
+      "safety": "예시일 뿐입니다. 아무것도 확인하지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "tabSource": "채널",
+      "sourceIntro": "Helper가 공식 YouTube Data API로 YouTube 채널을 확인하고 새 동영상을 한 번씩 게시합니다.",
+      "groupSource": "YouTube 채널",
+      "sourceHint": "확인은 최대 15분마다 한 번 실행됩니다.",
+      "stageNew": "새 동영상",
+      "stageRead": "멤버 시청",
+      "alert": "@Subscribers Vozen의 새 동영상: 5분 만에 Helper 설정하기",
+      "cardTitle": "5분 만에 Helper 설정하기",
+      "cardBody": "대시보드와 첫 알림을 빠르게 둘러봅니다.",
+      "platform": "YouTube",
+      "sentOnce": "각 동영상은 한 번만 게시됩니다. 중복은 건너뜁니다.",
+      "opened": "동영상을 열었습니다",
+      "reply": "지금 보는 중!",
+      "templateHelp": "변수: {title}, {url}, {channel}, {published_at}."
+    }
+  }
+}

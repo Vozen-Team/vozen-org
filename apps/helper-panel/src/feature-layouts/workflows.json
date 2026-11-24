@@ -1,0 +1,279 @@
+{
+  "key": "management.workflows",
+  "tabs": [
+    {
+      "title": "tabAutomations",
+      "intro": "automationsIntro",
+      "commands": [
+        [
+          "/workflow-create",
+          "commandCreate"
+        ]
+      ],
+      "slot": "manager",
+      "groups": []
+    },
+    {
+      "title": "tabLimits",
+      "intro": "limitsIntro",
+      "groups": [
+        {
+          "title": "groupCapacity",
+          "keys": [
+            "maxWorkflows",
+            "maxReplyLength"
+          ]
+        },
+        {
+          "title": "groupMentions",
+          "keys": [
+            "allowMentions"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageCreate",
+        "channel": "# staff",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/workflow-create name: faq contains: FAQ reply: 👉 #faq"
+          },
+          {
+            "bot": true,
+            "text": "createdReply"
+          }
+        ]
+      },
+      {
+        "label": "stageReply",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Mia",
+            "text": "askFaq"
+          },
+          {
+            "bot": true,
+            "text": "faqReply"
+          }
+        ]
+      },
+      {
+        "label": "stageReact",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/workflow-create name: gg contains: GG emoji: 🎉"
+          },
+          {
+            "bot": true,
+            "text": "createdReact"
+          },
+          {
+            "author": "Rexy",
+            "text": "ggText",
+            "note": "reactedNote"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabAutomations": "Automations",
+      "automationsIntro": "When a message contains your text, Helper replies or adds a reaction. Plain text only, no code.",
+      "commandCreate": "Creates an automation from Discord. Needs Manage Server.",
+      "tabLimits": "Limits",
+      "limitsIntro": "Keep automations small and safe for busy channels.",
+      "groupCapacity": "Size",
+      "groupMentions": "Mentions",
+      "stageCreate": "Create",
+      "stageReply": "Reply",
+      "stageReact": "Reaction",
+      "createdReply": "Workflow #1 created. It replies when a message matches the condition.",
+      "createdReact": "Workflow #2 created. It reacts when a message matches the condition.",
+      "askFaq": "Is there a FAQ somewhere?",
+      "faqReply": "👉 #faq",
+      "ggText": "GG everyone!",
+      "reactedNote": "Helper reacted with 🎉. Rule: message contains “GG”.",
+      "safety": "Example only. No automations are created and no messages are sent to Discord."
+    },
+    "pt": {
+      "tabAutomations": "Automações",
+      "automationsIntro": "Quando uma mensagem contém o teu texto, o Helper responde ou adiciona uma reação. Só texto simples, sem código.",
+      "commandCreate": "Cria uma automação a partir do Discord. Requer Gerir servidor.",
+      "tabLimits": "Limites",
+      "limitsIntro": "Mantém as automações pequenas e seguras para canais movimentados.",
+      "groupCapacity": "Tamanho",
+      "groupMentions": "Menções",
+      "stageCreate": "Criar",
+      "stageReply": "Resposta",
+      "stageReact": "Reação",
+      "createdReply": "Workflow #1 criado. Responde quando uma mensagem cumpre a condição.",
+      "createdReact": "Workflow #2 criado. Reage quando uma mensagem cumpre a condição.",
+      "askFaq": "Há algum FAQ?",
+      "faqReply": "👉 #faq",
+      "ggText": "GG a todos!",
+      "reactedNote": "O Helper reagiu com 🎉. Regra: a mensagem contém “GG”.",
+      "safety": "Apenas um exemplo. Nenhuma automação é criada e nenhuma mensagem é enviada para o Discord."
+    },
+    "fr": {
+      "tabAutomations": "Automatisations",
+      "automationsIntro": "Quand un message contient votre texte, Helper répond ou ajoute une réaction. Texte simple uniquement, sans code.",
+      "commandCreate": "Crée une automatisation depuis Discord. Nécessite Gérer le serveur.",
+      "tabLimits": "Limites",
+      "limitsIntro": "Gardez des automatisations légères et sûres pour les salons actifs.",
+      "groupCapacity": "Taille",
+      "groupMentions": "Mentions",
+      "stageCreate": "Créer",
+      "stageReply": "Réponse",
+      "stageReact": "Réaction",
+      "createdReply": "Workflow #1 créé. Il répond quand un message correspond à la condition.",
+      "createdReact": "Workflow #2 créé. Il réagit quand un message correspond à la condition.",
+      "askFaq": "Il y a une FAQ quelque part ?",
+      "faqReply": "👉 #faq",
+      "ggText": "GG à tous !",
+      "reactedNote": "Helper a réagi avec 🎉. Règle : le message contient « GG ».",
+      "safety": "Exemple uniquement. Aucune automatisation n'est créée et aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabAutomations": "Automatizaciones",
+      "automationsIntro": "Cuando un mensaje contiene tu texto, Helper responde o añade una reacción. Solo texto simple, sin código.",
+      "commandCreate": "Crea una automatización desde Discord. Requiere Gestionar servidor.",
+      "tabLimits": "Límites",
+      "limitsIntro": "Mantén las automatizaciones pequeñas y seguras en canales con mucho movimiento.",
+      "groupCapacity": "Tamaño",
+      "groupMentions": "Menciones",
+      "stageCreate": "Crear",
+      "stageReply": "Respuesta",
+      "stageReact": "Reacción",
+      "createdReply": "Workflow #1 creado. Responde cuando un mensaje cumple la condición.",
+      "createdReact": "Workflow #2 creado. Reacciona cuando un mensaje cumple la condición.",
+      "askFaq": "¿Hay algún FAQ?",
+      "faqReply": "👉 #faq",
+      "ggText": "¡GG a todos!",
+      "reactedNote": "Helper reaccionó con 🎉. Regla: el mensaje contiene «GG».",
+      "safety": "Solo es un ejemplo. No se crea ninguna automatización ni se envían mensajes a Discord."
+    },
+    "de": {
+      "tabAutomations": "Automationen",
+      "automationsIntro": "Enthält eine Nachricht den festgelegten Text, antwortet Helper oder reagiert. Nur einfacher Text, kein Code.",
+      "commandCreate": "Erstellt eine Automation direkt in Discord. Erfordert „Server verwalten“.",
+      "tabLimits": "Grenzen",
+      "limitsIntro": "Hält Automationen klein und sicher für belebte Kanäle.",
+      "groupCapacity": "Umfang",
+      "groupMentions": "Erwähnungen",
+      "stageCreate": "Erstellen",
+      "stageReply": "Antwort",
+      "stageReact": "Reaktion",
+      "createdReply": "Workflow #1 erstellt. Er antwortet, wenn eine Nachricht die Bedingung erfüllt.",
+      "createdReact": "Workflow #2 erstellt. Er reagiert, wenn eine Nachricht die Bedingung erfüllt.",
+      "askFaq": "Gibt es irgendwo eine FAQ?",
+      "faqReply": "👉 #faq",
+      "ggText": "GG an alle!",
+      "reactedNote": "Helper hat mit 🎉 reagiert. Regel: Nachricht enthält „GG“.",
+      "safety": "Nur ein Beispiel. Es wird keine Automation erstellt und keine Nachricht an Discord gesendet."
+    },
+    "tr": {
+      "tabAutomations": "Otomasyonlar",
+      "automationsIntro": "Bir mesaj belirlediğiniz metni içerdiğinde Helper yanıt verir veya tepki ekler. Yalnızca düz metin, kod yok.",
+      "commandCreate": "Discord'dan otomasyon oluşturur. Sunucuyu Yönet izni gerekir.",
+      "tabLimits": "Sınırlar",
+      "limitsIntro": "Otomasyonları yoğun kanallar için küçük ve güvenli tutun.",
+      "groupCapacity": "Boyut",
+      "groupMentions": "Bahsetmeler",
+      "stageCreate": "Oluştur",
+      "stageReply": "Yanıt",
+      "stageReact": "Tepki",
+      "createdReply": "Workflow #1 oluşturuldu. Bir mesaj koşulla eşleştiğinde yanıt verir.",
+      "createdReact": "Workflow #2 oluşturuldu. Bir mesaj koşulla eşleştiğinde tepki verir.",
+      "askFaq": "Bir FAQ var mı?",
+      "faqReply": "👉 #faq",
+      "ggText": "Herkese GG!",
+      "reactedNote": "Helper 🎉 ile tepki verdi. Kural: mesaj “GG” içeriyor.",
+      "safety": "Yalnızca örnek. Otomasyon oluşturulmaz ve Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabAutomations": "الأتمتة",
+      "automationsIntro": "عندما تحتوي رسالة على النص الذي حددته، يرد Helper أو يضيف تفاعلًا. نص عادي فقط، دون شيفرة.",
+      "commandCreate": "ينشئ أتمتة من داخل Discord. يتطلب إذن إدارة الخادم.",
+      "tabLimits": "الحدود",
+      "limitsIntro": "اجعل الأتمتة صغيرة وآمنة في القنوات المزدحمة.",
+      "groupCapacity": "الحجم",
+      "groupMentions": "الإشارات",
+      "stageCreate": "الإنشاء",
+      "stageReply": "الرد",
+      "stageReact": "التفاعل",
+      "createdReply": "أُنشئ Workflow #1. يرد عندما تطابق رسالة الشرط.",
+      "createdReact": "أُنشئ Workflow #2. يتفاعل عندما تطابق رسالة الشرط.",
+      "askFaq": "هل يوجد FAQ في مكان ما؟",
+      "faqReply": "👉 #faq",
+      "ggText": "GG للجميع!",
+      "reactedNote": "تفاعل Helper بـ 🎉. القاعدة: الرسالة تحتوي على «GG».",
+      "safety": "مثال فقط. لا تُنشأ أي أتمتة ولا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabAutomations": "自動化",
+      "automationsIntro": "當訊息包含你設定的文字時，Helper 會回覆或加上反應。僅限純文字，不含程式碼。",
+      "commandCreate": "在 Discord 中建立自動化。需要「管理伺服器」權限。",
+      "tabLimits": "限制",
+      "limitsIntro": "讓自動化在熱鬧的頻道中保持精簡、安全。",
+      "groupCapacity": "規模",
+      "groupMentions": "提及",
+      "stageCreate": "建立",
+      "stageReply": "回覆",
+      "stageReact": "反應",
+      "createdReply": "已建立 Workflow #1。訊息符合條件時會回覆。",
+      "createdReact": "已建立 Workflow #2。訊息符合條件時會加上反應。",
+      "askFaq": "有 FAQ 嗎？",
+      "faqReply": "👉 #faq",
+      "ggText": "大家 GG！",
+      "reactedNote": "Helper 加上了 🎉 反應。規則：訊息包含「GG」。",
+      "safety": "僅為範例。不會建立自動化，也不會傳送訊息到 Discord。"
+    },
+    "ru": {
+      "tabAutomations": "Автоматизации",
+      "automationsIntro": "Если сообщение содержит заданный текст, Helper отвечает или ставит реакцию. Только обычный текст, без кода.",
+      "commandCreate": "Создаёт автоматизацию прямо в Discord. Нужно право «Управлять сервером».",
+      "tabLimits": "Ограничения",
+      "limitsIntro": "Держите автоматизации компактными и безопасными для активных каналов.",
+      "groupCapacity": "Объём",
+      "groupMentions": "Упоминания",
+      "stageCreate": "Создание",
+      "stageReply": "Ответ",
+      "stageReact": "Реакция",
+      "createdReply": "Workflow #1 создан. Он отвечает, когда сообщение подходит под условие.",
+      "createdReact": "Workflow #2 создан. Он ставит реакцию, когда сообщение подходит под условие.",
+      "askFaq": "Здесь есть FAQ?",
+      "faqReply": "👉 #faq",
+      "ggText": "Всем GG!",
+      "reactedNote": "Helper поставил реакцию 🎉. Правило: сообщение содержит «GG».",
+      "safety": "Только пример. Автоматизации не создаются, сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabAutomations": "자동화",
+      "automationsIntro": "메시지에 지정한 텍스트가 있으면 Helper가 답장하거나 반응을 추가합니다. 일반 텍스트만 쓰며 코드는 없습니다.",
+      "commandCreate": "Discord에서 자동화를 만듭니다. 서버 관리 권한이 필요합니다.",
+      "tabLimits": "한도",
+      "limitsIntro": "바쁜 채널에서도 자동화를 작고 안전하게 유지하세요.",
+      "groupCapacity": "규모",
+      "groupMentions": "멘션",
+      "stageCreate": "만들기",
+      "stageReply": "답장",
+      "stageReact": "반응",
+      "createdReply": "Workflow #1이 생성되었습니다. 메시지가 조건과 맞으면 답장합니다.",
+      "createdReact": "Workflow #2가 생성되었습니다. 메시지가 조건과 맞으면 반응을 추가합니다.",
+      "askFaq": "FAQ가 어디 있나요?",
+      "faqReply": "👉 #faq",
+      "ggText": "모두 GG!",
+      "reactedNote": "Helper가 🎉 반응을 달았습니다. 규칙: 메시지에 “GG” 포함.",
+      "safety": "예시일 뿐입니다. 자동화가 만들어지지 않으며 Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "key": "management.custom_commands",
+  "tabs": [
+    {
+      "title": "tabCommands",
+      "intro": "commandsIntro",
+      "commands": [
+        [
+          "/tag",
+          "commandTag"
+        ]
+      ],
+      "slot": "manager",
+      "groups": []
+    },
+    {
+      "title": "tabRules",
+      "intro": "rulesIntro",
+      "groups": [
+        {
+          "title": "groupPrefix",
+          "keys": [
+            "triggerPrefix"
+          ]
+        },
+        {
+          "title": "groupAccess",
+          "keys": [
+            "staffOnly",
+            "ignoredChannels"
+          ]
+        },
+        {
+          "title": "groupLimits",
+          "hint": "limitsHint",
+          "keys": [
+            "maxTags",
+            "maxResponseLength"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "groupPrefix",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Mia",
+            "text": "question"
+          },
+          {
+            "author": "Alex",
+            "text": "trigger"
+          },
+          {
+            "bot": true,
+            "text": "reply",
+            "note": "savedNote"
+          }
+        ]
+      },
+      {
+        "label": "stageSlash",
+        "channel": "# help",
+        "messages": [
+          {
+            "author": "Rexy",
+            "command": "/tag name: rules"
+          },
+          {
+            "bot": true,
+            "text": "reply",
+            "note": "tagNote"
+          }
+        ]
+      },
+      {
+        "label": "stageIgnored",
+        "channel": "# memes",
+        "messages": [
+          {
+            "author": "Mia",
+            "text": "trigger",
+            "note": "ignoredNote"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabCommands": "Commands",
+      "commandsIntro": "Save answers your team gives often. Members call them with the prefix or with /tag.",
+      "commandTag": "Shows a saved response by name.",
+      "groupPrefix": "Prefix",
+      "tabRules": "Rules",
+      "rulesIntro": "Choose who can use saved commands, where they work and how big the list can get.",
+      "groupAccess": "Who and where",
+      "groupLimits": "Limits",
+      "limitsHint": "Responses never run code. Helper neutralises @everyone and @here.",
+      "stageSlash": "Slash command",
+      "stageIgnored": "Ignored channel",
+      "question": "Where are the server rules?",
+      "trigger": "!rules",
+      "reply": "Read #rules before you post. Thanks!",
+      "savedNote": "Saved response: rules",
+      "tagNote": "The same response, called with /tag.",
+      "ignoredNote": "No reply: Helper ignores this channel.",
+      "safety": "Example only. No commands are saved and no messages are sent to Discord."
+    },
+    "pt": {
+      "tabCommands": "Comandos",
+      "commandsIntro": "Guarda as respostas que a equipa dá muitas vezes. Os membros chamam-nas com o prefixo ou com /tag.",
+      "commandTag": "Mostra uma resposta guardada pelo nome.",
+      "groupPrefix": "Prefixo",
+      "tabRules": "Regras",
+      "rulesIntro": "Escolhe quem pode usar os comandos guardados, onde funcionam e até onde a lista pode crescer.",
+      "groupAccess": "Quem e onde",
+      "groupLimits": "Limites",
+      "limitsHint": "As respostas nunca executam código. O Helper neutraliza @everyone e @here.",
+      "stageSlash": "Comando de barra",
+      "stageIgnored": "Canal ignorado",
+      "question": "Onde estão as regras do servidor?",
+      "trigger": "!rules",
+      "reply": "Lê o #rules antes de publicares. Obrigado!",
+      "savedNote": "Resposta guardada: rules",
+      "tagNote": "A mesma resposta, chamada com /tag.",
+      "ignoredNote": "Sem resposta: o Helper ignora este canal.",
+      "safety": "Apenas um exemplo. Nenhum comando é guardado e nenhuma mensagem é enviada para o Discord."
+    },
+    "fr": {
+      "tabCommands": "Commandes",
+      "commandsIntro": "Enregistrez les réponses que votre équipe donne souvent. Les membres les affichent avec le préfixe ou avec /tag.",
+      "commandTag": "Affiche une réponse enregistrée par son nom.",
+      "groupPrefix": "Préfixe",
+      "tabRules": "Règles",
+      "rulesIntro": "Choisissez qui peut utiliser les commandes enregistrées, où elles fonctionnent et la taille maximale de la liste.",
+      "groupAccess": "Qui et où",
+      "groupLimits": "Limites",
+      "limitsHint": "Les réponses n'exécutent jamais de code. Helper neutralise @everyone et @here.",
+      "stageSlash": "Commande slash",
+      "stageIgnored": "Salon ignoré",
+      "question": "Où sont les règles du serveur ?",
+      "trigger": "!rules",
+      "reply": "Lisez #rules avant de publier. Merci !",
+      "savedNote": "Réponse enregistrée : rules",
+      "tagNote": "La même réponse, appelée avec /tag.",
+      "ignoredNote": "Pas de réponse : Helper ignore ce salon.",
+      "safety": "Exemple uniquement. Aucune commande n'est enregistrée et aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabCommands": "Comandos",
+      "commandsIntro": "Guarda las respuestas que tu equipo da a menudo. Los miembros las muestran con el prefijo o con /tag.",
+      "commandTag": "Muestra una respuesta guardada por su nombre.",
+      "groupPrefix": "Prefijo",
+      "tabRules": "Reglas",
+      "rulesIntro": "Elige quién puede usar los comandos guardados, dónde funcionan y cuánto puede crecer la lista.",
+      "groupAccess": "Quién y dónde",
+      "groupLimits": "Límites",
+      "limitsHint": "Las respuestas nunca ejecutan código. Helper neutraliza @everyone y @here.",
+      "stageSlash": "Comando de barra",
+      "stageIgnored": "Canal ignorado",
+      "question": "¿Dónde están las normas del servidor?",
+      "trigger": "!rules",
+      "reply": "Lee #rules antes de publicar. ¡Gracias!",
+      "savedNote": "Respuesta guardada: rules",
+      "tagNote": "La misma respuesta, llamada con /tag.",
+      "ignoredNote": "Sin respuesta: Helper ignora este canal.",
+      "safety": "Solo es un ejemplo. No se guarda ningún comando ni se envían mensajes a Discord."
+    },
+    "de": {
+      "tabCommands": "Befehle",
+      "commandsIntro": "Häufige Antworten des Teams hier speichern. Mitglieder rufen sie mit dem Präfix oder mit /tag auf.",
+      "commandTag": "Zeigt eine gespeicherte Antwort anhand ihres Namens.",
+      "groupPrefix": "Präfix",
+      "tabRules": "Regeln",
+      "rulesIntro": "Festlegen, wer gespeicherte Befehle nutzen darf, wo sie funktionieren und wie groß die Liste werden darf.",
+      "groupAccess": "Wer und wo",
+      "groupLimits": "Grenzen",
+      "limitsHint": "Antworten führen nie Code aus. Helper entschärft @everyone und @here.",
+      "stageSlash": "Slash-Befehl",
+      "stageIgnored": "Ignorierter Kanal",
+      "question": "Wo finde ich die Serverregeln?",
+      "trigger": "!rules",
+      "reply": "Bitte vor dem Posten #rules lesen. Danke!",
+      "savedNote": "Gespeicherte Antwort: rules",
+      "tagNote": "Dieselbe Antwort, aufgerufen mit /tag.",
+      "ignoredNote": "Keine Antwort: Helper ignoriert diesen Kanal.",
+      "safety": "Nur ein Beispiel. Es wird kein Befehl gespeichert und keine Nachricht an Discord gesendet."
+    },
+    "tr": {
+      "tabCommands": "Komutlar",
+      "commandsIntro": "Ekibinizin sık verdiği yanıtları kaydedin. Üyeler bunları önekle veya /tag ile çağırır.",
+      "commandTag": "Kayıtlı bir yanıtı adıyla gösterir.",
+      "groupPrefix": "Önek",
+      "tabRules": "Kurallar",
+      "rulesIntro": "Kayıtlı komutları kimin kullanabileceğini, nerede çalışacaklarını ve listenin ne kadar büyüyebileceğini seçin.",
+      "groupAccess": "Kim ve nerede",
+      "groupLimits": "Sınırlar",
+      "limitsHint": "Yanıtlar asla kod çalıştırmaz. Helper @everyone ve @here etiketlerini etkisiz hale getirir.",
+      "stageSlash": "Eğik çizgi komutu",
+      "stageIgnored": "Yok sayılan kanal",
+      "question": "Sunucu kuralları nerede?",
+      "trigger": "!rules",
+      "reply": "Paylaşmadan önce #rules kanalını okuyun. Teşekkürler!",
+      "savedNote": "Kayıtlı yanıt: rules",
+      "tagNote": "Aynı yanıt, /tag ile çağrıldı.",
+      "ignoredNote": "Yanıt yok: Helper bu kanalı yok sayar.",
+      "safety": "Yalnızca örnek. Komut kaydedilmez ve Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabCommands": "الأوامر",
+      "commandsIntro": "احفظ الردود التي يكررها فريقك كثيرًا. يستدعيها الأعضاء بالبادئة أو بالأمر /tag.",
+      "commandTag": "يعرض ردًا محفوظًا باسمه.",
+      "groupPrefix": "البادئة",
+      "tabRules": "القواعد",
+      "rulesIntro": "اختر من يمكنه استخدام الأوامر المحفوظة، وأين تعمل، وإلى أي حد يمكن أن تكبر القائمة.",
+      "groupAccess": "من وأين",
+      "groupLimits": "الحدود",
+      "limitsHint": "لا تنفّذ الردود أي شيفرة. ويعطّل Helper إشارات @everyone و@here.",
+      "stageSlash": "أمر الشرطة المائلة",
+      "stageIgnored": "قناة متجاهَلة",
+      "question": "أين قواعد الخادم؟",
+      "trigger": "!rules",
+      "reply": "اقرأ #rules قبل النشر. شكرًا!",
+      "savedNote": "رد محفوظ: rules",
+      "tagNote": "الرد نفسه، مستدعى بالأمر /tag.",
+      "ignoredNote": "لا رد: يتجاهل Helper هذه القناة.",
+      "safety": "مثال فقط. لا يُحفظ أي أمر ولا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabCommands": "指令",
+      "commandsIntro": "儲存團隊常用的回覆。成員可用前綴或 /tag 叫出。",
+      "commandTag": "依名稱顯示已儲存的回覆。",
+      "groupPrefix": "前綴",
+      "tabRules": "規則",
+      "rulesIntro": "選擇誰能使用已儲存的指令、在哪裡生效，以及清單的上限。",
+      "groupAccess": "使用者與頻道",
+      "groupLimits": "限制",
+      "limitsHint": "回覆絕不會執行程式碼。Helper 會讓 @everyone 和 @here 失效。",
+      "stageSlash": "斜線指令",
+      "stageIgnored": "已忽略的頻道",
+      "question": "伺服器規則在哪裡？",
+      "trigger": "!rules",
+      "reply": "發文前請先閱讀 #rules。謝謝！",
+      "savedNote": "已儲存的回覆：rules",
+      "tagNote": "同一則回覆，透過 /tag 叫出。",
+      "ignoredNote": "沒有回覆：Helper 會忽略這個頻道。",
+      "safety": "僅為範例。不會儲存指令，也不會傳送訊息到 Discord。"
+    },
+    "ru": {
+      "tabCommands": "Команды",
+      "commandsIntro": "Сохраняйте ответы, которые команда часто повторяет. Участники вызывают их префиксом или командой /tag.",
+      "commandTag": "Показывает сохранённый ответ по названию.",
+      "groupPrefix": "Префикс",
+      "tabRules": "Правила",
+      "rulesIntro": "Выберите, кто может пользоваться сохранёнными командами, где они работают и насколько большим может быть список.",
+      "groupAccess": "Кто и где",
+      "groupLimits": "Ограничения",
+      "limitsHint": "Ответы никогда не выполняют код. Helper обезвреживает @everyone и @here.",
+      "stageSlash": "Слеш-команда",
+      "stageIgnored": "Игнорируемый канал",
+      "question": "Где правила сервера?",
+      "trigger": "!rules",
+      "reply": "Прочитайте #rules, прежде чем писать. Спасибо!",
+      "savedNote": "Сохранённый ответ: rules",
+      "tagNote": "Тот же ответ, вызванный через /tag.",
+      "ignoredNote": "Ответа нет: Helper игнорирует этот канал.",
+      "safety": "Только пример. Команды не сохраняются, сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabCommands": "명령어",
+      "commandsIntro": "팀이 자주 하는 답변을 저장하세요. 멤버는 접두사나 /tag로 불러옵니다.",
+      "commandTag": "저장된 답변을 이름으로 보여 줍니다.",
+      "groupPrefix": "접두사",
+      "tabRules": "규칙",
+      "rulesIntro": "저장된 명령어를 누가 어디서 쓸 수 있는지, 목록을 얼마나 늘릴 수 있는지 정하세요.",
+      "groupAccess": "사용자와 채널",
+      "groupLimits": "한도",
+      "limitsHint": "답변은 코드를 실행하지 않습니다. Helper가 @everyone과 @here 멘션을 무력화합니다.",
+      "stageSlash": "슬래시 명령어",
+      "stageIgnored": "무시하는 채널",
+      "question": "서버 규칙은 어디 있나요?",
+      "trigger": "!rules",
+      "reply": "글을 올리기 전에 #rules를 읽어 주세요. 감사합니다!",
+      "savedNote": "저장된 답변: rules",
+      "tagNote": "같은 답변을 /tag로 불렀습니다.",
+      "ignoredNote": "답변 없음: Helper가 이 채널을 무시합니다.",
+      "safety": "예시일 뿐입니다. 명령어가 저장되지 않으며 Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

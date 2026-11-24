@@ -1,0 +1,271 @@
+{
+  "key": "utility.emojis",
+  "tabs": [
+    {
+      "title": "tabList",
+      "intro": "listIntro",
+      "commands": [
+        [
+          "/emojis",
+          "commandEmojis"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupList",
+          "keys": [
+            "maxEntries",
+            "animatedOnly"
+          ]
+        },
+        {
+          "title": "groupManagement",
+          "hint": "managementHint",
+          "keys": [
+            "allowManagement"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageAll",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Mia",
+            "command": "/emojis"
+          },
+          {
+            "bot": true,
+            "note": "listNote",
+            "card": {
+              "tone": "info",
+              "title": "listTitle",
+              "body": "listBody",
+              "fields": [
+                [
+                  "static",
+                  "2"
+                ],
+                [
+                  "animated",
+                  "1"
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageAnimated",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Mia",
+            "command": "/emojis"
+          },
+          {
+            "bot": true,
+            "note": "animatedNote",
+            "card": {
+              "tone": "info",
+              "title": "listTitle",
+              "body": "listBodyAnimated",
+              "fields": [
+                [
+                  "animated",
+                  "1"
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabList": "Emoji list",
+      "listIntro": "Members use /emojis to see this server's custom emojis.",
+      "commandEmojis": "Lists this server's custom emojis.",
+      "groupList": "What the list shows",
+      "groupManagement": "Management",
+      "managementHint": "Members can always view the list. Only staff can change emojis.",
+      "stageAll": "All emojis",
+      "stageAnimated": "Animated only",
+      "listTitle": "Custom emojis",
+      "listBody": ":wave_cat: :gg: :party_blob:",
+      "listBodyAnimated": ":party_blob:",
+      "static": "Static",
+      "animated": "Animated",
+      "listNote": "The list stops at the number of emojis you allow.",
+      "animatedNote": "With the animated filter on, static emojis are left out.",
+      "safety": "Example only. No emojis are changed and no messages are sent to Discord."
+    },
+    "pt": {
+      "tabList": "Lista de emojis",
+      "listIntro": "Os membros usam /emojis para ver os emojis personalizados deste servidor.",
+      "commandEmojis": "Lista os emojis personalizados deste servidor.",
+      "groupList": "O que a lista mostra",
+      "groupManagement": "Gestão",
+      "managementHint": "Os membros veem sempre a lista. Só a staff pode alterar emojis.",
+      "stageAll": "Todos os emojis",
+      "stageAnimated": "Só animados",
+      "listTitle": "Emojis personalizados",
+      "listBody": ":wave_cat: :gg: :party_blob:",
+      "listBodyAnimated": ":party_blob:",
+      "static": "Estáticos",
+      "animated": "Animados",
+      "listNote": "A lista para no número de emojis que definires.",
+      "animatedNote": "Com o filtro de animados ativo, os emojis estáticos ficam de fora.",
+      "safety": "Apenas um exemplo. Nenhum emoji é alterado e não são enviadas mensagens para o Discord."
+    },
+    "fr": {
+      "tabList": "Liste des emojis",
+      "listIntro": "Les membres utilisent /emojis pour voir les emojis personnalisés du serveur.",
+      "commandEmojis": "Liste les emojis personnalisés du serveur.",
+      "groupList": "Contenu de la liste",
+      "groupManagement": "Gestion",
+      "managementHint": "Les membres voient toujours la liste. Seule l'équipe peut modifier les emojis.",
+      "stageAll": "Tous les emojis",
+      "stageAnimated": "Animés uniquement",
+      "listTitle": "Emojis personnalisés",
+      "listBody": ":wave_cat: :gg: :party_blob:",
+      "listBodyAnimated": ":party_blob:",
+      "static": "Statiques",
+      "animated": "Animés",
+      "listNote": "La liste s'arrête au nombre d'emojis défini.",
+      "animatedNote": "Avec le filtre animés, les emojis statiques sont exclus.",
+      "safety": "Exemple uniquement. Aucun emoji n'est modifié et aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabList": "Lista de emojis",
+      "listIntro": "Los miembros usan /emojis para ver los emojis personalizados del servidor.",
+      "commandEmojis": "Muestra los emojis personalizados del servidor.",
+      "groupList": "Qué muestra la lista",
+      "groupManagement": "Gestión",
+      "managementHint": "Los miembros siempre ven la lista. Solo el staff puede cambiar emojis.",
+      "stageAll": "Todos los emojis",
+      "stageAnimated": "Solo animados",
+      "listTitle": "Emojis personalizados",
+      "listBody": ":wave_cat: :gg: :party_blob:",
+      "listBodyAnimated": ":party_blob:",
+      "static": "Estáticos",
+      "animated": "Animados",
+      "listNote": "La lista se detiene en el número de emojis que definas.",
+      "animatedNote": "Con el filtro de animados, se omiten los emojis estáticos.",
+      "safety": "Solo es un ejemplo. No se cambia ningún emoji ni se envían mensajes a Discord."
+    },
+    "de": {
+      "tabList": "Emoji-Liste",
+      "listIntro": "Mitglieder sehen mit /emojis die eigenen Emojis dieses Servers.",
+      "commandEmojis": "Listet die eigenen Emojis des Servers auf.",
+      "groupList": "Inhalt der Liste",
+      "groupManagement": "Verwaltung",
+      "managementHint": "Mitglieder sehen die Liste immer. Nur das Team kann Emojis ändern.",
+      "stageAll": "Alle Emojis",
+      "stageAnimated": "Nur animierte",
+      "listTitle": "Eigene Emojis",
+      "listBody": ":wave_cat: :gg: :party_blob:",
+      "listBodyAnimated": ":party_blob:",
+      "static": "Statisch",
+      "animated": "Animiert",
+      "listNote": "Die Liste endet bei der festgelegten Anzahl.",
+      "animatedNote": "Mit dem Animiert-Filter werden statische Emojis ausgelassen.",
+      "safety": "Nur ein Beispiel. Es werden keine Emojis geändert und keine Nachrichten an Discord gesendet."
+    },
+    "tr": {
+      "tabList": "Emoji listesi",
+      "listIntro": "Üyeler bu sunucunun özel emojilerini görmek için /emojis kullanır.",
+      "commandEmojis": "Sunucunun özel emojilerini listeler.",
+      "groupList": "Listede neler görünür",
+      "groupManagement": "Yönetim",
+      "managementHint": "Üyeler listeyi her zaman görür. Emojileri yalnızca yetkililer değiştirebilir.",
+      "stageAll": "Tüm emojiler",
+      "stageAnimated": "Yalnızca hareketli",
+      "listTitle": "Özel emojiler",
+      "listBody": ":wave_cat: :gg: :party_blob:",
+      "listBodyAnimated": ":party_blob:",
+      "static": "Sabit",
+      "animated": "Hareketli",
+      "listNote": "Liste, belirlediğiniz emoji sayısında durur.",
+      "animatedNote": "Hareketli filtresi açıkken sabit emojiler gösterilmez.",
+      "safety": "Yalnızca örnek. Emojiler değiştirilmez ve Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabList": "قائمة الرموز التعبيرية",
+      "listIntro": "يستخدم الأعضاء /emojis لعرض الرموز التعبيرية المخصصة لهذا الخادم.",
+      "commandEmojis": "يعرض الرموز التعبيرية المخصصة للخادم.",
+      "groupList": "ما تعرضه القائمة",
+      "groupManagement": "الإدارة",
+      "managementHint": "يرى الأعضاء القائمة دائمًا. يمكن للطاقم فقط تعديل الرموز التعبيرية.",
+      "stageAll": "كل الرموز",
+      "stageAnimated": "المتحركة فقط",
+      "listTitle": "الرموز التعبيرية المخصصة",
+      "listBody": ":wave_cat: :gg: :party_blob:",
+      "listBodyAnimated": ":party_blob:",
+      "static": "ثابتة",
+      "animated": "متحركة",
+      "listNote": "تتوقف القائمة عند عدد الرموز الذي تحدده.",
+      "animatedNote": "عند تفعيل عامل تصفية المتحركة، تُستبعد الرموز الثابتة.",
+      "safety": "مثال فقط. لا تُعدَّل أي رموز تعبيرية ولا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabList": "表情符號清單",
+      "listIntro": "成員使用 /emojis 查看本伺服器的自訂表情符號。",
+      "commandEmojis": "列出本伺服器的自訂表情符號。",
+      "groupList": "清單內容",
+      "groupManagement": "管理",
+      "managementHint": "成員隨時可以查看清單。只有管理團隊可以修改表情符號。",
+      "stageAll": "全部表情符號",
+      "stageAnimated": "僅動態表情符號",
+      "listTitle": "自訂表情符號",
+      "listBody": ":wave_cat: :gg: :party_blob:",
+      "listBodyAnimated": ":party_blob:",
+      "static": "靜態",
+      "animated": "動態",
+      "listNote": "清單最多顯示你設定的表情符號數量。",
+      "animatedNote": "開啟「僅動態」篩選後，不會列出靜態表情符號。",
+      "safety": "僅為範例。不會修改任何表情符號，也不會向 Discord 傳送任何訊息。"
+    },
+    "ru": {
+      "tabList": "Список эмодзи",
+      "listIntro": "Участники используют /emojis, чтобы увидеть эмодзи сервера.",
+      "commandEmojis": "Показывает эмодзи сервера.",
+      "groupList": "Что показывает список",
+      "groupManagement": "Управление",
+      "managementHint": "Участники всегда видят список. Менять эмодзи может только команда.",
+      "stageAll": "Все эмодзи",
+      "stageAnimated": "Только анимированные",
+      "listTitle": "Эмодзи сервера",
+      "listBody": ":wave_cat: :gg: :party_blob:",
+      "listBodyAnimated": ":party_blob:",
+      "static": "Статичные",
+      "animated": "Анимированные",
+      "listNote": "Список ограничен заданным числом эмодзи.",
+      "animatedNote": "С фильтром анимированных статичные эмодзи не показываются.",
+      "safety": "Только пример. Эмодзи не меняются, сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabList": "이모지 목록",
+      "listIntro": "멤버는 /emojis로 이 서버의 사용자 지정 이모지를 봅니다.",
+      "commandEmojis": "서버의 사용자 지정 이모지를 나열합니다.",
+      "groupList": "목록에 표시할 내용",
+      "groupManagement": "관리",
+      "managementHint": "멤버는 항상 목록을 볼 수 있습니다. 이모지 변경은 스태프만 할 수 있습니다.",
+      "stageAll": "전체 이모지",
+      "stageAnimated": "애니메이션만",
+      "listTitle": "사용자 지정 이모지",
+      "listBody": ":wave_cat: :gg: :party_blob:",
+      "listBodyAnimated": ":party_blob:",
+      "static": "정적",
+      "animated": "애니메이션",
+      "listNote": "목록은 설정한 개수까지만 표시됩니다.",
+      "animatedNote": "애니메이션 필터를 켜면 정적 이모지는 제외됩니다.",
+      "safety": "예시일 뿐입니다. 이모지가 변경되지 않으며 Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

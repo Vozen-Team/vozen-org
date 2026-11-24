@@ -9,6 +9,8 @@ await import('../site/js/i18n-v42.js');
 const dictionary=window.VOZEN_I18N;
 const read=async name=>JSON.parse(await readFile(new URL(`../apps/helper-panel/src/${name}.json`,import.meta.url),'utf8'));
 const paths=await read('panel-paths');
+const inviteLayout=JSON.parse(await readFile(new URL('../apps/helper-panel/src/feature-layouts/invite-tracker.json',import.meta.url),'utf8'));
+const layoutText=(id,locale)=>(inviteLayout.copy[locale]??inviteLayout.copy.en)[id];
 const copy={};
 for(const name of ['helper-app-pt-fr-es','helper-app-de-tr','helper-app-ar-zh','helper-app-ru-ko','helper-components-copy','helper-schema-copy','helper-shared-copy']) {
   for(const [source,values] of Object.entries(await read(name)))copy[source]={...copy[source],...values};
@@ -66,11 +68,11 @@ try {
     await page.waitForFunction(code=>document.documentElement.lang===code,locale);
     assert.equal(await page.locator('.lang__name').innerText(),name);
     assert.equal(await page.locator('#route-heading').innerText(),dictionary[locale]['helper.feature.management.invite_tracker.label'],'API presentation language does not override the site selection');
-    await page.getByText(expected('See who brought new members to the server.',locale),{exact:true}).waitFor();
+    await page.getByText(layoutText(inviteLayout.tabs[0].intro,locale),{exact:true}).waitFor();
     assert.equal(await page.getByRole('spinbutton').inputValue(),'10');
     assert.equal(await page.getByRole('spinbutton').getAttribute('aria-label')||await page.getByRole('spinbutton').evaluate(node=>node.closest('label')?.querySelector('b')?.textContent),expected('Invites shown',locale));
-    await page.getByText(expected('Invite overview',locale),{exact:true}).waitFor();
-    await page.getByText(expected('All settings for this server.',locale),{exact:true}).waitFor();
+    await page.getByRole('heading',{name:layoutText(inviteLayout.tabs[0].groups[0].title,locale),exact:true}).waitFor();
+    await page.locator('.spam-demo-button').waitFor();
     assert.equal(await page.locator('select option[value="10"]:checked').innerText(),'Active','server names are user content');
     assert.equal(await page.evaluate(()=>document.documentElement.dir),locale==='ar'?'rtl':'ltr');
     if(locale==='pt') {await mkdir('output/playwright',{recursive:true});await page.screenshot({path:'output/playwright/helper-language-pt.png',fullPage:true});}
@@ -93,7 +95,7 @@ try {
   console.log('PASS 47 direct feature routes with Portuguese titles');
   await page.goto(`${origin}/panel/invites/`);
   await page.getByRole('spinbutton').waitFor();
-  await page.getByRole('button',{name:expected('Simulate configuration','pt'),exact:true}).click();
+  await page.locator('.spam-demo-button').click();
   await page.getByRole('dialog',{name:dictionary.pt['helper.feature.management.invite_tracker.label'],exact:true}).waitFor();
   const other=await context.newPage();
   await other.goto(`${origin}/panel/invites/`);
@@ -101,7 +103,7 @@ try {
   await page.getByRole('dialog',{name:dictionary.fr['helper.feature.management.invite_tracker.label'],exact:true}).waitFor();
   await page.keyboard.press('Escape');
   await other.close();
-  assert.equal(simulations,1,'language changes do not repeat the validation request');
+  assert.equal(simulations,0,'the local demonstration makes no validation request, before or after a language change');
   assert.equal(writes,0);
   await page.locator('.workspace-global-nav__language-button').click();
   await page.locator('.lang__panel').getByRole('button',{name:'Português',exact:true}).click();

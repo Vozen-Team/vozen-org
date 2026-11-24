@@ -1,0 +1,265 @@
+{
+  "key": "social.bluesky",
+  "tabs": [
+    {
+      "title": "tabSource",
+      "intro": "sourceIntro",
+      "groups": [
+        {
+          "title": "groupSource",
+          "hint": "sourceHint",
+          "keys": [
+            "sourceHandle",
+            "intervalSeconds"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabPost",
+      "intro": "postIntro",
+      "groups": [
+        {
+          "title": "groupDelivery",
+          "keys": [
+            "targetChannelId"
+          ]
+        },
+        {
+          "title": "groupMessage",
+          "hint": "messageHint",
+          "keys": [
+            "messageTemplate",
+            "mention"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageNew",
+        "channel": "# bluesky",
+        "messages": [
+          {
+            "bot": true,
+            "text": "alert",
+            "card": {
+              "title": "@vozen.org",
+              "body": "cardBody",
+              "footer": "Bluesky"
+            },
+            "note": "sentOnce"
+          }
+        ]
+      },
+      {
+        "label": "stageRead",
+        "channel": "# bluesky",
+        "messages": [
+          {
+            "author": "Mia",
+            "note": "opened"
+          },
+          {
+            "author": "Rexy",
+            "text": "reply"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabPost": "Post",
+      "postIntro": "Choose where alerts go and what they say.",
+      "groupDelivery": "Where to post",
+      "groupMessage": "Message",
+      "messageHint": "The mention is added to every alert.",
+      "safety": "Example only. Nothing is checked and no messages are sent to Discord.",
+      "tabSource": "Profile",
+      "sourceIntro": "Helper follows a public Bluesky profile and posts its new posts in Discord, in order.",
+      "groupSource": "Profile and checks",
+      "sourceHint": "Only public posts are read, through the official Bluesky API.",
+      "stageNew": "New post",
+      "stageRead": "Members react",
+      "alert": "@Fans New Bluesky post from vozen.org: Helper 2.0 ships today",
+      "cardBody": "Helper 2.0 ships today. Update notes are on the blog.",
+      "sentOnce": "Each post is sent once, in the order it was published.",
+      "opened": "Opened the post",
+      "reply": "Finally! Updating now."
+    },
+    "pt": {
+      "tabPost": "Publicação",
+      "postIntro": "Escolhe onde os alertas são publicados e o que dizem.",
+      "groupDelivery": "Onde publicar",
+      "groupMessage": "Mensagem",
+      "messageHint": "A menção é adicionada a cada alerta.",
+      "safety": "Apenas um exemplo. Nada é verificado e nenhuma mensagem é enviada para o Discord.",
+      "tabSource": "Perfil",
+      "sourceIntro": "O Helper segue um perfil público do Bluesky e publica as novas publicações no Discord, por ordem.",
+      "groupSource": "Perfil e verificações",
+      "sourceHint": "Só são lidas publicações públicas, através da API oficial do Bluesky.",
+      "stageNew": "Nova publicação",
+      "stageRead": "Os membros reagem",
+      "alert": "@Fans Nova publicação no Bluesky de vozen.org: o Helper 2.0 chega hoje",
+      "cardBody": "O Helper 2.0 chega hoje. As notas da atualização estão no blogue.",
+      "sentOnce": "Cada publicação é enviada uma vez, pela ordem em que saiu.",
+      "opened": "Abriu a publicação",
+      "reply": "Finalmente! Vou atualizar já."
+    },
+    "fr": {
+      "tabPost": "Publication",
+      "postIntro": "Choisissez où les alertes sont publiées et ce qu'elles disent.",
+      "groupDelivery": "Où publier",
+      "groupMessage": "Message",
+      "messageHint": "La mention est ajoutée à chaque alerte.",
+      "safety": "Exemple uniquement. Rien n'est vérifié et aucun message n'est envoyé sur Discord.",
+      "tabSource": "Profil",
+      "sourceIntro": "Helper suit un profil Bluesky public et publie ses nouveaux posts sur Discord, dans l'ordre.",
+      "groupSource": "Profil et vérifications",
+      "sourceHint": "Seuls les posts publics sont lus, via l'API officielle de Bluesky.",
+      "stageNew": "Nouveau post",
+      "stageRead": "Les membres réagissent",
+      "alert": "@Fans Nouveau post Bluesky de vozen.org : Helper 2.0 sort aujourd'hui",
+      "cardBody": "Helper 2.0 sort aujourd'hui. Les notes de version sont sur le blog.",
+      "sentOnce": "Chaque post est envoyé une fois, dans l'ordre de publication.",
+      "opened": "A ouvert le post",
+      "reply": "Enfin ! Je mets à jour."
+    },
+    "es": {
+      "tabPost": "Publicación",
+      "postIntro": "Elige dónde se publican las alertas y qué dicen.",
+      "groupDelivery": "Dónde publicar",
+      "groupMessage": "Mensaje",
+      "messageHint": "La mención se añade a cada alerta.",
+      "safety": "Solo es un ejemplo. No se comprueba nada ni se envían mensajes a Discord.",
+      "tabSource": "Perfil",
+      "sourceIntro": "Helper sigue un perfil público de Bluesky y publica sus nuevas publicaciones en Discord, en orden.",
+      "groupSource": "Perfil y comprobaciones",
+      "sourceHint": "Solo se leen publicaciones públicas, mediante la API oficial de Bluesky.",
+      "stageNew": "Nueva publicación",
+      "stageRead": "Los miembros reaccionan",
+      "alert": "@Fans Nueva publicación en Bluesky de vozen.org: Helper 2.0 sale hoy",
+      "cardBody": "Helper 2.0 sale hoy. Las notas de la versión están en el blog.",
+      "sentOnce": "Cada publicación se envía una vez, en el orden en que salió.",
+      "opened": "Abrió la publicación",
+      "reply": "¡Por fin! Actualizo ya."
+    },
+    "de": {
+      "tabPost": "Beitrag",
+      "postIntro": "Wähle, wo Benachrichtigungen erscheinen und was darin steht.",
+      "groupDelivery": "Wo posten",
+      "groupMessage": "Nachricht",
+      "messageHint": "Die Erwähnung wird jeder Benachrichtigung hinzugefügt.",
+      "safety": "Nur ein Beispiel. Es wird nichts geprüft und keine Nachricht an Discord gesendet.",
+      "tabSource": "Profil",
+      "sourceIntro": "Helper folgt einem öffentlichen Bluesky-Profil und postet neue Beiträge der Reihe nach in Discord.",
+      "groupSource": "Profil und Prüfungen",
+      "sourceHint": "Gelesen werden nur öffentliche Beiträge über die offizielle Bluesky-API.",
+      "stageNew": "Neuer Beitrag",
+      "stageRead": "Mitglieder reagieren",
+      "alert": "@Fans Neuer Bluesky-Beitrag von vozen.org: Helper 2.0 erscheint heute",
+      "cardBody": "Helper 2.0 erscheint heute. Die Versionshinweise stehen im Blog.",
+      "sentOnce": "Jeder Beitrag wird einmal gesendet, in der Reihenfolge der Veröffentlichung.",
+      "opened": "Hat den Beitrag geöffnet",
+      "reply": "Endlich! Ich aktualisiere gleich."
+    },
+    "tr": {
+      "tabPost": "Gönderi",
+      "postIntro": "Uyarıların nerede paylaşılacağını ve ne yazacağını seçin.",
+      "groupDelivery": "Nerede paylaşılacak",
+      "groupMessage": "Mesaj",
+      "messageHint": "Bahsetme her uyarıya eklenir.",
+      "safety": "Yalnızca örnek. Hiçbir şey kontrol edilmez ve Discord'a mesaj gönderilmez.",
+      "tabSource": "Profil",
+      "sourceIntro": "Helper herkese açık bir Bluesky profilini takip eder ve yeni gönderilerini sırayla Discord'da paylaşır.",
+      "groupSource": "Profil ve kontroller",
+      "sourceHint": "Yalnızca herkese açık gönderiler resmi Bluesky API'si üzerinden okunur.",
+      "stageNew": "Yeni gönderi",
+      "stageRead": "Üyeler tepki verir",
+      "alert": "@Fans vozen.org hesabından yeni Bluesky gönderisi: Helper 2.0 bugün çıkıyor",
+      "cardBody": "Helper 2.0 bugün çıkıyor. Güncelleme notları blogda.",
+      "sentOnce": "Her gönderi yayımlanma sırasına göre bir kez gönderilir.",
+      "opened": "Gönderiyi açtı",
+      "reply": "Sonunda! Hemen güncelliyorum."
+    },
+    "ar": {
+      "tabPost": "النشر",
+      "postIntro": "اختر مكان نشر التنبيهات وما تقوله.",
+      "groupDelivery": "مكان النشر",
+      "groupMessage": "الرسالة",
+      "messageHint": "تُضاف الإشارة إلى كل تنبيه.",
+      "safety": "مثال فقط. لا يُفحص أي شيء ولا تُرسل أي رسائل إلى Discord.",
+      "tabSource": "الملف الشخصي",
+      "sourceIntro": "يتابع Helper ملفًا عامًا على Bluesky وينشر منشوراته الجديدة في Discord بالترتيب.",
+      "groupSource": "الملف والفحص",
+      "sourceHint": "تُقرأ المنشورات العامة فقط عبر واجهة Bluesky الرسمية.",
+      "stageNew": "منشور جديد",
+      "stageRead": "الأعضاء يتفاعلون",
+      "alert": "@Fans منشور جديد على Bluesky من vozen.org: يصدر Helper 2.0 اليوم",
+      "cardBody": "يصدر Helper 2.0 اليوم. ملاحظات التحديث في المدونة.",
+      "sentOnce": "يُرسل كل منشور مرة واحدة بترتيب نشره.",
+      "opened": "فتحت المنشور",
+      "reply": "أخيرًا! سأحدّث الآن."
+    },
+    "zh": {
+      "tabPost": "發布",
+      "postIntro": "選擇通知要發布的位置與內容。",
+      "groupDelivery": "發布位置",
+      "groupMessage": "訊息",
+      "messageHint": "每則通知都會附上此提及。",
+      "safety": "僅為範例。不會進行任何檢查，也不會向 Discord 傳送訊息。",
+      "tabSource": "帳號",
+      "sourceIntro": "Helper 會追蹤一個公開的 Bluesky 帳號，並依序將新貼文發布到 Discord。",
+      "groupSource": "帳號與檢查",
+      "sourceHint": "僅透過 Bluesky 官方 API 讀取公開貼文。",
+      "stageNew": "新貼文",
+      "stageRead": "成員互動",
+      "alert": "@Fans vozen.org 的 Bluesky 新貼文：Helper 2.0 今天發布",
+      "cardBody": "Helper 2.0 今天發布。更新說明請見部落格。",
+      "sentOnce": "每則貼文會依發布順序只傳送一次。",
+      "opened": "開啟了貼文",
+      "reply": "終於來了！馬上更新。"
+    },
+    "ru": {
+      "tabPost": "Публикация",
+      "postIntro": "Выберите, куда отправлять оповещения и что в них писать.",
+      "groupDelivery": "Куда публиковать",
+      "groupMessage": "Сообщение",
+      "messageHint": "Упоминание добавляется к каждому оповещению.",
+      "safety": "Только пример. Ничего не проверяется, сообщения в Discord не отправляются.",
+      "tabSource": "Профиль",
+      "sourceIntro": "Helper следит за публичным профилем Bluesky и по порядку публикует новые посты в Discord.",
+      "groupSource": "Профиль и проверки",
+      "sourceHint": "Читаются только публичные посты через официальный API Bluesky.",
+      "stageNew": "Новый пост",
+      "stageRead": "Участники реагируют",
+      "alert": "@Fans Новый пост в Bluesky от vozen.org: Helper 2.0 выходит сегодня",
+      "cardBody": "Helper 2.0 выходит сегодня. Заметки к обновлению — в блоге.",
+      "sentOnce": "Каждый пост отправляется один раз, в порядке публикации.",
+      "opened": "Открыла пост",
+      "reply": "Наконец-то! Обновляюсь."
+    },
+    "ko": {
+      "tabPost": "게시",
+      "postIntro": "알림을 보낼 위치와 내용을 고르세요.",
+      "groupDelivery": "게시 위치",
+      "groupMessage": "메시지",
+      "messageHint": "모든 알림에 멘션이 추가됩니다.",
+      "safety": "예시일 뿐입니다. 아무것도 확인하지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "tabSource": "프로필",
+      "sourceIntro": "Helper가 공개 Bluesky 프로필을 팔로우하고 새 게시물을 순서대로 Discord에 게시합니다.",
+      "groupSource": "프로필과 확인 주기",
+      "sourceHint": "공식 Bluesky API로 공개 게시물만 읽습니다.",
+      "stageNew": "새 게시물",
+      "stageRead": "멤버 반응",
+      "alert": "@Fans vozen.org의 새 Bluesky 게시물: Helper 2.0 오늘 출시",
+      "cardBody": "Helper 2.0이 오늘 출시됩니다. 업데이트 노트는 블로그에 있습니다.",
+      "sentOnce": "각 게시물은 게시된 순서대로 한 번만 전송됩니다.",
+      "opened": "게시물을 열었습니다",
+      "reply": "드디어! 지금 업데이트할게요."
+    }
+  }
+}

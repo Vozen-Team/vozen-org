@@ -1,0 +1,152 @@
+{
+  "key": "management.templates",
+  "tabs": [
+    {
+      "title": "tabTemplates",
+      "intro": "templatesIntro",
+      "slot": "manager",
+      "groups": []
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageSave",
+        "channel": "# welcome",
+        "messages": [
+          {
+            "author": "Alex",
+            "note": "savedNote"
+          }
+        ]
+      },
+      {
+        "label": "stageUse",
+        "channel": "# welcome",
+        "messages": [
+          {
+            "author": "Mia",
+            "note": "joined"
+          },
+          {
+            "bot": true,
+            "text": "welcomeText",
+            "note": "fromTemplate"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabTemplates": "Templates",
+      "templatesIntro": "Save a setup your team reuses: a name, the modules it covers and an optional default message. Secrets and tokens are never exported.",
+      "stageSave": "Save",
+      "stageUse": "Use",
+      "savedNote": "Saved the template “Welcome kit” with the message “Welcome to {server}, {member}!”",
+      "joined": "Joined the server",
+      "welcomeText": "Welcome to Pixel Club, @Mia!",
+      "fromTemplate": "Welcome uses the template's default message, with {server} and {member} filled in.",
+      "safety": "Example only. No template is saved and no messages are sent to Discord."
+    },
+    "pt": {
+      "tabTemplates": "Modelos",
+      "templatesIntro": "Guarda uma configuração que a equipa reutiliza: um nome, os módulos que abrange e uma mensagem predefinida opcional. Segredos e tokens nunca são exportados.",
+      "stageSave": "Guardar",
+      "stageUse": "Usar",
+      "savedNote": "Guardou o modelo “Kit de boas-vindas” com a mensagem “Boas-vindas ao {server}, {member}!”",
+      "joined": "Entrou no servidor",
+      "welcomeText": "Boas-vindas ao Pixel Club, @Mia!",
+      "fromTemplate": "As Boas-vindas usam a mensagem predefinida do modelo, com {server} e {member} preenchidos.",
+      "safety": "Apenas um exemplo. Nenhum modelo é guardado e nenhuma mensagem é enviada para o Discord."
+    },
+    "fr": {
+      "tabTemplates": "Modèles",
+      "templatesIntro": "Enregistrez une configuration que votre équipe réutilise : un nom, les modules concernés et un message par défaut facultatif. Les secrets et jetons ne sont jamais exportés.",
+      "stageSave": "Enregistrer",
+      "stageUse": "Utiliser",
+      "savedNote": "A enregistré le modèle « Kit de bienvenue » avec le message « Bienvenue sur {server}, {member} ! »",
+      "joined": "A rejoint le serveur",
+      "welcomeText": "Bienvenue sur Pixel Club, @Mia !",
+      "fromTemplate": "Le message de bienvenue reprend celui du modèle, avec {server} et {member} remplacés.",
+      "safety": "Exemple uniquement. Aucun modèle n'est enregistré et aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabTemplates": "Plantillas",
+      "templatesIntro": "Guarda una configuración que tu equipo reutiliza: un nombre, los módulos que abarca y un mensaje predeterminado opcional. Los secretos y tokens nunca se exportan.",
+      "stageSave": "Guardar",
+      "stageUse": "Usar",
+      "savedNote": "Guardó la plantilla «Kit de bienvenida» con el mensaje «¡Te damos la bienvenida a {server}, {member}!»",
+      "joined": "Se unió al servidor",
+      "welcomeText": "¡Te damos la bienvenida a Pixel Club, @Mia!",
+      "fromTemplate": "La bienvenida usa el mensaje predeterminado de la plantilla, con {server} y {member} rellenados.",
+      "safety": "Solo es un ejemplo. No se guarda ninguna plantilla ni se envían mensajes a Discord."
+    },
+    "de": {
+      "tabTemplates": "Vorlagen",
+      "templatesIntro": "Eine Einrichtung zum Wiederverwenden speichern: Name, enthaltene Module und optional eine Standardnachricht. Geheimnisse und Tokens werden nie exportiert.",
+      "stageSave": "Speichern",
+      "stageUse": "Verwenden",
+      "savedNote": "Hat die Vorlage „Willkommenspaket“ mit der Nachricht „Willkommen auf {server}, {member}!“ gespeichert.",
+      "joined": "Ist dem Server beigetreten",
+      "welcomeText": "Willkommen auf Pixel Club, @Mia!",
+      "fromTemplate": "Die Begrüßung nutzt die Standardnachricht der Vorlage, {server} und {member} sind ausgefüllt.",
+      "safety": "Nur ein Beispiel. Es wird keine Vorlage gespeichert und keine Nachricht an Discord gesendet."
+    },
+    "tr": {
+      "tabTemplates": "Şablonlar",
+      "templatesIntro": "Ekibinizin yeniden kullandığı bir kurulumu kaydedin: ad, kapsadığı modüller ve isteğe bağlı varsayılan mesaj. Gizli bilgiler ve token'lar asla dışa aktarılmaz.",
+      "stageSave": "Kaydet",
+      "stageUse": "Kullan",
+      "savedNote": "“Karşılama kiti” şablonunu “{server} sunucusuna hoş geldin, {member}!” mesajıyla kaydetti.",
+      "joined": "Sunucuya katıldı",
+      "welcomeText": "Pixel Club sunucusuna hoş geldin, @Mia!",
+      "fromTemplate": "Karşılama, şablonun varsayılan mesajını kullanır; {server} ve {member} doldurulur.",
+      "safety": "Yalnızca örnek. Şablon kaydedilmez ve Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabTemplates": "القوالب",
+      "templatesIntro": "احفظ إعدادًا يعيد فريقك استخدامه: اسمًا، والوحدات التي يشملها، ورسالة افتراضية اختيارية. لا تُصدَّر الأسرار والرموز المميزة أبدًا.",
+      "stageSave": "الحفظ",
+      "stageUse": "الاستخدام",
+      "savedNote": "حفظ القالب «حزمة الترحيب» مع الرسالة «أهلًا بك في {server}، {member}!»",
+      "joined": "انضم إلى الخادم",
+      "welcomeText": "أهلًا بك في Pixel Club، @Mia!",
+      "fromTemplate": "تستخدم رسالة الترحيب الرسالة الافتراضية من القالب بعد تعبئة {server} و{member}.",
+      "safety": "مثال فقط. لا يُحفظ أي قالب ولا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabTemplates": "範本",
+      "templatesIntro": "儲存團隊會重複使用的設定：名稱、包含的模組和選用的預設訊息。密鑰和權杖永遠不會被匯出。",
+      "stageSave": "儲存",
+      "stageUse": "使用",
+      "savedNote": "儲存了範本「歡迎套組」，訊息為「歡迎來到 {server}，{member}！」",
+      "joined": "加入了伺服器",
+      "welcomeText": "歡迎來到 Pixel Club，@Mia！",
+      "fromTemplate": "歡迎訊息使用範本的預設訊息，並自動填入 {server} 和 {member}。",
+      "safety": "僅為範例。不會儲存範本，也不會傳送訊息到 Discord。"
+    },
+    "ru": {
+      "tabTemplates": "Шаблоны",
+      "templatesIntro": "Сохраните настройку, которую команда использует повторно: название, модули и необязательное сообщение по умолчанию. Секреты и токены никогда не экспортируются.",
+      "stageSave": "Сохранение",
+      "stageUse": "Применение",
+      "savedNote": "Сохранил шаблон «Набор приветствия» с сообщением «Добро пожаловать на {server}, {member}!»",
+      "joined": "Новый участник сервера",
+      "welcomeText": "Добро пожаловать на Pixel Club, @Mia!",
+      "fromTemplate": "Приветствие берёт сообщение по умолчанию из шаблона, {server} и {member} подставлены.",
+      "safety": "Только пример. Шаблон не сохраняется, сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabTemplates": "템플릿",
+      "templatesIntro": "팀이 다시 쓸 설정을 저장하세요. 이름, 포함할 모듈, 선택 사항인 기본 메시지를 담습니다. 비밀 값과 토큰은 절대 내보내지 않습니다.",
+      "stageSave": "저장",
+      "stageUse": "사용",
+      "savedNote": "“환영 키트” 템플릿을 “{server}에 오신 것을 환영해요, {member}!” 메시지와 함께 저장했습니다.",
+      "joined": "서버에 들어왔습니다",
+      "welcomeText": "Pixel Club에 오신 것을 환영해요, @Mia!",
+      "fromTemplate": "환영 메시지는 템플릿의 기본 메시지를 쓰며 {server}와 {member}가 채워집니다.",
+      "safety": "예시일 뿐입니다. 템플릿이 저장되지 않으며 Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

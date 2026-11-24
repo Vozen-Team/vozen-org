@@ -69,11 +69,11 @@ try {
     const setup = page.getByRole('region', { name: pt ? 'Criar canal de aniversários' : 'Create a birthday channel' });
     const button = setup.getByRole('button', { name: pt ? 'Criar canal de aniversários' : 'Create birthday channel', exact: true });
     await button.waitFor();
-    const selected = page.locator('.config-section select').first();
+    const selected = page.locator('.feature-settings select').first();
     assert.equal(await selected.inputValue(), '20');
     if (['create','pt','mobile'].includes(scenario)) {
       await mkdir('output/playwright', { recursive: true });
-      await page.locator('.config-section').screenshot({ path: `output/playwright/birthday-channel-form-${scenario}.png` });
+      await page.locator('.feature-settings__group').first().screenshot({ path: `output/playwright/birthday-channel-form-${scenario}.png` });
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     }
     if (scenario === 'no-permissions') {

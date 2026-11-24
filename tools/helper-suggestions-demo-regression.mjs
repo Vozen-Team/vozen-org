@@ -15,16 +15,20 @@ const achievements = demoFeature === 'achievements';
 const giveaway = demoFeature === 'giveaways';
 const tickets = demoFeature === 'tickets';
 const welcome = demoFeature === 'welcome';
+const welcomeCopy = welcome ? JSON.parse(await readFile(new URL('../apps/helper-panel/src/welcome-demo-copy.json', import.meta.url))) : null;
 const polls = demoFeature === 'polls';
 const events = demoFeature === 'events';
 const birthdays = demoFeature === 'birthdays';
 const levels = demoFeature === 'levels';
 const leaderboard = demoFeature === 'leaderboard';
+// Features on the shared settings layout open a local chat demonstration from the toolbar.
+const layoutDemo = !levels && !achievements && !tickets && !welcome;
 const defaultFeatureKey = invites ? 'management.invite_tracker' : `${tempChannels || reminders ? 'utility' : polls ? 'management' : tickets || welcome ? 'support' : 'community'}.${tempChannels ? 'temp_channels' : demoFeature}`;
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(welcome || polls || events || birthdays || levels || leaderboard || achievements || economy || tempChannels || invites || reminders ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : []), ...(economy ? ['shop-en','shop-pt','shop-fr','shop-es','shop-de','shop-tr','shop-ar','shop-zh','shop-ru','shop-ko','shop-mobile','shop-failure','shop-channel-error','shop-notice-warning','shop-create-error'] : []), ...(leaderboard ? ['ranking-error', 'ranking-data', 'ranking-many', 'ranking-many-pt', 'ranking-many-mobile', 'ranking-ten', 'emoji-copy', 'emoji-copy-pt'] : [])]) {
+  for (const scenario of ['en', 'pt', 'api-failure', 'invalid', 'media-failure', 'mobile', 'close', 'route-change', 'timeout', 'unauthenticated', 'reduced-motion', 'dismiss-outside', 'dismiss-inside', 'dismiss-padding', 'dismiss-drag', 'dismiss-mobile', 'dismiss-touch', 'dismiss-escape', ...(tickets || welcome || polls || events || birthdays || levels || leaderboard || achievements || economy || tempChannels || invites || reminders ? ['disabled-feature'] : []), ...(events ? ['limited-capacity'] : []), ...(economy ? ['shop-en','shop-pt','shop-fr','shop-es','shop-de','shop-tr','shop-ar','shop-zh','shop-ru','shop-ko','shop-mobile','shop-failure','shop-channel-error','shop-notice-warning','shop-create-error'] : []), ...(leaderboard ? ['ranking-error', 'ranking-data', 'ranking-many', 'ranking-many-pt', 'ranking-many-mobile', 'ranking-ten', 'emoji-copy', 'emoji-copy-pt'] : [])]) {
     if (process.env.SUGGESTIONS_DEMO_SCENARIO && process.env.SUGGESTIONS_DEMO_SCENARIO !== scenario) continue;
+    if ((welcome || tickets || layoutDemo) && ['api-failure', 'invalid', 'media-failure', 'timeout', 'unauthenticated'].includes(scenario)) continue;
     const page = await browser.newPage(scenario === 'dismiss-touch' ? { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true } : {});
     const shopScenario=scenario.startsWith('shop-');
     let shopProducts=[];let shopChannel='';
@@ -127,6 +131,7 @@ try {
     });
     await page.goto(`${base}#/config/${featureKey}`);
     if(shopScenario) {
+      await page.locator('.feature-settings [role=tab]').last().click();
       const panel=page.locator('.economy-shop');
       await panel.locator('form input').first().waitFor();
       await page.waitForFunction(()=>!document.querySelector('.economy-shop fieldset').disabled);
@@ -278,7 +283,7 @@ try {
       }
     }
     if (invites && ['en', 'pt', 'mobile'].includes(scenario)) {
-      const settings = page.locator('.invite-settings');
+      const settings = page.locator('.feature-settings__group').first();
       const number = settings.getByRole('spinbutton');
       const toggle = settings.locator('.toggle-field');
       await number.waitFor();
@@ -294,7 +299,9 @@ try {
       await mkdir('output/playwright', {recursive:true});
       await settings.screenshot({path:`output/playwright/invites-settings-${scenario}.png`});
     }
-    const simulate = page.getByRole('button', { name: pt ? 'Simular configuração' : 'Simulate configuration', exact: true });
+    const simulate = welcome || tickets || layoutDemo ? page.locator('.spam-demo-button')
+      : page.getByRole('button', { name: pt ? 'Simular configuração' : 'Simulate configuration', exact: true });
+    if (welcome || tickets || layoutDemo) assert.equal(await page.getByRole('button', { name: /^(Simulate configuration|Simular configuração)$/ }).count(), 0);
     await simulate.click();
     const dialog = page.getByRole('dialog', { name: localizedLabel, exact: true });
     await dialog.waitFor();
@@ -330,6 +337,58 @@ try {
       assert.equal(new URL(page.url()).pathname, `/panel/${cleanFeaturePaths[featureKey]}/`, 'backdrop click must not activate underlying navigation');
       assert.equal(new URL(page.url()).hash, '', 'panel navigation uses clean URLs');
       console.log(`PASS ${demoFeature}-demo-${scenario}`);
+      await page.close(); continue;
+    }
+    if (layoutDemo) {
+      const demo = dialog.locator('.feature-chat-demo');
+      await demo.waitFor();
+      const stages = dialog.locator('.moderation-demo-scenarios button');
+      assert.ok(await stages.count() >= 2, 'the demonstration walks through several steps');
+      for (let index = 0; index < await stages.count(); index++) {
+        await stages.nth(index).click();
+        assert.equal(await stages.nth(index).getAttribute('aria-pressed'), 'true');
+        assert.ok(await demo.locator('.feature-demo-message').count() > 0, 'each step shows messages');
+      }
+      assert.equal(await dialog.evaluate(el => el.scrollWidth <= el.clientWidth), true);
+      if (scenario === 'route-change') await page.evaluate(() => { window.location.hash = '#/features'; });
+      else await page.keyboard.press('Escape');
+      await dialog.waitFor({ state: 'hidden' });
+      assert.equal(writes, 0);
+      assert.equal(simulations, 0, 'the visual demonstration makes no API simulation call');
+      console.log(`PASS ${demoFeature}-demo-${scenario}`);
+      await page.close(); continue;
+    }
+    if (tickets) {
+      const copies = JSON.parse(await readFile(new URL('../apps/helper-panel/src/tickets-copy.json', import.meta.url)));
+      const copy = copies[pt ? 'pt' : 'en'];
+      await dialog.locator('.tickets-demo').getByRole('button', { name: copy.open, exact: true }).click();
+      await dialog.getByText(copy.claimed, { exact: true }).waitFor();
+      await dialog.getByRole('button', { name: copy.close, exact: true }).click();
+      await dialog.getByText(copy.transcript, { exact: true }).waitFor();
+      assert.equal(await dialog.evaluate(el => el.scrollWidth <= el.clientWidth), true);
+      if (scenario === 'route-change') await page.evaluate(() => { window.location.hash = '#/features'; });
+      else await page.keyboard.press('Escape');
+      await dialog.waitFor({ state: 'hidden' });
+      assert.equal(writes, 0);
+      assert.equal(simulations, 0, 'visual tickets demonstration makes no API simulation call');
+      console.log('PASS tickets-demo-' + scenario);
+      await page.close(); continue;
+    }
+    if (welcome) {
+      const copy = welcomeCopy[pt ? 'pt' : 'en'];
+      await dialog.getByText(copy.greeting, { exact: true }).waitFor();
+      await dialog.locator('.welcome-demo-dm').waitFor();
+      assert.equal(await dialog.locator('.welcome-demo-shortcuts > span').count(), 3);
+      await dialog.getByRole('button', { name: copy.departure, exact: true }).click();
+      await dialog.getByText(copy.farewell, { exact: true }).waitFor();
+      assert.equal(await dialog.locator('.welcome-demo-dm').count(), 0);
+      assert.equal(await dialog.evaluate(el => el.scrollWidth <= el.clientWidth), true);
+      if (scenario === 'route-change') await page.evaluate(() => { window.location.hash = '#/features'; });
+      else await page.keyboard.press('Escape');
+      await dialog.waitFor({ state: 'hidden' });
+      assert.equal(writes, 0);
+      assert.equal(simulations, 0, 'visual welcome demonstration does not call configuration simulation');
+      console.log(`PASS welcome-demo-${scenario}`);
       await page.close(); continue;
     }
     assert.equal(await dialog.locator('video').count(), 0, 'no video player or native media controls');

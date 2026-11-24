@@ -1,0 +1,434 @@
+{
+  "key": "community.economy",
+  "tabs": [
+    {
+      "title": "tabRewards",
+      "intro": "rewardsIntro",
+      "commands": [
+        [
+          "/daily",
+          "cmdDaily"
+        ],
+        [
+          "/work",
+          "cmdWork"
+        ],
+        [
+          "/balance",
+          "cmdBalance"
+        ],
+        [
+          "/economy-top",
+          "cmdTop"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupCurrency",
+          "hint": "currencyHint",
+          "keys": [
+            "currencyName"
+          ]
+        },
+        {
+          "title": "groupRewards",
+          "hint": "rewardsHint",
+          "keys": [
+            "dailyReward",
+            "workReward",
+            "workCooldownMinutes"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabShop",
+      "intro": "shopIntro",
+      "commands": [
+        [
+          "/shop",
+          "cmdShop"
+        ]
+      ],
+      "slot": "shop",
+      "groups": []
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageDaily",
+        "channel": "# economy",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/daily"
+          },
+          {
+            "bot": true,
+            "card": {
+              "tone": "success",
+              "title": "dailyTitle",
+              "body": "dailyBody"
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageWork",
+        "channel": "# economy",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/work"
+          },
+          {
+            "bot": true,
+            "card": {
+              "tone": "success",
+              "title": "workTitle",
+              "body": "workBody"
+            }
+          },
+          {
+            "author": "Alex",
+            "command": "/work"
+          },
+          {
+            "bot": true,
+            "text": "cooldown"
+          }
+        ]
+      },
+      {
+        "label": "stageBalance",
+        "channel": "# economy",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/balance"
+          },
+          {
+            "bot": true,
+            "card": {
+              "title": "balanceTitle",
+              "fields": [
+                [
+                  "balance",
+                  "150"
+                ]
+              ]
+            }
+          },
+          {
+            "author": "Mia",
+            "command": "/economy-top"
+          },
+          {
+            "bot": true,
+            "card": {
+              "title": "topTitle",
+              "fields": [
+                [
+                  "Mia",
+                  "2400"
+                ],
+                [
+                  "Rexy",
+                  "1850"
+                ],
+                [
+                  "Alex",
+                  "150"
+                ]
+              ],
+              "footer": "topFooter"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabRewards": "Rewards",
+      "rewardsIntro": "Members earn points with commands. Choose the currency and how much each command gives.",
+      "cmdDaily": "Claims the daily reward.",
+      "cmdWork": "Claims the work reward after the cooldown.",
+      "cmdBalance": "Shows your balance.",
+      "cmdTop": "Shows the 10 richest members.",
+      "groupCurrency": "Currency",
+      "currencyHint": "Shown next to balances and rewards in Discord.",
+      "groupRewards": "Rewards and cooldown",
+      "rewardsHint": "/daily can be claimed once every 24 hours.",
+      "tabShop": "Shop",
+      "shopIntro": "Add products members can buy with their points, and follow the orders here.",
+      "cmdShop": "Browse and buy rewards.",
+      "safety": "Example only. No balances change and no messages are sent to Discord.",
+      "stageDaily": "Daily",
+      "stageWork": "Work",
+      "stageBalance": "Balance",
+      "dailyTitle": "Daily reward claimed",
+      "dailyBody": "+100 credits. Come back in 24 hours.",
+      "workTitle": "Work done",
+      "workBody": "+50 credits. You can work again in 60 minutes.",
+      "cooldown": "You can work again in 59 minutes.",
+      "balanceTitle": "Your balance",
+      "balance": "Balance",
+      "topTitle": "Top 10",
+      "topFooter": "Amounts in credits"
+    },
+    "pt": {
+      "tabRewards": "Recompensas",
+      "rewardsIntro": "Os membros ganham pontos com comandos. Escolhe a moeda e quanto dá cada comando.",
+      "cmdDaily": "Recebe a recompensa diária.",
+      "cmdWork": "Recebe a recompensa de trabalho depois do tempo de espera.",
+      "cmdBalance": "Mostra o teu saldo.",
+      "cmdTop": "Mostra os 10 membros mais ricos.",
+      "groupCurrency": "Moeda",
+      "currencyHint": "Aparece junto aos saldos e recompensas no Discord.",
+      "groupRewards": "Recompensas e tempo de espera",
+      "rewardsHint": "O /daily pode ser usado uma vez a cada 24 horas.",
+      "tabShop": "Loja",
+      "shopIntro": "Adiciona produtos que os membros podem comprar com os seus pontos e acompanha aqui os pedidos.",
+      "cmdShop": "Mostra a loja para ver e comprar recompensas.",
+      "safety": "Apenas um exemplo. Nenhum saldo é alterado e nenhuma mensagem é enviada para o Discord.",
+      "stageDaily": "Diária",
+      "stageWork": "Trabalho",
+      "stageBalance": "Saldo",
+      "dailyTitle": "Recompensa diária recebida",
+      "dailyBody": "+100 créditos. Volta daqui a 24 horas.",
+      "workTitle": "Trabalho feito",
+      "workBody": "+50 créditos. Podes voltar a trabalhar daqui a 60 minutos.",
+      "cooldown": "Podes voltar a trabalhar daqui a 59 minutos.",
+      "balanceTitle": "O teu saldo",
+      "balance": "Saldo",
+      "topTitle": "Top 10",
+      "topFooter": "Valores em créditos"
+    },
+    "fr": {
+      "tabRewards": "Récompenses",
+      "rewardsIntro": "Les membres gagnent des points avec des commandes. Choisissez la monnaie et le gain de chaque commande.",
+      "cmdDaily": "Récupère la récompense quotidienne.",
+      "cmdWork": "Récupère la récompense de travail après le délai d'attente.",
+      "cmdBalance": "Affiche votre solde.",
+      "cmdTop": "Affiche les 10 membres les plus riches.",
+      "groupCurrency": "Monnaie",
+      "currencyHint": "Affichée à côté des soldes et des récompenses sur Discord.",
+      "groupRewards": "Récompenses et délai",
+      "rewardsHint": "/daily peut être utilisée une fois toutes les 24 heures.",
+      "tabShop": "Boutique",
+      "shopIntro": "Ajoutez des produits que les membres peuvent acheter avec leurs points, et suivez les commandes ici.",
+      "cmdShop": "Parcourir la boutique et acheter des récompenses.",
+      "safety": "Exemple uniquement. Aucun solde n'est modifié et aucun message n'est envoyé sur Discord.",
+      "stageDaily": "Quotidien",
+      "stageWork": "Travail",
+      "stageBalance": "Solde",
+      "dailyTitle": "Récompense quotidienne récupérée",
+      "dailyBody": "+100 crédits. Revenez dans 24 heures.",
+      "workTitle": "Travail terminé",
+      "workBody": "+50 crédits. Vous pourrez retravailler dans 60 minutes.",
+      "cooldown": "Vous pourrez retravailler dans 59 minutes.",
+      "balanceTitle": "Votre solde",
+      "balance": "Solde",
+      "topTitle": "Top 10",
+      "topFooter": "Montants en crédits"
+    },
+    "es": {
+      "tabRewards": "Recompensas",
+      "rewardsIntro": "Los miembros ganan puntos con comandos. Elige la moneda y cuánto da cada comando.",
+      "cmdDaily": "Reclama la recompensa diaria.",
+      "cmdWork": "Reclama la recompensa de trabajo tras el tiempo de espera.",
+      "cmdBalance": "Muestra tu saldo.",
+      "cmdTop": "Muestra los 10 miembros más ricos.",
+      "groupCurrency": "Moneda",
+      "currencyHint": "Aparece junto a los saldos y las recompensas en Discord.",
+      "groupRewards": "Recompensas y espera",
+      "rewardsHint": "/daily se puede usar una vez cada 24 horas.",
+      "tabShop": "Tienda",
+      "shopIntro": "Añade productos que los miembros pueden comprar con sus puntos y sigue aquí los pedidos.",
+      "cmdShop": "Abre la tienda para ver y comprar recompensas.",
+      "safety": "Solo es un ejemplo. No cambia ningún saldo ni se envían mensajes a Discord.",
+      "stageDaily": "Diaria",
+      "stageWork": "Trabajo",
+      "stageBalance": "Saldo",
+      "dailyTitle": "Recompensa diaria reclamada",
+      "dailyBody": "+100 créditos. Vuelve dentro de 24 horas.",
+      "workTitle": "Trabajo hecho",
+      "workBody": "+50 créditos. Puedes volver a trabajar dentro de 60 minutos.",
+      "cooldown": "Puedes volver a trabajar dentro de 59 minutos.",
+      "balanceTitle": "Tu saldo",
+      "balance": "Saldo",
+      "topTitle": "Top 10",
+      "topFooter": "Cantidades en créditos"
+    },
+    "de": {
+      "tabRewards": "Belohnungen",
+      "rewardsIntro": "Mitglieder verdienen Punkte mit Befehlen. Währung und Belohnung pro Befehl festlegen.",
+      "cmdDaily": "Holt die tägliche Belohnung ab.",
+      "cmdWork": "Holt die Arbeitsbelohnung nach der Wartezeit ab.",
+      "cmdBalance": "Zeigt dein Guthaben.",
+      "cmdTop": "Zeigt die 10 reichsten Mitglieder.",
+      "groupCurrency": "Währung",
+      "currencyHint": "Erscheint in Discord neben Guthaben und Belohnungen.",
+      "groupRewards": "Belohnungen und Wartezeit",
+      "rewardsHint": "/daily ist einmal alle 24 Stunden verfügbar.",
+      "tabShop": "Shop",
+      "shopIntro": "Produkte hinzufügen, die Mitglieder mit ihren Punkten kaufen können, und Bestellungen hier verfolgen.",
+      "cmdShop": "Shop durchsuchen und Belohnungen kaufen.",
+      "safety": "Nur ein Beispiel. Kein Guthaben wird geändert und keine Nachricht an Discord gesendet.",
+      "stageDaily": "Täglich",
+      "stageWork": "Arbeit",
+      "stageBalance": "Guthaben",
+      "dailyTitle": "Tägliche Belohnung abgeholt",
+      "dailyBody": "+100 Credits. Komm in 24 Stunden wieder.",
+      "workTitle": "Arbeit erledigt",
+      "workBody": "+50 Credits. Du kannst in 60 Minuten wieder arbeiten.",
+      "cooldown": "Du kannst in 59 Minuten wieder arbeiten.",
+      "balanceTitle": "Dein Guthaben",
+      "balance": "Guthaben",
+      "topTitle": "Top 10",
+      "topFooter": "Beträge in Credits"
+    },
+    "tr": {
+      "tabRewards": "Ödüller",
+      "rewardsIntro": "Üyeler komutlarla puan kazanır. Para birimini ve her komutun ne kadar verdiğini seçin.",
+      "cmdDaily": "Günlük ödülü alır.",
+      "cmdWork": "Bekleme süresinden sonra çalışma ödülünü alır.",
+      "cmdBalance": "Bakiyenizi gösterir.",
+      "cmdTop": "En zengin 10 üyeyi gösterir.",
+      "groupCurrency": "Para birimi",
+      "currencyHint": "Discord'da bakiyelerin ve ödüllerin yanında görünür.",
+      "groupRewards": "Ödüller ve bekleme süresi",
+      "rewardsHint": "/daily her 24 saatte bir kullanılabilir.",
+      "tabShop": "Mağaza",
+      "shopIntro": "Üyelerin puanlarıyla satın alabileceği ürünler ekleyin ve siparişleri buradan takip edin.",
+      "cmdShop": "Mağazaya göz atıp ödül satın alır.",
+      "safety": "Yalnızca örnektir. Hiçbir bakiye değişmez ve Discord'a mesaj gönderilmez.",
+      "stageDaily": "Günlük",
+      "stageWork": "Çalışma",
+      "stageBalance": "Bakiye",
+      "dailyTitle": "Günlük ödül alındı",
+      "dailyBody": "+100 kredi. 24 saat sonra tekrar gelin.",
+      "workTitle": "Çalışma tamamlandı",
+      "workBody": "+50 kredi. 60 dakika sonra tekrar çalışabilirsiniz.",
+      "cooldown": "59 dakika sonra tekrar çalışabilirsiniz.",
+      "balanceTitle": "Bakiyeniz",
+      "balance": "Bakiye",
+      "topTitle": "İlk 10",
+      "topFooter": "Tutarlar kredi cinsinden"
+    },
+    "ar": {
+      "tabRewards": "المكافآت",
+      "rewardsIntro": "يكسب الأعضاء النقاط عبر الأوامر. اختر العملة ومقدار ما يمنحه كل أمر.",
+      "cmdDaily": "يستلم المكافأة اليومية.",
+      "cmdWork": "يستلم مكافأة العمل بعد انتهاء فترة الانتظار.",
+      "cmdBalance": "يعرض رصيدك.",
+      "cmdTop": "يعرض أغنى 10 أعضاء.",
+      "groupCurrency": "العملة",
+      "currencyHint": "تظهر بجانب الأرصدة والمكافآت في Discord.",
+      "groupRewards": "المكافآت وفترة الانتظار",
+      "rewardsHint": "يمكن استخدام /daily مرة واحدة كل 24 ساعة.",
+      "tabShop": "المتجر",
+      "shopIntro": "أضف منتجات يشتريها الأعضاء بنقاطهم، وتابع الطلبات من هنا.",
+      "cmdShop": "يفتح المتجر لتصفح المكافآت وشرائها.",
+      "safety": "مثال فقط. لا يتغير أي رصيد ولا تُرسل أي رسائل إلى Discord.",
+      "stageDaily": "اليومية",
+      "stageWork": "العمل",
+      "stageBalance": "الرصيد",
+      "dailyTitle": "تم استلام المكافأة اليومية",
+      "dailyBody": "+100 نقطة. عد بعد 24 ساعة.",
+      "workTitle": "تم العمل",
+      "workBody": "+50 نقطة. يمكنك العمل مجددًا بعد 60 دقيقة.",
+      "cooldown": "يمكنك العمل مجددًا بعد 59 دقيقة.",
+      "balanceTitle": "رصيدك",
+      "balance": "الرصيد",
+      "topTitle": "أفضل 10",
+      "topFooter": "المبالغ بالنقاط"
+    },
+    "zh": {
+      "tabRewards": "獎勵",
+      "rewardsIntro": "成員透過指令賺取點數。選擇貨幣名稱，以及每個指令給予的數量。",
+      "cmdDaily": "領取每日獎勵。",
+      "cmdWork": "冷卻結束後領取工作獎勵。",
+      "cmdBalance": "查看你的餘額。",
+      "cmdTop": "顯示最富有的 10 位成員。",
+      "groupCurrency": "貨幣",
+      "currencyHint": "在 Discord 中顯示於餘額與獎勵旁。",
+      "groupRewards": "獎勵與冷卻時間",
+      "rewardsHint": "/daily 每 24 小時可使用一次。",
+      "tabShop": "商店",
+      "shopIntro": "新增成員可用點數購買的商品，並在這裡追蹤訂單。",
+      "cmdShop": "瀏覽並購買獎勵。",
+      "safety": "僅為示範。不會變更任何餘額，也不會在 Discord 傳送訊息。",
+      "stageDaily": "每日",
+      "stageWork": "工作",
+      "stageBalance": "餘額",
+      "dailyTitle": "已領取每日獎勵",
+      "dailyBody": "+100 點數。24 小時後再來。",
+      "workTitle": "工作完成",
+      "workBody": "+50 點數。60 分鐘後可以再次工作。",
+      "cooldown": "59 分鐘後可以再次工作。",
+      "balanceTitle": "你的餘額",
+      "balance": "餘額",
+      "topTitle": "前 10 名",
+      "topFooter": "金額單位：點數"
+    },
+    "ru": {
+      "tabRewards": "Награды",
+      "rewardsIntro": "Участники зарабатывают очки командами. Выберите валюту и сколько даёт каждая команда.",
+      "cmdDaily": "Забирает ежедневную награду.",
+      "cmdWork": "Забирает награду за работу после перерыва.",
+      "cmdBalance": "Показывает ваш баланс.",
+      "cmdTop": "Показывает 10 самых богатых участников.",
+      "groupCurrency": "Валюта",
+      "currencyHint": "Отображается в Discord рядом с балансом и наградами.",
+      "groupRewards": "Награды и перерыв",
+      "rewardsHint": "/daily можно использовать раз в 24 часа.",
+      "tabShop": "Магазин",
+      "shopIntro": "Добавьте товары, которые участники покупают за очки, и следите здесь за заказами.",
+      "cmdShop": "Открывает магазин наград для покупок.",
+      "safety": "Только пример. Балансы не меняются, сообщения в Discord не отправляются.",
+      "stageDaily": "Ежедневно",
+      "stageWork": "Работа",
+      "stageBalance": "Баланс",
+      "dailyTitle": "Ежедневная награда получена",
+      "dailyBody": "+100 кредитов. Возвращайтесь через 24 часа.",
+      "workTitle": "Работа выполнена",
+      "workBody": "+50 кредитов. Снова работать можно через 60 минут.",
+      "cooldown": "Снова работать можно через 59 минут.",
+      "balanceTitle": "Ваш баланс",
+      "balance": "Баланс",
+      "topTitle": "Топ-10",
+      "topFooter": "Суммы в кредитах"
+    },
+    "ko": {
+      "tabRewards": "보상",
+      "rewardsIntro": "멤버는 명령어로 포인트를 얻습니다. 화폐와 명령어별 보상을 정하세요.",
+      "cmdDaily": "일일 보상을 받습니다.",
+      "cmdWork": "대기 시간이 지나면 작업 보상을 받습니다.",
+      "cmdBalance": "내 잔액을 보여 줍니다.",
+      "cmdTop": "가장 부유한 멤버 10명을 보여 줍니다.",
+      "groupCurrency": "화폐",
+      "currencyHint": "Discord에서 잔액과 보상 옆에 표시됩니다.",
+      "groupRewards": "보상과 대기 시간",
+      "rewardsHint": "/daily는 24시간마다 한 번 사용할 수 있습니다.",
+      "tabShop": "상점",
+      "shopIntro": "멤버가 포인트로 살 수 있는 상품을 추가하고 여기서 주문을 확인하세요.",
+      "cmdShop": "상점에서 보상을 둘러보고 구매합니다.",
+      "safety": "예시일 뿐입니다. 잔액이 바뀌지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "stageDaily": "일일",
+      "stageWork": "작업",
+      "stageBalance": "잔액",
+      "dailyTitle": "일일 보상을 받았습니다",
+      "dailyBody": "+100 크레딧. 24시간 후에 다시 오세요.",
+      "workTitle": "작업 완료",
+      "workBody": "+50 크레딧. 60분 후에 다시 작업할 수 있습니다.",
+      "cooldown": "59분 후에 다시 작업할 수 있습니다.",
+      "balanceTitle": "내 잔액",
+      "balance": "잔액",
+      "topTitle": "상위 10명",
+      "topFooter": "단위: 크레딧"
+    }
+  }
+}

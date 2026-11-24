@@ -1,0 +1,155 @@
+{
+  "key": "community.giveaways",
+  "tabs": [
+    { "title": "tabDefaults", "intro": "defaultsIntro", "commands": [["/giveaway-start", "commandStart"]],
+      "groups": [{ "title": "groupTiming", "hint": "timingHint", "keys": ["defaultDurationHours", "defaultWinners"] }] },
+    { "title": "tabEntry", "intro": "entryIntro",
+      "groups": [{ "title": "groupEligibility", "hint": "eligibilityHint", "keys": ["requiredRole"] }] }
+  ],
+  "demo": { "stages": [
+    { "label": "stageStart", "channel": "# giveaways", "messages": [
+      { "author": "Alex", "command": "/giveaway-start prize: Nitro duration: 24h winners: 1" },
+      { "bot": true, "card": { "title": "🎉 Nitro", "body": "cardBody", "fields": [["winners", "1"], ["entries", "12"]], "buttons": ["join"] } }
+    ] },
+    { "label": "stageJoin", "channel": "# giveaways", "messages": [
+      { "author": "Rexy", "note": "clicked" },
+      { "bot": true, "text": "entered", "note": "private" },
+      { "bot": true, "card": { "title": "🎉 Nitro", "body": "cardBody", "fields": [["winners", "1"], ["entries", "13"]], "buttons": ["join"] } }
+    ] },
+    { "label": "stageDraw", "channel": "# giveaways", "messages": [
+      { "bot": true, "card": { "tone": "success", "title": "ended", "body": "winner", "footer": "drawn" } }
+    ] }
+  ] },
+  "copy": {
+    "en": {
+      "tabDefaults": "Defaults", "tabEntry": "Entry",
+      "defaultsIntro": "Moderators start giveaways with a command. These values are used when the command leaves them empty.",
+      "commandStart": "Starts a giveaway with a prize, a duration and a number of winners.",
+      "groupTiming": "Duration and winners", "timingHint": "The command can still set different values for a single giveaway.",
+      "entryIntro": "Members join with the button on the giveaway message. Helper draws the winners at random when it ends.",
+      "groupEligibility": "Who can join", "eligibilityHint": "Only members with this role can join. Leave it empty to let every member join.",
+      "safety": "Example only. No giveaway is created and no messages are sent to Discord.",
+      "stageStart": "Start", "stageJoin": "Join", "stageDraw": "Draw",
+      "cardBody": "Click Join to enter. Ends in 24 hours.", "winners": "Winners", "entries": "Entries", "join": "Join",
+      "clicked": "Clicked Join", "entered": "You are in the giveaway. Good luck!", "private": "Only Rexy can see this reply.",
+      "ended": "Giveaway ended", "winner": "Winner: @Rexy", "drawn": "13 entries · winner drawn at random"
+    },
+    "pt": {
+      "tabDefaults": "Predefinições", "tabEntry": "Participação",
+      "defaultsIntro": "Os moderadores iniciam sorteios com um comando. Estes valores são usados quando o comando não os indica.",
+      "commandStart": "Inicia um sorteio com um prémio, uma duração e um número de vencedores.",
+      "groupTiming": "Duração e vencedores", "timingHint": "O comando pode definir outros valores para um sorteio específico.",
+      "entryIntro": "Os membros participam com o botão da mensagem do sorteio. No fim, o Helper sorteia os vencedores ao acaso.",
+      "groupEligibility": "Quem pode participar", "eligibilityHint": "Só os membros com este cargo podem participar. Deixa vazio para permitir todos os membros.",
+      "safety": "Apenas um exemplo. Nenhum sorteio é criado e nenhuma mensagem é enviada para o Discord.",
+      "stageStart": "Início", "stageJoin": "Participar", "stageDraw": "Sorteio",
+      "cardBody": "Clica em Participar para entrar. Termina daqui a 24 horas.", "winners": "Vencedores", "entries": "Participantes", "join": "Participar",
+      "clicked": "Clicou em Participar", "entered": "Estás no sorteio. Boa sorte!", "private": "Só o Rexy vê esta resposta.",
+      "ended": "Sorteio terminado", "winner": "Vencedor: @Rexy", "drawn": "13 participantes · vencedor sorteado ao acaso"
+    },
+    "fr": {
+      "tabDefaults": "Valeurs par défaut", "tabEntry": "Participation",
+      "defaultsIntro": "Les modérateurs lancent les concours avec une commande. Ces valeurs s'appliquent quand la commande ne les précise pas.",
+      "commandStart": "Lance un concours avec un lot, une durée et un nombre de gagnants.",
+      "groupTiming": "Durée et gagnants", "timingHint": "La commande peut toujours fixer d'autres valeurs pour un concours précis.",
+      "entryIntro": "Les membres participent avec le bouton du message du concours. À la fin, Helper tire les gagnants au sort.",
+      "groupEligibility": "Qui peut participer", "eligibilityHint": "Seuls les membres ayant ce rôle peuvent participer. Laissez vide pour ouvrir à tous les membres.",
+      "safety": "Exemple uniquement. Aucun concours n'est créé et aucun message n'est envoyé sur Discord.",
+      "stageStart": "Lancement", "stageJoin": "Participation", "stageDraw": "Tirage",
+      "cardBody": "Cliquez sur Participer pour entrer. Se termine dans 24 heures.", "winners": "Gagnants", "entries": "Participants", "join": "Participer",
+      "clicked": "A cliqué sur Participer", "entered": "Vous participez au concours. Bonne chance !", "private": "Seul Rexy voit cette réponse.",
+      "ended": "Concours terminé", "winner": "Gagnant : @Rexy", "drawn": "13 participants · gagnant tiré au sort"
+    },
+    "es": {
+      "tabDefaults": "Valores predeterminados", "tabEntry": "Participación",
+      "defaultsIntro": "Los moderadores inician sorteos con un comando. Estos valores se usan cuando el comando no los indica.",
+      "commandStart": "Inicia un sorteo con un premio, una duración y un número de ganadores.",
+      "groupTiming": "Duración y ganadores", "timingHint": "El comando puede fijar otros valores para un sorteo concreto.",
+      "entryIntro": "Los miembros participan con el botón del mensaje del sorteo. Al terminar, Helper elige a los ganadores al azar.",
+      "groupEligibility": "Quién puede participar", "eligibilityHint": "Solo los miembros con este rol pueden participar. Déjalo vacío para permitir a todos.",
+      "safety": "Solo es un ejemplo. No se crea ningún sorteo ni se envían mensajes a Discord.",
+      "stageStart": "Inicio", "stageJoin": "Participar", "stageDraw": "Sorteo",
+      "cardBody": "Pulsa Participar para entrar. Termina en 24 horas.", "winners": "Ganadores", "entries": "Participantes", "join": "Participar",
+      "clicked": "Pulsó Participar", "entered": "Ya estás en el sorteo. ¡Suerte!", "private": "Solo Rexy ve esta respuesta.",
+      "ended": "Sorteo terminado", "winner": "Ganador: @Rexy", "drawn": "13 participantes · ganador elegido al azar"
+    },
+    "de": {
+      "tabDefaults": "Standardwerte", "tabEntry": "Teilnahme",
+      "defaultsIntro": "Moderatoren starten Gewinnspiele mit einem Befehl. Diese Werte gelten, wenn der Befehl sie nicht angibt.",
+      "commandStart": "Startet ein Gewinnspiel mit Preis, Dauer und Anzahl der Gewinner.",
+      "groupTiming": "Dauer und Gewinner", "timingHint": "Der Befehl kann für ein einzelnes Gewinnspiel andere Werte festlegen.",
+      "entryIntro": "Mitglieder nehmen über die Schaltfläche der Gewinnspielnachricht teil. Am Ende lost Helper die Gewinner zufällig aus.",
+      "groupEligibility": "Wer teilnehmen darf", "eligibilityHint": "Nur Mitglieder mit dieser Rolle können teilnehmen. Leer lassen, damit alle teilnehmen können.",
+      "safety": "Nur ein Beispiel. Es wird kein Gewinnspiel erstellt und keine Nachricht an Discord gesendet.",
+      "stageStart": "Start", "stageJoin": "Teilnehmen", "stageDraw": "Auslosung",
+      "cardBody": "Klicke auf Teilnehmen, um mitzumachen. Endet in 24 Stunden.", "winners": "Gewinner", "entries": "Teilnehmer", "join": "Teilnehmen",
+      "clicked": "Hat auf Teilnehmen geklickt", "entered": "Du nimmst am Gewinnspiel teil. Viel Glück!", "private": "Nur Rexy sieht diese Antwort.",
+      "ended": "Gewinnspiel beendet", "winner": "Gewinner: @Rexy", "drawn": "13 Teilnehmer · Gewinner zufällig ausgelost"
+    },
+    "tr": {
+      "tabDefaults": "Varsayılanlar", "tabEntry": "Katılım",
+      "defaultsIntro": "Moderatörler çekilişleri bir komutla başlatır. Komut bu değerleri belirtmediğinde bunlar kullanılır.",
+      "commandStart": "Bir ödül, süre ve kazanan sayısıyla çekiliş başlatır.",
+      "groupTiming": "Süre ve kazananlar", "timingHint": "Komut, tek bir çekiliş için farklı değerler belirleyebilir.",
+      "entryIntro": "Üyeler çekiliş mesajındaki düğmeyle katılır. Çekiliş bitince Helper kazananları rastgele seçer.",
+      "groupEligibility": "Kimler katılabilir", "eligibilityHint": "Yalnızca bu role sahip üyeler katılabilir. Herkesin katılması için boş bırakın.",
+      "safety": "Yalnızca örnek. Çekiliş oluşturulmaz ve Discord'a mesaj gönderilmez.",
+      "stageStart": "Başlat", "stageJoin": "Katıl", "stageDraw": "Çekiliş",
+      "cardBody": "Katılmak için Katıl'a tıklayın. 24 saat sonra biter.", "winners": "Kazananlar", "entries": "Katılımcılar", "join": "Katıl",
+      "clicked": "Katıl'a tıkladı", "entered": "Çekilişe katıldınız. Bol şans!", "private": "Bu yanıtı yalnızca Rexy görür.",
+      "ended": "Çekiliş sona erdi", "winner": "Kazanan: @Rexy", "drawn": "13 katılımcı · kazanan rastgele seçildi"
+    },
+    "ar": {
+      "tabDefaults": "القيم الافتراضية", "tabEntry": "المشاركة",
+      "defaultsIntro": "يبدأ المشرفون السحوبات بأمر. تُستخدم هذه القيم عندما لا يحددها الأمر.",
+      "commandStart": "يبدأ سحبًا بجائزة ومدة وعدد فائزين.",
+      "groupTiming": "المدة والفائزون", "timingHint": "يمكن للأمر تحديد قيم أخرى لسحب معيّن.",
+      "entryIntro": "يشارك الأعضاء عبر الزر في رسالة السحب. عند انتهائه يختار Helper الفائزين عشوائيًا.",
+      "groupEligibility": "من يمكنه المشاركة", "eligibilityHint": "يمكن فقط للأعضاء الذين لديهم هذا الدور المشاركة. اتركه فارغًا للسماح للجميع.",
+      "safety": "مثال فقط. لا يُنشأ أي سحب ولا تُرسل أي رسائل إلى Discord.",
+      "stageStart": "البدء", "stageJoin": "المشاركة", "stageDraw": "السحب",
+      "cardBody": "اضغط مشاركة للدخول. ينتهي خلال 24 ساعة.", "winners": "الفائزون", "entries": "المشاركون", "join": "مشاركة",
+      "clicked": "ضغط على مشاركة", "entered": "أنت مشارك في السحب. حظًا موفقًا!", "private": "لا يرى هذا الرد إلا Rexy.",
+      "ended": "انتهى السحب", "winner": "الفائز: @Rexy", "drawn": "13 مشاركًا · اختير الفائز عشوائيًا"
+    },
+    "zh": {
+      "tabDefaults": "預設值", "tabEntry": "參加",
+      "defaultsIntro": "版主使用指令舉辦抽獎。指令未指定時會使用這些值。",
+      "commandStart": "舉辦抽獎，並設定獎品、持續時間與中獎人數。",
+      "groupTiming": "持續時間與中獎人數", "timingHint": "指令仍可為單次抽獎設定不同的值。",
+      "entryIntro": "成員點擊抽獎訊息上的按鈕即可參加。結束時 Helper 會隨機抽出中獎者。",
+      "groupEligibility": "誰可以參加", "eligibilityHint": "只有具備此身分組的成員可以參加。留空則所有成員皆可參加。",
+      "safety": "僅為範例。不會建立抽獎，也不會向 Discord 傳送訊息。",
+      "stageStart": "開始", "stageJoin": "參加", "stageDraw": "開獎",
+      "cardBody": "點擊「參加」即可加入。24 小時後結束。", "winners": "中獎人數", "entries": "參加人數", "join": "參加",
+      "clicked": "點擊了「參加」", "entered": "你已參加抽獎，祝你好運！", "private": "只有 Rexy 能看到這則回覆。",
+      "ended": "抽獎已結束", "winner": "中獎者：@Rexy", "drawn": "13 人參加 · 隨機抽出中獎者"
+    },
+    "ru": {
+      "tabDefaults": "По умолчанию", "tabEntry": "Участие",
+      "defaultsIntro": "Модераторы запускают розыгрыши командой. Эти значения используются, если команда их не указывает.",
+      "commandStart": "Запускает розыгрыш с призом, длительностью и числом победителей.",
+      "groupTiming": "Длительность и победители", "timingHint": "Команда может задать другие значения для отдельного розыгрыша.",
+      "entryIntro": "Участники присоединяются кнопкой в сообщении розыгрыша. В конце Helper случайно выбирает победителей.",
+      "groupEligibility": "Кто может участвовать", "eligibilityHint": "Участвовать могут только участники с этой ролью. Оставьте пустым, чтобы разрешить всем.",
+      "safety": "Только пример. Розыгрыш не создаётся, сообщения в Discord не отправляются.",
+      "stageStart": "Запуск", "stageJoin": "Участие", "stageDraw": "Итоги",
+      "cardBody": "Нажмите «Участвовать», чтобы войти. Завершится через 24 часа.", "winners": "Победители", "entries": "Участники", "join": "Участвовать",
+      "clicked": "Нажал «Участвовать»", "entered": "Вы участвуете в розыгрыше. Удачи!", "private": "Этот ответ видит только Rexy.",
+      "ended": "Розыгрыш завершён", "winner": "Победитель: @Rexy", "drawn": "13 участников · победитель выбран случайно"
+    },
+    "ko": {
+      "tabDefaults": "기본값", "tabEntry": "참여",
+      "defaultsIntro": "모더레이터가 명령어로 추첨을 시작합니다. 명령어에서 값을 지정하지 않으면 이 값이 사용됩니다.",
+      "commandStart": "상품, 기간, 당첨자 수를 정해 추첨을 시작합니다.",
+      "groupTiming": "기간과 당첨자", "timingHint": "명령어로 개별 추첨에 다른 값을 지정할 수 있습니다.",
+      "entryIntro": "멤버는 추첨 메시지의 버튼으로 참여합니다. 종료되면 Helper가 무작위로 당첨자를 뽑습니다.",
+      "groupEligibility": "참여 가능 대상", "eligibilityHint": "이 역할이 있는 멤버만 참여할 수 있습니다. 모든 멤버가 참여하게 하려면 비워 두세요.",
+      "safety": "예시일 뿐입니다. 추첨이 만들어지지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "stageStart": "시작", "stageJoin": "참여", "stageDraw": "추첨",
+      "cardBody": "참여를 눌러 응모하세요. 24시간 후 종료됩니다.", "winners": "당첨자", "entries": "참여자", "join": "참여",
+      "clicked": "참여를 눌렀습니다", "entered": "추첨에 참여했습니다. 행운을 빌어요!", "private": "이 답장은 Rexy만 볼 수 있습니다.",
+      "ended": "추첨 종료", "winner": "당첨자: @Rexy", "drawn": "참여자 13명 · 무작위로 당첨자 선정"
+    }
+  }
+}

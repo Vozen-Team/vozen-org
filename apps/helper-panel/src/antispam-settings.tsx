@@ -10,6 +10,33 @@ import './antispam-settings.css';
 const spamSettingsText = () => copy[helperLocale() as keyof typeof copy] ?? copy.en;
 export const protectionRestorePrompt = () => spamSettingsText()[24];
 
+export function SettingsToolbar({ enabled, onEnabled, onTest }: {
+  enabled: boolean; onEnabled: (enabled: boolean) => void; onTest: () => void;
+}) {
+  return <div className="spam-toolbar">
+    <label className="switch-row spam-activation">
+      <input type="checkbox" checked={enabled} onChange={event => onEnabled(event.target.checked)} />
+      <span className="spam-activation-state">
+        <b aria-hidden={!enabled}>{helperText('Active')}</b>
+        <b aria-hidden={enabled}>{helperText('Disabled')}</b>
+      </span>
+    </label>
+    <button type="button" className="primary spam-demo-button" onClick={onTest}>
+      <span aria-hidden="true">▶ </span>{spamSettingsText()[10]}
+    </button>
+  </div>;
+}
+
+export function SettingsFooter({ saving, onRestore, onRepair, children }: {
+  saving: boolean; onRestore?: () => void; onRepair?: () => void; children?: ReactNode;
+}) {
+  return <footer className="spam-footer">
+    {children}
+    {onRepair && <button type="button" className="secondary" disabled={saving} onClick={onRepair}>{helperText('Repair publication')}</button>}
+    <button type="button" className="secondary" disabled={!onRestore || saving} onClick={onRestore}>{spamSettingsText()[11]}</button>
+  </footer>;
+}
+
 export function ProtectionSettingsSkeleton({ raid, join, moderation, audit }: { raid: boolean; join: boolean; moderation: boolean; audit: boolean }) {
   const pulse = (shape: string) => <span className={`helper-skeleton__pulse spam-placeholder-${shape}`} />;
   return <div className="detail-page antispam-page spam-settings-skeleton" aria-hidden="true">
@@ -77,9 +104,9 @@ const AUDIT_GROUPS = [
   { title: 6, tab: 1, keys: ['logChannel', 'includeContent'] },
 ] as const;
 
-export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTest, alertOnly, saving, onRestore, onSimulate, onRepair, renderField }: {
+export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTest, alertOnly, saving, onRestore, onRepair, renderField }: {
   kind: 'spam' | 'scam' | 'raid' | 'join' | 'moderation' | 'audit'; title: string; enabled: boolean; onEnabled: (enabled: boolean) => void; onTest: () => void;
-  keys: string[]; alertOnly: boolean; saving: boolean; onRestore?: () => void; onSimulate?: () => void; onRepair?: () => void;
+  keys: string[]; alertOnly: boolean; saving: boolean; onRestore?: () => void; onRepair?: () => void;
   renderField: (key: string, copy?: { label?: string; help?: string }, inline?: boolean) => ReactNode;
 }) {
   const [tab, setTab] = useState(0);
@@ -127,18 +154,7 @@ export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTe
   const unknown = keys.filter(key => (kind !== 'spam' || (key !== 'capsPercent' && key !== 'capsMinLetters'))
     && !groups.some(group => (group.keys as readonly string[]).includes(key)));
   return <div className="spam-settings">
-    <div className="spam-toolbar">
-      <label className="switch-row spam-activation">
-        <input type="checkbox" checked={enabled} onChange={event => onEnabled(event.target.checked)} />
-        <span className="spam-activation-state">
-          <b aria-hidden={!enabled}>{helperText('Active')}</b>
-          <b aria-hidden={enabled}>{helperText('Disabled')}</b>
-        </span>
-      </label>
-      <button type="button" className="primary spam-demo-button" onClick={onTest}>
-        <span aria-hidden="true">▶ </span>{text[10]}
-      </button>
-    </div>
+    <SettingsToolbar enabled={enabled} onEnabled={onEnabled} onTest={onTest} />
     {!moderation && <div className="spam-tabs" data-tab-count={tabs.length} role="tablist" aria-label={title}>
       {tabs.map((label, index) => <button type="button" role="tab" key={index}
         id={`${id}-tab-${index}`} aria-controls={`${id}-panel-${index}`} aria-selected={tab === index}
@@ -199,10 +215,6 @@ export function ProtectionSettings({ kind, title, keys, enabled, onEnabled, onTe
         <h3>{text[8]}</h3><div className="field-grid">{unknown.map(key => <div key={key}>{renderField(key)}</div>)}</div>
       </section>}
     </div>)}
-    <footer className="spam-footer">
-      {onRepair && <button type="button" className="secondary" disabled={saving} onClick={onRepair}>{helperText('Repair publication')}</button>}
-      {onSimulate && <button type="button" className="secondary" onClick={onSimulate}>{helperText('Simulate configuration')}</button>}
-      <button type="button" className="secondary" disabled={!onRestore || saving} onClick={onRestore}>{text[11]}</button>
-    </footer>
+    <SettingsFooter saving={saving} onRestore={onRestore} onRepair={onRepair} />
   </div>;
 }

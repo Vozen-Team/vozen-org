@@ -1,0 +1,273 @@
+{
+  "key": "web3.crypto_stats",
+  "tabs": [
+    {
+      "title": "tabCoins",
+      "intro": "coinsIntro",
+      "groups": [
+        {
+          "title": "groupCoins",
+          "keys": [
+            "coinIds",
+            "currency"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabPosting",
+      "intro": "postingIntro",
+      "groups": [
+        {
+          "title": "groupChannel",
+          "hint": "channelHint",
+          "keys": [
+            "targetChannelId"
+          ]
+        },
+        {
+          "title": "groupSchedule",
+          "hint": "scheduleHint",
+          "keys": [
+            "intervalSeconds"
+          ]
+        },
+        {
+          "title": "groupMessage",
+          "hint": "messageHint",
+          "keys": [
+            "messageTemplate"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageFirst",
+        "channel": "# crypto",
+        "messages": [
+          {
+            "bot": true,
+            "text": "updateFirst",
+            "note": "sampleNote"
+          }
+        ]
+      },
+      {
+        "label": "stageNext",
+        "channel": "# crypto",
+        "messages": [
+          {
+            "bot": true,
+            "text": "updateNext",
+            "note": "intervalNote"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabCoins": "Coins",
+      "coinsIntro": "Helper posts CoinGecko prices to a channel on a schedule. It only reads prices.",
+      "groupCoins": "Coins and currency",
+      "tabPosting": "Posting",
+      "postingIntro": "Choose where updates go, how often they post and what they say.",
+      "groupChannel": "Where it posts",
+      "channelHint": "Helper needs permission to send messages in this channel.",
+      "groupSchedule": "Schedule",
+      "scheduleHint": "From 300 seconds (5 minutes) to 86400 (1 day). 900 posts every 15 minutes.",
+      "groupMessage": "Message",
+      "messageHint": "{coins} is replaced with the price list.",
+      "safety": "Example only. Sample prices; no messages are sent to Discord.",
+      "stageFirst": "Update",
+      "stageNext": "15 minutes later",
+      "updateFirst": "Crypto update: bitcoin 64250 USD · ethereum 3120 USD",
+      "updateNext": "Crypto update: bitcoin 64310 USD · ethereum 3115 USD",
+      "sampleNote": "Sample values, not live data.",
+      "intervalNote": "Posted again after the update interval. Sample values, not live data."
+    },
+    "pt": {
+      "tabCoins": "Moedas",
+      "coinsIntro": "O Helper publica preços da CoinGecko num canal, com regularidade. Só lê os preços.",
+      "groupCoins": "Moedas e divisa",
+      "tabPosting": "Publicação",
+      "postingIntro": "Escolhe onde as atualizações aparecem, com que frequência e o que dizem.",
+      "groupChannel": "Onde publica",
+      "channelHint": "O Helper precisa de permissão para enviar mensagens neste canal.",
+      "groupSchedule": "Frequência",
+      "scheduleHint": "De 300 segundos (5 minutos) a 86400 (1 dia). Com 900, publica a cada 15 minutos.",
+      "groupMessage": "Mensagem",
+      "messageHint": "{coins} é substituído pela lista de preços.",
+      "safety": "Apenas um exemplo. Preços fictícios; nenhuma mensagem é enviada para o Discord.",
+      "stageFirst": "Atualização",
+      "stageNext": "15 minutos depois",
+      "updateFirst": "Atualização cripto: bitcoin 64250 USD · ethereum 3120 USD",
+      "updateNext": "Atualização cripto: bitcoin 64310 USD · ethereum 3115 USD",
+      "sampleNote": "Valores de exemplo, não são dados em tempo real.",
+      "intervalNote": "Publicado de novo após o intervalo definido. Valores de exemplo, não são dados em tempo real."
+    },
+    "fr": {
+      "tabCoins": "Cryptos",
+      "coinsIntro": "Helper publique les prix CoinGecko dans un salon à intervalle régulier. Il ne fait que lire les prix.",
+      "groupCoins": "Cryptos et devise",
+      "tabPosting": "Publication",
+      "postingIntro": "Choisissez où vont les mises à jour, leur fréquence et leur contenu.",
+      "groupChannel": "Salon de publication",
+      "channelHint": "Helper doit pouvoir envoyer des messages dans ce salon.",
+      "groupSchedule": "Fréquence",
+      "scheduleHint": "De 300 secondes (5 minutes) à 86400 (1 jour). Avec 900, une publication toutes les 15 minutes.",
+      "groupMessage": "Message",
+      "messageHint": "{coins} est remplacé par la liste des prix.",
+      "safety": "Exemple uniquement. Prix fictifs ; aucun message n'est envoyé sur Discord.",
+      "stageFirst": "Mise à jour",
+      "stageNext": "15 minutes plus tard",
+      "updateFirst": "Mise à jour crypto : bitcoin 64250 USD · ethereum 3120 USD",
+      "updateNext": "Mise à jour crypto : bitcoin 64310 USD · ethereum 3115 USD",
+      "sampleNote": "Valeurs d'exemple, pas des données en direct.",
+      "intervalNote": "Republié après l'intervalle choisi. Valeurs d'exemple, pas des données en direct."
+    },
+    "es": {
+      "tabCoins": "Monedas",
+      "coinsIntro": "Helper publica precios de CoinGecko en un canal cada cierto tiempo. Solo lee los precios.",
+      "groupCoins": "Monedas y divisa",
+      "tabPosting": "Publicación",
+      "postingIntro": "Elige dónde se publican las actualizaciones, cada cuánto y qué dicen.",
+      "groupChannel": "Dónde publica",
+      "channelHint": "Helper necesita permiso para enviar mensajes en este canal.",
+      "groupSchedule": "Frecuencia",
+      "scheduleHint": "De 300 segundos (5 minutos) a 86400 (1 día). Con 900, publica cada 15 minutos.",
+      "groupMessage": "Mensaje",
+      "messageHint": "{coins} se sustituye por la lista de precios.",
+      "safety": "Solo es un ejemplo. Precios ficticios; no se envían mensajes a Discord.",
+      "stageFirst": "Actualización",
+      "stageNext": "15 minutos después",
+      "updateFirst": "Actualización cripto: bitcoin 64250 USD · ethereum 3120 USD",
+      "updateNext": "Actualización cripto: bitcoin 64310 USD · ethereum 3115 USD",
+      "sampleNote": "Valores de ejemplo, no son datos en tiempo real.",
+      "intervalNote": "Publicado de nuevo tras el intervalo. Valores de ejemplo, no son datos en tiempo real."
+    },
+    "de": {
+      "tabCoins": "Coins",
+      "coinsIntro": "Helper postet CoinGecko-Kurse regelmäßig in einen Kanal. Es liest die Kurse nur.",
+      "groupCoins": "Coins und Währung",
+      "tabPosting": "Veröffentlichung",
+      "postingIntro": "Lege fest, wo Updates erscheinen, wie oft und mit welchem Text.",
+      "groupChannel": "Wo gepostet wird",
+      "channelHint": "Helper braucht die Berechtigung, in diesem Kanal Nachrichten zu senden.",
+      "groupSchedule": "Zeitplan",
+      "scheduleHint": "Von 300 Sekunden (5 Minuten) bis 86400 (1 Tag). Mit 900 wird alle 15 Minuten gepostet.",
+      "groupMessage": "Nachricht",
+      "messageHint": "{coins} wird durch die Kursliste ersetzt.",
+      "safety": "Nur ein Beispiel. Fiktive Preise; es wird keine Nachricht an Discord gesendet.",
+      "stageFirst": "Update",
+      "stageNext": "15 Minuten später",
+      "updateFirst": "Krypto-Update: bitcoin 64250 USD · ethereum 3120 USD",
+      "updateNext": "Krypto-Update: bitcoin 64310 USD · ethereum 3115 USD",
+      "sampleNote": "Beispielwerte, keine Live-Daten.",
+      "intervalNote": "Nach dem Intervall erneut gepostet. Beispielwerte, keine Live-Daten."
+    },
+    "tr": {
+      "tabCoins": "Coinler",
+      "coinsIntro": "Helper, CoinGecko fiyatlarını düzenli aralıklarla bir kanala paylaşır. Fiyatları yalnızca okur.",
+      "groupCoins": "Coinler ve para birimi",
+      "tabPosting": "Paylaşım",
+      "postingIntro": "Güncellemelerin nereye, ne sıklıkla ve hangi metinle paylaşılacağını seçin.",
+      "groupChannel": "Nereye paylaşılır",
+      "channelHint": "Helper'ın bu kanalda mesaj gönderme izni olmalı.",
+      "groupSchedule": "Zamanlama",
+      "scheduleHint": "300 saniye (5 dakika) ile 86400 (1 gün) arası. 900 ile her 15 dakikada bir paylaşır.",
+      "groupMessage": "Mesaj",
+      "messageHint": "{coins} fiyat listesiyle değiştirilir.",
+      "safety": "Yalnızca örnek. Fiyatlar örnektir; Discord'a mesaj gönderilmez.",
+      "stageFirst": "Güncelleme",
+      "stageNext": "15 dakika sonra",
+      "updateFirst": "Kripto güncellemesi: bitcoin 64250 USD · ethereum 3120 USD",
+      "updateNext": "Kripto güncellemesi: bitcoin 64310 USD · ethereum 3115 USD",
+      "sampleNote": "Örnek değerler, canlı veri değildir.",
+      "intervalNote": "Güncelleme aralığından sonra yeniden paylaşıldı. Örnek değerler, canlı veri değildir."
+    },
+    "ar": {
+      "tabCoins": "العملات",
+      "coinsIntro": "ينشر Helper أسعار CoinGecko في قناة بشكل دوري. وهو يقرأ الأسعار فقط.",
+      "groupCoins": "العملات الرقمية والعملة",
+      "tabPosting": "النشر",
+      "postingIntro": "اختر مكان نشر التحديثات وعدد مراتها ونصها.",
+      "groupChannel": "مكان النشر",
+      "channelHint": "يحتاج Helper إلى إذن إرسال الرسائل في هذه القناة.",
+      "groupSchedule": "الجدول",
+      "scheduleHint": "من 300 ثانية (5 دقائق) إلى 86400 (يوم واحد). القيمة 900 تعني النشر كل 15 دقيقة.",
+      "groupMessage": "الرسالة",
+      "messageHint": "يُستبدل {coins} بقائمة الأسعار.",
+      "safety": "مثال فقط. الأسعار تجريبية ولا تُرسل أي رسائل إلى Discord.",
+      "stageFirst": "التحديث",
+      "stageNext": "بعد 15 دقيقة",
+      "updateFirst": "تحديث العملات الرقمية: bitcoin 64250 USD · ethereum 3120 USD",
+      "updateNext": "تحديث العملات الرقمية: bitcoin 64310 USD · ethereum 3115 USD",
+      "sampleNote": "قيم تجريبية وليست بيانات مباشرة.",
+      "intervalNote": "نُشر مجددًا بعد فاصل التحديث. قيم تجريبية وليست بيانات مباشرة."
+    },
+    "zh": {
+      "tabCoins": "幣種",
+      "coinsIntro": "Helper 會定時將 CoinGecko 價格發布到頻道。它只會讀取價格。",
+      "groupCoins": "幣種與貨幣",
+      "tabPosting": "發布",
+      "postingIntro": "選擇更新要發布到哪裡、多久發布一次，以及訊息內容。",
+      "groupChannel": "發布位置",
+      "channelHint": "Helper 需要在此頻道傳送訊息的權限。",
+      "groupSchedule": "發布頻率",
+      "scheduleHint": "範圍為 300 秒（5 分鐘）到 86400 秒（1 天）。設為 900 即每 15 分鐘發布一次。",
+      "groupMessage": "訊息",
+      "messageHint": "{coins} 會替換為價格清單。",
+      "safety": "僅為範例。價格為範例數值，不會向 Discord 傳送訊息。",
+      "stageFirst": "更新",
+      "stageNext": "15 分鐘後",
+      "updateFirst": "加密貨幣更新：bitcoin 64250 USD · ethereum 3120 USD",
+      "updateNext": "加密貨幣更新：bitcoin 64310 USD · ethereum 3115 USD",
+      "sampleNote": "範例數值，並非即時資料。",
+      "intervalNote": "到達更新間隔後會再次發布。範例數值，並非即時資料。"
+    },
+    "ru": {
+      "tabCoins": "Монеты",
+      "coinsIntro": "Helper по расписанию публикует цены CoinGecko в канал. Он только читает цены.",
+      "groupCoins": "Монеты и валюта",
+      "tabPosting": "Публикация",
+      "postingIntro": "Выберите, куда и как часто публиковать обновления и что в них писать.",
+      "groupChannel": "Куда публиковать",
+      "channelHint": "Helper нужно право отправлять сообщения в этом канале.",
+      "groupSchedule": "Расписание",
+      "scheduleHint": "От 300 секунд (5 минут) до 86400 (1 день). При 900 — публикация каждые 15 минут.",
+      "groupMessage": "Сообщение",
+      "messageHint": "{coins} заменяется списком цен.",
+      "safety": "Только пример. Цены условные, сообщения в Discord не отправляются.",
+      "stageFirst": "Обновление",
+      "stageNext": "Через 15 минут",
+      "updateFirst": "Обновление крипто: bitcoin 64250 USD · ethereum 3120 USD",
+      "updateNext": "Обновление крипто: bitcoin 64310 USD · ethereum 3115 USD",
+      "sampleNote": "Примерные значения, а не актуальные данные.",
+      "intervalNote": "Опубликовано снова после интервала. Примерные значения, а не актуальные данные."
+    },
+    "ko": {
+      "tabCoins": "코인",
+      "coinsIntro": "Helper는 정해진 주기로 CoinGecko 가격을 채널에 게시합니다. 가격을 읽기만 합니다.",
+      "groupCoins": "코인과 통화",
+      "tabPosting": "게시",
+      "postingIntro": "업데이트를 게시할 곳, 주기, 내용을 정하세요.",
+      "groupChannel": "게시할 곳",
+      "channelHint": "Helper에 이 채널의 메시지 보내기 권한이 필요합니다.",
+      "groupSchedule": "일정",
+      "scheduleHint": "300초(5분)에서 86400초(1일) 사이입니다. 900이면 15분마다 게시합니다.",
+      "groupMessage": "메시지",
+      "messageHint": "{coins}는 가격 목록으로 바뀝니다.",
+      "safety": "예시일 뿐입니다. 가격은 예시 값이며 Discord로 메시지가 전송되지 않습니다.",
+      "stageFirst": "업데이트",
+      "stageNext": "15분 후",
+      "updateFirst": "암호화폐 업데이트: bitcoin 64250 USD · ethereum 3120 USD",
+      "updateNext": "암호화폐 업데이트: bitcoin 64310 USD · ethereum 3115 USD",
+      "sampleNote": "예시 값이며 실시간 데이터가 아닙니다.",
+      "intervalNote": "업데이트 간격이 지나 다시 게시되었습니다. 예시 값이며 실시간 데이터가 아닙니다."
+    }
+  }
+}

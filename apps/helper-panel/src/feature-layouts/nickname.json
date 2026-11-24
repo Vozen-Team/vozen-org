@@ -1,0 +1,249 @@
+{
+  "key": "management.nickname",
+  "tabs": [
+    {
+      "title": "tabName",
+      "intro": "nameIntro",
+      "groups": [
+        {
+          "title": "groupIdentity",
+          "hint": "identityHint",
+          "keys": [
+            "nickname"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageDefault",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "text": "whoIs"
+          },
+          {
+            "author": "Mia",
+            "text": "answerDefault",
+            "note": "defaultFooter"
+          }
+        ]
+      },
+      {
+        "label": "stageRenamed",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "note": "renamedNote"
+          },
+          {
+            "author": "Mia",
+            "text": "answerRenamed",
+            "note": "renamedOnly"
+          }
+        ]
+      },
+      {
+        "label": "stageReset",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "note": "resetNote"
+          },
+          {
+            "author": "Mia",
+            "text": "answerDefault",
+            "note": "resetFooter"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabName": "Name",
+      "nameIntro": "Give Helper a name that fits your server. Only this server sees it.",
+      "groupIdentity": "Display name",
+      "identityHint": "Helper needs the Change Nickname permission to apply it.",
+      "stageDefault": "Default",
+      "stageRenamed": "Renamed",
+      "stageReset": "Reset",
+      "whoIs": "Who's the bot in the member list?",
+      "answerDefault": "That's Vozen Helper, the server bot.",
+      "defaultFooter": "No nickname set · default name",
+      "renamedNote": "Saved the nickname “Server Guide” in the dashboard.",
+      "answerRenamed": "Now it shows as Server Guide.",
+      "renamedOnly": "Only this server sees the new name.",
+      "resetNote": "Cleared the nickname and turned the feature off.",
+      "resetFooter": "Default name restored",
+      "safety": "Example only. Helper's nickname is not changed and no messages are sent to Discord."
+    },
+    "pt": {
+      "tabName": "Nome",
+      "nameIntro": "Dá ao Helper um nome que combine com o teu servidor. Só este servidor o vê.",
+      "groupIdentity": "Nome visível",
+      "identityHint": "O Helper precisa da permissão Alterar alcunha para o aplicar.",
+      "stageDefault": "Predefinido",
+      "stageRenamed": "Novo nome",
+      "stageReset": "Repor",
+      "whoIs": "Quem é o bot na lista de membros?",
+      "answerDefault": "É o Vozen Helper, o bot do servidor.",
+      "defaultFooter": "Sem alcunha · nome predefinido",
+      "renamedNote": "Guardou a alcunha “Guia do Servidor” no dashboard.",
+      "answerRenamed": "Agora aparece como Guia do Servidor.",
+      "renamedOnly": "Só este servidor vê o novo nome.",
+      "resetNote": "Apagou a alcunha e desligou a funcionalidade.",
+      "resetFooter": "Nome predefinido reposto",
+      "safety": "Apenas um exemplo. A alcunha do Helper não é alterada e nenhuma mensagem é enviada para o Discord."
+    },
+    "fr": {
+      "tabName": "Nom",
+      "nameIntro": "Donnez à Helper un nom adapté à votre serveur. Seul ce serveur le voit.",
+      "groupIdentity": "Nom affiché",
+      "identityHint": "Helper a besoin de la permission Changer le pseudo pour l'appliquer.",
+      "stageDefault": "Par défaut",
+      "stageRenamed": "Renommé",
+      "stageReset": "Réinitialiser",
+      "whoIs": "C'est qui, le bot dans la liste des membres ?",
+      "answerDefault": "C'est Vozen Helper, le bot du serveur.",
+      "defaultFooter": "Aucun pseudo · nom par défaut",
+      "renamedNote": "A enregistré le pseudo « Guide du serveur » dans le tableau de bord.",
+      "answerRenamed": "Il s'affiche maintenant comme Guide du serveur.",
+      "renamedOnly": "Seul ce serveur voit le nouveau nom.",
+      "resetNote": "A effacé le pseudo et désactivé la fonction.",
+      "resetFooter": "Nom par défaut rétabli",
+      "safety": "Exemple uniquement. Le pseudo de Helper n'est pas modifié et aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabName": "Nombre",
+      "nameIntro": "Ponle a Helper un nombre que encaje con tu servidor. Solo este servidor lo ve.",
+      "groupIdentity": "Nombre visible",
+      "identityHint": "Helper necesita el permiso Cambiar apodo para aplicarlo.",
+      "stageDefault": "Predeterminado",
+      "stageRenamed": "Nuevo nombre",
+      "stageReset": "Restablecer",
+      "whoIs": "¿Quién es el bot de la lista de miembros?",
+      "answerDefault": "Es Vozen Helper, el bot del servidor.",
+      "defaultFooter": "Sin apodo · nombre predeterminado",
+      "renamedNote": "Guardó el apodo «Guía del servidor» en el panel.",
+      "answerRenamed": "Ahora aparece como Guía del servidor.",
+      "renamedOnly": "Solo este servidor ve el nuevo nombre.",
+      "resetNote": "Borró el apodo y desactivó la función.",
+      "resetFooter": "Nombre predeterminado restablecido",
+      "safety": "Solo es un ejemplo. No se cambia el apodo de Helper ni se envían mensajes a Discord."
+    },
+    "de": {
+      "tabName": "Name",
+      "nameIntro": "Helper einen Namen geben, der zum Server passt. Nur dieser Server sieht ihn.",
+      "groupIdentity": "Anzeigename",
+      "identityHint": "Helper braucht dazu die Berechtigung „Nickname ändern“.",
+      "stageDefault": "Standard",
+      "stageRenamed": "Umbenannt",
+      "stageReset": "Zurücksetzen",
+      "whoIs": "Wer ist der Bot in der Mitgliederliste?",
+      "answerDefault": "Das ist Vozen Helper, der Server-Bot.",
+      "defaultFooter": "Kein Nickname · Standardname",
+      "renamedNote": "Hat den Nickname „Server-Guide“ im Dashboard gespeichert.",
+      "answerRenamed": "Jetzt heißt er Server-Guide.",
+      "renamedOnly": "Nur dieser Server sieht den neuen Namen.",
+      "resetNote": "Hat den Nickname geleert und die Funktion ausgeschaltet.",
+      "resetFooter": "Standardname wiederhergestellt",
+      "safety": "Nur ein Beispiel. Der Nickname von Helper wird nicht geändert und keine Nachricht an Discord gesendet."
+    },
+    "tr": {
+      "tabName": "Ad",
+      "nameIntro": "Helper'a sunucunuza uyan bir ad verin. Bu adı yalnızca bu sunucu görür.",
+      "groupIdentity": "Görünen ad",
+      "identityHint": "Helper'ın bunu uygulaması için Takma Ad Değiştir izni gerekir.",
+      "stageDefault": "Varsayılan",
+      "stageRenamed": "Yeni ad",
+      "stageReset": "Sıfırla",
+      "whoIs": "Üye listesindeki bot kim?",
+      "answerDefault": "O, sunucunun botu Vozen Helper.",
+      "defaultFooter": "Takma ad yok · varsayılan ad",
+      "renamedNote": "Panelde “Sunucu Rehberi” takma adını kaydetti.",
+      "answerRenamed": "Artık Sunucu Rehberi olarak görünüyor.",
+      "renamedOnly": "Yeni adı yalnızca bu sunucu görür.",
+      "resetNote": "Takma adı sildi ve özelliği kapattı.",
+      "resetFooter": "Varsayılan ad geri yüklendi",
+      "safety": "Yalnızca örnek. Helper'ın takma adı değişmez ve Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabName": "الاسم",
+      "nameIntro": "امنح Helper اسمًا يناسب خادمك. لا يظهر هذا الاسم إلا في هذا الخادم.",
+      "groupIdentity": "الاسم المعروض",
+      "identityHint": "يحتاج Helper إلى إذن تغيير الاسم المستعار لتطبيقه.",
+      "stageDefault": "الافتراضي",
+      "stageRenamed": "اسم جديد",
+      "stageReset": "إعادة التعيين",
+      "whoIs": "من هو البوت في قائمة الأعضاء؟",
+      "answerDefault": "إنه Vozen Helper، بوت الخادم.",
+      "defaultFooter": "لا يوجد اسم مستعار · الاسم الافتراضي",
+      "renamedNote": "حفظ الاسم المستعار «دليل الخادم» في لوحة التحكم.",
+      "answerRenamed": "يظهر الآن باسم دليل الخادم.",
+      "renamedOnly": "لا يرى الاسم الجديد إلا هذا الخادم.",
+      "resetNote": "مسح الاسم المستعار وأوقف الميزة.",
+      "resetFooter": "استُعيد الاسم الافتراضي",
+      "safety": "مثال فقط. لا يتغير الاسم المستعار لـ Helper ولا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabName": "名稱",
+      "nameIntro": "為 Helper 取一個適合你伺服器的名稱。只有這個伺服器看得到。",
+      "groupIdentity": "顯示名稱",
+      "identityHint": "Helper 需要「變更暱稱」權限才能套用。",
+      "stageDefault": "預設",
+      "stageRenamed": "已改名",
+      "stageReset": "還原",
+      "whoIs": "成員清單裡的那個機器人是誰？",
+      "answerDefault": "那是 Vozen Helper，伺服器的機器人。",
+      "defaultFooter": "未設定暱稱 · 預設名稱",
+      "renamedNote": "在控制台儲存了暱稱「伺服器嚮導」。",
+      "answerRenamed": "現在顯示為伺服器嚮導。",
+      "renamedOnly": "只有這個伺服器看得到新名稱。",
+      "resetNote": "清空了暱稱並關閉功能。",
+      "resetFooter": "已恢復預設名稱",
+      "safety": "僅為範例。不會變更 Helper 的暱稱，也不會傳送訊息到 Discord。"
+    },
+    "ru": {
+      "tabName": "Имя",
+      "nameIntro": "Дайте Helper имя, подходящее вашему серверу. Его видит только этот сервер.",
+      "groupIdentity": "Отображаемое имя",
+      "identityHint": "Чтобы применить его, Helper нужно право «Изменить никнейм».",
+      "stageDefault": "По умолчанию",
+      "stageRenamed": "Новое имя",
+      "stageReset": "Сброс",
+      "whoIs": "Что за бот в списке участников?",
+      "answerDefault": "Это Vozen Helper, бот сервера.",
+      "defaultFooter": "Никнейм не задан · имя по умолчанию",
+      "renamedNote": "Сохранил никнейм «Гид сервера» в панели.",
+      "answerRenamed": "Теперь он называется «Гид сервера».",
+      "renamedOnly": "Новое имя видно только на этом сервере.",
+      "resetNote": "Очистил никнейм и выключил функцию.",
+      "resetFooter": "Имя по умолчанию восстановлено",
+      "safety": "Только пример. Никнейм Helper не меняется, сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabName": "이름",
+      "nameIntro": "서버에 어울리는 이름을 Helper에게 지어 주세요. 이 서버에서만 보입니다.",
+      "groupIdentity": "표시 이름",
+      "identityHint": "적용하려면 Helper에게 별명 변경 권한이 필요합니다.",
+      "stageDefault": "기본",
+      "stageRenamed": "새 이름",
+      "stageReset": "초기화",
+      "whoIs": "멤버 목록에 있는 봇은 누구예요?",
+      "answerDefault": "서버 봇인 Vozen Helper예요.",
+      "defaultFooter": "별명 없음 · 기본 이름",
+      "renamedNote": "대시보드에서 별명 “서버 가이드”를 저장했습니다.",
+      "answerRenamed": "이제 서버 가이드로 보여요.",
+      "renamedOnly": "새 이름은 이 서버에서만 보입니다.",
+      "resetNote": "별명을 비우고 기능을 껐습니다.",
+      "resetFooter": "기본 이름 복원됨",
+      "safety": "예시일 뿐입니다. Helper의 별명이 바뀌지 않으며 Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

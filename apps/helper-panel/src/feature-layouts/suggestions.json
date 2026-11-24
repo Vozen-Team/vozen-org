@@ -1,0 +1,428 @@
+{
+  "key": "community.suggestions",
+  "tabs": [
+    {
+      "title": "tabIdeas",
+      "intro": "ideasIntro",
+      "commands": [
+        [
+          "/suggest",
+          "cmdSuggest"
+        ],
+        [
+          "/suggestion",
+          "cmdReview"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupWhere",
+          "keys": [
+            "channel"
+          ]
+        },
+        {
+          "title": "groupPublic",
+          "hint": "publicHint",
+          "keys": [
+            "voteMode",
+            "anonymous"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabModeration",
+      "intro": "modIntro",
+      "groups": [
+        {
+          "title": "groupLimits",
+          "hint": "limitsHint",
+          "keys": [
+            "requiredRole",
+            "cooldownHours"
+          ]
+        },
+        {
+          "title": "groupStaff",
+          "keys": [
+            "staffChannel"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageSubmit",
+        "channel": "# suggestions",
+        "messages": [
+          {
+            "author": "Rexy",
+            "command": "/suggest text: Add a movie night every Friday"
+          },
+          {
+            "bot": true,
+            "card": {
+              "title": "newSuggestion",
+              "body": "ideaText",
+              "fields": [
+                [
+                  "authorField",
+                  "@Rexy"
+                ],
+                [
+                  "support",
+                  "0"
+                ],
+                [
+                  "against",
+                  "0"
+                ]
+              ],
+              "buttons": [
+                "support",
+                "against"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageVote",
+        "channel": "# suggestions",
+        "messages": [
+          {
+            "author": "Alex",
+            "note": "votedSupport"
+          },
+          {
+            "author": "Mia",
+            "note": "votedSupport"
+          },
+          {
+            "bot": true,
+            "card": {
+              "title": "newSuggestion",
+              "body": "ideaText",
+              "fields": [
+                [
+                  "authorField",
+                  "@Rexy"
+                ],
+                [
+                  "support",
+                  "2"
+                ],
+                [
+                  "against",
+                  "0"
+                ]
+              ],
+              "buttons": [
+                "support",
+                "against"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageDecision",
+        "channel": "# suggestions",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/suggestion id: 12 status: approved"
+          },
+          {
+            "bot": true,
+            "card": {
+              "tone": "success",
+              "title": "approvedTitle",
+              "body": "ideaText",
+              "fields": [
+                [
+                  "authorField",
+                  "@Rexy"
+                ],
+                [
+                  "support",
+                  "2"
+                ],
+                [
+                  "against",
+                  "0"
+                ]
+              ],
+              "footer": "approvedFooter"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabIdeas": "Suggestions",
+      "ideasIntro": "Members share ideas with /suggest. Helper posts each one in the suggestion channel for voting.",
+      "cmdSuggest": "Submits an idea.",
+      "cmdReview": "Approves, rejects or marks an idea as considered. Staff only.",
+      "groupWhere": "Where ideas go",
+      "groupPublic": "Public message",
+      "publicHint": "Members vote with the buttons under each suggestion.",
+      "tabModeration": "Moderation",
+      "modIntro": "Limit who can suggest and how often.",
+      "groupLimits": "Who can suggest",
+      "limitsHint": "Without a role, every member can suggest.",
+      "groupStaff": "Staff",
+      "safety": "Example only. No suggestion is created and no messages are sent to Discord.",
+      "stageSubmit": "Submit",
+      "stageVote": "Vote",
+      "stageDecision": "Decision",
+      "newSuggestion": "New suggestion",
+      "ideaText": "Add a movie night every Friday.",
+      "authorField": "Author",
+      "support": "Support",
+      "against": "Against",
+      "votedSupport": "Clicked Support",
+      "approvedTitle": "Suggestion approved",
+      "approvedFooter": "The public status was updated."
+    },
+    "pt": {
+      "tabIdeas": "Sugestões",
+      "ideasIntro": "Os membros partilham ideias com /suggest. O Helper publica cada uma no canal de sugestões para votação.",
+      "cmdSuggest": "Envia uma ideia.",
+      "cmdReview": "Aprova, rejeita ou marca uma ideia como considerada. Só para a staff.",
+      "groupWhere": "Para onde vão as ideias",
+      "groupPublic": "Mensagem pública",
+      "publicHint": "Os membros votam nos botões por baixo de cada sugestão.",
+      "tabModeration": "Moderação",
+      "modIntro": "Limita quem pode sugerir e com que frequência.",
+      "groupLimits": "Quem pode sugerir",
+      "limitsHint": "Sem cargo, todos os membros podem sugerir.",
+      "groupStaff": "Staff",
+      "safety": "Apenas um exemplo. Nenhuma sugestão é criada e nenhuma mensagem é enviada para o Discord.",
+      "stageSubmit": "Enviar",
+      "stageVote": "Votar",
+      "stageDecision": "Decisão",
+      "newSuggestion": "Nova sugestão",
+      "ideaText": "Fazer uma noite de cinema todas as sextas-feiras.",
+      "authorField": "Autor",
+      "support": "A favor",
+      "against": "Contra",
+      "votedSupport": "Clicou em A favor",
+      "approvedTitle": "Sugestão aprovada",
+      "approvedFooter": "O estado público foi atualizado."
+    },
+    "fr": {
+      "tabIdeas": "Suggestions",
+      "ideasIntro": "Les membres proposent des idées avec /suggest. Helper publie chacune dans le canal des suggestions pour le vote.",
+      "cmdSuggest": "Envoie une idée.",
+      "cmdReview": "Approuve, refuse ou marque une idée comme étudiée. Réservé au staff.",
+      "groupWhere": "Où vont les idées",
+      "groupPublic": "Message public",
+      "publicHint": "Les membres votent avec les boutons sous chaque suggestion.",
+      "tabModeration": "Modération",
+      "modIntro": "Limitez qui peut proposer et à quelle fréquence.",
+      "groupLimits": "Qui peut proposer",
+      "limitsHint": "Sans rôle, tous les membres peuvent proposer.",
+      "groupStaff": "Staff",
+      "safety": "Exemple uniquement. Aucune suggestion n'est créée et aucun message n'est envoyé sur Discord.",
+      "stageSubmit": "Proposer",
+      "stageVote": "Voter",
+      "stageDecision": "Décision",
+      "newSuggestion": "Nouvelle suggestion",
+      "ideaText": "Organiser une soirée cinéma chaque vendredi.",
+      "authorField": "Auteur",
+      "support": "Pour",
+      "against": "Contre",
+      "votedSupport": "A cliqué sur Pour",
+      "approvedTitle": "Suggestion approuvée",
+      "approvedFooter": "Le statut public a été mis à jour."
+    },
+    "es": {
+      "tabIdeas": "Sugerencias",
+      "ideasIntro": "Los miembros comparten ideas con /suggest. Helper publica cada una en el canal de sugerencias para votarla.",
+      "cmdSuggest": "Envía una idea.",
+      "cmdReview": "Aprueba, rechaza o marca una idea como considerada. Solo para el staff.",
+      "groupWhere": "Adónde van las ideas",
+      "groupPublic": "Mensaje público",
+      "publicHint": "Los miembros votan con los botones bajo cada sugerencia.",
+      "tabModeration": "Moderación",
+      "modIntro": "Limita quién puede sugerir y con qué frecuencia.",
+      "groupLimits": "Quién puede sugerir",
+      "limitsHint": "Sin rol, todos los miembros pueden sugerir.",
+      "groupStaff": "Staff",
+      "safety": "Solo es un ejemplo. No se crea ninguna sugerencia ni se envían mensajes a Discord.",
+      "stageSubmit": "Enviar",
+      "stageVote": "Votar",
+      "stageDecision": "Decisión",
+      "newSuggestion": "Nueva sugerencia",
+      "ideaText": "Hacer una noche de cine cada viernes.",
+      "authorField": "Autor",
+      "support": "A favor",
+      "against": "En contra",
+      "votedSupport": "Pulsó A favor",
+      "approvedTitle": "Sugerencia aprobada",
+      "approvedFooter": "El estado público se ha actualizado."
+    },
+    "de": {
+      "tabIdeas": "Vorschläge",
+      "ideasIntro": "Mitglieder teilen Ideen mit /suggest. Helper postet jede im Vorschlagskanal zur Abstimmung.",
+      "cmdSuggest": "Reicht eine Idee ein.",
+      "cmdReview": "Nimmt eine Idee an, lehnt sie ab oder markiert sie als geprüft. Nur für das Team.",
+      "groupWhere": "Wohin Ideen gehen",
+      "groupPublic": "Öffentliche Nachricht",
+      "publicHint": "Mitglieder stimmen mit den Buttons unter jedem Vorschlag ab.",
+      "tabModeration": "Moderation",
+      "modIntro": "Festlegen, wer wie oft Vorschläge machen darf.",
+      "groupLimits": "Wer Vorschläge machen darf",
+      "limitsHint": "Ohne Rolle dürfen alle Mitglieder Vorschläge machen.",
+      "groupStaff": "Team",
+      "safety": "Nur ein Beispiel. Es wird kein Vorschlag erstellt und keine Nachricht an Discord gesendet.",
+      "stageSubmit": "Einreichen",
+      "stageVote": "Abstimmen",
+      "stageDecision": "Entscheidung",
+      "newSuggestion": "Neuer Vorschlag",
+      "ideaText": "Jeden Freitag einen Filmabend veranstalten.",
+      "authorField": "Autor",
+      "support": "Dafür",
+      "against": "Dagegen",
+      "votedSupport": "Hat auf Dafür geklickt",
+      "approvedTitle": "Vorschlag angenommen",
+      "approvedFooter": "Der öffentliche Status wurde aktualisiert."
+    },
+    "tr": {
+      "tabIdeas": "Öneriler",
+      "ideasIntro": "Üyeler fikirlerini /suggest ile paylaşır. Helper her birini oylama için öneri kanalında paylaşır.",
+      "cmdSuggest": "Bir fikir gönderir.",
+      "cmdReview": "Bir fikri onaylar, reddeder veya değerlendirildi olarak işaretler. Yalnızca yetkililer.",
+      "groupWhere": "Fikirler nereye gider",
+      "groupPublic": "Herkese açık mesaj",
+      "publicHint": "Üyeler her önerinin altındaki düğmelerle oy verir.",
+      "tabModeration": "Moderasyon",
+      "modIntro": "Kimlerin ve ne sıklıkla öneri yapabileceğini sınırlayın.",
+      "groupLimits": "Kimler öneri yapabilir",
+      "limitsHint": "Rol seçilmezse tüm üyeler öneri yapabilir.",
+      "groupStaff": "Yetkililer",
+      "safety": "Yalnızca örnektir. Hiçbir öneri oluşturulmaz ve Discord'a mesaj gönderilmez.",
+      "stageSubmit": "Gönder",
+      "stageVote": "Oyla",
+      "stageDecision": "Karar",
+      "newSuggestion": "Yeni öneri",
+      "ideaText": "Her cuma bir film gecesi yapalım.",
+      "authorField": "Yazar",
+      "support": "Destekliyorum",
+      "against": "Karşıyım",
+      "votedSupport": "Destekliyorum'a tıkladı",
+      "approvedTitle": "Öneri onaylandı",
+      "approvedFooter": "Herkese açık durum güncellendi."
+    },
+    "ar": {
+      "tabIdeas": "الاقتراحات",
+      "ideasIntro": "يشارك الأعضاء أفكارهم عبر /suggest. ينشر Helper كل فكرة في قناة الاقتراحات للتصويت.",
+      "cmdSuggest": "يرسل فكرة.",
+      "cmdReview": "يوافق على فكرة أو يرفضها أو يضع عليها علامة قيد الدراسة. للطاقم فقط.",
+      "groupWhere": "وجهة الأفكار",
+      "groupPublic": "الرسالة العامة",
+      "publicHint": "يصوّت الأعضاء بالأزرار أسفل كل اقتراح.",
+      "tabModeration": "الإشراف",
+      "modIntro": "حدد من يمكنه الاقتراح وكم مرة.",
+      "groupLimits": "من يمكنه الاقتراح",
+      "limitsHint": "من دون رتبة، يمكن لجميع الأعضاء الاقتراح.",
+      "groupStaff": "الطاقم",
+      "safety": "مثال فقط. لا يُنشأ أي اقتراح ولا تُرسل أي رسائل إلى Discord.",
+      "stageSubmit": "الإرسال",
+      "stageVote": "التصويت",
+      "stageDecision": "القرار",
+      "newSuggestion": "اقتراح جديد",
+      "ideaText": "إقامة ليلة سينما كل يوم جمعة.",
+      "authorField": "الكاتب",
+      "support": "مع",
+      "against": "ضد",
+      "votedSupport": "نقر على مع",
+      "approvedTitle": "تمت الموافقة على الاقتراح",
+      "approvedFooter": "تم تحديث الحالة العامة."
+    },
+    "zh": {
+      "tabIdeas": "建議",
+      "ideasIntro": "成員使用 /suggest 分享想法。Helper 會將每則建議發布到建議頻道供大家投票。",
+      "cmdSuggest": "提交一個想法。",
+      "cmdReview": "核准、拒絕想法，或將其標記為已考慮。僅限管理團隊。",
+      "groupWhere": "建議發布位置",
+      "groupPublic": "公開訊息",
+      "publicHint": "成員使用每則建議下方的按鈕投票。",
+      "tabModeration": "管理",
+      "modIntro": "限制誰可以提出建議以及頻率。",
+      "groupLimits": "誰可以提出建議",
+      "limitsHint": "未設定身分組時，所有成員都可以提出建議。",
+      "groupStaff": "管理團隊",
+      "safety": "僅為示範。不會建立建議，也不會在 Discord 傳送訊息。",
+      "stageSubmit": "提交",
+      "stageVote": "投票",
+      "stageDecision": "決定",
+      "newSuggestion": "新建議",
+      "ideaText": "每週五舉辦一次電影之夜。",
+      "authorField": "作者",
+      "support": "支持",
+      "against": "反對",
+      "votedSupport": "點擊了支持",
+      "approvedTitle": "建議已核准",
+      "approvedFooter": "公開狀態已更新。"
+    },
+    "ru": {
+      "tabIdeas": "Предложения",
+      "ideasIntro": "Участники делятся идеями через /suggest. Helper публикует каждую в канале предложений для голосования.",
+      "cmdSuggest": "Отправляет идею.",
+      "cmdReview": "Одобряет, отклоняет или помечает идею как рассмотренную. Только для команды.",
+      "groupWhere": "Куда попадают идеи",
+      "groupPublic": "Публичное сообщение",
+      "publicHint": "Участники голосуют кнопками под каждым предложением.",
+      "tabModeration": "Модерация",
+      "modIntro": "Ограничьте, кто и как часто может предлагать идеи.",
+      "groupLimits": "Кто может предлагать",
+      "limitsHint": "Без роли предлагать могут все участники.",
+      "groupStaff": "Команда",
+      "safety": "Только пример. Предложения не создаются, сообщения в Discord не отправляются.",
+      "stageSubmit": "Отправка",
+      "stageVote": "Голосование",
+      "stageDecision": "Решение",
+      "newSuggestion": "Новое предложение",
+      "ideaText": "Устраивать киновечер каждую пятницу.",
+      "authorField": "Автор",
+      "support": "За",
+      "against": "Против",
+      "votedSupport": "Нажал(а) «За»",
+      "approvedTitle": "Предложение одобрено",
+      "approvedFooter": "Публичный статус обновлён."
+    },
+    "ko": {
+      "tabIdeas": "제안",
+      "ideasIntro": "멤버는 /suggest로 아이디어를 공유합니다. Helper가 각 제안을 제안 채널에 게시해 투표를 받습니다.",
+      "cmdSuggest": "아이디어를 제출합니다.",
+      "cmdReview": "아이디어를 승인, 거절하거나 검토함으로 표시합니다. 운영진 전용입니다.",
+      "groupWhere": "제안이 게시되는 곳",
+      "groupPublic": "공개 메시지",
+      "publicHint": "멤버는 각 제안 아래의 버튼으로 투표합니다.",
+      "tabModeration": "관리",
+      "modIntro": "누가 얼마나 자주 제안할 수 있는지 제한하세요.",
+      "groupLimits": "제안할 수 있는 사람",
+      "limitsHint": "역할을 정하지 않으면 모든 멤버가 제안할 수 있습니다.",
+      "groupStaff": "운영진",
+      "safety": "예시일 뿐입니다. 제안이 만들어지지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "stageSubmit": "제출",
+      "stageVote": "투표",
+      "stageDecision": "결정",
+      "newSuggestion": "새 제안",
+      "ideaText": "매주 금요일에 영화의 밤을 열어요.",
+      "authorField": "작성자",
+      "support": "찬성",
+      "against": "반대",
+      "votedSupport": "찬성을 눌렀습니다",
+      "approvedTitle": "제안이 승인되었습니다",
+      "approvedFooter": "공개 상태가 업데이트되었습니다."
+    }
+  }
+}

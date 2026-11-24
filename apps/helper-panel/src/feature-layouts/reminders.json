@@ -1,0 +1,291 @@
+{
+  "key": "utility.reminders",
+  "tabs": [
+    {
+      "title": "tabScheduled",
+      "intro": "scheduledIntro",
+      "slot": "manager",
+      "commands": [
+        [
+          "/remind",
+          "commandRemind"
+        ]
+      ],
+      "groups": []
+    },
+    {
+      "title": "tabRules",
+      "groups": [
+        {
+          "title": "groupLimits",
+          "keys": [
+            "maxDelayHours",
+            "maxTextLength"
+          ]
+        },
+        {
+          "title": "groupDelivery",
+          "hint": "deliveryHint",
+          "keys": [
+            "timezone",
+            "notifyUser"
+          ]
+        },
+        {
+          "title": "groupRepeats",
+          "keys": [
+            "allowRecurring",
+            "maxRecurrences"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageCreate",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/remind time:10m text:Standup",
+            "note": "createNote"
+          }
+        ]
+      },
+      {
+        "label": "stageSend",
+        "channel": "# general",
+        "messages": [
+          {
+            "bot": true,
+            "note": "mentionNote",
+            "card": {
+              "tone": "info",
+              "title": "⏰ Standup",
+              "body": "reminderFor"
+            }
+          }
+        ]
+      },
+      {
+        "label": "groupRepeats",
+        "channel": "# general",
+        "messages": [
+          {
+            "bot": true,
+            "note": "repeatNote",
+            "card": {
+              "tone": "info",
+              "title": "⏰ Standup",
+              "body": "reminderFor",
+              "fields": [
+                [
+                  "groupRepeats",
+                  "weekly"
+                ],
+                [
+                  "left",
+                  "11"
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabScheduled": "Scheduled",
+      "scheduledIntro": "Members create reminders with /remind. Pending ones are listed here and can be cancelled before they are sent.",
+      "commandRemind": "Creates a reminder that Helper posts in this channel.",
+      "tabRules": "Limits",
+      "groupLimits": "Time and length",
+      "groupDelivery": "Delivery",
+      "deliveryHint": "Helper posts each reminder in the channel where it was created.",
+      "groupRepeats": "Repeats",
+      "stageCreate": "Create",
+      "stageSend": "Sent",
+      "createNote": "The reminder now shows in the Scheduled list.",
+      "reminderFor": "Reminder for @Alex",
+      "mentionNote": "Alex is mentioned only when mentions are on.",
+      "weekly": "Weekly",
+      "left": "Left",
+      "repeatNote": "Daily or weekly repeats work only when recurring reminders are allowed.",
+      "safety": "Example only. No reminders are scheduled and no messages are sent to Discord."
+    },
+    "pt": {
+      "tabScheduled": "Agendados",
+      "scheduledIntro": "Os membros criam lembretes com /remind. Os pendentes aparecem aqui e podem ser cancelados antes do envio.",
+      "commandRemind": "Cria um lembrete que o Helper publica neste canal.",
+      "tabRules": "Limites",
+      "groupLimits": "Tempo e comprimento",
+      "groupDelivery": "Entrega",
+      "deliveryHint": "O Helper publica cada lembrete no canal onde foi criado.",
+      "groupRepeats": "Repetições",
+      "stageCreate": "Criar",
+      "stageSend": "Enviado",
+      "createNote": "O lembrete aparece agora na lista Agendados.",
+      "reminderFor": "Lembrete para @Alex",
+      "mentionNote": "O Alex só é mencionado quando as menções estão ativas.",
+      "weekly": "Semanal",
+      "left": "Restantes",
+      "repeatNote": "As repetições diárias ou semanais só funcionam se os lembretes recorrentes estiverem permitidos.",
+      "safety": "Apenas um exemplo. Não são agendados lembretes nem enviadas mensagens para o Discord."
+    },
+    "fr": {
+      "tabScheduled": "Planifiés",
+      "scheduledIntro": "Les membres créent des rappels avec /remind. Ceux en attente s'affichent ici et peuvent être annulés avant l'envoi.",
+      "commandRemind": "Crée un rappel que Helper publie dans ce salon.",
+      "tabRules": "Limites",
+      "groupLimits": "Délai et longueur",
+      "groupDelivery": "Envoi",
+      "deliveryHint": "Helper publie chaque rappel dans le salon où il a été créé.",
+      "groupRepeats": "Répétitions",
+      "stageCreate": "Créer",
+      "stageSend": "Envoyé",
+      "createNote": "Le rappel apparaît maintenant dans la liste Planifiés.",
+      "reminderFor": "Rappel pour @Alex",
+      "mentionNote": "Alex n'est mentionné que si les mentions sont activées.",
+      "weekly": "Hebdomadaire",
+      "left": "Restantes",
+      "repeatNote": "Les répétitions quotidiennes ou hebdomadaires ne fonctionnent que si les rappels récurrents sont autorisés.",
+      "safety": "Exemple uniquement. Aucun rappel n'est planifié et aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabScheduled": "Programados",
+      "scheduledIntro": "Los miembros crean recordatorios con /remind. Los pendientes aparecen aquí y se pueden cancelar antes del envío.",
+      "commandRemind": "Crea un recordatorio que Helper publica en este canal.",
+      "tabRules": "Límites",
+      "groupLimits": "Tiempo y longitud",
+      "groupDelivery": "Entrega",
+      "deliveryHint": "Helper publica cada recordatorio en el canal donde se creó.",
+      "groupRepeats": "Repeticiones",
+      "stageCreate": "Crear",
+      "stageSend": "Enviado",
+      "createNote": "El recordatorio aparece ahora en la lista Programados.",
+      "reminderFor": "Recordatorio para @Alex",
+      "mentionNote": "Alex solo recibe una mención si las menciones están activas.",
+      "weekly": "Semanal",
+      "left": "Restantes",
+      "repeatNote": "Las repeticiones diarias o semanales solo funcionan si se permiten los recordatorios recurrentes.",
+      "safety": "Solo es un ejemplo. No se programan recordatorios ni se envían mensajes a Discord."
+    },
+    "de": {
+      "tabScheduled": "Geplant",
+      "scheduledIntro": "Mitglieder erstellen Erinnerungen mit /remind. Ausstehende stehen hier und lassen sich vor dem Senden abbrechen.",
+      "commandRemind": "Erstellt eine Erinnerung, die Helper in diesem Kanal postet.",
+      "tabRules": "Grenzen",
+      "groupLimits": "Zeit und Länge",
+      "groupDelivery": "Zustellung",
+      "deliveryHint": "Helper postet jede Erinnerung in dem Kanal, in dem sie erstellt wurde.",
+      "groupRepeats": "Wiederholungen",
+      "stageCreate": "Erstellen",
+      "stageSend": "Gesendet",
+      "createNote": "Die Erinnerung erscheint jetzt in der Liste Geplant.",
+      "reminderFor": "Erinnerung für @Alex",
+      "mentionNote": "Alex wird nur erwähnt, wenn Erwähnungen aktiv sind.",
+      "weekly": "Wöchentlich",
+      "left": "Verbleibend",
+      "repeatNote": "Tägliche oder wöchentliche Wiederholungen gibt es nur, wenn wiederkehrende Erinnerungen erlaubt sind.",
+      "safety": "Nur ein Beispiel. Es werden keine Erinnerungen geplant und keine Nachrichten an Discord gesendet."
+    },
+    "tr": {
+      "tabScheduled": "Planlanan",
+      "scheduledIntro": "Üyeler /remind ile hatırlatıcı oluşturur. Bekleyenler burada listelenir ve gönderilmeden önce iptal edilebilir.",
+      "commandRemind": "Helper'ın bu kanalda paylaşacağı bir hatırlatıcı oluşturur.",
+      "tabRules": "Sınırlar",
+      "groupLimits": "Süre ve uzunluk",
+      "groupDelivery": "Gönderim",
+      "deliveryHint": "Helper her hatırlatıcıyı oluşturulduğu kanalda paylaşır.",
+      "groupRepeats": "Tekrarlar",
+      "stageCreate": "Oluştur",
+      "stageSend": "Gönderildi",
+      "createNote": "Hatırlatıcı artık Planlanan listesinde görünür.",
+      "reminderFor": "@Alex için hatırlatıcı",
+      "mentionNote": "Alex yalnızca bahsetmeler açıksa etiketlenir.",
+      "weekly": "Haftalık",
+      "left": "Kalan",
+      "repeatNote": "Günlük veya haftalık tekrarlar yalnızca yinelenen hatırlatıcılara izin verildiğinde çalışır.",
+      "safety": "Yalnızca örnek. Hatırlatıcı planlanmaz ve Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabScheduled": "المجدولة",
+      "scheduledIntro": "ينشئ الأعضاء التذكيرات باستخدام /remind. تظهر التذكيرات المعلّقة هنا ويمكن إلغاؤها قبل إرسالها.",
+      "commandRemind": "ينشئ تذكيرًا ينشره Helper في هذه القناة.",
+      "tabRules": "الحدود",
+      "groupLimits": "المدة والطول",
+      "groupDelivery": "التسليم",
+      "deliveryHint": "ينشر Helper كل تذكير في القناة التي أُنشئ فيها.",
+      "groupRepeats": "التكرار",
+      "stageCreate": "الإنشاء",
+      "stageSend": "الإرسال",
+      "createNote": "يظهر التذكير الآن في قائمة المجدولة.",
+      "reminderFor": "تذكير لـ @Alex",
+      "mentionNote": "لا تتم الإشارة إلى Alex إلا عند تفعيل الإشارات.",
+      "weekly": "أسبوعيًا",
+      "left": "المتبقي",
+      "repeatNote": "لا يعمل التكرار اليومي أو الأسبوعي إلا عند السماح بالتذكيرات المتكررة.",
+      "safety": "مثال فقط. لا تُجدول أي تذكيرات ولا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabScheduled": "已排程",
+      "scheduledIntro": "成員使用 /remind 建立提醒。待傳送的提醒會列在這裡，傳送前可以取消。",
+      "commandRemind": "建立提醒，Helper 會在此頻道發布。",
+      "tabRules": "限制",
+      "groupLimits": "時間與長度",
+      "groupDelivery": "傳送",
+      "deliveryHint": "Helper 會在建立提醒的頻道中發布提醒。",
+      "groupRepeats": "重複",
+      "stageCreate": "建立",
+      "stageSend": "已傳送",
+      "createNote": "提醒現在會顯示在「已排程」清單中。",
+      "reminderFor": "給 @Alex 的提醒",
+      "mentionNote": "僅在開啟提及時才會提及 Alex。",
+      "weekly": "每週",
+      "left": "剩餘",
+      "repeatNote": "只有允許重複提醒時，每日或每週重複才會生效。",
+      "safety": "僅為範例。不會排程提醒，也不會向 Discord 傳送任何訊息。"
+    },
+    "ru": {
+      "tabScheduled": "Запланированные",
+      "scheduledIntro": "Участники создают напоминания через /remind. Ожидающие показаны здесь, их можно отменить до отправки.",
+      "commandRemind": "Создаёт напоминание, которое Helper опубликует в этом канале.",
+      "tabRules": "Ограничения",
+      "groupLimits": "Время и длина",
+      "groupDelivery": "Доставка",
+      "deliveryHint": "Helper публикует напоминание в канале, где его создали.",
+      "groupRepeats": "Повторы",
+      "stageCreate": "Создание",
+      "stageSend": "Отправка",
+      "createNote": "Напоминание появилось в списке «Запланированные».",
+      "reminderFor": "Напоминание для @Alex",
+      "mentionNote": "Alex упоминается, только если упоминания включены.",
+      "weekly": "Еженедельно",
+      "left": "Осталось",
+      "repeatNote": "Ежедневные и еженедельные повторы работают, только если разрешены повторяющиеся напоминания.",
+      "safety": "Только пример. Напоминания не планируются, сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabScheduled": "예약됨",
+      "scheduledIntro": "멤버는 /remind로 리마인더를 만듭니다. 대기 중인 리마인더가 여기에 표시되며 전송 전에 취소할 수 있습니다.",
+      "commandRemind": "Helper가 이 채널에 게시할 리마인더를 만듭니다.",
+      "tabRules": "제한",
+      "groupLimits": "시간과 길이",
+      "groupDelivery": "전송",
+      "deliveryHint": "Helper는 리마인더를 만든 채널에 게시합니다.",
+      "groupRepeats": "반복",
+      "stageCreate": "만들기",
+      "stageSend": "전송됨",
+      "createNote": "이제 리마인더가 예약됨 목록에 표시됩니다.",
+      "reminderFor": "@Alex님을 위한 리마인더",
+      "mentionNote": "멘션이 켜져 있을 때만 Alex가 멘션됩니다.",
+      "weekly": "매주",
+      "left": "남은 횟수",
+      "repeatNote": "반복 리마인더를 허용해야 매일 또는 매주 반복이 작동합니다.",
+      "safety": "예시일 뿐입니다. 리마인더가 예약되지 않으며 Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

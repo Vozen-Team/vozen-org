@@ -1,0 +1,254 @@
+{
+  "key": "utility.help",
+  "tabs": [
+    {
+      "title": "tabMessage",
+      "intro": "messageIntro",
+      "commands": [
+        [
+          "/help",
+          "commandHelp"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupContent",
+          "keys": [
+            "showModules",
+            "showDashboard"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageAsk",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Mia",
+            "command": "/help"
+          },
+          {
+            "bot": true,
+            "note": "memberNote",
+            "card": {
+              "tone": "info",
+              "title": "helpTitle",
+              "body": "helpBody",
+              "fields": [
+                [
+                  "fieldModules",
+                  "modulesValue"
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageLink",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/help"
+          },
+          {
+            "bot": true,
+            "note": "managerNote",
+            "card": {
+              "tone": "info",
+              "title": "helpTitle",
+              "body": "helpBody",
+              "fields": [
+                [
+                  "fieldModules",
+                  "modulesValue"
+                ],
+                [
+                  "fieldDashboard",
+                  "dashboardValue"
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabMessage": "Reply",
+      "messageIntro": "Members use /help to find Helper's modules and commands. Choose what the reply shows.",
+      "commandHelp": "Shows Helper's modules and where to start.",
+      "groupContent": "What the reply includes",
+      "stageAsk": "Ask",
+      "stageLink": "Dashboard link",
+      "helpTitle": "Helper modules",
+      "helpBody": "These modules are on in this server.",
+      "fieldModules": "Modules",
+      "modulesValue": "Reminders, Search, Embeds",
+      "fieldDashboard": "Dashboard",
+      "dashboardValue": "Open the dashboard",
+      "memberNote": "With the module list on, members see what this server uses.",
+      "managerNote": "Server managers also get the dashboard link.",
+      "safety": "Example only. No messages are sent to Discord."
+    },
+    "pt": {
+      "tabMessage": "Resposta",
+      "messageIntro": "Os membros usam /help para encontrar os módulos e comandos do Helper. Escolhe o que a resposta mostra.",
+      "commandHelp": "Mostra os módulos do Helper e por onde começar.",
+      "groupContent": "O que a resposta inclui",
+      "stageAsk": "Pedir",
+      "stageLink": "Ligação ao painel",
+      "helpTitle": "Módulos do Helper",
+      "helpBody": "Estes módulos estão ativos neste servidor.",
+      "fieldModules": "Módulos",
+      "modulesValue": "Lembretes, Pesquisa, Embeds",
+      "fieldDashboard": "Painel",
+      "dashboardValue": "Abrir o painel",
+      "memberNote": "Com a lista de módulos ativa, os membros veem o que este servidor usa.",
+      "managerNote": "Os gestores do servidor recebem também a ligação ao painel.",
+      "safety": "Apenas um exemplo. Não são enviadas mensagens para o Discord."
+    },
+    "fr": {
+      "tabMessage": "Réponse",
+      "messageIntro": "Les membres utilisent /help pour trouver les modules et commandes de Helper. Choisissez ce que la réponse affiche.",
+      "commandHelp": "Affiche les modules de Helper et par où commencer.",
+      "groupContent": "Contenu de la réponse",
+      "stageAsk": "Demander",
+      "stageLink": "Lien du tableau de bord",
+      "helpTitle": "Modules de Helper",
+      "helpBody": "Ces modules sont actifs sur ce serveur.",
+      "fieldModules": "Modules",
+      "modulesValue": "Rappels, Recherche, Embeds",
+      "fieldDashboard": "Tableau de bord",
+      "dashboardValue": "Ouvrir le tableau de bord",
+      "memberNote": "Avec la liste des modules, les membres voient ce que ce serveur utilise.",
+      "managerNote": "Les gestionnaires du serveur reçoivent aussi le lien du tableau de bord.",
+      "safety": "Exemple uniquement. Aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabMessage": "Respuesta",
+      "messageIntro": "Los miembros usan /help para encontrar los módulos y comandos de Helper. Elige qué muestra la respuesta.",
+      "commandHelp": "Muestra los módulos de Helper y por dónde empezar.",
+      "groupContent": "Qué incluye la respuesta",
+      "stageAsk": "Preguntar",
+      "stageLink": "Enlace al panel",
+      "helpTitle": "Módulos de Helper",
+      "helpBody": "Estos módulos están activos en este servidor.",
+      "fieldModules": "Módulos",
+      "modulesValue": "Recordatorios, Búsqueda, Embeds",
+      "fieldDashboard": "Panel",
+      "dashboardValue": "Abrir el panel",
+      "memberNote": "Con la lista de módulos activa, los miembros ven lo que usa este servidor.",
+      "managerNote": "Los administradores del servidor también reciben el enlace al panel.",
+      "safety": "Solo es un ejemplo. No se envían mensajes a Discord."
+    },
+    "de": {
+      "tabMessage": "Antwort",
+      "messageIntro": "Mitglieder finden mit /help die Module und Befehle von Helper. Legen Sie fest, was die Antwort zeigt.",
+      "commandHelp": "Zeigt die Module von Helper und wo man anfängt.",
+      "groupContent": "Inhalt der Antwort",
+      "stageAsk": "Fragen",
+      "stageLink": "Dashboard-Link",
+      "helpTitle": "Helper-Module",
+      "helpBody": "Diese Module sind auf diesem Server aktiv.",
+      "fieldModules": "Module",
+      "modulesValue": "Erinnerungen, Suche, Embeds",
+      "fieldDashboard": "Dashboard",
+      "dashboardValue": "Dashboard öffnen",
+      "memberNote": "Mit der Modulliste sehen Mitglieder, was dieser Server nutzt.",
+      "managerNote": "Server-Verwalter erhalten zusätzlich den Dashboard-Link.",
+      "safety": "Nur ein Beispiel. Es werden keine Nachrichten an Discord gesendet."
+    },
+    "tr": {
+      "tabMessage": "Yanıt",
+      "messageIntro": "Üyeler Helper modüllerini ve komutlarını bulmak için /help kullanır. Yanıtta neyin görüneceğini seçin.",
+      "commandHelp": "Helper modüllerini ve nereden başlanacağını gösterir.",
+      "groupContent": "Yanıtın içeriği",
+      "stageAsk": "Sor",
+      "stageLink": "Panel bağlantısı",
+      "helpTitle": "Helper modülleri",
+      "helpBody": "Bu modüller bu sunucuda açık.",
+      "fieldModules": "Modüller",
+      "modulesValue": "Hatırlatıcılar, Arama, Embedler",
+      "fieldDashboard": "Panel",
+      "dashboardValue": "Paneli aç",
+      "memberNote": "Modül listesi açıkken üyeler bu sunucunun neler kullandığını görür.",
+      "managerNote": "Sunucu yöneticileri panel bağlantısını da alır.",
+      "safety": "Yalnızca örnek. Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabMessage": "الرد",
+      "messageIntro": "يستخدم الأعضاء /help للعثور على وحدات Helper وأوامره. اختر ما يعرضه الرد.",
+      "commandHelp": "يعرض وحدات Helper ونقطة البداية.",
+      "groupContent": "محتوى الرد",
+      "stageAsk": "السؤال",
+      "stageLink": "رابط لوحة التحكم",
+      "helpTitle": "وحدات Helper",
+      "helpBody": "هذه الوحدات مفعّلة في هذا الخادم.",
+      "fieldModules": "الوحدات",
+      "modulesValue": "التذكيرات، البحث، الرسائل المضمّنة",
+      "fieldDashboard": "لوحة التحكم",
+      "dashboardValue": "افتح لوحة التحكم",
+      "memberNote": "عند تفعيل قائمة الوحدات، يرى الأعضاء ما يستخدمه هذا الخادم.",
+      "managerNote": "يحصل مديرو الخادم أيضًا على رابط لوحة التحكم.",
+      "safety": "مثال فقط. لا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabMessage": "回覆",
+      "messageIntro": "成員使用 /help 查詢 Helper 的模組和指令。選擇回覆中要顯示的內容。",
+      "commandHelp": "顯示 Helper 的模組，以及該從哪裡開始。",
+      "groupContent": "回覆內容",
+      "stageAsk": "提問",
+      "stageLink": "控制台連結",
+      "helpTitle": "Helper 模組",
+      "helpBody": "以下模組已在本伺服器啟用。",
+      "fieldModules": "模組",
+      "modulesValue": "提醒、搜尋、嵌入訊息",
+      "fieldDashboard": "控制台",
+      "dashboardValue": "開啟控制台",
+      "memberNote": "開啟模組清單後，成員可以看到本伺服器使用的功能。",
+      "managerNote": "伺服器管理員還會收到控制台連結。",
+      "safety": "僅為範例。不會向 Discord 傳送任何訊息。"
+    },
+    "ru": {
+      "tabMessage": "Ответ",
+      "messageIntro": "Участники используют /help, чтобы найти модули и команды Helper. Выберите, что показывает ответ.",
+      "commandHelp": "Показывает модули Helper и с чего начать.",
+      "groupContent": "Содержание ответа",
+      "stageAsk": "Запрос",
+      "stageLink": "Ссылка на панель",
+      "helpTitle": "Модули Helper",
+      "helpBody": "Эти модули включены на сервере.",
+      "fieldModules": "Модули",
+      "modulesValue": "Напоминания, Поиск, Embed",
+      "fieldDashboard": "Панель",
+      "dashboardValue": "Открыть панель",
+      "memberNote": "Со списком модулей участники видят, что использует сервер.",
+      "managerNote": "Управляющие сервером также получают ссылку на панель.",
+      "safety": "Только пример. Сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabMessage": "응답",
+      "messageIntro": "멤버는 /help로 Helper의 모듈과 명령어를 찾습니다. 응답에 표시할 내용을 선택하세요.",
+      "commandHelp": "Helper의 모듈과 시작할 곳을 보여 줍니다.",
+      "groupContent": "응답 내용",
+      "stageAsk": "질문",
+      "stageLink": "대시보드 링크",
+      "helpTitle": "Helper 모듈",
+      "helpBody": "이 서버에서 켜진 모듈입니다.",
+      "fieldModules": "모듈",
+      "modulesValue": "리마인더, 검색, 임베드",
+      "fieldDashboard": "대시보드",
+      "dashboardValue": "대시보드 열기",
+      "memberNote": "모듈 목록을 켜면 멤버가 이 서버에서 쓰는 기능을 볼 수 있습니다.",
+      "managerNote": "서버 관리자는 대시보드 링크도 받습니다.",
+      "safety": "예시일 뿐입니다. Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

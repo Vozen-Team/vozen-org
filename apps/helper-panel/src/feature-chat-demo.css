@@ -1,0 +1,22 @@
+.feature-chat-demo .spam-demo-feed { display: grid; gap: 14px; }
+.feature-demo-message { display: flex; align-items: start; gap: 10px; animation: spam-demo-arrive 240ms ease-out both; }
+.feature-demo-message + .feature-demo-message { animation-delay: 200ms; }
+.feature-demo-message + .feature-demo-message + .feature-demo-message { animation-delay: 400ms; }
+.feature-demo-message > div { min-inline-size: 0; }
+.feature-demo-message p { margin: 2px 0 0; overflow-wrap: anywhere; }
+.feature-demo-message code { border-radius: 4px; background: #14233a; padding: 1px 6px; color: #9ce9de; }
+.feature-demo-message--bot { display: block; }
+.feature-demo-card { margin-block-start: 6px; border-inline-start: 3px solid #9ce9de; border-radius: 6px; background: #101d2d; padding: 12px 14px; }
+.feature-demo-card--success { border-inline-start-color: #7fe0a5; }
+.feature-demo-card--warning { border-inline-start-color: #ffc26b; }
+.feature-demo-card h3 { margin: 0 0 4px; font-size: 1.05rem; }
+.feature-demo-card dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px 16px; margin: 10px 0 0; }
+.feature-demo-card dt { color: #b9c9df; font-size: .8rem; }
+.feature-demo-card dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+.feature-demo-card__buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-block-start: 10px; }
+.feature-demo-card__buttons button { max-inline-size: 100%; white-space: normal; }
+.feature-demo-card small { display: block; margin-block-start: 8px; color: #b9c9df; }
+.feature-demo-note { color: #b9c9df; font-size: .85rem; }
+@media (prefers-reduced-motion: reduce) {
+  .feature-demo-message { animation: none; }
+}

@@ -64,12 +64,18 @@ try {
     await page.evaluate(() => document.fonts.ready);
     assert.equal(await setup.locator('.welcome-settings__group').count(),5);
     assert.equal(await setup.locator('details').count(),0,'all settings stay expanded');
-    assert.equal(await setup.getByRole('textbox').count(),scenario === 'future-field' ? 4 : 3);
-    assert.equal(await setup.getByRole('combobox').count(),7);
-    assert.equal(await setup.getByRole('spinbutton').count(),1);
-    assert.equal(await setup.getByRole('checkbox').count(),scenario === 'future-step' ? 7 : 6);
+    const tabs = setup.getByRole('tab');
+    assert.equal(await tabs.count(),3);
+    assert.equal(await setup.locator('textarea,input[type="text"]').count(),scenario === 'future-field' ? 4 : 3);
+    assert.equal(await setup.locator('select').count(),7);
+    assert.equal(await setup.locator('input[type="number"]').count(),1);
+    assert.equal(await setup.locator('input[type="checkbox"]').count(),scenario === 'future-step' ? 8 : 7);
     assert.equal(await setup.locator('input[value="rules, introductions, channels"]').count(),0,'no technical CSV field');
-    assert.equal(await setup.getByRole('textbox',{name:pt ? 'Mensagem privada' : 'Private message',exact:true}).isVisible(),true,'DM copy stays visible while off');
+    await tabs.nth(1).click();
+    const privateMessage = setup.getByRole('textbox',{name:pt ? 'Mensagem privada' : 'Private message',exact:true});
+    assert.equal(await privateMessage.isVisible(),true,'DM copy stays visible while off');
+    assert.equal(await privateMessage.isDisabled(),true,'enable private welcome before editing its message');
+    await tabs.first().click();
     const links = setup.locator('[data-group="links"]');
     const channel = links.getByRole('combobox',{name:pt ? /^Regras/ : /^Rules/});
     assert.equal(await channel.inputValue(),'');
@@ -109,7 +115,10 @@ try {
       assert.deepEqual(saved.steps,['rules','introductions','channels']);
     } else {
       assert.equal(writes,0,'opening the new layout must not save settings');
-      if (scenario === 'future-field') assert.equal(await setup.getByRole('textbox',{name:'Future setting',exact:true}).inputValue(),'Preserve this');
+      if (scenario === 'future-field') {
+        await tabs.last().click();
+        assert.equal(await setup.getByRole('textbox',{name:'Future setting',exact:true}).inputValue(),'Preserve this');
+      }
     }
     assert.ok(mutations.every(path => ['/api/config/features/support.welcome','/api/config/features/support.welcome/preflight'].includes(path)),`only configuration save and its read-only preflight permitted: ${mutations.join(', ')}`);
     if (['en','pt','mobile'].includes(scenario) && process.env.WELCOME_SETTINGS_CAPTURE !== '0') {
@@ -120,7 +129,7 @@ try {
       await setup.screenshot({path:`output/playwright/welcome-settings-${scenario}.png`});
       if (scenario === 'mobile') {
         await page.setViewportSize({width:390,height:844});
-        await setup.getByRole('heading',{name:'Welcome setup',exact:true}).scrollIntoViewIfNeeded();
+        await setup.getByRole('heading',{name:'Public welcome',exact:true}).scrollIntoViewIfNeeded();
         await page.screenshot({path:'output/playwright/welcome-settings-mobile-fold.png'});
       }
     }
