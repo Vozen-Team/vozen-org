@@ -4,7 +4,7 @@ import { mkdir } from 'node:fs/promises';
 const browser = await chromium.launch();
 const base = process.env.HELPER_TEST_URL || 'http://127.0.0.1:5179/panel/helper-tracker/';
 try {
-  for (const scenario of ['settings-layout-desktop','settings-layout-mobile','delayed-session', 'remember-server', 'legacy-bearer', 'retry-detail', 'missing-schema', 'stale-detail', 'uncertain-switch', 'free-card', 'retry-resources', 'wrong-guild-resources', 'stale-resources', 'simulation-video', 'simulation-pt', 'simulation-failure', 'simulation-invalid', 'simulation-mismatch', 'simulation-close', 'simulation-media-error', 'simulation-route-change', 'simulation-timeout', 'channel-create', 'channel-error', 'channel-wrong-guild', 'channel-switch', 'channel-no-permissions', 'channel-mobile', 'channel-pt', 'channel-one-click', 'multiple-resources', 'multiple-mobile', 'multiple-keyboard', 'fields-visible', 'channel-permission-error', 'autosave-suggestions', 'autosave-rapid', 'autosave-failure', 'autosave-conflict', 'autosave-navigation', 'autosave-guild', 'autosave-validation']) {
+  for (const scenario of ['settings-layout-desktop','settings-layout-mobile','delayed-session', 'remember-server', 'legacy-bearer', 'retry-detail', 'missing-schema', 'stale-detail', 'uncertain-switch', 'free-card', 'retry-resources', 'wrong-guild-resources', 'stale-resources', 'simulation-demo', 'simulation-pt', 'channel-create', 'channel-error', 'channel-wrong-guild', 'channel-switch', 'channel-no-permissions', 'channel-mobile', 'channel-pt', 'channel-one-click', 'multiple-resources', 'multiple-mobile', 'multiple-keyboard', 'fields-visible', 'channel-permission-error', 'autosave-suggestions', 'autosave-rapid', 'autosave-failure', 'autosave-conflict', 'autosave-navigation', 'autosave-guild', 'autosave-validation']) {
     if (process.env.HELPER_SCENARIO && !scenario.startsWith(process.env.HELPER_SCENARIO)) continue;
     const page = await browser.newPage();
     let ready = false, guild = 'a', earlyReads = 0, detailReads = 0, switches = 0;
@@ -131,7 +131,7 @@ try {
         assert.equal(await control.evaluate(el=>getComputedStyle(el).paddingRight),'12px');
       }
       assert.ok(await page.getByLabel('Product',{exact:true}).evaluate(el=>{const s=getComputedStyle(el),c=document.createElement('canvas').getContext('2d');c.font=s.fontWeight+' '+s.fontSize+' '+s.fontFamily;return c.measureText(el.selectedOptions[0].text).width+parseFloat(s.paddingLeft)+parseFloat(s.paddingRight)+24<=el.clientWidth;}),'Helper product label fits on one line');
-      const activation=page.locator('.settings-activation');await activation.getByRole('checkbox').waitFor();
+      const activation=page.locator('.spam-activation');await activation.getByRole('checkbox').waitFor();
       assert.equal(await page.locator('.detail-intro').count(),0);
       assert.equal(await activation.locator('input[type=checkbox]').isChecked(),true);
       assert.equal(writes.length,0);
@@ -146,22 +146,27 @@ try {
     }
     if (autosaveScenario) {
       const cooldown = page.getByRole('spinbutton',{name:/Cooldown per member/});
+      const showTab = async index => { const tab = page.locator('.feature-settings [role=tab]').nth(index); await tab.waitFor(); await tab.click(); };
+      await showTab(1);
       await cooldown.waitFor();
       assert.equal(writes.length,0,'loading never saves defaults');
       assert.equal(await page.getByRole('button',{name:'Save changes',exact:true}).count(),0);
       assert.equal(await page.getByRole('button',{name:'Discard',exact:true}).count(),0);
       if (scenario === 'autosave-suggestions') {
+        await showTab(0);
         await page.getByRole('combobox',{name:/Voting mode/}).selectOption('up_only');
         await saved();
         assert.equal(savedConfig.voteMode,'up_only');
         await page.getByRole('checkbox',{name:'Hide author in the public message',exact:true}).click();
         await saved();
         assert.equal(savedConfig.anonymous,true);
-        const active = page.locator('.settings-activation input[type=checkbox]');
+        const active = page.locator('.spam-activation input[type=checkbox]');
         await active.uncheck(); await saved(); assert.equal(savedEnabled,false);
         await page.reload();
+        await showTab(1);
         await cooldown.waitFor();
         assert.equal(await active.isChecked(),false);
+        await showTab(0);
         assert.equal(await page.getByRole('combobox',{name:/Voting mode/}).inputValue(),'up_only');
         await mkdir('output/playwright',{recursive:true});
         await page.screenshot({path:'output/playwright/autosave-suggestions.png',fullPage:true});
@@ -209,6 +214,8 @@ try {
     if (multipleScenario) {
       const channels = page.getByRole('group',{name:'Channels ignored',exact:true});
       const roles = page.getByRole('group',{name:'Roles ignored',exact:true});
+      const rulesTab = page.locator('.feature-settings [role=tab]').nth(1);
+      await rulesTab.click();
       await channels.waitFor();
       assert.equal(await page.locator('details.advanced').count(),0);
       assert.equal(await page.getByText('Advanced options',{exact:true}).count(),0);
@@ -238,7 +245,7 @@ try {
         assert.equal(geometry.height,18,'checkbox must not inherit 44px field height');
         assert.equal(geometry.minHeight,'18px');
       }
-      assert.equal(await page.getByRole('region',{name:'Behaviour',exact:true}).getByRole('checkbox').count(),2);
+      assert.equal(await page.locator('.feature-settings [role=tabpanel]:not([hidden]) .toggle-field input[type=checkbox]').count(),2,'author reaction and image toggles stay on the rules tab');
       await page.keyboard.press('Space');
       await page.keyboard.press('Space');
       assert.equal(await roles.getByRole('checkbox',{name:'@Green',exact:true}).evaluate(element =>
@@ -258,6 +265,7 @@ try {
       assert.deepEqual(savedConfig.ignoredChannels,['first','second']);
       assert.deepEqual([...savedConfig.ignoredRoles].sort(),['high','managed']);
       await page.reload();
+      await rulesTab.click();
       await roles.getByRole('checkbox',{name:'@Green',exact:true}).waitFor();
       assert.equal(await roles.getByRole('checkbox',{name:'@Green',exact:true}).isChecked(),true);
       assert.equal(await channels.getByRole('checkbox',{name:'#off-topic',exact:true}).isChecked(),true);
@@ -322,60 +330,24 @@ try {
       continue;
     }
     if (simulationScenario) {
+      // Starboard's toolbar opens a local chat demonstration; it never sends the draft to the API.
       const pt = scenario === 'simulation-pt';
-      const simulate = page.getByRole('button',{name:pt ? 'Simular configuração' : 'Simulate configuration',exact:true});
       const threshold = page.getByRole('spinbutton',{name:pt ? 'Reações necessárias' : 'Required reactions',exact:true});
-      if (!pt) await threshold.fill('5');
-      if (!pt) await saved();
-      const writesBeforeSimulation = writes.length;
-      await simulate.click();
+      await threshold.fill('5');
+      await saved();
+      const writesBeforeDemo = writes.length;
+      const demoButton = page.locator('.spam-demo-button');
+      await demoButton.click();
       const dialog = page.getByRole('dialog',{name:pt ? 'Mural de estrelas' : 'Starboard',exact:true});
       await dialog.waitFor();
-      const animation = dialog.locator('img.feature-simulation__animation');
-      assert.equal(await dialog.locator('video').count(),0,'no player or video controls in any demonstration');
-      assert.equal(await animation.count(),1,'simulation must show a GIF, not a technical toast');
-      if (scenario === 'simulation-close') {
-        await page.waitForFunction(() => document.querySelector('.feature-simulation [role="status"]') !== null);
-        await page.keyboard.press('Escape');
-        await dialog.waitFor({state:'hidden'});
-        await new Promise(resolve => setTimeout(resolve, 800));
-        assert.equal(await dialog.count(),0,'late response must not reopen a closed dialog');
-        assert.equal(await threshold.inputValue(),'5');
-        assert.equal(await simulate.evaluate(element => element === document.activeElement),true);
-      } else if (scenario === 'simulation-route-change') {
-        await page.evaluate(() => { window.location.hash = '#/features'; });
-        await dialog.waitFor({state:'hidden'});
-        await new Promise(resolve => setTimeout(resolve, 800));
-        assert.equal(await dialog.count(),0,'leaving the feature must discard its simulation');
-      } else {
-        if (scenario === 'simulation-media-error') await dialog.getByRole('alert').filter({hasText:'animation could not load'}).waitFor();
-        else {
-          await page.waitForFunction(() => {
-            const image = document.querySelector('.feature-simulation__animation');
-            return image?.complete && image.naturalWidth > 0;
-          });
-          const extension = scenario === 'simulation-video' ? 'png' : 'gif';
-          assert.equal(await animation.evaluate((element, ext) => element.currentSrc.endsWith(`starboard-${document.documentElement.lang === 'pt' ? 'pt' : 'en'}.${ext}`),extension),true);
-          if (scenario === 'simulation-pt') {
-            const before = await animation.screenshot();
-            await new Promise(resolve => setTimeout(resolve,2400));
-            const after = await animation.screenshot();
-            assert.ok(!before.equals(after),'Starboard GIF must advance automatically');
-          }
-        }
-        if (scenario === 'simulation-failure' || scenario === 'simulation-mismatch' || scenario === 'simulation-timeout') {
-          await dialog.getByRole('alert').filter({hasText:'Could not validate'}).waitFor();
-          if (scenario === 'simulation-failure') await dialog.getByRole('button',{name:'Retry validation',exact:true}).click();
-        }
-        if (scenario === 'simulation-invalid') await dialog.getByText('These settings need changes before the feature can run.',{exact:true}).waitFor();
-        else if (scenario !== 'simulation-mismatch' && scenario !== 'simulation-timeout') await dialog.getByText(pt ? 'A API validou estas definições. A simulação não enviou mensagens nem alterou o servidor.' : 'The API validated these settings. The simulation did not send messages or change the server.',{exact:true}).waitFor();
-        await dialog.getByRole('button',{name:pt ? 'Fechar demonstração' : 'Close demonstration',exact:true}).click();
-        await dialog.waitFor({state:'hidden'});
-        if (!pt) assert.equal(await threshold.inputValue(),'5','simulation must preserve unsaved settings');
-      }
-      assert.equal(writes.length,writesBeforeSimulation,'simulation itself must not save the feature');
-      assert.equal(simulationReads,scenario === 'simulation-failure' ? 2 : 1);
-      if (!pt) assert.equal(simulatedConfig.threshold,5,'API must simulate the actual unsaved draft');
+      await dialog.locator('.feature-chat-demo').waitFor();
+      assert.equal(await dialog.locator('img.feature-simulation__animation, video').count(),0,'the local demonstration has no media player');
+      await page.keyboard.press('Escape');
+      await dialog.waitFor({state:'hidden'});
+      assert.equal(await demoButton.evaluate(element => element === document.activeElement),true,'focus returns to the demonstration button');
+      assert.equal(await threshold.inputValue(),'5','the demonstration preserves the draft');
+      assert.equal(writes.length,writesBeforeDemo,'the demonstration does not save the feature');
+      assert.equal(simulationReads,0,'the demonstration makes no API simulation call');
       console.log(`PASS ${scenario}`);
       await page.close();
       continue;

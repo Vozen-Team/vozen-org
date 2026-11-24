@@ -1,0 +1,275 @@
+{
+  "key": "social.twitch",
+  "tabs": [
+    {
+      "title": "tabSource",
+      "intro": "sourceIntro",
+      "groups": [
+        {
+          "title": "groupSource",
+          "hint": "sourceHint",
+          "keys": [
+            "sourceLogin",
+            "intervalSeconds"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabPost",
+      "intro": "postIntro",
+      "groups": [
+        {
+          "title": "groupDelivery",
+          "keys": [
+            "targetChannelId"
+          ]
+        },
+        {
+          "title": "groupMessage",
+          "hint": "messageHint",
+          "keys": [
+            "messageTemplate",
+            "mention"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageNew",
+        "channel": "# live",
+        "messages": [
+          {
+            "bot": true,
+            "text": "alert",
+            "card": {
+              "title": "cardTitle",
+              "body": "cardBody",
+              "footer": "Twitch"
+            },
+            "note": "sentOnce"
+          }
+        ]
+      },
+      {
+        "label": "stageRead",
+        "channel": "# live",
+        "messages": [
+          {
+            "author": "Mia",
+            "note": "opened"
+          },
+          {
+            "author": "Rexy",
+            "text": "reply"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabPost": "Post",
+      "postIntro": "Choose where alerts go and what they say.",
+      "groupDelivery": "Where to post",
+      "groupMessage": "Message",
+      "messageHint": "The mention is added to every alert.",
+      "safety": "Example only. Nothing is checked and no messages are sent to Discord.",
+      "tabSource": "Channel",
+      "sourceIntro": "Helper posts in Discord when this Twitch channel goes live.",
+      "groupSource": "Twitch channel",
+      "sourceHint": "Uses the official Twitch API. Each stream is announced once.",
+      "stageNew": "Going live",
+      "stageRead": "Viewers join",
+      "alert": "@Viewers Alex is live: Late-night build stream",
+      "cardTitle": "Late-night build stream",
+      "cardBody": "Live now on Twitch.",
+      "sentOnce": "One alert per stream, even if the check runs again.",
+      "opened": "Opened the stream",
+      "reply": "On my way!"
+    },
+    "pt": {
+      "tabPost": "Publicação",
+      "postIntro": "Escolhe onde os alertas são publicados e o que dizem.",
+      "groupDelivery": "Onde publicar",
+      "groupMessage": "Mensagem",
+      "messageHint": "A menção é adicionada a cada alerta.",
+      "safety": "Apenas um exemplo. Nada é verificado e nenhuma mensagem é enviada para o Discord.",
+      "tabSource": "Canal",
+      "sourceIntro": "O Helper publica no Discord quando este canal da Twitch entra em direto.",
+      "groupSource": "Canal da Twitch",
+      "sourceHint": "Usa a API oficial da Twitch. Cada transmissão é anunciada uma vez.",
+      "stageNew": "Em direto",
+      "stageRead": "Os espectadores entram",
+      "alert": "@Viewers Alex está em direto: Programação pela noite dentro",
+      "cardTitle": "Programação pela noite dentro",
+      "cardBody": "Em direto agora na Twitch.",
+      "sentOnce": "Um alerta por transmissão, mesmo que a verificação volte a correr.",
+      "opened": "Abriu a transmissão",
+      "reply": "Vou já!"
+    },
+    "fr": {
+      "tabPost": "Publication",
+      "postIntro": "Choisissez où les alertes sont publiées et ce qu'elles disent.",
+      "groupDelivery": "Où publier",
+      "groupMessage": "Message",
+      "messageHint": "La mention est ajoutée à chaque alerte.",
+      "safety": "Exemple uniquement. Rien n'est vérifié et aucun message n'est envoyé sur Discord.",
+      "tabSource": "Chaîne",
+      "sourceIntro": "Helper publie sur Discord quand cette chaîne Twitch passe en direct.",
+      "groupSource": "Chaîne Twitch",
+      "sourceHint": "Utilise l'API officielle de Twitch. Chaque live est annoncé une fois.",
+      "stageNew": "En direct",
+      "stageRead": "Les spectateurs arrivent",
+      "alert": "@Viewers Alex est en direct : Live dev de fin de soirée",
+      "cardTitle": "Live dev de fin de soirée",
+      "cardBody": "En direct maintenant sur Twitch.",
+      "sentOnce": "Une alerte par live, même si la vérification se relance.",
+      "opened": "A ouvert le live",
+      "reply": "J'arrive !"
+    },
+    "es": {
+      "tabPost": "Publicación",
+      "postIntro": "Elige dónde se publican las alertas y qué dicen.",
+      "groupDelivery": "Dónde publicar",
+      "groupMessage": "Mensaje",
+      "messageHint": "La mención se añade a cada alerta.",
+      "safety": "Solo es un ejemplo. No se comprueba nada ni se envían mensajes a Discord.",
+      "tabSource": "Canal",
+      "sourceIntro": "Helper publica en Discord cuando este canal de Twitch empieza un directo.",
+      "groupSource": "Canal de Twitch",
+      "sourceHint": "Usa la API oficial de Twitch. Cada directo se anuncia una vez.",
+      "stageNew": "En directo",
+      "stageRead": "Llegan los espectadores",
+      "alert": "@Viewers Alex está en directo: Directo de programación nocturno",
+      "cardTitle": "Directo de programación nocturno",
+      "cardBody": "En directo ahora en Twitch.",
+      "sentOnce": "Una alerta por directo, aunque se vuelva a comprobar.",
+      "opened": "Abrió el directo",
+      "reply": "¡Voy para allá!"
+    },
+    "de": {
+      "tabPost": "Beitrag",
+      "postIntro": "Wähle, wo Benachrichtigungen erscheinen und was darin steht.",
+      "groupDelivery": "Wo posten",
+      "groupMessage": "Nachricht",
+      "messageHint": "Die Erwähnung wird jeder Benachrichtigung hinzugefügt.",
+      "safety": "Nur ein Beispiel. Es wird nichts geprüft und keine Nachricht an Discord gesendet.",
+      "tabSource": "Kanal",
+      "sourceIntro": "Helper postet in Discord, sobald dieser Twitch-Kanal live geht.",
+      "groupSource": "Twitch-Kanal",
+      "sourceHint": "Nutzt die offizielle Twitch-API. Jeder Stream wird einmal angekündigt.",
+      "stageNew": "Live",
+      "stageRead": "Zuschauer kommen",
+      "alert": "@Viewers Alex ist live: Late-Night-Coding-Stream",
+      "cardTitle": "Late-Night-Coding-Stream",
+      "cardBody": "Jetzt live auf Twitch.",
+      "sentOnce": "Eine Benachrichtigung pro Stream, auch wenn erneut geprüft wird.",
+      "opened": "Hat den Stream geöffnet",
+      "reply": "Bin unterwegs!"
+    },
+    "tr": {
+      "tabPost": "Gönderi",
+      "postIntro": "Uyarıların nerede paylaşılacağını ve ne yazacağını seçin.",
+      "groupDelivery": "Nerede paylaşılacak",
+      "groupMessage": "Mesaj",
+      "messageHint": "Bahsetme her uyarıya eklenir.",
+      "safety": "Yalnızca örnek. Hiçbir şey kontrol edilmez ve Discord'a mesaj gönderilmez.",
+      "tabSource": "Kanal",
+      "sourceIntro": "Bu Twitch kanalı yayına başladığında Helper Discord'da paylaşır.",
+      "groupSource": "Twitch kanalı",
+      "sourceHint": "Resmi Twitch API'sini kullanır. Her yayın bir kez duyurulur.",
+      "stageNew": "Yayında",
+      "stageRead": "İzleyiciler katılır",
+      "alert": "@Viewers Alex yayında: Gece kodlama yayını",
+      "cardTitle": "Gece kodlama yayını",
+      "cardBody": "Şu an Twitch'te yayında.",
+      "sentOnce": "Kontrol yeniden çalışsa bile yayın başına bir uyarı.",
+      "opened": "Yayını açtı",
+      "reply": "Geliyorum!"
+    },
+    "ar": {
+      "tabPost": "النشر",
+      "postIntro": "اختر مكان نشر التنبيهات وما تقوله.",
+      "groupDelivery": "مكان النشر",
+      "groupMessage": "الرسالة",
+      "messageHint": "تُضاف الإشارة إلى كل تنبيه.",
+      "safety": "مثال فقط. لا يُفحص أي شيء ولا تُرسل أي رسائل إلى Discord.",
+      "tabSource": "القناة",
+      "sourceIntro": "ينشر Helper في Discord عندما تبدأ قناة Twitch هذه بثًا مباشرًا.",
+      "groupSource": "قناة Twitch",
+      "sourceHint": "يستخدم واجهة Twitch الرسمية. يُعلن عن كل بث مرة واحدة.",
+      "stageNew": "بث مباشر",
+      "stageRead": "المشاهدون ينضمون",
+      "alert": "@Viewers Alex في بث مباشر: بث برمجة في وقت متأخر",
+      "cardTitle": "بث برمجة في وقت متأخر",
+      "cardBody": "مباشر الآن على Twitch.",
+      "sentOnce": "تنبيه واحد لكل بث، حتى لو تكرر الفحص.",
+      "opened": "فتحت البث",
+      "reply": "أنا قادم!"
+    },
+    "zh": {
+      "tabPost": "發布",
+      "postIntro": "選擇通知要發布的位置與內容。",
+      "groupDelivery": "發布位置",
+      "groupMessage": "訊息",
+      "messageHint": "每則通知都會附上此提及。",
+      "safety": "僅為範例。不會進行任何檢查，也不會向 Discord 傳送訊息。",
+      "tabSource": "頻道",
+      "sourceIntro": "此 Twitch 頻道開播時，Helper 會在 Discord 發布通知。",
+      "groupSource": "Twitch 頻道",
+      "sourceHint": "使用 Twitch 官方 API。每場直播只通知一次。",
+      "stageNew": "開播",
+      "stageRead": "觀眾加入",
+      "alert": "@Viewers Alex 正在直播：深夜寫程式直播",
+      "cardTitle": "深夜寫程式直播",
+      "cardBody": "正在 Twitch 直播。",
+      "sentOnce": "每場直播只通知一次，即使再次檢查也一樣。",
+      "opened": "開啟了直播",
+      "reply": "馬上來！"
+    },
+    "ru": {
+      "tabPost": "Публикация",
+      "postIntro": "Выберите, куда отправлять оповещения и что в них писать.",
+      "groupDelivery": "Куда публиковать",
+      "groupMessage": "Сообщение",
+      "messageHint": "Упоминание добавляется к каждому оповещению.",
+      "safety": "Только пример. Ничего не проверяется, сообщения в Discord не отправляются.",
+      "tabSource": "Канал",
+      "sourceIntro": "Helper публикует в Discord, когда этот канал Twitch начинает трансляцию.",
+      "groupSource": "Канал Twitch",
+      "sourceHint": "Используется официальный API Twitch. О каждой трансляции сообщается один раз.",
+      "stageNew": "В эфире",
+      "stageRead": "Зрители подключаются",
+      "alert": "@Viewers Alex в эфире: Ночной стрим с разработкой",
+      "cardTitle": "Ночной стрим с разработкой",
+      "cardBody": "Сейчас в эфире на Twitch.",
+      "sentOnce": "Одно оповещение на трансляцию, даже при повторной проверке.",
+      "opened": "Открыла трансляцию",
+      "reply": "Уже иду!"
+    },
+    "ko": {
+      "tabPost": "게시",
+      "postIntro": "알림을 보낼 위치와 내용을 고르세요.",
+      "groupDelivery": "게시 위치",
+      "groupMessage": "메시지",
+      "messageHint": "모든 알림에 멘션이 추가됩니다.",
+      "safety": "예시일 뿐입니다. 아무것도 확인하지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "tabSource": "채널",
+      "sourceIntro": "이 Twitch 채널이 방송을 시작하면 Helper가 Discord에 게시합니다.",
+      "groupSource": "Twitch 채널",
+      "sourceHint": "공식 Twitch API를 사용합니다. 각 방송은 한 번만 알립니다.",
+      "stageNew": "방송 시작",
+      "stageRead": "시청자 입장",
+      "alert": "@Viewers Alex 방송 중: 심야 개발 방송",
+      "cardTitle": "심야 개발 방송",
+      "cardBody": "지금 Twitch에서 방송 중.",
+      "sentOnce": "다시 확인해도 방송마다 알림은 한 번입니다.",
+      "opened": "방송을 열었습니다",
+      "reply": "지금 갈게요!"
+    }
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "key": "utility.embeds",
+  "tabs": [
+    {
+      "title": "tabPublishing",
+      "intro": "publishingIntro",
+      "commands": [
+        [
+          "/embed",
+          "commandEmbed"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupLimits",
+          "keys": [
+            "maxDescription"
+          ]
+        },
+        {
+          "title": "groupDefaults",
+          "hint": "defaultsHint",
+          "keys": [
+            "defaultColor",
+            "defaultFooter"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stagePublish",
+        "channel": "# announcements",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/embed",
+            "note": "staffNote"
+          },
+          {
+            "bot": true,
+            "note": "footerNote",
+            "card": {
+              "tone": "info",
+              "title": "embedTitle",
+              "body": "embedBody",
+              "footer": "embedFooter"
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageMentions",
+        "channel": "# announcements",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/embed"
+          },
+          {
+            "bot": true,
+            "note": "mentionsNote",
+            "card": {
+              "tone": "info",
+              "title": "eventTitle",
+              "body": "eventBody",
+              "footer": "embedFooter"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabPublishing": "Publishing",
+      "publishingIntro": "Staff publish embeds in the current channel with /embed. Mentions are disabled by default.",
+      "commandEmbed": "Publishes a safe embed in this channel. Staff only.",
+      "groupLimits": "Length",
+      "groupDefaults": "Defaults",
+      "defaultsHint": "Used when the command leaves them empty.",
+      "stagePublish": "Publish",
+      "stageMentions": "Mentions",
+      "staffNote": "Needs the Manage Messages permission.",
+      "embedTitle": "Server rules",
+      "embedBody": "Be kind. No spam. Have fun.",
+      "embedFooter": "Thanks for reading",
+      "footerNote": "The default footer and colour are added automatically.",
+      "eventTitle": "Game night",
+      "eventBody": "@everyone Friday at 21:00 in voice.",
+      "mentionsNote": "Mentions are disabled by default, so @everyone notifies no one.",
+      "safety": "Example only. No embeds are published and no messages are sent to Discord."
+    },
+    "pt": {
+      "tabPublishing": "Publicação",
+      "publishingIntro": "A staff publica embeds no canal atual com /embed. As menções estão desativadas por predefinição.",
+      "commandEmbed": "Publica um embed seguro neste canal. Só para a staff.",
+      "groupLimits": "Comprimento",
+      "groupDefaults": "Predefinições",
+      "defaultsHint": "Usadas quando o comando as deixa vazias.",
+      "stagePublish": "Publicar",
+      "stageMentions": "Menções",
+      "staffNote": "Requer a permissão Gerir mensagens.",
+      "embedTitle": "Regras do servidor",
+      "embedBody": "Sê simpático. Sem spam. Diverte-te.",
+      "embedFooter": "Obrigado por leres",
+      "footerNote": "O rodapé e a cor predefinidos são adicionados automaticamente.",
+      "eventTitle": "Noite de jogos",
+      "eventBody": "@everyone Sexta às 21:00 no canal de voz.",
+      "mentionsNote": "As menções estão desativadas por predefinição, por isso @everyone não notifica ninguém.",
+      "safety": "Apenas um exemplo. Não é publicado nenhum embed nem enviadas mensagens para o Discord."
+    },
+    "fr": {
+      "tabPublishing": "Publication",
+      "publishingIntro": "L'équipe publie des embeds dans le salon actuel avec /embed. Les mentions sont désactivées par défaut.",
+      "commandEmbed": "Publie un embed sécurisé dans ce salon. Réservé à l'équipe.",
+      "groupLimits": "Longueur",
+      "groupDefaults": "Valeurs par défaut",
+      "defaultsHint": "Utilisées quand la commande ne les précise pas.",
+      "stagePublish": "Publier",
+      "stageMentions": "Mentions",
+      "staffNote": "Nécessite la permission Gérer les messages.",
+      "embedTitle": "Règles du serveur",
+      "embedBody": "Soyez aimable. Pas de spam. Amusez-vous.",
+      "embedFooter": "Merci de votre lecture",
+      "footerNote": "Le pied de page et la couleur par défaut sont ajoutés automatiquement.",
+      "eventTitle": "Soirée jeux",
+      "eventBody": "@everyone Vendredi à 21:00 en vocal.",
+      "mentionsNote": "Les mentions sont désactivées par défaut : @everyone ne notifie personne.",
+      "safety": "Exemple uniquement. Aucun embed n'est publié et aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabPublishing": "Publicación",
+      "publishingIntro": "El staff publica embeds en el canal actual con /embed. Las menciones están desactivadas por defecto.",
+      "commandEmbed": "Publica un embed seguro en este canal. Solo para el staff.",
+      "groupLimits": "Longitud",
+      "groupDefaults": "Valores predeterminados",
+      "defaultsHint": "Se usan cuando el comando no los indica.",
+      "stagePublish": "Publicar",
+      "stageMentions": "Menciones",
+      "staffNote": "Requiere el permiso Gestionar mensajes.",
+      "embedTitle": "Reglas del servidor",
+      "embedBody": "Sé amable. Nada de spam. Diviértete.",
+      "embedFooter": "Gracias por leer",
+      "footerNote": "El pie y el color predeterminados se añaden automáticamente.",
+      "eventTitle": "Noche de juegos",
+      "eventBody": "@everyone Viernes a las 21:00 en voz.",
+      "mentionsNote": "Las menciones están desactivadas por defecto, así que @everyone no notifica a nadie.",
+      "safety": "Solo es un ejemplo. No se publica ningún embed ni se envían mensajes a Discord."
+    },
+    "de": {
+      "tabPublishing": "Veröffentlichung",
+      "publishingIntro": "Das Team veröffentlicht Embeds mit /embed im aktuellen Kanal. Erwähnungen sind standardmäßig deaktiviert.",
+      "commandEmbed": "Veröffentlicht ein sicheres Embed in diesem Kanal. Nur für das Team.",
+      "groupLimits": "Länge",
+      "groupDefaults": "Standardwerte",
+      "defaultsHint": "Gelten, wenn der Befehl sie nicht angibt.",
+      "stagePublish": "Veröffentlichen",
+      "stageMentions": "Erwähnungen",
+      "staffNote": "Erfordert die Berechtigung „Nachrichten verwalten“.",
+      "embedTitle": "Serverregeln",
+      "embedBody": "Seid freundlich. Kein Spam. Viel Spaß.",
+      "embedFooter": "Danke fürs Lesen",
+      "footerNote": "Standard-Fußzeile und -Farbe werden automatisch ergänzt.",
+      "eventTitle": "Spieleabend",
+      "eventBody": "@everyone Freitag um 21:00 im Sprachkanal.",
+      "mentionsNote": "Erwähnungen sind standardmäßig deaktiviert, @everyone benachrichtigt also niemanden.",
+      "safety": "Nur ein Beispiel. Es wird kein Embed veröffentlicht und keine Nachricht an Discord gesendet."
+    },
+    "tr": {
+      "tabPublishing": "Yayınlama",
+      "publishingIntro": "Yetkililer /embed ile bulundukları kanalda embed yayınlar. Bahsetmeler varsayılan olarak kapalıdır.",
+      "commandEmbed": "Bu kanalda güvenli bir embed yayınlar. Yalnızca yetkililer.",
+      "groupLimits": "Uzunluk",
+      "groupDefaults": "Varsayılanlar",
+      "defaultsHint": "Komut bunları belirtmediğinde kullanılır.",
+      "stagePublish": "Yayınla",
+      "stageMentions": "Bahsetmeler",
+      "staffNote": "Mesajları Yönet izni gerekir.",
+      "embedTitle": "Sunucu kuralları",
+      "embedBody": "Nazik olun. Spam yok. İyi eğlenceler.",
+      "embedFooter": "Okuduğunuz için teşekkürler",
+      "footerNote": "Varsayılan alt bilgi ve renk otomatik eklenir.",
+      "eventTitle": "Oyun gecesi",
+      "eventBody": "@everyone Cuma 21:00'de sesli kanalda.",
+      "mentionsNote": "Bahsetmeler varsayılan olarak kapalıdır; @everyone kimseye bildirim göndermez.",
+      "safety": "Yalnızca örnek. Embed yayınlanmaz ve Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabPublishing": "النشر",
+      "publishingIntro": "ينشر الطاقم الرسائل المضمّنة في القناة الحالية باستخدام /embed. الإشارات معطّلة افتراضيًا.",
+      "commandEmbed": "ينشر رسالة مضمّنة آمنة في هذه القناة. للطاقم فقط.",
+      "groupLimits": "الطول",
+      "groupDefaults": "القيم الافتراضية",
+      "defaultsHint": "تُستخدم عندما لا يحددها الأمر.",
+      "stagePublish": "النشر",
+      "stageMentions": "الإشارات",
+      "staffNote": "يتطلب إذن إدارة الرسائل.",
+      "embedTitle": "قواعد الخادم",
+      "embedBody": "كن لطيفًا. لا للرسائل المزعجة. استمتع.",
+      "embedFooter": "شكرًا للقراءة",
+      "footerNote": "يُضاف التذييل واللون الافتراضيان تلقائيًا.",
+      "eventTitle": "ليلة الألعاب",
+      "eventBody": "@everyone الجمعة الساعة 21:00 في القناة الصوتية.",
+      "mentionsNote": "الإشارات معطّلة افتراضيًا، لذا لا ترسل @everyone أي تنبيه.",
+      "safety": "مثال فقط. لا تُنشر أي رسالة مضمّنة ولا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabPublishing": "發布",
+      "publishingIntro": "管理團隊使用 /embed 在目前頻道發布嵌入訊息。提及預設為關閉。",
+      "commandEmbed": "在此頻道發布安全的嵌入訊息。僅限管理團隊。",
+      "groupLimits": "長度",
+      "groupDefaults": "預設值",
+      "defaultsHint": "指令未指定時會使用這些值。",
+      "stagePublish": "發布",
+      "stageMentions": "提及",
+      "staffNote": "需要「管理訊息」權限。",
+      "embedTitle": "伺服器規則",
+      "embedBody": "友善待人。禁止洗版。玩得開心。",
+      "embedFooter": "感謝閱讀",
+      "footerNote": "預設頁尾和顏色會自動加入。",
+      "eventTitle": "遊戲之夜",
+      "eventBody": "@everyone 週五 21:00 語音頻道見。",
+      "mentionsNote": "提及預設為關閉，因此 @everyone 不會通知任何人。",
+      "safety": "僅為範例。不會發布嵌入訊息，也不會向 Discord 傳送任何訊息。"
+    },
+    "ru": {
+      "tabPublishing": "Публикация",
+      "publishingIntro": "Команда публикует embed в текущем канале через /embed. Упоминания по умолчанию отключены.",
+      "commandEmbed": "Публикует безопасный embed в этом канале. Только для команды.",
+      "groupLimits": "Длина",
+      "groupDefaults": "Значения по умолчанию",
+      "defaultsHint": "Используются, если команда их не указывает.",
+      "stagePublish": "Публикация",
+      "stageMentions": "Упоминания",
+      "staffNote": "Нужно право «Управлять сообщениями».",
+      "embedTitle": "Правила сервера",
+      "embedBody": "Будьте вежливы. Без спама. Веселитесь.",
+      "embedFooter": "Спасибо за внимание",
+      "footerNote": "Подпись и цвет по умолчанию добавляются автоматически.",
+      "eventTitle": "Игровой вечер",
+      "eventBody": "@everyone В пятницу в 21:00 в голосовом.",
+      "mentionsNote": "Упоминания по умолчанию отключены, поэтому @everyone никого не уведомляет.",
+      "safety": "Только пример. Embed не публикуется, сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabPublishing": "게시",
+      "publishingIntro": "스태프는 /embed로 현재 채널에 임베드를 게시합니다. 멘션은 기본적으로 꺼져 있습니다.",
+      "commandEmbed": "이 채널에 안전한 임베드를 게시합니다. 스태프 전용입니다.",
+      "groupLimits": "길이",
+      "groupDefaults": "기본값",
+      "defaultsHint": "명령어에서 지정하지 않으면 사용됩니다.",
+      "stagePublish": "게시",
+      "stageMentions": "멘션",
+      "staffNote": "메시지 관리 권한이 필요합니다.",
+      "embedTitle": "서버 규칙",
+      "embedBody": "친절하게. 스팸 금지. 즐겁게.",
+      "embedFooter": "읽어 주셔서 감사합니다",
+      "footerNote": "기본 바닥글과 색상이 자동으로 추가됩니다.",
+      "eventTitle": "게임의 밤",
+      "eventBody": "@everyone 금요일 21:00 음성 채널에서.",
+      "mentionsNote": "멘션은 기본적으로 꺼져 있어 @everyone이 아무에게도 알림을 보내지 않습니다.",
+      "safety": "예시일 뿐입니다. 임베드가 게시되지 않으며 Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

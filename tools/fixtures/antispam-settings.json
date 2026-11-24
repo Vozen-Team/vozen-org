@@ -1,0 +1,121 @@
+{
+  "fields": [
+    {
+      "key": "floodCount",
+      "label": "Mensagens no intervalo",
+      "kind": "number",
+      "min": 3,
+      "max": 30,
+      "help": "Número de mensagens do mesmo membro antes de sinalizar."
+    },
+    {
+      "key": "windowSeconds",
+      "label": "Janela de tempo (segundos)",
+      "kind": "number",
+      "min": 3,
+      "max": 60,
+      "help": "As mensagens antigas saem automaticamente desta janela."
+    },
+    {
+      "key": "duplicateLimit",
+      "label": "Repetições iguais",
+      "kind": "number",
+      "min": 2,
+      "max": 12,
+      "help": "Quantas mensagens iguais acionam a regra."
+    },
+    {
+      "key": "maxLinks",
+      "label": "Limite de links por mensagem",
+      "kind": "number",
+      "min": 1,
+      "max": 20,
+      "help": "Quantos links numa mensagem acionam a regra."
+    },
+    {
+      "key": "timeoutSeconds",
+      "label": "Timeout inicial (segundos)",
+      "kind": "number",
+      "min": 0,
+      "max": 86400,
+      "help": "Usa 0 para apenas registar o incidente."
+    },
+    {
+      "key": "warningDelivery",
+      "label": "Enviar aviso por",
+      "kind": "select",
+      "options": [
+        [
+          "chat",
+          "Apenas no chat"
+        ],
+        [
+          "dm",
+          "Apenas por mensagem privada"
+        ],
+        [
+          "both",
+          "Chat e mensagem privada"
+        ]
+      ],
+      "help": "Escolhe onde o membro recebe o aviso automático. Se a mensagem privada estiver bloqueada, a moderação continua a funcionar."
+    },
+    {
+      "key": "mentionLimit",
+      "label": "Limite de menções por mensagem",
+      "kind": "number",
+      "min": 1,
+      "max": 30,
+      "advanced": true
+    },
+    {
+      "key": "ignoredChannels",
+      "label": "Canais ignorados",
+      "kind": "channels",
+      "help": "Mensagens nestes canais não entram no avaliador.",
+      "advanced": true
+    },
+    {
+      "key": "ignoredRoles",
+      "label": "Cargos ignorados",
+      "kind": "roles",
+      "help": "Membros com um destes cargos não entram no avaliador.",
+      "advanced": true
+    },
+    {
+      "key": "logChannel",
+      "label": "Canal de registo",
+      "kind": "channel",
+      "help": "O Helper publica aqui o motivo e o modo da decisão.",
+      "advanced": true
+    },
+    {
+      "key": "alertOnly",
+      "label": "Apenas alertar, sem aplicar castigo",
+      "kind": "toggle",
+      "help": "Mantém a deteção e auditoria, mas não aplica timeout.",
+      "advanced": true
+    },
+    {
+      "key": "deleteMessage",
+      "label": "Apagar a mensagem que acionou a regra",
+      "kind": "toggle",
+      "help": "Só apaga quando a ação estiver ativa; nunca no modo apenas alertar.",
+      "advanced": true
+    }
+  ],
+  "config": {
+    "floodCount": 6,
+    "windowSeconds": 10,
+    "duplicateLimit": 3,
+    "maxLinks": 5,
+    "timeoutSeconds": 60,
+    "warningDelivery": "both",
+    "mentionLimit": 5,
+    "ignoredChannels": [],
+    "ignoredRoles": [],
+    "logChannel": "",
+    "alertOnly": false,
+    "deleteMessage": false
+  }
+}

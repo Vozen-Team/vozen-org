@@ -8,6 +8,14 @@ import { ProtectionChatDemo, joinSimulationText, raidSimulationText, scamSimulat
 import { ModerationDemo } from './moderation-demo';
 import moderationCopy from './moderation-copy.json';
 import auditCopy from './audit-copy.json';
+import { WelcomeDemo } from './welcome-demo';
+import welcomeCopy from './welcome-demo-copy.json';
+import { TicketsDemo } from './tickets-demo';
+import ticketsCopy from './tickets-copy.json';
+import { RolePanelDemo } from './role-panel-demo';
+import rolePanelCopy from './role-panel-copy.json';
+import { FeatureChatDemo } from './feature-chat-demo';
+import { featureDemoScript } from './feature-layouts';
 
 type Simulation = Awaited<ReturnType<typeof api.testFeature>>;
 export type SimulationDraft = {
@@ -39,7 +47,11 @@ export function FeatureSimulation({ draft, onClose }: {
   const join = draft.key === 'protection.join_gate' && draft.visualDemo === true;
   const moderation = draft.key === 'management.moderation' && draft.visualDemo === true;
   const audit = draft.key === 'management.audit' && draft.visualDemo === true;
-  const protectionDemo = spam || scam || raid || join || moderation || audit;
+  const welcome = draft.key === 'support.welcome' && draft.visualDemo === true;
+  const tickets = draft.key === 'support.tickets' && draft.visualDemo === true;
+  const roles = draft.key === 'community.role_panels' && draft.visualDemo === true;
+  const chatScript = draft.visualDemo === true ? featureDemoScript(draft.key, locale) : null;
+  const protectionDemo = spam || scam || raid || join || moderation || audit || welcome || tickets || roles || Boolean(chatScript);
   const copy = spamSimulationText();
   const demo = protectionDemo ? null : featureDemo(draft.key, locale);
   const media = demo ? `${import.meta.env.BASE_URL}feature-demos/${demo.asset}` : '';
@@ -96,8 +108,8 @@ export function FeatureSimulation({ draft, onClose }: {
         <h2 id="simulation-title">{spam ? copy.title : label}</h2></div>
       <button type="button" className="secondary" autoFocus onClick={onClose}>{protectionDemo ? copy.close : t('helper.demoClose', 'Close demonstration')}</button>
     </header>
-    <p id="simulation-safety">{audit ? auditCopy[locale].safety : moderation ? moderationCopy[locale].safety : join ? joinSimulationText().safety : raid ? raidSimulationText().safety : scam ? scamSimulationText().safety : spam ? copy.safety : t('helper.demoSafety', 'This demonstration does not send messages or change your server. Editor changes are saved separately and automatically.')}</p>
-    {moderation ? <ModerationDemo /> : protectionDemo ? <ProtectionChatDemo kind={audit ? 'audit' : join ? 'join' : raid ? 'raid' : scam ? 'scam' : 'spam'} /> : <>
+    <p id="simulation-safety">{chatScript ? chatScript.safety : roles ? rolePanelCopy[locale].safety : tickets ? ticketsCopy[locale].safety : welcome ? welcomeCopy[locale].safety : audit ? auditCopy[locale].safety : moderation ? moderationCopy[locale].safety : join ? joinSimulationText().safety : raid ? raidSimulationText().safety : scam ? scamSimulationText().safety : spam ? copy.safety : t('helper.demoSafety', 'This demonstration does not send messages or change your server. Editor changes are saved separately and automatically.')}</p>
+    {chatScript ? <FeatureChatDemo featureKey={draft.key} /> : roles ? <RolePanelDemo /> : tickets ? <TicketsDemo /> : welcome ? <WelcomeDemo /> : moderation ? <ModerationDemo /> : protectionDemo ? <ProtectionChatDemo kind={audit ? 'audit' : join ? 'join' : raid ? 'raid' : scam ? 'scam' : 'spam'} /> : <>
     {demo && <section className="feature-simulation__example" aria-labelledby="simulation-example">
       <h3 id="simulation-example">{demo.title}</h3>
       <p>{demo.example}</p>

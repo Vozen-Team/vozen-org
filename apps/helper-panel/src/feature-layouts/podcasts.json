@@ -1,0 +1,289 @@
+{
+  "key": "social.podcasts",
+  "tabs": [
+    {
+      "title": "tabSource",
+      "intro": "sourceIntro",
+      "groups": [
+        {
+          "title": "groupSource",
+          "keys": [
+            "feedUrl",
+            "intervalSeconds"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabPost",
+      "intro": "postIntro",
+      "groups": [
+        {
+          "title": "groupDelivery",
+          "keys": [
+            "targetChannelId"
+          ]
+        },
+        {
+          "title": "groupMessage",
+          "hint": "messageHint",
+          "keys": [
+            "messageTemplate",
+            "mention"
+          ]
+        }
+      ]
+    }
+  ],
+  "fields": {
+    "messageTemplate": {
+      "help": "templateHelp"
+    }
+  },
+  "demo": {
+    "stages": [
+      {
+        "label": "stageNew",
+        "channel": "# podcast",
+        "messages": [
+          {
+            "bot": true,
+            "text": "alert",
+            "card": {
+              "title": "cardTitle",
+              "body": "cardBody",
+              "footer": "feedName"
+            },
+            "note": "sentOnce"
+          }
+        ]
+      },
+      {
+        "label": "stageRead",
+        "channel": "# podcast",
+        "messages": [
+          {
+            "author": "Mia",
+            "note": "opened"
+          },
+          {
+            "author": "Rexy",
+            "text": "reply"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabPost": "Post",
+      "postIntro": "Choose where alerts go and what they say.",
+      "groupDelivery": "Where to post",
+      "groupMessage": "Message",
+      "messageHint": "The mention is added to every alert.",
+      "safety": "Example only. Nothing is checked and no messages are sent to Discord.",
+      "tabSource": "Podcast",
+      "sourceIntro": "Helper checks a public podcast RSS or Atom feed and posts each new episode once.",
+      "groupSource": "Feed and checks",
+      "stageNew": "New episode",
+      "stageRead": "Members listen",
+      "alert": "@Listeners New update from Vozen Cast: Episode 12, Calm servers",
+      "cardTitle": "Episode 12: Calm servers",
+      "cardBody": "Moderation tips from three community teams.",
+      "feedName": "Vozen Cast",
+      "sentOnce": "Each episode is posted once. Repeats are skipped.",
+      "opened": "Opened the episode",
+      "reply": "Perfect for my commute.",
+      "templateHelp": "Variables: {feed}, {title}, {url}, {published_at}."
+    },
+    "pt": {
+      "tabPost": "Publicação",
+      "postIntro": "Escolhe onde os alertas são publicados e o que dizem.",
+      "groupDelivery": "Onde publicar",
+      "groupMessage": "Mensagem",
+      "messageHint": "A menção é adicionada a cada alerta.",
+      "safety": "Apenas um exemplo. Nada é verificado e nenhuma mensagem é enviada para o Discord.",
+      "tabSource": "Podcast",
+      "sourceIntro": "O Helper verifica o feed RSS ou Atom público de um podcast e publica cada novo episódio uma única vez.",
+      "groupSource": "Feed e verificações",
+      "stageNew": "Novo episódio",
+      "stageRead": "Os membros ouvem",
+      "alert": "@Listeners Nova atualização de Vozen Cast: Episódio 12, Servidores tranquilos",
+      "cardTitle": "Episódio 12: Servidores tranquilos",
+      "cardBody": "Dicas de moderação de três equipas de comunidades.",
+      "feedName": "Vozen Cast",
+      "sentOnce": "Cada episódio é publicado uma vez. As repetições são ignoradas.",
+      "opened": "Abriu o episódio",
+      "reply": "Perfeito para a viagem.",
+      "templateHelp": "Variáveis: {feed}, {title}, {url}, {published_at}."
+    },
+    "fr": {
+      "tabPost": "Publication",
+      "postIntro": "Choisissez où les alertes sont publiées et ce qu'elles disent.",
+      "groupDelivery": "Où publier",
+      "groupMessage": "Message",
+      "messageHint": "La mention est ajoutée à chaque alerte.",
+      "safety": "Exemple uniquement. Rien n'est vérifié et aucun message n'est envoyé sur Discord.",
+      "tabSource": "Podcast",
+      "sourceIntro": "Helper vérifie le flux RSS ou Atom public d'un podcast et publie chaque nouvel épisode une seule fois.",
+      "groupSource": "Flux et vérifications",
+      "stageNew": "Nouvel épisode",
+      "stageRead": "Les membres écoutent",
+      "alert": "@Listeners Nouvelle mise à jour de Vozen Cast : Épisode 12, Des serveurs sereins",
+      "cardTitle": "Épisode 12 : Des serveurs sereins",
+      "cardBody": "Des conseils de modération de trois équipes communautaires.",
+      "feedName": "Vozen Cast",
+      "sentOnce": "Chaque épisode est publié une fois. Les doublons sont ignorés.",
+      "opened": "A ouvert l'épisode",
+      "reply": "Parfait pour mon trajet.",
+      "templateHelp": "Variables : {feed}, {title}, {url}, {published_at}."
+    },
+    "es": {
+      "tabPost": "Publicación",
+      "postIntro": "Elige dónde se publican las alertas y qué dicen.",
+      "groupDelivery": "Dónde publicar",
+      "groupMessage": "Mensaje",
+      "messageHint": "La mención se añade a cada alerta.",
+      "safety": "Solo es un ejemplo. No se comprueba nada ni se envían mensajes a Discord.",
+      "tabSource": "Pódcast",
+      "sourceIntro": "Helper revisa el feed RSS o Atom público de un pódcast y publica cada episodio nuevo una sola vez.",
+      "groupSource": "Feed y comprobaciones",
+      "stageNew": "Nuevo episodio",
+      "stageRead": "Los miembros escuchan",
+      "alert": "@Listeners Nueva actualización de Vozen Cast: Episodio 12, Servidores tranquilos",
+      "cardTitle": "Episodio 12: Servidores tranquilos",
+      "cardBody": "Consejos de moderación de tres equipos de comunidad.",
+      "feedName": "Vozen Cast",
+      "sentOnce": "Cada episodio se publica una vez. Los repetidos se omiten.",
+      "opened": "Abrió el episodio",
+      "reply": "Perfecto para el trayecto.",
+      "templateHelp": "Variables: {feed}, {title}, {url}, {published_at}."
+    },
+    "de": {
+      "tabPost": "Beitrag",
+      "postIntro": "Wähle, wo Benachrichtigungen erscheinen und was darin steht.",
+      "groupDelivery": "Wo posten",
+      "groupMessage": "Nachricht",
+      "messageHint": "Die Erwähnung wird jeder Benachrichtigung hinzugefügt.",
+      "safety": "Nur ein Beispiel. Es wird nichts geprüft und keine Nachricht an Discord gesendet.",
+      "tabSource": "Podcast",
+      "sourceIntro": "Helper prüft den öffentlichen RSS- oder Atom-Feed eines Podcasts und postet jede neue Folge genau einmal.",
+      "groupSource": "Feed und Prüfungen",
+      "stageNew": "Neue Folge",
+      "stageRead": "Mitglieder hören rein",
+      "alert": "@Listeners Neues Update von Vozen Cast: Folge 12, Ruhige Server",
+      "cardTitle": "Folge 12: Ruhige Server",
+      "cardBody": "Moderationstipps von drei Community-Teams.",
+      "feedName": "Vozen Cast",
+      "sentOnce": "Jede Folge wird einmal gepostet. Wiederholungen werden übersprungen.",
+      "opened": "Hat die Folge geöffnet",
+      "reply": "Perfekt für den Arbeitsweg.",
+      "templateHelp": "Variablen: {feed}, {title}, {url}, {published_at}."
+    },
+    "tr": {
+      "tabPost": "Gönderi",
+      "postIntro": "Uyarıların nerede paylaşılacağını ve ne yazacağını seçin.",
+      "groupDelivery": "Nerede paylaşılacak",
+      "groupMessage": "Mesaj",
+      "messageHint": "Bahsetme her uyarıya eklenir.",
+      "safety": "Yalnızca örnek. Hiçbir şey kontrol edilmez ve Discord'a mesaj gönderilmez.",
+      "tabSource": "Podcast",
+      "sourceIntro": "Helper bir podcast'in herkese açık RSS veya Atom akışını kontrol eder ve her yeni bölümü bir kez paylaşır.",
+      "groupSource": "Akış ve kontroller",
+      "stageNew": "Yeni bölüm",
+      "stageRead": "Üyeler dinler",
+      "alert": "@Listeners Vozen Cast'ten yeni güncelleme: Bölüm 12, Sakin sunucular",
+      "cardTitle": "Bölüm 12: Sakin sunucular",
+      "cardBody": "Üç topluluk ekibinden moderasyon ipuçları.",
+      "feedName": "Vozen Cast",
+      "sentOnce": "Her bölüm bir kez paylaşılır. Tekrarlar atlanır.",
+      "opened": "Bölümü açtı",
+      "reply": "Yol için tam isabet.",
+      "templateHelp": "Değişkenler: {feed}, {title}, {url}, {published_at}."
+    },
+    "ar": {
+      "tabPost": "النشر",
+      "postIntro": "اختر مكان نشر التنبيهات وما تقوله.",
+      "groupDelivery": "مكان النشر",
+      "groupMessage": "الرسالة",
+      "messageHint": "تُضاف الإشارة إلى كل تنبيه.",
+      "safety": "مثال فقط. لا يُفحص أي شيء ولا تُرسل أي رسائل إلى Discord.",
+      "tabSource": "البودكاست",
+      "sourceIntro": "يفحص Helper خلاصة RSS أو Atom العامة لبودكاست وينشر كل حلقة جديدة مرة واحدة.",
+      "groupSource": "الخلاصة والفحص",
+      "stageNew": "حلقة جديدة",
+      "stageRead": "الأعضاء يستمعون",
+      "alert": "@Listeners تحديث جديد من Vozen Cast: الحلقة 12، خوادم هادئة",
+      "cardTitle": "الحلقة 12: خوادم هادئة",
+      "cardBody": "نصائح إشراف من ثلاثة فرق مجتمعية.",
+      "feedName": "Vozen Cast",
+      "sentOnce": "تُنشر كل حلقة مرة واحدة، ويُتجاهل التكرار.",
+      "opened": "فتحت الحلقة",
+      "reply": "مثالية لطريقي إلى العمل.",
+      "templateHelp": "المتغيرات: {feed}, {title}, {url}, {published_at}."
+    },
+    "zh": {
+      "tabPost": "發布",
+      "postIntro": "選擇通知要發布的位置與內容。",
+      "groupDelivery": "發布位置",
+      "groupMessage": "訊息",
+      "messageHint": "每則通知都會附上此提及。",
+      "safety": "僅為範例。不會進行任何檢查，也不會向 Discord 傳送訊息。",
+      "tabSource": "Podcast",
+      "sourceIntro": "Helper 會檢查 Podcast 的公開 RSS 或 Atom 訂閱來源，每個新單集只發布一次。",
+      "groupSource": "訂閱來源與檢查",
+      "stageNew": "新單集",
+      "stageRead": "成員收聽",
+      "alert": "@Listeners 來自 Vozen Cast 的新內容：第 12 集，平靜的伺服器",
+      "cardTitle": "第 12 集：平靜的伺服器",
+      "cardBody": "來自三個社群團隊的管理建議。",
+      "feedName": "Vozen Cast",
+      "sentOnce": "每個單集只發布一次，重複內容會略過。",
+      "opened": "開啟了這一集",
+      "reply": "正好通勤時聽。",
+      "templateHelp": "變數：{feed}、{title}、{url}、{published_at}。"
+    },
+    "ru": {
+      "tabPost": "Публикация",
+      "postIntro": "Выберите, куда отправлять оповещения и что в них писать.",
+      "groupDelivery": "Куда публиковать",
+      "groupMessage": "Сообщение",
+      "messageHint": "Упоминание добавляется к каждому оповещению.",
+      "safety": "Только пример. Ничего не проверяется, сообщения в Discord не отправляются.",
+      "tabSource": "Подкаст",
+      "sourceIntro": "Helper проверяет публичную RSS- или Atom-ленту подкаста и публикует каждый новый выпуск один раз.",
+      "groupSource": "Лента и проверки",
+      "stageNew": "Новый выпуск",
+      "stageRead": "Участники слушают",
+      "alert": "@Listeners Новое обновление от Vozen Cast: Выпуск 12, Спокойные серверы",
+      "cardTitle": "Выпуск 12: Спокойные серверы",
+      "cardBody": "Советы по модерации от трёх команд сообществ.",
+      "feedName": "Vozen Cast",
+      "sentOnce": "Каждый выпуск публикуется один раз. Повторы пропускаются.",
+      "opened": "Открыла выпуск",
+      "reply": "Как раз для дороги.",
+      "templateHelp": "Переменные: {feed}, {title}, {url}, {published_at}."
+    },
+    "ko": {
+      "tabPost": "게시",
+      "postIntro": "알림을 보낼 위치와 내용을 고르세요.",
+      "groupDelivery": "게시 위치",
+      "groupMessage": "메시지",
+      "messageHint": "모든 알림에 멘션이 추가됩니다.",
+      "safety": "예시일 뿐입니다. 아무것도 확인하지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "tabSource": "팟캐스트",
+      "sourceIntro": "Helper가 팟캐스트의 공개 RSS 또는 Atom 피드를 확인하고 새 에피소드를 한 번씩 게시합니다.",
+      "groupSource": "피드와 확인 주기",
+      "stageNew": "새 에피소드",
+      "stageRead": "멤버가 청취",
+      "alert": "@Listeners Vozen Cast의 새 업데이트: 에피소드 12, 차분한 서버",
+      "cardTitle": "에피소드 12: 차분한 서버",
+      "cardBody": "세 커뮤니티 팀의 관리 팁.",
+      "feedName": "Vozen Cast",
+      "sentOnce": "각 에피소드는 한 번만 게시됩니다. 중복은 건너뜁니다.",
+      "opened": "에피소드를 열었습니다",
+      "reply": "출근길에 딱이네요.",
+      "templateHelp": "변수: {feed}, {title}, {url}, {published_at}."
+    }
+  }
+}

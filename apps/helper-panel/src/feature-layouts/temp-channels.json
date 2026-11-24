@@ -1,0 +1,270 @@
+{
+  "key": "utility.temp_channels",
+  "tabs": [
+    {
+      "title": "tabSetup",
+      "intro": "setupIntro",
+      "commands": [
+        [
+          "/temp-channel",
+          "commandTemp"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupCategory",
+          "keys": [
+            "categoryId"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabRooms",
+      "intro": "roomsIntro",
+      "groups": [
+        {
+          "title": "groupNaming",
+          "keys": [
+            "nameTemplate",
+            "maxActive"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageJoin",
+        "channel": "🔊 Creator Channel",
+        "messages": [
+          {
+            "author": "Mia",
+            "note": "joinNote"
+          }
+        ]
+      },
+      {
+        "label": "stageRoom",
+        "channel": "roomChannel",
+        "messages": [
+          {
+            "bot": true,
+            "note": "createdNote"
+          },
+          {
+            "author": "Rexy",
+            "note": "rexyNote"
+          }
+        ]
+      },
+      {
+        "label": "stageEmpty",
+        "channel": "roomChannel",
+        "messages": [
+          {
+            "author": "Mia",
+            "note": "leaveNote"
+          },
+          {
+            "bot": true,
+            "note": "deletedNote"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabSetup": "Setup",
+      "setupIntro": "Members join Creator Channel to get their own voice room. Creating a category here also sets up Creator Channel.",
+      "commandTemp": "Creates a temporary voice room. Staff only.",
+      "groupCategory": "Location",
+      "tabRooms": "Rooms",
+      "roomsIntro": "A room stays while anyone is inside. Helper deletes it when the last member leaves.",
+      "groupNaming": "Room name and limit",
+      "stageJoin": "Join",
+      "stageRoom": "Own room",
+      "stageEmpty": "Cleanup",
+      "roomChannel": "🔊 Mia's room",
+      "joinNote": "Mia joins Creator Channel.",
+      "createdNote": "Helper creates Mia's room and moves her in.",
+      "rexyNote": "Rexy joins Mia's room.",
+      "leaveNote": "Mia and Rexy leave the room.",
+      "deletedNote": "Helper deletes the empty room. Creator Channel stays.",
+      "safety": "Example only. No channels are created or deleted in Discord."
+    },
+    "pt": {
+      "tabSetup": "Configuração",
+      "setupIntro": "Os membros entram no Creator Channel para ter a sua própria sala de voz. Criar uma categoria aqui configura também o Creator Channel.",
+      "commandTemp": "Cria uma sala de voz temporária. Só para a staff.",
+      "groupCategory": "Localização",
+      "tabRooms": "Salas",
+      "roomsIntro": "Uma sala mantém-se enquanto tiver pessoas. O Helper apaga-a quando a última pessoa sai.",
+      "groupNaming": "Nome e limite das salas",
+      "stageJoin": "Entrar",
+      "stageRoom": "Sala própria",
+      "stageEmpty": "Limpeza",
+      "roomChannel": "🔊 Sala da Mia",
+      "joinNote": "A Mia entra no Creator Channel.",
+      "createdNote": "O Helper cria a sala da Mia e move-a para lá.",
+      "rexyNote": "O Rexy entra na sala da Mia.",
+      "leaveNote": "A Mia e o Rexy saem da sala.",
+      "deletedNote": "O Helper apaga a sala vazia. O Creator Channel fica.",
+      "safety": "Apenas um exemplo. Não são criados nem apagados canais no Discord."
+    },
+    "fr": {
+      "tabSetup": "Configuration",
+      "setupIntro": "Les membres rejoignent Creator Channel pour obtenir leur propre salon vocal. Créer une catégorie ici configure aussi Creator Channel.",
+      "commandTemp": "Crée un salon vocal temporaire. Réservé à l'équipe.",
+      "groupCategory": "Emplacement",
+      "tabRooms": "Salons",
+      "roomsIntro": "Un salon reste ouvert tant que quelqu'un s'y trouve. Helper le supprime quand le dernier membre part.",
+      "groupNaming": "Nom et limite des salons",
+      "stageJoin": "Rejoindre",
+      "stageRoom": "Salon perso",
+      "stageEmpty": "Nettoyage",
+      "roomChannel": "🔊 Salon de Mia",
+      "joinNote": "Mia rejoint Creator Channel.",
+      "createdNote": "Helper crée le salon de Mia et l'y déplace.",
+      "rexyNote": "Rexy rejoint le salon de Mia.",
+      "leaveNote": "Mia et Rexy quittent le salon.",
+      "deletedNote": "Helper supprime le salon vide. Creator Channel reste.",
+      "safety": "Exemple uniquement. Aucun salon n'est créé ni supprimé sur Discord."
+    },
+    "es": {
+      "tabSetup": "Configuración",
+      "setupIntro": "Los miembros entran en Creator Channel para tener su propia sala de voz. Crear una categoría aquí también configura Creator Channel.",
+      "commandTemp": "Crea una sala de voz temporal. Solo para el staff.",
+      "groupCategory": "Ubicación",
+      "tabRooms": "Salas",
+      "roomsIntro": "Una sala se mantiene mientras haya alguien dentro. Helper la elimina cuando sale el último miembro.",
+      "groupNaming": "Nombre y límite de salas",
+      "stageJoin": "Entrar",
+      "stageRoom": "Sala propia",
+      "stageEmpty": "Limpieza",
+      "roomChannel": "🔊 Sala de Mia",
+      "joinNote": "Mia entra en Creator Channel.",
+      "createdNote": "Helper crea la sala de Mia y la mueve allí.",
+      "rexyNote": "Rexy entra en la sala de Mia.",
+      "leaveNote": "Mia y Rexy salen de la sala.",
+      "deletedNote": "Helper elimina la sala vacía. Creator Channel se mantiene.",
+      "safety": "Solo es un ejemplo. No se crean ni eliminan canales en Discord."
+    },
+    "de": {
+      "tabSetup": "Einrichtung",
+      "setupIntro": "Mitglieder betreten Creator Channel und erhalten einen eigenen Sprachraum. Wenn Sie hier eine Kategorie erstellen, wird auch Creator Channel eingerichtet.",
+      "commandTemp": "Erstellt einen temporären Sprachraum. Nur für das Team.",
+      "groupCategory": "Ort",
+      "tabRooms": "Räume",
+      "roomsIntro": "Ein Raum bleibt, solange jemand darin ist. Helper löscht ihn, wenn das letzte Mitglied geht.",
+      "groupNaming": "Raumname und Limit",
+      "stageJoin": "Beitreten",
+      "stageRoom": "Eigener Raum",
+      "stageEmpty": "Aufräumen",
+      "roomChannel": "🔊 Mias Raum",
+      "joinNote": "Mia betritt Creator Channel.",
+      "createdNote": "Helper erstellt Mias Raum und verschiebt sie hinein.",
+      "rexyNote": "Rexy betritt Mias Raum.",
+      "leaveNote": "Mia und Rexy verlassen den Raum.",
+      "deletedNote": "Helper löscht den leeren Raum. Creator Channel bleibt.",
+      "safety": "Nur ein Beispiel. In Discord werden keine Kanäle erstellt oder gelöscht."
+    },
+    "tr": {
+      "tabSetup": "Kurulum",
+      "setupIntro": "Üyeler kendi ses odalarını almak için Creator Channel'a katılır. Burada kategori oluşturmak Creator Channel'ı da kurar.",
+      "commandTemp": "Geçici bir ses odası oluşturur. Yalnızca yetkililer.",
+      "groupCategory": "Konum",
+      "tabRooms": "Odalar",
+      "roomsIntro": "İçinde biri olduğu sürece oda kalır. Son üye çıkınca Helper odayı siler.",
+      "groupNaming": "Oda adı ve sınırı",
+      "stageJoin": "Katıl",
+      "stageRoom": "Kendi odası",
+      "stageEmpty": "Temizlik",
+      "roomChannel": "🔊 Mia'nın odası",
+      "joinNote": "Mia, Creator Channel'a katılır.",
+      "createdNote": "Helper Mia'nın odasını oluşturur ve onu içeri taşır.",
+      "rexyNote": "Rexy, Mia'nın odasına katılır.",
+      "leaveNote": "Mia ve Rexy odadan çıkar.",
+      "deletedNote": "Helper boş odayı siler. Creator Channel kalır.",
+      "safety": "Yalnızca örnek. Discord'da kanal oluşturulmaz veya silinmez."
+    },
+    "ar": {
+      "tabSetup": "الإعداد",
+      "setupIntro": "ينضم الأعضاء إلى Creator Channel للحصول على غرفة صوتية خاصة بهم. إنشاء فئة هنا يُعدّ Creator Channel أيضًا.",
+      "commandTemp": "ينشئ غرفة صوتية مؤقتة. للطاقم فقط.",
+      "groupCategory": "الموقع",
+      "tabRooms": "الغرف",
+      "roomsIntro": "تبقى الغرفة ما دام فيها أحد. يحذفها Helper عند مغادرة آخر عضو.",
+      "groupNaming": "اسم الغرف وحدّها",
+      "stageJoin": "الانضمام",
+      "stageRoom": "غرفة خاصة",
+      "stageEmpty": "التنظيف",
+      "roomChannel": "🔊 غرفة Mia",
+      "joinNote": "تنضم Mia إلى Creator Channel.",
+      "createdNote": "ينشئ Helper غرفة Mia وينقلها إليها.",
+      "rexyNote": "ينضم Rexy إلى غرفة Mia.",
+      "leaveNote": "تغادر Mia وRexy الغرفة.",
+      "deletedNote": "يحذف Helper الغرفة الفارغة. يبقى Creator Channel.",
+      "safety": "مثال فقط. لا تُنشأ أي قنوات ولا تُحذف في Discord."
+    },
+    "zh": {
+      "tabSetup": "設定",
+      "setupIntro": "成員加入 Creator Channel 即可取得自己的語音房間。在此建立類別也會同時設定 Creator Channel。",
+      "commandTemp": "建立臨時語音房間。僅限管理團隊。",
+      "groupCategory": "位置",
+      "tabRooms": "房間",
+      "roomsIntro": "只要還有人在，房間就會保留。最後一位成員離開後，Helper 會將其刪除。",
+      "groupNaming": "房間名稱與上限",
+      "stageJoin": "加入",
+      "stageRoom": "專屬房間",
+      "stageEmpty": "清理",
+      "roomChannel": "🔊 Mia 的房間",
+      "joinNote": "Mia 加入 Creator Channel。",
+      "createdNote": "Helper 建立 Mia 的房間並將她移入。",
+      "rexyNote": "Rexy 加入 Mia 的房間。",
+      "leaveNote": "Mia 和 Rexy 離開房間。",
+      "deletedNote": "Helper 刪除空房間。Creator Channel 會保留。",
+      "safety": "僅為範例。不會在 Discord 中建立或刪除頻道。"
+    },
+    "ru": {
+      "tabSetup": "Настройка",
+      "setupIntro": "Участники заходят в Creator Channel и получают свою голосовую комнату. Создание категории здесь также настраивает Creator Channel.",
+      "commandTemp": "Создаёт временную голосовую комнату. Только для команды.",
+      "groupCategory": "Расположение",
+      "tabRooms": "Комнаты",
+      "roomsIntro": "Комната остаётся, пока в ней кто-то есть. Helper удаляет её, когда уходит последний участник.",
+      "groupNaming": "Название и лимит комнат",
+      "stageJoin": "Вход",
+      "stageRoom": "Своя комната",
+      "stageEmpty": "Очистка",
+      "roomChannel": "🔊 Комната Mia",
+      "joinNote": "Mia заходит в Creator Channel.",
+      "createdNote": "Helper создаёт комнату Mia и переносит её туда.",
+      "rexyNote": "Rexy заходит в комнату Mia.",
+      "leaveNote": "Mia и Rexy выходят из комнаты.",
+      "deletedNote": "Helper удаляет пустую комнату. Creator Channel остаётся.",
+      "safety": "Только пример. Каналы в Discord не создаются и не удаляются."
+    },
+    "ko": {
+      "tabSetup": "설정",
+      "setupIntro": "멤버가 Creator Channel에 들어가면 자신만의 음성 방을 받습니다. 여기에서 카테고리를 만들면 Creator Channel도 함께 설정됩니다.",
+      "commandTemp": "임시 음성 방을 만듭니다. 스태프 전용입니다.",
+      "groupCategory": "위치",
+      "tabRooms": "방",
+      "roomsIntro": "누군가 있는 동안 방이 유지됩니다. 마지막 멤버가 나가면 Helper가 방을 삭제합니다.",
+      "groupNaming": "방 이름과 제한",
+      "stageJoin": "입장",
+      "stageRoom": "개인 방",
+      "stageEmpty": "정리",
+      "roomChannel": "🔊 Mia의 방",
+      "joinNote": "Mia가 Creator Channel에 들어갑니다.",
+      "createdNote": "Helper가 Mia의 방을 만들고 Mia를 옮깁니다.",
+      "rexyNote": "Rexy가 Mia의 방에 들어갑니다.",
+      "leaveNote": "Mia와 Rexy가 방을 나갑니다.",
+      "deletedNote": "Helper가 빈 방을 삭제합니다. Creator Channel은 유지됩니다.",
+      "safety": "예시일 뿐입니다. Discord에서 채널이 생성되거나 삭제되지 않습니다."
+    }
+  }
+}

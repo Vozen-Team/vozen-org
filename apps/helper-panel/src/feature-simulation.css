@@ -105,6 +105,18 @@
 .moderation-demo-scenarios { display: flex; flex-wrap: wrap; gap: 8px; }
 .moderation-demo-scenarios button { max-inline-size: 100%; white-space: normal; }
 .moderation-demo-scenarios [aria-pressed="true"] { border-color: #9ce9de; color: #9ce9de; background: #163039; }
+.welcome-demo-shortcuts {display:flex;flex-wrap:wrap;gap:6px;margin-block-start:10px;}
+.welcome-demo-shortcuts > span {padding:5px 10px;border:1px solid #45566d;border-radius:5px;background:#202e43;font-size:.8rem;}
+.spam-simulation .welcome-demo-role {color:#9ce9de;}
+.welcome-demo-dm {padding:12px;border-inline-start:2px solid #6a7fa0;background:#101d2d;animation:spam-demo-arrive 240ms ease-out 2800ms both;}
+.welcome-demo-dm > small {display:block;margin-block-end:8px;color:#b9c9df;}
+.tickets-demo .spam-demo-feed {min-block-size:270px;animation:spam-demo-arrive 220ms ease-out both;}
+.tickets-demo-card {border-inline-start:3px solid #9ce9de;padding:12px 14px;border-radius:6px;background:#101d2d;}
+.tickets-demo-card h3 {margin:0;font-size:1.1rem;}
+.tickets-demo button {max-inline-size:100%;white-space:normal;}
+.tickets-demo-member {display:flex;gap:10px;align-items:center;}
+.tickets-demo-claimed {margin-block:12px;padding-inline-start:12px;border-inline-start:2px solid #9ce9de;color:#9ce9de;}
+.tickets-demo-transcript {margin-block-start:16px;border:1px solid #3a516e;padding:12px;border-radius:6px;color:#b9c9df;font-size:.85rem;}
 .moderation-cleanup-messages { margin-block-end: 12px; padding-inline-start: 40px; animation: moderation-demo-clear 250ms ease-out 1600ms both; }
 .feature-simulation .moderation-cleanup-messages p { margin-block: 2px; }
 @keyframes moderation-demo-clear { to { opacity: .35; text-decoration: line-through; } }
@@ -135,5 +147,7 @@
   .spam-simulation .spam-demo-messages li, .spam-demo-response, .scam-demo-message { animation: none; }
   .scam-demo-message { text-decoration: line-through; }
   .moderation-cleanup-messages { animation: none; opacity: .35; text-decoration: line-through; }
+  .welcome-demo-dm {animation:none;}
+  .tickets-demo .spam-demo-feed {animation:none;}
   .spam-demo-footer { display: none; }
 }

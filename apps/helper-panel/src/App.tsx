@@ -8,7 +8,7 @@ import { ActivityFeed } from './activity-feed';
 import { activityText } from './activity-i18n';
 import { validActivityFeed } from './activity-model';
 import { EcosystemTopbar, EcosystemAccountAvatar, useEcosystemAccount, discordAvatarUrl } from './ecosystem-topbar';
-import { createElement, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import { createElement, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { canonicalWelcomeKey, visibleWelcomeFeatures } from './welcome';
 import { PremiumBannerSwitch } from './premium-banner-switch';
 import { FeatureSimulation, type SimulationDraft } from './feature-simulation';
@@ -17,8 +17,13 @@ import { TicketPanelChannel } from './ticket-channel-setup';
 import { TempCategoryCreate } from './temp-category-create';
 import { BirthdayChannel } from './birthday-channel-setup';
 import { ticketSettingsGroups, ticketSettingCopy } from './ticket-settings';
+import { TicketsSettingsPanel } from './ticket-settings-panel';
+import { FeatureSettingsPanel, hasFeatureLayout } from './feature-settings-panel';
+import { featureFieldCopy } from './feature-layouts';
+import { RolePanelSettings } from './role-panel-settings';
+import rolePanelCopy from './role-panel-copy.json';
 import './ticket-settings.css';
-import { welcomeSettingsGroups, welcomeSettingCopy, welcomeStepOptions, changeWelcomeStep } from './welcome-settings';
+import { WelcomeSettingsPanel, welcomeSettingsGroups, welcomeSettingCopy, welcomeStepOptions, changeWelcomeStep } from './welcome-settings';
 import './welcome-settings.css';
 import { ProtectionSettings, ProtectionSettingsSkeleton, protectionRestorePrompt } from './antispam-settings';
 import { LevelsSettings } from './levels-settings-panel';
@@ -2517,7 +2522,8 @@ function App() {
   const isProtectionDetail = route.page === 'detail' &&
     (route.key === 'protection.antispam' || route.key === 'protection.antiscam' ||
       route.key === 'protection.anti_raid' || route.key === 'protection.join_gate' ||
-      route.key === 'management.moderation' || route.key === 'management.audit');
+      route.key === 'management.moderation' || route.key === 'management.audit' || route.key === 'support.welcome' || route.key === 'support.tickets' || route.key === 'community.role_panels' ||
+      hasFeatureLayout(route.key));
   const detailDirty = JSON.stringify(detailConfig) !== JSON.stringify(savedDetailConfig);
   const rankDirty = JSON.stringify(rankConfig) !== JSON.stringify(savedRankConfig);
   const dirty =
@@ -2706,6 +2712,17 @@ function App() {
   }
   async function testDetail(visualDemo = false) {
     if (!route.key) return;
+    const openSimulation = (key: string) => {
+      if (!me?.guildId) return;
+      setMessage('');
+      const feature = features.find(item => item.key === key);
+      setSimulation({ guildId: me.guildId, key,
+        get label() { return feature ? localizedFeature(feature).label : helperText('Feature'); },
+        config: structuredClone(detailConfig), enabled: detailEnabled, visualDemo });
+    };
+    // The visual demonstration is local only; it must never reach the real
+    // send-a-test paths below (social feeds post to Discord).
+    if (visualDemo) { openSimulation(route.key); return; }
     try {
       if (route.key === 'social.youtube') {
         const sourceChannelId = String(detailConfig.sourceChannelId ?? '').trim();
@@ -2806,13 +2823,7 @@ function App() {
         );
         return;
       }
-      if (me?.guildId) {
-        setMessage('');
-        const feature = features.find(item => item.key === route.key);
-        setSimulation({ guildId: me.guildId, key: route.key,
-          get label() { return feature ? localizedFeature(feature).label : helperText('Feature'); },
-          config: structuredClone(detailConfig), enabled: detailEnabled, visualDemo });
-      }
+      openSimulation(route.key);
     } catch {
       setMessage(
         () => () => (route.key === 'social.rss' || route.key === 'social.podcasts'
@@ -4430,24 +4441,109 @@ function FeatureDetail({
   const join = feature?.key === 'protection.join_gate';
   const moderation = feature?.key === 'management.moderation';
   const audit = feature?.key === 'management.audit';
-  if (audit || moderation || join || raid || scam || feature?.key === 'protection.antispam') {
+  const welcome = feature?.key === 'support.welcome';
+  const tickets = feature?.key === 'support.tickets';
+  const roles = feature?.key === 'community.role_panels';
+  const layoutPanel = hasFeatureLayout(feature?.key);
+  // Existing feature components keep their behaviour inside the shared layout.
+  const layoutSlots = (key: string): Record<string, ReactNode> => ({
+    'management.templates': { manager: <TemplateManager templates={templates} onChange={onTemplatesChange} localPreviewMode={localPreviewMode} /> },
+    'management.custom_commands': { manager: <CustomCommandManager localPreviewMode={localPreviewMode} /> },
+    'management.workflows': { manager: <WorkflowManager enabled={enabled} localPreviewMode={localPreviewMode} /> },
+    'utility.reminders': { manager: <RemindersManager enabled={enabled} localPreviewMode={localPreviewMode} /> },
+    'community.economy': { shop: <EconomyShop key={context?.guildId} context={context} localPreviewMode={localPreviewMode} /> },
+    'community.leaderboard': { preview: <LeaderboardPreview enabled={enabled} localPreviewMode={localPreviewMode} revision={revision} /> },
+    'social.youtube': providerHealth ? { health: <ProviderHealthPanel health={providerHealth} /> } : {},
+  } as Record<string, Record<string, ReactNode>>)[key] ?? {};
+  const layoutFieldSetup = (featureKey: string, key: string): ReactNode => {
+    const remember = (field: string) => (resource: GuildContext['channels'][number]) => { rememberCreatedResource(resource); onChange(field, resource.id); };
+    if (featureKey === 'community.starboard' && key === 'channel')
+      return <StarboardChannel key={context?.guildId} context={context} onCreated={remember('channel')} />;
+    if (localPreviewMode) return null;
+    if (featureKey === 'community.birthdays' && key === 'channel')
+      return <BirthdayChannel key={context?.guildId} context={context} onCreated={remember('channel')} />;
+    if (featureKey === 'utility.temp_channels' && key === 'categoryId')
+      return <TempCategoryCreate key={`${context?.guildId}:temp-category`} context={context} onCreated={remember('categoryId')} />;
+    return null;
+  };
+  if (layoutPanel || roles || tickets || welcome || audit || moderation || join || raid || scam || feature?.key === 'protection.antispam') {
     const fields = sections.flatMap(section => section.fields);
-    const canSimulate = audit || moderation || join || raid || scam;
+    const canSimulate = layoutPanel || roles || tickets || welcome || audit || moderation || join || raid || scam;
     const needsRepair = canSimulate && !localPreviewMode && feature?.health?.status && feature.health.status !== 'ready' && revision > 0;
     return (
       <section className="detail-page antispam-page" onBlur={onFlush}>
         <div className="spam-navigation">
           <button type="button" className="back-link" onClick={onBack}>{helperText('← Back to features')}</button>
         </div>
-        <ProtectionSettings key={feature.key + ':' + premiumGuildId} kind={audit ? 'audit' : moderation ? 'moderation' : join ? 'join' : raid ? 'raid' : scam ? 'scam' : 'spam'} title={translatedFeature?.label ?? helperText('Feature')}
+        {layoutPanel && feature ? <FeatureSettingsPanel key={feature.key + ':' + premiumGuildId} featureKey={feature.key}
+          title={translatedFeature?.label ?? helperText('Feature')} keys={fields.map(field => field.key)}
+          enabled={enabled} saving={saving} onEnabled={onEnabled} onTest={() => onTest(true)}
+          onRestore={onRestore} onRepair={needsRepair ? onRepair : undefined}
+          slots={layoutSlots(feature.key)}
+          actions={['social.youtube', 'social.twitch', 'social.rss', 'social.podcasts'].includes(feature.key)
+            ? <button type="button" className="secondary" onClick={() => onTest()}>{helperText('Send a test to Discord')}</button> : undefined}
+          renderField={key => {
+            const field = fields.find(field => field.key === key);
+            if (!field) return null;
+            const featureKey = feature?.key ?? '';
+            const pollChannel = featureKey === 'management.polls' && key === 'channel' ? {
+              label: helperText('Default channel (optional)'),
+              help: helperText('Leave empty to post each poll in the channel where you use /poll. Choose a channel to send all polls there.'),
+              emptyLabel: helperText('Channel where you use /poll'),
+            } : {};
+            return <>
+              <FieldControl field={{ ...localizedField(field, featureKey), ...featureFieldCopy(featureKey, helperLocale(), key), ...pollChannel }}
+                value={config[key]} context={resourceContext} onChange={onChange} />
+              {layoutFieldSetup(featureKey, key)}
+            </>;
+          }} /> : roles ?<RolePanelSettings key={feature.key + ':' + premiumGuildId} keys={fields.map(field => field.key)}
+          config={config} context={resourceContext} enabled={enabled} saving={saving}
+          onEnabled={onEnabled} onTest={() => onTest(true)} onRestore={onRestore} onRepair={needsRepair ? onRepair : undefined}
+          manager={<RolePanelManager key={premiumGuildId} context={resourceContext} localPreviewMode={localPreviewMode} revision={revision} />}
+          renderField={key => {
+            const field = fields.find(field => field.key === key);
+            if (!field) return null;
+            const copy = rolePanelCopy[helperLocale()];
+            const presentation = key === 'selectionMode' ? { label: copy.mode, help: copy.modeHelp,
+              options: [['multiple', copy.multiple], ['unique', copy.unique]] as [string, string][] }
+              : key === 'removeOnUnselect' ? { label: copy.remove, help: copy.removeHelp }
+              : key === 'maxRoles' ? { label: copy.commandLimit, help: copy.commandHelp } : {};
+            return <FieldControl field={{ ...localizedField(field, 'community.role_panels'), ...presentation }}
+              value={config[key]} context={resourceContext} onChange={onChange} />;
+          }} /> : tickets ? <TicketsSettingsPanel key={feature.key + ':' + premiumGuildId} keys={fields.map(field => field.key)}
+          enabled={enabled} saving={saving} onEnabled={onEnabled} onTest={() => onTest(true)}
+          onRestore={onRestore} onRepair={needsRepair ? onRepair : undefined}
+          renderField={key => {
+            const field = fields.find(field => field.key === key);
+            if (!field) return null;
+            return <><FieldControl field={localizedField(ticketSettingCopy(field, 'en'), 'support.tickets')}
+              value={config[key]} context={resourceContext} onChange={onChange} />
+              {!localPreviewMode && (key === 'panelChannel' || key === 'categoryId') &&
+                <TicketPanelChannel key={`${context?.guildId}:${key}`} category={key === 'categoryId'} context={context}
+                  onCreated={channel => { rememberCreatedResource(channel); onChange(key, channel.id); }} />}
+            </>;
+          }} /> : welcome ? <WelcomeSettingsPanel key={feature.key + ':' + premiumGuildId} keys={fields.map(field => field.key)}
+          enabled={enabled} guideEnabled={config.guideEnabled === true} sendDm={config.sendDm === true} saving={saving}
+          onEnabled={onEnabled} onTest={() => onTest(true)}
+          onRestore={onRestore} onRepair={needsRepair ? onRepair : undefined}
+          renderField={key => {
+            if (key === 'steps') return <WelcomeGuideSteps value={config.steps} onChange={steps => onChange('steps', steps)} />;
+            const field = fields.find(field => field.key === key);
+            if (!field) return null;
+            const copy = localizedField(welcomeSettingCopy(field, 'en'), 'support.welcome');
+            const unavailable = field.kind === 'channel' && !resourceContext?.capabilities.channelSelectors
+              || field.kind === 'role' && !resourceContext?.capabilities.roleSelectors;
+            return <FieldControl field={{ ...copy, help: unavailable ? undefined : copy.help }}
+              value={config[key]} context={resourceContext} onChange={onChange} />;
+          }} /> : <ProtectionSettings key={feature?.key + ':' + premiumGuildId} kind={audit ? 'audit' : moderation ? 'moderation' : join ? 'join' : raid ? 'raid' : scam ? 'scam' : 'spam'} title={translatedFeature?.label ?? helperText('Feature')}
           keys={fields.map(field => field.key)}
           enabled={enabled} onEnabled={onEnabled} onTest={() => onTest(canSimulate)}
-          onSimulate={canSimulate ? () => onTest() : undefined} onRepair={needsRepair ? onRepair : undefined}
+          onRepair={needsRepair ? onRepair : undefined}
           alertOnly={audit ? config.shadowMode === true : config.alertOnly === true} saving={saving} onRestore={onRestore}
           renderField={(key, copy, inline) => {
             const field = fields.find(field => field.key === key);
             return field ? <FieldControl field={{ ...field, ...copy }} value={config[key]} context={resourceContext} onChange={onChange} inline={inline} /> : null;
-          }} />
+          }} />}
       </section>
     );
   }
@@ -4495,9 +4591,6 @@ function FeatureDetail({
           )}
           {feature?.key === 'utility.reminders' && (
             <RemindersManager enabled={enabled} localPreviewMode={localPreviewMode} />
-          )}
-          {feature?.key === 'community.role_panels' && (
-            <RolePanelManager context={context} localPreviewMode={localPreviewMode} />
           )}
           {feature?.key === 'social.tiktok' && !localPreviewMode && <TikTokConnection />}
           {(['community.levels','community.achievements'].includes(feature?.key || '') ? [] : sections).map((section) => (
@@ -5369,20 +5462,26 @@ function WorkflowManager({
 function RolePanelManager({
   context,
   localPreviewMode,
+  revision,
 }: {
   context: GuildContext | null;
   localPreviewMode: boolean;
+  revision: number;
 }) {
   const [panels, setPanels] = useState<RolePanelRecord[]>([]);
   const [busy, setBusy] = useState(false);
   const [loading, setLoading] = useState(!localPreviewMode);
   const [error, setError] = useState<HelperMessage>('');
+  const copy = rolePanelCopy[helperLocale()];
 
   useEffect(() => {
     if (localPreviewMode) return;
     let cancelled = false;
+    setLoading(true);
+    setError('');
     void api.rolePanels()
       .then((result) => {
+        if (context?.guildId && result.guildId !== context.guildId) throw new Error('guild_changed');
         if (!cancelled) setPanels(result.panels);
       })
       .catch((cause) => {
@@ -5392,11 +5491,11 @@ function RolePanelManager({
         if (!cancelled) setLoading(false);
       });
     return () => { cancelled = true; };
-  }, [localPreviewMode]);
+  }, [localPreviewMode, context?.guildId, revision]);
 
   const channelName = (id?: string) => context?.channels.find((channel) => channel.id === id)?.name;
   const roleNames = (ids?: string[]) =>
-    (ids ?? []).map((id) => context?.roles.find((role) => role.id === id)?.name ?? id).join(', ');
+    (ids ?? []).map((id) => context?.roles.find((role) => role.id === id)?.name ?? helperText('Unavailable resource')).join(', ');
 
   async function remove(messageId: string) {
     if (localPreviewMode || busy) return;
@@ -5429,19 +5528,18 @@ function RolePanelManager({
   }
 
   return (
-    <section className="config-section card">
+    <section className="spam-group role-panel-manager" aria-busy={loading}>
       <div className="section-heading">
         <div>
-          <small className="eyebrow">{helperText('REAL DISCORD PANELS')}</small>
-          <h3>{helperText('Role panel manager')}</h3>
-          <p>
-            {helperText('Saving the configuration publishes a real panel. Here you can confirm where it is, repair a deleted message, or remove it without deleting roles.')}
-          </p>
+          <h3>{copy.published}</h3><p className="role-panel-hint">{copy.manageHint}</p>
         </div>
       </div>
-      {loading && <p className="tip" role="status">{helperText('Loading panels for this server…')}</p>}
-      {!localPreviewMode && !loading && panels.length === 0 && (
-        <p className="tip">{helperText('No panel has been published yet. Choose a channel and roles above, then save.')}</p>
+      {loading && <div className="spam-settings-skeleton" role="status" aria-label={helperText('Loading panels for this server…')}>
+        <span className="helper-skeleton__pulse spam-placeholder-input" />
+        <span className="helper-skeleton__pulse spam-placeholder-input" />
+      </div>}
+      {!localPreviewMode && !loading && !error && panels.length === 0 && (
+        <p className="tip">{copy.empty}</p>
       )}
       {panels.length > 0 && (
         <div className="template-list" aria-label={helperText('Role panels')}>
@@ -5450,12 +5548,12 @@ function RolePanelManager({
               <div>
                 <b>{panel.title || helperText('Role panel')}</b>
                 <small>
-                  #{channelName(panel.channel_id) ?? panel.channel_id ?? helperText('unknown channel')} · {roleNames(panel.role_ids) || helperText('no roles')} · {panel.selection_mode === 'unique' ? helperText('one choice') : helperText('multiple choices')}
+                  #{channelName(panel.channel_id) ?? helperText('unknown channel')} · {roleNames(panel.role_ids) || helperText('no roles')} · {panel.selection_mode === 'unique' ? copy.unique : copy.multiple}
                 </small>
               </div>
               <div className="inline-actions">
-                <button type="button" className="ghost" onClick={() => void repair(panel.message_id)} disabled={busy}>{helperText('Repair')}</button>
-                <button type="button" className="ghost" onClick={() => void remove(panel.message_id)} disabled={busy}>{helperText('Delete')}</button>
+                <button type="button" className="ghost" onClick={() => void repair(panel.message_id)} disabled={busy || loading}>{helperText('Repair')}</button>
+                <button type="button" className="ghost" onClick={() => void remove(panel.message_id)} disabled={busy || loading}>{helperText('Delete')}</button>
               </div>
             </div>
           ))}

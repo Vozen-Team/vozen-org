@@ -1,0 +1,252 @@
+{
+  "key": "web3.crypto_queries",
+  "tabs": [
+    {
+      "title": "tabLookups",
+      "intro": "lookupsIntro",
+      "commands": [
+        [
+          "/crypto",
+          "commandCrypto"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupCoins",
+          "keys": [
+            "coinIds",
+            "currency"
+          ]
+        },
+        {
+          "title": "groupReply",
+          "hint": "replyHint",
+          "keys": [
+            "maxResults"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageAsk",
+        "channel": "# crypto",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/crypto"
+          },
+          {
+            "bot": true,
+            "note": "sampleNote",
+            "card": {
+              "title": "cardTitle",
+              "fields": [
+                [
+                  "Bitcoin",
+                  "64250 USD"
+                ],
+                [
+                  "Ethereum",
+                  "3120 USD"
+                ],
+                [
+                  "Solana",
+                  "148 USD"
+                ]
+              ],
+              "footer": "cardFooter"
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageCurrency",
+        "channel": "# crypto",
+        "messages": [
+          {
+            "author": "Mia",
+            "command": "/crypto",
+            "note": "currencyNote"
+          },
+          {
+            "bot": true,
+            "note": "sampleNote",
+            "card": {
+              "title": "cardTitle",
+              "fields": [
+                [
+                  "Bitcoin",
+                  "59400 EUR"
+                ],
+                [
+                  "Ethereum",
+                  "2885 EUR"
+                ],
+                [
+                  "Solana",
+                  "137 EUR"
+                ]
+              ],
+              "footer": "cardFooter"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabLookups": "Price lookups",
+      "lookupsIntro": "Members check coin prices with a command. Helper reads them from CoinGecko and only shows them.",
+      "commandCrypto": "Shows read-only CoinGecko prices for the coins set below.",
+      "groupCoins": "Coins and currency",
+      "groupReply": "Reply size",
+      "replyHint": "Helper shows at most this many coins in one reply, from 1 to 10.",
+      "safety": "Example only. Sample prices; no messages are sent to Discord.",
+      "stageAsk": "Ask",
+      "stageCurrency": "Other currency",
+      "cardTitle": "Crypto prices",
+      "cardFooter": "Source: CoinGecko · read-only",
+      "sampleNote": "Sample values, not live data.",
+      "currencyNote": "Currency changed to eur in the panel."
+    },
+    "pt": {
+      "tabLookups": "Consultas de preços",
+      "lookupsIntro": "Os membros consultam preços de moedas com um comando. O Helper lê-os da CoinGecko e apenas os mostra.",
+      "commandCrypto": "Mostra preços da CoinGecko, só de leitura, das moedas definidas abaixo.",
+      "groupCoins": "Moedas e divisa",
+      "groupReply": "Tamanho da resposta",
+      "replyHint": "O Helper mostra no máximo este número de moedas por resposta, de 1 a 10.",
+      "safety": "Apenas um exemplo. Preços fictícios; nenhuma mensagem é enviada para o Discord.",
+      "stageAsk": "Consultar",
+      "stageCurrency": "Outra divisa",
+      "cardTitle": "Preços de cripto",
+      "cardFooter": "Fonte: CoinGecko · só leitura",
+      "sampleNote": "Valores de exemplo, não são dados em tempo real.",
+      "currencyNote": "Divisa alterada para eur no painel."
+    },
+    "fr": {
+      "tabLookups": "Consultation des prix",
+      "lookupsIntro": "Les membres consultent les prix avec une commande. Helper les lit sur CoinGecko et se contente de les afficher.",
+      "commandCrypto": "Affiche les prix CoinGecko, en lecture seule, des cryptos définies ci-dessous.",
+      "groupCoins": "Cryptos et devise",
+      "groupReply": "Taille de la réponse",
+      "replyHint": "Helper affiche au plus ce nombre de cryptos par réponse, de 1 à 10.",
+      "safety": "Exemple uniquement. Prix fictifs ; aucun message n'est envoyé sur Discord.",
+      "stageAsk": "Demande",
+      "stageCurrency": "Autre devise",
+      "cardTitle": "Prix des cryptos",
+      "cardFooter": "Source : CoinGecko · lecture seule",
+      "sampleNote": "Valeurs d'exemple, pas des données en direct.",
+      "currencyNote": "Devise passée à eur dans le panneau."
+    },
+    "es": {
+      "tabLookups": "Consultas de precios",
+      "lookupsIntro": "Los miembros consultan precios con un comando. Helper los lee de CoinGecko y solo los muestra.",
+      "commandCrypto": "Muestra precios de CoinGecko, solo lectura, de las monedas definidas abajo.",
+      "groupCoins": "Monedas y divisa",
+      "groupReply": "Tamaño de la respuesta",
+      "replyHint": "Helper muestra como máximo este número de monedas por respuesta, de 1 a 10.",
+      "safety": "Solo es un ejemplo. Precios ficticios; no se envían mensajes a Discord.",
+      "stageAsk": "Consulta",
+      "stageCurrency": "Otra divisa",
+      "cardTitle": "Precios de cripto",
+      "cardFooter": "Fuente: CoinGecko · solo lectura",
+      "sampleNote": "Valores de ejemplo, no son datos en tiempo real.",
+      "currencyNote": "Divisa cambiada a eur en el panel."
+    },
+    "de": {
+      "tabLookups": "Preisabfragen",
+      "lookupsIntro": "Mitglieder fragen Kurse per Befehl ab. Helper liest sie bei CoinGecko und zeigt sie nur an.",
+      "commandCrypto": "Zeigt CoinGecko-Kurse (nur lesend) für die unten festgelegten Coins.",
+      "groupCoins": "Coins und Währung",
+      "groupReply": "Antwortumfang",
+      "replyHint": "Helper zeigt höchstens so viele Coins pro Antwort, von 1 bis 10.",
+      "safety": "Nur ein Beispiel. Fiktive Preise; es wird keine Nachricht an Discord gesendet.",
+      "stageAsk": "Abfrage",
+      "stageCurrency": "Andere Währung",
+      "cardTitle": "Kryptokurse",
+      "cardFooter": "Quelle: CoinGecko · nur lesend",
+      "sampleNote": "Beispielwerte, keine Live-Daten.",
+      "currencyNote": "Währung im Panel auf eur geändert."
+    },
+    "tr": {
+      "tabLookups": "Fiyat sorguları",
+      "lookupsIntro": "Üyeler fiyatları bir komutla sorgular. Helper bunları CoinGecko'dan okur ve yalnızca gösterir.",
+      "commandCrypto": "Aşağıda ayarlanan coinler için salt okunur CoinGecko fiyatlarını gösterir.",
+      "groupCoins": "Coinler ve para birimi",
+      "groupReply": "Yanıt boyutu",
+      "replyHint": "Helper bir yanıtta en fazla bu kadar coin gösterir, 1 ile 10 arası.",
+      "safety": "Yalnızca örnek. Fiyatlar örnektir; Discord'a mesaj gönderilmez.",
+      "stageAsk": "Sorgu",
+      "stageCurrency": "Başka para birimi",
+      "cardTitle": "Kripto fiyatları",
+      "cardFooter": "Kaynak: CoinGecko · salt okunur",
+      "sampleNote": "Örnek değerler, canlı veri değildir.",
+      "currencyNote": "Para birimi panelde eur olarak değiştirildi."
+    },
+    "ar": {
+      "tabLookups": "الاستعلام عن الأسعار",
+      "lookupsIntro": "يطّلع الأعضاء على أسعار العملات الرقمية بأمر. يقرأها Helper من CoinGecko ويعرضها فقط.",
+      "commandCrypto": "يعرض أسعار CoinGecko للقراءة فقط للعملات المحددة أدناه.",
+      "groupCoins": "العملات الرقمية والعملة",
+      "groupReply": "حجم الرد",
+      "replyHint": "يعرض Helper هذا العدد من العملات كحد أقصى في الرد الواحد، من 1 إلى 10.",
+      "safety": "مثال فقط. الأسعار تجريبية ولا تُرسل أي رسائل إلى Discord.",
+      "stageAsk": "الاستعلام",
+      "stageCurrency": "عملة أخرى",
+      "cardTitle": "أسعار العملات الرقمية",
+      "cardFooter": "المصدر: CoinGecko · للقراءة فقط",
+      "sampleNote": "قيم تجريبية وليست بيانات مباشرة.",
+      "currencyNote": "تم تغيير العملة إلى eur في اللوحة."
+    },
+    "zh": {
+      "tabLookups": "價格查詢",
+      "lookupsIntro": "成員透過指令查詢幣價。Helper 從 CoinGecko 讀取價格，僅供顯示。",
+      "commandCrypto": "顯示下方所設幣種的 CoinGecko 價格（唯讀）。",
+      "groupCoins": "幣種與貨幣",
+      "groupReply": "回覆筆數",
+      "replyHint": "Helper 每次回覆最多顯示這麼多個幣種，範圍為 1 到 10。",
+      "safety": "僅為範例。價格為範例數值，不會向 Discord 傳送訊息。",
+      "stageAsk": "查詢",
+      "stageCurrency": "其他貨幣",
+      "cardTitle": "加密貨幣價格",
+      "cardFooter": "來源：CoinGecko · 唯讀",
+      "sampleNote": "範例數值，並非即時資料。",
+      "currencyNote": "已在控制台中將貨幣改為 eur。"
+    },
+    "ru": {
+      "tabLookups": "Запрос цен",
+      "lookupsIntro": "Участники узнают цены монет командой. Helper берёт их из CoinGecko и только показывает.",
+      "commandCrypto": "Показывает цены CoinGecko (только чтение) для монет ниже.",
+      "groupCoins": "Монеты и валюта",
+      "groupReply": "Размер ответа",
+      "replyHint": "Helper показывает не больше стольких монет в одном ответе, от 1 до 10.",
+      "safety": "Только пример. Цены условные, сообщения в Discord не отправляются.",
+      "stageAsk": "Запрос",
+      "stageCurrency": "Другая валюта",
+      "cardTitle": "Цены криптовалют",
+      "cardFooter": "Источник: CoinGecko · только чтение",
+      "sampleNote": "Примерные значения, а не актуальные данные.",
+      "currencyNote": "В панели валюта изменена на eur."
+    },
+    "ko": {
+      "tabLookups": "가격 조회",
+      "lookupsIntro": "멤버는 명령어로 코인 가격을 확인합니다. Helper는 CoinGecko에서 가격을 읽어 보여 주기만 합니다.",
+      "commandCrypto": "아래에 설정한 코인의 CoinGecko 가격을 읽기 전용으로 보여 줍니다.",
+      "groupCoins": "코인과 통화",
+      "groupReply": "응답 크기",
+      "replyHint": "Helper는 한 번의 응답에 최대 이 개수의 코인을 보여 줍니다(1~10).",
+      "safety": "예시일 뿐입니다. 가격은 예시 값이며 Discord로 메시지가 전송되지 않습니다.",
+      "stageAsk": "조회",
+      "stageCurrency": "다른 통화",
+      "cardTitle": "암호화폐 가격",
+      "cardFooter": "출처: CoinGecko · 읽기 전용",
+      "sampleNote": "예시 값이며 실시간 데이터가 아닙니다.",
+      "currencyNote": "패널에서 통화를 eur로 바꿨습니다."
+    }
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "key": "community.leaderboard",
+  "tabs": [
+    {
+      "title": "tabLeaderboard",
+      "intro": "intro",
+      "commands": [
+        [
+          "/leaderboard",
+          "cmdView"
+        ],
+        [
+          "/leaderboard-privacy",
+          "cmdPrivacy"
+        ]
+      ],
+      "slot": "preview",
+      "groups": [
+        {
+          "title": "groupReply",
+          "keys": [
+            "maxEntries",
+            "public"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageView",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/leaderboard"
+          },
+          {
+            "bot": true,
+            "card": {
+              "title": "boardTitle",
+              "fields": [
+                [
+                  "Mia",
+                  "4200 XP"
+                ],
+                [
+                  "Rexy",
+                  "3100 XP"
+                ],
+                [
+                  "Alex",
+                  "950 XP"
+                ]
+              ],
+              "footer": "boardFooter"
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageHide",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Rexy",
+            "command": "/leaderboard-privacy opt_out: true"
+          },
+          {
+            "bot": true,
+            "text": "hidden"
+          }
+        ]
+      },
+      {
+        "label": "stageUpdated",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/leaderboard"
+          },
+          {
+            "bot": true,
+            "card": {
+              "title": "boardTitle",
+              "fields": [
+                [
+                  "Mia",
+                  "4200 XP"
+                ],
+                [
+                  "Alex",
+                  "950 XP"
+                ]
+              ],
+              "footer": "boardFooter"
+            },
+            "note": "rexyHidden"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabLeaderboard": "Leaderboard",
+      "intro": "Members see the XP ranking with /leaderboard. Each member can hide their own entry.",
+      "cmdView": "Shows members ranked from highest to lowest XP.",
+      "cmdPrivacy": "Hides or shows your own entry. Your XP is kept.",
+      "groupReply": "Command reply",
+      "safety": "Example only. Sample ranking, not your server's. No XP or settings change and no messages are sent to Discord.",
+      "stageView": "Ranking",
+      "stageHide": "Hide",
+      "stageUpdated": "Updated",
+      "boardTitle": "XP leaderboard",
+      "boardFooter": "Ranked by XP",
+      "hidden": "Your entry is now hidden. Your XP is kept.",
+      "rexyHidden": "Rexy no longer appears in the list."
+    },
+    "pt": {
+      "tabLeaderboard": "Classificação",
+      "intro": "Os membros veem a classificação de XP com /leaderboard. Cada membro pode ocultar a sua entrada.",
+      "cmdView": "Mostra os membros por ordem decrescente de XP.",
+      "cmdPrivacy": "Oculta ou volta a mostrar a tua entrada. O teu XP mantém-se.",
+      "groupReply": "Resposta ao comando",
+      "safety": "Apenas um exemplo. Classificação fictícia, não a do teu servidor. Nenhum XP ou definição é alterado e nenhuma mensagem é enviada para o Discord.",
+      "stageView": "Classificação",
+      "stageHide": "Ocultar",
+      "stageUpdated": "Atualizada",
+      "boardTitle": "Classificação de XP",
+      "boardFooter": "Ordenado por XP",
+      "hidden": "A tua entrada está oculta. O teu XP mantém-se.",
+      "rexyHidden": "O Rexy já não aparece na lista."
+    },
+    "fr": {
+      "tabLeaderboard": "Classement",
+      "intro": "Les membres consultent le classement XP avec /leaderboard. Chacun peut masquer sa propre entrée.",
+      "cmdView": "Affiche les membres classés du plus au moins d'XP.",
+      "cmdPrivacy": "Masque ou réaffiche votre entrée. Votre XP est conservé.",
+      "groupReply": "Réponse à la commande",
+      "safety": "Exemple uniquement. Classement fictif, pas celui de votre serveur. Aucun XP ni paramètre n'est modifié et aucun message n'est envoyé sur Discord.",
+      "stageView": "Classement",
+      "stageHide": "Masquer",
+      "stageUpdated": "Mis à jour",
+      "boardTitle": "Classement XP",
+      "boardFooter": "Classé par XP",
+      "hidden": "Votre entrée est maintenant masquée. Votre XP est conservé.",
+      "rexyHidden": "Rexy n'apparaît plus dans la liste."
+    },
+    "es": {
+      "tabLeaderboard": "Clasificación",
+      "intro": "Los miembros ven la clasificación de XP con /leaderboard. Cada miembro puede ocultar su propia entrada.",
+      "cmdView": "Muestra a los miembros ordenados de más a menos XP.",
+      "cmdPrivacy": "Oculta o vuelve a mostrar tu entrada. Tu XP se conserva.",
+      "groupReply": "Respuesta del comando",
+      "safety": "Solo es un ejemplo. Clasificación ficticia, no la de tu servidor. No cambia ningún XP ni ajuste y no se envían mensajes a Discord.",
+      "stageView": "Clasificación",
+      "stageHide": "Ocultar",
+      "stageUpdated": "Actualizada",
+      "boardTitle": "Clasificación de XP",
+      "boardFooter": "Ordenado por XP",
+      "hidden": "Tu entrada está oculta. Tu XP se conserva.",
+      "rexyHidden": "Rexy ya no aparece en la lista."
+    },
+    "de": {
+      "tabLeaderboard": "Bestenliste",
+      "intro": "Mitglieder sehen die XP-Rangliste mit /leaderboard. Jedes Mitglied kann seinen eigenen Eintrag ausblenden.",
+      "cmdView": "Zeigt Mitglieder nach XP sortiert, von hoch nach niedrig.",
+      "cmdPrivacy": "Blendet deinen Eintrag aus oder wieder ein. Deine XP bleiben erhalten.",
+      "groupReply": "Antwort auf den Befehl",
+      "safety": "Nur ein Beispiel. Beispielrangliste, nicht die deines Servers. Keine XP oder Einstellungen werden geändert und keine Nachricht an Discord gesendet.",
+      "stageView": "Rangliste",
+      "stageHide": "Ausblenden",
+      "stageUpdated": "Aktualisiert",
+      "boardTitle": "XP-Bestenliste",
+      "boardFooter": "Nach XP sortiert",
+      "hidden": "Dein Eintrag ist jetzt ausgeblendet. Deine XP bleiben erhalten.",
+      "rexyHidden": "Rexy erscheint nicht mehr in der Liste."
+    },
+    "tr": {
+      "tabLeaderboard": "Sıralama",
+      "intro": "Üyeler XP sıralamasını /leaderboard ile görür. Her üye kendi kaydını gizleyebilir.",
+      "cmdView": "Üyeleri en yüksek XP'den en düşüğe sıralar.",
+      "cmdPrivacy": "Kendi kaydınızı gizler veya yeniden gösterir. XP'niz korunur.",
+      "groupReply": "Komut yanıtı",
+      "safety": "Yalnızca örnektir. Örnek sıralama, sunucunun değil. Hiçbir XP veya ayar değişmez ve Discord'a mesaj gönderilmez.",
+      "stageView": "Sıralama",
+      "stageHide": "Gizle",
+      "stageUpdated": "Güncellendi",
+      "boardTitle": "XP sıralaması",
+      "boardFooter": "XP'ye göre sıralı",
+      "hidden": "Kaydınız artık gizli. XP'niz korunur.",
+      "rexyHidden": "Rexy artık listede görünmüyor."
+    },
+    "ar": {
+      "tabLeaderboard": "الترتيب",
+      "intro": "يرى الأعضاء ترتيب XP عبر /leaderboard. يمكن لكل عضو إخفاء اسمه من الترتيب.",
+      "cmdView": "يعرض الأعضاء مرتبين من الأعلى إلى الأقل في XP.",
+      "cmdPrivacy": "يخفي اسمك من الترتيب أو يظهره مجددًا. يبقى رصيد XP كما هو.",
+      "groupReply": "رد الأمر",
+      "safety": "مثال فقط. ترتيب تجريبي وليس ترتيب خادمك. لا يتغير أي XP أو إعداد ولا تُرسل أي رسائل إلى Discord.",
+      "stageView": "الترتيب",
+      "stageHide": "الإخفاء",
+      "stageUpdated": "بعد التحديث",
+      "boardTitle": "ترتيب XP",
+      "boardFooter": "مرتب حسب XP",
+      "hidden": "أصبح اسمك مخفيًا من الترتيب. يبقى رصيد XP كما هو.",
+      "rexyHidden": "لم يعد Rexy يظهر في القائمة."
+    },
+    "zh": {
+      "tabLeaderboard": "排行榜",
+      "intro": "成員使用 /leaderboard 查看 XP 排名。每位成員都可以隱藏自己的項目。",
+      "cmdView": "依 XP 由高至低顯示成員。",
+      "cmdPrivacy": "隱藏或重新顯示你的項目。你的 XP 會保留。",
+      "groupReply": "指令回覆",
+      "safety": "僅為示範。這是範例排名，不是你伺服器的資料。不會變更 XP 或設定，也不會在 Discord 傳送訊息。",
+      "stageView": "排名",
+      "stageHide": "隱藏",
+      "stageUpdated": "已更新",
+      "boardTitle": "XP 排行榜",
+      "boardFooter": "依 XP 排序",
+      "hidden": "你的項目已隱藏。你的 XP 會保留。",
+      "rexyHidden": "Rexy 已不在清單中。"
+    },
+    "ru": {
+      "tabLeaderboard": "Рейтинг",
+      "intro": "Участники смотрят рейтинг по XP через /leaderboard. Каждый может скрыть свою запись.",
+      "cmdView": "Показывает участников по убыванию XP.",
+      "cmdPrivacy": "Скрывает или снова показывает вашу запись. XP сохраняется.",
+      "groupReply": "Ответ на команду",
+      "safety": "Только пример. Условный рейтинг, а не рейтинг вашего сервера. XP и настройки не меняются, сообщения в Discord не отправляются.",
+      "stageView": "Рейтинг",
+      "stageHide": "Скрыть",
+      "stageUpdated": "Обновлено",
+      "boardTitle": "Рейтинг по XP",
+      "boardFooter": "Сортировка по XP",
+      "hidden": "Ваша запись скрыта. XP сохраняется.",
+      "rexyHidden": "Rexy больше нет в списке."
+    },
+    "ko": {
+      "tabLeaderboard": "순위표",
+      "intro": "멤버는 /leaderboard로 XP 순위를 봅니다. 각 멤버는 자신의 항목을 숨길 수 있습니다.",
+      "cmdView": "XP가 높은 순서대로 멤버를 보여 줍니다.",
+      "cmdPrivacy": "내 항목을 숨기거나 다시 표시합니다. XP는 유지됩니다.",
+      "groupReply": "명령어 응답",
+      "safety": "예시일 뿐입니다. 실제 서버가 아닌 예시 순위입니다. XP나 설정이 바뀌지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "stageView": "순위",
+      "stageHide": "숨기기",
+      "stageUpdated": "업데이트",
+      "boardTitle": "XP 순위표",
+      "boardFooter": "XP 순",
+      "hidden": "이제 내 항목이 숨겨집니다. XP는 유지됩니다.",
+      "rexyHidden": "Rexy가 더 이상 목록에 나오지 않습니다."
+    }
+  }
+}

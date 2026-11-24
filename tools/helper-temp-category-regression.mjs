@@ -56,13 +56,16 @@ try{
   const setup=page.locator('.temp-category-create'),button=setup.getByRole('button');
   await button.waitFor();
   if(scenario!=='mobile'){
-   const grid=setup.locator('..').locator('..');
-   const name=await grid.locator(':scope > .field input[type="text"]').boundingBox();
-   const limit=await grid.locator(':scope > .field input[type="number"]').boundingBox();
+   const tabs=page.locator('.feature-settings [role=tab]');
+   await tabs.nth(1).click();
+   const grid=page.locator('.feature-settings [role=tabpanel]:not([hidden]) .field-grid').first();
+   const name=await grid.locator(':scope > div > .field input[type="text"]').boundingBox();
+   const limit=await grid.locator(':scope > div > .field input[type="number"]').boundingBox();
    assert.ok(name&&limit&&Math.abs(name.y-limit.y)<1,'room name and room limit inputs must align');
    assert.ok(Math.abs(name.height-limit.height)<1,'aligned inputs keep the same height');
-   const titles=await grid.locator(':scope > .field > span > b').evaluateAll(nodes=>nodes.map(node=>node.getBoundingClientRect().y));
+   const titles=await grid.locator(':scope > div > .field > span > b').evaluateAll(nodes=>nodes.map(node=>node.getBoundingClientRect().y));
    assert.equal(titles.length,2);assert.ok(Math.abs(titles[0]-titles[1])<1,'field titles must align too');
+   await tabs.nth(0).click();
   }
   const selected=page.locator('select').filter({has:page.locator('option[value="40"]')});
   assert.equal(await selected.inputValue(),'40');assert.equal(creates,0);

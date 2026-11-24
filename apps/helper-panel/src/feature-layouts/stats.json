@@ -1,0 +1,338 @@
+{
+  "key": "insights.stats",
+  "tabs": [
+    {
+      "title": "tabSummary",
+      "intro": "summaryIntro",
+      "commands": [
+        [
+          "/serverstats",
+          "commandStats"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupReport",
+          "keys": [
+            "windowDays",
+            "public"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabCounter",
+      "intro": "counterIntro",
+      "groups": [
+        {
+          "title": "groupCounter",
+          "hint": "counterHint",
+          "keys": [
+            "channelId",
+            "nameTemplate"
+          ]
+        },
+        {
+          "title": "groupRefresh",
+          "hint": "refreshHint",
+          "keys": [
+            "intervalMinutes"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "tabSummary",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/serverstats"
+          },
+          {
+            "bot": true,
+            "card": {
+              "title": "statsTitle",
+              "body": "statsBody",
+              "fields": [
+                [
+                  "messages",
+                  "1284"
+                ],
+                [
+                  "joins",
+                  "18"
+                ],
+                [
+                  "leaves",
+                  "4"
+                ]
+              ]
+            },
+            "note": "private"
+          }
+        ]
+      },
+      {
+        "label": "tabCounter",
+        "channel": "# messages-1284",
+        "messages": [
+          {
+            "author": "Rexy",
+            "text": "chatA"
+          },
+          {
+            "author": "Mia",
+            "text": "chatB"
+          }
+        ]
+      },
+      {
+        "label": "groupRefresh",
+        "channel": "# messages-1302",
+        "messages": [
+          {
+            "author": "Alex",
+            "text": "chatC",
+            "note": "renamedNote"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabSummary": "Summary",
+      "summaryIntro": "Members see recent server activity with a command.",
+      "commandStats": "Shows messages, joins and leaves for the reporting window.",
+      "groupReport": "Report",
+      "tabCounter": "Live counter",
+      "counterIntro": "Helper can rename one channel to show the latest message count.",
+      "groupCounter": "Counter channel",
+      "counterHint": "Helper needs the Manage Channels permission to rename it.",
+      "groupRefresh": "Refresh",
+      "refreshHint": "Discord limits how often a channel can be renamed.",
+      "safety": "Example only. No channel is renamed and no messages are sent to Discord.",
+      "statsTitle": "Server statistics",
+      "statsBody": "Last 7 days",
+      "messages": "Messages",
+      "joins": "Joins",
+      "leaves": "Leaves",
+      "private": "Only Alex can see this reply.",
+      "chatA": "Good morning, everyone!",
+      "chatB": "Morning! The channel name shows 1,284 messages.",
+      "chatC": "It went up already.",
+      "renamedNote": "15 minutes later, Helper renamed the channel. No message is posted."
+    },
+    "pt": {
+      "tabSummary": "Resumo",
+      "summaryIntro": "Os membros veem a atividade recente do servidor com um comando.",
+      "commandStats": "Mostra mensagens, entradas e saídas no período definido.",
+      "groupReport": "Relatório",
+      "tabCounter": "Contador ao vivo",
+      "counterIntro": "O Helper pode mudar o nome de um canal para mostrar o número de mensagens mais recente.",
+      "groupCounter": "Canal do contador",
+      "counterHint": "O Helper precisa da permissão Gerir Canais para lhe mudar o nome.",
+      "groupRefresh": "Atualização",
+      "refreshHint": "O Discord limita a frequência com que um canal pode mudar de nome.",
+      "safety": "Apenas um exemplo. Nenhum canal muda de nome e nenhuma mensagem é enviada para o Discord.",
+      "statsTitle": "Estatísticas do servidor",
+      "statsBody": "Últimos 7 dias",
+      "messages": "Mensagens",
+      "joins": "Entradas",
+      "leaves": "Saídas",
+      "private": "Só o Alex vê esta resposta.",
+      "chatA": "Bom dia a todos!",
+      "chatB": "Bom dia! O nome do canal mostra 1284 mensagens.",
+      "chatC": "Já subiu.",
+      "renamedNote": "15 minutos depois, o Helper mudou o nome do canal. Nenhuma mensagem é publicada."
+    },
+    "fr": {
+      "tabSummary": "Résumé",
+      "summaryIntro": "Les membres consultent l'activité récente du serveur avec une commande.",
+      "commandStats": "Affiche les messages, arrivées et départs sur la période choisie.",
+      "groupReport": "Rapport",
+      "tabCounter": "Compteur en direct",
+      "counterIntro": "Helper peut renommer un salon pour afficher le dernier nombre de messages.",
+      "groupCounter": "Salon du compteur",
+      "counterHint": "Helper a besoin de la permission Gérer les salons pour le renommer.",
+      "groupRefresh": "Actualisation",
+      "refreshHint": "Discord limite la fréquence à laquelle un salon peut être renommé.",
+      "safety": "Exemple uniquement. Aucun salon n'est renommé et aucun message n'est envoyé sur Discord.",
+      "statsTitle": "Statistiques du serveur",
+      "statsBody": "7 derniers jours",
+      "messages": "Messages",
+      "joins": "Arrivées",
+      "leaves": "Départs",
+      "private": "Seul Alex voit cette réponse.",
+      "chatA": "Bonjour tout le monde !",
+      "chatB": "Bonjour ! Le nom du salon affiche 1 284 messages.",
+      "chatC": "Il a déjà augmenté.",
+      "renamedNote": "15 minutes plus tard, Helper a renommé le salon. Aucun message n'est publié."
+    },
+    "es": {
+      "tabSummary": "Resumen",
+      "summaryIntro": "Los miembros ven la actividad reciente del servidor con un comando.",
+      "commandStats": "Muestra mensajes, entradas y salidas del periodo elegido.",
+      "groupReport": "Informe",
+      "tabCounter": "Contador en vivo",
+      "counterIntro": "Helper puede renombrar un canal para mostrar el último recuento de mensajes.",
+      "groupCounter": "Canal del contador",
+      "counterHint": "Helper necesita el permiso Gestionar canales para renombrarlo.",
+      "groupRefresh": "Actualización",
+      "refreshHint": "Discord limita cada cuánto se puede renombrar un canal.",
+      "safety": "Solo es un ejemplo. No se renombra ningún canal ni se envían mensajes a Discord.",
+      "statsTitle": "Estadísticas del servidor",
+      "statsBody": "Últimos 7 días",
+      "messages": "Mensajes",
+      "joins": "Entradas",
+      "leaves": "Salidas",
+      "private": "Solo Alex ve esta respuesta.",
+      "chatA": "¡Buenos días a todos!",
+      "chatB": "¡Buenos días! El nombre del canal marca 1284 mensajes.",
+      "chatC": "Ya ha subido.",
+      "renamedNote": "15 minutos después, Helper renombró el canal. No se publica ningún mensaje."
+    },
+    "de": {
+      "tabSummary": "Übersicht",
+      "summaryIntro": "Mitglieder sehen die letzte Serveraktivität per Befehl.",
+      "commandStats": "Zeigt Nachrichten, Beitritte und Austritte im gewählten Zeitraum.",
+      "groupReport": "Bericht",
+      "tabCounter": "Live-Zähler",
+      "counterIntro": "Helper kann einen Kanal umbenennen, um die aktuelle Nachrichtenzahl anzuzeigen.",
+      "groupCounter": "Zählerkanal",
+      "counterHint": "Helper braucht die Berechtigung Kanäle verwalten, um ihn umzubenennen.",
+      "groupRefresh": "Aktualisierung",
+      "refreshHint": "Discord begrenzt, wie oft ein Kanal umbenannt werden kann.",
+      "safety": "Nur ein Beispiel. Es wird kein Kanal umbenannt und keine Nachricht an Discord gesendet.",
+      "statsTitle": "Serverstatistik",
+      "statsBody": "Letzte 7 Tage",
+      "messages": "Nachrichten",
+      "joins": "Beitritte",
+      "leaves": "Austritte",
+      "private": "Nur Alex sieht diese Antwort.",
+      "chatA": "Guten Morgen zusammen!",
+      "chatB": "Morgen! Der Kanalname zeigt 1.284 Nachrichten.",
+      "chatC": "Schon gestiegen.",
+      "renamedNote": "15 Minuten später hat Helper den Kanal umbenannt. Es wird keine Nachricht gepostet."
+    },
+    "tr": {
+      "tabSummary": "Özet",
+      "summaryIntro": "Üyeler bir komutla sunucunun son etkinliğini görür.",
+      "commandStats": "Seçilen dönemdeki mesajları, katılımları ve ayrılmaları gösterir.",
+      "groupReport": "Rapor",
+      "tabCounter": "Canlı sayaç",
+      "counterIntro": "Helper, en son mesaj sayısını göstermek için bir kanalın adını değiştirebilir.",
+      "groupCounter": "Sayaç kanalı",
+      "counterHint": "Adını değiştirmek için Helper'ın Kanalları Yönet iznine ihtiyacı vardır.",
+      "groupRefresh": "Yenileme",
+      "refreshHint": "Discord, bir kanalın adının ne sıklıkla değiştirilebileceğini sınırlar.",
+      "safety": "Yalnızca örnek. Hiçbir kanalın adı değişmez ve Discord'a mesaj gönderilmez.",
+      "statsTitle": "Sunucu istatistikleri",
+      "statsBody": "Son 7 gün",
+      "messages": "Mesajlar",
+      "joins": "Katılımlar",
+      "leaves": "Ayrılmalar",
+      "private": "Bu yanıtı yalnızca Alex görür.",
+      "chatA": "Herkese günaydın!",
+      "chatB": "Günaydın! Kanal adı 1.284 mesaj gösteriyor.",
+      "chatC": "Şimdiden arttı.",
+      "renamedNote": "15 dakika sonra Helper kanalın adını değiştirdi. Mesaj paylaşılmaz."
+    },
+    "ar": {
+      "tabSummary": "الملخص",
+      "summaryIntro": "يطّلع الأعضاء على نشاط الخادم الأخير عبر أمر.",
+      "commandStats": "يعرض الرسائل والانضمامات والمغادرات خلال الفترة المحددة.",
+      "groupReport": "التقرير",
+      "tabCounter": "العدّاد المباشر",
+      "counterIntro": "يمكن لـ Helper إعادة تسمية قناة لعرض أحدث عدد للرسائل.",
+      "groupCounter": "قناة العدّاد",
+      "counterHint": "يحتاج Helper إلى صلاحية إدارة القنوات لإعادة تسميتها.",
+      "groupRefresh": "التحديث",
+      "refreshHint": "يحدّ Discord من عدد مرات إعادة تسمية القناة.",
+      "safety": "مثال فقط. لا تُعاد تسمية أي قناة ولا تُرسل أي رسائل إلى Discord.",
+      "statsTitle": "إحصاءات الخادم",
+      "statsBody": "آخر 7 أيام",
+      "messages": "الرسائل",
+      "joins": "الانضمامات",
+      "leaves": "المغادرات",
+      "private": "لا يرى هذا الرد إلا Alex.",
+      "chatA": "صباح الخير للجميع!",
+      "chatB": "صباح النور! اسم القناة يعرض 1284 رسالة.",
+      "chatC": "لقد ارتفع بالفعل.",
+      "renamedNote": "بعد 15 دقيقة، أعاد Helper تسمية القناة. لا تُنشر أي رسالة."
+    },
+    "zh": {
+      "tabSummary": "摘要",
+      "summaryIntro": "成員可以透過指令查看伺服器的近期活動。",
+      "commandStats": "顯示統計期間內的訊息、加入和離開人數。",
+      "groupReport": "報表",
+      "tabCounter": "即時計數",
+      "counterIntro": "Helper 可以重新命名一個頻道，用來顯示最新的訊息數。",
+      "groupCounter": "計數頻道",
+      "counterHint": "Helper 需要「管理頻道」權限才能重新命名該頻道。",
+      "groupRefresh": "重新整理",
+      "refreshHint": "Discord 會限制頻道重新命名的頻率。",
+      "safety": "僅為範例。不會重新命名頻道，也不會向 Discord 傳送訊息。",
+      "statsTitle": "伺服器統計",
+      "statsBody": "最近 7 天",
+      "messages": "訊息",
+      "joins": "加入",
+      "leaves": "離開",
+      "private": "只有 Alex 能看到這則回覆。",
+      "chatA": "大家早安！",
+      "chatB": "早！頻道名稱顯示有 1284 則訊息。",
+      "chatC": "已經增加了。",
+      "renamedNote": "15 分鐘後，Helper 重新命名了頻道。不會發布任何訊息。"
+    },
+    "ru": {
+      "tabSummary": "Сводка",
+      "summaryIntro": "Участники видят недавнюю активность сервера с помощью команды.",
+      "commandStats": "Показывает сообщения, входы и выходы за выбранный период.",
+      "groupReport": "Отчёт",
+      "tabCounter": "Живой счётчик",
+      "counterIntro": "Helper может переименовать канал, чтобы показывать актуальное число сообщений.",
+      "groupCounter": "Канал счётчика",
+      "counterHint": "Чтобы переименовывать канал, Helper нужно право «Управлять каналами».",
+      "groupRefresh": "Обновление",
+      "refreshHint": "Discord ограничивает, как часто можно переименовывать канал.",
+      "safety": "Только пример. Каналы не переименовываются, сообщения в Discord не отправляются.",
+      "statsTitle": "Статистика сервера",
+      "statsBody": "Последние 7 дней",
+      "messages": "Сообщения",
+      "joins": "Входы",
+      "leaves": "Выходы",
+      "private": "Этот ответ видит только Alex.",
+      "chatA": "Всем доброе утро!",
+      "chatB": "Доброе утро! В названии канала уже 1284 сообщения.",
+      "chatC": "Уже выросло.",
+      "renamedNote": "Через 15 минут Helper переименовал канал. Сообщения не публикуются."
+    },
+    "ko": {
+      "tabSummary": "요약",
+      "summaryIntro": "멤버가 명령어로 최근 서버 활동을 확인합니다.",
+      "commandStats": "보고 기간의 메시지, 참여, 퇴장 수를 보여줍니다.",
+      "groupReport": "보고서",
+      "tabCounter": "실시간 카운터",
+      "counterIntro": "Helper가 채널 하나의 이름을 바꿔 최신 메시지 수를 보여줄 수 있습니다.",
+      "groupCounter": "카운터 채널",
+      "counterHint": "이름을 바꾸려면 Helper에 채널 관리 권한이 필요합니다.",
+      "groupRefresh": "새로 고침",
+      "refreshHint": "Discord는 채널 이름을 바꿀 수 있는 빈도를 제한합니다.",
+      "safety": "예시일 뿐입니다. 채널 이름이 바뀌지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "statsTitle": "서버 통계",
+      "statsBody": "최근 7일",
+      "messages": "메시지",
+      "joins": "참여",
+      "leaves": "퇴장",
+      "private": "이 답장은 Alex만 볼 수 있습니다.",
+      "chatA": "모두 좋은 아침이에요!",
+      "chatB": "좋은 아침! 채널 이름에 메시지 1,284개가 표시돼요.",
+      "chatC": "벌써 늘었네요.",
+      "renamedNote": "15분 뒤 Helper가 채널 이름을 바꿨습니다. 메시지는 게시되지 않습니다."
+    }
+  }
+}

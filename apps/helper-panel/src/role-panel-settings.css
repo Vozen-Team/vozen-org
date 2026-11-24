@@ -1,0 +1,34 @@
+.panel-main .role-panel-message-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;}
+.panel-main .role-panel-fields {display:grid;gap:20px;min-width:0;}
+.panel-main .role-panel-settings .field-grid {align-items:stretch;}
+.panel-main .role-panel-wide {grid-column:1 / -1;}
+.panel-main .role-panel-hint {margin:0 0 22px;color:var(--muted);font-size:.9375rem;line-height:1.5;max-width:65ch;}
+.panel-main .role-panel-publish-note {margin:20px 0 0;}
+.role-panel-preview {min-width:0;border:1px solid #304158;border-radius:12px;background:#0b1421;padding:16px;}
+.role-panel-preview > small {display:block;color:#b9c9df;margin-block-end:14px;}
+.role-panel-message {border-inline-start:3px solid #9ce9de;border-radius:6px;padding:12px 14px;background:#101d2d;overflow-wrap:anywhere;}
+.panel-main .role-panel-message h4 {margin:12px 0 8px;font-size:1.1rem;}
+.panel-main .role-panel-message p {color:#b9c9df;white-space:pre-wrap;font-size:.9375rem;line-height:1.6;}
+.role-panel-bot {display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.85rem;}
+.role-panel-bot span {border-radius:4px;background:#414976;padding-inline:4px;font-size:.65rem;}
+.role-panel-chips {display:flex;flex-wrap:wrap;gap:8px;margin-block-start:12px;}
+.role-panel-chips > span {border-radius:6px;background:#23334d;color:#e1e9fb;padding:6px 10px;overflow-wrap:anywhere;}
+.panel-main .role-panel-manager .template-row {align-items:start;flex-wrap:wrap;}
+.panel-main .role-panel-manager .template-row b {font-size:1rem;overflow-wrap:anywhere;}
+.panel-main .role-panel-manager .template-row small {font-size:.875rem;overflow-wrap:anywhere;}
+.panel-main .role-panel-manager .inline-actions {display:flex;flex-wrap:wrap;gap:8px;}
+.panel-main .role-panel-manager .inline-actions button {min-height:44px;white-space:normal;}
+.role-panel-demo .role-panel-message {margin-block-start:12px;}
+.role-panel-demo-choices {display:flex;flex-wrap:wrap;gap:8px;margin-block-start:16px;}
+.role-panel-demo-choices button {max-width:100%;white-space:normal;overflow-wrap:anywhere;}
+.role-panel-demo-choices [aria-pressed="true"] {border-color:#9ce9de;color:#9ce9de;background:#163039;}
+.role-panel-demo-member {margin-block-start:20px;padding:14px;border:1px solid #304158;border-radius:8px;}
+.role-panel-demo-member > small {display:block;margin-block-start:12px;color:#b9c9df;}
+.role-panel-demo-member .role-panel-chips {min-height:40px;}
+.role-panel-demo-member .role-panel-chips > span {animation:spam-demo-arrive 200ms ease-out both;}
+@container (max-width:700px) {
+  .panel-main .role-panel-message-layout {grid-template-columns:minmax(0,1fr);}
+}
+@media (prefers-reduced-motion:reduce) {
+  .role-panel-demo-member .role-panel-chips > span {animation:none;}
+}

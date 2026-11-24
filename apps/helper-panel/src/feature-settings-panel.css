@@ -1,0 +1,3 @@
+.feature-settings__hint { margin: -4px 0 12px; color: #b9c9df; font-size: .9rem; }
+.feature-settings__slot { margin-block: 16px; }
+.feature-settings__slot > .card:first-child { margin-block-start: 0; }

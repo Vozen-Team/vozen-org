@@ -1,0 +1,265 @@
+{
+  "key": "utility.search",
+  "tabs": [
+    {
+      "title": "tabSources",
+      "intro": "sourcesIntro",
+      "commands": [
+        [
+          "/search",
+          "commandSearch"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupProviders",
+          "hint": "providersHint",
+          "keys": [
+            "allowWikipedia",
+            "allowAniList",
+            "allowBluesky",
+            "allowYouTube",
+            "allowTwitch"
+          ]
+        },
+        {
+          "title": "groupResults",
+          "keys": [
+            "maxResults"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageSearch",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Mia",
+            "command": "/search",
+            "note": "queryNote"
+          },
+          {
+            "bot": true,
+            "card": {
+              "tone": "info",
+              "title": "resultTitle",
+              "body": "resultBody",
+              "fields": [
+                [
+                  "source",
+                  "Wikipedia"
+                ],
+                [
+                  "groupResults",
+                  "5"
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageAnother",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Rexy",
+            "command": "/search",
+            "note": "animeNote"
+          },
+          {
+            "bot": true,
+            "note": "providersHint",
+            "card": {
+              "tone": "info",
+              "title": "Frieren",
+              "body": "animeBody",
+              "fields": [
+                [
+                  "source",
+                  "AniList"
+                ]
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabSources": "Sources",
+      "sourcesIntro": "Members use /search to look things up on approved providers. Helper never fetches arbitrary websites.",
+      "commandSearch": "Searches an approved provider.",
+      "groupProviders": "Providers",
+      "providersHint": "Members can only search providers that are on.",
+      "groupResults": "Results",
+      "stageSearch": "Search",
+      "stageAnother": "Another provider",
+      "queryNote": "Mia searches Wikipedia for Lisbon.",
+      "resultTitle": "Lisbon",
+      "resultBody": "Lisbon is the capital and largest city of Portugal.",
+      "source": "Source",
+      "animeNote": "Rexy searches AniList for an anime.",
+      "animeBody": "Fantasy anime · 28 episodes",
+      "safety": "Example only. No searches are run and no messages are sent to Discord."
+    },
+    "pt": {
+      "tabSources": "Fontes",
+      "sourcesIntro": "Os membros usam /search para pesquisar em fornecedores aprovados. O Helper nunca abre sites arbitrários.",
+      "commandSearch": "Pesquisa num fornecedor aprovado.",
+      "groupProviders": "Fornecedores",
+      "providersHint": "Os membros só podem pesquisar nos fornecedores ativos.",
+      "groupResults": "Resultados",
+      "stageSearch": "Pesquisar",
+      "stageAnother": "Outro fornecedor",
+      "queryNote": "A Mia pesquisa Lisboa na Wikipédia.",
+      "resultTitle": "Lisboa",
+      "resultBody": "Lisboa é a capital e a maior cidade de Portugal.",
+      "source": "Fonte",
+      "animeNote": "O Rexy pesquisa um anime no AniList.",
+      "animeBody": "Anime de fantasia · 28 episódios",
+      "safety": "Apenas um exemplo. Não são feitas pesquisas nem enviadas mensagens para o Discord."
+    },
+    "fr": {
+      "tabSources": "Sources",
+      "sourcesIntro": "Les membres utilisent /search pour chercher sur des services approuvés. Helper ne consulte jamais de sites arbitraires.",
+      "commandSearch": "Recherche sur un service approuvé.",
+      "groupProviders": "Services",
+      "providersHint": "Les membres ne peuvent chercher que sur les services activés.",
+      "groupResults": "Résultats",
+      "stageSearch": "Rechercher",
+      "stageAnother": "Autre service",
+      "queryNote": "Mia cherche Lisbonne sur Wikipédia.",
+      "resultTitle": "Lisbonne",
+      "resultBody": "Lisbonne est la capitale et la plus grande ville du Portugal.",
+      "source": "Source",
+      "animeNote": "Rexy cherche un anime sur AniList.",
+      "animeBody": "Anime de fantasy · 28 épisodes",
+      "safety": "Exemple uniquement. Aucune recherche n'est lancée et aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabSources": "Fuentes",
+      "sourcesIntro": "Los miembros usan /search para buscar en proveedores aprobados. Helper nunca accede a sitios arbitrarios.",
+      "commandSearch": "Busca en un proveedor aprobado.",
+      "groupProviders": "Proveedores",
+      "providersHint": "Los miembros solo pueden buscar en los proveedores activos.",
+      "groupResults": "Resultados",
+      "stageSearch": "Buscar",
+      "stageAnother": "Otro proveedor",
+      "queryNote": "Mia busca Lisboa en Wikipedia.",
+      "resultTitle": "Lisboa",
+      "resultBody": "Lisboa es la capital y la ciudad más grande de Portugal.",
+      "source": "Fuente",
+      "animeNote": "Rexy busca un anime en AniList.",
+      "animeBody": "Anime de fantasía · 28 episodios",
+      "safety": "Solo es un ejemplo. No se hacen búsquedas ni se envían mensajes a Discord."
+    },
+    "de": {
+      "tabSources": "Quellen",
+      "sourcesIntro": "Mitglieder suchen mit /search bei freigegebenen Anbietern. Helper ruft nie beliebige Websites ab.",
+      "commandSearch": "Sucht bei einem freigegebenen Anbieter.",
+      "groupProviders": "Anbieter",
+      "providersHint": "Mitglieder können nur aktivierte Anbieter durchsuchen.",
+      "groupResults": "Ergebnisse",
+      "stageSearch": "Suchen",
+      "stageAnother": "Anderer Anbieter",
+      "queryNote": "Mia sucht auf Wikipedia nach Lissabon.",
+      "resultTitle": "Lissabon",
+      "resultBody": "Lissabon ist die Hauptstadt und größte Stadt Portugals.",
+      "source": "Quelle",
+      "animeNote": "Rexy sucht auf AniList nach einem Anime.",
+      "animeBody": "Fantasy-Anime · 28 Folgen",
+      "safety": "Nur ein Beispiel. Es werden keine Suchen ausgeführt und keine Nachrichten an Discord gesendet."
+    },
+    "tr": {
+      "tabSources": "Kaynaklar",
+      "sourcesIntro": "Üyeler onaylı sağlayıcılarda arama yapmak için /search kullanır. Helper rastgele web sitelerini asla açmaz.",
+      "commandSearch": "Onaylı bir sağlayıcıda arar.",
+      "groupProviders": "Sağlayıcılar",
+      "providersHint": "Üyeler yalnızca açık sağlayıcılarda arama yapabilir.",
+      "groupResults": "Sonuçlar",
+      "stageSearch": "Ara",
+      "stageAnother": "Başka sağlayıcı",
+      "queryNote": "Mia Wikipedia'da Lizbon'u arar.",
+      "resultTitle": "Lizbon",
+      "resultBody": "Lizbon, Portekiz'in başkenti ve en büyük şehridir.",
+      "source": "Kaynak",
+      "animeNote": "Rexy AniList'te bir anime arar.",
+      "animeBody": "Fantastik anime · 28 bölüm",
+      "safety": "Yalnızca örnek. Arama yapılmaz ve Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabSources": "المصادر",
+      "sourcesIntro": "يستخدم الأعضاء /search للبحث لدى مزوّدين معتمدين. لا يجلب Helper أي مواقع عشوائية أبدًا.",
+      "commandSearch": "يبحث لدى مزوّد معتمد.",
+      "groupProviders": "المزوّدون",
+      "providersHint": "يمكن للأعضاء البحث لدى المزوّدين المفعّلين فقط.",
+      "groupResults": "النتائج",
+      "stageSearch": "البحث",
+      "stageAnother": "مزوّد آخر",
+      "queryNote": "تبحث Mia عن لشبونة في ويكيبيديا.",
+      "resultTitle": "لشبونة",
+      "resultBody": "لشبونة هي عاصمة البرتغال وأكبر مدنها.",
+      "source": "المصدر",
+      "animeNote": "يبحث Rexy عن أنمي في AniList.",
+      "animeBody": "أنمي خيالي · 28 حلقة",
+      "safety": "مثال فقط. لا يُجرى أي بحث ولا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabSources": "來源",
+      "sourcesIntro": "成員使用 /search 在已核准的來源中搜尋。Helper 絕不擷取任意網站。",
+      "commandSearch": "在已核准的來源中搜尋。",
+      "groupProviders": "供應商",
+      "providersHint": "成員只能搜尋已開啟的供應商。",
+      "groupResults": "結果",
+      "stageSearch": "搜尋",
+      "stageAnother": "其他來源",
+      "queryNote": "Mia 在維基百科中搜尋里斯本。",
+      "resultTitle": "里斯本",
+      "resultBody": "里斯本是葡萄牙的首都和最大城市。",
+      "source": "來源",
+      "animeNote": "Rexy 在 AniList 中搜尋動畫。",
+      "animeBody": "奇幻動畫 · 28 集",
+      "safety": "僅為範例。不會執行搜尋，也不會向 Discord 傳送任何訊息。"
+    },
+    "ru": {
+      "tabSources": "Источники",
+      "sourcesIntro": "Участники ищут через /search у одобренных провайдеров. Helper никогда не открывает произвольные сайты.",
+      "commandSearch": "Ищет у одобренного провайдера.",
+      "groupProviders": "Провайдеры",
+      "providersHint": "Искать можно только у включённых провайдеров.",
+      "groupResults": "Результаты",
+      "stageSearch": "Поиск",
+      "stageAnother": "Другой провайдер",
+      "queryNote": "Mia ищет Лиссабон в Википедии.",
+      "resultTitle": "Лиссабон",
+      "resultBody": "Лиссабон — столица и крупнейший город Португалии.",
+      "source": "Источник",
+      "animeNote": "Rexy ищет аниме на AniList.",
+      "animeBody": "Фэнтези-аниме · 28 серий",
+      "safety": "Только пример. Поиск не выполняется, сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabSources": "검색 소스",
+      "sourcesIntro": "멤버는 /search로 승인된 제공자에서 검색합니다. Helper는 임의의 웹사이트를 가져오지 않습니다.",
+      "commandSearch": "승인된 제공자에서 검색합니다.",
+      "groupProviders": "제공자",
+      "providersHint": "멤버는 켜진 제공자에서만 검색할 수 있습니다.",
+      "groupResults": "결과",
+      "stageSearch": "검색",
+      "stageAnother": "다른 제공자",
+      "queryNote": "Mia가 Wikipedia에서 리스본을 검색합니다.",
+      "resultTitle": "리스본",
+      "resultBody": "리스본은 포르투갈의 수도이자 최대 도시입니다.",
+      "source": "출처",
+      "animeNote": "Rexy가 AniList에서 애니메이션을 검색합니다.",
+      "animeBody": "판타지 애니메이션 · 28화",
+      "safety": "예시일 뿐입니다. 검색이 실행되지 않으며 Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

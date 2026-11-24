@@ -1,0 +1,326 @@
+{
+  "key": "community.starboard",
+  "tabs": [
+    {
+      "title": "tabBoard",
+      "intro": "boardIntro",
+      "commands": [
+        [
+          "/starboard-set",
+          "cmdSet"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupWhere",
+          "hint": "whereHint",
+          "keys": [
+            "channel"
+          ]
+        },
+        {
+          "title": "groupTrigger",
+          "keys": [
+            "emoji",
+            "threshold"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabRules",
+      "intro": "rulesIntro",
+      "groups": [
+        {
+          "title": "groupCounting",
+          "keys": [
+            "ignoredChannels",
+            "ignoredRoles",
+            "allowSelfStar"
+          ]
+        },
+        {
+          "title": "groupRepost",
+          "keys": [
+            "includeImages"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stagePost",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "text": "postText"
+          },
+          {
+            "author": "Rexy",
+            "note": "reacted"
+          }
+        ]
+      },
+      {
+        "label": "stageStars",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Alex",
+            "note": "selfStar"
+          },
+          {
+            "author": "Mia",
+            "note": "thirdStar"
+          }
+        ]
+      },
+      {
+        "label": "stageRepost",
+        "channel": "# starboard",
+        "messages": [
+          {
+            "bot": true,
+            "card": {
+              "tone": "success",
+              "title": "⭐ 3 · # general",
+              "body": "postText",
+              "fields": [
+                [
+                  "authorField",
+                  "@Alex"
+                ]
+              ],
+              "footer": "repostFooter"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabBoard": "Starboard",
+      "boardIntro": "Members react with the emoji. When a message gets enough reactions, Helper reposts it in the starboard channel.",
+      "cmdSet": "Sets the starboard channel from Discord. Staff only.",
+      "groupWhere": "Where it posts",
+      "whereHint": "Helper keeps the star count on each repost up to date.",
+      "groupTrigger": "When a message qualifies",
+      "tabRules": "Rules",
+      "rulesIntro": "Decide what counts and what the repost includes.",
+      "groupCounting": "Counting and exclusions",
+      "groupRepost": "Repost",
+      "safety": "Example only. No message is reposted and nothing is sent to Discord.",
+      "stagePost": "Post",
+      "stageStars": "Stars",
+      "stageRepost": "Starboard",
+      "postText": "We just reached 1,000 members!",
+      "reacted": "Reacted with ⭐",
+      "selfStar": "Reacted with ⭐ to their own message. It does not count.",
+      "thirdStar": "Reacted with ⭐. With another member's star, the message now has 3.",
+      "authorField": "Author",
+      "repostFooter": "Reposted after reaching 3 stars"
+    },
+    "pt": {
+      "tabBoard": "Starboard",
+      "boardIntro": "Os membros reagem com o emoji. Quando uma mensagem tem reações suficientes, o Helper volta a publicá-la no canal do Starboard.",
+      "cmdSet": "Define o canal do starboard a partir do Discord. Só para a staff.",
+      "groupWhere": "Onde publica",
+      "whereHint": "O Helper mantém atualizada a contagem de estrelas de cada destaque.",
+      "groupTrigger": "Quando uma mensagem é destacada",
+      "tabRules": "Regras",
+      "rulesIntro": "Decide o que conta e o que o destaque inclui.",
+      "groupCounting": "Contagem e exclusões",
+      "groupRepost": "Destaque",
+      "safety": "Apenas um exemplo. Nenhuma mensagem é republicada e nada é enviado para o Discord.",
+      "stagePost": "Mensagem",
+      "stageStars": "Estrelas",
+      "stageRepost": "Starboard",
+      "postText": "Acabámos de chegar aos 1000 membros!",
+      "reacted": "Reagiu com ⭐",
+      "selfStar": "Reagiu com ⭐ à própria mensagem. Não conta.",
+      "thirdStar": "Reagiu com ⭐. Com a estrela de outro membro, a mensagem tem agora 3.",
+      "authorField": "Autor",
+      "repostFooter": "Destacada ao chegar às 3 estrelas"
+    },
+    "fr": {
+      "tabBoard": "Starboard",
+      "boardIntro": "Les membres réagissent avec l'emoji. Quand un message reçoit assez de réactions, Helper le republie dans le canal Starboard.",
+      "cmdSet": "Définit le canal Starboard depuis Discord. Réservé au staff.",
+      "groupWhere": "Où publier",
+      "whereHint": "Helper tient à jour le nombre d'étoiles de chaque message republié.",
+      "groupTrigger": "Quand un message est retenu",
+      "tabRules": "Règles",
+      "rulesIntro": "Choisissez ce qui compte et ce que contient la republication.",
+      "groupCounting": "Comptage et exclusions",
+      "groupRepost": "Republication",
+      "safety": "Exemple uniquement. Aucun message n'est republié et rien n'est envoyé sur Discord.",
+      "stagePost": "Message",
+      "stageStars": "Étoiles",
+      "stageRepost": "Starboard",
+      "postText": "Nous venons d'atteindre 1 000 membres !",
+      "reacted": "A réagi avec ⭐",
+      "selfStar": "A réagi avec ⭐ à son propre message. Cela ne compte pas.",
+      "thirdStar": "A réagi avec ⭐. Avec l'étoile d'un autre membre, le message en a maintenant 3.",
+      "authorField": "Auteur",
+      "repostFooter": "Republié après 3 étoiles"
+    },
+    "es": {
+      "tabBoard": "Starboard",
+      "boardIntro": "Los miembros reaccionan con el emoji. Cuando un mensaje tiene suficientes reacciones, Helper lo vuelve a publicar en el canal de Starboard.",
+      "cmdSet": "Configura el canal de Starboard desde Discord. Solo para el staff.",
+      "groupWhere": "Dónde se publica",
+      "whereHint": "Helper mantiene al día el número de estrellas de cada mensaje destacado.",
+      "groupTrigger": "Cuándo se destaca un mensaje",
+      "tabRules": "Reglas",
+      "rulesIntro": "Decide qué cuenta y qué incluye el mensaje destacado.",
+      "groupCounting": "Recuento y exclusiones",
+      "groupRepost": "Mensaje destacado",
+      "safety": "Solo es un ejemplo. No se vuelve a publicar ningún mensaje ni se envía nada a Discord.",
+      "stagePost": "Mensaje",
+      "stageStars": "Estrellas",
+      "stageRepost": "Starboard",
+      "postText": "¡Acabamos de llegar a 1000 miembros!",
+      "reacted": "Reaccionó con ⭐",
+      "selfStar": "Reaccionó con ⭐ a su propio mensaje. No cuenta.",
+      "thirdStar": "Reaccionó con ⭐. Con la estrella de otro miembro, el mensaje ya tiene 3.",
+      "authorField": "Autor",
+      "repostFooter": "Destacado al llegar a 3 estrellas"
+    },
+    "de": {
+      "tabBoard": "Starboard",
+      "boardIntro": "Mitglieder reagieren mit dem Emoji. Hat eine Nachricht genug Reaktionen, postet Helper sie erneut im Starboard-Kanal.",
+      "cmdSet": "Legt den Starboard-Kanal in Discord fest. Nur für das Team.",
+      "groupWhere": "Wo gepostet wird",
+      "whereHint": "Helper hält die Sternzahl jedes Beitrags aktuell.",
+      "groupTrigger": "Wann eine Nachricht aufgenommen wird",
+      "tabRules": "Regeln",
+      "rulesIntro": "Festlegen, was zählt und was der Beitrag enthält.",
+      "groupCounting": "Zählung und Ausnahmen",
+      "groupRepost": "Beitrag im Starboard",
+      "safety": "Nur ein Beispiel. Keine Nachricht wird erneut gepostet und nichts an Discord gesendet.",
+      "stagePost": "Nachricht",
+      "stageStars": "Sterne",
+      "stageRepost": "Starboard",
+      "postText": "Wir haben gerade 1.000 Mitglieder erreicht!",
+      "reacted": "Hat mit ⭐ reagiert",
+      "selfStar": "Hat mit ⭐ auf die eigene Nachricht reagiert. Das zählt nicht.",
+      "thirdStar": "Hat mit ⭐ reagiert. Mit dem Stern eines anderen Mitglieds hat die Nachricht jetzt 3.",
+      "authorField": "Autor",
+      "repostFooter": "Nach 3 Sternen erneut gepostet"
+    },
+    "tr": {
+      "tabBoard": "Starboard",
+      "boardIntro": "Üyeler emojiyle tepki verir. Bir mesaj yeterli tepki aldığında Helper onu Starboard kanalında yeniden paylaşır.",
+      "cmdSet": "Starboard kanalını Discord'dan ayarlar. Yalnızca yetkililer.",
+      "groupWhere": "Nerede paylaşılır",
+      "whereHint": "Helper her paylaşımdaki yıldız sayısını güncel tutar.",
+      "groupTrigger": "Bir mesaj ne zaman seçilir",
+      "tabRules": "Kurallar",
+      "rulesIntro": "Nelerin sayılacağını ve paylaşımın neleri içereceğini seçin.",
+      "groupCounting": "Sayım ve hariç tutulanlar",
+      "groupRepost": "Paylaşım",
+      "safety": "Yalnızca örnektir. Hiçbir mesaj yeniden paylaşılmaz ve Discord'a hiçbir şey gönderilmez.",
+      "stagePost": "Mesaj",
+      "stageStars": "Yıldızlar",
+      "stageRepost": "Starboard",
+      "postText": "1.000 üyeye ulaştık!",
+      "reacted": "⭐ ile tepki verdi",
+      "selfStar": "Kendi mesajına ⭐ ile tepki verdi. Bu sayılmaz.",
+      "thirdStar": "⭐ ile tepki verdi. Başka bir üyenin yıldızıyla mesajın artık 3 yıldızı var.",
+      "authorField": "Yazar",
+      "repostFooter": "3 yıldıza ulaşınca paylaşıldı"
+    },
+    "ar": {
+      "tabBoard": "Starboard",
+      "boardIntro": "يتفاعل الأعضاء بالرمز التعبيري. عندما تحصل رسالة على تفاعلات كافية، يعيد Helper نشرها في قناة Starboard.",
+      "cmdSet": "يحدد قناة Starboard من Discord. للطاقم فقط.",
+      "groupWhere": "مكان النشر",
+      "whereHint": "يُبقي Helper عدد النجوم محدّثًا في كل رسالة يعيد نشرها.",
+      "groupTrigger": "متى تُختار الرسالة",
+      "tabRules": "القواعد",
+      "rulesIntro": "حدد ما يُحتسب وما تتضمنه الرسالة المعاد نشرها.",
+      "groupCounting": "الاحتساب والاستثناءات",
+      "groupRepost": "إعادة النشر",
+      "safety": "مثال فقط. لا يُعاد نشر أي رسالة ولا يُرسل أي شيء إلى Discord.",
+      "stagePost": "الرسالة",
+      "stageStars": "النجوم",
+      "stageRepost": "Starboard",
+      "postText": "وصلنا للتو إلى 1000 عضو!",
+      "reacted": "تفاعل بـ ⭐",
+      "selfStar": "تفاعل بـ ⭐ على رسالته. لا يُحتسب ذلك.",
+      "thirdStar": "تفاعل بـ ⭐. مع نجمة عضو آخر، أصبح لدى الرسالة 3 نجوم.",
+      "authorField": "الكاتب",
+      "repostFooter": "أعيد نشرها بعد بلوغ 3 نجوم"
+    },
+    "zh": {
+      "tabBoard": "Starboard",
+      "boardIntro": "成員使用該表情符號做出反應。當訊息獲得足夠的反應時，Helper 會將它轉貼到 Starboard 頻道。",
+      "cmdSet": "在 Discord 中設定 Starboard 頻道。僅限管理團隊。",
+      "groupWhere": "發布位置",
+      "whereHint": "Helper 會持續更新每則轉貼訊息的星星數。",
+      "groupTrigger": "訊息入選條件",
+      "tabRules": "規則",
+      "rulesIntro": "決定哪些項目會計入，以及轉貼內容包含哪些項目。",
+      "groupCounting": "計算與排除",
+      "groupRepost": "轉貼內容",
+      "safety": "僅為示範。不會轉貼任何訊息，也不會在 Discord 傳送內容。",
+      "stagePost": "發文",
+      "stageStars": "星星",
+      "stageRepost": "Starboard",
+      "postText": "我們剛達到 1000 位成員！",
+      "reacted": "以 ⭐ 做出反應",
+      "selfStar": "以 ⭐ 回應自己的訊息。這不會計入。",
+      "thirdStar": "以 ⭐ 做出反應。加上另一位成員的星星，這則訊息現在有 3 顆星。",
+      "authorField": "作者",
+      "repostFooter": "達到 3 顆星後已轉貼"
+    },
+    "ru": {
+      "tabBoard": "Starboard",
+      "boardIntro": "Участники ставят реакцию с эмодзи. Когда у сообщения достаточно реакций, Helper публикует его в канале Starboard.",
+      "cmdSet": "Задаёт канал Starboard прямо в Discord. Только для команды.",
+      "groupWhere": "Куда публиковать",
+      "whereHint": "Helper обновляет число звёзд у каждой публикации.",
+      "groupTrigger": "Когда сообщение попадает в Starboard",
+      "tabRules": "Правила",
+      "rulesIntro": "Решите, что учитывается и что входит в публикацию.",
+      "groupCounting": "Подсчёт и исключения",
+      "groupRepost": "Публикация",
+      "safety": "Только пример. Сообщения не публикуются повторно, в Discord ничего не отправляется.",
+      "stagePost": "Сообщение",
+      "stageStars": "Звёзды",
+      "stageRepost": "Starboard",
+      "postText": "Нас уже 1000!",
+      "reacted": "Поставил(а) ⭐",
+      "selfStar": "Поставил(а) ⭐ своему сообщению. Это не учитывается.",
+      "thirdStar": "Поставил(а) ⭐. Вместе со звездой ещё одного участника у сообщения теперь 3.",
+      "authorField": "Автор",
+      "repostFooter": "Опубликовано после 3 звёзд"
+    },
+    "ko": {
+      "tabBoard": "Starboard",
+      "boardIntro": "멤버가 이모지로 반응합니다. 메시지가 충분한 반응을 받으면 Helper가 Starboard 채널에 다시 게시합니다.",
+      "cmdSet": "Discord에서 Starboard 채널을 설정합니다. 운영진 전용입니다.",
+      "groupWhere": "게시 위치",
+      "whereHint": "Helper는 다시 게시한 각 메시지의 별 개수를 최신 상태로 유지합니다.",
+      "groupTrigger": "메시지가 선정되는 조건",
+      "tabRules": "규칙",
+      "rulesIntro": "무엇을 집계할지, 다시 게시할 때 무엇을 포함할지 정하세요.",
+      "groupCounting": "집계와 제외",
+      "groupRepost": "다시 게시",
+      "safety": "예시일 뿐입니다. 메시지가 다시 게시되지 않으며 Discord로 아무것도 전송되지 않습니다.",
+      "stagePost": "게시",
+      "stageStars": "별",
+      "stageRepost": "Starboard",
+      "postText": "방금 멤버 1,000명을 달성했어요!",
+      "reacted": "⭐로 반응했습니다",
+      "selfStar": "자신의 메시지에 ⭐로 반응했습니다. 집계되지 않습니다.",
+      "thirdStar": "⭐로 반응했습니다. 다른 멤버의 별까지 더해 이제 별이 3개입니다.",
+      "authorField": "작성자",
+      "repostFooter": "별 3개에 도달해 다시 게시됨"
+    }
+  }
+}

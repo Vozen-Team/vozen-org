@@ -16,6 +16,23 @@
 .ticket-channel-create__row > button {flex-shrink:0;min-height:44px;}
 .ticket-settings .ticket-panel-channel p {font-size:12px;margin:8px 0;line-height:1.5;}
 .ticket-settings .ticket-category-create p {font-size:12px;margin:8px 0;line-height:1.5;}
+.panel-main .ticket-tabs .ticket-settings__group .field-grid {grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;}
+.panel-main .ticket-tabs .ticket-settings__category {grid-column:auto;}
+.panel-main .ticket-tabs .ticket-settings__panel-channel {grid-row:span 2;}
+.panel-main .ticket-tabs .ticket-settings__hint {font-size:.9375rem;margin-bottom:22px;}
+.panel-main .ticket-tabs .ticket-settings__group .field-grid > div {display:block;}
+.panel-main .ticket-tabs .ticket-settings__group .field {height:auto;}
+.panel-main .ticket-tabs .field-grid > .ticket-settings__limit {display:grid;align-self:stretch;}
+.panel-main .ticket-tabs .ticket-settings__limit .field {height:100%;grid-template-rows:1fr auto;}
+.panel-main .ticket-tabs .ticket-settings__group textarea {min-height:110px;}
+.panel-main .ticket-tabs .ticket-channel-create__row .field {flex:1;}
+.panel-main .ticket-tabs .ticket-channel-create__row {align-items:end;}
+@container (max-width:620px) {
+  .panel-main .ticket-tabs .ticket-settings__group .field-grid {grid-template-columns:minmax(0,1fr);}
+  .panel-main .ticket-tabs .ticket-settings__panel-channel {grid-row:auto;}
+  .ticket-tabs .ticket-channel-create__row {flex-direction:column;align-items:stretch;}
+  .ticket-tabs .ticket-channel-create__row > button {width:100%;}
+}
 @media(max-width:600px) {
   .ticket-channel-create__row {flex-direction:column;align-items:stretch;}
   .ticket-channel-create__row > button {width:100%;}

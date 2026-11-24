@@ -215,16 +215,24 @@ textarea:focus-visible {
   font-size: 13px;
 }
 
-.panel-main .invite-settings .field-grid {
+.panel-main .invite-settings .field-grid,
+.panel-main .feature-settings--invite_tracker .field-grid {
   align-items: end;
 }
 
-.panel-main .invite-settings .toggle-field {
+.panel-main .invite-settings .toggle-field,
+.panel-main .feature-settings--invite_tracker .toggle-field {
   min-height: var(--panel-control-height);
   padding-block: 8px;
 }
 
-.panel-main .invite-settings .toggle-field input {
+/* Shared layout inputs are 50px tall; keep the toggle the same height. */
+.panel-main .feature-settings--invite_tracker .toggle-field {
+  min-height: 50px;
+}
+
+.panel-main .invite-settings .toggle-field input,
+.panel-main .feature-settings--invite_tracker .toggle-field input {
   margin: 0;
 }
 

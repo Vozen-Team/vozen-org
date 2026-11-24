@@ -1,0 +1,277 @@
+{
+  "key": "community.birthdays",
+  "tabs": [
+    {
+      "title": "tabBirthdays",
+      "intro": "intro",
+      "commands": [
+        [
+          "/birthday-set",
+          "cmdSet"
+        ],
+        [
+          "/birthday-remove",
+          "cmdRemove"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupWhere",
+          "hint": "whereHint",
+          "keys": [
+            "channel"
+          ]
+        },
+        {
+          "title": "groupMessage",
+          "hint": "roleHint",
+          "keys": [
+            "message",
+            "role"
+          ]
+        },
+        {
+          "title": "groupDay",
+          "keys": [
+            "timezone"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageSave",
+        "channel": "# bot-commands",
+        "messages": [
+          {
+            "author": "Rexy",
+            "command": "/birthday-set day: 14 month: 3"
+          },
+          {
+            "bot": true,
+            "text": "saved"
+          }
+        ]
+      },
+      {
+        "label": "stageCelebrate",
+        "channel": "# birthdays",
+        "messages": [
+          {
+            "bot": true,
+            "text": "celebration",
+            "note": "roleNote"
+          }
+        ]
+      },
+      {
+        "label": "stageRemove",
+        "channel": "# bot-commands",
+        "messages": [
+          {
+            "author": "Rexy",
+            "command": "/birthday-remove"
+          },
+          {
+            "bot": true,
+            "text": "removed"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabBirthdays": "Birthdays",
+      "intro": "Members save their birthday with /birthday-set. Helper asks only for the day and month, never the year.",
+      "cmdSet": "Saves your birthday day and month.",
+      "cmdRemove": "Removes your saved birthday.",
+      "groupWhere": "Where it posts",
+      "whereHint": "On the day, Helper posts the message here and mentions the member.",
+      "groupMessage": "Message and role",
+      "roleHint": "To give the role, Helper's own role must be above it in the server settings.",
+      "groupDay": "Time zone",
+      "safety": "Example only. No birthday is saved and no messages are sent to Discord.",
+      "stageSave": "Save",
+      "stageCelebrate": "Birthday",
+      "stageRemove": "Remove",
+      "saved": "Your birthday is saved.",
+      "celebration": "Happy birthday, @Rexy! 🎉",
+      "roleNote": "Rexy also gets the birthday role.",
+      "removed": "Your saved birthday was removed."
+    },
+    "pt": {
+      "tabBirthdays": "Aniversários",
+      "intro": "Os membros guardam o aniversário com /birthday-set. O Helper só pede o dia e o mês, nunca o ano.",
+      "cmdSet": "Guarda o dia e o mês do teu aniversário.",
+      "cmdRemove": "Apaga o aniversário guardado.",
+      "groupWhere": "Onde publica",
+      "whereHint": "No dia, o Helper publica aqui a mensagem e menciona o membro.",
+      "groupMessage": "Mensagem e cargo",
+      "roleHint": "Para dar o cargo, o cargo do Helper tem de estar acima dele nas definições do servidor.",
+      "groupDay": "Fuso horário",
+      "safety": "Apenas um exemplo. Nenhum aniversário é guardado e nenhuma mensagem é enviada para o Discord.",
+      "stageSave": "Guardar",
+      "stageCelebrate": "Aniversário",
+      "stageRemove": "Apagar",
+      "saved": "O teu aniversário foi guardado.",
+      "celebration": "Parabéns, @Rexy! 🎉",
+      "roleNote": "O Rexy recebe também o cargo de aniversário.",
+      "removed": "O teu aniversário foi apagado."
+    },
+    "fr": {
+      "tabBirthdays": "Anniversaires",
+      "intro": "Les membres enregistrent leur anniversaire avec /birthday-set. Helper demande seulement le jour et le mois, jamais l'année.",
+      "cmdSet": "Enregistre le jour et le mois de votre anniversaire.",
+      "cmdRemove": "Supprime votre anniversaire enregistré.",
+      "groupWhere": "Où publier",
+      "whereHint": "Le jour venu, Helper publie le message ici et mentionne le membre.",
+      "groupMessage": "Message et rôle",
+      "roleHint": "Pour attribuer le rôle, le rôle de Helper doit être au-dessus dans les paramètres du serveur.",
+      "groupDay": "Fuseau horaire",
+      "safety": "Exemple uniquement. Aucun anniversaire n'est enregistré et aucun message n'est envoyé sur Discord.",
+      "stageSave": "Enregistrer",
+      "stageCelebrate": "Anniversaire",
+      "stageRemove": "Supprimer",
+      "saved": "Votre anniversaire est enregistré.",
+      "celebration": "Joyeux anniversaire, @Rexy ! 🎉",
+      "roleNote": "Rexy reçoit aussi le rôle d'anniversaire.",
+      "removed": "Votre anniversaire a été supprimé."
+    },
+    "es": {
+      "tabBirthdays": "Cumpleaños",
+      "intro": "Los miembros guardan su cumpleaños con /birthday-set. Helper solo pide el día y el mes, nunca el año.",
+      "cmdSet": "Guarda el día y el mes de tu cumpleaños.",
+      "cmdRemove": "Borra tu cumpleaños guardado.",
+      "groupWhere": "Dónde se publica",
+      "whereHint": "Ese día, Helper publica aquí el mensaje y menciona al miembro.",
+      "groupMessage": "Mensaje y rol",
+      "roleHint": "Para dar el rol, el rol de Helper debe estar por encima en los ajustes del servidor.",
+      "groupDay": "Zona horaria",
+      "safety": "Solo es un ejemplo. No se guarda ningún cumpleaños ni se envían mensajes a Discord.",
+      "stageSave": "Guardar",
+      "stageCelebrate": "Cumpleaños",
+      "stageRemove": "Borrar",
+      "saved": "Tu cumpleaños se ha guardado.",
+      "celebration": "¡Feliz cumpleaños, @Rexy! 🎉",
+      "roleNote": "Rexy también recibe el rol de cumpleaños.",
+      "removed": "Tu cumpleaños se ha borrado."
+    },
+    "de": {
+      "tabBirthdays": "Geburtstage",
+      "intro": "Mitglieder speichern ihren Geburtstag mit /birthday-set. Helper fragt nur nach Tag und Monat, nie nach dem Jahr.",
+      "cmdSet": "Speichert Tag und Monat deines Geburtstags.",
+      "cmdRemove": "Löscht deinen gespeicherten Geburtstag.",
+      "groupWhere": "Wo gepostet wird",
+      "whereHint": "Am Geburtstag postet Helper die Nachricht hier und erwähnt das Mitglied.",
+      "groupMessage": "Nachricht und Rolle",
+      "roleHint": "Damit Helper die Rolle vergeben kann, muss seine Rolle in den Servereinstellungen darüber stehen.",
+      "groupDay": "Zeitzone",
+      "safety": "Nur ein Beispiel. Es wird kein Geburtstag gespeichert und keine Nachricht an Discord gesendet.",
+      "stageSave": "Speichern",
+      "stageCelebrate": "Geburtstag",
+      "stageRemove": "Löschen",
+      "saved": "Dein Geburtstag ist gespeichert.",
+      "celebration": "Alles Gute zum Geburtstag, @Rexy! 🎉",
+      "roleNote": "Rexy erhält außerdem die Geburtstagsrolle.",
+      "removed": "Dein Geburtstag wurde gelöscht."
+    },
+    "tr": {
+      "tabBirthdays": "Doğum günleri",
+      "intro": "Üyeler doğum günlerini /birthday-set ile kaydeder. Helper yalnızca gün ve ayı sorar, yılı asla sormaz.",
+      "cmdSet": "Doğum gününüzün gün ve ayını kaydeder.",
+      "cmdRemove": "Kayıtlı doğum gününüzü siler.",
+      "groupWhere": "Nerede paylaşılır",
+      "whereHint": "O gün Helper mesajı burada paylaşır ve üyeyi etiketler.",
+      "groupMessage": "Mesaj ve rol",
+      "roleHint": "Rolü verebilmesi için Helper'ın rolü sunucu ayarlarında bu rolün üstünde olmalıdır.",
+      "groupDay": "Saat dilimi",
+      "safety": "Yalnızca örnektir. Hiçbir doğum günü kaydedilmez ve Discord'a mesaj gönderilmez.",
+      "stageSave": "Kaydet",
+      "stageCelebrate": "Doğum günü",
+      "stageRemove": "Sil",
+      "saved": "Doğum gününüz kaydedildi.",
+      "celebration": "İyi ki doğdun, @Rexy! 🎉",
+      "roleNote": "Rexy doğum günü rolünü de alır.",
+      "removed": "Doğum gününüz silindi."
+    },
+    "ar": {
+      "tabBirthdays": "أعياد الميلاد",
+      "intro": "يحفظ الأعضاء أعياد ميلادهم عبر /birthday-set. يطلب Helper اليوم والشهر فقط، ولا يطلب السنة أبدًا.",
+      "cmdSet": "يحفظ يوم وشهر عيد ميلادك.",
+      "cmdRemove": "يحذف عيد ميلادك المحفوظ.",
+      "groupWhere": "مكان النشر",
+      "whereHint": "في يوم الميلاد، ينشر Helper الرسالة هنا ويذكر العضو.",
+      "groupMessage": "الرسالة والرتبة",
+      "roleHint": "لمنح الرتبة، يجب أن تكون رتبة Helper أعلى منها في إعدادات الخادم.",
+      "groupDay": "المنطقة الزمنية",
+      "safety": "مثال فقط. لا يُحفظ أي عيد ميلاد ولا تُرسل أي رسائل إلى Discord.",
+      "stageSave": "الحفظ",
+      "stageCelebrate": "عيد الميلاد",
+      "stageRemove": "الحذف",
+      "saved": "تم حفظ عيد ميلادك.",
+      "celebration": "عيد ميلاد سعيد يا @Rexy! 🎉",
+      "roleNote": "يحصل Rexy أيضًا على رتبة عيد الميلاد.",
+      "removed": "تم حذف عيد ميلادك."
+    },
+    "zh": {
+      "tabBirthdays": "生日",
+      "intro": "成員使用 /birthday-set 儲存生日。Helper 只詢問月份和日期，不會詢問年份。",
+      "cmdSet": "儲存你的生日月份和日期。",
+      "cmdRemove": "刪除你儲存的生日。",
+      "groupWhere": "發布位置",
+      "whereHint": "生日當天，Helper 會在這裡發布訊息並提及該成員。",
+      "groupMessage": "訊息與身分組",
+      "roleHint": "要給予此身分組，Helper 的身分組在伺服器設定中必須排在它上方。",
+      "groupDay": "時區",
+      "safety": "僅為示範。不會儲存任何生日，也不會在 Discord 傳送訊息。",
+      "stageSave": "儲存",
+      "stageCelebrate": "生日",
+      "stageRemove": "刪除",
+      "saved": "你的生日已儲存。",
+      "celebration": "生日快樂，@Rexy！🎉",
+      "roleNote": "Rexy 也會獲得生日身分組。",
+      "removed": "你的生日已刪除。"
+    },
+    "ru": {
+      "tabBirthdays": "Дни рождения",
+      "intro": "Участники сохраняют день рождения через /birthday-set. Helper спрашивает только день и месяц, но не год.",
+      "cmdSet": "Сохраняет день и месяц вашего дня рождения.",
+      "cmdRemove": "Удаляет сохранённый день рождения.",
+      "groupWhere": "Куда публиковать",
+      "whereHint": "В этот день Helper публикует здесь сообщение и упоминает участника.",
+      "groupMessage": "Сообщение и роль",
+      "roleHint": "Чтобы выдать роль, роль Helper должна стоять выше неё в настройках сервера.",
+      "groupDay": "Часовой пояс",
+      "safety": "Только пример. Дни рождения не сохраняются, сообщения в Discord не отправляются.",
+      "stageSave": "Сохранение",
+      "stageCelebrate": "День рождения",
+      "stageRemove": "Удаление",
+      "saved": "Ваш день рождения сохранён.",
+      "celebration": "С днём рождения, @Rexy! 🎉",
+      "roleNote": "Rexy также получает роль именинника.",
+      "removed": "Ваш день рождения удалён."
+    },
+    "ko": {
+      "tabBirthdays": "생일",
+      "intro": "멤버는 /birthday-set으로 생일을 저장합니다. Helper는 월과 일만 묻고 연도는 묻지 않습니다.",
+      "cmdSet": "생일의 월과 일을 저장합니다.",
+      "cmdRemove": "저장된 생일을 삭제합니다.",
+      "groupWhere": "게시 위치",
+      "whereHint": "생일 당일 Helper가 여기에 메시지를 게시하고 멤버를 멘션합니다.",
+      "groupMessage": "메시지와 역할",
+      "roleHint": "역할을 주려면 서버 설정에서 Helper의 역할이 그 역할보다 위에 있어야 합니다.",
+      "groupDay": "시간대",
+      "safety": "예시일 뿐입니다. 생일이 저장되지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "stageSave": "저장",
+      "stageCelebrate": "생일",
+      "stageRemove": "삭제",
+      "saved": "생일이 저장되었습니다.",
+      "celebration": "생일 축하해요, @Rexy! 🎉",
+      "roleNote": "Rexy는 생일 역할도 받습니다.",
+      "removed": "생일이 삭제되었습니다."
+    }
+  }
+}

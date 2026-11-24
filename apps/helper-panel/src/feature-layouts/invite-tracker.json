@@ -1,0 +1,316 @@
+{
+  "key": "management.invite_tracker",
+  "tabs": [
+    {
+      "title": "tabOverview",
+      "intro": "overviewIntro",
+      "commands": [
+        [
+          "/invites",
+          "commandInvites"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupList",
+          "hint": "listHint",
+          "keys": [
+            "maxEntries",
+            "includeInviter"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageJoin",
+        "channel": "# general",
+        "messages": [
+          {
+            "author": "Mia",
+            "text": "hello",
+            "note": "joinedNote"
+          }
+        ]
+      },
+      {
+        "label": "stageCheck",
+        "channel": "# staff",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/invites"
+          },
+          {
+            "bot": true,
+            "card": {
+              "title": "invitesTitle",
+              "fields": [
+                [
+                  "codeSummer",
+                  "summerUses"
+                ],
+                [
+                  "codePartners",
+                  "partnersUses"
+                ]
+              ],
+              "footer": "trackedFooter"
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageNoNames",
+        "channel": "# staff",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/invites"
+          },
+          {
+            "bot": true,
+            "card": {
+              "title": "invitesTitle",
+              "fields": [
+                [
+                  "codeSummer",
+                  "summerUsesShort"
+                ],
+                [
+                  "codePartners",
+                  "partnersUsesShort"
+                ]
+              ]
+            },
+            "note": "namesOffNote"
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabOverview": "Overview",
+      "overviewIntro": "When a member joins, Helper compares invite use counts. A join is credited to an invite only when the match is clear.",
+      "commandInvites": "Lists invites with their uses. Needs Manage Server.",
+      "groupList": "Invite list",
+      "listHint": "Invites are sorted by uses, most used first.",
+      "stageJoin": "Join",
+      "stageCheck": "Check",
+      "stageNoNames": "Names hidden",
+      "hello": "Hi everyone!",
+      "joinedNote": "Joined with the summer24 invite. Helper posts nothing; it only updates the count.",
+      "invitesTitle": "Server invites",
+      "codeSummer": "summer24",
+      "codePartners": "partners",
+      "summerUses": "13 uses · Alex",
+      "partnersUses": "5 uses · Rexy",
+      "summerUsesShort": "13 uses",
+      "partnersUsesShort": "5 uses",
+      "trackedFooter": "Joins credited: summer24 · 1",
+      "namesOffNote": "With inviter names turned off, the list hides who created each invite.",
+      "safety": "Example only. No invites are read or created and no messages are sent to Discord."
+    },
+    "pt": {
+      "tabOverview": "Visão geral",
+      "overviewIntro": "Quando um membro entra, o Helper compara os contadores de usos dos convites. A entrada só é atribuída a um convite quando não há dúvidas.",
+      "commandInvites": "Lista os convites e os respetivos usos. Requer Gerir servidor.",
+      "groupList": "Lista de convites",
+      "listHint": "Os convites aparecem por número de usos, do mais usado para o menos usado.",
+      "stageJoin": "Entrada",
+      "stageCheck": "Consulta",
+      "stageNoNames": "Nomes ocultos",
+      "hello": "Olá a todos!",
+      "joinedNote": "Entrou com o convite summer24. O Helper não publica nada; só atualiza o contador.",
+      "invitesTitle": "Convites do servidor",
+      "codeSummer": "summer24",
+      "codePartners": "partners",
+      "summerUses": "13 usos · Alex",
+      "partnersUses": "5 usos · Rexy",
+      "summerUsesShort": "13 usos",
+      "partnersUsesShort": "5 usos",
+      "trackedFooter": "Entradas atribuídas: summer24 · 1",
+      "namesOffNote": "Com os nomes de quem convida desligados, a lista não mostra quem criou cada convite.",
+      "safety": "Apenas um exemplo. Nenhum convite é lido ou criado e nenhuma mensagem é enviada para o Discord."
+    },
+    "fr": {
+      "tabOverview": "Aperçu",
+      "overviewIntro": "Quand un membre arrive, Helper compare le nombre d'utilisations des invitations. L'arrivée n'est attribuée à une invitation que si c'est sans ambiguïté.",
+      "commandInvites": "Liste les invitations et leurs utilisations. Nécessite Gérer le serveur.",
+      "groupList": "Liste des invitations",
+      "listHint": "Les invitations sont triées par utilisations, de la plus utilisée à la moins utilisée.",
+      "stageJoin": "Arrivée",
+      "stageCheck": "Consultation",
+      "stageNoNames": "Noms masqués",
+      "hello": "Salut tout le monde !",
+      "joinedNote": "Arrivée avec l'invitation summer24. Helper ne publie rien, il met seulement le compteur à jour.",
+      "invitesTitle": "Invitations du serveur",
+      "codeSummer": "summer24",
+      "codePartners": "partners",
+      "summerUses": "13 utilisations · Alex",
+      "partnersUses": "5 utilisations · Rexy",
+      "summerUsesShort": "13 utilisations",
+      "partnersUsesShort": "5 utilisations",
+      "trackedFooter": "Arrivées attribuées : summer24 · 1",
+      "namesOffNote": "Si les noms des auteurs sont désactivés, la liste masque qui a créé chaque invitation.",
+      "safety": "Exemple uniquement. Aucune invitation n'est lue ni créée et aucun message n'est envoyé sur Discord."
+    },
+    "es": {
+      "tabOverview": "Resumen",
+      "overviewIntro": "Cuando alguien entra, Helper compara los usos de cada invitación. Solo atribuye la entrada a una invitación si no hay dudas.",
+      "commandInvites": "Muestra las invitaciones y sus usos. Requiere Gestionar servidor.",
+      "groupList": "Lista de invitaciones",
+      "listHint": "Las invitaciones se ordenan por usos, de más a menos.",
+      "stageJoin": "Entrada",
+      "stageCheck": "Consulta",
+      "stageNoNames": "Nombres ocultos",
+      "hello": "¡Hola a todos!",
+      "joinedNote": "Entró con la invitación summer24. Helper no publica nada; solo actualiza el contador.",
+      "invitesTitle": "Invitaciones del servidor",
+      "codeSummer": "summer24",
+      "codePartners": "partners",
+      "summerUses": "13 usos · Alex",
+      "partnersUses": "5 usos · Rexy",
+      "summerUsesShort": "13 usos",
+      "partnersUsesShort": "5 usos",
+      "trackedFooter": "Entradas atribuidas: summer24 · 1",
+      "namesOffNote": "Con los nombres de quien invita desactivados, la lista oculta quién creó cada invitación.",
+      "safety": "Solo es un ejemplo. No se leen ni crean invitaciones ni se envían mensajes a Discord."
+    },
+    "de": {
+      "tabOverview": "Übersicht",
+      "overviewIntro": "Tritt jemand bei, vergleicht Helper die Nutzungszahlen der Einladungen. Ein Beitritt wird nur zugeordnet, wenn er eindeutig ist.",
+      "commandInvites": "Listet Einladungen mit ihren Nutzungen auf. Erfordert „Server verwalten“.",
+      "groupList": "Einladungsliste",
+      "listHint": "Einladungen werden nach Nutzungen sortiert, die meistgenutzte zuerst.",
+      "stageJoin": "Beitritt",
+      "stageCheck": "Abfrage",
+      "stageNoNames": "Namen ausgeblendet",
+      "hello": "Hallo zusammen!",
+      "joinedNote": "Mit der Einladung summer24 beigetreten. Helper postet nichts, sondern aktualisiert nur den Zähler.",
+      "invitesTitle": "Server-Einladungen",
+      "codeSummer": "summer24",
+      "codePartners": "partners",
+      "summerUses": "13 Nutzungen · Alex",
+      "partnersUses": "5 Nutzungen · Rexy",
+      "summerUsesShort": "13 Nutzungen",
+      "partnersUsesShort": "5 Nutzungen",
+      "trackedFooter": "Zugeordnete Beitritte: summer24 · 1",
+      "namesOffNote": "Sind die Namen der Ersteller ausgeschaltet, zeigt die Liste nicht, wer eine Einladung erstellt hat.",
+      "safety": "Nur ein Beispiel. Es werden keine Einladungen gelesen oder erstellt und keine Nachrichten an Discord gesendet."
+    },
+    "tr": {
+      "tabOverview": "Genel bakış",
+      "overviewIntro": "Biri katıldığında Helper davet kullanım sayılarını karşılaştırır. Katılım yalnızca eşleşme netse bir davete atanır.",
+      "commandInvites": "Davetleri kullanım sayılarıyla listeler. Sunucuyu Yönet izni gerekir.",
+      "groupList": "Davet listesi",
+      "listHint": "Davetler kullanım sayısına göre, en çok kullanılandan başlayarak sıralanır.",
+      "stageJoin": "Katılım",
+      "stageCheck": "Kontrol",
+      "stageNoNames": "İsimler gizli",
+      "hello": "Herkese merhaba!",
+      "joinedNote": "summer24 davetiyle katıldı. Helper bir şey paylaşmaz, yalnızca sayacı günceller.",
+      "invitesTitle": "Sunucu davetleri",
+      "codeSummer": "summer24",
+      "codePartners": "partners",
+      "summerUses": "13 kullanım · Alex",
+      "partnersUses": "5 kullanım · Rexy",
+      "summerUsesShort": "13 kullanım",
+      "partnersUsesShort": "5 kullanım",
+      "trackedFooter": "Atanan katılımlar: summer24 · 1",
+      "namesOffNote": "Davet eden adları kapalıyken liste, daveti kimin oluşturduğunu göstermez.",
+      "safety": "Yalnızca örnek. Davet okunmaz veya oluşturulmaz ve Discord'a mesaj gönderilmez."
+    },
+    "ar": {
+      "tabOverview": "نظرة عامة",
+      "overviewIntro": "عندما ينضم عضو، يقارن Helper عدد استخدامات الدعوات. ولا يُنسب الانضمام إلى دعوة إلا إذا كانت المطابقة واضحة.",
+      "commandInvites": "يعرض الدعوات وعدد استخداماتها. يتطلب إذن إدارة الخادم.",
+      "groupList": "قائمة الدعوات",
+      "listHint": "تُرتَّب الدعوات حسب عدد الاستخدامات، من الأكثر إلى الأقل.",
+      "stageJoin": "الانضمام",
+      "stageCheck": "الاستعلام",
+      "stageNoNames": "الأسماء مخفية",
+      "hello": "مرحبًا بالجميع!",
+      "joinedNote": "انضمام عبر الدعوة summer24. لا ينشر Helper أي شيء، بل يحدّث العداد فقط.",
+      "invitesTitle": "دعوات الخادم",
+      "codeSummer": "summer24",
+      "codePartners": "partners",
+      "summerUses": "13 استخدامًا · Alex",
+      "partnersUses": "5 استخدامات · Rexy",
+      "summerUsesShort": "13 استخدامًا",
+      "partnersUsesShort": "5 استخدامات",
+      "trackedFooter": "الانضمامات المنسوبة: summer24 · 1",
+      "namesOffNote": "عند إيقاف أسماء أصحاب الدعوات، لا تُظهر القائمة من أنشأ كل دعوة.",
+      "safety": "مثال فقط. لا تُقرأ أي دعوات ولا تُنشأ، ولا تُرسل أي رسائل إلى Discord."
+    },
+    "zh": {
+      "tabOverview": "概覽",
+      "overviewIntro": "有成員加入時，Helper 會比對各邀請的使用次數。只有比對明確時，才會將加入記到該邀請。",
+      "commandInvites": "列出邀請及其使用次數。需要「管理伺服器」權限。",
+      "groupList": "邀請清單",
+      "listHint": "邀請依使用次數排序，最多的排在最前面。",
+      "stageJoin": "加入",
+      "stageCheck": "查詢",
+      "stageNoNames": "隱藏名稱",
+      "hello": "大家好！",
+      "joinedNote": "透過邀請 summer24 加入。Helper 不會發送訊息，只會更新次數。",
+      "invitesTitle": "伺服器邀請",
+      "codeSummer": "summer24",
+      "codePartners": "partners",
+      "summerUses": "13 次使用 · Alex",
+      "partnersUses": "5 次使用 · Rexy",
+      "summerUsesShort": "13 次使用",
+      "partnersUsesShort": "5 次使用",
+      "trackedFooter": "已記錄的加入：summer24 · 1",
+      "namesOffNote": "關閉邀請者名稱後，清單不會顯示每個邀請的建立者。",
+      "safety": "僅為範例。不會讀取或建立邀請，也不會傳送訊息到 Discord。"
+    },
+    "ru": {
+      "tabOverview": "Обзор",
+      "overviewIntro": "Когда кто-то заходит, Helper сравнивает счётчики приглашений. Вход засчитывается приглашению, только если совпадение однозначно.",
+      "commandInvites": "Показывает приглашения и число использований. Нужно право «Управлять сервером».",
+      "groupList": "Список приглашений",
+      "listHint": "Приглашения отсортированы по числу использований, начиная с самого популярного.",
+      "stageJoin": "Вход",
+      "stageCheck": "Проверка",
+      "stageNoNames": "Без имён",
+      "hello": "Всем привет!",
+      "joinedNote": "Вход по приглашению summer24. Helper ничего не публикует, только обновляет счётчик.",
+      "invitesTitle": "Приглашения сервера",
+      "codeSummer": "summer24",
+      "codePartners": "partners",
+      "summerUses": "13 использований · Alex",
+      "partnersUses": "5 использований · Rexy",
+      "summerUsesShort": "13 использований",
+      "partnersUsesShort": "5 использований",
+      "trackedFooter": "Засчитанные входы: summer24 · 1",
+      "namesOffNote": "Если имена приглашающих выключены, список не показывает, кто создал приглашение.",
+      "safety": "Только пример. Приглашения не читаются и не создаются, сообщения в Discord не отправляются."
+    },
+    "ko": {
+      "tabOverview": "개요",
+      "overviewIntro": "멤버가 들어오면 Helper가 초대 사용 횟수를 비교합니다. 일치가 확실할 때만 해당 초대에 입장을 기록합니다.",
+      "commandInvites": "초대와 사용 횟수를 보여 줍니다. 서버 관리 권한이 필요합니다.",
+      "groupList": "초대 목록",
+      "listHint": "초대는 사용 횟수가 많은 순서로 정렬됩니다.",
+      "stageJoin": "입장",
+      "stageCheck": "확인",
+      "stageNoNames": "이름 숨김",
+      "hello": "모두 안녕하세요!",
+      "joinedNote": "summer24 초대로 들어왔습니다. Helper는 아무것도 올리지 않고 횟수만 갱신합니다.",
+      "invitesTitle": "서버 초대",
+      "codeSummer": "summer24",
+      "codePartners": "partners",
+      "summerUses": "13회 사용 · Alex",
+      "partnersUses": "5회 사용 · Rexy",
+      "summerUsesShort": "13회 사용",
+      "partnersUsesShort": "5회 사용",
+      "trackedFooter": "기록된 입장: summer24 · 1",
+      "namesOffNote": "초대한 사람 이름을 끄면 목록에서 각 초대를 만든 사람이 보이지 않습니다.",
+      "safety": "예시일 뿐입니다. 초대를 읽거나 만들지 않으며 Discord로 메시지가 전송되지 않습니다."
+    }
+  }
+}

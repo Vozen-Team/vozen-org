@@ -10,13 +10,14 @@ const originalId = category ? '40' : '20';
 const resource = category ? 'category' : 'channel';
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['create','pt','mobile','no-permissions','collision','permission-error','uncertain','reused','wrong-guild','disabled-feature','save-failure','route-change','guild-switch',...(category ? ['wrong-type','both'] : [])]) {
+  for (const scenario of ['create','pt','mobile','future-fields','no-permissions','collision','permission-error','uncertain','reused','wrong-guild','disabled-feature','save-failure','route-change','guild-switch',...(category ? ['wrong-type','both'] : [])]) {
     if (process.env.TICKET_CHANNEL_SCENARIO && process.env.TICKET_CHANNEL_SCENARIO !== scenario) continue;
     const page = await browser.newPage(scenario === 'mobile' ? {viewport:{width:390,height:844}} : {});
     const pt = scenario === 'pt';
     if (pt) await page.addInitScript(() => localStorage.setItem('vozen.lang', 'pt'));
     let guild = '10', creates = 0, writes = 0, revision = 1;
     let saved = {panelChannel:'20',categoryId:category ? '40' : '',staffRole:'',maxOpen:1,transcriptChannel:'',closeAfterHours:1,panelTitle:'Need support?',panelDescription:'Open a private ticket.'};
+    if (scenario === 'future-fields') saved.futureOption = 'keep this';
     const enabled = scenario !== 'disabled-feature';
     const feature = {key:'support.tickets',label:'Tickets',category:'support',enabled,available:true};
     const mutations = [];
@@ -48,9 +49,12 @@ try {
           assert.equal(body.config[selectedKey],resourceId);
           assert.equal(body.expected_revision,revision);
           if (scenario === 'save-failure') { await route.fulfill({status:503,json:{code:'temporary_failure'}}); return; }
+          for (const key of ['panelTitle','panelDescription','maxOpen','closeAfterHours','staffRole','transcriptChannel',...(scenario === 'future-fields' ? ['futureOption'] : [])]) {
+            assert.deepEqual(body.config[key], saved[key], 'creating a resource preserves ' + key);
+          }
           saved = body.config; revision++;
         }
-        value = {...feature,guildId:guild,config:saved,defaults:{},revision,schema:{sections:[{title:'Support workflow',fields:[{key:'panelChannel',label:'Ticket panel channel',kind:'channel'},{key:'categoryId',label:'Ticket category',kind:'category'},{key:'staffRole',label:'Staff role to notify',kind:'role'},{key:'maxOpen',label:'Open tickets per member',kind:'number'},{key:'transcriptChannel',label:'Transcript channel',kind:'channel'},{key:'closeAfterHours',label:'Close after inactivity (hours)',kind:'number'},{key:'panelTitle',label:'Panel title',kind:'text'},{key:'panelDescription',label:'Panel description',kind:'textarea'}]}]}};
+        value = {...feature,guildId:guild,config:saved,defaults:{},revision,schema:{sections:[{title:'Support workflow',fields:[{key:'panelChannel',label:'Ticket panel channel',kind:'channel'},{key:'categoryId',label:'Ticket category',kind:'category'},{key:'staffRole',label:'Staff role to notify',kind:'role'},{key:'maxOpen',label:'Open tickets per member',kind:'number'},{key:'transcriptChannel',label:'Transcript channel',kind:'channel'},{key:'closeAfterHours',label:'Close after inactivity (hours)',kind:'number'},{key:'panelTitle',label:'Panel title',kind:'text'},{key:'panelDescription',label:'Panel description',kind:'textarea'},...(scenario === 'future-fields' ? [{key:'futureOption',label:'Saved option',kind:'text'}] : [])]}]}};
       } else if (path.endsWith('/preflight')) value = {guildId:guild,ok:true,issues:[]};
       else if (path === '/api/quotas') value = {plan:'Free',limits:{},usage:{}};
       else if (path === '/api/stats') value = {guildId:guild,totalCases:0};
@@ -61,14 +65,19 @@ try {
       await route.fulfill({json:value});
     });
     await page.goto(`${base}#/config/support.tickets`);
+    const tabs = page.getByRole('tab');
+    await tabs.first().waitFor();
+    await tabs.nth(1).click();
+    const reminder = page.getByRole('spinbutton',{name:pt ? /Lembrete para a equipa/ : /Support reminder/});
+    assert.equal(await reminder.isVisible(),true,'SLA must be labelled as a reminder');
+    await tabs.nth(category ? 1 : 0).click();
     const setup = page.locator(category ? '.ticket-category-create' : '.ticket-panel-channel');
     const button = setup.getByRole('button',{name:category ? (pt ? 'Criar categoria' : 'Create category') : pt ? 'Criar canal para tickets' : 'Create ticket panel channel',exact:true});
     await button.waitFor();
     assert.equal(await page.locator('.ticket-settings__group').count(),3,'settings must form three named groups');
     assert.equal(await page.locator('.ticket-settings details').count(),0,'do not collapse settings');
-    assert.equal(await page.locator('.ticket-settings input, .ticket-settings select, .ticket-settings textarea').count(),10,'eight settings plus channel/category names');
-    const reminder = page.getByRole('spinbutton',{name:pt ? /Lembrete para a equipa/ : /Support reminder/});
-    assert.equal(await reminder.isVisible(),true,'SLA must be labelled as a reminder');
+    assert.equal(await tabs.count(),3,'panel, support and records tabs');
+    assert.equal(await page.locator('.ticket-settings input, .ticket-settings select, .ticket-settings textarea').count(),scenario === 'future-fields' ? 12 : 11,'settings, creation names and activation');
     if (['create','mobile','pt'].includes(scenario)) {
       await mkdir('output/playwright',{recursive:true});
       const viewport = page.viewportSize();
@@ -115,6 +124,7 @@ try {
         }
       }
       if (scenario === 'both') {
+        await tabs.first().click();
         await page.locator('.ticket-panel-channel').getByRole('button').click();
         await page.locator('.ticket-panel-channel [role="status"]').waitFor();
         await page.waitForTimeout(1500);

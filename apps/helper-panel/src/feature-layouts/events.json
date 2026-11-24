@@ -1,0 +1,443 @@
+{
+  "key": "community.events",
+  "tabs": [
+    {
+      "title": "tabEvents",
+      "intro": "eventsIntro",
+      "commands": [
+        [
+          "/event-create",
+          "cmdCreate"
+        ],
+        [
+          "/event-register",
+          "cmdRegister"
+        ],
+        [
+          "/event-checkin",
+          "cmdCheckin"
+        ]
+      ],
+      "groups": [
+        {
+          "title": "groupDefaults",
+          "hint": "defaultsHint",
+          "keys": [
+            "defaultDurationHours",
+            "defaultCapacity"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tabReminders",
+      "intro": "remindersIntro",
+      "groups": [
+        {
+          "title": "groupChannel",
+          "hint": "channelHint",
+          "keys": [
+            "announcementChannel"
+          ]
+        },
+        {
+          "title": "groupReminder",
+          "keys": [
+            "reminders",
+            "reminderHours"
+          ]
+        }
+      ]
+    }
+  ],
+  "demo": {
+    "stages": [
+      {
+        "label": "stageCreate",
+        "channel": "# events",
+        "messages": [
+          {
+            "author": "Alex",
+            "command": "/event-create name: Movie night start: 2d location: Cinema"
+          },
+          {
+            "bot": true,
+            "card": {
+              "title": "eventName",
+              "body": "createdBody",
+              "fields": [
+                [
+                  "duration",
+                  "durationValue"
+                ],
+                [
+                  "places",
+                  "unlimited"
+                ]
+              ],
+              "footer": "eventId"
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageRegister",
+        "channel": "# events",
+        "messages": [
+          {
+            "author": "Rexy",
+            "command": "/event-register event_id: 42"
+          },
+          {
+            "bot": true,
+            "text": "registered"
+          }
+        ]
+      },
+      {
+        "label": "stageReminder",
+        "channel": "# announcements",
+        "messages": [
+          {
+            "bot": true,
+            "card": {
+              "tone": "warning",
+              "title": "reminderTitle",
+              "body": "reminderBody"
+            }
+          }
+        ]
+      },
+      {
+        "label": "stageCheckin",
+        "channel": "# events",
+        "messages": [
+          {
+            "author": "Rexy",
+            "command": "/event-checkin event_id: 42"
+          },
+          {
+            "bot": true,
+            "card": {
+              "tone": "success",
+              "title": "checkedIn",
+              "body": "checkedBody"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "copy": {
+    "en": {
+      "tabEvents": "Events",
+      "eventsIntro": "Moderators create events with /event-create. Helper turns each one into a Discord scheduled event.",
+      "cmdCreate": "Creates an event with a name, start and location. Staff only.",
+      "cmdRegister": "Registers you for an event.",
+      "cmdCheckin": "Records your attendance at an event you registered for.",
+      "groupDefaults": "Defaults for new events",
+      "defaultsHint": "When the limit is reached, Helper accepts no more registrations.",
+      "tabReminders": "Reminders",
+      "remindersIntro": "Helper can post a reminder before each event starts.",
+      "groupChannel": "Where it posts",
+      "channelHint": "Reminders are only posted when a channel is chosen.",
+      "groupReminder": "Start reminder",
+      "safety": "Example only. No event is created and no messages are sent to Discord.",
+      "stageCreate": "Create",
+      "stageRegister": "Register",
+      "stageReminder": "Reminder",
+      "stageCheckin": "Check-in",
+      "eventName": "Movie night",
+      "createdBody": "Scheduled event created in Discord.",
+      "duration": "Duration",
+      "durationValue": "2 hours",
+      "places": "Places",
+      "unlimited": "Unlimited",
+      "eventId": "Event ID: 42",
+      "registered": "You are registered for Movie night.",
+      "reminderTitle": "Movie night starts in 1 hour",
+      "reminderBody": "Registered members can check in with /event-checkin.",
+      "checkedIn": "Attendance recorded",
+      "checkedBody": "Enjoy the movie, @Rexy!"
+    },
+    "pt": {
+      "tabEvents": "Eventos",
+      "eventsIntro": "Os moderadores criam eventos com /event-create. O Helper transforma cada um num evento agendado do Discord.",
+      "cmdCreate": "Cria um evento com nome, início e local. Só para a staff.",
+      "cmdRegister": "Regista a tua inscrição num evento.",
+      "cmdCheckin": "Regista a tua presença num evento em que te inscreveste.",
+      "groupDefaults": "Predefinições dos novos eventos",
+      "defaultsHint": "Quando o limite é atingido, o Helper deixa de aceitar inscrições.",
+      "tabReminders": "Lembretes",
+      "remindersIntro": "O Helper pode publicar um lembrete antes do início de cada evento.",
+      "groupChannel": "Onde publica",
+      "channelHint": "Os lembretes só são publicados se escolheres um canal.",
+      "groupReminder": "Lembrete de início",
+      "safety": "Apenas um exemplo. Nenhum evento é criado e nenhuma mensagem é enviada para o Discord.",
+      "stageCreate": "Criar",
+      "stageRegister": "Inscrição",
+      "stageReminder": "Lembrete",
+      "stageCheckin": "Check-in",
+      "eventName": "Noite de cinema",
+      "createdBody": "Evento agendado criado no Discord.",
+      "duration": "Duração",
+      "durationValue": "2 horas",
+      "places": "Lugares",
+      "unlimited": "Ilimitados",
+      "eventId": "ID do evento: 42",
+      "registered": "Estás inscrito na Noite de cinema.",
+      "reminderTitle": "A Noite de cinema começa daqui a 1 hora",
+      "reminderBody": "Os membros inscritos podem fazer check-in com /event-checkin.",
+      "checkedIn": "Presença registada",
+      "checkedBody": "Bom filme, @Rexy!"
+    },
+    "fr": {
+      "tabEvents": "Événements",
+      "eventsIntro": "Les modérateurs créent des événements avec /event-create. Helper en fait des événements programmés Discord.",
+      "cmdCreate": "Crée un événement avec un nom, un début et un lieu. Réservé au staff.",
+      "cmdRegister": "Vous inscrit à un événement.",
+      "cmdCheckin": "Enregistre votre présence à un événement auquel vous êtes inscrit.",
+      "groupDefaults": "Valeurs par défaut des nouveaux événements",
+      "defaultsHint": "Une fois la limite atteinte, Helper n'accepte plus d'inscriptions.",
+      "tabReminders": "Rappels",
+      "remindersIntro": "Helper peut publier un rappel avant le début de chaque événement.",
+      "groupChannel": "Où publier",
+      "channelHint": "Les rappels ne sont publiés que si un canal est choisi.",
+      "groupReminder": "Rappel de début",
+      "safety": "Exemple uniquement. Aucun événement n'est créé et aucun message n'est envoyé sur Discord.",
+      "stageCreate": "Créer",
+      "stageRegister": "Inscription",
+      "stageReminder": "Rappel",
+      "stageCheckin": "Présence",
+      "eventName": "Soirée cinéma",
+      "createdBody": "Événement programmé créé sur Discord.",
+      "duration": "Durée",
+      "durationValue": "2 heures",
+      "places": "Places",
+      "unlimited": "Illimitées",
+      "eventId": "ID de l'événement : 42",
+      "registered": "Vous êtes inscrit à la Soirée cinéma.",
+      "reminderTitle": "La Soirée cinéma commence dans 1 heure",
+      "reminderBody": "Les membres inscrits peuvent confirmer leur présence avec /event-checkin.",
+      "checkedIn": "Présence enregistrée",
+      "checkedBody": "Bon film, @Rexy !"
+    },
+    "es": {
+      "tabEvents": "Eventos",
+      "eventsIntro": "Los moderadores crean eventos con /event-create. Helper convierte cada uno en un evento programado de Discord.",
+      "cmdCreate": "Crea un evento con nombre, inicio y lugar. Solo para el staff.",
+      "cmdRegister": "Te inscribe en un evento.",
+      "cmdCheckin": "Registra tu asistencia a un evento en el que te inscribiste.",
+      "groupDefaults": "Valores para eventos nuevos",
+      "defaultsHint": "Al llegar al límite, Helper deja de aceptar inscripciones.",
+      "tabReminders": "Recordatorios",
+      "remindersIntro": "Helper puede publicar un recordatorio antes de que empiece cada evento.",
+      "groupChannel": "Dónde se publica",
+      "channelHint": "Los recordatorios solo se publican si eliges un canal.",
+      "groupReminder": "Recordatorio de inicio",
+      "safety": "Solo es un ejemplo. No se crea ningún evento ni se envían mensajes a Discord.",
+      "stageCreate": "Crear",
+      "stageRegister": "Inscripción",
+      "stageReminder": "Recordatorio",
+      "stageCheckin": "Asistencia",
+      "eventName": "Noche de cine",
+      "createdBody": "Evento programado creado en Discord.",
+      "duration": "Duración",
+      "durationValue": "2 horas",
+      "places": "Plazas",
+      "unlimited": "Ilimitadas",
+      "eventId": "ID del evento: 42",
+      "registered": "Te has inscrito en Noche de cine.",
+      "reminderTitle": "Noche de cine empieza en 1 hora",
+      "reminderBody": "Los inscritos pueden confirmar su asistencia con /event-checkin.",
+      "checkedIn": "Asistencia registrada",
+      "checkedBody": "¡Disfruta de la película, @Rexy!"
+    },
+    "de": {
+      "tabEvents": "Events",
+      "eventsIntro": "Moderatoren erstellen Events mit /event-create. Helper macht daraus ein geplantes Discord-Event.",
+      "cmdCreate": "Erstellt ein Event mit Name, Beginn und Ort. Nur für das Team.",
+      "cmdRegister": "Meldet dich für ein Event an.",
+      "cmdCheckin": "Erfasst deine Teilnahme an einem Event, für das du angemeldet bist.",
+      "groupDefaults": "Standardwerte für neue Events",
+      "defaultsHint": "Ist das Limit erreicht, nimmt Helper keine Anmeldungen mehr an.",
+      "tabReminders": "Erinnerungen",
+      "remindersIntro": "Helper kann vor dem Beginn jedes Events eine Erinnerung posten.",
+      "groupChannel": "Wo gepostet wird",
+      "channelHint": "Erinnerungen werden nur gepostet, wenn ein Kanal gewählt ist.",
+      "groupReminder": "Erinnerung vor Beginn",
+      "safety": "Nur ein Beispiel. Es wird kein Event erstellt und keine Nachricht an Discord gesendet.",
+      "stageCreate": "Erstellen",
+      "stageRegister": "Anmelden",
+      "stageReminder": "Erinnerung",
+      "stageCheckin": "Check-in",
+      "eventName": "Filmabend",
+      "createdBody": "Geplantes Event in Discord erstellt.",
+      "duration": "Dauer",
+      "durationValue": "2 Stunden",
+      "places": "Plätze",
+      "unlimited": "Unbegrenzt",
+      "eventId": "Event-ID: 42",
+      "registered": "Du bist für den Filmabend angemeldet.",
+      "reminderTitle": "Der Filmabend beginnt in 1 Stunde",
+      "reminderBody": "Angemeldete Mitglieder können mit /event-checkin einchecken.",
+      "checkedIn": "Teilnahme erfasst",
+      "checkedBody": "Viel Spaß beim Film, @Rexy!"
+    },
+    "tr": {
+      "tabEvents": "Etkinlikler",
+      "eventsIntro": "Moderatörler /event-create ile etkinlik oluşturur. Helper her birini Discord'da planlanmış bir etkinliğe dönüştürür.",
+      "cmdCreate": "Ad, başlangıç ve konumla bir etkinlik oluşturur. Yalnızca yetkililer.",
+      "cmdRegister": "Sizi bir etkinliğe kaydeder.",
+      "cmdCheckin": "Kayıt olduğunuz etkinlikte katılımınızı kaydeder.",
+      "groupDefaults": "Yeni etkinlikler için varsayılanlar",
+      "defaultsHint": "Sınıra ulaşıldığında Helper yeni kayıt kabul etmez.",
+      "tabReminders": "Hatırlatıcılar",
+      "remindersIntro": "Helper her etkinlik başlamadan önce bir hatırlatıcı paylaşabilir.",
+      "groupChannel": "Nerede paylaşılır",
+      "channelHint": "Hatırlatıcılar yalnızca bir kanal seçildiğinde paylaşılır.",
+      "groupReminder": "Başlangıç hatırlatıcısı",
+      "safety": "Yalnızca örnektir. Hiçbir etkinlik oluşturulmaz ve Discord'a mesaj gönderilmez.",
+      "stageCreate": "Oluştur",
+      "stageRegister": "Kayıt",
+      "stageReminder": "Hatırlatıcı",
+      "stageCheckin": "Katılım",
+      "eventName": "Film gecesi",
+      "createdBody": "Planlanmış etkinlik Discord'da oluşturuldu.",
+      "duration": "Süre",
+      "durationValue": "2 saat",
+      "places": "Kontenjan",
+      "unlimited": "Sınırsız",
+      "eventId": "Etkinlik kimliği: 42",
+      "registered": "Film gecesine kaydoldunuz.",
+      "reminderTitle": "Film gecesi 1 saat sonra başlıyor",
+      "reminderBody": "Kayıtlı üyeler /event-checkin ile katılımlarını bildirebilir.",
+      "checkedIn": "Katılım kaydedildi",
+      "checkedBody": "İyi seyirler, @Rexy!"
+    },
+    "ar": {
+      "tabEvents": "الفعاليات",
+      "eventsIntro": "ينشئ المشرفون الفعاليات عبر /event-create. يحوّل Helper كل واحدة إلى فعالية مجدولة في Discord.",
+      "cmdCreate": "ينشئ فعالية باسم وموعد بدء ومكان. للطاقم فقط.",
+      "cmdRegister": "يسجّلك في فعالية.",
+      "cmdCheckin": "يسجّل حضورك في فعالية سجّلت فيها.",
+      "groupDefaults": "القيم الافتراضية للفعاليات الجديدة",
+      "defaultsHint": "عند بلوغ الحد، يتوقف Helper عن قبول التسجيلات.",
+      "tabReminders": "التذكيرات",
+      "remindersIntro": "يمكن لـ Helper نشر تذكير قبل بدء كل فعالية.",
+      "groupChannel": "مكان النشر",
+      "channelHint": "لا تُنشر التذكيرات إلا عند اختيار قناة.",
+      "groupReminder": "تذكير البدء",
+      "safety": "مثال فقط. لا تُنشأ أي فعالية ولا تُرسل أي رسائل إلى Discord.",
+      "stageCreate": "الإنشاء",
+      "stageRegister": "التسجيل",
+      "stageReminder": "التذكير",
+      "stageCheckin": "الحضور",
+      "eventName": "ليلة سينما",
+      "createdBody": "تم إنشاء فعالية مجدولة في Discord.",
+      "duration": "المدة",
+      "durationValue": "ساعتان",
+      "places": "المقاعد",
+      "unlimited": "غير محدودة",
+      "eventId": "معرّف الفعالية: 42",
+      "registered": "تم تسجيلك في ليلة سينما.",
+      "reminderTitle": "تبدأ ليلة سينما بعد ساعة واحدة",
+      "reminderBody": "يمكن للأعضاء المسجلين تأكيد حضورهم عبر /event-checkin.",
+      "checkedIn": "تم تسجيل الحضور",
+      "checkedBody": "استمتع بالفيلم يا @Rexy!"
+    },
+    "zh": {
+      "tabEvents": "活動",
+      "eventsIntro": "管理員使用 /event-create 建立活動。Helper 會將每個活動建立為 Discord 排程活動。",
+      "cmdCreate": "以名稱、開始時間和地點建立活動。僅限管理團隊。",
+      "cmdRegister": "為你報名活動。",
+      "cmdCheckin": "記錄你在已報名活動的出席。",
+      "groupDefaults": "新活動的預設值",
+      "defaultsHint": "達到人數上限後，Helper 將不再接受報名。",
+      "tabReminders": "提醒",
+      "remindersIntro": "Helper 可以在每個活動開始前發布提醒。",
+      "groupChannel": "發布位置",
+      "channelHint": "只有選擇頻道後才會發布提醒。",
+      "groupReminder": "開始提醒",
+      "safety": "僅為示範。不會建立活動，也不會在 Discord 傳送訊息。",
+      "stageCreate": "建立",
+      "stageRegister": "報名",
+      "stageReminder": "提醒",
+      "stageCheckin": "報到",
+      "eventName": "電影之夜",
+      "createdBody": "已在 Discord 建立排程活動。",
+      "duration": "時長",
+      "durationValue": "2 小時",
+      "places": "名額",
+      "unlimited": "不限",
+      "eventId": "活動 ID：42",
+      "registered": "你已報名電影之夜。",
+      "reminderTitle": "電影之夜將在 1 小時後開始",
+      "reminderBody": "已報名的成員可以使用 /event-checkin 報到。",
+      "checkedIn": "已記錄出席",
+      "checkedBody": "觀影愉快，@Rexy！"
+    },
+    "ru": {
+      "tabEvents": "События",
+      "eventsIntro": "Модераторы создают события через /event-create. Helper превращает каждое в запланированное событие Discord.",
+      "cmdCreate": "Создаёт событие с названием, началом и местом. Только для команды.",
+      "cmdRegister": "Записывает вас на событие.",
+      "cmdCheckin": "Отмечает ваше присутствие на событии, на которое вы записаны.",
+      "groupDefaults": "Значения для новых событий",
+      "defaultsHint": "Когда лимит достигнут, Helper больше не принимает записи.",
+      "tabReminders": "Напоминания",
+      "remindersIntro": "Helper может публиковать напоминание перед началом каждого события.",
+      "groupChannel": "Куда публиковать",
+      "channelHint": "Напоминания публикуются, только если выбран канал.",
+      "groupReminder": "Напоминание о начале",
+      "safety": "Только пример. События не создаются, сообщения в Discord не отправляются.",
+      "stageCreate": "Создание",
+      "stageRegister": "Запись",
+      "stageReminder": "Напоминание",
+      "stageCheckin": "Отметка",
+      "eventName": "Киновечер",
+      "createdBody": "Запланированное событие создано в Discord.",
+      "duration": "Длительность",
+      "durationValue": "2 часа",
+      "places": "Места",
+      "unlimited": "Без ограничений",
+      "eventId": "ID события: 42",
+      "registered": "Вы записаны на Киновечер.",
+      "reminderTitle": "Киновечер начнётся через 1 час",
+      "reminderBody": "Записавшиеся участники могут отметиться через /event-checkin.",
+      "checkedIn": "Присутствие отмечено",
+      "checkedBody": "Приятного просмотра, @Rexy!"
+    },
+    "ko": {
+      "tabEvents": "이벤트",
+      "eventsIntro": "모더레이터는 /event-create로 이벤트를 만듭니다. Helper가 각 이벤트를 Discord 예약 이벤트로 만듭니다.",
+      "cmdCreate": "이름, 시작 시간, 장소로 이벤트를 만듭니다. 운영진 전용입니다.",
+      "cmdRegister": "이벤트에 참가 신청합니다.",
+      "cmdCheckin": "신청한 이벤트의 출석을 기록합니다.",
+      "groupDefaults": "새 이벤트 기본값",
+      "defaultsHint": "인원 제한에 도달하면 Helper가 더 이상 신청을 받지 않습니다.",
+      "tabReminders": "알림",
+      "remindersIntro": "Helper는 각 이벤트가 시작되기 전에 알림을 게시할 수 있습니다.",
+      "groupChannel": "게시 위치",
+      "channelHint": "채널을 선택한 경우에만 알림이 게시됩니다.",
+      "groupReminder": "시작 알림",
+      "safety": "예시일 뿐입니다. 이벤트가 만들어지지 않으며 Discord로 메시지가 전송되지 않습니다.",
+      "stageCreate": "만들기",
+      "stageRegister": "신청",
+      "stageReminder": "알림",
+      "stageCheckin": "출석",
+      "eventName": "영화의 밤",
+      "createdBody": "Discord에 예약 이벤트를 만들었습니다.",
+      "duration": "진행 시간",
+      "durationValue": "2시간",
+      "places": "정원",
+      "unlimited": "제한 없음",
+      "eventId": "이벤트 ID: 42",
+      "registered": "영화의 밤에 신청했습니다.",
+      "reminderTitle": "영화의 밤이 1시간 후에 시작됩니다",
+      "reminderBody": "신청한 멤버는 /event-checkin으로 출석할 수 있습니다.",
+      "checkedIn": "출석이 기록되었습니다",
+      "checkedBody": "즐거운 관람 되세요, @Rexy!"
+    }
+  }
+}
