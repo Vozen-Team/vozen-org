@@ -6,7 +6,7 @@
   "de": { "safety": "Beispiel mit einer gesperrten Domain und aktiver Moderation.", "message": "Hol dir hier dein Nitro!", "detected": "Gesperrte Domain erkannt", "removed": "Nachricht gelöscht", "timeout": "Mia erhält eine Auszeit von 5 Minuten", "log": "moderation" },
   "tr": { "safety": "Engellenen bir alan adı ve etkin moderasyon örneği.", "message": "Nitro’nu buradan al!", "detected": "Engellenen alan adı algılandı", "removed": "Mesaj silindi", "timeout": "Mia 5 dakika boyunca susturuldu", "log": "moderasyon" },
   "ar": { "safety": "مثال على نطاق محظور مع تفعيل الإشراف.", "message": "احصل على نيترو من هنا!", "detected": "تم رصد نطاق محظور", "removed": "حُذفت الرسالة", "timeout": "تم تقييد Mia لمدة 5 دقائق", "log": "الإشراف" },
-  "zh": { "safety": "已启用管理措施的域名拦截示例。", "message": "点这里领取 Nitro！", "detected": "检测到被封锁的域名", "removed": "消息已删除", "timeout": "Mia 已被禁言 5 分钟", "log": "管理日志" },
+  "zh": { "safety": "已啟用管理措施的網域封鎖範例。", "message": "點這裡領取 Nitro！", "detected": "偵測到已封鎖的網域", "removed": "訊息已移除", "timeout": "Mia 已被暫時禁言 5 分鐘", "log": "管理日誌" },
   "ru": { "safety": "Пример с заблокированным доменом и включённой модерацией.", "message": "Забери свой Nitro здесь!", "detected": "Обнаружен заблокированный домен", "removed": "Сообщение удалено", "timeout": "Миа получила тайм-аут на 5 минут", "log": "модерация" },
   "ko": { "safety": "차단된 도메인과 활성화된 관리 조치의 예시입니다.", "message": "여기에서 Nitro를 받으세요!", "detected": "차단된 도메인 감지", "removed": "메시지 삭제됨", "timeout": "Mia에게 5분 타임아웃이 적용됨", "log": "관리 로그" }
 }
