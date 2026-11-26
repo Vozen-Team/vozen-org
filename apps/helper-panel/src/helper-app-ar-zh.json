@@ -443,6 +443,10 @@
     "ar": "تعذّر التحقق من اتصال TikTok.",
     "zh": "無法檢查 TikTok 連線。"
   },
+  "Could not load the level card. Reload the page before changing the card.": {
+    "ar": "تعذّر تحميل بطاقة المستوى. أعد تحميل الصفحة قبل تغيير البطاقة.",
+    "zh": "無法載入等級卡片。變更卡片前請重新載入頁面。"
+  },
   "Could not remove the TikTok connection.": {
     "ar": "تعذّر إلغاء ربط TikTok.",
     "zh": "無法解除 TikTok 連結。"

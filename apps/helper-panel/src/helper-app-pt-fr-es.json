@@ -554,6 +554,11 @@
     "fr": "Impossible de vérifier la connexion à TikTok.",
     "es": "No se ha podido comprobar la conexión con TikTok."
   },
+  "Could not load the level card. Reload the page before changing the card.": {
+    "pt": "Não foi possível carregar o cartão de nível. Recarrega a página antes de alterares o cartão.",
+    "fr": "Impossible de charger la carte de niveau. Rechargez la page avant de modifier la carte.",
+    "es": "No se ha podido cargar la tarjeta de nivel. Recarga la página antes de cambiar la tarjeta."
+  },
   "Could not remove the TikTok connection.": {
     "pt": "Não foi possível remover a ligação ao TikTok.",
     "fr": "Impossible de supprimer la connexion à TikTok.",

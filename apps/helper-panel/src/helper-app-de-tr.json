@@ -443,6 +443,10 @@
     "de": "Die TikTok-Verbindung konnte nicht geprüft werden.",
     "tr": "TikTok bağlantısı kontrol edilemedi."
   },
+  "Could not load the level card. Reload the page before changing the card.": {
+    "de": "Die Levelkarte konnte nicht geladen werden. Lade die Seite neu, bevor du die Karte änderst.",
+    "tr": "Seviye kartı yüklenemedi. Kartı değiştirmeden önce sayfayı yenileyin."
+  },
   "Could not remove the TikTok connection.": {
     "de": "Die TikTok-Verbindung konnte nicht entfernt werden.",
     "tr": "TikTok bağlantısı kaldırılamadı."

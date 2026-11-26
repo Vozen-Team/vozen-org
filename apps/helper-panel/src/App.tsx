@@ -65,6 +65,7 @@ import { readWorkspaceGuilds, requireWorkspaceGuild } from './workspace';
 import { isRoleResourceOptionDisabled, roleResourceLabel, roleRequiresAssignment } from './role-resource';
 import { ResourceMultiSelect } from './resource-multi-select';
 import { createAutosave, type AutosaveState } from './autosave';
+import { levelsPublishConfig, rankCardUnlocked } from './levels-publish';
 import {
   helperLocale,
   helperText,
@@ -1990,6 +1991,8 @@ function App() {
   });
   const [rankConfig, setRankConfig] = useState(defaultRankCard);
   const [savedRankConfig, setSavedRankConfig] = useState(defaultRankCard);
+  const rankLoadedRef = useRef(localPreviewMode);
+  const [rankLoadFailed, setRankLoadFailed] = useState(false);
   const [detailConfig, setDetailConfig] = useState<FeatureConfig>({});
   const [detailDefaults, setDetailDefaults] = useState<FeatureConfig | null>(null);
   const [savedDetailConfig, setSavedDetailConfig] = useState<FeatureConfig>({});
@@ -2137,7 +2140,7 @@ function App() {
             }),
             api.rankCard({ signal: load.signal }).catch((cause) => {
               if (isAbortError(cause)) throw cause;
-              return { guildId: '', config: defaultRankCard };
+              return null;
             }),
           ]);
         if (!load.isCurrent()) return;
@@ -2145,8 +2148,8 @@ function App() {
         setFeatures(visibleWelcomeFeatures(nextFeatures.features).map(presentFeature));
         setStats(nextStats);
         setQuota(nextQuota);
-        setRankConfig(nextRank.config);
-        setSavedRankConfig(nextRank.config);
+        if (nextRank && nextRank.guildId === nextMe.guildId) { setRankConfig(nextRank.config); setSavedRankConfig(nextRank.config); rankLoadedRef.current = true; setRankLoadFailed(false); }
+        else { rankLoadedRef.current = false; setRankLoadFailed(true); }
       } catch (cause) {
         if (!load.isCurrent() || isAbortError(cause)) return;
         setMessage(() => () => (cause instanceof Error ? cause.message : helperText('Could not load the dashboard.')));
@@ -2594,7 +2597,7 @@ function App() {
           setFeatures(items => items.map(item => item.key === key ? { ...item, enabled: result.enabled } : item));
           setSavedDetailConfig(result.config);
           setDetailRevision(result.revision ?? detailRevision);
-          if (key === 'community.levels') setSavedRankConfig(sent.rank);
+          if (key === 'community.levels' && 'rankCard' in result.config) setSavedRankConfig(sent.rank);
           // An earlier response acknowledges only its own snapshot. It must
           // not reset fields that were edited while that request was running.
           if (latest) {
@@ -2629,14 +2632,9 @@ function App() {
     editSettings({ config: { ...detailDraftRef.current.config, [key]: value } }, discrete || typeof value === 'boolean' ? 0 : 400);
   }
   async function publishSettings(key: string, guildId: string | undefined, sent: SettingsDraft, revision: number): Promise<Awaited<ReturnType<typeof api.saveFeature>>> {
-      const publishConfig = { ...sent.config };
-      if (key === 'community.levels') {
-        publishConfig.bannerEnabled = true;
-        delete publishConfig.rankCard;
-        if (features.some(item => item.key === 'studio.rank_card' && item.premium_unlocked)) {
-          publishConfig.rankCard = sent.rank;
-        }
-      }
+      const publishConfig = key === 'community.levels'
+        ? levelsPublishConfig(sent.config, sent.rank, { premium: rankCardUnlocked(featuresRef.current), loaded: rankLoadedRef.current })
+        : { ...sent.config };
       if (!localPreviewMode) {
         const preflight = await api.featurePreflight(key, publishConfig, sent.enabled);
         if (preflight.guildId !== guildId) throw new Error('guild_changed');
@@ -2718,7 +2716,7 @@ function App() {
       const feature = features.find(item => item.key === key);
       setSimulation({ guildId: me.guildId, key,
         get label() { return feature ? localizedFeature(feature).label : helperText('Feature'); },
-        config: structuredClone(detailConfig), enabled: detailEnabled, visualDemo });
+        config: structuredClone(detailConfig), enabled: detailEnabled, visualDemo: visualDemo === true });
     };
     // The visual demonstration is local only; it must never reach the real
     // send-a-test paths below (social feeds post to Discord).
@@ -3315,7 +3313,7 @@ function App() {
                 if (updated.guildId !== me?.guildId || premiumGuildRef.current !== me?.guildId) throw new Error('guild_changed');
                 setFeatures(visibleWelcomeFeatures(updated.features));
               }}
-              bannerEditor={<RankCardEditor config={rankConfig} patch={next => editSettings({ rank: { ...detailDraftRef.current.rank, ...next } }, 400)} onReset={() => editSettings({ rank: defaultRankCard })} />}
+              bannerEditor={rankLoadFailed ? <p className="tip feature-requirement" role="alert">{helperText('Could not load the level card. Reload the page before changing the card.')}</p> : <RankCardEditor config={rankConfig} patch={next => editSettings({ rank: { ...detailDraftRef.current.rank, ...next } }, 400)} onReset={() => editSettings({ rank: defaultRankCard })} />}
             />
           ))}
       </main>

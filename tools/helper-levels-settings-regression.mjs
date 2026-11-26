@@ -15,11 +15,11 @@ const waitFor = async predicate => {
 };
 const browser = await chromium.launch();
 try {
-  for (const scenario of ['en','pt','mobile','voice','exclusions','rewards','saved-reward','missing-resources','future-field','save-failure','keyboard','premium','disabled-feature','preview-desktop','preview-mobile','preview-short','preview-tablet','preview-pt','preview-small','preview-breakpoint']) {
+  for (const scenario of ['en','pt','mobile','voice','exclusions','rewards','saved-reward','missing-resources','future-field','save-failure','keyboard','premium','premium-later','rank-load-error','disabled-feature','preview-desktop','preview-mobile','preview-short','preview-tablet','preview-pt','preview-small','preview-breakpoint']) {
     if (process.env.LEVELS_SETTINGS_SCENARIO && !process.env.LEVELS_SETTINGS_SCENARIO.split(',').includes(scenario)) continue;
     const pt = scenario === 'pt' || scenario === 'preview-pt';
     const previewScenario = scenario.startsWith('preview-');
-    const premium = scenario === 'premium' || previewScenario;
+    const premium = scenario === 'premium' || scenario === 'rank-load-error' || previewScenario;
     const narrow = ['mobile','preview-mobile','preview-short'].includes(scenario);
     const page = await browser.newPage({viewport:{width:narrow ? 390 : scenario === 'preview-small' ? 320 : scenario === 'preview-breakpoint' ? 740 : scenario === 'preview-tablet' ? 900 : 1440,height:scenario === 'preview-short' ? 600 : previewScenario ? 844 : 1000}});
     if (pt) await page.addInitScript(() => localStorage.setItem('vozen.lang','pt'));
@@ -30,6 +30,7 @@ try {
     let saved = structuredClone(initial), writes = 0, revision = 1;
     const mutations = [];
     const feature = {key:'community.levels',label:'Levels & XP',category:'community',enabled:scenario !== 'disabled-feature',available:true};
+    let premiumUnlocked = false;
     await page.route('**/api/**',async route => {
       const request = route.request();
       const path = new URL(request.url()).pathname.replace(/^.*?(?=\/api\/)/,'');
@@ -38,7 +39,7 @@ try {
       if (path === '/api/me') value = {id:'qa-user',guildId:'10',dbOk:true};
       else if (path === '/api/guilds') value = {guilds:[{id:'10',name:'Sample server',canManage:true}]};
       else if (path === '/api/guild-context') value = {guildId:'10',name:'Sample server',permissions:'8',channels:[{id:'20',name:'general',type:'text'},{id:'21',name:'announcements',type:'text'}],roles:[{id:'10',name:'everyone',position:0},{id:'30',name:'Active member',position:1,manageable:true},{id:'31',name:'Administrator',position:10,manageable:false},{id:'32',name:'Integration',position:2,managed:true}],hierarchy:{known:true},capabilities:{channelSelectors:scenario !== 'missing-resources',roleSelectors:scenario !== 'missing-resources',permissionPreflight:true},stale:false};
-      else if (path === '/api/config/features') value = {guildId:'10',features:[feature,...(premium ? [{key:'studio.rank_card',premium_unlocked:true}] : [])]};
+      else if (path === '/api/config/features') value = {guildId:'10',features:[feature,...(premium || (scenario === 'premium-later' && premiumUnlocked) ? [{key:'studio.rank_card',premium_unlocked:true}] : [])]};
       else if (path === '/api/config/features/community.levels') {
         if (request.method() === 'PUT') {
           writes++;
@@ -46,7 +47,7 @@ try {
           assert.equal(body.expected_revision,revision);
           assert.equal(body.enabled,feature.enabled);
           assert.equal(body.config.bannerEnabled,true,'card cannot be disabled');
-          assert.equal('rankCard' in body.config,premium,'only Premium saves styles');
+          assert.equal('rankCard' in body.config,(premium && scenario !== 'rank-load-error') || (scenario === 'premium-later' && premiumUnlocked),'only Premium saves styles');
           if (scenario === 'save-failure') {await route.fulfill({status:503,json:{code:'temporary_failure'}});return;}
           saved = body.config; revision++;
         }
@@ -57,6 +58,8 @@ try {
       else if (path === '/api/audit') value = {events:[]};
       else if (path === '/api/activity') value = {activity:[]};
       else if (path === '/api/quotas') value = {plan:premium ? 'Premium' : 'Free',limits:{},usage:{}};
+      else if (path === '/api/studio/rank-card') {if (scenario === 'rank-load-error') {await route.fulfill({status:503,json:{}});return;} value = {guildId:'10',config:{font:'system',primary_color:'#8EE5D2',text_color:'#F4F7FB',background_color:'#101725',overlay_opacity:0.36,background_preset:null,background_url:null,background_data:null,avatar_ring_color:'#8EE5D2',avatar_ring_width:4},backgroundPresets:[]};}
+      else if (path === '/api/premium/server') { if (request.method() === 'POST') premiumUnlocked = true; value = {guild_premium:premiumUnlocked,pass_active:true,seats:1,used:premiumUnlocked ? 1 : 0}; }
       else {await route.fulfill({status:503,json:{}});return;}
       await route.fulfill({json:value});
     });
@@ -239,6 +242,25 @@ try {
       await appearance.getByRole('button',{name:'Text',exact:true}).click();
       await appearance.getByRole('combobox',{name:'Font',exact:true}).selectOption('inter');
       await waitFor(() => saved.rankCard?.font === 'inter');
+    } else if (scenario === 'premium-later') {
+      // Edit first so the autosave writer exists before Premium is activated.
+      await setup.getByRole('spinbutton').first().fill('20');
+      await waitFor(() => saved.xpMin === 20 && !('rankCard' in saved));
+      await page.getByRole('button',{name:/^Customize the card and use background images/}).click();
+      await page.getByRole('button',{name:'Yes, activate',exact:true}).click();
+      // Without Premium the switch renders inline; the <details class="levels-customization"> only exists with Premium.
+      const appearance = page.locator('.levels-customization');
+      await appearance.waitFor();
+      await appearance.locator('summary').click();
+      await appearance.getByRole('button',{name:'Text',exact:true}).click();
+      await appearance.getByRole('combobox',{name:'Font',exact:true}).selectOption('inter');
+      await waitFor(() => saved.rankCard?.font === 'inter');
+    } else if (scenario === 'rank-load-error') {
+      await setup.getByRole('spinbutton').first().fill('20');
+      await waitFor(() => saved.xpMin === 20);
+      assert.equal('rankCard' in saved,false,'an unloaded card is never sent');
+      await page.locator('.levels-customization summary').click();
+      await page.getByText('Could not load the level card. Reload the page before changing the card.',{exact:true}).waitFor();
     } else if (scenario === 'future-field') {
       const other = setup.locator('details').filter({hasText:'Other settings'});
       await other.locator('summary').click();
@@ -246,7 +268,7 @@ try {
       await other.getByRole('textbox').fill('Still here');
       await waitFor(() => saved.futureSetting === 'Still here');
     } else assert.equal(writes,0);
-    assert.ok(mutations.every(path => ['/api/config/features/community.levels','/api/config/features/community.levels/preflight'].includes(path)),'no direct Discord actions or Premium purchases');
+    assert.ok(mutations.every(path => ['/api/config/features/community.levels','/api/config/features/community.levels/preflight',...(scenario === 'premium-later' ? ['/api/premium/server'] : [])].includes(path)),'no direct Discord actions or Premium purchases');
     assert.equal(await setup.evaluate(element => element.scrollWidth > element.clientWidth),false,'no horizontal overflow');
     if (['en','pt','mobile','rewards','premium'].includes(scenario) && process.env.LEVELS_SETTINGS_CAPTURE !== '0') {
       await mkdir('output/playwright',{recursive:true});

@@ -443,6 +443,10 @@
     "ru": "Не удалось проверить подключение TikTok.",
     "ko": "TikTok 연결을 확인할 수 없습니다."
   },
+  "Could not load the level card. Reload the page before changing the card.": {
+    "ru": "Не удалось загрузить карточку уровня. Обновите страницу, прежде чем менять карточку.",
+    "ko": "레벨 카드를 불러오지 못했습니다. 카드를 변경하기 전에 페이지를 새로고침하세요."
+  },
   "Could not remove the TikTok connection.": {
     "ru": "Не удалось удалить подключение TikTok.",
     "ko": "TikTok 연결을 해제할 수 없습니다."

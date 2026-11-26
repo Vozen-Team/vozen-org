@@ -117,7 +117,7 @@ try {
       else if (path === '/api/audit') value = {events:[]};
       else if (path === '/api/activity') value = {activity:[]};
       else if (path === '/api/quotas') value = {plan:'Free',limits:{},usage:{}};
-      else if (path === '/api/studio/rank-card') { await route.fulfill({status:503,json:{}}); return; }
+      else if (path === '/api/studio/rank-card') value = {guildId:guild,config:{font:'system',primary_color:'#8EE5D2',text_color:'#F4F7FB',background_color:'#101725',overlay_opacity:0.36,background_preset:null,background_url:null,background_data:null,avatar_ring_color:'#8EE5D2',avatar_ring_width:4}};
       else { await route.fulfill({status:503,json:{}}); return; }
       await route.fulfill({json:value});
     });
