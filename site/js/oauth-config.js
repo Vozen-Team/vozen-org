@@ -27,6 +27,6 @@
     ttsRedirectUri: new URL("/dashboard/", window.location.href).href,
     helperRedirectUri: new URL("/panel/helper/", window.location.href).href,
     billingRedirectUri: new URL("/", window.location.href).href,
-    scopes: "identify email guilds",
+    scopes: "identify guilds",
   });
 }());
