@@ -789,6 +789,11 @@
     "fr": "Message privé",
     "es": "Mensaje privado"
   },
+  "Discard my changes": {
+    "pt": "Descartar as minhas alterações",
+    "fr": "Abandonner mes modifications",
+    "es": "Descartar mis cambios"
+  },
   "Disconnect TikTok": {
     "pt": "Desligar o TikTok",
     "fr": "Déconnecter TikTok",
@@ -1968,6 +1973,11 @@
     "pt": "Rejeita ações destrutivas sem um motivo útil.",
     "fr": "Rejetez les actions destructrices sans motif pertinent.",
     "es": "Rechaza las acciones destructivas sin un motivo útil."
+  },
+  "Reload latest settings": {
+    "pt": "Recarregar as definições mais recentes",
+    "fr": "Recharger les derniers réglages",
+    "es": "Recargar la configuración más reciente"
   },
   "Reminder limits": {
     "pt": "Limites dos lembretes",

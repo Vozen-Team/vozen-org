@@ -1,4 +1,6 @@
 import { navigatePanel, panelRoute } from './panel-route';
+import { ApiError, apiErrorFrom, parseResponseBody } from './api-errors';
+export { ApiError } from './api-errors';
 
 export type ShopProductInput = {name:string;price:number;delivery:'manual'|'role';roleId:string|null};
 export type ShopProduct = ShopProductInput & {id:number;version:number};
@@ -363,13 +365,6 @@ const AUTH_CHANNEL_NAME = 'vozen.ecosystem.auth.v1';
 const SESSION_BRIDGE_TIMEOUT_MS = 6_000;
 let vozenAccountBootstrapAttempted = false;
 
-export class ApiError extends Error {
-  constructor(message: string, readonly status: number) {
-    super(message);
-    this.name = 'ApiError';
-  }
-}
-
 function isSafePanelHash(value: string): boolean {
   return (
     value === '#/' ||
@@ -581,9 +576,9 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
       code?: string;
     };
     if (response.status === 401) persistSessionBearer(null);
-    throw new ApiError(payload.message ?? payload.code ?? `API ${response.status}`, response.status);
+    throw apiErrorFrom(response.status, payload);
   }
-  return (await response.json()) as T;
+  return parseResponseBody<T>(await response.text());
 }
 
 async function meOrBootstrap(options?: ReadOptions): Promise<Me> {

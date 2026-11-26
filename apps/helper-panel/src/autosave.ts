@@ -13,6 +13,7 @@ export function createAutosave<D, R extends { revision?: number }>(options: {
   let version = 0;
   let pending = false;
   let failed = false;
+  let disposed = false;
   let timer: ReturnType<typeof setTimeout> | undefined;
   let running: Promise<void> | undefined;
 
@@ -20,15 +21,17 @@ export function createAutosave<D, R extends { revision?: number }>(options: {
     if (running) return running;
     if (!pending || failed) return Promise.resolve();
     running = (async () => {
-      while (pending && !failed && !timer) {
+      while (pending && !failed && !timer && !disposed) {
         const sent = draft;
         const sentVersion = version;
         pending = false;
         try {
           const result = await options.write(sent, revision);
+          if (disposed) return;
           revision = result.revision ?? revision;
           options.saved(result, sent, sentVersion === version);
         } catch (error) {
+          if (disposed) return;
           // A failed/ambiguous request is not retried in a loop. Keep the draft
           // and its revision; never silently overwrite a revision conflict.
           failed = true;
@@ -36,13 +39,14 @@ export function createAutosave<D, R extends { revision?: number }>(options: {
           options.state('error', error);
         }
       }
-      if (!failed) options.state(pending ? 'saving' : 'saved');
+      if (!failed && !disposed) options.state(pending ? 'saving' : 'saved');
     })().finally(() => { running = undefined; });
     return running;
   }
 
   return {
     enqueue(next: D, delay = 0) {
+      if (disposed) return;
       draft = structuredClone(next);
       version++;
       pending = true;
@@ -66,5 +70,13 @@ export function createAutosave<D, R extends { revision?: number }>(options: {
       return this.flush();
     },
     hasUnsaved() { return pending || Boolean(running); },
+    // Drops the queued or failed draft. The writer is finished: the form creates a new one for the next edit.
+    discard() {
+      if (timer) clearTimeout(timer);
+      timer = undefined;
+      pending = false;
+      failed = false;
+      disposed = true;
+    },
   };
 }

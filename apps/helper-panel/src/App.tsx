@@ -65,6 +65,7 @@ import { readWorkspaceGuilds, requireWorkspaceGuild } from './workspace';
 import { isRoleResourceOptionDisabled, roleResourceLabel, roleRequiresAssignment } from './role-resource';
 import { ResourceMultiSelect } from './resource-multi-select';
 import { createAutosave, type AutosaveState } from './autosave';
+import { saveFailureKind, type SaveFailure } from './api-errors';
 import { levelsPublishConfig, rankCardUnlocked } from './levels-publish';
 import {
   helperLocale,
@@ -2008,6 +2009,9 @@ function App() {
   const formOwnerRef = useRef(formOwner);
   formOwnerRef.current = formOwner;
   const [autosaveState, setAutosaveState] = useState<AutosaveState | null>(null);
+  const [saveFailure, setSaveFailure] = useState<SaveFailure | null>(null);
+  const blockedNavigation = useRef<(() => void) | null>(null);
+  const saveErrorCard = useRef<HTMLDivElement>(null);
   const [providerHealth, setProviderHealth] = useState<ProviderSubscriptionHealth | null>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error' | 'auth' | 'saving'>(
     'loading',
@@ -2035,7 +2039,7 @@ function App() {
   const navigate = (path: string) => {
     setSectionsOpen(false);
     void (async () => {
-      if (autosaveRef.current && !(await autosaveRef.current.flush())) return;
+      if (autosaveRef.current && !(await autosaveRef.current.flush())) { blockedNavigation.current = () => navigate(path); saveErrorCard.current?.focus(); return; }
       const next = parseRoute(path);
       if (panelRoute() === path) setRoute(next);
       else navigatePanel(path);
@@ -2046,7 +2050,7 @@ function App() {
     const onRoute = async () => {
       const next = panelRoute();
       if (autosaveRef.current && !(await autosaveRef.current.flush())) {
-        window.history.replaceState(null, '', activeUrl);
+        window.history.pushState(null, '', activeUrl); blockedNavigation.current = () => { navigatePanel(next); };
         return;
       }
       if (next !== panelRoute()) return;
@@ -2551,7 +2555,7 @@ function App() {
   }, [features, filter, search, locale]);
   async function switchGuild(guildId: string, nextPath?: string) {
     if (switchingGuild.current || status === 'saving') return;
-    if (autosaveRef.current && !(await autosaveRef.current.flush())) return;
+    if (autosaveRef.current && !(await autosaveRef.current.flush())) { blockedNavigation.current = () => void switchGuild(guildId, nextPath); saveErrorCard.current?.focus(); return; }
     if (localPreviewMode) {
       setMe((current) => (current ? { ...current, guildId } : current));
       if (nextPath) navigate(nextPath);
@@ -2564,14 +2568,30 @@ function App() {
       if (me) rememberGuild(guildStorage(), me.id, guildId);
       if (nextPath) navigatePanel(nextPath);
       window.location.reload();
-    } catch (cause) {
+    } catch {
       switchingGuild.current = false;
-      // A lost response may still have rotated the shared cookie. Never expose
-      // the old form until its server identity has been confirmed again.
-      const actual = await api.me().catch(() => null);
-      if (actual?.guildId === me?.guildId && actual?.id === me?.id) setStatus('ready');
-      else { setMe(null); setStatus('error'); }
-      setMessage(() => () => (cause instanceof Error ? cause.message : helperText('Could not switch server.')));
+      // A lost response may still have rotated the shared cookie: ask the server which guild is active now.
+      let actual: Me | null = null;
+      let meError: unknown = null;
+      try { actual = await api.me(); } catch (error) { meError = error; }
+      if (!actual) {
+        setMe(null);
+        if (meError instanceof ApiError && meError.status === 401) setStatus('auth');
+        else { setWorkspaceError(true); setStatus('error'); }
+        return;
+      }
+      if (actual.id === me?.id && actual.guildId === guildId) {
+        rememberGuild(guildStorage(), actual.id, actual.guildId);
+        if (nextPath) navigatePanel(nextPath);
+        window.location.reload();
+        return;
+      }
+      if (actual.id === me?.id && actual.guildId === me?.guildId) {
+        setStatus('ready');
+        setMessage(() => () => helperText('Could not switch server.'));
+        return;
+      }
+      setMe(null); setWorkspaceError(true); setStatus('error');
     }
   }
   function editSettings(next: Partial<SettingsDraft>, delay = 0) {
@@ -2612,13 +2632,15 @@ function App() {
           setAutosaveState(state);
           setStatus(state === 'saving' ? 'saving' : 'ready');
           if (state === 'saving') setMessage('');
+          if (state !== 'error') { setSaveFailure(null); blockedNavigation.current = null; }
           if (state === 'error') {
-            const code = error instanceof Error ? error.message : '';
-            const reason = code === 'feature_revision_conflict'
+            const kind = saveFailureKind(error);
+            setSaveFailure(kind);
+            const reason = kind === 'conflict'
               ? 'The configuration changed in another session. Reload before editing again; your draft is still here.'
-              : code === 'unauthenticated'
+              : kind === 'auth'
               ? 'Your session expired. Sign in again.'
-              : code;
+              : error instanceof Error ? error.message : '';
             setMessage(() => () => (`${helperText('Changes not saved.')} ${helperText(reason)}`));
           }
         },
@@ -2677,6 +2699,15 @@ function App() {
         }
       }
       return result;
+  }
+  function dropDraft(resume: boolean) {
+    autosaveRef.current?.discard();
+    autosaveRef.current = null; autosaveOwner.current = '';
+    setAutosaveState(null); setSaveFailure(null); setMessage('');
+    setRankConfig(savedRankConfig);
+    setDetailRetry(value => value + 1);
+    const next = blockedNavigation.current; blockedNavigation.current = null;
+    if (resume) next?.();
   }
   async function repairDetail() {
     if (!route.key || localPreviewMode) return;
@@ -3094,7 +3125,7 @@ function App() {
             decoding="async"
           />
           <div>
-            <select className="settings-product-switch" aria-label="Product" value="helper" onChange={event => { const target=event.target.value==='tts'?'/dashboard':'/account/?music=1'; void (async()=>{if(autosaveRef.current && !(await autosaveRef.current.flush()))return;window.location.assign(target);})(); }}><option value="tts">Vozen TTS</option><option value="music">Vozen Music</option><option value="helper">Vozen Helper</option></select>
+            <select className="settings-product-switch" aria-label="Product" value="helper" onChange={event => { const target=event.target.value==='tts'?'/dashboard':'/account/?music=1'; void (async()=>{if(autosaveRef.current && !(await autosaveRef.current.flush())){blockedNavigation.current=()=>window.location.assign(target);return;}window.location.assign(target);})(); }}><option value="tts">Vozen TTS</option><option value="music">Vozen Music</option><option value="helper">Vozen Helper</option></select>
             <small>{helperText('SERVER TOOLKIT')}</small>
           </div>
         </div>
@@ -3202,9 +3233,11 @@ function App() {
           </div>
         )}
         {autosaveState === 'error' && (
-          <div className="card resource-status" role="alert">
+          <div className="card resource-status" role="alert" ref={saveErrorCard} tabIndex={-1}>
             <span>{helperText('Could not save. Your changes are still in this form.')}</span>
-            <button type="button" className="secondary" onClick={() => void autosaveRef.current?.retry()}>{helperText('Try again')}</button>
+            {(saveFailure === 'transient' || saveFailure === 'other') && <button type="button" className="secondary" onClick={() => void autosaveRef.current?.retry()}>{helperText('Try again')}</button>}
+            {saveFailure === 'conflict' && <button type="button" className="secondary" onClick={() => dropDraft(false)}>{helperText('Reload latest settings')}</button>}
+            <button type="button" className="secondary" onClick={() => dropDraft(true)}>{helperText('Discard my changes')}</button>
           </div>
         )}
         {!localPreviewMode && needsGuildContext &&

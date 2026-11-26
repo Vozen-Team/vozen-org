@@ -631,6 +631,10 @@
     "ru": "Личное сообщение",
     "ko": "다이렉트 메시지"
   },
+  "Discard my changes": {
+    "ru": "Отменить мои изменения",
+    "ko": "내 변경 사항 취소"
+  },
   "Disconnect TikTok": {
     "ru": "Отключить TikTok",
     "ko": "TikTok 연결 해제"
@@ -1574,6 +1578,10 @@
   "Reject destructive actions without a useful reason.": {
     "ru": "Отклоняйте разрушительные действия без содержательной причины.",
     "ko": "유효한 사유가 없는 파괴적 작업을 거부합니다."
+  },
+  "Reload latest settings": {
+    "ru": "Загрузить последние настройки",
+    "ko": "최신 설정 다시 불러오기"
   },
   "Reminder limits": {
     "ru": "Ограничения напоминаний",

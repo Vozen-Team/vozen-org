@@ -631,6 +631,10 @@
     "de": "Direktnachricht",
     "tr": "Özel mesaj"
   },
+  "Discard my changes": {
+    "de": "Meine Änderungen verwerfen",
+    "tr": "Değişikliklerimi at"
+  },
   "Disconnect TikTok": {
     "de": "TikTok trennen",
     "tr": "TikTok bağlantısını kes"
@@ -1574,6 +1578,10 @@
   "Reject destructive actions without a useful reason.": {
     "de": "Lehne destruktive Aktionen ohne sinnvolle Begründung ab.",
     "tr": "Anlamlı bir gerekçesi olmayan yıkıcı işlemleri reddedin."
+  },
+  "Reload latest settings": {
+    "de": "Neueste Einstellungen laden",
+    "tr": "En son ayarları yeniden yükle"
   },
   "Reminder limits": {
     "de": "Erinnerungslimits",

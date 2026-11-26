@@ -631,6 +631,10 @@
     "ar": "رسالة خاصة",
     "zh": "私訊"
   },
+  "Discard my changes": {
+    "ar": "تجاهل تغييراتي",
+    "zh": "捨棄我的變更"
+  },
   "Disconnect TikTok": {
     "ar": "إلغاء ربط TikTok",
     "zh": "解除 TikTok 連結"
@@ -1574,6 +1578,10 @@
   "Reject destructive actions without a useful reason.": {
     "ar": "ارفض الإجراءات التخريبية التي لا تستند إلى سبب وجيه.",
     "zh": "拒絕未提供合理原因的破壞性操作。"
+  },
+  "Reload latest settings": {
+    "ar": "إعادة تحميل أحدث الإعدادات",
+    "zh": "重新載入最新設定"
   },
   "Reminder limits": {
     "ar": "حدود التذكيرات",

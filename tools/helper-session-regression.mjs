@@ -4,7 +4,7 @@ import { mkdir } from 'node:fs/promises';
 const browser = await chromium.launch();
 const base = process.env.HELPER_TEST_URL || 'http://127.0.0.1:5179/panel/helper-tracker/';
 try {
-  for (const scenario of ['settings-layout-desktop','settings-layout-mobile','delayed-session', 'remember-server', 'legacy-bearer', 'retry-detail', 'missing-schema', 'stale-detail', 'uncertain-switch', 'free-card', 'retry-resources', 'wrong-guild-resources', 'stale-resources', 'simulation-demo', 'simulation-pt', 'channel-create', 'channel-error', 'channel-wrong-guild', 'channel-switch', 'channel-no-permissions', 'channel-mobile', 'channel-pt', 'channel-one-click', 'multiple-resources', 'multiple-mobile', 'multiple-keyboard', 'fields-visible', 'channel-permission-error', 'autosave-suggestions', 'autosave-rapid', 'autosave-failure', 'autosave-conflict', 'autosave-navigation', 'autosave-guild', 'autosave-validation']) {
+  for (const scenario of ['settings-layout-desktop','settings-layout-mobile','delayed-session', 'remember-server', 'legacy-bearer', 'retry-detail', 'missing-schema', 'stale-detail', 'uncertain-switch', 'free-card', 'retry-resources', 'wrong-guild-resources', 'stale-resources', 'simulation-demo', 'simulation-pt', 'channel-create', 'channel-error', 'channel-wrong-guild', 'channel-switch', 'channel-no-permissions', 'channel-mobile', 'channel-pt', 'channel-one-click', 'multiple-resources', 'multiple-mobile', 'multiple-keyboard', 'fields-visible', 'channel-permission-error', 'autosave-suggestions', 'autosave-rapid', 'autosave-failure', 'autosave-conflict', 'autosave-navigation', 'autosave-guild', 'autosave-validation', 'autosave-discard', 'autosave-history', 'uncertain-switch-offline']) {
     if (process.env.HELPER_SCENARIO && !scenario.startsWith(process.env.HELPER_SCENARIO)) continue;
     const page = await browser.newPage();
     let ready = false, guild = 'a', earlyReads = 0, detailReads = 0, switches = 0;
@@ -42,6 +42,7 @@ try {
       const path = new URL(route.request().url()).pathname.replace(/^.*?(?=\/api\/)/, '');
       let value = {};
       if (path === '/api/me') {
+        if (scenario === 'uncertain-switch-offline' && switches > 0) { await route.fulfill({status:503,json:{code:'temporary_failure'}}); return; }
         assert.ok(!(guild === 'b' && route.request().headers().authorization), 'old bearer must not override the rotated cookie');
         ready = false;
         await new Promise(resolve => setTimeout(resolve, 300));
@@ -73,7 +74,9 @@ try {
         value = {guildId:scenario === 'channel-wrong-guild' ? 'b' : requestedGuild,channel:{id:`${requestedGuild}-created`,name:'starboard',type:0},reused:false};
       }
       else if (path === '/api/session/switch') {
-        switches++; guild = route.request().postDataJSON().guild_id;
+        switches++;
+        if (scenario === 'uncertain-switch-offline') { await route.fulfill({status:503,json:{code:'lost_response'}}); return; }
+        guild = route.request().postDataJSON().guild_id;
         if (scenario === 'uncertain-switch') { await route.fulfill({status:503,json:{code:'lost_response'}}); return; }
         value = {ok:true,guildId:guild};
       } else if (path === '/api/config/features') value = {guildId:guild,features:[feature,...(scenario === 'free-card' && process.env.HELPER_CARD_PREMIUM ? [{key:'studio.rank_card',premium_unlocked:true}] : [])]};
@@ -81,8 +84,8 @@ try {
         if (route.request().method() === 'PUT') {
           const body = route.request().postDataJSON();
           writes.push({guild, ...body});
-          if (scenario === 'autosave-conflict' || (scenario === 'autosave-failure' && writes.length === 1)) {
-            await route.fulfill({status:scenario === 'autosave-conflict' ? 409 : 503,json:{code:scenario === 'autosave-conflict' ? 'revision_conflict' : 'temporary_failure'}}); return;
+          if (['autosave-conflict','autosave-discard','autosave-history'].includes(scenario) || (scenario === 'autosave-failure' && writes.length === 1)) {
+            await route.fulfill({status:scenario === 'autosave-failure' ? 503 : 409,json:scenario === 'autosave-failure' ? {code:'temporary_failure'} : {code:'feature_revision_conflict',message:'feature_revision_conflict'}}); return;
           }
           assert.equal(body.expected_revision,revision,'each write must use the confirmed revision');
           if (autosaveScenario) await new Promise(resolve => setTimeout(resolve,300));
@@ -170,19 +173,53 @@ try {
         assert.equal(await page.getByRole('combobox',{name:/Voting mode/}).inputValue(),'up_only');
         await mkdir('output/playwright',{recursive:true});
         await page.screenshot({path:'output/playwright/autosave-suggestions.png',fullPage:true});
-      } else if (scenario === 'autosave-failure' || scenario === 'autosave-conflict') {
+      } else if (scenario === 'autosave-failure') {
         await cooldown.fill('7');
         await page.getByRole('alert').filter({hasText:'Could not save'}).waitFor();
         assert.equal(await cooldown.inputValue(),'7');
         await new Promise(resolve => setTimeout(resolve,450));
         assert.equal(writes.length,1,'no blind retry loop');
         await Promise.all([page.waitForResponse(response => response.request().method() === 'PUT'),page.getByRole('button',{name:'Try again',exact:true}).click()]);
-        if (scenario === 'autosave-conflict') {
-          await page.locator('.header-state').filter({hasText:'Changes not saved'}).waitFor();
-          assert.equal(savedConfig,undefined,'a conflict must not overwrite another session');
-          assert.equal(await cooldown.inputValue(),'7');
-        } else { await saved(); assert.equal(savedConfig.cooldownHours,7); }
+        await saved(); assert.equal(savedConfig.cooldownHours,7);
         assert.equal(writes[1].expected_revision,1);
+      } else if (scenario === 'autosave-conflict') {
+        await cooldown.fill('7');
+        await page.getByRole('alert').filter({hasText:'Could not save'}).waitFor();
+        await new Promise(resolve => setTimeout(resolve,450));
+        assert.equal(writes.length,1,'no blind retry loop');
+        assert.equal(await page.getByRole('button',{name:'Try again',exact:true}).count(),0,'a conflict cannot succeed by resending');
+        await page.getByRole('button',{name:'Reload latest settings',exact:true}).click();
+        // The detail remounts on the first tab, like after page.reload() in autosave-suggestions.
+        await showTab(1);
+        await cooldown.waitFor();
+        await page.waitForFunction(() => [...document.querySelectorAll('input[type=number]')].some(input => input.value === '24'));
+        assert.equal(await cooldown.inputValue(),'24');
+        assert.equal(await page.getByRole('alert').filter({hasText:'Could not save'}).count(),0);
+        assert.equal(writes.length,1,'reloading never writes');
+      } else if (scenario === 'autosave-discard') {
+        await cooldown.fill('7');
+        await page.getByRole('alert').filter({hasText:'Could not save'}).waitFor();
+        await page.getByRole('button',{name:'← Back to features',exact:true}).click();
+        await new Promise(resolve => setTimeout(resolve,500));
+        assert.equal(await cooldown.isVisible(),true,'a failed draft blocks navigation');
+        await page.getByRole('button',{name:'Discard my changes',exact:true}).click();
+        await page.waitForFunction(() => location.pathname === '/panel/features/');
+        assert.equal(writes.length,1,'discarding never writes');
+      } else if (scenario === 'autosave-history') {
+        const detailPath = new URL(page.url()).pathname;
+        await page.getByRole('button',{name:'← Back to features',exact:true}).click();
+        await page.waitForFunction(() => location.pathname === '/panel/features/');
+        await page.goBack();
+        await showTab(1);
+        await cooldown.fill('7');
+        await page.getByRole('alert').filter({hasText:'Could not save'}).waitFor();
+        const lengthBefore = await page.evaluate(() => history.length);
+        await page.goForward();
+        await page.waitForFunction(path => location.pathname === path, detailPath);
+        assert.equal(await cooldown.isVisible(),true,'a failed draft keeps the form');
+        assert.equal(await page.evaluate(() => history.length),lengthBefore + 1,'the forward entry is kept, not overwritten');
+        await page.getByRole('button',{name:'Discard my changes',exact:true}).click();
+        await page.waitForFunction(() => location.pathname === '/panel/features/');
       } else if (scenario === 'autosave-validation') {
         await cooldown.fill('7');
         await page.getByRole('alert').filter({hasText:'Could not save'}).waitFor();
@@ -425,9 +462,16 @@ try {
     }
     if (scenario === 'uncertain-switch') {
       await page.getByRole('combobox',{name:'Current server',exact:true}).selectOption('b');
-      await page.getByRole('spinbutton',{name:'XP minimum by message',exact:true}).waitFor({state:'hidden'});
-      await new Promise(resolve => setTimeout(resolve, 500));
-      assert.equal(await page.getByRole('spinbutton').count(),0,'old form must not be writable after an uncertain cookie rotation');
+      await page.waitForFunction(() => document.querySelector('select[aria-label="Current server"]')?.value === 'b');
+      const xp = page.getByRole('spinbutton',{name:'XP minimum by message',exact:true});
+      await xp.waitFor();
+      assert.equal(await xp.inputValue(),'42','the switch reached the server, so the panel reloads on guild b');
+      assert.ok(!new URL(page.url()).pathname.startsWith('/account'),'an uncertain switch is not a logout');
+    }
+    if (scenario === 'uncertain-switch-offline') {
+      await page.getByRole('combobox',{name:'Current server',exact:true}).selectOption('b');
+      await page.getByRole('heading',{name:'Unable to load your servers',exact:true}).waitFor();
+      assert.ok(!new URL(page.url()).pathname.startsWith('/account'),'an unknown server state is not a logout');
     }
     if (scenario === 'stale-detail') {
       await new Promise(resolve => setTimeout(resolve, 700));
