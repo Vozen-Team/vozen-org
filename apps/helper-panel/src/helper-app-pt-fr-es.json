@@ -554,6 +554,16 @@
     "fr": "Impossible de vérifier la connexion à TikTok.",
     "es": "No se ha podido comprobar la conexión con TikTok."
   },
+  "Could not load the current settings. Nothing was changed.": {
+    "pt": "Não foi possível carregar as definições atuais. Nada foi alterado.",
+    "fr": "Impossible de charger les réglages actuels. Rien n’a été modifié.",
+    "es": "No se ha podido cargar la configuración actual. No se ha cambiado nada."
+  },
+  "Could not load the guided setup": {
+    "pt": "Não foi possível carregar a configuração guiada",
+    "fr": "Impossible de charger la configuration guidée",
+    "es": "No se ha podido cargar la configuración guiada"
+  },
   "Could not load the level card. Reload the page before changing the card.": {
     "pt": "Não foi possível carregar o cartão de nível. Recarrega a página antes de alterares o cartão.",
     "fr": "Impossible de charger la carte de niveau. Rechargez la page avant de modifier la carte.",
@@ -1333,6 +1343,11 @@
     "pt": "Canal de contagem em direto (opcional)",
     "fr": "Salon de compteur en direct (facultatif)",
     "es": "Canal de contador en directo (opcional)"
+  },
+  "Loading the current settings…": {
+    "pt": "A carregar as definições atuais…",
+    "fr": "Chargement des réglages actuels…",
+    "es": "Cargando la configuración actual…"
   },
   "Longer generated replies are rejected before they can be sent.": {
     "pt": "As respostas geradas mais longas são rejeitadas antes de serem enviadas.",
@@ -2599,6 +2614,11 @@
     "fr": "La commande du panneau de rôles applique ces valeurs aux nouveaux panneaux publiés.",
     "es": "El comando del panel de roles aplica estos valores a los nuevos paneles publicados."
   },
+  "The step was saved, but the alert channel could not be set. Choose it in each protection feature.": {
+    "pt": "O passo foi guardado, mas não foi possível definir o canal de alertas. Escolhe-o em cada funcionalidade de proteção.",
+    "fr": "L’étape a été enregistrée, mais le salon d’alertes n’a pas pu être défini. Choisissez-le dans chaque fonction de protection.",
+    "es": "El paso se ha guardado, pero no se ha podido configurar el canal de alertas. Elígelo en cada función de protección."
+  },
   "These options are applied to every new suggestion.": {
     "pt": "Estas opções são aplicadas a cada nova sugestão.",
     "fr": "Ces options sont appliquées à chaque nouvelle suggestion.",
@@ -3068,6 +3088,11 @@
     "pt": "YOUTUBE_API_KEY",
     "fr": "YOUTUBE_API_KEY",
     "es": "YOUTUBE_API_KEY"
+  },
+  "You need the Manage Channels permission to create a channel here. Choose an existing channel instead.": {
+    "pt": "Precisas da permissão Gerir canais para criar um canal aqui. Escolhe um canal existente.",
+    "fr": "Il vous faut l’autorisation Gérer les salons pour créer un salon ici. Choisissez plutôt un salon existant.",
+    "es": "Necesitas el permiso Gestionar canales para crear un canal aquí. Elige un canal existente."
   },
   "Your session expired. Sign in again.": {
     "pt": "A tua sessão expirou. Inicia sessão novamente.",

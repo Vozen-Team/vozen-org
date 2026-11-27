@@ -5,6 +5,7 @@ const browser=await chromium.launch();
 const base=process.env.HELPER_TEST_URL||'http://127.0.0.1:5179/panel/helper-tracker/';
 try {
   for(const locale of ['en','pt','fr','es','de','tr','ar','zh','ru','ko','pt-mobile','ar-mobile']) {
+    if(process.env.QUICK_SCENARIO)continue;
     const language=locale.split('-')[0];
     const page=await browser.newPage({viewport:{width:locale.includes('mobile')?390:1440,height:900}});
     await page.addInitScript(lang=>localStorage.setItem('vozen.lang',lang),language);
@@ -133,5 +134,137 @@ try {
     }
     assert.equal(writes,0,'overview navigation never changes settings');
     console.log(`PASS overview ${locale}`);await page.close();
+  }
+  for (const scenario of ['quick-protection','quick-protection-403','quick-defaults-error','quick-status-error','quick-roles-free','quick-roles-403','quick-channels-403']) {
+    if (process.env.QUICK_SCENARIO && scenario !== process.env.QUICK_SCENARIO) continue;
+    const page = await browser.newPage({viewport:{width:1440,height:900}});
+    await page.addInitScript(() => localStorage.setItem('vozen.lang','en'));
+    const calls = [];
+    let stepRefused = false;
+    let defaultsFail = scenario === 'quick-defaults-error', statusFails = scenario === 'quick-status-error';
+    const currentStep = ['quick-roles-free','quick-roles-403'].includes(scenario) ? 'roles' : scenario === 'quick-channels-403' ? 'welcome' : 'protection';
+    const order = ['welcome','roles','moderation','protection'];
+    const steps = order.map(key => ({key,status:order.indexOf(key) < order.indexOf(currentStep) ? 'applied' : 'pending'}));
+    const features = [
+      {key:'protection.antispam',label:'Anti-spam',category:'protection',enabled:true,available:true},
+      {key:'protection.anti_raid',label:'Anti-raid',category:'protection',enabled:true,available:true},
+      {key:'management.moderation',label:'Moderation',category:'management',enabled:true,available:true},
+      {key:'support.welcome',label:'Welcome',category:'management',enabled:false,available:true},
+      {key:'community.role_panels',label:'Role panels',category:'community',enabled:false,available:true,premium_required:true,premium_unlocked:scenario !== 'quick-roles-free'},
+    ];
+    const current = {'protection.antispam':{config:{floodCount:9,ignoredChannels:['c-keep'],ignoredRoles:['r-keep'],logChannel:'old-log'},revision:5},
+      'protection.anti_raid':{config:{alertChannel:'old-log',joinThreshold:30},revision:7}};
+    await page.route('**/api/**',async route => {
+      const request = route.request(), method = request.method();
+      const path = new URL(request.url()).pathname.replace(/^.*?(?=\/api\/)/,'');
+      if (method !== 'GET') calls.push({path,body:request.postDataJSON()});
+      let value;
+      if (path === '/api/me') value = {id:'qa-owner',guildId:'a',dbOk:true};
+      else if (path === '/api/guilds') value = {guilds:[{id:'a',name:'Alpha community',canManage:true}]};
+      else if (path === '/api/guild-context') value = {guildId:'a',name:'Alpha community',permissions:'8',channels:[{id:'old-log',name:'alerts',type:'text'},{id:'new-log',name:'vozen-alertas',type:'text'}],roles:[],hierarchy:{known:true},capabilities:{channelSelectors:true,roleSelectors:true,permissionPreflight:true}};
+      else if (path === '/api/config/features') value = {guildId:'a',features};
+      else if (path === '/api/quick-setup') {
+        if (statusFails) {await route.fulfill({status:503,json:{}});return;}
+        value = {guildId:'a',status:'in_progress',currentStep,revision:3,steps,createdResources:[]};
+      } else if (path.startsWith('/api/quick-setup/steps/')) {
+        if (scenario === 'quick-roles-403') {await route.fulfill({status:403,json:{code:'premium_required',message:'premium_required'}});return;}
+        if (scenario === 'quick-channels-403' || (scenario === 'quick-protection-403' && !stepRefused)) {
+          stepRefused = true;
+          await route.fulfill({status:403,json:{code:'quick_setup_manage_channels_required',message:'quick_setup_manage_channels_required'}});return;
+        }
+        const step = path.split('/').at(-1);
+        const nextSteps = steps.map(item => item.key === step ? {...item,status:'applied'} : item);
+        // Only quick-protection asks the server to create #vozen-alertas; the retry in quick-protection-403 does not.
+        value = {guildId:'a',status:nextSteps.some(item => item.status === 'pending') ? 'in_progress' : 'completed',currentStep:null,revision:4,steps:nextSteps,createdResources:[],
+          ...(step === 'protection' ? {draft:scenario === 'quick-protection' ? {profile:'balanced',logChannel:'new-log',createChannel:true} : {profile:'balanced',logChannel:'',createChannel:false}} : {})};
+      } else if (path.startsWith('/api/config/features/')) {
+        const key = decodeURIComponent(path.slice('/api/config/features/'.length));
+        if (method === 'PUT') {
+          const body = request.postDataJSON();
+          value = {guildId:'a',key,enabled:body.enabled,config:body.config,revision:(body.expected_revision ?? 0) + 1};
+        } else {
+          if (key === 'protection.antispam' && defaultsFail) {await route.fulfill({status:503,json:{}});return;}
+          value = {guildId:'a',key,enabled:true,defaults:{},schema:{sections:[]},config:current[key]?.config ?? {},revision:current[key]?.revision ?? 1};
+        }
+      } else {await route.fulfill({status:503,json:{}});return;}
+      await route.fulfill({json:value});
+    });
+    await page.goto(base + (scenario === 'quick-status-error' ? '#/' : '#/quick-setup'));
+    const apply = page.getByRole('button',{name:'Confirm and apply',exact:true});
+    if (scenario === 'quick-protection') {
+      // Happy path: a server whose current settings load applies the profile.
+      await apply.click();
+      await page.getByRole('heading',{name:'You’re all set.',exact:true}).waitFor();
+      // The Quick Setup state is updated before the second round of writes, so wait for its final message.
+      await page.getByText('Automated protection applied.',{exact:false}).waitFor();
+      assert.deepEqual(calls.map(call => call.path),['/api/config/features/protection.antispam','/api/config/features/protection.anti_raid','/api/quick-setup/steps/protection','/api/config/features/protection.antispam','/api/config/features/protection.anti_raid']);
+      const [spam,raid,step,spam2,raid2] = calls.map(call => call.body);
+      assert.equal(spam.expected_revision,5); assert.deepEqual(spam.config.ignoredChannels,['c-keep']); assert.deepEqual(spam.config.ignoredRoles,['r-keep']);
+      assert.equal(spam.config.logChannel,'old-log'); assert.equal(spam.config.floodCount,6);
+      assert.equal(raid.expected_revision,7); assert.equal(raid.config.alertChannel,'old-log');
+      assert.equal(step.expected_revision,3);
+      assert.equal(spam2.expected_revision,6); assert.equal(spam2.config.logChannel,'new-log');
+      assert.equal(raid2.expected_revision,8); assert.equal(raid2.config.alertChannel,'new-log');
+    }
+    if (scenario === 'quick-defaults-error') {
+      await page.getByText('Could not load the current settings. Nothing was changed.',{exact:false}).waitFor();
+      assert.equal(await apply.isDisabled(),true,'no write without the current settings');
+      assert.equal(calls.length,0);
+      defaultsFail = false;
+      await page.getByRole('alert').filter({hasText:'Could not load the current settings'}).getByRole('button',{name:'Try again',exact:true}).click();
+      await page.waitForFunction(() => [...document.querySelectorAll('button')].some(button => button.textContent.trim() === 'Confirm and apply' && !button.disabled));
+    }
+    if (scenario === 'quick-status-error') {
+      await page.locator('.vozen-overview').waitFor();
+      await new Promise(resolve => setTimeout(resolve,600));
+      assert.equal(await page.locator('.quick-setup-page').count(),0,'a failed status fetch does not redirect to Quick Setup');
+      await page.goto(base + '#/quick-setup');
+      await page.getByRole('heading',{name:'Could not load the guided setup',exact:true}).waitFor();
+      statusFails = false;
+      await page.getByRole('button',{name:'Try again',exact:true}).click();
+      await apply.waitFor();
+    }
+    if (scenario === 'quick-roles-free') {
+      await page.getByText('Unlock Vozen Premium for this server to configure it.',{exact:false}).waitFor();
+      assert.equal(await apply.isDisabled(),true);
+      assert.equal(await page.getByRole('button',{name:/^skip$/i}).isDisabled(),false,'the roles step can still be skipped');
+      assert.equal(calls.length,0);
+    }
+    if (scenario === 'quick-roles-403') {
+      await apply.click();
+      await page.getByText('Unlock Vozen Premium for this server to configure it.',{exact:false}).waitFor();
+      assert.equal(await page.getByText('premium_required',{exact:false}).count(),0);
+      assert.equal(await page.getByRole('heading',{name:'Let members choose roles',exact:true}).count(),1,'still on the roles step');
+    }
+    if (scenario === 'quick-channels-403') {
+      const create = page.getByRole('checkbox',{name:/^Create #welcome if it does not exist/});
+      assert.equal(await create.isChecked(),true);
+      await apply.click();
+      await page.getByText('You need the Manage Channels permission to create a channel here. Choose an existing channel instead.',{exact:false}).waitFor();
+      // The fallback is applied right after the message; poll instead of reading once.
+      for (let i = 0; i < 40 && await create.isChecked(); i++) await new Promise(resolve => setTimeout(resolve,50));
+      assert.equal(await create.isChecked(),false,'the step falls back to an existing channel');
+      assert.equal(await page.getByText('quick_setup_manage_channels_required',{exact:false}).count(),0);
+      assert.equal(calls.length,1);
+    }
+    if (scenario === 'quick-protection-403') {
+      // Protection writes anti-spam and anti-raid before the step call; those writes stay when the step is refused,
+      // and the retry must carry their new revisions (6 and 8).
+      const create = page.getByRole('checkbox',{name:/^Create #vozen-alerts if it does not exist/});
+      await apply.click();
+      await page.getByText('You need the Manage Channels permission to create a channel here. Choose an existing channel instead.',{exact:false}).waitFor();
+      for (let i = 0; i < 40 && await create.isChecked(); i++) await new Promise(resolve => setTimeout(resolve,50));
+      assert.equal(await create.isChecked(),false);
+      await apply.click();
+      await page.getByRole('heading',{name:'You’re all set.',exact:true}).waitFor();
+      await page.getByText('Automated protection applied.',{exact:false}).waitFor();
+      assert.deepEqual(calls.map(call => call.path),['/api/config/features/protection.antispam','/api/config/features/protection.anti_raid','/api/quick-setup/steps/protection','/api/config/features/protection.antispam','/api/config/features/protection.anti_raid','/api/quick-setup/steps/protection']);
+      const bodies = calls.map(call => call.body);
+      assert.equal(bodies[0].expected_revision,5); assert.equal(bodies[1].expected_revision,7);
+      assert.equal(bodies[3].expected_revision,6,'the retry uses the revision of the write that stayed');
+      assert.equal(bodies[4].expected_revision,8);
+      assert.equal(bodies[5].config.createChannel,false);
+    }
+    console.log(`PASS quick ${scenario}`); await page.close();
   }
 } finally {await browser.close();}

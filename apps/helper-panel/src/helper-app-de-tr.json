@@ -443,6 +443,14 @@
     "de": "Die TikTok-Verbindung konnte nicht geprüft werden.",
     "tr": "TikTok bağlantısı kontrol edilemedi."
   },
+  "Could not load the current settings. Nothing was changed.": {
+    "de": "Die aktuellen Einstellungen konnten nicht geladen werden. Es wurde nichts geändert.",
+    "tr": "Mevcut ayarlar yüklenemedi. Hiçbir şey değiştirilmedi."
+  },
+  "Could not load the guided setup": {
+    "de": "Die geführte Einrichtung konnte nicht geladen werden",
+    "tr": "Rehberli kurulum yüklenemedi"
+  },
   "Could not load the level card. Reload the page before changing the card.": {
     "de": "Die Levelkarte konnte nicht geladen werden. Lade die Seite neu, bevor du die Karte änderst.",
     "tr": "Seviye kartı yüklenemedi. Kartı değiştirmeden önce sayfayı yenileyin."
@@ -1066,6 +1074,10 @@
   "Live counter channel (optional)": {
     "de": "Live-Zählerkanal (optional)",
     "tr": "Canlı sayaç kanalı (isteğe bağlı)"
+  },
+  "Loading the current settings…": {
+    "de": "Aktuelle Einstellungen werden geladen…",
+    "tr": "Mevcut ayarlar yükleniyor…"
   },
   "Longer generated replies are rejected before they can be sent.": {
     "de": "Längere generierte Antworten werden vor dem Senden abgelehnt.",
@@ -2079,6 +2091,10 @@
     "de": "Der Rollenpanel-Befehl verwendet diese Werte für neu veröffentlichte Panels.",
     "tr": "Rol paneli komutu bu değerleri yeni yayımlanan panellere uygular."
   },
+  "The step was saved, but the alert channel could not be set. Choose it in each protection feature.": {
+    "de": "Der Schritt wurde gespeichert, aber der Benachrichtigungskanal konnte nicht gesetzt werden. Wähle ihn in jeder Schutzfunktion.",
+    "tr": "Adım kaydedildi ancak uyarı kanalı ayarlanamadı. Her koruma özelliğinde kanalı seçin."
+  },
   "These options are applied to every new suggestion.": {
     "de": "Diese Optionen gelten für jeden neuen Vorschlag.",
     "tr": "Bu seçenekler her yeni öneriye uygulanır."
@@ -2454,6 +2470,10 @@
   "YOUTUBE_API_KEY": {
     "de": "YOUTUBE_API_KEY",
     "tr": "YOUTUBE_API_KEY"
+  },
+  "You need the Manage Channels permission to create a channel here. Choose an existing channel instead.": {
+    "de": "Du brauchst die Berechtigung „Kanäle verwalten“, um hier einen Kanal zu erstellen. Wähle stattdessen einen vorhandenen Kanal.",
+    "tr": "Burada kanal oluşturmak için Kanalları yönet izni gerekir. Bunun yerine mevcut bir kanal seçin."
   },
   "Your session expired. Sign in again.": {
     "de": "Deine Sitzung ist abgelaufen. Melde dich erneut an.",

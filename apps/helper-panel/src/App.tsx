@@ -68,6 +68,7 @@ import { createAutosave, type AutosaveState } from './autosave';
 import { saveFailureKind, type SaveFailure } from './api-errors';
 import { levelsPublishConfig, rankCardUnlocked } from './levels-publish';
 import { rolePanelTarget } from './role-panel-target';
+import { protectionProfileConfigs, roleStepLocked, stepDefaultsStatus, withDraftPatches } from './quick-setup';
 import {
   helperLocale,
   helperText,
@@ -1980,6 +1981,9 @@ function App() {
   const needsGuildContext = route.page !== 'servers';
   const [quickSetup, setQuickSetup] = useState<QuickSetupState | null>(null);
   const [quickSetupDefaults, setQuickSetupDefaults] = useState<QuickSetupFeatureDefaults>({});
+  const [quickSetupLoad, setQuickSetupLoad] = useState<{ loading: boolean; failed: Array<keyof QuickSetupFeatureDefaults>; revisions: Partial<Record<keyof QuickSetupFeatureDefaults, number>> }>({ loading: true, failed: [], revisions: {} });
+  const [quickSetupError, setQuickSetupError] = useState(false);
+  const [quickSetupRetry, setQuickSetupRetry] = useState(0);
   const [features, setFeatures] = useState<Feature[]>(() =>
     localPreviewMode ? demoFeatures.concat(additionalFeatures).map(presentFeature) : [],
   );
@@ -2210,8 +2214,11 @@ function App() {
         antiRaid: defaults['protection.anti_raid'],
         antiSpam: defaults['protection.antispam'],
       });
+      setQuickSetupLoad({ loading: false, failed: [], revisions: {} });
       return;
     }
+    setQuickSetupError(false);
+    setQuickSetupLoad({ loading: true, failed: [], revisions: {} });
     const load = createLoadGuard();
     void api
       .quickSetup({ signal: load.signal })
@@ -2219,7 +2226,7 @@ function App() {
         if (load.isCurrent()) setQuickSetup(result);
       })
       .catch((cause) => {
-        if (load.isCurrent() && !isAbortError(cause)) setQuickSetup(defaultQuickSetupState(guildId));
+        if (load.isCurrent() && !isAbortError(cause)) setQuickSetupError(true);
       });
     // Quick Setup is a composition of real feature adapters.  Fetch their
     // defaults from Rust instead of reconstructing a second schema in React.
@@ -2233,18 +2240,22 @@ function App() {
       ].map(async ([name, key]) => {
         try {
           const detail = await api.feature(key, { signal: load.signal });
-          return [name, { ...(detail.defaults ?? {}), ...detail.config }] as const;
+          if (detail.guildId !== guildId) throw new Error('guild_changed');
+          return [name, { ...(detail.defaults ?? {}), ...detail.config }, detail.revision ?? 0, true] as const;
         } catch {
-          return [name, {}] as const;
+          return [name, {}, 0, false] as const;
         }
       }),
     ).then((entries) => {
       if (load.isCurrent()) {
-        setQuickSetupDefaults(Object.fromEntries(entries) as QuickSetupFeatureDefaults);
+        setQuickSetupDefaults(Object.fromEntries(entries.map(([name, config]) => [name, config])) as QuickSetupFeatureDefaults);
+        setQuickSetupLoad({ loading: false,
+          failed: entries.filter(([, , , ok]) => !ok).map(([name]) => name as keyof QuickSetupFeatureDefaults),
+          revisions: Object.fromEntries(entries.filter(([, , , ok]) => ok).map(([name, , revision]) => [name, revision])) });
       }
     });
     return () => load.dispose();
-  }, [me?.guildId, guilds, route.page]);
+  }, [me?.guildId, guilds, route.page, quickSetupRetry]);
   useEffect(() => {
     if (localPreviewMode || !me || !needsGuildContext) return;
     const load = createLoadGuard();
@@ -2910,105 +2921,33 @@ function App() {
     step: QuickSetupStepKey,
     config: FeatureConfig,
     enabled = true,
-  ): Promise<boolean> {
+  ): Promise<'applied' | 'failed' | 'use_existing_channel'> {
     setStatus('saving');
+    const guildId = me?.guildId;
+    const revisions = { ...quickSetupLoad.revisions };
     try {
-      const writes: Array<{ key: string; config: FeatureConfig; enabled: boolean }> = [];
+      const writes: Array<{ key: string; name?: keyof QuickSetupFeatureDefaults; config: FeatureConfig; enabled: boolean }> = [];
       if (step === 'welcome') writes.push({ key: 'support.welcome', config, enabled });
       if (step === 'roles') writes.push({ key: 'community.role_panels', config, enabled });
-      if (step === 'moderation') writes.push({ key: 'management.moderation', config, enabled });
+      if (step === 'moderation') writes.push({ key: 'management.moderation', name: 'moderation', config, enabled });
       if (step === 'protection') {
-        const profile = String(config.profile ?? 'balanced');
-        const profiles: Record<string, { antispam: FeatureConfig; antiRaid: FeatureConfig }> = {
-          monitor: {
-            antispam: {
-              ...quickSetupDefaults.antiSpam,
-              floodCount: 8,
-              windowSeconds: 10,
-              duplicateLimit: 4,
-              maxLinks: 8,
-              deleteMessage: false,
-              timeoutSeconds: 0,
-              mentionLimit: 8,
-              ignoredChannels: [],
-              ignoredRoles: [],
-              alertOnly: true,
-              logChannel: config.logChannel ?? '',
-            },
-            antiRaid: {
-              ...quickSetupDefaults.antiRaid,
-              joinThreshold: 12,
-              windowSeconds: 20,
-              incidentMinutes: 10,
-              verification: 'high',
-              pauseInvites: true,
-              alertOnly: true,
-              alertChannel: config.logChannel ?? '',
-            },
-          },
-          balanced: {
-            antispam: {
-              ...quickSetupDefaults.antiSpam,
-              floodCount: 6,
-              windowSeconds: 10,
-              duplicateLimit: 3,
-              maxLinks: 5,
-              deleteMessage: false,
-              timeoutSeconds: 60,
-              mentionLimit: 5,
-              ignoredChannels: [],
-              ignoredRoles: [],
-              alertOnly: false,
-              logChannel: config.logChannel ?? '',
-            },
-            antiRaid: {
-              ...quickSetupDefaults.antiRaid,
-              joinThreshold: 10,
-              windowSeconds: 20,
-              incidentMinutes: 10,
-              verification: 'high',
-              pauseInvites: true,
-              alertOnly: true,
-              alertChannel: config.logChannel ?? '',
-            },
-          },
-          strict: {
-            antispam: {
-              ...quickSetupDefaults.antiSpam,
-              floodCount: 5,
-              windowSeconds: 10,
-              duplicateLimit: 2,
-              maxLinks: 3,
-              deleteMessage: true,
-              timeoutSeconds: 300,
-              mentionLimit: 4,
-              ignoredChannels: [],
-              ignoredRoles: [],
-              alertOnly: false,
-              logChannel: config.logChannel ?? '',
-            },
-            antiRaid: {
-              ...quickSetupDefaults.antiRaid,
-              joinThreshold: 8,
-              windowSeconds: 20,
-              incidentMinutes: 10,
-              verification: 'high',
-              pauseInvites: true,
-              alertOnly: false,
-              alertChannel: config.logChannel ?? '',
-            },
-          },
-        };
-        const selected = profiles[profile] ?? profiles.balanced;
-        writes.push({ key: 'protection.antispam', config: selected.antispam, enabled });
-        writes.push({ key: 'protection.anti_raid', config: selected.antiRaid, enabled });
+        const selected = protectionProfileConfigs(config.profile, config.logChannel, { antiSpam: quickSetupDefaults.antiSpam ?? {}, antiRaid: quickSetupDefaults.antiRaid ?? {} });
+        writes.push({ key: 'protection.antispam', name: 'antiSpam', config: selected.antispam, enabled });
+        writes.push({ key: 'protection.anti_raid', name: 'antiRaid', config: selected.antiRaid, enabled });
       }
+      // Only the named writes go through the feature endpoint; welcome and roles are saved by the step call.
+      const featureWrites = writes.flatMap((write) => (write.name ? [{ ...write, name: write.name }] : []));
       // Welcome and role-panel publication is handled atomically by the
       // Quick Setup endpoint. Protection/moderation still use the regular
       // feature endpoint because their profile expands into multiple policies
       // and must preserve the existing projections.
+      // 1) Feature writes first, each with the revision read when the Quick Setup loaded.
       if (!localPreviewMode && (step === 'protection' || step === 'moderation'))
-        for (const write of writes) await api.saveFeature(write.key, write.enabled, write.config);
+        for (const write of featureWrites) {
+          const saved = await api.saveFeature(write.key, write.enabled, write.config, revisions[write.name]);
+          if (saved.guildId !== guildId) throw new Error('guild_changed');
+          revisions[write.name] = saved.revision ?? revisions[write.name];
+        }
       const previous = quickSetup ?? defaultQuickSetupState(me?.guildId ?? 'demo');
       const next = localPreviewMode
         ? {
@@ -3025,24 +2964,8 @@ function App() {
             enabled,
             expectedRevision: previous.revision,
           });
-      if (!localPreviewMode && next.draft && step === 'protection') {
-        const normalizedConfig = next.draft as FeatureConfig;
-        const channelId = String(normalizedConfig.logChannel ?? '').trim();
-        if (channelId) {
-          const antispam = writes.find((write) => write.key === 'protection.antispam');
-          const antiRaid = writes.find((write) => write.key === 'protection.anti_raid');
-          if (antispam)
-            await api.saveFeature(antispam.key, antispam.enabled, {
-              ...antispam.config,
-              logChannel: channelId,
-            });
-          if (antiRaid)
-            await api.saveFeature(antiRaid.key, antiRaid.enabled, {
-              ...antiRaid.config,
-              alertChannel: channelId,
-            });
-        }
-      }
+      if (!localPreviewMode && next.guildId !== guildId) throw new Error('guild_changed');
+      // 2) The step is recorded: update the Quick Setup state now, even if the next round fails.
       const normalized = next.steps.every((item) => item.status !== 'pending')
         ? { ...next, status: 'completed' as const, currentStep: null }
         : next;
@@ -3054,15 +2977,37 @@ function App() {
           writes.some((write) => write.key === item.key) ? { ...item, enabled } : item,
         ),
       );
+      setQuickSetupLoad(current => ({ ...current, revisions: { ...revisions } }));
+      setQuickSetupDefaults(current => ({ ...current, ...Object.fromEntries(featureWrites.map(write => [write.name, write.config])) }));
+      // 3) The step may have created #vozen-alertas; only then write that channel to both protection features.
+      const created = step === 'protection' && !localPreviewMode ? String((next.draft as FeatureConfig | undefined)?.logChannel ?? '').trim() : '';
+      let channelWarning = false;
+      if (created && created !== String(config.logChannel ?? '').trim()) {
+        try {
+          for (const write of featureWrites) {
+            const channel = write.name === 'antiSpam' ? { logChannel: created } : { alertChannel: created };
+            const saved = await api.saveFeature(write.key, write.enabled, { ...write.config, ...channel }, revisions[write.name]);
+            if (saved.guildId !== guildId) throw new Error('guild_changed');
+            revisions[write.name] = saved.revision ?? revisions[write.name];
+          }
+        } catch { channelWarning = true; }
+        // Keep the revisions of the writes that did go through, even when one failed.
+        setQuickSetupLoad(current => ({ ...current, revisions: { ...revisions } }));
+      }
       setStatus('ready');
       setMessage(
-        () => () => (helperText('{step} applied.', { step: quickStepLabel(quickSetupSteps.find((item) => item.key === step) ?? quickSetupSteps[0]) })),
+        () => () => (channelWarning ? helperText('The step was saved, but the alert channel could not be set. Choose it in each protection feature.') : helperText('{step} applied.', { step: quickStepLabel(quickSetupSteps.find((item) => item.key === step) ?? quickSetupSteps[0]) })),
       );
-      return true;
+      return 'applied';
     } catch (cause) {
+      // Keep the revisions of the writes that already ran: a retry must not send stale ones.
+      setQuickSetupLoad(current => ({ ...current, revisions: { ...revisions } }));
+      const code = cause instanceof ApiError ? cause.code : '';
       setStatus('error');
-      setMessage(() => () => (cause instanceof Error ? cause.message : helperText('Could not apply this step.')));
-      return false;
+      setMessage(() => () => (code === 'premium_required' ? helperText('Unlock Vozen Premium for this server to configure it.')
+        : code === 'quick_setup_manage_channels_required' ? helperText('You need the Manage Channels permission to create a channel here. Choose an existing channel instead.')
+        : cause instanceof Error ? cause.message : helperText('Could not apply this step.')));
+      return code === 'quick_setup_manage_channels_required' ? 'use_existing_channel' : 'failed';
     }
   }
   async function skipQuickSetupStep(step: QuickSetupStepKey): Promise<boolean> {
@@ -3315,18 +3260,25 @@ function App() {
             onOpen={navigate}
           />
         )}
-        {route.page === 'quick-setup' && (
+        {route.page === 'quick-setup' && (quickSetup ? (
           <QuickSetup
-            state={quickSetup ?? defaultQuickSetupState(currentGuild?.id ?? 'demo')}
+            state={quickSetup}
             context={guildContext}
             featureDefaults={quickSetupDefaults}
             localCompatibilityDefaults={localPreviewMode}
+            defaultsLoad={quickSetupLoad}
+            onRetryDefaults={() => setQuickSetupRetry(value => value + 1)}
+            rolesPremiumLocked={roleStepLocked(features)}
             onApply={applyQuickSetupStep}
             onSkip={skipQuickSetupStep}
             onDismiss={() => void dismissQuickSetup()}
             onOpen={navigate}
           />
-        )}
+        ) : quickSetupError ? (
+          <section className="card" role="alert"><h2>{helperText('Could not load the guided setup')}</h2><p>{helperText('Your settings have not been changed. Check your connection and try again.')}</p><button type="button" className="button primary" onClick={() => setQuickSetupRetry(value => value + 1)}>{helperText('Try again')}</button></section>
+        ) : (
+          <div className="loading-card card"><div className="loader" /><span>{helperText('Loading configuration…')}</span></div>
+        ))}
         {route.page === 'features' && (
           <FeatureCatalogue
             features={filteredFeatures}
@@ -3407,6 +3359,9 @@ function QuickSetup({
   context,
   featureDefaults,
   localCompatibilityDefaults,
+  defaultsLoad,
+  onRetryDefaults,
+  rolesPremiumLocked,
   onApply,
   onSkip,
   onDismiss,
@@ -3416,7 +3371,10 @@ function QuickSetup({
   context: GuildContext | null;
   featureDefaults: QuickSetupFeatureDefaults;
   localCompatibilityDefaults: boolean;
-  onApply: (step: QuickSetupStepKey, config: FeatureConfig, enabled?: boolean) => Promise<boolean>;
+  defaultsLoad: { loading: boolean; failed: readonly string[] };
+  onRetryDefaults: () => void;
+  rolesPremiumLocked: boolean;
+  onApply: (step: QuickSetupStepKey, config: FeatureConfig, enabled?: boolean) => Promise<'applied' | 'failed' | 'use_existing_channel'>;
   onSkip: (step: QuickSetupStepKey) => Promise<boolean>;
   onDismiss: () => void;
   onOpen: (path: string) => void;
@@ -3431,34 +3389,32 @@ function QuickSetup({
     ),
   );
   const [applying, setApplying] = useState(false);
-  const [draft, setDraft] = useState<Record<QuickSetupStepKey, FeatureConfig>>(() =>
-    quickSetupDraft(featureDefaults, localCompatibilityDefaults),
-  );
-  useEffect(() => {
-    setDraft(quickSetupDraft(featureDefaults, localCompatibilityDefaults));
-  }, [featureDefaults, localCompatibilityDefaults]);
+  const [patches, setPatches] = useState<Partial<Record<QuickSetupStepKey, FeatureConfig>>>({});
+  // Defaults arriving later must not erase what the user already typed.
+  const draft = useMemo(() => withDraftPatches(quickSetupDraft(featureDefaults, localCompatibilityDefaults), patches), [featureDefaults, localCompatibilityDefaults, patches]);
   useEffect(() => {
     setStarted(state.status === 'in_progress' || state.status === 'completed');
     const next = quickSetupSteps.findIndex((item) => item.key === state.currentStep);
     if (next >= 0) setIndex(next);
   }, [state.status, state.currentStep]);
   const current = quickSetupSteps[index] ?? quickSetupSteps[0];
+  const defaultsStatus = stepDefaultsStatus(current.key, defaultsLoad);
   const completed =
     state.status === 'completed' || state.steps.every((item) => item.status !== 'pending');
   const patch = (key: string, value: unknown) =>
-    setDraft((currentDraft) => ({
-      ...currentDraft,
-      [current.key]: { ...currentDraft[current.key], [key]: value },
-    }));
+    setPatches((previous) => ({ ...previous, [current.key]: { ...previous[current.key], [key]: value } }));
+  const applyBlocked = applying || defaultsStatus !== 'ready' || (current.key === 'roles' && rolesPremiumLocked);
   const apply = async () => {
     setApplying(true);
-    const ok = await onApply(
+    const result = await onApply(
       current.key,
       draft[current.key],
       current.key !== 'welcome' || draft[current.key].mode !== 'off',
     );
     setApplying(false);
-    if (ok && index < quickSetupSteps.length - 1) setIndex((value) => value + 1);
+    // Without Manage Channels the step can still use a channel that already exists.
+    if (result === 'use_existing_channel') setPatches((previous) => ({ ...previous, [current.key]: { ...previous[current.key], createChannel: false } }));
+    if (result === 'applied' && index < quickSetupSteps.length - 1) setIndex((value) => value + 1);
   };
   const skip = async () => {
     setApplying(true);
@@ -3607,6 +3563,9 @@ function QuickSetup({
           <small className="eyebrow">{helperText('STEP {n}', { n: index + 1 })}</small>
           <h3>{quickStepLabel(current)}</h3>
           <p className="setup-description">{quickStepDescription(current)}</p>
+          {current.key === 'roles' && rolesPremiumLocked && (
+            <p className="tip detail-premium-lock__message"><span aria-hidden="true">🔒</span>{' '}{helperText('Unlock Vozen Premium for this server to configure it.')}{' '}<a className="link-button" href="/premium#plans">{helperText('View Premium')}</a></p>
+          )}
           {current.key === 'welcome' && (
             <>
               <div className="choice-grid">
@@ -3836,11 +3795,13 @@ function QuickSetup({
               {helperText('{n} roles available to reuse.', { n: roles.length })}
             </small>
           )}
+          {defaultsStatus === 'loading' && <small className="muted-note" role="status">{helperText('Loading the current settings…')}</small>}
+          {defaultsStatus === 'error' && <p className="tip feature-requirement" role="alert">{helperText('Could not load the current settings. Nothing was changed.')} <button type="button" className="link-button" onClick={onRetryDefaults}>{helperText('Try again')}</button></p>}
           <div className="sticky-actions">
             <button type="button" className="secondary" onClick={() => void skip()} disabled={applying}>
               {helperText('skip')}
             </button>
-            <button type="button" className="primary" onClick={() => void apply()} disabled={applying}>
+            <button type="button" className="primary" onClick={() => void apply()} disabled={applyBlocked}>
               {applying
                 ? helperText('Applying…')
                 : helperText('Confirm and apply')}

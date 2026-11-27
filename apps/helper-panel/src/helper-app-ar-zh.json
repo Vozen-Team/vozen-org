@@ -443,6 +443,14 @@
     "ar": "تعذّر التحقق من اتصال TikTok.",
     "zh": "無法檢查 TikTok 連線。"
   },
+  "Could not load the current settings. Nothing was changed.": {
+    "ar": "تعذّر تحميل الإعدادات الحالية. لم يتم تغيير أي شيء.",
+    "zh": "無法載入目前的設定。沒有任何變更。"
+  },
+  "Could not load the guided setup": {
+    "ar": "تعذّر تحميل الإعداد الموجّه",
+    "zh": "無法載入引導式設定"
+  },
   "Could not load the level card. Reload the page before changing the card.": {
     "ar": "تعذّر تحميل بطاقة المستوى. أعد تحميل الصفحة قبل تغيير البطاقة.",
     "zh": "無法載入等級卡片。變更卡片前請重新載入頁面。"
@@ -1066,6 +1074,10 @@
   "Live counter channel (optional)": {
     "ar": "قناة العداد المباشر (اختياري)",
     "zh": "即時計數頻道（選填）"
+  },
+  "Loading the current settings…": {
+    "ar": "جارٍ تحميل الإعدادات الحالية…",
+    "zh": "正在載入目前的設定…"
   },
   "Longer generated replies are rejected before they can be sent.": {
     "ar": "تُرفض الردود المولّدة الأطول قبل إرسالها.",
@@ -2079,6 +2091,10 @@
     "ar": "يطبّق أمر لوحة الرتب هذه القيم على اللوحات المنشورة حديثًا.",
     "zh": "身分組面板指令會將這些值套用至新發布的面板。"
   },
+  "The step was saved, but the alert channel could not be set. Choose it in each protection feature.": {
+    "ar": "تم حفظ الخطوة، لكن تعذّر تعيين قناة التنبيهات. اخترها في كل ميزة حماية.",
+    "zh": "步驟已儲存，但無法設定通知頻道。請在各項防護功能中選擇。"
+  },
   "These options are applied to every new suggestion.": {
     "ar": "تُطبّق هذه الخيارات على كل اقتراح جديد.",
     "zh": "這些選項會套用至每個新建議。"
@@ -2454,6 +2470,10 @@
   "YOUTUBE_API_KEY": {
     "ar": "YOUTUBE_API_KEY",
     "zh": "YOUTUBE_API_KEY"
+  },
+  "You need the Manage Channels permission to create a channel here. Choose an existing channel instead.": {
+    "ar": "تحتاج إلى صلاحية إدارة القنوات لإنشاء قناة هنا. اختر قناة موجودة بدلًا من ذلك.",
+    "zh": "你需要「管理頻道」權限才能在這裡建立頻道。請改為選擇現有頻道。"
   },
   "Your session expired. Sign in again.": {
     "ar": "انتهت جلستك. سجّل الدخول مجددًا.",
