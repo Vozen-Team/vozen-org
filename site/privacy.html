@@ -8,7 +8,7 @@
     <meta name="description" content="What data the Vozen Discord TTS bot stores, why, and how to delete it.">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="css/main-v43.css?v=7901c418e6ca">
+    <link rel="stylesheet" href="css/main-v43.css?v=f912a11c1096">
     <style>
       .legal { max-width: 780px; margin: 0 auto; padding: 96px 22px 120px; }
       .legal a.back { display: inline-flex; align-items: center; gap: 8px; color: var(--aqua); text-decoration: none; font-weight: 600; font-size: 15px; }
@@ -39,7 +39,7 @@
       <meta name="twitter:description" content="What data the Vozen Discord TTS bot stores, why, and how to delete it.">
       <meta name="twitter:image" content="https://vozen.org/assets/og-image.png">
       <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Privacy Policy — Vozen","description":"What data the Vozen Discord TTS bot stores, why, and how to delete it.","url":"https://vozen.org/privacy","isPartOf":{"@type":"WebSite","name":"Vozen","url":"https://vozen.org/"},"publisher":{"@type":"Organization","name":"Vozen","url":"https://vozen.org/"}}</script>
-  <link rel="stylesheet" href="/css/global-nav-v1.css?v=8ad92584b583"><link rel="stylesheet" href="/css/vozen-footer-v1.css?v=15f94bd176ca">
+  <link rel="stylesheet" href="/css/global-nav-v1.css?v=f4ec7a88458b"><link rel="stylesheet" href="/css/vozen-footer-v1.css?v=88f5acb301b7">
 </head>
   <body data-vozen-static-page="privacy" data-vozen-public-analytics="true">
     <header class="nav vozen-global-nav docs-ecosystem-nav" data-vozen-standalone-nav="" data-vozen-nav="" data-nav-root="/" data-nav-product="Ecosystem" data-nav-surface="docs" data-nav-prerendered="true" data-prerender-fragment="navigation">
@@ -85,9 +85,8 @@
         service records described below. It does <b>not</b> keep a log of your messages, uses essential sign-in sessions
         rather than advertising trackers, and never asks you to type your Discord
         email, phone number, or password. Eligible public pages use cookie-free Cloudflare Web
-        Analytics for aggregate traffic and Core Web Vitals, as explained in §8. With your Discord
-        OAuth permission, instant activation can read the verified email on your Discord account
-        once, as explained below.
+        Analytics for aggregate traffic and Core Web Vitals, as explained in §8. Its Discord sign-in
+        does not request your email.
       </p>
 
       <h2>1. Who we are &amp; how to contact us</h2>
@@ -136,7 +135,7 @@
       <h2>4. What we do NOT store</h2>
       <ul>
         <li>We do <b>not</b> keep a history or log of your chat messages. Text is turned into speech on the fly and then discarded.</li>
-        <li>We do <b>not</b> store, cache, or log the verified Discord email used for instant activation or the transient hash computed from it. Both exist only in memory for that activation request and are then discarded.</li>
+        <li>We do <b>not</b> request, store, cache, or log your Discord email.</li>
         <li>To speed up repeated phrases, recently synthesized audio may be cached on the server. It is keyed by a content hash rather than your user ID and expires seven days after its last write; reading it does not extend that deadline. Cached audio can still reveal the spoken content to someone with server-file access.</li>
         <li>Outside of a transcription session you consented to, the bot stays deafened and does not listen to or store voice-channel audio.</li>
         <li>We do <b>not</b> keep web access logs that tie your IP address to your activity. Our API (<code>api.vozen.org</code>) uses your IP only <b>momentarily</b>, in memory, for rate-limiting and security — it is never written to our logs. (Cloudflare delivers this website and processes request metadata for hosting and security; see §9.)</li>
@@ -173,12 +172,10 @@
       <h2>7. Signing in on vozen.org</h2>
       <p>
         Discord OAuth2 lets Vozen show your account and check which servers you may manage.
-        The account sign-in requests your basic profile (<b>identify</b>), verified email
-        (<b>email</b>, for the instant-activation flow described above), and server list
-        (<b>guilds</b>). Vozen does not ask you to type a Discord password or payment credential.
-        The account API may keep basic identity and server-list data in memory for about
-        60 seconds to answer requests. The verified email and its transient activation hash
-        are not included in that cache.
+        The account sign-in requests your basic profile (<b>identify</b>) and server list
+        (<b>guilds</b>). It does not request your email, and Vozen does not ask you to type a
+        Discord password or payment credential. The account API may keep basic identity and
+        server-list data in memory for about 60 seconds to answer requests.
       </p>
       <p>
         Sign-in transport depends on the surface. The public account and TTS dashboard support
@@ -201,9 +198,9 @@
         Browser-based and compatibility sign-in flows may also store a credential and profile
         display cache in <code>sessionStorage</code>, and an expiry-bounded login record in
         <code>localStorage</code> so sign-in can survive a browser restart. Closing a tab alone
-        may therefore leave a remembered login. Signing out clears those records. A one-shot
-        activation intent containing no email may remain in <code>sessionStorage</code> until
-        use or its five-minute expiry. The chosen interface language is kept in
+        may therefore leave a remembered login. Signing out clears those records. The plan and
+        billing period picked before signing in for checkout may sit in <code>sessionStorage</code>
+        until the checkout resumes, and are removed once used. The chosen interface language is kept in
         <code>localStorage</code>.
       </p>
       <p>
@@ -242,7 +239,7 @@
         <li><b>Audio cache</b> — generated speech expires <b>seven days after its last write</b>, with a cleanup sweep at startup and every hour even without traffic. Expired audio is deleted instead of reused; repeated reads do not renew its age. In normal operation, an idle file can remain until the next hourly sweep (up to seven days plus one hour). The cache also has a count limit of about 500 completed files per engine. Expired synthesis temporary files and abandoned workspaces are cleaned as well. Cleanup failures are logged and retried; startup is refused if its initial cleanup fails. The hosting provider's single daily infrastructure snapshot may preserve a pre-deletion copy of the encrypted data volume for up to a further 24 hours. The cache is not indexed by your user ID, so contact support for a cache-deletion request.</li>
         <li id="google-hd-quota-retention"><b>HD-voice usage counters</b> — user and active-pass HMAC counters are retained for the <b>current UTC calendar month</b> and deleted by the <b>first daily cleanup after that month ends</b>. They contain a pseudonymous marker and character total, not message text or audio. On <code>/privacy erase</code>, any current-month raw-ID user/pass count is preserved under that HMAC marker and all of that user's legacy raw-ID user/pass rows are deleted. Existing raw-ID records are not bulk-converted at startup. Server and service pools, and legacy raw-ID rows not covered by an erasure request, retain the existing approximately three-month cleanup period.</li>
         <li><b>Premium entitlement records</b> — kept while needed for an active entitlement and afterwards only for entitlement history, fraud prevention, disputes, and legal obligations; deleted or anonymized when no longer necessary.</li>
-        <li><b>Website login</b> — cookie-backed sessions and browser-held credentials expire according to their session or OAuth validity. A remembered browser login can survive a tab or browser restart until expiry or logout. Basic account identity data may use a ~60-second in-memory cache; Helper authorization uses session records. The activation email and transient hash are never cached and are discarded as soon as that request finishes.</li>
+        <li><b>Website login</b> — cookie-backed sessions and browser-held credentials expire according to their session or OAuth validity. A remembered browser login can survive a tab or browser restart until expiry or logout. Basic account identity data may use a ~60-second in-memory cache; Helper authorization uses session records.</li>
       </ul>
 
       <h2>12. Your rights</h2>
@@ -293,13 +290,13 @@
         · <a href="/terms">Terms of Service</a>
       </p>
     </main>
-    <script defer="" src="js/analytics-config.js?v=aeac0d49e3b7"></script>
-    <script defer="" src="js/web-analytics-v1.js?v=8a15ad19f3e3"></script>
-    <script defer="" src="js/i18n-public-loader-v1.js?v=4703bb366834"></script>
-    <script defer="" src="js/static-pages-i18n-v1.js?v=b835a554d92a"></script>
+    <script defer="" src="js/analytics-config.js?v=f6b49da441d8"></script>
+    <script defer="" src="js/web-analytics-v1.js?v=e934b4dd1f34"></script>
+    <script defer="" src="js/i18n-public-loader-v1.js?v=19fd9f8bf783"></script>
+    <script defer="" src="js/static-pages-i18n-v1.js?v=459ffbe2b374"></script>
 
 
-<script src="/js/oauth-config.js?v=619a1fcb0b71"></script><script src="/js/global-nav-v1.js?v=ee5e271d6879"></script>
+<script src="/js/oauth-config.js?v=edcba1fe7971"></script><script src="/js/global-nav-v1.js?v=7359d7e636c6"></script>
 <footer class="vozen-footer" id="site-footer">
   <div class="vozen-footer__inner">
     <span class="vozen-footer__brand"><img src="/favicon.svg" width="28" height="28" alt="">© 2026 Vozen</span>
