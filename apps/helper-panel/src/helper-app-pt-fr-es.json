@@ -554,6 +554,21 @@
     "fr": "Impossible de vérifier la connexion à TikTok.",
     "es": "No se ha podido comprobar la conexión con TikTok."
   },
+  "Could not load the current settings. Nothing was changed.": {
+    "pt": "Não foi possível carregar as definições atuais. Nada foi alterado.",
+    "fr": "Impossible de charger les réglages actuels. Rien n’a été modifié.",
+    "es": "No se ha podido cargar la configuración actual. No se ha cambiado nada."
+  },
+  "Could not load the guided setup": {
+    "pt": "Não foi possível carregar a configuração guiada",
+    "fr": "Impossible de charger la configuration guidée",
+    "es": "No se ha podido cargar la configuración guiada"
+  },
+  "Could not load the level card. Reload the page before changing the card.": {
+    "pt": "Não foi possível carregar o cartão de nível. Recarrega a página antes de alterares o cartão.",
+    "fr": "Impossible de charger la carte de niveau. Rechargez la page avant de modifier la carte.",
+    "es": "No se ha podido cargar la tarjeta de nivel. Recarga la página antes de cambiar la tarjeta."
+  },
   "Could not remove the TikTok connection.": {
     "pt": "Não foi possível remover a ligação ao TikTok.",
     "fr": "Impossible de supprimer la connexion à TikTok.",
@@ -563,6 +578,11 @@
     "pt": "Não foi possível guardar. As tuas alterações continuam neste formulário.",
     "fr": "Impossible d’enregistrer. Vos modifications sont toujours dans ce formulaire.",
     "es": "No se ha podido guardar. Tus cambios siguen en este formulario."
+  },
+  "Could not send the YouTube test. Check the channel ID and the server credentials.": {
+    "pt": "Não foi possível enviar o teste do YouTube. Verifica o ID do canal e as credenciais do servidor.",
+    "fr": "Impossible d’envoyer le test YouTube. Vérifiez l’ID de la chaîne et les identifiants du serveur.",
+    "es": "No se ha podido enviar la prueba de YouTube. Comprueba el ID del canal y las credenciales del servidor."
   },
   "Could not start TikTok authorization.": {
     "pt": "Não foi possível iniciar a autorização do TikTok.",
@@ -783,6 +803,11 @@
     "pt": "Mensagem privada",
     "fr": "Message privé",
     "es": "Mensaje privado"
+  },
+  "Discard my changes": {
+    "pt": "Descartar as minhas alterações",
+    "fr": "Abandonner mes modifications",
+    "es": "Descartar mis cambios"
   },
   "Disconnect TikTok": {
     "pt": "Desligar o TikTok",
@@ -1318,6 +1343,11 @@
     "pt": "Canal de contagem em direto (opcional)",
     "fr": "Salon de compteur en direct (facultatif)",
     "es": "Canal de contador en directo (opcional)"
+  },
+  "Loading the current settings…": {
+    "pt": "A carregar as definições atuais…",
+    "fr": "Chargement des réglages actuels…",
+    "es": "Cargando la configuración actual…"
   },
   "Longer generated replies are rejected before they can be sent.": {
     "pt": "As respostas geradas mais longas são rejeitadas antes de serem enviadas.",
@@ -1964,6 +1994,11 @@
     "fr": "Rejetez les actions destructrices sans motif pertinent.",
     "es": "Rechaza las acciones destructivas sin un motivo útil."
   },
+  "Reload latest settings": {
+    "pt": "Recarregar as definições mais recentes",
+    "fr": "Recharger les derniers réglages",
+    "es": "Recargar la configuración más reciente"
+  },
   "Reminder limits": {
     "pt": "Limites dos lembretes",
     "fr": "Limites des rappels",
@@ -2263,6 +2298,11 @@
     "pt": "Definições guardadas, mas não foi possível atualizar a publicação no Discord. Verifica o canal e as permissões do Helper antes de reparar a publicação.",
     "fr": "Paramètres enregistrés, mais la publication Discord n’a pas pu être mise à jour. Vérifiez le salon et les autorisations de Helper avant de réparer la publication.",
     "es": "Ajustes guardados, pero no se ha podido actualizar la publicación de Discord. Comprueba el canal y los permisos de Helper antes de reparar la publicación."
+  },
+  "Settings saved. This server has several role panels, so none was changed in Discord. Use the Published tab to repair or delete them.": {
+    "pt": "Definições guardadas. Este servidor tem vários painéis de cargos, por isso nenhum foi alterado no Discord. Usa o separador Publicados para os reparar ou eliminar.",
+    "fr": "Réglages enregistrés. Ce serveur a plusieurs panneaux de rôles, donc aucun n’a été modifié dans Discord. Utilisez l’onglet Publiés pour les réparer ou les supprimer.",
+    "es": "Configuración guardada. Este servidor tiene varios paneles de roles, así que no se ha cambiado ninguno en Discord. Usa la pestaña Publicados para repararlos o eliminarlos."
   },
   "Shortcuts": {
     "pt": "Atalhos",
@@ -2573,6 +2613,11 @@
     "pt": "O comando do painel de cargos aplica estes valores aos novos painéis publicados.",
     "fr": "La commande du panneau de rôles applique ces valeurs aux nouveaux panneaux publiés.",
     "es": "El comando del panel de roles aplica estos valores a los nuevos paneles publicados."
+  },
+  "The step was saved, but the alert channel could not be set. Choose it in each protection feature.": {
+    "pt": "O passo foi guardado, mas não foi possível definir o canal de alertas. Escolhe-o em cada funcionalidade de proteção.",
+    "fr": "L’étape a été enregistrée, mais le salon d’alertes n’a pas pu être défini. Choisissez-le dans chaque fonction de protection.",
+    "es": "El paso se ha guardado, pero no se ha podido configurar el canal de alertas. Elígelo en cada función de protección."
   },
   "These options are applied to every new suggestion.": {
     "pt": "Estas opções são aplicadas a cada nova sugestão.",
@@ -3043,6 +3088,11 @@
     "pt": "YOUTUBE_API_KEY",
     "fr": "YOUTUBE_API_KEY",
     "es": "YOUTUBE_API_KEY"
+  },
+  "You need the Manage Channels permission to create a channel here. Choose an existing channel instead.": {
+    "pt": "Precisas da permissão Gerir canais para criar um canal aqui. Escolhe um canal existente.",
+    "fr": "Il vous faut l’autorisation Gérer les salons pour créer un salon ici. Choisissez plutôt un salon existant.",
+    "es": "Necesitas el permiso Gestionar canales para crear un canal aquí. Elige un canal existente."
   },
   "Your session expired. Sign in again.": {
     "pt": "A tua sessão expirou. Inicia sessão novamente.",

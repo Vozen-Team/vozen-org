@@ -1,4 +1,6 @@
 import { navigatePanel, panelRoute } from './panel-route';
+import { ApiError, apiErrorFrom, parseResponseBody } from './api-errors';
+export { ApiError } from './api-errors';
 
 export type ShopProductInput = {name:string;price:number;delivery:'manual'|'role';roleId:string|null};
 export type ShopProduct = ShopProductInput & {id:number;version:number};
@@ -363,13 +365,6 @@ const AUTH_CHANNEL_NAME = 'vozen.ecosystem.auth.v1';
 const SESSION_BRIDGE_TIMEOUT_MS = 6_000;
 let vozenAccountBootstrapAttempted = false;
 
-export class ApiError extends Error {
-  constructor(message: string, readonly status: number) {
-    super(message);
-    this.name = 'ApiError';
-  }
-}
-
 function isSafePanelHash(value: string): boolean {
   return (
     value === '#/' ||
@@ -560,7 +555,18 @@ export async function bootstrapVozenAccountSession(signal?: AbortSignal): Promis
   }
 }
 
-async function request<T>(path: string, init?: RequestInit): Promise<T> {
+// The session cookie is shared by every tab, so each write names the server
+// this tab displays and the API refuses it once the session moved elsewhere.
+let expectedGuildId: string | null = null;
+export function setExpectedGuild(guildId: string | null): void { expectedGuildId = guildId; }
+let guildChangedText = 'The configuration changed in another session. Reload before editing again; your draft is still here.';
+export function setGuildChangedText(text: string): void { guildChangedText = text; }
+
+async function request<T>(path: string, init?: RequestInit, options?: { anyGuild?: boolean }): Promise<T> {
+  const method = (init?.method ?? 'GET').toUpperCase();
+  const guildHeader: Record<string, string> = method !== 'GET' && method !== 'HEAD' && expectedGuildId && !options?.anyGuild
+    ? { 'X-Vozen-Guild': expectedGuildId }
+    : {};
   const response = await fetch(apiUrl(path), {
     ...init,
     // Feature maturity and guild health are live state.  Never let the
@@ -572,6 +578,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     headers: {
       Accept: 'application/json',
       ...(sessionBearer ? { Authorization: `Bearer ${sessionBearer}` } : {}),
+      ...guildHeader,
       ...(init?.headers ?? {}),
     },
   });
@@ -581,9 +588,10 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
       code?: string;
     };
     if (response.status === 401) persistSessionBearer(null);
-    throw new ApiError(payload.message ?? payload.code ?? `API ${response.status}`, response.status);
+    if (payload.code === 'guild_changed') throw new ApiError(guildChangedText, response.status, 'guild_changed');
+    throw apiErrorFrom(response.status, payload);
   }
-  return (await response.json()) as T;
+  return parseResponseBody<T>(await response.text());
 }
 
 async function meOrBootstrap(options?: ReadOptions): Promise<Me> {
@@ -681,7 +689,7 @@ export const api = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ guild_id: guildId }),
-    });
+    }, { anyGuild: true });
     // The endpoint rotates the HttpOnly cookie and revokes the old session.
     // A legacy bearer must not override that new cookie after reload.
     persistSessionBearer(null);

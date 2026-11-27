@@ -443,6 +443,18 @@
     "ar": "تعذّر التحقق من اتصال TikTok.",
     "zh": "無法檢查 TikTok 連線。"
   },
+  "Could not load the current settings. Nothing was changed.": {
+    "ar": "تعذّر تحميل الإعدادات الحالية. لم يتم تغيير أي شيء.",
+    "zh": "無法載入目前的設定。沒有任何變更。"
+  },
+  "Could not load the guided setup": {
+    "ar": "تعذّر تحميل الإعداد الموجّه",
+    "zh": "無法載入引導式設定"
+  },
+  "Could not load the level card. Reload the page before changing the card.": {
+    "ar": "تعذّر تحميل بطاقة المستوى. أعد تحميل الصفحة قبل تغيير البطاقة.",
+    "zh": "無法載入等級卡片。變更卡片前請重新載入頁面。"
+  },
   "Could not remove the TikTok connection.": {
     "ar": "تعذّر إلغاء ربط TikTok.",
     "zh": "無法解除 TikTok 連結。"
@@ -450,6 +462,10 @@
   "Could not save. Your changes are still in this form.": {
     "ar": "تعذّر الحفظ. لا تزال تغييراتك في هذا النموذج.",
     "zh": "無法儲存。你的變更仍保留在此表單中。"
+  },
+  "Could not send the YouTube test. Check the channel ID and the server credentials.": {
+    "ar": "تعذّر إرسال اختبار YouTube. تحقّق من معرّف القناة وبيانات اعتماد الخادم.",
+    "zh": "無法傳送 YouTube 測試。請檢查頻道 ID 與伺服器憑證。"
   },
   "Could not start TikTok authorization.": {
     "ar": "تعذّر بدء تفويض TikTok.",
@@ -626,6 +642,10 @@
   "Direct message": {
     "ar": "رسالة خاصة",
     "zh": "私訊"
+  },
+  "Discard my changes": {
+    "ar": "تجاهل تغييراتي",
+    "zh": "捨棄我的變更"
   },
   "Disconnect TikTok": {
     "ar": "إلغاء ربط TikTok",
@@ -1054,6 +1074,10 @@
   "Live counter channel (optional)": {
     "ar": "قناة العداد المباشر (اختياري)",
     "zh": "即時計數頻道（選填）"
+  },
+  "Loading the current settings…": {
+    "ar": "جارٍ تحميل الإعدادات الحالية…",
+    "zh": "正在載入目前的設定…"
   },
   "Longer generated replies are rejected before they can be sent.": {
     "ar": "تُرفض الردود المولّدة الأطول قبل إرسالها.",
@@ -1571,6 +1595,10 @@
     "ar": "ارفض الإجراءات التخريبية التي لا تستند إلى سبب وجيه.",
     "zh": "拒絕未提供合理原因的破壞性操作。"
   },
+  "Reload latest settings": {
+    "ar": "إعادة تحميل أحدث الإعدادات",
+    "zh": "重新載入最新設定"
+  },
   "Reminder limits": {
     "ar": "حدود التذكيرات",
     "zh": "提醒限制"
@@ -1810,6 +1838,10 @@
   "Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.": {
     "ar": "حُفظت الإعدادات، لكن تعذّر تحديث المنشور في Discord. تحقق من القناة وصلاحيات Helper قبل إصلاح المنشور.",
     "zh": "設定已儲存，但無法更新 Discord 貼文。請先檢查頻道與 Helper 權限，再修復貼文。"
+  },
+  "Settings saved. This server has several role panels, so none was changed in Discord. Use the Published tab to repair or delete them.": {
+    "ar": "تم حفظ الإعدادات. يحتوي هذا الخادم على عدة لوحات أدوار، لذلك لم يتم تغيير أي منها في Discord. استخدم علامة التبويب «المنشورة» لإصلاحها أو حذفها.",
+    "zh": "設定已儲存。此伺服器有多個身分組面板，因此 Discord 中的面板都沒有變更。請使用「已發布」分頁修復或刪除它們。"
   },
   "Shortcuts": {
     "ar": "الاختصارات",
@@ -2058,6 +2090,10 @@
   "The role panel command applies these values to newly published panels.": {
     "ar": "يطبّق أمر لوحة الرتب هذه القيم على اللوحات المنشورة حديثًا.",
     "zh": "身分組面板指令會將這些值套用至新發布的面板。"
+  },
+  "The step was saved, but the alert channel could not be set. Choose it in each protection feature.": {
+    "ar": "تم حفظ الخطوة، لكن تعذّر تعيين قناة التنبيهات. اخترها في كل ميزة حماية.",
+    "zh": "步驟已儲存，但無法設定通知頻道。請在各項防護功能中選擇。"
   },
   "These options are applied to every new suggestion.": {
     "ar": "تُطبّق هذه الخيارات على كل اقتراح جديد.",
@@ -2434,6 +2470,10 @@
   "YOUTUBE_API_KEY": {
     "ar": "YOUTUBE_API_KEY",
     "zh": "YOUTUBE_API_KEY"
+  },
+  "You need the Manage Channels permission to create a channel here. Choose an existing channel instead.": {
+    "ar": "تحتاج إلى صلاحية إدارة القنوات لإنشاء قناة هنا. اختر قناة موجودة بدلًا من ذلك.",
+    "zh": "你需要「管理頻道」權限才能在這裡建立頻道。請改為選擇現有頻道。"
   },
   "Your session expired. Sign in again.": {
     "ar": "انتهت جلستك. سجّل الدخول مجددًا.",

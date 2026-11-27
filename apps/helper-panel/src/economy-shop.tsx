@@ -2,6 +2,7 @@ import {useEffect,useState} from 'react';
 import {api,type GuildContext,type ShopProduct,type ShopProductInput,type ShopOrder,type ShopPage} from './api';
 import {shopText as t} from './economy-shop-i18n';
 import {helperLocale} from './i18n';
+import {intlLocale} from './intl-locale';
 import {roleResourceLabel} from './role-resource';
 import './economy-shop.css';
 
@@ -77,7 +78,7 @@ export function EconomyShop({context,localPreviewMode}:{context:GuildContext|nul
     <div aria-busy={busy||loading}>
     {tab==='products'?<>
       <div className="economy-shop__list">{products.map(product=><div className="economy-shop__row" key={product.id}>
-        <div><strong>{product.name}</strong><small>{product.price.toLocaleString(helperLocale())} · {t(product.delivery==='role'?'role':'manual')}</small></div>
+        <div><strong>{product.name}</strong><small>{product.price.toLocaleString(intlLocale(helperLocale()))} · {t(product.delivery==='role'?'role':'manual')}</small></div>
         <div className="economy-shop__actions">
           <button type="button" className="secondary" disabled={busy} aria-label={`${t('edit')}: ${product.name}`} onClick={()=>{setEditing(product);setDraft({name:product.name,price:product.price,delivery:product.delivery,roleId:product.roleId});}}>{t('edit')}</button>
           <button type="button" className="secondary" disabled={busy||!usable} aria-label={`${t('remove')}: ${product.name}`} onClick={()=>{if(window.confirm(t('removeConfirm')))void mutate(()=>api.removeShopProduct(guild,product),editing?.id===product.id);}}>{t('remove')}</button>
@@ -98,7 +99,7 @@ export function EconomyShop({context,localPreviewMode}:{context:GuildContext|nul
       </form>
     </>:<>
       <div className="economy-shop__list">{data?.orders.map(order=><div className="economy-shop__row" key={order.id}>
-        <div><strong>#{order.id} · {order.displayName}</strong><span>{order.productName} · {order.price.toLocaleString(helperLocale())}</span><small>{new Date(order.createdAt).toLocaleString(helperLocale())} · {t(order.delivery==='role'?'role':'manual')}</small></div>
+        <div><strong>#{order.id} · {order.displayName}</strong><span>{order.productName} · {order.price.toLocaleString(intlLocale(helperLocale()))}</span><small>{new Date(order.createdAt).toLocaleString(intlLocale(helperLocale()))} · {t(order.delivery==='role'?'role':'manual')}</small></div>
         <div className="economy-shop__actions"><span className="economy-shop__status">{t(order.status==='pending'?'pending':order.status==='delivered'?'delivered':'refunded')}</span>
           {order.status==='pending'&&<><button type="button" className="secondary" disabled={busy||!usable} onClick={()=>void resolve(order,'delivered')}>{t('complete')}</button><button type="button" className="secondary" disabled={busy||!usable} onClick={()=>void resolve(order,'refunded')}>{t('refund')}</button></>}
         </div>

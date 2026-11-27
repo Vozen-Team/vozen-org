@@ -443,6 +443,18 @@
     "ru": "Не удалось проверить подключение TikTok.",
     "ko": "TikTok 연결을 확인할 수 없습니다."
   },
+  "Could not load the current settings. Nothing was changed.": {
+    "ru": "Не удалось загрузить текущие настройки. Ничего не изменено.",
+    "ko": "현재 설정을 불러오지 못했습니다. 변경된 내용은 없습니다."
+  },
+  "Could not load the guided setup": {
+    "ru": "Не удалось загрузить пошаговую настройку",
+    "ko": "안내 설정을 불러오지 못했습니다"
+  },
+  "Could not load the level card. Reload the page before changing the card.": {
+    "ru": "Не удалось загрузить карточку уровня. Обновите страницу, прежде чем менять карточку.",
+    "ko": "레벨 카드를 불러오지 못했습니다. 카드를 변경하기 전에 페이지를 새로고침하세요."
+  },
   "Could not remove the TikTok connection.": {
     "ru": "Не удалось удалить подключение TikTok.",
     "ko": "TikTok 연결을 해제할 수 없습니다."
@@ -450,6 +462,10 @@
   "Could not save. Your changes are still in this form.": {
     "ru": "Не удалось сохранить. Изменения остались в этой форме.",
     "ko": "저장할 수 없습니다. 변경 사항은 이 양식에 그대로 남아 있습니다."
+  },
+  "Could not send the YouTube test. Check the channel ID and the server credentials.": {
+    "ru": "Не удалось отправить тест YouTube. Проверьте ID канала и учётные данные сервера.",
+    "ko": "YouTube 테스트를 보내지 못했습니다. 채널 ID와 서버 자격 증명을 확인하세요."
   },
   "Could not start TikTok authorization.": {
     "ru": "Не удалось начать авторизацию TikTok.",
@@ -626,6 +642,10 @@
   "Direct message": {
     "ru": "Личное сообщение",
     "ko": "다이렉트 메시지"
+  },
+  "Discard my changes": {
+    "ru": "Отменить мои изменения",
+    "ko": "내 변경 사항 취소"
   },
   "Disconnect TikTok": {
     "ru": "Отключить TikTok",
@@ -1054,6 +1074,10 @@
   "Live counter channel (optional)": {
     "ru": "Канал счётчика (необязательно)",
     "ko": "실시간 카운터 채널(선택 사항)"
+  },
+  "Loading the current settings…": {
+    "ru": "Загружаем текущие настройки…",
+    "ko": "현재 설정을 불러오는 중…"
   },
   "Longer generated replies are rejected before they can be sent.": {
     "ru": "Слишком длинные сгенерированные ответы отклоняются до отправки.",
@@ -1571,6 +1595,10 @@
     "ru": "Отклоняйте разрушительные действия без содержательной причины.",
     "ko": "유효한 사유가 없는 파괴적 작업을 거부합니다."
   },
+  "Reload latest settings": {
+    "ru": "Загрузить последние настройки",
+    "ko": "최신 설정 다시 불러오기"
+  },
   "Reminder limits": {
     "ru": "Ограничения напоминаний",
     "ko": "알림 제한"
@@ -1810,6 +1838,10 @@
   "Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.": {
     "ru": "Настройки сохранены, но публикацию в Discord обновить не удалось. Проверьте канал и разрешения Helper перед восстановлением публикации.",
     "ko": "설정은 저장되었지만 Discord 게시물을 업데이트할 수 없습니다. 게시물을 복구하기 전에 채널과 Helper 권한을 확인하세요."
+  },
+  "Settings saved. This server has several role panels, so none was changed in Discord. Use the Published tab to repair or delete them.": {
+    "ru": "Настройки сохранены. На этом сервере несколько панелей ролей, поэтому ни одна не изменена в Discord. Откройте вкладку «Опубликованные», чтобы восстановить или удалить их.",
+    "ko": "설정을 저장했습니다. 이 서버에는 역할 패널이 여러 개 있어 Discord에서 아무것도 변경하지 않았습니다. 게시된 패널 탭에서 복구하거나 삭제하세요."
   },
   "Shortcuts": {
     "ru": "Быстрые действия",
@@ -2058,6 +2090,10 @@
   "The role panel command applies these values to newly published panels.": {
     "ru": "Команда панели ролей применяет эти значения к новым опубликованным панелям.",
     "ko": "역할 패널 명령어가 새로 게시하는 패널에 이 값을 적용합니다."
+  },
+  "The step was saved, but the alert channel could not be set. Choose it in each protection feature.": {
+    "ru": "Шаг сохранён, но канал оповещений задать не удалось. Выберите его в каждой функции защиты.",
+    "ko": "단계는 저장했지만 알림 채널을 설정하지 못했습니다. 각 보호 기능에서 채널을 선택하세요."
   },
   "These options are applied to every new suggestion.": {
     "ru": "Эти параметры применяются к каждому новому предложению.",
@@ -2434,6 +2470,10 @@
   "YOUTUBE_API_KEY": {
     "ru": "YOUTUBE_API_KEY",
     "ko": "YOUTUBE_API_KEY"
+  },
+  "You need the Manage Channels permission to create a channel here. Choose an existing channel instead.": {
+    "ru": "Чтобы создать здесь канал, нужно право «Управлять каналами». Выберите существующий канал.",
+    "ko": "여기에서 채널을 만들려면 채널 관리 권한이 필요합니다. 대신 기존 채널을 선택하세요."
   },
   "Your session expired. Sign in again.": {
     "ru": "Ваша сессия истекла. Войдите снова.",

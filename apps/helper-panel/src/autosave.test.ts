@@ -68,4 +68,37 @@ describe('automatic settings persistence', () => {
     expect(await queue.retry()).toBe(true);
     expect(write.mock.calls).toEqual([['old', 0], ['latest', 0]]);
   });
+  it('discard drops a failed draft and unblocks flush', async () => {
+    const write = vi.fn().mockRejectedValue(new Error('feature_revision_conflict'));
+    const queue = createAutosave({ revision: 1, write, saved: vi.fn(), state: vi.fn() });
+    queue.enqueue('x');
+    expect(await queue.flush()).toBe(false);
+    queue.discard();
+    expect(await queue.flush()).toBe(true);
+    expect(queue.hasUnsaved()).toBe(false);
+    expect(write).toHaveBeenCalledTimes(1);
+  });
+  it('discard cancels a debounced draft', async () => {
+    vi.useFakeTimers();
+    const write = vi.fn(async () => ({ revision: 1 }));
+    const queue = createAutosave({ revision: 0, write, saved: vi.fn(), state: vi.fn() });
+    queue.enqueue('x', 400);
+    queue.discard();
+    await vi.advanceTimersByTimeAsync(400);
+    expect(write).not.toHaveBeenCalled();
+  });
+  it('discard silences a response that arrives later', async () => {
+    let resolve!: (result: { revision: number }) => void;
+    const write = vi.fn().mockImplementationOnce(() => new Promise(done => { resolve = done; }));
+    const saved = vi.fn();
+    const state = vi.fn();
+    const queue = createAutosave({ revision: 0, write, saved, state });
+    queue.enqueue('x');
+    const calls = state.mock.calls.length;
+    queue.discard();
+    resolve({ revision: 1 });
+    await Promise.resolve(); await Promise.resolve(); await Promise.resolve();
+    expect(saved).not.toHaveBeenCalled();
+    expect(state.mock.calls.length).toBe(calls);
+  });
 });

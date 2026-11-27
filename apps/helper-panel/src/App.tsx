@@ -33,6 +33,8 @@ import {
   api,
   ApiError,
   restoreOAuthReturnHash,
+  setExpectedGuild,
+  setGuildChangedText,
   type CustomCommand,
   type Feature,
   type FeatureConfig,
@@ -65,6 +67,10 @@ import { readWorkspaceGuilds, requireWorkspaceGuild } from './workspace';
 import { isRoleResourceOptionDisabled, roleResourceLabel, roleRequiresAssignment } from './role-resource';
 import { ResourceMultiSelect } from './resource-multi-select';
 import { createAutosave, type AutosaveState } from './autosave';
+import { saveFailureKind, type SaveFailure } from './api-errors';
+import { levelsPublishConfig, rankCardUnlocked } from './levels-publish';
+import { rolePanelTarget } from './role-panel-target';
+import { protectionProfileConfigs, roleStepLocked, stepDefaultsStatus, withDraftPatches } from './quick-setup';
 import {
   helperLocale,
   helperText,
@@ -1977,6 +1983,9 @@ function App() {
   const needsGuildContext = route.page !== 'servers';
   const [quickSetup, setQuickSetup] = useState<QuickSetupState | null>(null);
   const [quickSetupDefaults, setQuickSetupDefaults] = useState<QuickSetupFeatureDefaults>({});
+  const [quickSetupLoad, setQuickSetupLoad] = useState<{ loading: boolean; failed: Array<keyof QuickSetupFeatureDefaults>; revisions: Partial<Record<keyof QuickSetupFeatureDefaults, number>> }>({ loading: true, failed: [], revisions: {} });
+  const [quickSetupError, setQuickSetupError] = useState(false);
+  const [quickSetupRetry, setQuickSetupRetry] = useState(0);
   const [features, setFeatures] = useState<Feature[]>(() =>
     localPreviewMode ? demoFeatures.concat(additionalFeatures).map(presentFeature) : [],
   );
@@ -1990,6 +1999,8 @@ function App() {
   });
   const [rankConfig, setRankConfig] = useState(defaultRankCard);
   const [savedRankConfig, setSavedRankConfig] = useState(defaultRankCard);
+  const rankLoadedRef = useRef(localPreviewMode);
+  const [rankLoadFailed, setRankLoadFailed] = useState(false);
   const [detailConfig, setDetailConfig] = useState<FeatureConfig>({});
   const [detailDefaults, setDetailDefaults] = useState<FeatureConfig | null>(null);
   const [savedDetailConfig, setSavedDetailConfig] = useState<FeatureConfig>({});
@@ -2001,17 +2012,27 @@ function App() {
   detailDraftRef.current = { config: detailConfig, enabled: detailEnabled, rank: rankConfig };
   const autosaveRef = useRef<ReturnType<typeof createAutosave<SettingsDraft, Awaited<ReturnType<typeof api.saveFeature>>>> | null>(null);
   const autosaveOwner = useRef('');
+  const rolePanelMessage = useRef<string | null>(null);
+  const rolePanelPublishRequested = useRef(false);
+  const rolePanelUnpublished = useRef(false);
   const formOwner = `${me?.id}:${me?.guildId}:${route.page}:${route.key}`;
   const formOwnerRef = useRef(formOwner);
   formOwnerRef.current = formOwner;
   const [autosaveState, setAutosaveState] = useState<AutosaveState | null>(null);
+  const [saveFailure, setSaveFailure] = useState<SaveFailure | null>(null);
+  const blockedNavigation = useRef<(() => void) | null>(null);
+  const saveErrorCard = useRef<HTMLDivElement>(null);
   const [providerHealth, setProviderHealth] = useState<ProviderSubscriptionHealth | null>(null);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error' | 'auth' | 'saving'>(
     'loading',
   );
   const [message, setMessage] = useState<HelperMessage>('');
   const [simulation, setSimulation] = useState<SimulationDraft | null>(null);
+  const testingRef = useRef(false);
+  const [testing, setTesting] = useState(false);
   useEffect(() => { setSimulation(null); }, [route.page, route.key, me?.guildId]);
+  useEffect(() => { setExpectedGuild(localPreviewMode ? null : me?.guildId ?? null); }, [me?.guildId]);
+  useEffect(() => { setGuildChangedText(helperText('The configuration changed in another session. Reload before editing again; your draft is still here.')); }, [locale]);
   const [sectionsOpen, setSectionsOpen] = useState(false);
   const sectionsTrigger = useRef<HTMLButtonElement>(null);
   useEffect(() => { const close = (event: KeyboardEvent) => { if(event.key === 'Escape' && sectionsOpen) { setSectionsOpen(false); sectionsTrigger.current?.focus(); } }; window.addEventListener('keydown', close); return () => window.removeEventListener('keydown', close); }, [sectionsOpen]);
@@ -2032,7 +2053,7 @@ function App() {
   const navigate = (path: string) => {
     setSectionsOpen(false);
     void (async () => {
-      if (autosaveRef.current && !(await autosaveRef.current.flush())) return;
+      if (autosaveRef.current && !(await autosaveRef.current.flush())) { blockedNavigation.current = () => navigate(path); saveErrorCard.current?.focus(); return; }
       const next = parseRoute(path);
       if (panelRoute() === path) setRoute(next);
       else navigatePanel(path);
@@ -2043,7 +2064,7 @@ function App() {
     const onRoute = async () => {
       const next = panelRoute();
       if (autosaveRef.current && !(await autosaveRef.current.flush())) {
-        window.history.replaceState(null, '', activeUrl);
+        window.history.pushState(null, '', activeUrl); blockedNavigation.current = () => { navigatePanel(next); };
         return;
       }
       if (next !== panelRoute()) return;
@@ -2069,6 +2090,9 @@ function App() {
   useEffect(() => {
     autosaveRef.current = null;
     autosaveOwner.current = '';
+    rolePanelMessage.current = null;
+    rolePanelPublishRequested.current = false;
+    rolePanelUnpublished.current = false;
     setAutosaveState(null);
   }, [formOwner]);
   useEffect(() => {
@@ -2137,7 +2161,7 @@ function App() {
             }),
             api.rankCard({ signal: load.signal }).catch((cause) => {
               if (isAbortError(cause)) throw cause;
-              return { guildId: '', config: defaultRankCard };
+              return null;
             }),
           ]);
         if (!load.isCurrent()) return;
@@ -2145,8 +2169,8 @@ function App() {
         setFeatures(visibleWelcomeFeatures(nextFeatures.features).map(presentFeature));
         setStats(nextStats);
         setQuota(nextQuota);
-        setRankConfig(nextRank.config);
-        setSavedRankConfig(nextRank.config);
+        if (nextRank && nextRank.guildId === nextMe.guildId) { setRankConfig(nextRank.config); setSavedRankConfig(nextRank.config); rankLoadedRef.current = true; setRankLoadFailed(false); }
+        else { rankLoadedRef.current = false; setRankLoadFailed(true); }
       } catch (cause) {
         if (!load.isCurrent() || isAbortError(cause)) return;
         setMessage(() => () => (cause instanceof Error ? cause.message : helperText('Could not load the dashboard.')));
@@ -2194,8 +2218,11 @@ function App() {
         antiRaid: defaults['protection.anti_raid'],
         antiSpam: defaults['protection.antispam'],
       });
+      setQuickSetupLoad({ loading: false, failed: [], revisions: {} });
       return;
     }
+    setQuickSetupError(false);
+    setQuickSetupLoad({ loading: true, failed: [], revisions: {} });
     const load = createLoadGuard();
     void api
       .quickSetup({ signal: load.signal })
@@ -2203,7 +2230,7 @@ function App() {
         if (load.isCurrent()) setQuickSetup(result);
       })
       .catch((cause) => {
-        if (load.isCurrent() && !isAbortError(cause)) setQuickSetup(defaultQuickSetupState(guildId));
+        if (load.isCurrent() && !isAbortError(cause)) setQuickSetupError(true);
       });
     // Quick Setup is a composition of real feature adapters.  Fetch their
     // defaults from Rust instead of reconstructing a second schema in React.
@@ -2217,18 +2244,22 @@ function App() {
       ].map(async ([name, key]) => {
         try {
           const detail = await api.feature(key, { signal: load.signal });
-          return [name, { ...(detail.defaults ?? {}), ...detail.config }] as const;
+          if (detail.guildId !== guildId) throw new Error('guild_changed');
+          return [name, { ...(detail.defaults ?? {}), ...detail.config }, detail.revision ?? 0, true] as const;
         } catch {
-          return [name, {}] as const;
+          return [name, {}, 0, false] as const;
         }
       }),
     ).then((entries) => {
       if (load.isCurrent()) {
-        setQuickSetupDefaults(Object.fromEntries(entries) as QuickSetupFeatureDefaults);
+        setQuickSetupDefaults(Object.fromEntries(entries.map(([name, config]) => [name, config])) as QuickSetupFeatureDefaults);
+        setQuickSetupLoad({ loading: false,
+          failed: entries.filter(([, , , ok]) => !ok).map(([name]) => name as keyof QuickSetupFeatureDefaults),
+          revisions: Object.fromEntries(entries.filter(([, , , ok]) => ok).map(([name, , revision]) => [name, revision])) });
       }
     });
     return () => load.dispose();
-  }, [me?.guildId, guilds, route.page]);
+  }, [me?.guildId, guilds, route.page, quickSetupRetry]);
   useEffect(() => {
     if (localPreviewMode || !me || !needsGuildContext) return;
     const load = createLoadGuard();
@@ -2548,7 +2579,7 @@ function App() {
   }, [features, filter, search, locale]);
   async function switchGuild(guildId: string, nextPath?: string) {
     if (switchingGuild.current || status === 'saving') return;
-    if (autosaveRef.current && !(await autosaveRef.current.flush())) return;
+    if (autosaveRef.current && !(await autosaveRef.current.flush())) { blockedNavigation.current = () => void switchGuild(guildId, nextPath); saveErrorCard.current?.focus(); return; }
     if (localPreviewMode) {
       setMe((current) => (current ? { ...current, guildId } : current));
       if (nextPath) navigate(nextPath);
@@ -2561,14 +2592,30 @@ function App() {
       if (me) rememberGuild(guildStorage(), me.id, guildId);
       if (nextPath) navigatePanel(nextPath);
       window.location.reload();
-    } catch (cause) {
+    } catch {
       switchingGuild.current = false;
-      // A lost response may still have rotated the shared cookie. Never expose
-      // the old form until its server identity has been confirmed again.
-      const actual = await api.me().catch(() => null);
-      if (actual?.guildId === me?.guildId && actual?.id === me?.id) setStatus('ready');
-      else { setMe(null); setStatus('error'); }
-      setMessage(() => () => (cause instanceof Error ? cause.message : helperText('Could not switch server.')));
+      // A lost response may still have rotated the shared cookie: ask the server which guild is active now.
+      let actual: Me | null = null;
+      let meError: unknown = null;
+      try { actual = await api.me(); } catch (error) { meError = error; }
+      if (!actual) {
+        setMe(null);
+        if (meError instanceof ApiError && meError.status === 401) setStatus('auth');
+        else { setWorkspaceError(true); setStatus('error'); }
+        return;
+      }
+      if (actual.id === me?.id && actual.guildId === guildId) {
+        rememberGuild(guildStorage(), actual.id, actual.guildId);
+        if (nextPath) navigatePanel(nextPath);
+        window.location.reload();
+        return;
+      }
+      if (actual.id === me?.id && actual.guildId === me?.guildId) {
+        setStatus('ready');
+        setMessage(() => () => helperText('Could not switch server.'));
+        return;
+      }
+      setMe(null); setWorkspaceError(true); setStatus('error');
     }
   }
   function editSettings(next: Partial<SettingsDraft>, delay = 0) {
@@ -2587,14 +2634,16 @@ function App() {
         revision: detailRevision,
         write: async (sent, revision) => {
           if (formOwnerRef.current !== owner || switchingGuild.current) throw new Error('guild_changed');
-          return publishSettings(key, guildId, sent, revision);
+          const publishPanel = key === 'community.role_panels' && rolePanelPublishRequested.current;
+          rolePanelPublishRequested.current = false;
+          return publishSettings(key, guildId, sent, revision, publishPanel);
         },
         saved: (result, sent, latest) => {
           if (formOwnerRef.current !== owner) return;
           setFeatures(items => items.map(item => item.key === key ? { ...item, enabled: result.enabled } : item));
           setSavedDetailConfig(result.config);
           setDetailRevision(result.revision ?? detailRevision);
-          if (key === 'community.levels') setSavedRankConfig(sent.rank);
+          if (key === 'community.levels' && 'rankCard' in result.config) setSavedRankConfig(sent.rank);
           // An earlier response acknowledges only its own snapshot. It must
           // not reset fields that were edited while that request was running.
           if (latest) {
@@ -2602,25 +2651,28 @@ function App() {
             setDetailEnabled(result.enabled);
             detailDraftRef.current = { ...sent, config: result.config, enabled: result.enabled };
           }
-          if (result.discordApply?.applied === false) setMessage(() => () => (helperText('Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.')));
+          if (result.discordApply?.applied === false) setMessage(() => () => (result.discordApply?.code === 'role_panel_ambiguous' ? helperText('Settings saved. This server has several role panels, so none was changed in Discord. Use the Published tab to repair or delete them.') : helperText('Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.')));
         },
         state: (state, error) => {
           if (formOwnerRef.current !== owner) return;
           setAutosaveState(state);
           setStatus(state === 'saving' ? 'saving' : 'ready');
           if (state === 'saving') setMessage('');
+          if (state !== 'error') { setSaveFailure(null); blockedNavigation.current = null; }
           if (state === 'error') {
-            const code = error instanceof Error ? error.message : '';
-            const reason = code === 'feature_revision_conflict'
+            const kind = saveFailureKind(error);
+            setSaveFailure(kind);
+            const reason = kind === 'conflict'
               ? 'The configuration changed in another session. Reload before editing again; your draft is still here.'
-              : code === 'unauthenticated'
+              : kind === 'auth'
               ? 'Your session expired. Sign in again.'
-              : code;
+              : error instanceof Error ? error.message : '';
             setMessage(() => () => (`${helperText('Changes not saved.')} ${helperText(reason)}`));
           }
         },
       });
     }
+    if (route.key === 'community.role_panels') { rolePanelUnpublished.current = true; if (delay === 0) rolePanelPublishRequested.current = true; }
     autosaveRef.current.enqueue(draft, delay);
   }
   function editField(key: string, value: unknown) {
@@ -2628,15 +2680,10 @@ function App() {
     const discrete = ['toggle', 'select', 'channel', 'channels', 'role', 'roles', 'category'].includes(field?.kind ?? '');
     editSettings({ config: { ...detailDraftRef.current.config, [key]: value } }, discrete || typeof value === 'boolean' ? 0 : 400);
   }
-  async function publishSettings(key: string, guildId: string | undefined, sent: SettingsDraft, revision: number): Promise<Awaited<ReturnType<typeof api.saveFeature>>> {
-      const publishConfig = { ...sent.config };
-      if (key === 'community.levels') {
-        publishConfig.bannerEnabled = true;
-        delete publishConfig.rankCard;
-        if (features.some(item => item.key === 'studio.rank_card' && item.premium_unlocked)) {
-          publishConfig.rankCard = sent.rank;
-        }
-      }
+  async function publishSettings(key: string, guildId: string | undefined, sent: SettingsDraft, revision: number, publishPanel: boolean): Promise<Awaited<ReturnType<typeof api.saveFeature>>> {
+      const publishConfig = key === 'community.levels'
+        ? levelsPublishConfig(sent.config, sent.rank, { premium: rankCardUnlocked(featuresRef.current), loaded: rankLoadedRef.current })
+        : { ...sent.config };
       if (!localPreviewMode) {
         const preflight = await api.featurePreflight(key, publishConfig, sent.enabled);
         if (preflight.guildId !== guildId) throw new Error('guild_changed');
@@ -2649,6 +2696,7 @@ function App() {
         : await api.saveFeature(key, sent.enabled, publishConfig, revision);
       if (result.guildId !== guildId) throw new Error('guild_changed');
       if (
+        publishPanel &&
         !localPreviewMode &&
         key === 'community.role_panels' &&
         sent.enabled &&
@@ -2666,19 +2714,47 @@ function App() {
           selectionMode: sent.config.selectionMode === 'unique' ? ('unique' as const) : ('multiple' as const),
           removeOnUnselect: sent.config.removeOnUnselect !== false,
         };
-        if (existingPanels.panels[0]) {
-          await api.updateRolePanel(existingPanels.panels[0].message_id, panelPayload);
-        } else {
-          await api.createRolePanel(panelPayload);
-        }
+        if (existingPanels.guildId !== guildId) throw new Error('guild_changed');
+        const target = rolePanelTarget(existingPanels.panels, rolePanelMessage.current);
+        // Told once per edit: without this, every blur would save again and repeat the message.
+        if (target.action === 'ambiguous') { rolePanelUnpublished.current = false; return { ...result, discordApply: { applied: false, code: 'role_panel_ambiguous' } }; }
+        const published = target.action === 'update'
+          ? await api.updateRolePanel(target.messageId, panelPayload)
+          : await api.createRolePanel(panelPayload);
+        rolePanelMessage.current = published.messageId;
+        rolePanelUnpublished.current = false;
+        // The API republishes the feature config when it publishes a panel, which bumps the revision.
+        const fresh = await api.feature(key).catch(() => null);
+        if (fresh && fresh.guildId === guildId && typeof fresh.revision === 'number') return { ...result, revision: fresh.revision };
         } catch {
           // The configuration write already succeeded. Preserve its revision
           // even if publishing the Discord message failed, instead of retrying
           // the whole write with an obsolete revision or creating duplicates.
           return { ...result, discordApply: { applied: false, code: 'role_panel_publish_failed' } };
         }
+      } else if (publishPanel) {
+        // Nothing to publish (disabled, no channel or no roles): leaving a field must not save again.
+        rolePanelUnpublished.current = false;
       }
       return result;
+  }
+  function dropDraft(resume: boolean) {
+    autosaveRef.current?.discard();
+    autosaveRef.current = null; autosaveOwner.current = '';
+    setAutosaveState(null); setSaveFailure(null); setMessage('');
+    setRankConfig(savedRankConfig);
+    setDetailRetry(value => value + 1);
+    const next = blockedNavigation.current; blockedNavigation.current = null;
+    if (resume) next?.();
+  }
+  async function flushDetail() {
+    const writer = autosaveRef.current;
+    if (!writer || !(await writer.flush())) return;
+    // Text is saved while typing but published to Discord once, when the field loses focus.
+    if (route.key !== 'community.role_panels' || !rolePanelUnpublished.current || autosaveRef.current !== writer) return;
+    rolePanelPublishRequested.current = true;
+    writer.enqueue(detailDraftRef.current, 0);
+    await writer.flush();
   }
   async function repairDetail() {
     if (!route.key || localPreviewMode) return;
@@ -2710,6 +2786,12 @@ function App() {
       repairingDetail.current = false;
     }
   }
+  async function latestSubscription<T>(load: () => Promise<{ guildId: string; subscriptions: T[] }>): Promise<T | undefined> {
+    // Read for this test only: storing it would trigger the effects that copy subscriptions into the form.
+    const result = await load();
+    if (result.guildId !== me?.guildId) throw new Error('guild_changed');
+    return result.subscriptions[0];
+  }
   async function testDetail(visualDemo = false) {
     if (!route.key) return;
     const openSimulation = (key: string) => {
@@ -2718,11 +2800,12 @@ function App() {
       const feature = features.find(item => item.key === key);
       setSimulation({ guildId: me.guildId, key,
         get label() { return feature ? localizedFeature(feature).label : helperText('Feature'); },
-        config: structuredClone(detailConfig), enabled: detailEnabled, visualDemo });
+        config: structuredClone(detailConfig), enabled: detailEnabled, visualDemo: visualDemo === true });
     };
     // The visual demonstration is local only; it must never reach the real
     // send-a-test paths below (social feeds post to Discord).
     if (visualDemo) { openSimulation(route.key); return; }
+    if (testingRef.current) return; testingRef.current = true; setTesting(true);
     try {
       if (route.key === 'social.youtube') {
         const sourceChannelId = String(detailConfig.sourceChannelId ?? '').trim();
@@ -2734,7 +2817,8 @@ function App() {
           setMessage(() => () => (helperText('YouTube channel validation is available when the dashboard is connected to the API.')));
           return;
         }
-        const subscription = youtubeSubscriptions[0];
+        if (autosaveRef.current && !(await autosaveRef.current.flush())) return;
+        const subscription = youtubeSubscriptions[0] ?? await latestSubscription(() => api.youtubeSubscriptions());
         if (!subscription) {
           setMessage(() => () => (helperText('Save the subscription first so the test can be sent to Discord.')));
           return;
@@ -2768,9 +2852,10 @@ function App() {
           setMessage(() => () => (helperText('Feed validation is available when the dashboard is connected to the API.')));
           return;
         }
-        const subscription = rssSubscriptions[0];
+        if (autosaveRef.current && !(await autosaveRef.current.flush())) return;
+        const subscription = rssSubscriptions[0] ?? await latestSubscription(() => api.rssSubscriptions());
         if (!subscription) {
-          setMessage('Save the subscription first so the test can be sent to Discord.');
+          setMessage(() => () => (helperText('Save the subscription first so the test can be sent to Discord.')));
           return;
         }
         const result = await api.testRssDelivery(subscription.id, {
@@ -2802,9 +2887,10 @@ function App() {
           setMessage(() => () => (helperText('Twitch channel validation is available when the dashboard is connected to the API.')));
           return;
         }
-        const subscription = twitchSubscriptions[0];
+        if (autosaveRef.current && !(await autosaveRef.current.flush())) return;
+        const subscription = twitchSubscriptions[0] ?? await latestSubscription(() => api.twitchSubscriptions());
         if (!subscription) {
-          setMessage('Save the subscription first so the test can be sent to Discord.');
+          setMessage(() => () => (helperText('Save the subscription first so the test can be sent to Discord.')));
           return;
         }
         const result = await api.testTwitchDelivery(subscription.id, {
@@ -2830,113 +2916,42 @@ function App() {
           ? helperText('Could not read this feed. Check the URL and try again.')
           : route.key === 'social.twitch'
             ? helperText('Could not validate the Twitch channel. Check the name and the server credentials.')
+            : route.key === 'social.youtube' ? helperText('Could not send the YouTube test. Check the channel ID and the server credentials.')
             : helperText('Simulation is available when the API is connected.')),
       );
-    }
+    } finally { testingRef.current = false; setTesting(false); }
   }
   async function applyQuickSetupStep(
     step: QuickSetupStepKey,
     config: FeatureConfig,
     enabled = true,
-  ): Promise<boolean> {
+  ): Promise<'applied' | 'failed' | 'use_existing_channel'> {
     setStatus('saving');
+    const guildId = me?.guildId;
+    const revisions = { ...quickSetupLoad.revisions };
     try {
-      const writes: Array<{ key: string; config: FeatureConfig; enabled: boolean }> = [];
+      const writes: Array<{ key: string; name?: keyof QuickSetupFeatureDefaults; config: FeatureConfig; enabled: boolean }> = [];
       if (step === 'welcome') writes.push({ key: 'support.welcome', config, enabled });
       if (step === 'roles') writes.push({ key: 'community.role_panels', config, enabled });
-      if (step === 'moderation') writes.push({ key: 'management.moderation', config, enabled });
+      if (step === 'moderation') writes.push({ key: 'management.moderation', name: 'moderation', config, enabled });
       if (step === 'protection') {
-        const profile = String(config.profile ?? 'balanced');
-        const profiles: Record<string, { antispam: FeatureConfig; antiRaid: FeatureConfig }> = {
-          monitor: {
-            antispam: {
-              ...quickSetupDefaults.antiSpam,
-              floodCount: 8,
-              windowSeconds: 10,
-              duplicateLimit: 4,
-              maxLinks: 8,
-              deleteMessage: false,
-              timeoutSeconds: 0,
-              mentionLimit: 8,
-              ignoredChannels: [],
-              ignoredRoles: [],
-              alertOnly: true,
-              logChannel: config.logChannel ?? '',
-            },
-            antiRaid: {
-              ...quickSetupDefaults.antiRaid,
-              joinThreshold: 12,
-              windowSeconds: 20,
-              incidentMinutes: 10,
-              verification: 'high',
-              pauseInvites: true,
-              alertOnly: true,
-              alertChannel: config.logChannel ?? '',
-            },
-          },
-          balanced: {
-            antispam: {
-              ...quickSetupDefaults.antiSpam,
-              floodCount: 6,
-              windowSeconds: 10,
-              duplicateLimit: 3,
-              maxLinks: 5,
-              deleteMessage: false,
-              timeoutSeconds: 60,
-              mentionLimit: 5,
-              ignoredChannels: [],
-              ignoredRoles: [],
-              alertOnly: false,
-              logChannel: config.logChannel ?? '',
-            },
-            antiRaid: {
-              ...quickSetupDefaults.antiRaid,
-              joinThreshold: 10,
-              windowSeconds: 20,
-              incidentMinutes: 10,
-              verification: 'high',
-              pauseInvites: true,
-              alertOnly: true,
-              alertChannel: config.logChannel ?? '',
-            },
-          },
-          strict: {
-            antispam: {
-              ...quickSetupDefaults.antiSpam,
-              floodCount: 5,
-              windowSeconds: 10,
-              duplicateLimit: 2,
-              maxLinks: 3,
-              deleteMessage: true,
-              timeoutSeconds: 300,
-              mentionLimit: 4,
-              ignoredChannels: [],
-              ignoredRoles: [],
-              alertOnly: false,
-              logChannel: config.logChannel ?? '',
-            },
-            antiRaid: {
-              ...quickSetupDefaults.antiRaid,
-              joinThreshold: 8,
-              windowSeconds: 20,
-              incidentMinutes: 10,
-              verification: 'high',
-              pauseInvites: true,
-              alertOnly: false,
-              alertChannel: config.logChannel ?? '',
-            },
-          },
-        };
-        const selected = profiles[profile] ?? profiles.balanced;
-        writes.push({ key: 'protection.antispam', config: selected.antispam, enabled });
-        writes.push({ key: 'protection.anti_raid', config: selected.antiRaid, enabled });
+        const selected = protectionProfileConfigs(config.profile, config.logChannel, { antiSpam: quickSetupDefaults.antiSpam ?? {}, antiRaid: quickSetupDefaults.antiRaid ?? {} });
+        writes.push({ key: 'protection.antispam', name: 'antiSpam', config: selected.antispam, enabled });
+        writes.push({ key: 'protection.anti_raid', name: 'antiRaid', config: selected.antiRaid, enabled });
       }
+      // Only the named writes go through the feature endpoint; welcome and roles are saved by the step call.
+      const featureWrites = writes.flatMap((write) => (write.name ? [{ ...write, name: write.name }] : []));
       // Welcome and role-panel publication is handled atomically by the
       // Quick Setup endpoint. Protection/moderation still use the regular
       // feature endpoint because their profile expands into multiple policies
       // and must preserve the existing projections.
+      // 1) Feature writes first, each with the revision read when the Quick Setup loaded.
       if (!localPreviewMode && (step === 'protection' || step === 'moderation'))
-        for (const write of writes) await api.saveFeature(write.key, write.enabled, write.config);
+        for (const write of featureWrites) {
+          const saved = await api.saveFeature(write.key, write.enabled, write.config, revisions[write.name]);
+          if (saved.guildId !== guildId) throw new Error('guild_changed');
+          revisions[write.name] = saved.revision ?? revisions[write.name];
+        }
       const previous = quickSetup ?? defaultQuickSetupState(me?.guildId ?? 'demo');
       const next = localPreviewMode
         ? {
@@ -2953,24 +2968,8 @@ function App() {
             enabled,
             expectedRevision: previous.revision,
           });
-      if (!localPreviewMode && next.draft && step === 'protection') {
-        const normalizedConfig = next.draft as FeatureConfig;
-        const channelId = String(normalizedConfig.logChannel ?? '').trim();
-        if (channelId) {
-          const antispam = writes.find((write) => write.key === 'protection.antispam');
-          const antiRaid = writes.find((write) => write.key === 'protection.anti_raid');
-          if (antispam)
-            await api.saveFeature(antispam.key, antispam.enabled, {
-              ...antispam.config,
-              logChannel: channelId,
-            });
-          if (antiRaid)
-            await api.saveFeature(antiRaid.key, antiRaid.enabled, {
-              ...antiRaid.config,
-              alertChannel: channelId,
-            });
-        }
-      }
+      if (!localPreviewMode && next.guildId !== guildId) throw new Error('guild_changed');
+      // 2) The step is recorded: update the Quick Setup state now, even if the next round fails.
       const normalized = next.steps.every((item) => item.status !== 'pending')
         ? { ...next, status: 'completed' as const, currentStep: null }
         : next;
@@ -2982,15 +2981,37 @@ function App() {
           writes.some((write) => write.key === item.key) ? { ...item, enabled } : item,
         ),
       );
+      setQuickSetupLoad(current => ({ ...current, revisions: { ...revisions } }));
+      setQuickSetupDefaults(current => ({ ...current, ...Object.fromEntries(featureWrites.map(write => [write.name, write.config])) }));
+      // 3) The step may have created #vozen-alertas; only then write that channel to both protection features.
+      const created = step === 'protection' && !localPreviewMode ? String((next.draft as FeatureConfig | undefined)?.logChannel ?? '').trim() : '';
+      let channelWarning = false;
+      if (created && created !== String(config.logChannel ?? '').trim()) {
+        try {
+          for (const write of featureWrites) {
+            const channel = write.name === 'antiSpam' ? { logChannel: created } : { alertChannel: created };
+            const saved = await api.saveFeature(write.key, write.enabled, { ...write.config, ...channel }, revisions[write.name]);
+            if (saved.guildId !== guildId) throw new Error('guild_changed');
+            revisions[write.name] = saved.revision ?? revisions[write.name];
+          }
+        } catch { channelWarning = true; }
+        // Keep the revisions of the writes that did go through, even when one failed.
+        setQuickSetupLoad(current => ({ ...current, revisions: { ...revisions } }));
+      }
       setStatus('ready');
       setMessage(
-        () => () => (helperText('{step} applied.', { step: quickStepLabel(quickSetupSteps.find((item) => item.key === step) ?? quickSetupSteps[0]) })),
+        () => () => (channelWarning ? helperText('The step was saved, but the alert channel could not be set. Choose it in each protection feature.') : helperText('{step} applied.', { step: quickStepLabel(quickSetupSteps.find((item) => item.key === step) ?? quickSetupSteps[0]) })),
       );
-      return true;
+      return 'applied';
     } catch (cause) {
+      // Keep the revisions of the writes that already ran: a retry must not send stale ones.
+      setQuickSetupLoad(current => ({ ...current, revisions: { ...revisions } }));
+      const code = cause instanceof ApiError ? cause.code : '';
       setStatus('error');
-      setMessage(() => () => (cause instanceof Error ? cause.message : helperText('Could not apply this step.')));
-      return false;
+      setMessage(() => () => (code === 'premium_required' ? helperText('Unlock Vozen Premium for this server to configure it.')
+        : code === 'quick_setup_manage_channels_required' ? helperText('You need the Manage Channels permission to create a channel here. Choose an existing channel instead.')
+        : cause instanceof Error ? cause.message : helperText('Could not apply this step.')));
+      return code === 'quick_setup_manage_channels_required' ? 'use_existing_channel' : 'failed';
     }
   }
   async function skipQuickSetupStep(step: QuickSetupStepKey): Promise<boolean> {
@@ -3096,7 +3117,7 @@ function App() {
             decoding="async"
           />
           <div>
-            <select className="settings-product-switch" aria-label="Product" value="helper" onChange={event => { const target=event.target.value==='tts'?'/dashboard':'/account/?music=1'; void (async()=>{if(autosaveRef.current && !(await autosaveRef.current.flush()))return;window.location.assign(target);})(); }}><option value="tts">Vozen TTS</option><option value="music">Vozen Music</option><option value="helper">Vozen Helper</option></select>
+            <select className="settings-product-switch" aria-label="Product" value="helper" onChange={event => { const target=event.target.value==='tts'?'/dashboard':'/account/?music=1'; void (async()=>{if(autosaveRef.current && !(await autosaveRef.current.flush())){blockedNavigation.current=()=>window.location.assign(target);return;}window.location.assign(target);})(); }}><option value="tts">Vozen TTS</option><option value="music">Vozen Music</option><option value="helper">Vozen Helper</option></select>
             <small>{helperText('SERVER TOOLKIT')}</small>
           </div>
         </div>
@@ -3204,9 +3225,11 @@ function App() {
           </div>
         )}
         {autosaveState === 'error' && (
-          <div className="card resource-status" role="alert">
+          <div className="card resource-status" role="alert" ref={saveErrorCard} tabIndex={-1}>
             <span>{helperText('Could not save. Your changes are still in this form.')}</span>
-            <button type="button" className="secondary" onClick={() => void autosaveRef.current?.retry()}>{helperText('Try again')}</button>
+            {(saveFailure === 'transient' || saveFailure === 'other') && <button type="button" className="secondary" onClick={() => void autosaveRef.current?.retry()}>{helperText('Try again')}</button>}
+            {saveFailure === 'conflict' && <button type="button" className="secondary" onClick={() => dropDraft(false)}>{helperText('Reload latest settings')}</button>}
+            <button type="button" className="secondary" onClick={() => dropDraft(true)}>{helperText('Discard my changes')}</button>
           </div>
         )}
         {!localPreviewMode && needsGuildContext &&
@@ -3241,18 +3264,25 @@ function App() {
             onOpen={navigate}
           />
         )}
-        {route.page === 'quick-setup' && (
+        {route.page === 'quick-setup' && (quickSetup ? (
           <QuickSetup
-            state={quickSetup ?? defaultQuickSetupState(currentGuild?.id ?? 'demo')}
+            state={quickSetup}
             context={guildContext}
             featureDefaults={quickSetupDefaults}
             localCompatibilityDefaults={localPreviewMode}
+            defaultsLoad={quickSetupLoad}
+            onRetryDefaults={() => setQuickSetupRetry(value => value + 1)}
+            rolesPremiumLocked={roleStepLocked(features)}
             onApply={applyQuickSetupStep}
             onSkip={skipQuickSetupStep}
             onDismiss={() => void dismissQuickSetup()}
             onOpen={navigate}
           />
-        )}
+        ) : quickSetupError ? (
+          <section className="card" role="alert"><h2>{helperText('Could not load the guided setup')}</h2><p>{helperText('Your settings have not been changed. Check your connection and try again.')}</p><button type="button" className="button primary" onClick={() => setQuickSetupRetry(value => value + 1)}>{helperText('Try again')}</button></section>
+        ) : (
+          <div className="loading-card card"><div className="loader" /><span>{helperText('Loading configuration…')}</span></div>
+        ))}
         {route.page === 'features' && (
           <FeatureCatalogue
             features={filteredFeatures}
@@ -3295,9 +3325,10 @@ function App() {
               revision={detailRevision}
               onEnabled={enabled => editSettings({ enabled })}
               onChange={editField}
-              onFlush={() => void autosaveRef.current?.flush()}
+              onFlush={() => void flushDetail()}
               onRepair={() => void repairDetail()}
               onTest={visualDemo => void testDetail(visualDemo)}
+              testing={testing}
               onRestore={detailDefaults ? () => {
                 const prompt = isProtectionDetail ? protectionRestorePrompt() : 'Restore default settings for this feature?';
                 if (window.confirm(prompt)) editSettings({ config: { ...detailDefaults } });
@@ -3315,7 +3346,7 @@ function App() {
                 if (updated.guildId !== me?.guildId || premiumGuildRef.current !== me?.guildId) throw new Error('guild_changed');
                 setFeatures(visibleWelcomeFeatures(updated.features));
               }}
-              bannerEditor={<RankCardEditor config={rankConfig} patch={next => editSettings({ rank: { ...detailDraftRef.current.rank, ...next } }, 400)} onReset={() => editSettings({ rank: defaultRankCard })} />}
+              bannerEditor={rankLoadFailed ? <p className="tip feature-requirement" role="alert">{helperText('Could not load the level card. Reload the page before changing the card.')}</p> : <RankCardEditor config={rankConfig} patch={next => editSettings({ rank: { ...detailDraftRef.current.rank, ...next } }, 400)} onReset={() => editSettings({ rank: defaultRankCard })} />}
             />
           ))}
       </main>
@@ -3332,6 +3363,9 @@ function QuickSetup({
   context,
   featureDefaults,
   localCompatibilityDefaults,
+  defaultsLoad,
+  onRetryDefaults,
+  rolesPremiumLocked,
   onApply,
   onSkip,
   onDismiss,
@@ -3341,7 +3375,10 @@ function QuickSetup({
   context: GuildContext | null;
   featureDefaults: QuickSetupFeatureDefaults;
   localCompatibilityDefaults: boolean;
-  onApply: (step: QuickSetupStepKey, config: FeatureConfig, enabled?: boolean) => Promise<boolean>;
+  defaultsLoad: { loading: boolean; failed: readonly string[] };
+  onRetryDefaults: () => void;
+  rolesPremiumLocked: boolean;
+  onApply: (step: QuickSetupStepKey, config: FeatureConfig, enabled?: boolean) => Promise<'applied' | 'failed' | 'use_existing_channel'>;
   onSkip: (step: QuickSetupStepKey) => Promise<boolean>;
   onDismiss: () => void;
   onOpen: (path: string) => void;
@@ -3356,34 +3393,32 @@ function QuickSetup({
     ),
   );
   const [applying, setApplying] = useState(false);
-  const [draft, setDraft] = useState<Record<QuickSetupStepKey, FeatureConfig>>(() =>
-    quickSetupDraft(featureDefaults, localCompatibilityDefaults),
-  );
-  useEffect(() => {
-    setDraft(quickSetupDraft(featureDefaults, localCompatibilityDefaults));
-  }, [featureDefaults, localCompatibilityDefaults]);
+  const [patches, setPatches] = useState<Partial<Record<QuickSetupStepKey, FeatureConfig>>>({});
+  // Defaults arriving later must not erase what the user already typed.
+  const draft = useMemo(() => withDraftPatches(quickSetupDraft(featureDefaults, localCompatibilityDefaults), patches), [featureDefaults, localCompatibilityDefaults, patches]);
   useEffect(() => {
     setStarted(state.status === 'in_progress' || state.status === 'completed');
     const next = quickSetupSteps.findIndex((item) => item.key === state.currentStep);
     if (next >= 0) setIndex(next);
   }, [state.status, state.currentStep]);
   const current = quickSetupSteps[index] ?? quickSetupSteps[0];
+  const defaultsStatus = stepDefaultsStatus(current.key, defaultsLoad);
   const completed =
     state.status === 'completed' || state.steps.every((item) => item.status !== 'pending');
   const patch = (key: string, value: unknown) =>
-    setDraft((currentDraft) => ({
-      ...currentDraft,
-      [current.key]: { ...currentDraft[current.key], [key]: value },
-    }));
+    setPatches((previous) => ({ ...previous, [current.key]: { ...previous[current.key], [key]: value } }));
+  const applyBlocked = applying || defaultsStatus !== 'ready' || (current.key === 'roles' && rolesPremiumLocked);
   const apply = async () => {
     setApplying(true);
-    const ok = await onApply(
+    const result = await onApply(
       current.key,
       draft[current.key],
       current.key !== 'welcome' || draft[current.key].mode !== 'off',
     );
     setApplying(false);
-    if (ok && index < quickSetupSteps.length - 1) setIndex((value) => value + 1);
+    // Without Manage Channels the step can still use a channel that already exists.
+    if (result === 'use_existing_channel') setPatches((previous) => ({ ...previous, [current.key]: { ...previous[current.key], createChannel: false } }));
+    if (result === 'applied' && index < quickSetupSteps.length - 1) setIndex((value) => value + 1);
   };
   const skip = async () => {
     setApplying(true);
@@ -3532,6 +3567,9 @@ function QuickSetup({
           <small className="eyebrow">{helperText('STEP {n}', { n: index + 1 })}</small>
           <h3>{quickStepLabel(current)}</h3>
           <p className="setup-description">{quickStepDescription(current)}</p>
+          {current.key === 'roles' && rolesPremiumLocked && (
+            <p className="tip detail-premium-lock__message"><span aria-hidden="true">🔒</span>{' '}{helperText('Unlock Vozen Premium for this server to configure it.')}{' '}<a className="link-button" href="/premium#plans">{helperText('View Premium')}</a></p>
+          )}
           {current.key === 'welcome' && (
             <>
               <div className="choice-grid">
@@ -3761,11 +3799,13 @@ function QuickSetup({
               {helperText('{n} roles available to reuse.', { n: roles.length })}
             </small>
           )}
+          {defaultsStatus === 'loading' && <small className="muted-note" role="status">{helperText('Loading the current settings…')}</small>}
+          {defaultsStatus === 'error' && <p className="tip feature-requirement" role="alert">{helperText('Could not load the current settings. Nothing was changed.')} <button type="button" className="link-button" onClick={onRetryDefaults}>{helperText('Try again')}</button></p>}
           <div className="sticky-actions">
             <button type="button" className="secondary" onClick={() => void skip()} disabled={applying}>
               {helperText('skip')}
             </button>
-            <button type="button" className="primary" onClick={() => void apply()} disabled={applying}>
+            <button type="button" className="primary" onClick={() => void apply()} disabled={applyBlocked}>
               {applying
                 ? helperText('Applying…')
                 : helperText('Confirm and apply')}
@@ -4309,6 +4349,7 @@ function FeatureDetail({
   onFlush,
   onRepair,
   onTest,
+  testing,
   onRestore,
   templates,
   onTemplatesChange,
@@ -4332,6 +4373,7 @@ function FeatureDetail({
   onFlush: () => void;
   onRepair: () => void;
   onTest: (visualDemo?: boolean) => void;
+  testing: boolean;
   onRestore?: () => void;
   templates: StudioTemplate[];
   onTemplatesChange: (templates: StudioTemplate[]) => void;
@@ -4481,7 +4523,7 @@ function FeatureDetail({
           onRestore={onRestore} onRepair={needsRepair ? onRepair : undefined}
           slots={layoutSlots(feature.key)}
           actions={['social.youtube', 'social.twitch', 'social.rss', 'social.podcasts'].includes(feature.key)
-            ? <button type="button" className="secondary" onClick={() => onTest()}>{helperText('Send a test to Discord')}</button> : undefined}
+            ? <button type="button" className="secondary" disabled={testing} onClick={() => onTest()}>{helperText('Send a test to Discord')}</button> : undefined}
           renderField={key => {
             const field = fields.find(field => field.key === key);
             if (!field) return null;
@@ -4653,7 +4695,7 @@ function FeatureDetail({
               {helperText('Use the simulation to see what would happen. It never deletes messages or punishes members.')}
             </p>
           </div>
-          <button type="button" className="secondary full" onClick={() => onTest()}>
+          <button type="button" className="secondary full" disabled={testing} onClick={() => onTest()}>
             {feature?.key === 'social.youtube' ||
             feature?.key === 'social.twitch' ||
             feature?.key === 'social.rss' ||
