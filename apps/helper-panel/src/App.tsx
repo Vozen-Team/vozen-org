@@ -33,6 +33,8 @@ import {
   api,
   ApiError,
   restoreOAuthReturnHash,
+  setExpectedGuild,
+  setGuildChangedText,
   type CustomCommand,
   type Feature,
   type FeatureConfig,
@@ -2029,6 +2031,8 @@ function App() {
   const testingRef = useRef(false);
   const [testing, setTesting] = useState(false);
   useEffect(() => { setSimulation(null); }, [route.page, route.key, me?.guildId]);
+  useEffect(() => { setExpectedGuild(localPreviewMode ? null : me?.guildId ?? null); }, [me?.guildId]);
+  useEffect(() => { setGuildChangedText(helperText('The configuration changed in another session. Reload before editing again; your draft is still here.')); }, [locale]);
   const [sectionsOpen, setSectionsOpen] = useState(false);
   const sectionsTrigger = useRef<HTMLButtonElement>(null);
   useEffect(() => { const close = (event: KeyboardEvent) => { if(event.key === 'Escape' && sectionsOpen) { setSectionsOpen(false); sectionsTrigger.current?.focus(); } }; window.addEventListener('keydown', close); return () => window.removeEventListener('keydown', close); }, [sectionsOpen]);
