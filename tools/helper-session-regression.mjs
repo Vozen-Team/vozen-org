@@ -4,13 +4,14 @@ import { mkdir } from 'node:fs/promises';
 const browser = await chromium.launch();
 const base = process.env.HELPER_TEST_URL || 'http://127.0.0.1:5179/panel/helper-tracker/';
 try {
-  for (const scenario of ['settings-layout-desktop','settings-layout-mobile','delayed-session', 'remember-server', 'legacy-bearer', 'retry-detail', 'missing-schema', 'stale-detail', 'uncertain-switch', 'free-card', 'retry-resources', 'wrong-guild-resources', 'stale-resources', 'simulation-demo', 'simulation-pt', 'channel-create', 'channel-error', 'channel-wrong-guild', 'channel-switch', 'channel-no-permissions', 'channel-mobile', 'channel-pt', 'channel-one-click', 'multiple-resources', 'multiple-mobile', 'multiple-keyboard', 'fields-visible', 'channel-permission-error', 'autosave-suggestions', 'autosave-rapid', 'autosave-failure', 'autosave-conflict', 'autosave-navigation', 'autosave-guild', 'autosave-validation', 'autosave-discard', 'autosave-history', 'uncertain-switch-offline']) {
+  for (const scenario of ['settings-layout-desktop','settings-layout-mobile','delayed-session', 'remember-server', 'legacy-bearer', 'retry-detail', 'missing-schema', 'stale-detail', 'uncertain-switch', 'free-card', 'retry-resources', 'wrong-guild-resources', 'stale-resources', 'simulation-demo', 'simulation-pt', 'channel-create', 'channel-error', 'channel-wrong-guild', 'channel-switch', 'channel-no-permissions', 'channel-mobile', 'channel-pt', 'channel-one-click', 'multiple-resources', 'multiple-mobile', 'multiple-keyboard', 'fields-visible', 'channel-permission-error', 'autosave-suggestions', 'autosave-rapid', 'autosave-failure', 'autosave-conflict', 'autosave-navigation', 'autosave-guild', 'autosave-validation', 'autosave-discard', 'autosave-history', 'uncertain-switch-offline', 'social-test-once', 'social-test-failure']) {
     if (process.env.HELPER_SCENARIO && !scenario.startsWith(process.env.HELPER_SCENARIO)) continue;
     const page = await browser.newPage();
     let ready = false, guild = 'a', earlyReads = 0, detailReads = 0, switches = 0;
     let savedConfig;
     let savedEnabled = true, revision = 1;
     const writes = [];
+    let youtubeSubs = [], deliveries = 0;
     const autosaveScenario = scenario.startsWith('autosave-');
     const saved = async () => page.locator('.header-state').filter({hasText:/Saved automatically|Guardado automaticamente/}).waitFor();
     let contextReads = 0;
@@ -22,7 +23,8 @@ try {
     const resourceScenario = scenario.endsWith('resources');
     const simulationScenario = scenario.startsWith('simulation-');
     const starboard = scenario.startsWith('settings-layout') || resourceScenario || simulationScenario || channelScenario || multipleScenario;
-    const feature = {key:autosaveScenario ? 'community.suggestions' : starboard ? 'community.starboard' : 'community.levels',label:autosaveScenario ? 'Suggestions' : starboard ? 'Starboard' : 'Levels & XP',category:'community',available:true,enabled:true};
+    const socialScenario = scenario.startsWith('social-');
+    const feature = socialScenario ? {key:'social.youtube',label:'YouTube',category:'social',available:true,enabled:true,premium_required:true,premium_unlocked:true} : {key:autosaveScenario ? 'community.suggestions' : starboard ? 'community.starboard' : 'community.levels',label:autosaveScenario ? 'Suggestions' : starboard ? 'Starboard' : 'Levels & XP',category:'community',available:true,enabled:true};
     if (scenario === 'simulation-pt' || scenario === 'channel-pt' || (scenario === 'free-card' && process.env.HELPER_CARD_LOCALE === 'pt')) await page.addInitScript(() => localStorage.setItem('vozen.lang','pt'));
     if (scenario === 'free-card' && process.env.HELPER_CARD_MOBILE) await page.setViewportSize({width:390,height:844});
     if (scenario === 'settings-layout-mobile' || scenario === 'channel-mobile' || scenario === 'multiple-mobile') await page.setViewportSize({width:390,height:844});
@@ -90,6 +92,7 @@ try {
           assert.equal(body.expected_revision,revision,'each write must use the confirmed revision');
           if (autosaveScenario) await new Promise(resolve => setTimeout(resolve,300));
           savedConfig = body.config; savedEnabled = body.enabled; revision++;
+          if (socialScenario) youtubeSubs = [{id:7,sourceChannelId:body.config.sourceChannelId,targetChannelId:body.config.targetChannelId,messageTemplate:body.config.messageTemplate,mention:body.config.mention,enabled:body.enabled,intervalSeconds:body.config.intervalSeconds,nextPollAt:0,failureCount:0}];
         }
         detailReads++;
         const number = detailReads;
@@ -99,6 +102,7 @@ try {
         value = {...feature,guildId:guild,enabled:savedEnabled,config:savedConfig ?? {bannerEnabled:false,xpMin:(guild === 'b' || (scenario === 'stale-detail' && number > 1)) ? 42 : 15},defaults:{},schema:{sections:[{title:'XP progression',fields:[{key:'xpMin',label:'Minimum XP',kind:'number'}]}]},revision};
         if (starboard) value = {...feature,guildId:guild,enabled:savedEnabled,config:savedConfig ?? {channel:'a-starboard',threshold:3,emoji:'⭐'},defaults:{},schema:{sections:[{title:'Starboard',fields:[{key:'channel',label:'Default channel',kind:'channel'},{key:'threshold',label:'Required reactions',kind:'number',min:1,max:100},{key:'emoji',label:'Highlight emoji',kind:'text'}]}]},revision};
         if (autosaveScenario) value = {...feature,guildId:guild,enabled:savedEnabled,config:savedConfig ?? {channel:'a-starboard',voteMode:'up_down',anonymous:false,cooldownHours:24,requiredRole:'',staffChannel:''},schema:{sections:[{title:'Suggestion intake',fields:[{key:'channel',label:'Suggestion channel',kind:'channel'},{key:'voteMode',label:'Voting mode',kind:'select',options:[['up_down','Support / against'],['up_only','Support only']]},{key:'anonymous',label:'Hide author in the public message',kind:'toggle'}]},{title:'Moderation',fields:[{key:'cooldownHours',label:'Cooldown per member (hours)',kind:'number',min:0,max:720,advanced:true},{key:'requiredRole',label:'Required role (optional)',kind:'role',advanced:true},{key:'staffChannel',label:'Staff notification channel (optional)',kind:'channel',advanced:true}]}]},revision};
+        if (socialScenario) value = {...feature,guildId:guild,enabled:savedEnabled,revision,defaults:{},config:savedConfig ?? {sourceChannelId:'',intervalSeconds:300,targetChannelId:'a-starboard',messageTemplate:'New video: {title}',mention:''},schema:{sections:[{title:'YouTube',fields:[{key:'sourceChannelId',label:'YouTube channel ID',kind:'text'},{key:'intervalSeconds',label:'Check interval',kind:'number'},{key:'targetChannelId',label:'Discord channel',kind:'channel'},{key:'messageTemplate',label:'Message',kind:'text'},{key:'mention',label:'Mention',kind:'text'}]}]}};
         if (scenario.startsWith('settings-layout'))value.defaults={channel:'a-starboard',threshold:1,emoji:'⭐'};
         if (multipleScenario) {
           value.config = savedConfig ?? {...value.config,ignoredChannels:[],ignoredRoles:[]};
@@ -121,6 +125,14 @@ try {
       else if (path === '/api/activity') value = {activity:[]};
       else if (path === '/api/quotas') value = {plan:'Free',limits:{},usage:{}};
       else if (path === '/api/studio/rank-card') value = {guildId:guild,config:{font:'system',primary_color:'#8EE5D2',text_color:'#F4F7FB',background_color:'#101725',overlay_opacity:0.36,background_preset:null,background_url:null,background_data:null,avatar_ring_color:'#8EE5D2',avatar_ring_width:4}};
+      else if (path === '/api/config/youtube') value = {guildId:guild,subscriptions:youtubeSubs};
+      else if (path === '/api/config/youtube/7/test') {
+        assert.equal(route.request().method(),'POST');
+        deliveries++;
+        await new Promise(resolve => setTimeout(resolve,400));
+        if (scenario === 'social-test-failure') { await route.fulfill({status:503,json:{code:'youtube_unavailable',message:'youtube_unavailable'}}); return; }
+        value = {provider:'youtube',subscriptionId:7,delivered:true,testedAt:1};
+      }
       else { await route.fulfill({status:503,json:{}}); return; }
       await route.fulfill({json:value});
     });
@@ -146,6 +158,26 @@ try {
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
       await mkdir('output/playwright',{recursive:true});await page.evaluate(()=>scrollTo(0,0));await page.screenshot({path:`output/playwright/${scenario}.png`,fullPage:true});
       console.log(`PASS ${scenario}`);await page.close();continue;
+    }
+    if (socialScenario) {
+      await page.getByRole('textbox').first().fill('UC1234567890123456789012');
+      const test = page.getByRole('button',{name:'Send a test to Discord',exact:true});
+      await saved();
+      assert.equal(youtubeSubs.length,1,'the first save creates the subscription');
+      await test.dblclick();
+      if (scenario === 'social-test-once') {
+        await page.getByRole('status').filter({hasText:'Test message sent to the configured Discord channel. The YouTube cursor was not changed.'}).waitFor();
+        assert.equal(deliveries,1,'a double click sends one real test');
+        // Happy path: once the first test finished, a single click sends exactly one more.
+        await test.click();
+        for (let i = 0; i < 40 && deliveries < 2; i++) await new Promise(resolve => setTimeout(resolve,100));
+        await new Promise(resolve => setTimeout(resolve,500));
+        assert.equal(deliveries,2,'a single click sends exactly one test');
+      } else {
+        await page.getByRole('status').filter({hasText:'Could not send the YouTube test. Check the channel ID and the server credentials.'}).waitFor();
+        assert.equal(deliveries,1);
+      }
+      console.log(`PASS ${scenario}`); await page.close(); continue;
     }
     if (autosaveScenario) {
       const cooldown = page.getByRole('spinbutton',{name:/Cooldown per member/});

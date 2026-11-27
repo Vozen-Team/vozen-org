@@ -455,6 +455,10 @@
     "de": "Speichern fehlgeschlagen. Deine Änderungen stehen weiterhin in diesem Formular.",
     "tr": "Kaydedilemedi. Değişiklikleriniz hâlâ bu formda duruyor."
   },
+  "Could not send the YouTube test. Check the channel ID and the server credentials.": {
+    "de": "Der YouTube-Test konnte nicht gesendet werden. Prüfe die Kanal-ID und die Server-Zugangsdaten.",
+    "tr": "YouTube testi gönderilemedi. Kanal kimliğini ve sunucu kimlik bilgilerini kontrol edin."
+  },
   "Could not start TikTok authorization.": {
     "de": "Die TikTok-Autorisierung konnte nicht gestartet werden.",
     "tr": "TikTok yetkilendirmesi başlatılamadı."
@@ -1822,6 +1826,10 @@
   "Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.": {
     "de": "Einstellungen gespeichert, aber der Discord-Beitrag konnte nicht aktualisiert werden. Prüfe Kanal und Helper-Berechtigungen, bevor du den Beitrag reparierst.",
     "tr": "Ayarlar kaydedildi ancak Discord paylaşımı güncellenemedi. Paylaşımı onarmadan önce kanalı ve Helper izinlerini kontrol edin."
+  },
+  "Settings saved. This server has several role panels, so none was changed in Discord. Use the Published tab to repair or delete them.": {
+    "de": "Einstellungen gespeichert. Dieser Server hat mehrere Rollenpanels, daher wurde keins in Discord geändert. Nutze den Tab „Veröffentlicht“, um sie zu reparieren oder zu löschen.",
+    "tr": "Ayarlar kaydedildi. Bu sunucuda birden fazla rol paneli olduğu için Discord'da hiçbiri değiştirilmedi. Onarmak veya silmek için Yayımlananlar sekmesini kullanın."
   },
   "Shortcuts": {
     "de": "Verknüpfungen",

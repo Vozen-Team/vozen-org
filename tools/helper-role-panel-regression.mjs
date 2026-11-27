@@ -58,6 +58,8 @@ try {
         assert.deepEqual(input.roleIds, saved.roleIds);
         assert.equal(input.selectionMode, saved.selectionMode);
         panels = [{ ...panels[0], title: input.title, role_ids: input.roleIds, selection_mode: input.selectionMode }];
+        // The real API republishes the feature configuration with the panel, which bumps the revision.
+        revision++;
         value = { ok: true, messageId: '100', config: saved };
       } else if (path.endsWith('/repair') && method === 'POST') {
         repairs++;
@@ -96,6 +98,16 @@ try {
         await page.locator('.role-panel-manager .template-row b').filter({ hasText: 'My community' }).waitFor();
         assert.ok(writes > 0); assert.ok(publishes > 0); assert.equal(saved.panelTitle, 'My community');
         if (scenario === 'edit') {
+          await tabs.first().click();
+          const before = publishes;
+          await title.fill('');
+          await title.pressSequentially('Roles', { delay: 500 });
+          await new Promise(resolve => setTimeout(resolve, 600));
+          assert.equal(publishes, before, 'typing saves but does not republish the Discord panel');
+          await title.blur();
+          for (let i = 0; i < 50 && publishes < before + 1; i++) await new Promise(resolve => setTimeout(resolve, 100));
+          await new Promise(resolve => setTimeout(resolve, 500));
+          assert.equal(publishes, before + 1, 'leaving the field publishes the panel once');
           await tabs.nth(1).click();
           const published = () => page.waitForResponse(response => response.request().method() === 'PUT'
             && new URL(response.url()).pathname.endsWith('/api/role-panels/100'));
@@ -113,6 +125,19 @@ try {
           assert.deepEqual(saved.roleIds, ['31']);
           await tabs.first().click();
           assert.deepEqual(await page.locator('.role-panel-preview .role-panel-chips > span').allTextContents(), ['Gaming']);
+          // With no roles there is nothing to publish: leaving a field must not save again.
+          await tabs.nth(1).click();
+          await page.getByRole('checkbox', { name: '@Gaming', exact: true }).uncheck();
+          for (let i = 0; i < 50 && saved.roleIds.length > 0; i++) await new Promise(resolve => setTimeout(resolve, 100));
+          assert.deepEqual(saved.roleIds, []);
+          await new Promise(resolve => setTimeout(resolve, 600));
+          const settled = writes;
+          await tabs.first().click();
+          for (let i = 0; i < 2; i++) {
+            await title.focus(); await title.blur();
+            await new Promise(resolve => setTimeout(resolve, 500));
+          }
+          assert.equal(writes, settled, 'leaving a field with nothing to publish does not save again');
         }
       }
     } else if (scenario === 'manage') {

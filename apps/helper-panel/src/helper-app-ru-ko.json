@@ -455,6 +455,10 @@
     "ru": "Не удалось сохранить. Изменения остались в этой форме.",
     "ko": "저장할 수 없습니다. 변경 사항은 이 양식에 그대로 남아 있습니다."
   },
+  "Could not send the YouTube test. Check the channel ID and the server credentials.": {
+    "ru": "Не удалось отправить тест YouTube. Проверьте ID канала и учётные данные сервера.",
+    "ko": "YouTube 테스트를 보내지 못했습니다. 채널 ID와 서버 자격 증명을 확인하세요."
+  },
   "Could not start TikTok authorization.": {
     "ru": "Не удалось начать авторизацию TikTok.",
     "ko": "TikTok 인증을 시작할 수 없습니다."
@@ -1822,6 +1826,10 @@
   "Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.": {
     "ru": "Настройки сохранены, но публикацию в Discord обновить не удалось. Проверьте канал и разрешения Helper перед восстановлением публикации.",
     "ko": "설정은 저장되었지만 Discord 게시물을 업데이트할 수 없습니다. 게시물을 복구하기 전에 채널과 Helper 권한을 확인하세요."
+  },
+  "Settings saved. This server has several role panels, so none was changed in Discord. Use the Published tab to repair or delete them.": {
+    "ru": "Настройки сохранены. На этом сервере несколько панелей ролей, поэтому ни одна не изменена в Discord. Откройте вкладку «Опубликованные», чтобы восстановить или удалить их.",
+    "ko": "설정을 저장했습니다. 이 서버에는 역할 패널이 여러 개 있어 Discord에서 아무것도 변경하지 않았습니다. 게시된 패널 탭에서 복구하거나 삭제하세요."
   },
   "Shortcuts": {
     "ru": "Быстрые действия",

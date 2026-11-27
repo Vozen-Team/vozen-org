@@ -569,6 +569,11 @@
     "fr": "Impossible d’enregistrer. Vos modifications sont toujours dans ce formulaire.",
     "es": "No se ha podido guardar. Tus cambios siguen en este formulario."
   },
+  "Could not send the YouTube test. Check the channel ID and the server credentials.": {
+    "pt": "Não foi possível enviar o teste do YouTube. Verifica o ID do canal e as credenciais do servidor.",
+    "fr": "Impossible d’envoyer le test YouTube. Vérifiez l’ID de la chaîne et les identifiants du serveur.",
+    "es": "No se ha podido enviar la prueba de YouTube. Comprueba el ID del canal y las credenciales del servidor."
+  },
   "Could not start TikTok authorization.": {
     "pt": "Não foi possível iniciar a autorização do TikTok.",
     "fr": "Impossible de lancer l’autorisation TikTok.",
@@ -2278,6 +2283,11 @@
     "pt": "Definições guardadas, mas não foi possível atualizar a publicação no Discord. Verifica o canal e as permissões do Helper antes de reparar a publicação.",
     "fr": "Paramètres enregistrés, mais la publication Discord n’a pas pu être mise à jour. Vérifiez le salon et les autorisations de Helper avant de réparer la publication.",
     "es": "Ajustes guardados, pero no se ha podido actualizar la publicación de Discord. Comprueba el canal y los permisos de Helper antes de reparar la publicación."
+  },
+  "Settings saved. This server has several role panels, so none was changed in Discord. Use the Published tab to repair or delete them.": {
+    "pt": "Definições guardadas. Este servidor tem vários painéis de cargos, por isso nenhum foi alterado no Discord. Usa o separador Publicados para os reparar ou eliminar.",
+    "fr": "Réglages enregistrés. Ce serveur a plusieurs panneaux de rôles, donc aucun n’a été modifié dans Discord. Utilisez l’onglet Publiés pour les réparer ou les supprimer.",
+    "es": "Configuración guardada. Este servidor tiene varios paneles de roles, así que no se ha cambiado ninguno en Discord. Usa la pestaña Publicados para repararlos o eliminarlos."
   },
   "Shortcuts": {
     "pt": "Atalhos",

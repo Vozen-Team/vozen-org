@@ -67,6 +67,7 @@ import { ResourceMultiSelect } from './resource-multi-select';
 import { createAutosave, type AutosaveState } from './autosave';
 import { saveFailureKind, type SaveFailure } from './api-errors';
 import { levelsPublishConfig, rankCardUnlocked } from './levels-publish';
+import { rolePanelTarget } from './role-panel-target';
 import {
   helperLocale,
   helperText,
@@ -2005,6 +2006,9 @@ function App() {
   detailDraftRef.current = { config: detailConfig, enabled: detailEnabled, rank: rankConfig };
   const autosaveRef = useRef<ReturnType<typeof createAutosave<SettingsDraft, Awaited<ReturnType<typeof api.saveFeature>>>> | null>(null);
   const autosaveOwner = useRef('');
+  const rolePanelMessage = useRef<string | null>(null);
+  const rolePanelPublishRequested = useRef(false);
+  const rolePanelUnpublished = useRef(false);
   const formOwner = `${me?.id}:${me?.guildId}:${route.page}:${route.key}`;
   const formOwnerRef = useRef(formOwner);
   formOwnerRef.current = formOwner;
@@ -2018,6 +2022,8 @@ function App() {
   );
   const [message, setMessage] = useState<HelperMessage>('');
   const [simulation, setSimulation] = useState<SimulationDraft | null>(null);
+  const testingRef = useRef(false);
+  const [testing, setTesting] = useState(false);
   useEffect(() => { setSimulation(null); }, [route.page, route.key, me?.guildId]);
   const [sectionsOpen, setSectionsOpen] = useState(false);
   const sectionsTrigger = useRef<HTMLButtonElement>(null);
@@ -2076,6 +2082,9 @@ function App() {
   useEffect(() => {
     autosaveRef.current = null;
     autosaveOwner.current = '';
+    rolePanelMessage.current = null;
+    rolePanelPublishRequested.current = false;
+    rolePanelUnpublished.current = false;
     setAutosaveState(null);
   }, [formOwner]);
   useEffect(() => {
@@ -2610,7 +2619,9 @@ function App() {
         revision: detailRevision,
         write: async (sent, revision) => {
           if (formOwnerRef.current !== owner || switchingGuild.current) throw new Error('guild_changed');
-          return publishSettings(key, guildId, sent, revision);
+          const publishPanel = key === 'community.role_panels' && rolePanelPublishRequested.current;
+          rolePanelPublishRequested.current = false;
+          return publishSettings(key, guildId, sent, revision, publishPanel);
         },
         saved: (result, sent, latest) => {
           if (formOwnerRef.current !== owner) return;
@@ -2625,7 +2636,7 @@ function App() {
             setDetailEnabled(result.enabled);
             detailDraftRef.current = { ...sent, config: result.config, enabled: result.enabled };
           }
-          if (result.discordApply?.applied === false) setMessage(() => () => (helperText('Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.')));
+          if (result.discordApply?.applied === false) setMessage(() => () => (result.discordApply?.code === 'role_panel_ambiguous' ? helperText('Settings saved. This server has several role panels, so none was changed in Discord. Use the Published tab to repair or delete them.') : helperText('Settings saved, but the Discord publication could not be updated. Check the channel and Helper permissions before repairing the publication.')));
         },
         state: (state, error) => {
           if (formOwnerRef.current !== owner) return;
@@ -2646,6 +2657,7 @@ function App() {
         },
       });
     }
+    if (route.key === 'community.role_panels') { rolePanelUnpublished.current = true; if (delay === 0) rolePanelPublishRequested.current = true; }
     autosaveRef.current.enqueue(draft, delay);
   }
   function editField(key: string, value: unknown) {
@@ -2653,7 +2665,7 @@ function App() {
     const discrete = ['toggle', 'select', 'channel', 'channels', 'role', 'roles', 'category'].includes(field?.kind ?? '');
     editSettings({ config: { ...detailDraftRef.current.config, [key]: value } }, discrete || typeof value === 'boolean' ? 0 : 400);
   }
-  async function publishSettings(key: string, guildId: string | undefined, sent: SettingsDraft, revision: number): Promise<Awaited<ReturnType<typeof api.saveFeature>>> {
+  async function publishSettings(key: string, guildId: string | undefined, sent: SettingsDraft, revision: number, publishPanel: boolean): Promise<Awaited<ReturnType<typeof api.saveFeature>>> {
       const publishConfig = key === 'community.levels'
         ? levelsPublishConfig(sent.config, sent.rank, { premium: rankCardUnlocked(featuresRef.current), loaded: rankLoadedRef.current })
         : { ...sent.config };
@@ -2669,6 +2681,7 @@ function App() {
         : await api.saveFeature(key, sent.enabled, publishConfig, revision);
       if (result.guildId !== guildId) throw new Error('guild_changed');
       if (
+        publishPanel &&
         !localPreviewMode &&
         key === 'community.role_panels' &&
         sent.enabled &&
@@ -2686,17 +2699,27 @@ function App() {
           selectionMode: sent.config.selectionMode === 'unique' ? ('unique' as const) : ('multiple' as const),
           removeOnUnselect: sent.config.removeOnUnselect !== false,
         };
-        if (existingPanels.panels[0]) {
-          await api.updateRolePanel(existingPanels.panels[0].message_id, panelPayload);
-        } else {
-          await api.createRolePanel(panelPayload);
-        }
+        if (existingPanels.guildId !== guildId) throw new Error('guild_changed');
+        const target = rolePanelTarget(existingPanels.panels, rolePanelMessage.current);
+        // Told once per edit: without this, every blur would save again and repeat the message.
+        if (target.action === 'ambiguous') { rolePanelUnpublished.current = false; return { ...result, discordApply: { applied: false, code: 'role_panel_ambiguous' } }; }
+        const published = target.action === 'update'
+          ? await api.updateRolePanel(target.messageId, panelPayload)
+          : await api.createRolePanel(panelPayload);
+        rolePanelMessage.current = published.messageId;
+        rolePanelUnpublished.current = false;
+        // The API republishes the feature config when it publishes a panel, which bumps the revision.
+        const fresh = await api.feature(key).catch(() => null);
+        if (fresh && fresh.guildId === guildId && typeof fresh.revision === 'number') return { ...result, revision: fresh.revision };
         } catch {
           // The configuration write already succeeded. Preserve its revision
           // even if publishing the Discord message failed, instead of retrying
           // the whole write with an obsolete revision or creating duplicates.
           return { ...result, discordApply: { applied: false, code: 'role_panel_publish_failed' } };
         }
+      } else if (publishPanel) {
+        // Nothing to publish (disabled, no channel or no roles): leaving a field must not save again.
+        rolePanelUnpublished.current = false;
       }
       return result;
   }
@@ -2708,6 +2731,15 @@ function App() {
     setDetailRetry(value => value + 1);
     const next = blockedNavigation.current; blockedNavigation.current = null;
     if (resume) next?.();
+  }
+  async function flushDetail() {
+    const writer = autosaveRef.current;
+    if (!writer || !(await writer.flush())) return;
+    // Text is saved while typing but published to Discord once, when the field loses focus.
+    if (route.key !== 'community.role_panels' || !rolePanelUnpublished.current || autosaveRef.current !== writer) return;
+    rolePanelPublishRequested.current = true;
+    writer.enqueue(detailDraftRef.current, 0);
+    await writer.flush();
   }
   async function repairDetail() {
     if (!route.key || localPreviewMode) return;
@@ -2739,6 +2771,12 @@ function App() {
       repairingDetail.current = false;
     }
   }
+  async function latestSubscription<T>(load: () => Promise<{ guildId: string; subscriptions: T[] }>): Promise<T | undefined> {
+    // Read for this test only: storing it would trigger the effects that copy subscriptions into the form.
+    const result = await load();
+    if (result.guildId !== me?.guildId) throw new Error('guild_changed');
+    return result.subscriptions[0];
+  }
   async function testDetail(visualDemo = false) {
     if (!route.key) return;
     const openSimulation = (key: string) => {
@@ -2752,6 +2790,7 @@ function App() {
     // The visual demonstration is local only; it must never reach the real
     // send-a-test paths below (social feeds post to Discord).
     if (visualDemo) { openSimulation(route.key); return; }
+    if (testingRef.current) return; testingRef.current = true; setTesting(true);
     try {
       if (route.key === 'social.youtube') {
         const sourceChannelId = String(detailConfig.sourceChannelId ?? '').trim();
@@ -2763,7 +2802,8 @@ function App() {
           setMessage(() => () => (helperText('YouTube channel validation is available when the dashboard is connected to the API.')));
           return;
         }
-        const subscription = youtubeSubscriptions[0];
+        if (autosaveRef.current && !(await autosaveRef.current.flush())) return;
+        const subscription = youtubeSubscriptions[0] ?? await latestSubscription(() => api.youtubeSubscriptions());
         if (!subscription) {
           setMessage(() => () => (helperText('Save the subscription first so the test can be sent to Discord.')));
           return;
@@ -2797,9 +2837,10 @@ function App() {
           setMessage(() => () => (helperText('Feed validation is available when the dashboard is connected to the API.')));
           return;
         }
-        const subscription = rssSubscriptions[0];
+        if (autosaveRef.current && !(await autosaveRef.current.flush())) return;
+        const subscription = rssSubscriptions[0] ?? await latestSubscription(() => api.rssSubscriptions());
         if (!subscription) {
-          setMessage('Save the subscription first so the test can be sent to Discord.');
+          setMessage(() => () => (helperText('Save the subscription first so the test can be sent to Discord.')));
           return;
         }
         const result = await api.testRssDelivery(subscription.id, {
@@ -2831,9 +2872,10 @@ function App() {
           setMessage(() => () => (helperText('Twitch channel validation is available when the dashboard is connected to the API.')));
           return;
         }
-        const subscription = twitchSubscriptions[0];
+        if (autosaveRef.current && !(await autosaveRef.current.flush())) return;
+        const subscription = twitchSubscriptions[0] ?? await latestSubscription(() => api.twitchSubscriptions());
         if (!subscription) {
-          setMessage('Save the subscription first so the test can be sent to Discord.');
+          setMessage(() => () => (helperText('Save the subscription first so the test can be sent to Discord.')));
           return;
         }
         const result = await api.testTwitchDelivery(subscription.id, {
@@ -2859,9 +2901,10 @@ function App() {
           ? helperText('Could not read this feed. Check the URL and try again.')
           : route.key === 'social.twitch'
             ? helperText('Could not validate the Twitch channel. Check the name and the server credentials.')
+            : route.key === 'social.youtube' ? helperText('Could not send the YouTube test. Check the channel ID and the server credentials.')
             : helperText('Simulation is available when the API is connected.')),
       );
-    }
+    } finally { testingRef.current = false; setTesting(false); }
   }
   async function applyQuickSetupStep(
     step: QuickSetupStepKey,
@@ -3326,9 +3369,10 @@ function App() {
               revision={detailRevision}
               onEnabled={enabled => editSettings({ enabled })}
               onChange={editField}
-              onFlush={() => void autosaveRef.current?.flush()}
+              onFlush={() => void flushDetail()}
               onRepair={() => void repairDetail()}
               onTest={visualDemo => void testDetail(visualDemo)}
+              testing={testing}
               onRestore={detailDefaults ? () => {
                 const prompt = isProtectionDetail ? protectionRestorePrompt() : 'Restore default settings for this feature?';
                 if (window.confirm(prompt)) editSettings({ config: { ...detailDefaults } });
@@ -4340,6 +4384,7 @@ function FeatureDetail({
   onFlush,
   onRepair,
   onTest,
+  testing,
   onRestore,
   templates,
   onTemplatesChange,
@@ -4363,6 +4408,7 @@ function FeatureDetail({
   onFlush: () => void;
   onRepair: () => void;
   onTest: (visualDemo?: boolean) => void;
+  testing: boolean;
   onRestore?: () => void;
   templates: StudioTemplate[];
   onTemplatesChange: (templates: StudioTemplate[]) => void;
@@ -4512,7 +4558,7 @@ function FeatureDetail({
           onRestore={onRestore} onRepair={needsRepair ? onRepair : undefined}
           slots={layoutSlots(feature.key)}
           actions={['social.youtube', 'social.twitch', 'social.rss', 'social.podcasts'].includes(feature.key)
-            ? <button type="button" className="secondary" onClick={() => onTest()}>{helperText('Send a test to Discord')}</button> : undefined}
+            ? <button type="button" className="secondary" disabled={testing} onClick={() => onTest()}>{helperText('Send a test to Discord')}</button> : undefined}
           renderField={key => {
             const field = fields.find(field => field.key === key);
             if (!field) return null;
@@ -4684,7 +4730,7 @@ function FeatureDetail({
               {helperText('Use the simulation to see what would happen. It never deletes messages or punishes members.')}
             </p>
           </div>
-          <button type="button" className="secondary full" onClick={() => onTest()}>
+          <button type="button" className="secondary full" disabled={testing} onClick={() => onTest()}>
             {feature?.key === 'social.youtube' ||
             feature?.key === 'social.twitch' ||
             feature?.key === 'social.rss' ||
